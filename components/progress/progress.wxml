@@ -1,0 +1,11 @@
+<view>
+  <view class='support_contain'>
+    <span class="support">388</span>
+    <span>/</span>
+    <span class='total_support'>500人支持</span>
+  </view>
+  <view class='process-percent'>3378%</view>
+  <view class='process rect-conner'>
+    <view class='progress-bar rect-conner' style='width:80%'></view>
+  </view>
+</view>

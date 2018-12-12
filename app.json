@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/mine/index",
+    "pages/shopping_mall/index",
+    "pages/message/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6b245",
+    "navigationBarTitleText": "麦车服",
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#959595",
+    "selectedColor": "#413e3e",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "common/image/tab/index.png",
+        "selectedIconPath": "common/image/tab/index_after.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shopping_mall/index",
+        "iconPath": "common/image/tab/shop.png",
+        "selectedIconPath": "common/image/tab/shop_after.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "iconPath": "common/image/tab/mes.png",
+        "selectedIconPath": "common/image/tab/mes_after.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "common/image/tab/mine.png",
+        "selectedIconPath": "common/image/tab/mine_after.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

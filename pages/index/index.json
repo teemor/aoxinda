@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "麦车服",
+    "usingComponents":{
+      "axd-progress":"../../components/progress/progress"
+    }
+}
