@@ -4,7 +4,8 @@
     "pages/login/index",
     "pages/mine/index",
     "pages/shopping_mall/index",
-    "pages/message/index"
+    "pages/message/index",
+    "pages/add_car/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

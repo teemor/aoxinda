@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 添加爱车 -->
   <view class='page-section page-section-spacing swiper'>
-    <swiper style='height:350rpx;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <swiper style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <!-- <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
           <view class="swiper-item {{item}}"></view>
@@ -10,9 +10,18 @@
       <block wx:for="{{background}}" wx:key="*this">
         <swiper-item class="swiper-item">
           <image src='../../common/image/car1.png' />
+          <view style='margin-top:-350rpx;background:rgba(0,0,0,0.1);width:100%;height:350rpx;position:absolute'>
+            <view class='swiper_add' bindtap="addCar">
+              <image src='../../common/image/add.png' />
+              <view class='swiper_text'>点击添加我的爱车</view>
+            </view>
+          </view>
         </swiper-item>
       </block>
     </swiper>
+    <view class='swiper_mes'>
+      <image src='../../common/image/message.png' />
+    </view>
   </view>
   <!-- 选择 -->
   <view class='btn_contain' style='display:none'>
