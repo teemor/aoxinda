@@ -19,11 +19,11 @@
 
 .swiper_mes image {
   position: absolute;
-  top:40rpx;
-  right:0;
+  top: 40rpx;
+  right: 0;
   width: 38rpx;
   height: 28rpx;
-  margin-right:25rpx;
+  margin-right: 25rpx;
 }
 
 .swiper_text {
@@ -152,8 +152,19 @@
 }
 
 .limited_title {
-  width: 30%;
+  font-size: 30rpx;
+  font-style: oblique;
+  width: 100%;
   margin-bottom: 20rpx;
+}
+
+.limited_mini {
+  color: ;
+}
+
+.limited_title-text {
+  float: left;
+  width: 30%;
 }
 
 .limited_title image {
@@ -161,6 +172,23 @@
   height: 50rpx;
 }
 
+.limited_second {
+  margin-left: 5%;
+  float: left;
+  width: 65%;
+}
+
+.limited_hour, .limited_mini {
+  color: #fd4747;
+  font-weight: bold;
+}
+
+.limited_hour {
+  font-size: 36rpx;
+}
+.limited_mini{
+  font-size: 28rpx;
+}
 .service_title {
   width: 75%;
 }
@@ -289,8 +317,10 @@
 
 .service_map {
   width: 100%;
+  box-sizing: border-box;
 }
 
+.
 .service_map image {
   width: 100%;
 }

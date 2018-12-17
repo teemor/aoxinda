@@ -1,0 +1,5 @@
+<view class="count-down">
+  <view>
+    <text>{{countDownTime}}</text>
+  </view>
+</view>

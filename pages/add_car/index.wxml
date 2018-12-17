@@ -1,4 +1,61 @@
-<view class="" hover-class="none" hover-stop-propagation="false">
-        
-</view>
+<view class="add_car_contain">
+  <view class="add_car_search">
+    <tabbar list="{{tabData}}" selectedId="{{activeIndex}}" bind:tabchange="tabchange" />
+  </view>
+  <view hidden="{{activeIndex!=='1'}}">
+    <!-- 搜索 -->
+    <view class='add_car_search-input'>
+      <input type='text' placeholder="点击搜索您爱车的型号…" placeholder-class="add_car_place" />
+      <view class='add_car_search-btn'>
+        <image src='../../common/image/search.png'></image>
+      </view>
+    </view>
+    <!-- 热门品牌 -->
+    <view>
+      <view class='add_car_title'>
+        热门品牌
+      </view>
+      <view class='add_car_brand-contain'>
+        <view wx:for="{{hotbrandList}}" wx:key="{{item}}">
+          <view class='add_car_box'>
+            <image src='../../common/image/1.png'></image>
+            <view class='add_car_box-hot-name'>{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 字母 -->
+    <scroll-view scroll-y>
+      <view class='add_car_letter-bar_contain'>
+        <view class='add_car_letter-bar' wx:for="{{searchLetter}}" wx:key="index" data-letter="item" catchtouchstart='searchStart' catchtouchmove="searchMove" catchtouchend="searchEnd">
+          {{item}}
+        </view>
+      </view>
+      <view class='add_car_letter-contain'>
+        <view wx:for="{{carData}}" wx:key="index">
+          <view class='add_car_letter-title'>
+            {{item.initial}}
+          </view>
+          <view wx:for="{{item.carInfo}}" wx:key="index">
+            <view class='add_car_letter-text'>
+              <image src='../../common/image/1.png'></image>
+              <view class='add_car_letter-name'>
+                {{item.carName}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view hidden="{{activeIndex!=='2'}}">
+  <view class=''>
+  <view>请扫描行驶证正面</view>
+  <view>扫描时请保持光线充足，不要反光</view>
+  </view>
+  <view>
   
+  </view>
+  <view class='btnScan'>扫描行驶证</view>
+  </view>
+</view>

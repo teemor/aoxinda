@@ -1,3 +1,7 @@
 {
-    "navigationBarTitleText": "添加爱车"
+    "navigationBarTitleText": "添加爱车",
+    "usingComponents":{
+        "axd-progress":"../../components/progress/progress",
+        "tabbar":"../../components/tab/tab"
+      }
 }

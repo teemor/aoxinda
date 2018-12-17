@@ -1,1 +1,129 @@
-/* pages/add_car/index.wxss */
+.add_car_contain {
+  /* padding: 10rpx; */
+}
+
+.add_car_search {
+  padding: 30rpx;
+  border-radius: 20rpx;
+}
+
+.add_car_search-input {
+  padding: 0 5%;
+  margin-left: 5%;
+  width: 80%;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  background: #eee;
+  position: relative;
+}
+
+.add_car_box {
+  font-size: 26rpx;
+  float: left;
+  margin: 15rpx 2.5%;
+  width: 15%;
+  text-align: center;
+}
+
+.add_car_box-hot-name {
+  height: 40rpx;
+}
+
+.add_car_box image {
+  margin-left: 3%;
+  width: 65%;
+  height: 70rpx;
+}
+
+.add_car_search-btn {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+}
+
+.add_car_search-btn image {
+  width: 100%;
+  height: 30rpx;
+}
+
+.add_car_place {
+  color: #fff;
+}
+
+.add_car_title {
+  margin-top: 60rpx;
+  margin-bottom: 10rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  font-size: 30rpx;
+  width: 100%;
+  text-align: center;
+  background: #e1e1e1;
+}
+
+.add_car_letter-bar {
+  font-size: 22rpx;
+  color: #b2b2b2;
+  margin-bottom: 15rpx;
+}
+
+.add_car_letter-bar_contain {
+  bottom: 20rpx;
+  position: fixed;
+  right: 5rpx;
+}
+
+.add_car_letter-title {
+  clear: both;
+  zoom: 1;
+  margin-bottom: 10rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  width: 98%;
+  padding-left: 2%;
+  text-align: left;
+  background: #e1e1e1;
+}
+
+.add_car_letter-text {
+  height: 100rpx;
+  display: block;
+  clear: both;
+  zoom: 1;
+  margin: 0 20rpx;
+  border-bottom: 2rpx solid #e1e1e1;
+  font-size: 26rpx;
+}
+
+.add_car_letter-text image {
+  float: left;
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 15rpx;
+  margin-right: 20rpx;
+}
+
+.add_car_letter-name {
+  float: left;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.add_car_letter-contain {
+}
+
+.btnScan {
+  width: 80%;
+  margin-left: 10%;
+  background: #f6b245;
+  color: #fff;
+  text-align: center;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 36rpx;
+  border-radius: 50rpx;
+}

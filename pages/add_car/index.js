@@ -1,66 +1,85 @@
-// pages/add_car/index.js
+import {
+  carList
+} from '../../common/static/api_data'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    carList,
+    activeIndex: "1",
+    hotbrandList: [{
+        name: '阿斯顿·马丁'
+      },
+      {
+        name: '大众'
+      },
+      {
+        name: '雪佛兰'
+      },
+      {
+        name: '大众'
+      },
+      {
+        name: '大众'
+      },
+      {
+        name: '大众'
+      },
 
+      {
+        name: '大众'
+      },
+      {
+        name: '大众'
+      },
+      {
+        name: '大众'
+      },
+      {
+        name: '大众'
+      }
+    ],
+    tabData: [{
+      name: '手动添加',
+      key: '1'
+    }, {
+      name: '扫描行车本',
+      key: '2'
+    }],
+    searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this.setData({
+      carData: this.carData()
+    })
   },
-
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 对城市信息进行分组
+   * author dzl
    */
-  onReady: function () {
-
+  carData: function() {
+    let temObj = [];
+    for (let i = 0; i < this.data.searchLetter.length; i++) {
+      let initial = this.data.searchLetter[i];
+      let carInfo = [];
+      let tempArr = {};
+      tempArr.initial = initial;
+      for (let j = 0; j < carList.length; j++) {
+        if (initial == carList[j].initial) {
+          carInfo.push(carList[j]);
+        }
+      }
+      tempArr.carInfo = carInfo;
+      temObj.push(tempArr);
+    }
+    console.log(temObj, 'hehe')
+    return temObj;
   },
-
   /**
-   * 生命周期函数--监听页面显示
+   * tab页切换
+   * author dzl
    */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  tabchange: function(e) {
+    this.setData({
+      activeIndex: e.detail
+    })
   }
 })
