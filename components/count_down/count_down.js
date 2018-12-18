@@ -9,7 +9,6 @@ Component({
         if (this.timer) {
           this.clearTimer()
         }
-
         this.init()
         this.runCountDown(this.parseDate(newVal))
       }

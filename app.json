@@ -5,7 +5,9 @@
     "pages/mine/index",
     "pages/shopping_mall/index",
     "pages/message/index",
-    "pages/add_car/index"
+    "pages/add_car/index",
+    "pages/car_photo/index",
+    "pages/choose_type/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -49,12 +49,12 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
-    setTimeout()
+    // setTimeout()
     // this.mapCtx.moveToLocation()
   },
   // 倒计时
   showTime: function() {
-    
+
   },
   // 添加我的爱车
   addCar: function() {

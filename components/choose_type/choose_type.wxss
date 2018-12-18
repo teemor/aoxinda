@@ -1,0 +1,18 @@
+.choose_type-contain {
+  background: #fff;
+  top: 150rpx;
+  position: absolute;
+  height: 100%;
+  color: #fff;
+  width: 100%;
+  z-index: 555;
+}
+
+.choose_type-title {
+  font-size: 28rpx;
+  background: #f6b245;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  width: 100%;
+}

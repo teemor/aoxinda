@@ -1,0 +1,53 @@
+.filterbar-pop{
+  height:100%;
+  width:100%;
+  overflow-y: scroll;
+  top:0;
+  right:0;
+  z-index: 1020;
+  background:#fff;
+  box-sizing: border-box;
+}
+.cartype_title {
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  background: #f6b245;
+  font-size: 28rpx;
+}
+
+.cartype_image {
+  padding-left: 20rpx;
+  width: 200rpx;
+  height: 120rpx;
+  float: left;
+  margin-right: 50rpx;
+}
+
+.cartype_image image {
+  width: 100%;
+  height: 120rpx;
+  float: left;
+}
+
+.cartype_box {
+}
+
+.cartype_box_contain {
+  margin-top: 50rpx;
+  height: 150rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.cartype_detail {
+}
+
+.cartype_detail_text {
+  color:#292929;
+}
+
+.cartype_detail_price {
+  color: #f6b245;
+  font-size: 30rpx;
+}

@@ -1,0 +1,22 @@
+.picture_again, .picture_camera {
+  background: #f6b245;
+  font-size: 30rpx;
+  height: 60rpx;
+  width: 200rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 100rpx;
+  box-shadow: 0 0 25rpx #a7a8af;
+}
+
+.picture_contain {
+  margin: auto;
+  margin-top:70rpx;
+  width:220rpx;
+  transform: rotate(90deg);
+}
+
+.picture_camera {
+  margin-top: 30rpx;
+}

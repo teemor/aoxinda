@@ -1,10 +1,51 @@
 .add_car_contain {
   /* padding: 10rpx; */
 }
-
+.fixed {
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 0;
+  display: inline-block;
+}
 .add_car_search {
   padding: 30rpx;
   border-radius: 20rpx;
+}
+
+.scan_contain {
+  margin-top: 100rpx;
+}
+
+.code_exp {
+  width: 90%;
+  padding: 0 5%;
+  height: 340rpx;
+  margin-bottom: 100rpx;
+}
+
+.code_exp image {
+  height: 100%;
+  width: 100%;
+}
+
+.scan_code {
+  text-align: center;
+}
+
+.scan_title {
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+.scan_mark {
+  font-size: 26rpx;
+  color: #a7a8af;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
 }
 
 .add_car_search-input {
@@ -19,6 +60,7 @@
 }
 
 .add_car_box {
+  display: block;
   font-size: 26rpx;
   float: left;
   margin: 15rpx 2.5%;
@@ -126,4 +168,5 @@
   line-height: 70rpx;
   font-size: 36rpx;
   border-radius: 50rpx;
+  box-shadow: 0 0 25rpx #a7a8af;
 }

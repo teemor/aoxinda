@@ -1,0 +1,20 @@
+<manager show="{{show}}" type="right" bind:clickMask="clickMask">
+<view class='filterbar-pop'>
+<scroll-view scroll-y style='height:calc(100%-80px)'>
+<view wx:for="{{carBrand}}" wx:key="index" class='cartype_box'>
+    <view class='cartype_title'>
+      {{item.name}}
+    </view>
+    <view wx:for="{{item.data}}" wx:key="index" class='cartype_box_contain' bindtap='chooseType'>
+      <view class='cartype_image'>
+        <image src='{{item.image}}'></image>
+      </view>
+      <view class='cartype_detail'>
+        <view class='cartype_detail_text'>{{item.name}}</view>
+        <view class='cartype_detail_price'>{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+</view>
+</manager>

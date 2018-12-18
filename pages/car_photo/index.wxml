@@ -1,0 +1,9 @@
+<view>
+  <camera device-position='back' style='width:100%;height:900rpx;'>
+    <cover-image src="../../common/image/scan_code.png" />
+  </camera>
+  <view class='picture_contain'>
+    <view bindtap='bindAgain' class='picture_again'>重新拍取</view>
+    <view bindtap='bindCamera' class='picture_camera'>点击拍照</view>
+  </view>
+</view>

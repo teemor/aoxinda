@@ -1,9 +1,24 @@
 import {
-  carList
+  carList,
+  carBrand,
+  carType
 } from '../../common/static/api_data'
 Page({
+  /**
+   *  房源列表
+   * - @author           dzl
+   * choose_brand    品牌
+   * choose_type 哪款
+   * choose_detail 详情
+   */
   data: {
+    showTypeBrand: true,
+    choose_brand: false,
+    choose_type: false,
+    choose_detail: false,
     carList,
+    carBrand,
+    carType,
     activeIndex: "1",
     hotbrandList: [{
         name: '阿斯顿·马丁'
@@ -49,6 +64,36 @@ Page({
   onLoad: function(options) {
     this.setData({
       carData: this.carData()
+    })
+  },
+  /**
+   * 选择品牌
+   * author dzl
+   */
+  chooseBrand: function() {
+    this.setData({
+      choose_brand: true,
+      choose_type: false
+    })
+  },
+  /**
+   * 选择类别
+   * author dzl
+   */
+  chooseType: function() {
+    this.setData({
+      choose_brand: false,
+      choose_type: true,
+      showTypeBrand: false
+    })
+  },
+  /**
+   * 扫描行车本
+   * author dzl
+   */
+  btnScan: function() {
+    wx.navigateTo({
+      url: '../car_photo/index',
     })
   },
   /**

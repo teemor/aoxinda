@@ -1,0 +1,10 @@
+<view wx:if="{{show}}" class='choose_type-contain'>
+<view class='choose_type-title'>
+奥迪A4L
+</view>
+  <view>
+    <tabbar list="{{carType}}" selectedId="{{activeIndex}}" bind:tabchange="tabchange" />
+  </view>
+  <view>
+  </view>
+</view>
