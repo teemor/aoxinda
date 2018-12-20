@@ -1,11 +1,11 @@
 <view class="zan-tab" style="{{ height ? 'height:' + height + 'px' : '' }}">
   <block wx:if="{{ scroll }}">
-    <scroll-view class="zan-tab__bd zan-tab__bd--scroll {{ fixed ? 'zan-tab__bd--fixed' : '' }}" scroll-x="true" style="height: {{ height ? height + 'px' : 'auto' }}">
+    <scroll-view class="zan-tab__bd zan-tab__bd--scroll {{ fixed ? 'zan-tab__bd--fixed' : '' }}" scroll-x="true" style="width:{{width}}; height: {{ height ? height + 'px' : 'auto' }}">
       <template is="zan-tab-list" data="{{ list, selectedId, height ,righted}}" />
     </scroll-view>
   </block>
   <block wx:else>
-    <view class="zan-tab__bd {{ fixed ? 'zan-tab__bd--fixed' : '' }}" style="height: {{ height ? height + 'px' : 'auto' }}">
+    <view class="zan-tab__bd {{ fixed ? 'zan-tab__bd--fixed' : '' }}" style="width:{{width}};height: {{ height ? height + 'px' : 'auto' }}">
       <template is="zan-tab-list" data="{{ list, selectedId, height }}" />
     </view>
   </block>

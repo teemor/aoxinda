@@ -2,8 +2,9 @@
     "navigationBarTitleText": "添加爱车",
     "usingComponents":{
         "axd-progress":"../../components/progress/progress",
-        "tabbar":"../../components/tab/tab",
+        "tabbar":"../../components/public/tab-contain/tab",
         "choose_brand":"../../components/choose_brand/choose_brand",
-        "choose_type":"../../components/choose_type/choose_type"
+        "choose_type":"../../components/choose_type/choose_type",
+        "choose_detail":"../../components/choose_detail/choose_detail"
       }
 }

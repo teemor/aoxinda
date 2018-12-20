@@ -1,0 +1,30 @@
+.choose_type_list-contain{
+    padding: 30rpx 20rpx;
+    color:#2e2d2d;
+    font-size:28rpx;
+    border-bottom: 1px solid #ececec
+}
+.choose_type_list-type{
+    color:#c3bdbd;
+    clear:both;
+    zoom: 1;
+} 
+.choose_type_list-price{
+    margin-top:40rpx;
+    float:left;
+    text-align: center;
+    color:#fdbb51;
+    width:30%
+} 
+.choose_type_list-box{
+    height:120rpx;
+    float:left;
+    width:70%;
+}
+.choose_type-con{
+    margin-top:30rpx;
+    clear:both;
+    zoom: 1;
+}
+.choose_type_list-mark{} 
+.choose_type_list-title{}

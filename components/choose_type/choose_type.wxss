@@ -3,12 +3,12 @@
   top: 150rpx;
   position: absolute;
   height: 100%;
-  color: #fff;
   width: 100%;
   z-index: 555;
 }
 
 .choose_type-title {
+  color: #fff;
   font-size: 28rpx;
   background: #f6b245;
   height: 60rpx;

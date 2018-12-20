@@ -4,11 +4,12 @@
 
 .zan-tab__bd {
   margin: auto;
-  width: 400rpx;
+  /* width: 400rpx; */
   display: flex;
   flex-direction: row;
   background: #fff;
 }
+
 
 .zan-tab__bd--fixed {
   position: fixed;

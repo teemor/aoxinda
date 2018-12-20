@@ -96,35 +96,68 @@ export const carBrand = [{
     "price": "29.00-41.99万"
   }]
 }]
-export const carType = [{
+export const carTypeData = [{
     "name": "2019款",
-    "code": "001"
+    "key": "001",
+    "list": [{
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }, {
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }, {
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }]
   },
   {
     "name": "2018款",
-    "code": "002"
+    "key": "002",
+    "list": [{
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }, {
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }, {
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }]
   },
   {
     "name": "2017款",
-    "code": "003"
+    "key": "003",
+    "list": [{
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }, {
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }, {
+      "title": "1.4T/110kw 涡轮增压",
+      "type": "2019款 35TFSI 进取版 国V",
+      "price": "29.3万",
+      "transmission": "双离合"
+    }]
   }
 ]
-export const carTypeData = [{
-  "title":"1.4T/110kw 涡轮增压",
-  "type":"2019款 35TFSI 进取版 国V",
-  "price":"29.3万",
-  "transmission":"双离合"
-}, {
-    "title": "1.4T/110kw 涡轮增压",
-    "type": "2019款 35TFSI 进取版 国V",
-    "price": "29.3万",
-    "transmission": "双离合"
-  }, {
-    "title": "1.4T/110kw 涡轮增压",
-    "type": "2019款 35TFSI 进取版 国V",
-    "price": "29.3万",
-    "transmission": "双离合"
-  }]
+
 export const tabbarConfig = [{
     "active": true,
     "pagePath": "pages/index/index",

@@ -1,13 +1,23 @@
 Component({
   properties: {
-    show:Boolean,
-    carType: Array,
+    show: Boolean,
     carTypeData: Array
   },
   data: {
-
+    activeIndex: '001'
   },
   methods: {
-
+    /**
+     * 切换年份
+     */
+    tabchange: function(e) {
+      // console.log(e, '选择')
+    },
+    /**
+     * 点击进入详情
+     */
+    detailBtn:function(){
+      this.triggerEvent('detailBtn', {})
+    }
   }
 })

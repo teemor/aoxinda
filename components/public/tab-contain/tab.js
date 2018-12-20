@@ -11,6 +11,7 @@ Component({
    */
   externalClasses: 'class',
   properties: {
+    width: String,
     scroll: {
       type: Boolean,
       value: false
@@ -40,7 +41,9 @@ Component({
       // 获取tab方法名称
       const selectedId = e.currentTarget.dataset.itemId
       // 存储方法名称
-      this.setData({ selectedId })
+      this.setData({
+        selectedId
+      })
       // 调用父事件方法调取数据
       this.triggerEvent('tabchange', this.data.selectedId)
     }

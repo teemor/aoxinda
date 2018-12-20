@@ -1,1 +1,46 @@
-/* components/choose_detail/choose_detail.wxss */
+.choose_detail-contain {
+  background: #fff;
+  top: 150rpx;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 555;
+}
+
+.choose_detail-title {
+  color: #fff;
+  font-size: 28rpx;
+  background: #f6b245;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  width: 100%;
+}
+
+.choose_detail_auth-con {
+  font-size: 30rpx;
+}
+
+.choose_detail_auth-un {
+  color: #f6b245;
+  float: left;
+  width: 50%;
+}
+
+.choose_detail-auth_btn {
+  width: 50%;
+  float: right;
+}
+
+.choose_detail-auth_btnup {
+  width: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background: #f83535;
+  color: #fff;
+}
+
+.choose_detail-auth_btndown {
+  color: #f83535;
+  font-size: 20rpx;
+}

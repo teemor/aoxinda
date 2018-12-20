@@ -1,7 +1,7 @@
 import {
   carList,
   carBrand,
-  carType
+  carTypeData
 } from '../../common/static/api_data'
 Page({
   /**
@@ -18,39 +18,39 @@ Page({
     choose_detail: false,
     carList,
     carBrand,
-    carType,
+    carTypeData,
     activeIndex: "1",
     hotbrandList: [{
-        name: '阿斯顿·马丁'
-      },
-      {
-        name: '大众'
-      },
-      {
-        name: '雪佛兰'
-      },
-      {
-        name: '大众'
-      },
-      {
-        name: '大众'
-      },
-      {
-        name: '大众'
-      },
+      name: '阿斯顿·马丁'
+    },
+    {
+      name: '大众'
+    },
+    {
+      name: '雪佛兰'
+    },
+    {
+      name: '大众'
+    },
+    {
+      name: '大众'
+    },
+    {
+      name: '大众'
+    },
 
-      {
-        name: '大众'
-      },
-      {
-        name: '大众'
-      },
-      {
-        name: '大众'
-      },
-      {
-        name: '大众'
-      }
+    {
+      name: '大众'
+    },
+    {
+      name: '大众'
+    },
+    {
+      name: '大众'
+    },
+    {
+      name: '大众'
+    }
     ],
     tabData: [{
       name: '手动添加',
@@ -61,7 +61,7 @@ Page({
     }],
     searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       carData: this.carData()
     })
@@ -70,7 +70,7 @@ Page({
    * 选择品牌
    * author dzl
    */
-  chooseBrand: function() {
+  chooseBrand: function () {
     this.setData({
       choose_brand: true,
       choose_type: false
@@ -80,7 +80,7 @@ Page({
    * 选择类别
    * author dzl
    */
-  chooseType: function() {
+  chooseType: function () {
     this.setData({
       choose_brand: false,
       choose_type: true,
@@ -88,10 +88,20 @@ Page({
     })
   },
   /**
+   * 进入详情
+   * dzl
+   */
+  detailBtn: function () {
+    this.setData({
+      choose_type:false,
+      choose_detail:true
+    })
+  },
+  /**
    * 扫描行车本
    * author dzl
    */
-  btnScan: function() {
+  btnScan: function () {
     wx.navigateTo({
       url: '../car_photo/index',
     })
@@ -100,7 +110,7 @@ Page({
    * 对城市信息进行分组
    * author dzl
    */
-  carData: function() {
+  carData: function () {
     let temObj = [];
     for (let i = 0; i < this.data.searchLetter.length; i++) {
       let initial = this.data.searchLetter[i];
@@ -122,7 +132,7 @@ Page({
    * tab页切换
    * author dzl
    */
-  tabchange: function(e) {
+  tabchange: function (e) {
     this.setData({
       activeIndex: e.detail
     })

@@ -1,6 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-    "tabbar": "../tab/tab"
+    "tabbar":"../public/tab-contain/tab",
+    "tab": "../public/tab/tab",
+    "tabs":"../public/tabs/tabs",
+    "choose-list":"../choose_type_list/choose_type_list"
   }
 }

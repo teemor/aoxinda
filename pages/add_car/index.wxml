@@ -1,6 +1,6 @@
 <view class="add_car_contain {{choose_brand?'fixed':''}}">
   <view class="add_car_search">
-    <tabbar list="{{tabData}}" selectedId="{{activeIndex}}" bind:tabchange="tabchange" />
+    <tabbar width="400rpx" list="{{tabData}}" selectedId="{{activeIndex}}" bind:tabchange="tabchange" />
   </view>
   <view hidden="{{activeIndex!=='1'}}">
     <!-- 搜索 -->
@@ -11,7 +11,8 @@
       </view>
     </view>
     <!-- 热门品牌 -->
-    <choose_type show="{{choose_type}}" carType="{{carType}}" carTypeData="{{carTypeData}}"></choose_type>
+    <choose_type show="{{choose_type}}" carTypeData="{{carTypeData}}" bind:detailBtn="detailBtn"></choose_type>
+    <choose_detail show="{{choose_detail}}" />
      <view wx:if="{{showTypeBrand}}">
     <view>
       <view class='add_car_title'>
