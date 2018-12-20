@@ -6,4 +6,23 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box; */
-} 
+}
+.orange{
+  color:#fdbb51
+}
+.grey{
+  color:#9c9897
+}
+.fr{
+  float:right;
+}
+.fl{
+  float:left;
+}
+.cl{
+  clear: both;
+  zoom: 1;
+}
+.red{
+  color:#ff3c3c
+}

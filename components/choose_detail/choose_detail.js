@@ -8,6 +8,8 @@ Component({
   },
 
   methods: {
-
+    collapseClick:function(){
+      
+    }
   }
 })

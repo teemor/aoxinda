@@ -1,0 +1,51 @@
+@import "../../../app.wxss";
+.collapse_block{
+    padding-top:20rpx;
+    display: block;
+    height: 60rpx;
+}
+.collapse_contain{
+    font-size:30rpx;
+    width:90%;
+    padding:10rpx 5%;
+    border-bottom: 1px solid #e1e1e1
+}
+.collapse_hidden{
+    margin-top:10rpx;
+    height:110rpx;
+}
+.collapse_icon{
+    width:30rpx;
+    height:15rpx;
+}
+.collapse_icon image{
+    width:100%;
+    height:15rpx;
+}
+.collapse_image{
+    width:100rpx;
+    height:100rpx;
+}
+.collapse_image image{
+    width: 100%;
+    height:100rpx;
+}
+.collapse_text{
+    text-align: center;
+    font-size: 16rpx;
+    margin-top:-38rpx;
+    position: absolute;
+    background:rgba(0,0,0,0.7);
+    width:80rpx;
+    padding:2rpx 10rpx;
+    height:38rpx;
+    color: #ffffff;
+}
+.collapse_hidden_text{
+    font-size: 20rpx;margin-right: 60rpx;
+    height:100rpx;
+    line-height: 100rpx;
+}
+.collapse_hidden_pro{
+    margin-right:60rpx;
+}

@@ -1,3 +1,4 @@
+@import '../../app.wxss';
 .choose_detail-contain {
   background: #fff;
   top: 150rpx;
@@ -16,7 +17,42 @@
   text-align: center;
   width: 100%;
 }
-
+.choose_detail_auth-contain{
+  border-bottom: 1px solid #e1e1e1;
+  padding: 30rpx 5%;
+}
+.choose_detail_auth-image{
+  width:75%;
+  margin-left:12.5%;
+  height:350rpx;
+}
+.choose_detail_auth-image image{
+  width:100%;
+  height: 100%;
+}
+.choose_detail_auth-title{
+  height:80rpx;
+  line-height: 80rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  text-align: center;
+}
+.choose_detail_auth-mark{
+  height:70rpx;
+  line-height: 70rpx;
+font-size:38rpx;
+}
+.choose_detail_auth-type{
+  font-size:28rpx;
+}
+.choose_detail_auth-price{
+  padding-top: 40rpx;
+}
+.choose_detail_auth-price view{
+  font-size: 30rpx;
+  height:60rpx;
+  line-height: 60rpx;
+}
 .choose_detail_auth-con {
   font-size: 30rpx;
 }
@@ -24,23 +60,26 @@
 .choose_detail_auth-un {
   color: #f6b245;
   float: left;
-  width: 50%;
+  width: 70%;
 }
 
 .choose_detail-auth_btn {
-  width: 50%;
+  width: 30%;
   float: right;
 }
 
 .choose_detail-auth_btnup {
-  width: 100rpx;
+  font-size:28rpx;
+  width: 120rpx;
   text-align: center;
-  border-radius: 10rpx;
+  border-radius: 15rpx;
+  padding:5rpx 10rpx;
   background: #f83535;
   color: #fff;
 }
 
 .choose_detail-auth_btndown {
+  text-align: right;
   color: #f83535;
-  font-size: 20rpx;
+  font-size: 16rpx;
 }

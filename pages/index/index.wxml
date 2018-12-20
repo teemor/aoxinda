@@ -55,7 +55,7 @@
     </view>
   </view>
   <!-- 小麦头条 -->
-  <view class='hot_mes-contain'>
+  <view class='hot_mes-contain' style="display:none">
     <view class='hot_mes_icon'>
       <image src='../../common/image/hot_mes.png'></image>
     </view>

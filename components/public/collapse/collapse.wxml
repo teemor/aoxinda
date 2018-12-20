@@ -1,0 +1,25 @@
+<view class="collapse_contain">
+  <view class="cl collapse_block" bindtap="collapseClick">
+    <view class="fl">发动机型号: 1.4T 150马力 L4</view>
+    <view class="collapse_icon fr">
+      <image src="{{collapse===true?'../../../common/image/up.png':'../../../common/image/down.png'}}" />
+    </view>
+  </view>
+  <view class="cl collapse_hidden" wx:if="{{collapse}}">
+    <view class="red fl collapse_hidden_text">适配机油</view>
+    <view class="fl">
+      <view class="fl collapse_hidden_pro">
+        <view class="collapse_image">
+          <image src="../../../common/image/gasoline1.png" />
+        </view>
+        <view class="collapse_text">壳牌全合成0-40w</view>
+      </view>
+      <view class="fl collapse_hidden_pro">
+        <view class="collapse_image">
+          <image src="../../../common/image/gasoline1.png" />
+        </view>
+        <view class="collapse_text">壳牌全合成0-40w</view>
+      </view>
+    </view>
+  </view>
+</view>

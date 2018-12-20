@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "collapse":"../public/collapse/collapse"
+  }
 }

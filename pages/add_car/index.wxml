@@ -11,8 +11,9 @@
       </view>
     </view>
     <!-- 热门品牌 -->
-    <choose_type show="{{choose_type}}" carTypeData="{{carTypeData}}" bind:detailBtn="detailBtn"></choose_type>
     <choose_detail show="{{choose_detail}}" />
+    <choose_type show="{{choose_type}}" carTypeData="{{carTypeData}}" bind:detailBtn="detailBtn"></choose_type>
+  
      <view wx:if="{{showTypeBrand}}">
     <view>
       <view class='add_car_title'>
