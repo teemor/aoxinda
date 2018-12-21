@@ -1,5 +1,8 @@
 <view wx:if="{{show}}" class='choose_type-contain'>
+
   <view class='choose_type-title'>
+  <view class="choose_type-title-image" bindtap="exitType">
+  <image src="../../common/image/exit.png"/></view>
     奥迪A4L
   </view>
   <view>

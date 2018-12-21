@@ -52,9 +52,13 @@ Page({
     // setTimeout()
     // this.mapCtx.moveToLocation()
   },
+  // 点击查看
+  detailBtn:function(){
+
+  },
   // 倒计时
   showTime: function() {
-
+    
   },
   // 添加我的爱车
   addCar: function() {

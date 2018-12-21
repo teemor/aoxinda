@@ -26,3 +26,12 @@
 .red{
   color:#ff3c3c
 }
+.bold{
+  font-weight: bolder;
+}
+.decoration{
+  text-decoration:underline;
+}
+.br_bottom{
+  border-bottom: 1px solid #e1e1e1
+}

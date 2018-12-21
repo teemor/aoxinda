@@ -83,3 +83,15 @@ font-size:38rpx;
   color: #f83535;
   font-size: 16rpx;
 }
+
+.choose_type-title-image{
+  margin-left:10rpx;
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 5rpx;
+}
+.choose_type-title-image image{
+  width: 100%;
+  height: 30rpx;
+}

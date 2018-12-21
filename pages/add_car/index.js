@@ -67,6 +67,22 @@ Page({
     })
   },
   /**
+   * 点击大写字母
+   * author dzl
+   */
+  searchStart: function (e) {
+    let showLetter = e.currentTarget.dataset
+    console.log(e.touches[0].pageY, 'pageY')
+    this.setScrollTop(showLetter)
+  },
+  /**
+   * 滚动定位
+   * author dzl
+   */
+  setScrollTop: function (showLetter) {
+    let scrollTop = 0
+  },
+  /**
    * 选择品牌
    * author dzl
    */
@@ -88,13 +104,34 @@ Page({
     })
   },
   /**
+   * 退出类别
+   * author dzl
+   */
+  exitType: function () {
+    this.setData({
+      choose_type: !this.data.choose_type,
+      choose_brand: !this.data.choose_brand,
+      showTypeBrand: !this.data.showTypeBrand
+    })
+  },
+  /**
    * 进入详情
    * dzl
    */
   detailBtn: function () {
     this.setData({
-      choose_type:false,
-      choose_detail:true
+      choose_type: false,
+      choose_detail: true
+    })
+  },
+  /**
+   * 退出详情
+   * dzl
+   */
+  exitDetail: function () {
+    this.setData({
+      choose_type: !this.data.choose_type,
+      choose_detail: !this.data.choose_detail
     })
   },
   /**

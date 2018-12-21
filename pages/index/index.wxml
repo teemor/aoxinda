@@ -23,6 +23,27 @@
       <image src='../../common/image/message.png' />
     </view>
   </view>
+  <!-- 天气 限行 油价-->
+  <view class='page-current-contain'>
+    <view class='page-current_box fl'>
+      <!-- <image src="" /> -->
+      <view class="page-current_box-text">
+        -1℃ 晴
+      </view>
+    </view>
+    <view class='fl detail_current-btn'>
+      <view class='cl detail_current-one br_bottom'>
+        <span class="red bold">今日限行  </span>
+        <span class="">今日尾号<span class="red">78</span>限行</span>
+        <span class="fr detail_btn_link red" bindtap="detailBtn">点击查看</span>
+      </view>
+      <view class='detail_current-one'>
+        <span class="orange bold">今日油价  </span>
+        <span>今日油价最低<span class="red">3.86/升</span></span>
+        <span class="fr detail_btn_link red" bindtap="detailBtn">点击查看</span>
+      </view>
+    </view>
+  </view>
   <!-- 选择 -->
   <view class='btn_contain'>
     <view class='btn_flex'>
@@ -121,12 +142,17 @@
   <!-- 限时抢购 -->
   <view class='limited_contain'>
     <view class='limited_title'>
-    <view class='limited_title-text'>
-      <image src='../../common/image/limited_title.png' />
-    </view>
-    <view class='limited_second'>
-      <span class='limited_hour'>5</span><span>小时</span><span class='limited_mini'>6</span><span>分钟</span><span class='limited_mini'>30</span><span class>秒</span>
-    </view>
+      <view class='limited_title-text'>
+        <image src='../../common/image/limited_title.png' />
+      </view>
+      <view class='limited_second'>
+        <span class='limited_hour'>5</span>
+        <span>小时</span>
+        <span class='limited_mini'>6</span>
+        <span>分钟</span>
+        <span class='limited_mini'>30</span>
+        <span class>秒</span>
+      </view>
     </view>
     <view>
       <scroll-view class='scroll-x' scroll-x="true" style='width:100%;white-space:nowrap;'>
@@ -181,16 +207,11 @@
       <image src='../../common/image/title_service.png' />
     </view>
     <view class='service_map'>
-      <!-- <image src='../../common/image/map.png' /> -->
-        <map
-      id="myMap"
-      style="width: 100%; height: 300px;"
-      latitude="{{latitude}}"
-      longitude="{{longitude}}"
-      markers="{{markers}}"
-      covers="{{covers}}"
-      show-location
-    ></map>
+    <view class="service_map_btn">
+    <image src="../../common/image/map_clean.png"/>
+    <image src="../../common/image/map_repair.png"/>
+    </view>
+      <map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" show-location></map>
     </view>
   </view>
 </view>

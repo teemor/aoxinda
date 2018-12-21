@@ -1,6 +1,9 @@
 <view wx:if="{{show}}" class='choose_detail-contain'>
   <view class='choose_detail-title'>
-    车辆详情
+  <view class="choose_type-title-image" bindtap="exitDetail">
+     <image src="../../common/image/exit.png"/> 
+  </view>
+       车辆详情
   </view>
   <view class="choose_detail_auth-contain">
     <view class="choose_detail_auth-con">
