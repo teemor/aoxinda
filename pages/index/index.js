@@ -53,17 +53,23 @@ Page({
     // this.mapCtx.moveToLocation()
   },
   // 点击查看
-  detailBtn:function(){
+  detailBtn: function() {
 
   },
   // 倒计时
   showTime: function() {
-    
+
   },
   // 添加我的爱车
   addCar: function() {
     wx.navigateTo({
       url: '../../pages/add_car/index'
+    })
+  },
+  // 车保养
+  upkeepBtn: function() {
+    wx.navigateTo({
+      url: '../../pages/upkeep_car/index'
     })
   }
 })

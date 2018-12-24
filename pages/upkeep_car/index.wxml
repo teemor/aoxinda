@@ -1,0 +1,62 @@
+<view class="upkeep_car_contain">
+  <view class="upkeep_car_exchange-title">
+    <!-- 更换爱车-->
+    <view class="upkeep_car_exchange-img fl">
+      <image src="../../common/image/brand.png" />
+    </view>
+    <view class="upkeep_car_exchang-mark fl">
+      <view class="upkeep_car_exchange-text">华晨宝马 2018款 2.0TID 双离合 智联...</view>
+      <view class="unkeep_car_exchange-btn">
+        <span class="fl"> 当前里程</span>
+        <span class="fl">1000km</span>
+        <view class="red fl">修改</view>
+        <view class="red fr">更换爱车>></view>
+      </view>
+    </view>
+  </view>
+  <!-- 保养流程-->
+  <view class="upkeep_step_contain">
+    <view class="upkeep_step_title">
+      <view class="fl">保养服务流程</view>
+      <view class="red fr fz20">了解详情</view>
+    </view>
+    <view class="cl upkeep_step_box-list">
+    <view class="upkeep_step_box fl">
+      <view class="upkeep_step_box-detail fl">
+        <view class="upkeep_step_box-img">
+          <image src="../../common/image/step1.png" />
+        </view>
+        <view class="upkeep_step_box-text">选择项目</view>
+      </view>
+    </view>
+    <view class="upkeep_step_arrows" style="">
+    <image src="../../common/image/arrows.png"/>
+    </view>
+     <view class="upkeep_step_box fl">
+      <view class="upkeep_step_box-detail fl">
+        <view class="upkeep_step_box-img fl">
+          <image src="../../common/image/step2.png" />
+        </view>
+        <view class="upkeep_step_box-text">选择门店/技师</view>
+      </view>
+    </view>
+     <view class="upkeep_step_box fl">
+      <view class="upkeep_step_box-detail fl">
+        <view class="upkeep_step_box-img" style="width:60rpx;height:40rpx;margin-top:20rpx">
+          <image src="../../common/image/step3.png" style="height:40rpx;"/>
+        </view>
+        <view class="upkeep_step_box-text">配送到店</view>
+      </view>
+    </view>
+     <view class="upkeep_step_box fl">
+      <view class="upkeep_step_box-detail fl">
+        <view class="upkeep_step_box-img">
+          <image src="../../common/image/step4.png" />
+        </view>
+        <view class="upkeep_step_box-text">到店服务</view>
+      </view>
+    </view>
+    </view>
+    
+  </view>
+</view>

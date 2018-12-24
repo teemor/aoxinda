@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "添加爱车",
-  "usingComponents": {
-    "van-tab": "../../components/public/tab_contain",
-    "van-tabs": "../../components/public/tabs"
-  }
-}

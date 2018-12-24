@@ -35,3 +35,6 @@
 .br_bottom{
   border-bottom: 1px solid #e1e1e1
 }
+.fz20{
+  font-size:20rpx;
+}

@@ -7,7 +7,7 @@
     "pages/message/index",
     "pages/add_car/index",
     "pages/car_photo/index",
-    "pages/choose_type/index"
+    "pages/upkeep_car/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

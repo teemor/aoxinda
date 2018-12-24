@@ -1,19 +1,13 @@
-import {
-  carType
-} from '../../common/static/api_data'
+// pages/upkeep_car/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active:1
+
   },
-  onChange:function(e){
-    wx.showToast({
-      title: '',
-    })
-  }, 
+
   /**
    * 生命周期函数--监听页面加载
    */
