@@ -47,12 +47,12 @@ height:70rpx;
  .upkeep_step_box-detail{
      font-size:20rpx;
      margin: auto;
-     width:170rpx;
+     width:140rpx;
      text-align: center;
  }
  .upkeep_step_box-img{
      margin-top:10rpx;
-     margin-left:70rpx;
+     margin-left:50rpx;
      width:50rpx;
      height:55rpx;
  }
@@ -65,12 +65,20 @@ height:70rpx;
      line-height: 40rpx;
  }
  .upkeep_step_box-list{
+     width:90%;
+     margin-left:5%;
      height: 100rpx;
  }
  .upkeep_step_arrows {
-    width:50rpx;height:30rpx
+    width:35rpx;height:10rpx;
+    margin-top:30rpx;
  }
  .upkeep_step_arrows image{
 width:100%;
 height:30rpx;
+ }
+ .upkeep_project_contain{
+    box-shadow: 0 0 20rpx #e1e1e1;
+     margin-top:20rpx;
+     font-size:28rpx;
  }
