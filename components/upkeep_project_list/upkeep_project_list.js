@@ -21,7 +21,6 @@ checked:false
    */
   methods: {
     changeCollapse:function(e){
-      console.log(e,'e')
       this.setData({
         activeNames:e.detail
       })

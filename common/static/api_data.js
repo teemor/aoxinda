@@ -105,7 +105,7 @@ export const carTypeData = [{
       "price": "29.3万",
       "transmission": "双离合"
     }, {
-      "title": "1.4T/110kw 涡轮增压",
+      "title": "1.5T/110kw 涡轮增压",
       "type": "2019款 35TFSI 进取版 国V",
       "price": "29.3万",
       "transmission": "双离合"

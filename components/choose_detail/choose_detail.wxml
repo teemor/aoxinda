@@ -6,26 +6,28 @@
        车辆详情
   </view>
   <view class="choose_detail_auth-contain">
-    <view class="choose_detail_auth-con">
+    <!--<view class="choose_detail_auth-con">
       <view class="choose_detail_auth-un">未认证</view>
       <view class='choose_detail-auth_btn'>
         <view class="choose_detail-auth_btnup fr">立即认证</view>
         <view class="choose_detail-auth_btndown cl">认证立送洗车券三张</view>
       </view>
     </view>
+    -->
     <view>
       <view class="choose_detail_auth-image">
-        <image src="../../common/image/car01.png" />
+        <image src="https://192.168.31.156:8081/images{{detailData.image}}" />
       </view>
-      <view class="choose_detail_auth-title">奥迪A4L</view>
-      <view class="choose_detail_auth-mark grey">1.4T/110KW 涡轮增压</view>
-      <view class="choose_detail_auth-type fr">2019款 35 TFSI 进取版 国V
-        <span class="grey">双离合</span>
+      <view class="choose_detail_auth-title">{{detailData.serialName}}</view>
+      <view class="choose_detail_auth-mark grey">{{detailData.engine}}</view>
+      <view class="choose_detail_auth-type fr">{{detailData.modelName}}
+        <span class="grey">{{detailData.gearbox}}</span>
       </view>
-      <view class="choose_detail_auth-price orange cl">
-          <view>厂家指导价: 29.30万</view>
-          <view>二手车估值: 29.30万</view>
-          <view>推荐保养周期: 1年/8000公里</view>
+      <view class="choose_detail_auth-price orange cl" wx:for="{{detailData.config}}" wx:key="{{item}}">
+   {{item.configType}}
+        <view wx:for="{{item.data}}" wx:key="{{item}}">
+         <view>{{item.name}}: {{item.value}}</view>
+        </view>
       </view>
     </view>
   </view>

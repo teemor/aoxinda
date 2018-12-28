@@ -11,8 +11,8 @@
       </view>
     </view>
     <!-- 热门品牌 -->
-    <choose_detail show="{{choose_detail}}" bind:exitDetail="exitDetail"/>
-    <choose_type show="{{choose_type}}" carTypeData="{{carTypeData}}" bind:detailBtn="detailBtn" bind:exitType="exitType"></choose_type>
+    <choose_detail detailData="{{detailData}}" show="{{choose_detail}}" bind:exitDetail="exitDetail"/>
+    <choose_type show="{{choose_type}}" carYear="{{carYear}}" carTypeData="{{carTypeData}}" bind:detailBtn="detailBtn" bind:exitType="exitType" bind:tabYear="tabYear"></choose_type>
      <view wx:if="{{showTypeBrand}}">
     <view>
       <view class='add_car_title'>
@@ -20,7 +20,7 @@
       </view>
       <view class='add_car_brand-contain'>
         <view wx:for="{{hotbrandList}}" wx:key="{{item}}">
-          <view class='add_car_box' bindtap='chooseBrand'>
+          <view class='add_car_box' bindtap='chooseBrand' >
             <image src='../../common/image/1.png'></image>
             <view class='add_car_box-hot-name'>{{item.name}}</view>
           </view>
@@ -42,8 +42,8 @@
               {{item.initial}}
             </view>
             <view wx:for="{{item.carInfo}}" wx:key="index">
-              <view class='add_car_letter-text' bindtap='chooseBrand'>
-                <image src='../../common/image/1.png'></image>
+              <view class='add_car_letter-text' bindtap='chooseBrand' data-id="{{item.id}}">
+                <image src='https://192.168.31.156:8081{{item.url}}'></image>
                 <view class='add_car_letter-name'>
                   {{item.carName}}
                 </view>
@@ -66,4 +66,4 @@
     <view class='btnScan' bindtap='btnScan'>扫描行驶证</view>
   </view>
 </view>
-<choose_brand show="{{choose_brand}}" carBrand="{{carBrand}}" bind:chooseType="chooseType"></choose_brand>
+<choose_brand show="{{choose_brand}}" carBrand="{{carBrand}}" bind:chooseType="chooseType" bind:clickMask="clickMask"></choose_brand>

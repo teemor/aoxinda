@@ -42,8 +42,13 @@ line-height:60rpx;
 .fz20{
   font-size:20rpx;
 }
-
+.fz50{
+  font-size: 50rpx;
+}
 .linked {
   color: #4e4e4e !important;
   text-align: center;
+}
+.clinked{
+  color: #ff4747
 }

@@ -12,7 +12,6 @@ Page({
     this.setData({
       num:e.currentTarget.dataset.num
     })
-    console.log(this.data.num)
   },
   /**
    * 内饰清洗
@@ -22,7 +21,6 @@ Page({
     this.setData({
       num:e.currentTarget.dataset.num
     })
-    console.log(this.data.num)
   },
   /**
    * 镀晶
@@ -32,7 +30,33 @@ Page({
     this.setData({
       num:e.currentTarget.dataset.num
     })
-    console.log(this.data.num)
+  },
+  /**
+   * 销量
+   * dzl
+   */
+  sortsaleBtn:function(e){
+    this.setData({
+      sort:e.currentTarget.dataset.sort
+    })
+  },
+   /**
+   * 距离
+   * dzl
+   */
+  sortfarBtn:function(e){
+    this.setData({
+      sort:e.currentTarget.dataset.sort
+    })
+  },
+  /**
+   * 购买
+   * dzl
+   */
+  carbeautyBtn:function(){
+    wx.navigateTo({
+      url: '../car_beauty_shop/index',
+    })
   },
   onLoad: function(options) {
 

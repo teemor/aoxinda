@@ -1,8 +1,5 @@
-import {
-  carList,
-  carBrand,
-  carTypeData
-} from '../../common/static/api_data'
+import {Technician} from '../../common/api/api'
+const request = new Technician
 Page({
   /**
    *  房源列表
@@ -10,15 +7,16 @@ Page({
    * choose_brand    品牌
    * choose_type 哪款
    * choose_detail 详情
+   * carTypeData 年份字典表
    */
   data: {
     showTypeBrand: true,
     choose_brand: false,
     choose_type: false,
     choose_detail: false,
-    carList,
-    carBrand,
-    carTypeData,
+    carList:[],
+    carBrand:[],
+    carTypeData:[],
     activeIndex: "1",
     hotbrandList: [{
       name: '阿斯顿·马丁'
@@ -62,8 +60,13 @@ Page({
     searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
   },
   onLoad: function (options) {
-    this.setData({
-      carData: this.carData()
+    request.findBrand().then(res=>{
+      this.setData({
+        carList:res
+      })
+      this.setData({
+        carData: this.carData()
+      })
     })
   },
   /**
@@ -86,22 +89,48 @@ Page({
    * 选择品牌
    * author dzl
    */
-  chooseBrand: function () {
+  chooseBrand: function (e) {
+    request.findSerial(e.currentTarget.dataset.id).then(res=>{
+      this.setData({
+        carBrand:res
+      })
+    })
     this.setData({
       choose_brand: true,
       choose_type: false
     })
   },
   /**
+   * 
+   */
+  clickMask:function(){
+    this.setData({
+      choose_brand:false
+    })
+  },
+  /**
    * 选择类别
    * author dzl
    */
-  chooseType: function () {
+  chooseType: function (e) {
     this.setData({
-      choose_brand: false,
-      choose_type: true,
-      showTypeBrand: false
+      tabType:e.detail
     })
+    request.findYear(e.detail).then(res=>{
+      this.setData({
+        carYear:res,
+        choose_brand: false,
+        choose_type: true,
+        showTypeBrand: false
+      })
+      request.findModel(e.detail,this.data.carYear[0].year).then(res=>{
+        this.setData({
+          carTypeData:res
+        })
+      })
+    })
+  
+   
   },
   /**
    * 退出类别
@@ -115,13 +144,30 @@ Page({
     })
   },
   /**
+   * 切换年份
+   * dzl
+   */
+  tabYear:function(e){
+    this.setData({
+      year:e.detail
+    })
+    request.findModel(this.data.tabType,e.detail).then(res=>{
+      this.setData({
+        carTypeData:res
+      })
+    })
+  },
+  /**
    * 进入详情
    * dzl
    */
-  detailBtn: function () {
-    this.setData({
-      choose_type: false,
-      choose_detail: true
+  detailBtn: function (e) {
+    request.findConfig(e.detail).then(res=>{
+      this.setData({
+        choose_type: false,
+        choose_detail: true,
+        detailData:res[0]
+      })
     })
   },
   /**
@@ -154,15 +200,14 @@ Page({
       let carInfo = [];
       let tempArr = {};
       tempArr.initial = initial;
-      for (let j = 0; j < carList.length; j++) {
-        if (initial == carList[j].initial) {
-          carInfo.push(carList[j]);
+      for (let j = 0; j < this.data.carList.length; j++) {
+        if (initial == this.data.carList[j].initial) {
+          carInfo.push(this.data.carList[j]);
         }
       }
       tempArr.carInfo = carInfo;
       temObj.push(tempArr);
     }
-    console.log(temObj, 'hehe')
     return temObj;
   },
   /**

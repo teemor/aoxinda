@@ -20,8 +20,8 @@ Component({
     /**
      * 选择类别
      */
-    chooseType: function() {
-      this.triggerEvent('chooseType',{})
+    chooseType: function(e) {
+      this.triggerEvent('chooseType',e.currentTarget.dataset.id)
     }
   }
 })

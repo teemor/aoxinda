@@ -1,10 +1,10 @@
 <view class="choose_type_list-contain">
   <view class="choose_type-con">
     <view class="choose_type_list-box">
-      <view class="choose_type_list-title">1.4T/110w 涡轮增压</view>
-      <view class="choose_type_list-mark">2019款 25TFSI 进取版 国V</view>
+      <view class="choose_type_list-title">{{list.engine}}</view>
+      <view class="choose_type_list-mark">{{list.name}}</view>
     </view>
-    <view class="choose_type_list-price">29.3万</view>
+    <view class="choose_type_list-price">{{list.price}}</view>
   </view>
-  <view class="choose_type_list-type">双离合</view>
+  <view class="choose_type_list-type">{{list.carYear}}</view>
 </view> 

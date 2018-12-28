@@ -1,0 +1,43 @@
+@import "../../app.wxss";
+.carbeauty_btn_bottom{
+    width: 100%;
+    position: fixed;
+    bottom:0;
+    height:80rpx;
+    line-height: 80rpx;
+    background: #2d3c4b;
+  }
+  .carbeauty_btn_buy{
+    font-size:32rpx;
+    color: #fff;
+    background: #5d8fcb;
+    width:250rpx;
+    text-align: center;
+  }
+  .carbeauty_name{
+    margin-top:10rpx;
+    width:65%;
+    text-align: center;
+    font-size: 25rpx;
+    color: #fff;
+  }
+  
+  .carbeauty_btn_times{
+    text-align: center;
+    width:35%;
+    color: #fa5a4b;
+  }
+  .carbeauty_btn_contain{
+    width:65%;
+  }
+  .swiper_text {
+    text-align: center;
+    font-size: 30rpx;
+    color: #fff;
+  }
+  
+  .swiper-item image {
+    width: 100%;
+    height: 350rpx;
+  }
+  

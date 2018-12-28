@@ -2,13 +2,17 @@
   <view class='choose_type-title'>
   <view class="choose_type-title-image" bindtap="exitType">
   <image src="../../common/image/exit.png"/></view>
-    奥迪A4L
+      {{carTypeData[0].name}}
   </view>
   <view>
-  <van-tabs animated active="{{activeIndex}}" bind:change="tabchange" color="#bdbcbc">
-    <view wx:for="{{carTypeData}}" wx:key="{{item}}">
-    <van-tab title="{{item.name}}">
-       <view bindtap="detailBtn">    <choose-list list="{{carTypeData.list}}" /></view>
+  <van-tabs animated active="{{carYear[0].year}}" bind:change="tabchange" color="#bdbcbc">
+    <view wx:for="{{carYear}}" wx:key="{{item.id}}">
+    <van-tab title="{{item.year}}">
+    <view  wx:for="{{carTypeData[0].data}}" wx:key="{{item}}">
+    <view bindtap="detailBtn" data-id="{{item.id}}">  
+        <choose-list list="{{item}}" />
+        </view>
+    </view>
     </van-tab>
     </view>
   </van-tabs>

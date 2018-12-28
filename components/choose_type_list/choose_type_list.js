@@ -4,7 +4,7 @@ Component({
     * - @author           dzl
     */
   properties: {
-    list: Array
+    list:   Object
   },
   data: {
 

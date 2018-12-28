@@ -1,7 +1,7 @@
 Component({
   properties: {
-    show: Boolean
-
+    show: Boolean,
+    detailData:Object
   },
   data: {
 

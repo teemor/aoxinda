@@ -1,0 +1,37 @@
+<view>
+  <view class="page-section page-section-spacing swiper">
+    <swiper style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <!-- <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block> -->
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item class="swiper-item">
+          <image src='../../common/image/car1.png' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view>
+    <view class="fl">
+      <view>奥宝洗车美容店</view>
+      <view>业务范围:
+        <span>车辆精洗 漆面护理</span>
+      </view>
+      <view>门店地址：唐山市路北区高新路交叉口北行200米路西</view>
+    </view>
+    <view class="fl">拨打电话</view>
+  </view>
+  <view class="carbeauty_btn_bottom">
+    <view class="fl carbeauty_btn_contain">
+      <view class="fl carbeauty_btn_times">
+        <span class="fz20">¥</span>
+        <span class="fz50">100</span>
+        <span class="fz20">/6次</span>
+      </view>
+      <view class="fl carbeauty_name">全平台通用刷车卡</view>
+    </view>
+    <view class="fr carbeauty_btn_buy" bindtap="buy">¥20/次</view>
+  </view>
+</view>

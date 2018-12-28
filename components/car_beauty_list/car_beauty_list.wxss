@@ -10,7 +10,7 @@
 }
 .car_beauty_list-box{
     margin-top:10rpx;
-    height:200rpx;
+    height:190rpx;
     border-bottom: 2rpx solid #e5e5e5
 }
 .car_beauty_list-title{
