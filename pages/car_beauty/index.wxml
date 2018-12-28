@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="page-section page-section-spacing swiper">
+    <swiper style='height:300rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <!-- <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block> -->
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item class="swiper-item">
+          <image src='../../common/image/banner1.png' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="clean_title">
+    <view class="fl clean_title-contain {{num=='1'?'linked':''}}" data-num="1" bindtap='cleanBtn'>
+      <view class="clean_title-image">
+        <image src="../../common/image/cleancar1.png" />
+      </view>
+      <view class="clean-title-text">洗车</view>
+    </view>
+    <view class="fl clean_title-contain {{num=='2'?'linked':''}}" data-num="2" bindtap='trimBtn'>
+      <view class="clean_title-image">
+        <image src="../../common/image/cleancar2.png" />
+      </view>
+      <view class="clean-title-text ">内饰清洗</view>
+    </view>
+    <view class="fl clean_title-contain {{num=='3'?'linked':''}}" data-num="3" bindtap='skinBtn'>
+      <view class="clean_title-image">
+        <image src="../../common/image/cleancar3.png" />
+      </view>
+      <view class="clean-title-text">镀晶</view>
+    </view>
+  </view>
+  <view class="carbeauty_sort_contain">
+    <view class="fl">距离最近</view>
+    <view class="fl">销量最高</view>
+  </view>
+  <car-beauty-list />
+</view>

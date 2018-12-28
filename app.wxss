@@ -7,6 +7,10 @@
   justify-content: space-between;
   box-sizing: border-box; */
 }
+.height60{
+  height:60rpx;
+line-height:60rpx;
+}
 .orange{
   color:#fdbb51
 }
@@ -37,4 +41,9 @@
 }
 .fz20{
   font-size:20rpx;
+}
+
+.linked {
+  color: #4e4e4e !important;
+  text-align: center;
 }

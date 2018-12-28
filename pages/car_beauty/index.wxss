@@ -1,0 +1,86 @@
+@import "../../app.wxss";
+
+.page-section-title {
+  padding: 0;
+}
+
+.page-section-spacing {
+  box-sizing: border-box;
+  padding: 0rpx;
+}
+
+.swiper-item {
+  position: relative;
+  display: block;
+  height: 300rpx;
+}
+
+.swiper_add {
+  width: 280rpx;
+  height: 70rpx;
+  margin: auto;
+}
+
+.swiper-item .swiper_add image {
+  margin-left: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 125rpx;
+}
+
+.swiper_mes image {
+  position: absolute;
+  top: 40rpx;
+  right: 0;
+  width: 38rpx;
+  height: 28rpx;
+  margin-right: 25rpx;
+}
+
+.swiper_text {
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+}
+
+.swiper-item image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.clean_title {
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clean_title-image {
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+  width: 140rpx;
+}
+
+.clean_title-image image {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+
+
+
+.clean_title-contain {
+  font-size:30rpx;
+  color: #bfbfbf;
+  width: 30%;  text-align: center;
+}
+.carbeauty_sort_contain{
+  margin-top:50rpx;
+  border-radius: 20rpx;
+  font-size:28rpx;
+  width:100%;
+  height:80rpx;
+  line-height:80rpx;
+  box-shadow: 0 0 25rpx #a7a8af;
+}

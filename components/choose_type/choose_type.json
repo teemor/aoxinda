@@ -1,9 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-    "tabbar":"../public/tab-contain/tab",
-    "tab": "../public/tab/tab",
-    "tabs":"../public/tabs/tabs",
-    "choose-list":"../choose_type_list/choose_type_list"
+    "choose-list":"../choose_type_list/choose_type_list",
+    "van-tab":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tab/index",
+    "van-tabs":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tabs/index"
   }
 }

@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "van-collapse":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/collapse/index",
+    "van-collapse-item":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/collapse-item/index"
+  }
 }

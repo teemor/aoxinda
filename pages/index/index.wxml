@@ -47,7 +47,7 @@
   <!-- 选择 -->
   <view class='btn_contain'>
     <view class='btn_flex'>
-      <view class='car_btn'>
+      <view class='car_btn' bindtap='carbeautyBtn'>
         <image src='../../common/image/car_beauty.png' />
         <view>汽车美容</view>
       </view>

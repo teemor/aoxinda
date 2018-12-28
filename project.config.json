@@ -9,12 +9,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
+	"libVersion": "2.4.3",
 	"appid": "wx6233646c3c24b6dd",
-	"projectname": "technician_miniapp",
+	"projectname": "technician_miniapp1",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

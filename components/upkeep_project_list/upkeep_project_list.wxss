@@ -1,1 +1,40 @@
-/* components/upkeep_project_list/upkeep_project_list.wxss */
+@import "../../app.wxss";
+.upkeep_project_title{
+padding: 0 20rpx;
+}
+.upkeep_project_speity{
+
+}
+.upkeep_project_edit{
+    font-size:26rpx;
+}
+.upkeep_project_remark{
+    padding:0 80rpx;
+}
+.upkeep_project_pro-contain{
+    margin-top:20rpx;
+    padding:0 60rpx;
+}
+.upkeep_project_pro-box{
+    height:160rpx;
+}
+.upkeep_project_pro-text{
+    width:460rpx;
+    padding:0 0rpx;
+}
+.upkeep_project_pro-img{
+    padding:10rpx 10rpx;
+    width:100rpx;
+    height:120rpx;
+}
+.upkeep_project_pro-img image{
+    width:100%;
+    height:100rpx;
+}
+.upkeep_project_pro-price{
+    margin-top:20rpx;
+}
+.upkeep_project_pro-title{
+    color:#000000;
+    font-size:26rpx;
+}

@@ -1,3 +1,72 @@
 <view>
-<view></view>
+  <view class="">
+    <van-collapse value="{{activeNames}}" bind:change="changeCollapse">
+      <van-collapse-item name="1" is-link="{{checked}}">
+        <view slot="title">
+          <view class='cl upkeep_project_title height60'>
+            <view class='fl'>
+              <van-checkbox value="true" checked-color="#fdbb51" bind:change="onChange">
+                <view class="fl">小保养</view>
+              </van-checkbox>
+            </view>
+            <view class="fl orange upkeep_project_speity fz20">强烈推荐</view>
+            <view class="fr red height60 upkeep_project_edit" bindtap="add">编辑</view>
+          </view>
+          <view class="grey upkeep_project_remark fz20">
+            建议7500公里/6个月保养一次
+          </view>
+        </view>
+        <view class='upkeep_project_pro-contain cl'>
+          <view class="cl upkeep_project_pro-box">
+            <view class="upkeep_project_pro-img fl">
+              <image src="../../common/image/keepup01.png" />
+            </view>
+            <view class="upkeep_project_pro-text fl">
+              <view class="upkeep_project_pro-title">美孚速霸2000合成科技机油5w-40 sn级4L装</view>
+              <view class="cl upkeep_project_pro-price">
+                <view class="fl red">¥ 229</view>
+                <view class="fr grey">x1</view>
+              </view>
+            </view>
+          </view>
+          <view class="cl upkeep_project_pro-box">
+            <view class="upkeep_project_pro-img fl">
+              <image src="../../common/image/keepup02.png" />
+            </view>
+            <view class="upkeep_project_pro-text fl">
+              <view class="upkeep_project_pro-title">美孚速霸2000合成科技机油5w-40 sn级4L装</view>
+              <view class="cl upkeep_project_pro-price">
+                <view class="fl red">¥ 229</view>
+                <view class="fr grey">x1</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </van-collapse-item>
+      <van-collapse-item name="2">
+        <view slot="title">
+          <view class='cl upkeep_project_title height60'>
+            <view class='fl'>
+              <van-checkbox value="true" checked-color="#fdbb51" bind:change="onChange">
+                <view class="fl">常规保养项目</view>
+              </van-checkbox>
+            </view>
+            <view class="fl grey upkeep_project_speity fz20">已选
+              <span class="red">2</span>项</view>
+          </view>
+        </view>
+        <view>
+          <view>
+          <view>空气过滤器</view>
+          <view>建议7500公里/6个月保养一次</view>
+          </view>
+          <view>
+          <van-checkbox checked-color="#fdbb51"></van-checkbox>
+          </view>
+        </view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+
+
 </view>

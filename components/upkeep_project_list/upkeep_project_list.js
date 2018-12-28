@@ -11,13 +11,20 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+checkout:true,
+activeNames:['1'],
+checked:false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    changeCollapse:function(e){
+      console.log(e,'e')
+      this.setData({
+        activeNames:e.detail
+      })
+    }
   }
 })

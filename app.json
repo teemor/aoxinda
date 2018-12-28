@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/car_beauty/index",
     "pages/index/index",
     "pages/login/index",
     "pages/mine/index",
     "pages/shopping_mall/index",
     "pages/message/index",
     "pages/add_car/index",
-    "pages/car_photo/index",
-    "pages/upkeep_car/index"
+    "pages/upkeep_car/index",
+    "pages/car_photo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

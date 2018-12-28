@@ -66,6 +66,12 @@ Page({
       url: '../../pages/add_car/index'
     })
   },
+  // 汽车美容
+  carbeautyBtn: function() {
+    wx.navigateTo({
+      url: '../../pages/car_beauty/index',
+    })
+  },
   // 车保养
   upkeepBtn: function() {
     wx.navigateTo({

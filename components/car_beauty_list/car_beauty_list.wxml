@@ -1,0 +1,15 @@
+<view>
+  <view class="car_beauty_list-box cl">
+    <view class="fl car_beauty_list-image">
+        <image src="../../common/image/clean01.png"/>
+    </view>
+    <view class="fl car_beauty_list-text">
+      <view class="car_beauty_list-title">星辉高端洗护</view>
+      <view class="car_beauty_list-price">已售888</view>
+      <view class="cl car_beauty_list-location">
+        <view class="fl">路北新区东方大厦C座552号</view>
+        <view class="fl car_beauty_list-right">距您0.8km</view>
+      </view>
+    </view>
+  </view>
+</view>

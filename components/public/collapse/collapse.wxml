@@ -1,11 +1,12 @@
 <view class="collapse_contain">
-  <view class="cl collapse_block" bindtap="collapseClick">
+<van-collapse value="{{activeNames}}" bind:change="collapseClick">
+<van-collapse-item name="1">
+<view slot="title">
+ <view class="cl collapse_block">
     <view class="fl">发动机型号: 1.4T 150马力 L4</view>
-    <view class="collapse_icon fr">
-      <image src="{{collapse===true?'../../../common/image/up.png':'../../../common/image/down.png'}}" />
-    </view>
   </view>
-  <view class="cl collapse_hidden" wx:if="{{collapse}}">
+</view>
+<view class="cl collapse_hidden">
     <view class="red fl collapse_hidden_text">适配机油</view>
     <view class="fl">
       <view class="fl collapse_hidden_pro">
@@ -22,4 +23,7 @@
       </view>
     </view>
   </view>
+</van-collapse-item>
+</van-collapse>
+ 
 </view>

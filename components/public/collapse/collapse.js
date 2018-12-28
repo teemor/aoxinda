@@ -3,16 +3,16 @@ Component({
 
   },
   data: {
-    collapse:false
+    activeNames:["1"]
   },
   methods: {
     /**
      * 折叠收起
      * dzl
      */
-    collapseClick:function(){
+    collapseClick:function(e){
       this.setData({
-        collapse:!this.data.collapse
+        activeNames:e.detail
       })
       // this.triggerEvent('collapseClick',{})
     }
