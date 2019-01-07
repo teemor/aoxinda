@@ -1,20 +1,21 @@
 <view wx:if="{{show}}" class='choose_type-contain'>
   <view class='choose_type-title'>
-  <view class="choose_type-title-image" bindtap="exitType">
-  <image src="../../common/image/exit.png"/></view>
-      {{carTypeData[0].name}}
+    <view class="choose_type-title-image" bindtap="exitType">
+      <image src="../../common/image/exit.png" />
+    </view>
+    {{carTypeData[0].name}}
   </view>
   <view>
-  <van-tabs animated active="{{carYear[0].year}}" bind:change="tabchange" color="#bdbcbc">
-    <view wx:for="{{carYear}}" wx:key="{{item.id}}">
-    <van-tab title="{{item.year}}">
-    <view  wx:for="{{carTypeData[0].data}}" wx:key="{{item}}">
-    <view bindtap="detailBtn" data-id="{{item.id}}">  
-        <choose-list list="{{item}}" />
-        </view>
-    </view>
-    </van-tab>
-    </view>
-  </van-tabs>
+    <van-tabs animated active="{{carYear[0].year}}" bind:change="tabchange" color="#bdbcbc">
+      <view wx:for="{{carYear}}" wx:key="{{item.id}}">
+        <van-tab title="{{item.year}}">
+          <view wx:for="{{carTypeData[0].data}}" wx:key="{{item}}">
+            <view bindtap="detailBtn" data-id="{{item.id}}">
+              <choose-list list="{{item}}" />
+            </view>
+          </view>
+        </van-tab>
+      </view>
+    </van-tabs>
   </view>
 </view>

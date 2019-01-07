@@ -96,6 +96,34 @@ export const carBrand = [{
     "price": "29.00-41.99万"
   }]
 }]
+export const typeServiceList = [{
+    "label": "单次洗车 ¥20",
+    "code": "001"
+  }, {
+    "label": "三次洗车 ¥55",
+    "code": "002"
+  },
+  {
+    "label": "六次洗车",
+    "code": "003"
+  }
+]
+export const attentionList = [{
+  "label": "仪表台干净",
+  "code": "001"
+}, {
+  "label": "脚踏冲洗",
+  "code": "002"
+},
+{
+  "label": "坐垫吸尘",
+  "code": "003"
+},
+{
+  "label": "轮毂干净",
+  "code": "004"
+}
+]
 export const carTypeData = [{
     "name": "2019款",
     "key": "001",
@@ -157,7 +185,38 @@ export const carTypeData = [{
     }]
   }
 ]
-
+export const messageList = [
+  {
+    "img":"../../common/image/mes_exchange.png",
+    "title":"交易物流提醒",
+    "content":"您购买的物品已经出库",
+    "notice":"1"
+  },
+  {
+    "img":"../../common/image/mes_discount.png",
+    "title":"优惠促销",
+    "content":"内饰清洁剂0.01元，补胎抵制9.9元...",
+    "notice":"2"
+  },
+  {
+    "img":"../../common/image/mes_servi.png",
+    "title":"服务消息提醒",
+    "content":"您在奥宝星辉预约的养护服务开始...",
+    "notice":"3"
+  },
+  {
+    "img":"../../common/image/mes_set.png",
+    "title":"系统消息",
+    "content":"麦车服APPV3.0版本已经上线，请及时...",
+    "notice":"0"
+  },
+  {
+    "img":"../../common/image/mes_service.png",
+    "title":"客服中心",
+    "content":"暂无消息",
+    "notice":"0"
+  }
+]
 export const tabbarConfig = [{
     "active": true,
     "pagePath": "pages/index/index",

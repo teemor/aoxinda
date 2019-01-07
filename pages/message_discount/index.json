@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "mes-discount":"../../components/mes_discount/mes_discount"
+  }
+}

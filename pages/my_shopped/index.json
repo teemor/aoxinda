@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"我去过的店",
+  "usingComponents": {
+    "my-shopped-list":"../../components/my_shopped_list/my_shopped_list"
+  }
+}

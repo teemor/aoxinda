@@ -1,0 +1,12 @@
+.my_cart_content {
+    padding: 20rpx;
+    height:160rpx;
+    border-bottom: 2rpx solid #eeeeee
+  }
+  .br-bottom{
+    margin-top: 10rpx;
+  }
+.br-bottom image{
+  width:65rpx;
+  height:65rpx;
+}

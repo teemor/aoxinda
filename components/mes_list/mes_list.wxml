@@ -1,0 +1,11 @@
+<view class="cl br_bottom mes_contain">
+  <view class="fl mes_img">
+   <view wx:if="{{list.notice!=='0'}}" class="mes_notice">{{list.notice}}</view>
+    <image src="{{list.img}}" />
+  </view>
+  <view class="fl mes_txt">
+    <view class="mes_title">{{list.title}}</view>
+    <view class="mes_cont">{{list.content}}</view>
+  </view>
+ 
+</view>

@@ -1,11 +1,11 @@
-// pages/message/index.js
+import {messageList} from "../../common/static/api_data"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    messageList
   },
 
   /**

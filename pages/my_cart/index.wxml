@@ -1,0 +1,16 @@
+<view>
+  <van-checkbox-group>
+  <view class="my_cart_content">
+    <van-checkbox checked-color="#fdbb51" bind:change="onChange">
+    <my_cart_list/>
+    </van-checkbox>
+  </view>
+   </van-checkbox-group>
+  <view>
+    <br-bottom btnRight="付款" price="666">
+    <view class="fl br-bottom">
+    <image src="../../common/image/my_cart_btn.png" />
+    </view>
+    </br-bottom>
+  </view>
+</view>

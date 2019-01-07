@@ -1,1 +1,6 @@
-{}
+{
+    "navigationBarTitleText": "消息",
+    "usingComponents": {
+    "mes-list":"../../components/mes_list/mes_list"
+    }
+}

@@ -1,18 +1,60 @@
 <view>
-  <view>
-
+  <view class="cl">
+    <view bindtap="miniClick" class="fl beauty_con-mini {{miniClick===true?'beauty_con-mini-click':'beauty_con-mini'}}">
+      <image src="../../common/image/{{miniClick===true?'beauty_mini':'beauty_minid'}}.png" />
+      <view class="beauty_text marlef30">轿车</view>
+    </view>
+    <view bindtap="bigClick" class="fl beauty_con-big {{miniClick===true?'beauty_con-big':'beauty_con-big-click'}}">
+      <image src="../../common/image/{{miniClick===true?'beauty_bigd':'beauty_big'}}.png" />
+      <view class="beauty_text marlef10">中大型车</view>
+    </view>
   </view>
-  <view>
+  <view class="car_beauty_shop_buy cl">
     服务类目
   </view>
-  <view>
-    <view>
-
+  <view class="cl br_btm_deep car_beauty_shop-contain">
+    <view class="fl car_beauty_shop_clean">
+      <view class="fl">
+        <image src="../../common/image/clean_car.png" />
+      </view>
+      <view class="fl mleft30">洗车服务</view>
     </view>
-    <view>
-      <view></view>
-      <view></view>
-      <view></view>
+    <view class="fl mtop20">
+      <van-checkbox-group value="{{reslut}}" bind:change="typeChange">
+        <view class="car_beauty_shop-checkout">
+          <van-checkbox checked-color="#fdbb51" wx:for="{{typeServiceList}}" wx:key="index" name="{{item.label}}">
+            {{item.label}}
+          </van-checkbox>
+        </view>
+      </van-checkbox-group>
     </view>
   </view>
+   <view class="cl  car_beauty_shop-contain">
+    <view class="fl car_beauty_shop_clean">
+      <view class="fl">
+        <image src="../../common/image/clean_car.png" />
+      </view>
+      <view class="fl mleft30">洗车服务</view>
+    </view>
+    <view class="fl mtop20">
+      <van-checkbox-group value="{{reslut}}" bind:change="typeChange">
+        <view class="car_beauty_shop-checkout">
+          <van-checkbox checked-color="#fdbb51" wx:for="{{typeServiceList}}" wx:key="index" name="{{item.label}}">
+            {{item.label}}
+          </van-checkbox>
+        </view>
+      </van-checkbox-group>
+    </view>
+  </view>
+</view>
+<view class="carbeauty_btn_bottom">
+  <view class="fl carbeauty_btn_contain">
+    <view class="fl carbeauty_btn_times">
+      <span class="fz28" style="padding-right:10rpx">合计:</span>
+      <span class="fz28">¥</span>
+      <span class="fz50" style="text-align:right;padding-left:20rpx;padding-right:5rpx;">100</span>
+      <span class="fz28">元</span>
+    </view>
+  </view>
+  <view class="fr carbeauty_btn_buy" bindtap="buy">结算</view>
 </view>

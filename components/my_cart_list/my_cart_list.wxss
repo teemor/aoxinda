@@ -1,0 +1,16 @@
+@import "../../app.wxss";
+
+
+.my_cart_list image {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.my_cart_title {
+  margin-bottom: 10rpx;
+}
+
+.my_cart_box {
+  width: 500rpx;
+  margin-left: 10rpx;
+}

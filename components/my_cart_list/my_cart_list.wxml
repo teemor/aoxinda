@@ -1,0 +1,16 @@
+<view class="my_cart_content">
+  <view class='my_cart_list fl'>
+    <image src="../../common/image/cart_list_perfume.png" />
+  </view>
+  <view class="fl my_cart_box">
+    <view class="my_cart_title fz30 fl">
+      香百年 汽车香水座式 车载香水 车用净化摆件
+    </view>
+    <view>
+      <view class="red fl fz30">¥ 299</view>
+      <view class="fr">
+        <van-stepper value="{{1}}" bind:change="onChange" />
+      </view>
+    </view>
+  </view>
+</view>

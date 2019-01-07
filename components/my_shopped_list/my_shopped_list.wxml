@@ -1,0 +1,11 @@
+<view class="my_shopped_box">
+  <view class="my_shopped_img fl">
+    <image src="../../common/image/clean01.png" />
+  </view>
+  <view class="fl my_shopped_content fz30 fz28">
+    <view>星辉高端洗护</view>
+    <view class="fz24 light_grey">已售888</view>
+    <view class="fz24 deep_grey">路北新区东方大厦C座552号</view>
+  </view>
+  <view bindtap="clickShop" class="fr bg_orange shopped_click fz24">再去逛逛</view>
+</view>

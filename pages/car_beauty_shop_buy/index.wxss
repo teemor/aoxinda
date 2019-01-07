@@ -1,1 +1,106 @@
-/* pages/car_beauty_shop_buy/index.wxss */
+
+.beauty_con-mini {
+    color: #6c6c6c;
+  width: 60%;
+  height: 200rpx;
+  background: linear-gradient(-115deg, transparent 66px, #7f7f7f 0),
+  linear-gradient(45deg, transparent 15px, #fff 0);
+}
+ .beauty_con-mini-click {
+     color: #757575;
+    width: 60%;
+    height: 200rpx;
+    background: linear-gradient(-115deg, transparent 66px, #fff 0),
+    linear-gradient(45deg, transparent 15px, #7f7f7f 0);
+  }
+.beauty_con-mini image{
+    margin-top:60rpx;
+    margin-left:50rpx;
+    width:220rpx;
+    height:80rpx;
+}
+.beauty_con-big{
+    color: #6c6c6c;
+    background: #7f7f7f;
+    width:40%;
+    height:200rpx; 
+}
+.beauty_con-big-click{
+    color: #757575;
+    background:#fff;
+    width:40%;
+    height: 200rpx;
+}
+.beauty_con-big image{
+    margin-top:45rpx;
+    width:210rpx;
+    height:90rpx;
+}
+.beauty_text{
+    width:200rpx;
+    margin:auto;
+    font-size: 30rpx;
+    text-align: center;
+}
+.marlef10{
+    margin-left:10rpx;
+}
+.marlef30{
+    margin-left: 65rpx;
+}
+.car_beauty_shop_buy {
+  background: #fdbb51;
+  color: #fff;
+  font-size: 28rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  padding-left:20rpx;
+}
+.car_beauty_shop_clean{
+  margin-left:10%;
+  width:30%;
+  margin-top:100rpx;
+  font-size: 26rpx;
+}
+.carbeauty_btn_bottom{
+    width: 100%;
+    position: fixed;
+    bottom:0;
+    height:90rpx;
+    line-height: 90rpx;
+    background: #2d3c4b;
+  }
+  .carbeauty_btn_contain{
+    width:65%;
+  }
+  .carbeauty_btn_buy{
+    font-size:32rpx;
+    color: #fff;
+    background: #5d8fcb;
+    width:250rpx;
+    text-align: center;
+  }
+  .carbeauty_name{
+    margin-top:10rpx;
+    width:65%;
+    text-align: center;
+    font-size: 25rpx;
+    color: #fff;
+  }
+  
+  .carbeauty_btn_times{
+    margin-left:5%;
+    text-align: center;
+    width:50%;
+    color: #fa5a4b;
+  }
+  .car_beauty_shop-contain{
+      height:280rpx;
+  }
+  .car_beauty_shop-checkout{
+    height:80rpx;line-height:80rpx;font-size:30rpx
+  }
+
+  .car_beauty_shop_clean view image {
+    width:40rpx;height:40rpx;
+  }

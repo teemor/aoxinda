@@ -4,9 +4,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3']
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    latitude: 39.67386,
+    longitude: 118.181576,
+    markers: []
   },
-
+  /**
+   * 购买
+   * dzl
+   */
+  buy:function(){
+    wx.navigateTo({
+      url: '../car_beauty_shop_buy/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -40,4 +40,65 @@
     width: 100%;
     height: 350rpx;
   }
-  
+  .carbeauty_contain{
+    height: 120rpx;
+  }
+  .carbeauty_contain-title{
+    width:65%;
+  }
+  .carbeauty_contain-btn{
+    margin-top:30rpx;
+    width: 35%;
+  }
+  .carbeauty_contain-btn{
+    padding:0 20rpx;
+    border-radius: 50rpx;
+    width:140rpx;
+    color: #fff;
+    font-size:26rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    background: #ff2929;
+  }
+  .carbeauty_contain-image{
+    width:30rpx;
+    height:30rpx;
+  }
+  .carbeauty_contain-image image{
+    margin-top:10rpx;
+    width:30rpx;
+    height:27rpx;
+  }
+  .carbeauty_contain-btn_text{
+    padding-left: 8rpx;
+  }
+.carbeauty_contain{
+  padding: 40rpx;
+}
+.carbeauty_contain_con-image{
+  margin-right: 10rpx;
+  width:19rpx;
+  height:24rpx;
+}
+.carbeauty_contain_con-image image{
+  width: 19rpx;
+  height:24rpx;
+}
+.carbeauty_contain-range{
+  margin-top:10rpx;
+}
+.carbeauty_contain-address{
+  margin-top:20rpx;
+}
+.service_contain{
+  height:5000rpx;
+  z-index: 333;
+  /* position: absolute; */
+  bottom: 80rpx;
+  border-top:2rpx solid #bfbfbf;
+}
+.service_map {
+  /* position: absolute; */
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -14,6 +14,9 @@ line-height:60rpx;
 .orange{
   color:#fdbb51
 }
+.bg_orange{
+  background:#fdbb51;color: #fff;text-align: center
+}
 .grey{
   color:#9c9897
 }
@@ -27,6 +30,9 @@ line-height:60rpx;
   clear: both;
   zoom: 1;
 }
+.tc{
+  text-align: center;
+}
 .red{
   color:#ff3c3c
 }
@@ -37,18 +43,47 @@ line-height:60rpx;
   text-decoration:underline;
 }
 .br_bottom{
-  border-bottom: 1px solid #e1e1e1
+  border-bottom: 2rpx solid #e1e1e1
+}
+.br_btm_deep{
+  border-bottom: 2rpx solid #e5e5e5
+}
+.fz18{
+  font-size:18rpx;
 }
 .fz20{
   font-size:20rpx;
 }
+.fz24{
+  font-size: 24rpx;
+}
+.fz28{
+  font-size:28rpx;
+}
+.fz30{
+  font-size:30rpx;
+}
+.fz35{
+  font-size: 35rpx;
+}
+.fz40{
+  font-size: 40rpx;
+}
 .fz50{
   font-size: 50rpx;
 }
+.fz80{
+  font-size: 70rpx;
+}
+.mleft30{margin-left:30rpx;}
+.mtop20{margin-top:20rpx}
 .linked {
   color: #4e4e4e !important;
   text-align: center;
 }
 .clinked{
   color: #ff4747
+}
+.bx-shadow{
+  box-shadow: 0 0 25rpx #a7a8af;
 }

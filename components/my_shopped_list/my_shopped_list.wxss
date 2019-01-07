@@ -1,0 +1,29 @@
+@import "../../app.wxss";
+.my_shopped_box{
+    padding:30rpx;
+    height:120rpx;
+    background: #fff;
+}
+.my_shopped_content{
+    margin-left: 5%;
+    width:45%;
+}
+.my_shopped_img image{
+    width: 130rpx;
+    height:120rpx;
+}
+.shopped_click{
+   margin-top: 30rpx;
+   width: 155rpx;
+   height:50rpx;
+   line-height: 50rpx;
+   border-radius: 50rpx;
+}
+.light_grey{
+    color:#dbdbdb;
+    margin-top:10rpx;
+}
+.deep_grey{
+    margin-top:15rpx;
+   color:#a4a4a4
+}

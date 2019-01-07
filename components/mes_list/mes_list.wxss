@@ -1,0 +1,39 @@
+@import "../../app.wxss";
+.mes_contain{
+    padding: 40rpx 20rpx;
+    height:120rpx;
+}
+.mes_cont{
+    margin-top:40rpx;
+    width:500rpx;
+    font-size:28rpx;
+    color: #949494;
+}
+.mes_img{
+    position: relative;
+    width:140rpx;
+    height:125rpx;
+}
+.mes_img image{
+    width:140rpx;
+    height:125rpx
+}
+.mes_notice{
+    position: absolute;
+    top:-15rpx;
+    right:-15rpx;
+    width:40rpx;
+    height:40rpx;
+    line-height: 40rpx;
+    background: #fe0000;
+    border-radius: 50rpx;
+    font-size:24rpx;
+    color:#fff;
+    text-align: center;
+}
+.mes_txt{
+    margin-left:30rpx;
+}
+.mes_title{
+    font-size:32rpx;
+}

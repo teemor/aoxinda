@@ -1,3 +1,56 @@
 <view>
-我的
+  <view class="my_prot_box-contain">
+    <view class="my_prot_box">
+      <view>
+        <image src="../../common/image/my_prot.png" />
+      </view>
+    </view>
+    <view class="my_prot_box-text">In my heart</view>
+  </view>
+  <view class="mine_btn_box">
+    <view class="fl" bindtap="myCard">
+      <view class="mine_btn bx-shadow">
+        <image src="../../common/image/my_card.png" />
+      </view>
+      <view class="mine_btn_text tc fz30">卡包</view>
+    </view>
+    <view class="fl" bindtap="myCart">
+      <view class="mine_btn bx-shadow">
+        <image src="../../common/image/my_cart.png" />
+      </view>
+      <view class="mine_btn_text tc fz30">购物车</view>
+    </view>
+    <view class="fl" bindtap="myCoupon">
+      <view class="mine_btn bx-shadow">
+        <image src="../../common/image/my_account.png" />
+      </view>
+      <view class="mine_btn_text tc fz30">优惠券</view>
+    </view>
+  </view>
+  <view class="mine_cell-box">
+    <view class="mine_cell-list">
+      <van-cell title="我的订单" is-link bind:click="myOrder">
+      </van-cell>
+    </view>
+    <view class="mine_cell-list">
+      <van-cell title="收货地址" is-link bind:click="myAddress">
+      </van-cell>
+    </view>
+    <view class="mine_cell-list">
+      <van-cell title="我的预约" is-link bind:click="myReservation">
+      </van-cell>
+    </view>
+    <view class="mine_cell-list">
+      <van-cell title="邀请有礼" is-link bind:click="myInvite">
+      </van-cell>
+    </view>
+    <view class="mine_cell-list">
+      <van-cell title="我的车库" is-link bind:click="myGrage">
+      </van-cell>
+    </view>
+    <view class="mine_cell-list">
+      <van-cell title="我去过的店" is-link bind:click="myShopped">
+      </van-cell>
+    </view>
+  </view>
 </view>

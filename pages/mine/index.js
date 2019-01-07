@@ -1,66 +1,134 @@
-// pages/mine/index.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
-
   /**
-   * 生命周期函数--监听页面加载
+   * 卡包
+   * dzl
    */
-  onLoad: function (options) {
+  myCard: function() {
+    wx.navigateTo({
+      url: '../my_card_coupon/index'
+    })
+  },
+  /**
+   * 购物车
+   * dzl
+   */
+  myCart: function() {
+    wx.navigateTo({
+      url: '../my_cart/index'
+    })
+  },
+  /**
+   * 优惠券
+   * dzl
+   */
+  myCoupon: function() {
+    wx.navigateTo({
+      url: '../my_coupon/index'
+    })
+  },
+  /**
+   * 跳转我的订单
+   * dzl
+   */
+  myOrder: function() {
+    wx.navigateTo({
+      url: '../my_order/index',
+    })
+  },
+  /**
+   * 跳转收货地址
+   * @param {*} options 
+   */
+  myAddress: function() {
+    wx.navigateTo({
+      url: '../my_address/index',
+    })
+  },
+  /**
+   * 我的预约
+   * @param {*} options 
+   */
+  myReservation: function() {
+    wx.navigateTo({
+      url: '../my_reservation/index'
+    })
+  },
+  /**
+   * 邀请有礼
+   * @param {*} options 
+   */
+  myInvite: function() {
+    wx.navigateTo({
+      url: '../my_invite/index'
+    })
+  },
+  /**
+   * 我的车库
+   * @param {*} options 
+   */
+  myGrage: function() {
+    wx.navigateTo({
+      url: '../my_garage/index'
+    })
+  },
+  /**
+   * 我去过的店
+   * @param {*} options 
+   */
+  myShopped: function() {
+    wx.navigateTo({
+      url: '../my_shopped/index'
+    })
+  },
+  onLoad: function(options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

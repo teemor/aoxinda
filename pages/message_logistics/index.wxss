@@ -1,0 +1,44 @@
+.mes_logistics_img image {
+  width: 180rpx;
+  height: 140rpx;
+}
+
+page {
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+
+.mes_logistic_contain {
+  background: #fff;
+  padding: 30rpx;
+  height: 140rpx;
+}
+
+.mes_logistics_title {
+  padding: 20rpx 10rpx;
+}
+
+.mes_logistic_box {
+  padding: 30rpx 30rpx 90rpx 30rpx;
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+.mes_logistic_date {
+  margin-right: 30rpx;
+  width: 160rpx;
+  text-align: center;
+}
+
+.mes_logistic_list {
+  /* height: 100rpx; */
+  min-height:80rpx;
+}
+
+.mes_logistic_brleft {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 80rpx;
+  height: 40rpx;
+  border-left: 2rpx solid #e5e5e5;
+}

@@ -103,7 +103,7 @@ Page({
   /**
    * 
    */
-  clickMask:function(){
+  clickMask: function(){
     this.setData({
       choose_brand:false
     })
@@ -127,10 +127,9 @@ Page({
         this.setData({
           carTypeData:res
         })
+        console.log(this.data.carTypeData,'hehecaonima')
       })
     })
-  
-   
   },
   /**
    * 退出类别

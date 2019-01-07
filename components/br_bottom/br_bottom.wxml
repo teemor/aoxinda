@@ -1,0 +1,14 @@
+<view>
+ <view class="carbeauty_btn_bottom">
+    <view class="fl carbeauty_btn_contain">
+      <view class="fl carbeauty_btn_times">
+      <slot/>
+        <span class="fz20">¥</span>
+        <span class="fz50">{{price}}</span>
+        <span class="fz20">元</span>
+      </view>
+      <view class="fl carbeauty_name"></view>
+    </view>
+    <view class="fr carbeauty_btn_buy" bindtap="carbeautyBtn">{{btnRight}}</view>
+  </view>
+</view>

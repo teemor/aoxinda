@@ -1,0 +1,30 @@
+<view>
+  <view class="cl mes_logistic_contain br_bottom">
+    <view class="fl mes_logistics_img">
+      <image src="../../common/image/logistics.png" />
+    </view>
+    <view class="fl mes_logistics_title">
+      <view>EMS</view>
+      <view>
+        <span class="fz28">物流编号:9854657564112</span>
+      </view>
+    </view>
+  </view>
+  <view class="cl mes_logistic_box">
+    <view class="cl mes_logistic_list">
+      <view class="fl mes_logistic_date">
+        <view class="fz30">8:30</view>
+        <view class="fz24">2018.12.24</view>
+      </view>
+      <view class="fl fz24">到达中国邮政集团唐山分公司网络运营中心</view>
+    </view>
+     <view class="cl mes_logistic_list">
+      <view class="mes_logistic_brleft"></view>
+      <view class="fl mes_logistic_date">
+        <view class="fz30">8:30</view>
+        <view class="fz24">2018.12.24</view>
+      </view>
+      <view class="fl fz24">到达中国邮政集团唐山分公司网络运营中心</view>
+    </view>
+  </view>
+</view>

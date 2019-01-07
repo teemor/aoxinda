@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText":"购物车",
+  "usingComponents": {
+    "br-bottom":"../../components/br_bottom/br_bottom",
+    "my_cart_list":"../../components/my_cart_list/my_cart_list",
+    "van-checkbox":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/checkbox/index",
+    "van-checkbox-group": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/checkbox-group/index"
+  }
+}

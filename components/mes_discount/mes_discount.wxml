@@ -1,0 +1,17 @@
+<view>
+  <view class="mes-discount-list">
+    <view class="cl mes-discount-title">
+      <view class="fl fz30">福利领取通知</view>
+      <view class="fr mes-discount-title-date fz20 grey">18/12/01</view>
+    </view>
+    <view class="cl mes-discount-box">
+      <view class="fl mes-discount-img">
+        <image src="../../common/image/clean01.png" />
+      </view>
+      <view class="fl mes-discount-text">
+        <view>奥宝星辉旗舰店：赠送您100优惠券</view>
+        <view>满999立减100！</view>
+      </view>
+    </view>
+  </view>
+</view>

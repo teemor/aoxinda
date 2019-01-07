@@ -1,3 +1,5 @@
 <view>
-消息
+<view wx:for="{{messageList}}" wx:key="{{item}}">
+<mes-list list="{{item}}"/>
+</view>
 </view>
