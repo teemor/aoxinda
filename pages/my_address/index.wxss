@@ -1,1 +1,5 @@
-/* pages/my_address/index.wxss */
+@import "../../app.wxss";
+page {
+    min-height: 100%;
+    background-color: #f3f3f3;
+  }

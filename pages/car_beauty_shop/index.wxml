@@ -8,29 +8,29 @@
       </block> -->
       <block wx:for="{{background}}" wx:key="*this">
         <swiper-item class="swiper-item">
-          <image src='../../common/image/ban1.jpg' />
+          <image src='{{http+obj.img}}' />
         </swiper-item>
       </block>
     </swiper>
   </view>
   <view class="carbeauty_contain">
     <view class="fl carbeauty_contain-title">
-      <view class="bold fz40">奥宝洗车美容店</view>
+      <view class="bold fz40">{{obj.storeName}}</view>
       <view class="fz28 carbeauty_contain-range">业务范围:
-        <span class="red">车辆精洗 漆面护理</span>
+        <span class="red">{{obj.scopeBusiness}}</span>
       </view>
       <view class="fz18 grey carbeauty_contain-address">
         <view class="fl carbeauty_contain_con-image">
           <image src="../../common/image/location.png" />
         </view>
-        <view class="fl ">门店地址：唐山市路北区高新路交叉口北行200米路西</view>
+        <view class="fl ">门店地址：{{obj.storeAddress}}</view>
       </view>
     </view>
     <view class="fr carbeauty_contain-btn">
       <view class="fl carbeauty_contain-image">
         <image src="../../common/image/phone.png" />
       </view>
-      <view class="fl carbeauty_contain-btn_text">拨打电话</view>
+      <view class="fl carbeauty_contain-btn_text" bindtap="makePhone" data-item="{{obj.storePhone}}">拨打电话</view>
     </view>
   </view>
 </view>

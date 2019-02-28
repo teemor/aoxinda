@@ -5,7 +5,7 @@ Component({
   },
 
   data: {
-
+http:'https://www.maichefu.cn'
   },
   methods: {
     /**

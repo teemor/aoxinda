@@ -1,0 +1,58 @@
+<view>
+  <view class="upkeep_car_box bx-shadow">
+    <view class="tc fz22 height60 upkeep_car_box-title">区域附近所有维修店</view>
+    <view class="tc">
+      东方大厦C座
+      <span class="fz20 red">修改</span>
+    </view>
+  </view>
+  <view class="upkeep_car_body bx-shadow">
+    <view class="upkeep_car_body_title">
+      <view class="upkeep_car_box_image fl">
+        <image src="../../common/image/clean02.png" />
+      </view>
+      <view class="fl fz30" style="margin-left:30rpx;">
+        <view class="cl">
+          <view class="fl">星辉高端保养</view>
+          <view class="fl">
+            <rate value="5" size="18"/>
+          </view>
+        </view>
+        <view>
+          <view class="fl">
+          <view class="fl upkeep_car_body_num_img">
+          <image src="../../common/image/tech_icon.png"/>
+          </view>
+            <view class="fl fz26">共5位高级技师</view>
+          </view>
+          <view class="fl grey fz26">已售888</view>
+        </view>
+        <view class="cl fz26">
+          <view class="fl">路北新区东方大厦C座552号</view>
+          <view class="fl fz22 grey">距我2.27km</view>
+        </view>
+      </view>
+    </view>
+    <view class="cl">
+    <view class="fl upkeep_car_body_image">
+    <image src="../../common/image/techican.png"/>
+    </view>
+    <view class="fz30 height90 upkeep_car_choose-title">  麦师傅 18单 4.66分 服务费:¥80元</view>
+    
+    </view>
+    <view class="cl">
+      <view class="fz30">
+        <span class="orange">点击预约</span> <span>11月22日</span> <span>11月23日</span> <span>11月24日</span>
+      </view>
+      <view>
+      <view>8:00-12:00</view>
+      <view>不可预约</view>
+      <view>可预约</view>
+      <view>已预约</view>
+      </view>
+      <view>
+      
+      </view>
+    </view>
+  </view>
+</view>

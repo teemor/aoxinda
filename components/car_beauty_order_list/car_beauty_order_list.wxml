@@ -1,0 +1,12 @@
+<view class="my_order_list-contain cl">
+  <view class="fl my_order_list_image">
+    <image src="../../common/image/cart_list_perfume.png" />
+  </view>
+  <view class="fl my_order_list_text">
+    <view>【正品授权】美孚速霸1000合成机油</view>
+    <view class="fr my_order_price fz28">
+      <view class="fl red">¥ 199.00</view>
+      <view class="fr grey tc" style="margin-left:10rpx">x1</view>
+    </view>
+  </view>
+</view>

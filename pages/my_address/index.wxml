@@ -1,3 +1,7 @@
 <view>
-
+<address-list addressDefault="true"/>
+<address-list/>
+<view class="fz30 bg_orange bottom_btn">
++添加收货地址
+</view>
 </view>

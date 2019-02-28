@@ -1,0 +1,28 @@
+@import "../../app.wxss";
+.my_garage_list-contain{
+    margin-top:20rpx;
+    padding: 20rpx;
+    height:140rpx;
+    background: #ffffff
+}
+.my_garage_list-txt{
+    width:75%;
+    margin-left: 30rpx;
+}
+.my_garage_list-image image{
+    width: 130rpx;
+    height: 130rpx;
+}
+.my_garage_list-km{
+    height:70rpx;
+    line-height: 70rpx;
+}
+.my_garage_list{
+    border-radius: 15rpx;
+    padding:0 10rpx;
+    height:45rpx;
+    line-height: 45rpx;
+}
+.my_garage_list-btn{
+    
+}

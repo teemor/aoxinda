@@ -96,17 +96,64 @@ export const carBrand = [{
     "price": "29.00-41.99万"
   }]
 }]
-export const typeServiceList = [{
-    "label": "单次洗车 ¥20",
+// 我的订单
+export const myOrderMenu = [{
+  "id":"001","name":"全部订单"},{
+    "id":"002","name":"待付款"
+  },{
+    "id":"002","name":"待发货"
+  },{
+    "id":"002","name":"待收货"
+  },{
+    "id":"002","name":"待评价"
+  }]
+export const typeminiServiceList = [{
+    "label": "1次洗车 ¥20",
     "code": "001"
   }, {
-    "label": "三次洗车 ¥55",
+    "label": "3次洗车 ¥55",
     "code": "002"
   },
   {
-    "label": "六次洗车",
+    "label": "6次洗车 ¥100",
     "code": "003"
   }
+]
+export const typeBigServiceList = [{
+  "label": "1次洗车 ¥30",
+  "code": "001"
+}, {
+  "label": "3次洗车 ¥65",
+  "code": "002"
+},
+{
+  "label": "6次洗车 ¥110",
+  "code": "003"
+}
+]
+export const typeminiWaxingList = [{
+  "label": "1次打蜡 ¥40",
+  "code": "001"
+}, {
+  "label": "3次打蜡 ¥100",
+  "code": "002"
+},
+{
+  "label": "6次打蜡 ¥200",
+  "code": "003"
+}
+]
+export const typeBigWaxingList = [{
+  "label": "1次打蜡 ¥50",
+  "code": "001"
+}, {
+  "label": "3次打蜡 ¥110",
+  "code": "002"
+},
+{
+  "label": "6次打蜡 ¥210",
+  "code": "003"
+}
 ]
 export const attentionList = [{
   "label": "仪表台干净",

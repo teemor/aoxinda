@@ -71,4 +71,9 @@
       <project-list/>
     </view>
   </view>
+  <br-bottom btnRight="选择技师施工" price="666" btnBuy="直接购买" bind:btnBuy="btnBuy" bind:carClickBtn="chooseTecher">
+  <view class="fl br-bottom">
+    <image src="../../common/image/my_cart_btn.png" />
+    </view>
+  </br-bottom>
 </view>

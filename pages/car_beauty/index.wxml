@@ -37,8 +37,11 @@
     <view class="fl {{sort=='1'?'clinked':''}} carbeauty_sort_box" bindtap="sortfarBtn" data-sort="1">距离最近</view>
     <view class="fl {{sort=='2'?'clinked':''}} carbeauty_sort_box" bindtap="sortsaleBtn" data-sort="2">销量最高</view>
   </view>
-  <car-beauty-list />
-  <!-- 购买 -->
+  <view wx:for="{{stores}}" wx:key="{{item}}">
+   <car-beauty-list stores="{{item}}" bind:carbeautyBtn="carbeautyBtn" />
+  </view>
+ 
+  <!-- 购买
   <view class="carbeauty_btn_bottom">
     <view class="fl carbeauty_btn_contain">
       <view class="fl carbeauty_btn_times">
@@ -50,4 +53,5 @@
     </view>
     <view class="fr carbeauty_btn_buy" bindtap="carbeautyBtn">立即购买</view>
   </view>
+   -->
 </view>

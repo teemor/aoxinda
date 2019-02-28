@@ -1,3 +1,12 @@
 <view>
-我的订单
+ <van-tabs   bind:change="tabchange" color="#fdbb51">
+      <view wx:for="{{myOrderMenu}}" wx:key="{{item.id}}">
+        <van-tab title="{{item.name}}">
+        <view class="cl">
+        <order-list/>
+        <order-list/>
+        </view>
+        </van-tab>
+      </view>
+    </van-tabs>
 </view>

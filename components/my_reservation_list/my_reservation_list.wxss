@@ -1,0 +1,36 @@
+@import "../../app.wxss";
+.my_reservation_contain{
+    margin-top:20rpx;
+    background: #fff;
+    padding:10rpx 30rpx;
+    height:350rpx;
+}
+.my_reservation_list{
+    height:48rpx;
+    line-height: 48rpx;
+}
+.my_reservation_list-shop{
+    margin-top: 50rpx;
+    width: 25%;
+}
+.my_reservation_list-shop image{
+    width:130rpx;
+    height:130rpx;
+}
+.my_reservation_list-image image{
+    margin-right:20rpx;
+    width:25rpx;
+    height: 30rpx;
+}
+.my_reservation_btn{
+    border-radius: 20rpx;
+    width:120rpx;
+    height:45rpx;
+    line-height: 45rpx;
+}
+.my_reservation_list-txt{
+    width: 75%;
+}
+.my_reservation_list-title{
+
+}

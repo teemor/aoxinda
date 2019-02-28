@@ -1,0 +1,36 @@
+@import "../../app.wxss";
+
+.upkeep_car_box {
+  height: 150rpx;
+  margin: 0 30rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.upkeep_car_box-title {
+  width: 250rpx;
+  margin: auto;
+  border-bottom: 2rpx solid #e1e1e1;
+}
+.upkeep_car_body{
+
+}
+.upkeep_car_body_title{
+  padding: 25rpx;
+}
+.upkeep_car_body_image image{
+  margin-top:10rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.upkeep_car_body_num_img image{
+  width:30rpx;
+  height: 30rpx;
+}
+.upkeep_car_box_image image {
+  width: 140rpx;
+  height: 120rpx;
+}
+.upkeep_car_choose-title{
+  border-top:2rpx solid #e1e1e1;
+  border-bottom: 2rpx solid #e1e1e1;
+}

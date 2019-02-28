@@ -7,7 +7,7 @@
     </view>
     <view wx:for="{{item.data}}" wx:key="index" class='cartype_box_contain' data-id="{{item.id}}" bindtap='chooseType'>
       <view class='cartype_image'>
-        <image src='https://192.168.31.156:8081{{item.image}}'></image>
+        <image src='{{http+item.image}}'></image>
       </view>
       <view class='cartype_detail'>
         <view class='cartype_detail_text'>{{item.name}}</view>

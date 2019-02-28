@@ -1,17 +1,5 @@
 <view>
-  <view class="car_beauty_shop-code-contain">
-    <view class="fl car_beauty_shop-code">
-      <image src="../../common/image/code.png" />
-      <view class="fz28 tc" style="width:280rpx;">点击放大</view>
-    </view>
-    <view class="fl car_beauty_shop-text">
-      <view class="fz80" style="height:110rpx">Payment</view>
-      <view style="margin-bottom:30rpx;">
-      <view class="fz35 ">洗车 (<span class="orange">2</span>/5)</view>
-      <view class="fz35">打蜡(<span class="orange">3</span>/5)</view>
-      </view>
-    </view>
-  </view>
+<code-card/>
   <view class="car_beauty_shop-attention">
   <view class="cl" style="height:70rpx;">
   <view class="fl fz35">特别注意</view>
@@ -19,7 +7,6 @@
       <input type="text" placeholder="其他要求..." placeholder-style="color:#e5e5e5;font-size:20rpx;" style="width:400rpx;padding-left:30rpx;font-size:24rpx;border:2rpx solid #e5e5e5;border-radius:40rpx"/>
     </view>
   </view>
-    
     <view class="cl" style="margin-left:140rpx">
           <van-checkbox-group value="{{reslut}}" bind:change="typeChange">
         <view class="fz28 car_beauty_shop-checkout">

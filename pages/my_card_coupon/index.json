@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "卡券",
+  "usingComponents": {
+    "code-card":"../../components/my_code_card/my_code_card"
+  }
 }

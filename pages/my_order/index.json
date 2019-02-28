@@ -2,6 +2,7 @@
   "navigationBarTitleText":"我的订单",
   "usingComponents": {
     "van-tab":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tab/index",
-    "van-tabs":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tabs/index"
+    "van-tabs":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tabs/index",
+    "order-list":"../../components/my_order_list/my_order_list"
   }
 }

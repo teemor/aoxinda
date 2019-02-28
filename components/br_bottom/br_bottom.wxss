@@ -15,8 +15,13 @@
     text-align: center;
   }
   .carbeauty_name{
-    margin-top:10rpx;
-    width:65%;
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+    border-radius: 30rpx;
+    height:40rpx;
+    line-height: 40rpx;
+    background: #5d8fcb;
+    width:30%;
     text-align: center;
     font-size: 25rpx;
     color: #fff;

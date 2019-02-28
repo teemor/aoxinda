@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "我的预约",
+  "usingComponents": {
+    "reservation-list":"../../components/my_reservation_list/my_reservation_list"
+  }
 }

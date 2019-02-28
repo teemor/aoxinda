@@ -1,0 +1,17 @@
+@import "../../app.wxss";
+
+.car_beauty_shop_box {
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.car_beauty_shop_image image {
+  margin-right: 24rpx;
+  width: 30rpx;
+  height: 45rpx;
+}
+
+page {
+    min-height: 100%;
+    background-color: #f3f3f3;
+  }

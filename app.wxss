@@ -7,15 +7,50 @@
   justify-content: space-between;
   box-sizing: border-box; */
 }
+.height40{
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.height50{
+  height: 50rpx;
+  line-height: 50rpx;
+}
 .height60{
   height:60rpx;
-line-height:60rpx;
+  line-height:60rpx;
+}
+.height80{
+  height: 80rpx;
+  line-height: 80rpx
+}
+.height90{
+  height: 90rpx;
+  line-height: 90rpx;
 }
 .orange{
   color:#fdbb51
 }
 .bg_orange{
   background:#fdbb51;color: #fff;text-align: center
+}
+.bg_white{
+  background: #fff;color: #fdbb51;text-align: center
+}
+.bottom_btn{
+  border-radius: 10rpx;
+  width:90%;
+  margin-left:5%;
+  position: fixed;
+  bottom:30rpx;
+  height:75rpx;
+  line-height:75rpx;
+}
+.br-bottom{
+  margin-top: 10rpx;
+}
+.br-bottom image{
+width:65rpx;
+height:65rpx;
 }
 .grey{
   color:#9c9897
@@ -54,14 +89,26 @@ line-height:60rpx;
 .fz20{
   font-size:20rpx;
 }
+.fz22{
+  font-size:22rpx;
+}
 .fz24{
   font-size: 24rpx;
+}
+.fz26{
+  font-size: 26rpx;
 }
 .fz28{
   font-size:28rpx;
 }
 .fz30{
   font-size:30rpx;
+}
+.fz32{
+  font-size:32rpx;
+}
+.fz34{
+  font-size: 32rpx
 }
 .fz35{
   font-size: 35rpx;
@@ -72,9 +119,16 @@ line-height:60rpx;
 .fz50{
   font-size: 50rpx;
 }
+.fz60{
+font-size: 60rpx;
+}
+.fz70{
+  font-size:70rpx;
+}
 .fz80{
   font-size: 70rpx;
 }
+.mleft20{margin-left:20rpx;}
 .mleft30{margin-left:30rpx;}
 .mtop20{margin-top:20rpx}
 .linked {
@@ -86,4 +140,23 @@ line-height:60rpx;
 }
 .bx-shadow{
   box-shadow: 0 0 25rpx #a7a8af;
+}
+
+.my_order_list-contain{
+    margin-bottom: 10rpx;
+    margin-top:10rpx;
+    padding:30rpx 50rpx;
+    font-size:30rpx;
+    height: 100rpx;
+    background:#fff;
+}
+.my_order_list_text{
+    padding-left:10rpx
+}
+.my_order_list_image image{
+    width:100rpx;
+    height:100rpx
+}
+.my_order_price{
+    margin-top:30rpx;
 }

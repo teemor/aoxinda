@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "我的车库",
+  "usingComponents": {
+    "garage-list":"../../components/my_garage_list/my_garage_list"
+  }
 }

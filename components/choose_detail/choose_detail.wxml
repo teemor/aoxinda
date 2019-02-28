@@ -16,7 +16,7 @@
     -->
     <view>
       <view class="choose_detail_auth-image">
-        <image src="https://192.168.31.156:8081/images{{detailData.image}}" />
+        <image src="{{http+detailData.image}}" />
       </view>
       <view class="choose_detail_auth-title">{{detailData.serialName}}</view>
       <view class="choose_detail_auth-mark grey">{{detailData.engine}}</view>

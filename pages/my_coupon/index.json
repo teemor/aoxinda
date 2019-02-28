@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText":"优惠券",
+  "usingComponents": {
+    "coupon-list":"../../components/my_coupon_list/my_coupon_list"
+  }
 }

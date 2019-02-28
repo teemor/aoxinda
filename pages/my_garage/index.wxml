@@ -1,3 +1,6 @@
 <view>
-我的车库
+<garage-list/>
+<view class="fz30 bg_orange bottom_btn">
+保存
+</view>
 </view>

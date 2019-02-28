@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "技师选择与时间",
+  "usingComponents": {
+    "rate":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/rate/index",
+    "br-bottom":"../../components/br_bottom/br_bottom"
+  }
+}

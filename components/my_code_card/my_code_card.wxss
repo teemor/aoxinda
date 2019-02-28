@@ -1,0 +1,19 @@
+@import "../../app.wxss";
+.car_beauty_shop-code-contain {
+  border-radius: 20rpx;
+  margin: 30rpx;
+  height: 300rpx;
+  padding: 35rpx 35rpx 50rpx 35rpx;
+  box-shadow: 0px 0px 25rpx #a7a6a6c4;
+}
+
+.car_beauty_shop-code {
+}
+
+.car_beauty_shop-code image {
+  width: 280rpx;
+  height: 280rpx;
+}
+.car_beauty_shop-text{
+    padding:40rpx 0rpx 0rpx 20rpx;
+}

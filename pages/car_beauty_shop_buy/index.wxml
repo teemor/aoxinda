@@ -20,26 +20,26 @@
       <view class="fl mleft30">洗车服务</view>
     </view>
     <view class="fl mtop20">
-      <van-checkbox-group value="{{reslut}}" bind:change="typeChange">
+      <van-checkbox-group value="{{cleanreslut}}" bind:change="typeCleanChange">
         <view class="car_beauty_shop-checkout">
-          <van-checkbox checked-color="#fdbb51" wx:for="{{typeServiceList}}" wx:key="index" name="{{item.label}}">
+          <van-checkbox checked-color="#fdbb51" wx:for="{{miniClick===true?typeminiServiceList:typeBigServiceList}}" wx:key="index" name="{{item.label}}">
             {{item.label}}
           </van-checkbox>
         </view>
       </van-checkbox-group>
     </view>
   </view>
-   <view class="cl  car_beauty_shop-contain">
+  <view class="cl  car_beauty_shop-contain">
     <view class="fl car_beauty_shop_clean">
       <view class="fl">
         <image src="../../common/image/clean_car.png" />
       </view>
-      <view class="fl mleft30">洗车服务</view>
+      <view class="fl mleft30">打蜡服务</view>
     </view>
     <view class="fl mtop20">
-      <van-checkbox-group value="{{reslut}}" bind:change="typeChange">
+      <van-checkbox-group value="{{waxingreslut}}" bind:change="typeWaxingChange">
         <view class="car_beauty_shop-checkout">
-          <van-checkbox checked-color="#fdbb51" wx:for="{{typeServiceList}}" wx:key="index" name="{{item.label}}">
+          <van-checkbox checked-color="#fdbb51" wx:for="{{miniClick===true?typeminiWaxingList:typeBigWaxingList}}" wx:key="index" name="{{item.label}}">
             {{item.label}}
           </van-checkbox>
         </view>

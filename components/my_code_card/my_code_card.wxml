@@ -1,0 +1,13 @@
+  <view class="car_beauty_shop-code-contain">
+    <view class="fl car_beauty_shop-code">
+      <image src="../../common/image/code.png" />
+      <view class="fz28 tc" style="width:280rpx;">点击放大</view>
+    </view>
+    <view class="fl car_beauty_shop-text">
+      <view class="fz80" style="height:110rpx">Payment</view>
+      <view style="margin-bottom:30rpx;">
+      <view class="fz35 ">洗车 (<span class="orange">2</span>/5)</view>
+      <view class="fz35">打蜡(<span class="orange">3</span>/5)</view>
+      </view>
+    </view>
+  </view>

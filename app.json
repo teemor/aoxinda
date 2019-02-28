@@ -1,6 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/add_car_detail/index",
+    "pages/upkeep_car_choose/index",
+    "pages/upkeep_car_exchange/index",
+    "pages/car_beauty_shop_order/index",
+    "pages/my_invite/index",
+    "pages/my_order/index",
     "pages/my_cart/index",
     "pages/mine/index",
     "pages/message_logistics/index",
@@ -11,23 +17,27 @@
     "pages/car_beauty/index",
     "pages/login/index",
     "pages/shopping_mall/index",
-    "pages/add_car/index",
-    "pages/upkeep_car/index",
     "pages/car_photo/index",
     "pages/car_beauty_shop_res/index",
-    "pages/my_order/index",
-    "pages/my_garage/index",
-    "pages/my_coupon/index",
     "pages/my_card_coupon/index",
+    "pages/my_coupon/index",
+    "pages/my_garage/index",
+    "pages/my_address/index",
     "pages/my_reservation/index",
-    "pages/my_invite/index",
-    "pages/my_shopped/index"
+    "pages/my_shopped/index",
+    "pages/upkeep_car/index",
+    "pages/upkeep_car_order/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f6b245",
     "navigationBarTitleText": "麦车服",
-    "navigationBarTextStyle": "#ffffff"
+    "navigationBarTextStyle": "white"
+  },
+  "permission":{
+    "scope.userLocation":{
+      "desc":"你的位置信息将于小程序接口的效果展示"
+    }
   },
   "tabBar": {
     "color": "#959595",
@@ -35,30 +45,23 @@
     "backgroundColor": "#fff",
     "position": "bottom",
     "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "common/image/tab/index.png",
-        "selectedIconPath": "common/image/tab/index_after.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/shopping_mall/index",
-        "iconPath": "common/image/tab/shop.png",
-        "selectedIconPath": "common/image/tab/shop_after.png",
-        "text": "商城"
-      },
-      {
-        "pagePath": "pages/message/index",
-        "iconPath": "common/image/tab/mes.png",
-        "selectedIconPath": "common/image/tab/mes_after.png",
-        "text": "消息"
-      },
-      {
-        "pagePath": "pages/mine/index",
-        "iconPath": "common/image/tab/mine.png",
-        "selectedIconPath": "common/image/tab/mine_after.png",
-        "text": "我的"
-      }
-    ]
+     {
+      "pagePath": "pages/index/index",
+      "iconPath": "common/image/tab/index.png",
+      "selectedIconPath": "common/image/tab/index_after.png",
+      "text": "首页"
+    },
+    {
+      "pagePath": "pages/message/index",
+      "iconPath": "common/image/tab/mes.png",
+      "selectedIconPath": "common/image/tab/mes_after.png",
+      "text": "消息"
+    },
+    {
+      "pagePath": "pages/mine/index",
+      "iconPath": "common/image/tab/mine.png",
+      "selectedIconPath": "common/image/tab/mine_after.png",
+      "text": "我的"
+    }]
   }
 }

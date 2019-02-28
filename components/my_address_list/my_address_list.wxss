@@ -1,0 +1,24 @@
+@import "../../app.wxss";
+.my_address_contain{
+    padding: 20rpx;
+    height:120rpx;
+    margin-bottom: 15rpx;
+}
+.my_address_name{
+    height:40rpx;
+    margin-bottom:10rpx;
+}
+.phone{margin-left: 20rpx;}
+.my_address_btn{
+    width:100rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    border-left:1rpx solid #e1e1e1
+}
+.my_address_default{
+    height:20rpx;
+    line-height: 20rpx;
+    border:1rpx solid #fdbb51;
+    padding: 3rpx 10rpx;
+    margin-right:10rpx;
+}

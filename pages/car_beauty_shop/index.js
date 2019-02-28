@@ -7,7 +7,14 @@ Page({
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     latitude: 39.67386,
     longitude: 118.181576,
-    markers: []
+    markers: [],
+    http:'https://www.maichefu.cn'
+  },
+  makePhone:function(e){
+    console.log(e)
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.item
+    })
   },
   /**
    * 购买
@@ -22,7 +29,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options){
+      let obj = JSON.parse(options.id)
+      this.setData({
+        obj:obj
+      })
+    }
+  console.log(options,'options')
   },
 
   /**

@@ -22,7 +22,6 @@ font-size:28rpx;
 page{
     min-height: 100%;
     background-color: #f3f3f3;
-  
 }
 .mes-discount-list{
     background:#fff;height:220rpx;margin:30rpx;border-radius:10rpx;padding:20rpx;

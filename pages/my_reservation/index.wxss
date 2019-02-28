@@ -1,1 +1,18 @@
-/* pages/my_reservation/index.wxss */
+@import "../../app.wxss";
+.my_reservation_title{
+    padding: 0 30rpx;
+    height:70rpx;
+    line-height: 70rpx;
+    background: #fff;
+}
+.my_reservation-image image{
+    margin-top:20rpx;
+    margin-right:20rpx;
+    width:30rpx;
+    height: 30rpx;
+}
+
+page {
+    min-height: 100%;
+    background-color: #f3f3f3;
+}

@@ -1,0 +1,14 @@
+<view class="my_garage_list-contain">
+  <view class="fl my_garage_list-image">
+    <image src="../../common/image/brand.png" />
+  </view>
+  <view class="fl my_garage_list-txt fz28">
+    <view class="">宝马MINI 2018款 智联旗舰...</view>
+    <view class="fz24 grey my_garage_list-km">行驶里程:1000KM 手动版 1.8K</view>
+    <view class="my_garage_list-btn">
+      <view class="fl bg_orange my_garage_list fz22">已设为默认</view>
+      <view class="fl bg_orange my_garage_list mleft20 fz22">已认证</view>
+      <view class="fr grey">删除</view>
+    </view>
+  </view>
+</view>

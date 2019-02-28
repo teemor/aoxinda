@@ -10,6 +10,7 @@ Page({
    * carTypeData 年份字典表
    */
   data: {
+    http:'https://www.maichefu.cn',
     showTypeBrand: true,
     choose_brand: false,
     choose_type: false,
@@ -116,18 +117,27 @@ Page({
     this.setData({
       tabType:e.detail
     })
+    // 年份的跳转
+    console.log(e.detail,'hehehe')
     request.findYear(e.detail).then(res=>{
-      this.setData({
-        carYear:res,
-        choose_brand: false,
-        choose_type: true,
-        showTypeBrand: false
-      })
+      if(res.length>0){
+        this.setData({
+          carYear:res,
+          choose_brand: false,
+          choose_type: true,
+          showTypeBrand: false
+        })
+      }else{
+        this.setData({
+          choose_type: false
+        })
+      }
+      console.log(this.data.carYear[0].year,'year')
       request.findModel(e.detail,this.data.carYear[0].year).then(res=>{
+        console.log(res)
         this.setData({
           carTypeData:res
         })
-        console.log(this.data.carTypeData,'hehecaonima')
       })
     })
   },
@@ -167,18 +177,24 @@ Page({
         choose_detail: true,
         detailData:res[0]
       })
+      let detailData = JSON.stringify(this.data.detailData)
+      wx.navigateTo({
+        url:`../add_car_detail/index?detailData=${detailData}`
+      })
     })
+    
+   
   },
   /**
    * 退出详情
    * dzl
    */
-  exitDetail: function () {
-    this.setData({
-      choose_type: !this.data.choose_type,
-      choose_detail: !this.data.choose_detail
-    })
-  },
+  // exitDetail: function () {
+  //   this.setData({
+  //     choose_type: !this.data.choose_type,
+  //     choose_detail: !this.data.choose_detail
+  //   })
+  // },
   /**
    * 扫描行车本
    * author dzl

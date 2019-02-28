@@ -1,6 +1,5 @@
 import {attentionList} from '../../common/static/api_data'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -18,13 +17,11 @@ Page({
    * @param {} e 
    */
   attentionChange:function(e){
-    console.log(e.detail)
     this.setData({
       reslut:e.detail
     })
   },
   typeChange: function(e) {
-    console.log(e, 'e')
     this.setData({
       reslut:e.detail
     })

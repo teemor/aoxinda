@@ -1,0 +1,24 @@
+<view>
+  <van-cell title="收货人姓名" icon="user-o" is-link bind:click="myOrder">
+    <view class="car_beauty_shop_box">
+      <view class="car_beauty_shop_image fl">
+        <image src="../../common/image/shop_phone.png" />
+      </view>
+      <view class="fl">
+        15131503009
+      </view>
+    </view>
+  </van-cell>
+  <van-cell title="收货地址：" icon="location-o" is-link bind:click="myOrder"></van-cell>
+  <view style="margin-top:30rpx">
+    <order-list/>
+  </view>
+  <van-cell title="优惠" value="无可用优惠" is-link />
+  <van-cell title="发票" value="无需开票" is-link />
+  <van-cell title="是否需要施工服务" value="不需要" is-link />
+  <br-bottom btnRight="付款" price="666">
+    <view class="fl br-bottom red fz20">
+      合计
+    </view>
+  </br-bottom>
+</view>

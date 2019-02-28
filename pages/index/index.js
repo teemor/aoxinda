@@ -1,4 +1,6 @@
 const app = getApp()
+import {Technician} from '../../common/api/api'
+const request = new Technician
 Page({
   data: {
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
@@ -6,7 +8,7 @@ Page({
     autoplay: false,
     circular: false,
     interval: 2000,
-    duration: 500,
+    duration: 500, 
     previousMargin: 0,
     nextMargin: 0,
     latitude: 39.67386,
@@ -49,6 +51,16 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
+    wx.login({
+      success(res){
+        if(res.code){
+          request.login(res.code).then(res=>{
+            console.log(res)
+          })
+        }
+      }
+    })
+    
     // setTimeout()
     // this.mapCtx.moveToLocation()
   },

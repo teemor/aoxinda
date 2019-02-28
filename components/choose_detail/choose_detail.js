@@ -4,7 +4,7 @@ Component({
     detailData:Object
   },
   data: {
-
+http:'https://www.maichefu.cn'
   },
 
   methods: {

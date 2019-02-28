@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "车保养",
   "usingComponents":{
+    "br-bottom":"../../components/br_bottom/br_bottom",
     "project-list":"../../components/upkeep_project_list/upkeep_project_list"
   }
 }

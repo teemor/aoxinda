@@ -1,0 +1,16 @@
+<view class="fl fz60 my_coupon_list_color">
+  <image src="../../common/image/blue.png" />
+  <view style="position:absolute;z-index:333;top:30px;left:60rpx;">10<span class="fz30">元</span></view>
+</view>
+<view class="fr my_coupon_list_contain">
+  <view style="margin-left:28rpx;margin-top:10rpx">
+    <view class="fz30 bold">维修抵扣券</view>
+    <view class="fz22 fl grey my_coupon_list_text">
+      <view>新用户专享，满200减10</view>
+      <view>2018.11.12~2019.02.05</view>
+    </view>
+    <view class="my_coupon-button fz30 fr tc red">
+      立即使用
+    </view>
+  </view>
+</view>

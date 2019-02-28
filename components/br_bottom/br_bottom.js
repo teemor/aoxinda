@@ -1,7 +1,8 @@
 Component({
   properties: {
     btnRight:String,
-    price:String
+    price:String,
+    btnBuy:String
   },
 
   /**
@@ -11,10 +12,20 @@ Component({
 
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
-
+    /**
+     * 触发点击事件
+     * dzl
+     */
+    carClickBtn:function(){
+      this.triggerEvent('carClickBtn', {})
+    },
+    /**
+     * 里面的点击事件
+     * dzl
+     */
+    btnBuy:function(){
+      this.triggerEvent('btnBuy',{})
+    }
   }
 })

@@ -91,7 +91,7 @@
   margin-top:20rpx;
 }
 .service_contain{
-  height:5000rpx;
+  /* height:5000rpx; */
   z-index: 333;
   /* position: absolute; */
   bottom: 80rpx;
