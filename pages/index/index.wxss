@@ -1,4 +1,8 @@
 @import "../../app.wxss";
+button::after {
+  border: none;
+}
+
 .swiper-item {
   position: relative;
   display: block;

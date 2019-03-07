@@ -3,6 +3,7 @@ import {Technician} from '../../common/api/api'
 const request = new Technician
 Page({
   data: {
+    show:true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     vertical: false,
     autoplay: false,
@@ -56,6 +57,7 @@ Page({
         if(res.code){
           request.login(res.code).then(res=>{
             console.log(res)
+            app.globalData.id = res.result
           })
         }
       }
@@ -63,6 +65,34 @@ Page({
     
     // setTimeout()
     // this.mapCtx.moveToLocation()
+  },
+  /**
+   * 获取手机号
+   * dzl
+   */
+  getPhoneNumber:function(e){
+    if (e.detail.errMsg === 'getPhoneNumber:ok') {
+      let that = this
+      wx.login({
+        success(res) {
+          if (res.code) {
+            let teste = encodeURIComponent(e.detail.encryptedData)
+            request.encryptedData(teste, res.code, encodeURIComponent(e.detail.iv)).then(res => {
+              that.setData({
+                phoneNumber: res.description
+              })
+            })
+          }
+        }
+      })
+    } else {
+      this.setData({
+        inputShow: true,
+        focus:true
+      })
+      console.log(this.data.inputShow)
+    }
+    console.log(e.detail)
   },
   // 点击查看
   detailBtn: function() {

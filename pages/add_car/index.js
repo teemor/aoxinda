@@ -17,7 +17,6 @@ Page({
     choose_detail: false,
     carList:[],
     carBrand:[],
-    carTypeData:[],
     activeIndex: "1",
     hotbrandList: [{
       name: '阿斯顿·马丁'
@@ -138,6 +137,7 @@ Page({
         this.setData({
           carTypeData:res
         })
+        console.log(this.data.carTypeData,'di')
       })
     })
   },
@@ -160,10 +160,12 @@ Page({
     this.setData({
       year:e.detail
     })
+    console.log(this.data.year)
     request.findModel(this.data.tabType,e.detail).then(res=>{
       this.setData({
         carTypeData:res
       })
+      console.log(this.data.carTypeData,'didi')
     })
   },
   /**
@@ -172,12 +174,13 @@ Page({
    */
   detailBtn: function (e) {
     request.findConfig(e.detail).then(res=>{
-      this.setData({
-        choose_type: false,
-        choose_detail: true,
-        detailData:res[0]
-      })
-      let detailData = JSON.stringify(this.data.detailData)
+      console.log(res[0])
+      // this.setData({
+      //   choose_type: false,
+      //   choose_detail: true,
+      //   detailData:res[0]
+      // })
+      let detailData = JSON.stringify(res[0])
       wx.navigateTo({
         url:`../add_car_detail/index?detailData=${detailData}`
       })

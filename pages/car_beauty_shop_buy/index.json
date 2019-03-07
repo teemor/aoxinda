@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "洗车买单",
   "usingComponents": {
-    "van-checkbox":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/checkbox/index",
-    "van-checkbox-group":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/checkbox-group/index"
+    "van-radio":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/radio/index",
+    "van-radio-group":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/radio-group/index"
   }
 }

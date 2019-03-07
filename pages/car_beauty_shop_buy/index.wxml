@@ -20,13 +20,13 @@
       <view class="fl mleft30">洗车服务</view>
     </view>
     <view class="fl mtop20">
-      <van-checkbox-group value="{{cleanreslut}}" bind:change="typeCleanChange">
+      <van-radio-group value="{{cleanReslut}}" bind:change="typeCleanChange">
         <view class="car_beauty_shop-checkout">
-          <van-checkbox checked-color="#fdbb51" wx:for="{{miniClick===true?typeminiServiceList:typeBigServiceList}}" wx:key="index" name="{{item.label}}">
+          <van-radio checked-color="#fdbb51" wx:for="{{miniClick===true?typeminiServiceList:typeBigServiceList}}" wx:key="index" name="{{item.label}}">
             {{item.label}}
-          </van-checkbox>
+          </van-radio>
         </view>
-      </van-checkbox-group>
+      </van-radio-group>
     </view>
   </view>
   <view class="cl  car_beauty_shop-contain">
@@ -37,22 +37,22 @@
       <view class="fl mleft30">打蜡服务</view>
     </view>
     <view class="fl mtop20">
-      <van-checkbox-group value="{{waxingreslut}}" bind:change="typeWaxingChange">
+      <van-radio-group value="{{waxingReslut}}" bind:change="typeWaxingChange">
         <view class="car_beauty_shop-checkout">
-          <van-checkbox checked-color="#fdbb51" wx:for="{{miniClick===true?typeminiWaxingList:typeBigWaxingList}}" wx:key="index" name="{{item.label}}">
+          <van-radio checked-color="#fdbb51" wx:for="{{miniClick===true?typeminiWaxingList:typeBigWaxingList}}" wx:key="index" name="{{item.label}}">
             {{item.label}}
-          </van-checkbox>
+          </van-radio>
         </view>
-      </van-checkbox-group>
+      </van-radio-group>
     </view>
   </view>
 </view>
-<view class="carbeauty_btn_bottom">
+<view class="carbeauty_btn_bottom {{isIpx ? 'ipx-bottom1' : ''}}">
   <view class="fl carbeauty_btn_contain">
     <view class="fl carbeauty_btn_times">
       <span class="fz28" style="padding-right:10rpx">合计:</span>
       <span class="fz28">¥</span>
-      <span class="fz50" style="text-align:right;padding-left:20rpx;padding-right:5rpx;">100</span>
+      <span class="fz50" style="text-align:right;padding-left:20rpx;padding-right:5rpx;">{{countPrice}}</span>
       <span class="fz28">元</span>
     </view>
   </view>

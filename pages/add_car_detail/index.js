@@ -4,6 +4,7 @@ Page({
 
   },
   onLoad: function (options) {
+    console.log(options,'heh')
     this.setData({
       detailData:JSON.parse(options.detailData)
     })

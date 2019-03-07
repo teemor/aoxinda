@@ -7,6 +7,12 @@
   justify-content: space-between;
   box-sizing: border-box; */
 }
+.ipx-bottom {
+  padding-bottom: 68rpx !important;
+}
+.ipx-bottom1{
+  margin-bottom: 68rpx !important;
+}
 .height40{
   height: 40rpx;
   line-height: 40rpx;

@@ -1,10 +1,14 @@
+import { Technician } from '../../common/api/api'
+const request = new Technician
+let iphonex = require('../../mixin/iphonex.js')
 Page({
+  mixins:[iphonex],
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    background: ['demo-text-1'],
     latitude: 39.67386,
     longitude: 118.181576,
     markers: [],

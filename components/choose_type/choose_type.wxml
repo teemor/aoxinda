@@ -6,7 +6,7 @@
     {{carTypeData[0].name}}
   </view>
   <view>
-    <van-tabs animated active="{{carYear[0].year}}" bind:change="tabchange" color="#bdbcbc">
+    <van-tabs active="{{index}}" bind:change="tabchange" color="#bdbcbc">
       <view wx:for="{{carYear}}" wx:key="{{item.id}}">
         <van-tab title="{{item.year}}">
           <view wx:for="{{carTypeData[0].data}}" wx:key="{{item}}">

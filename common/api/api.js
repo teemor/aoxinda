@@ -1,3 +1,4 @@
+
 /**
  * 数据接口文件
  * -@author dzl
@@ -18,6 +19,18 @@ export class Technician {
     })
   }
   // 添加我的爱车
+    //第一次进小程序授权
+    loginByWx = (code,iv,encryptedData)=>{
+      return http.httpRequest({
+        url:`${HTTP}/user/loginByWx?code=${code}&iv=${iv}&encryptedData=${encryptedData}`
+      })
+    }
+    // 添加爱车详情页
+    addCarService = (id,code) =>{
+      return http.httpRequest({
+        url:`${HTTP}/addCarService/manual?modelid=${id}&code=${code}`
+      })
+    }
   // 品牌
   findBrand = () => {
     return http.httpRequest({
@@ -45,6 +58,7 @@ export class Technician {
       url: `${HTTP}/service/findModel?pid=${pid}&year=${year}`,
       method: `get`
     })
+    
   }
   // 配置
   findConfig = (id) => {
@@ -52,12 +66,20 @@ export class Technician {
       url: `${HTTP}/service/findConfig?id=${id}`,
       method: `get`
     })
+
   }
   // 洗车美容
+   
   // 查询全部门店
-  findallStore = (lat, lng) => {
+  /**
+   * lat 经度
+   * lag 纬度
+   * sorttype 1销量 2距离
+   * scope洗车1,内饰清洗2,镀晶3
+   */
+  findallStore = (lat, lng,sorttype,scope) => {
     return http.httpRequest({
-      url: `${HTTP}/bstore/findAll?lat=${lat}&lng=${lng}`
+      url: `${HTTP}/bstore/findAll?lat=${lat}&lng=${lng}&sorttype=${sorttype}&scope=${scope}`
     })
   }
   // 门店字典表
@@ -78,6 +100,24 @@ export class Technician {
       url: `${HTTP}/bstore/findStore?id=${id}`
     })
   }
+    // 增加会员卡信息
+    addCarWash = ()=>{
+      return http.httpRequest({
+        url:`${HTTP}/carWash/addCarWash`
+      })
+    }
+    // 会员卡消减
+    updateCarWash = () =>{
+      return http.httpRequest({
+        url:`${HTTP}/carWash/updateCarWash`
+      })
+    }
+    // 查询自己的会员卡
+    findMyCarNumCard = (id) =>{
+      return http.httpRequest({
+        url:`${HTTP}/carWash/findMyCarNumCard?id=${id}`
+      })
+    }
 }
 
 

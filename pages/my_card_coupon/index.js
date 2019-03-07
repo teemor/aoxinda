@@ -1,4 +1,6 @@
-// pages/my_card_coupon/index.js
+import { Technician } from '../../common/api/api'
+const request = new Technician
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request.findMyCarNumCard(app.globalData.id).then(res=>{
+      console.log(res)
+    })
   },
 
   /**

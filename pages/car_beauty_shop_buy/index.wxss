@@ -6,6 +6,9 @@
   background: linear-gradient(-115deg, transparent 66px, #7f7f7f 0),
   linear-gradient(45deg, transparent 15px, #fff 0);
 }
+.van-radio{
+  margin-bottom:30rpx;
+}
  .beauty_con-mini-click {
      color: #757575;
     width: 60%;

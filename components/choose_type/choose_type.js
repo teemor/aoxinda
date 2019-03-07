@@ -5,13 +5,14 @@ Component({
     carYear:Array
   },
   data: {
-    activeIndex: '001'
+    index: '0'
   },
   methods: {
     /**
      * 切换年份
      */
     tabchange: function (e) {
+      console.log(e.detail,'heh')
       this.triggerEvent('tabYear', e.detail.title)
     },
     /**

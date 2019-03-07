@@ -3,11 +3,13 @@
     width: 100%;
     position: fixed;
     bottom:0;
-    height:80rpx;
-    line-height: 80rpx;
+    height:90rpx;
+    line-height: 90rpx;
     background: #2d3c4b;
   }
   .carbeauty_btn_buy{
+    height:90rpx;
+    line-height: 90rpx;
     font-size:32rpx;
     color: #fff;
     background: #5d8fcb;
@@ -15,14 +17,18 @@
     text-align: center;
   }
   .carbeauty_name{
+    height: 90rpx;
+    line-height: 90rpx;
     margin-top:10rpx;
-    width:65%;
+    width:50%;
     text-align: center;
     font-size: 25rpx;
     color: #fff;
   }
   
   .carbeauty_btn_times{
+    margin-left:50rpx;
+    margin-top:20rpx;
     text-align: center;
     width:35%;
     color: #fa5a4b;
@@ -53,7 +59,7 @@
   .carbeauty_contain-btn{
     padding:0 20rpx;
     border-radius: 50rpx;
-    width:140rpx;
+    width:150rpx;
     color: #fff;
     font-size:26rpx;
     height:50rpx;

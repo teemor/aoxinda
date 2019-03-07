@@ -29,13 +29,25 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "洗车美容",
+					"pathName": "pages/car_beauty/index",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

@@ -81,8 +81,9 @@
   font-size:28rpx;
   width:100%;
   height:80rpx;
+  
   line-height:80rpx;
-  box-shadow: 0 0 25rpx #a7a8af;
+  box-shadow: 0 0 25rpx #e9e9e9;
 }
 .carbeauty_sort_box{
   width:49%;

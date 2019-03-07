@@ -8,8 +8,9 @@ import {
   Technician
 } from '../../common/api/api'
 const request = new Technician
+let iphonex = require('../../mixin/iphonex.js')
 Page({
-
+  mixins:[iphonex],
   /**
    * 页面的初始数据
    */
@@ -18,8 +19,13 @@ Page({
     typeminiWaxingList,
     typeBigServiceList,
     typeminiServiceList,
+    waxPrice:0,
+    cleanprice:0,
     miniClick: true,
-    reslut: Object
+    reslut: Object,
+    countPrice:0,
+    cleanNum:0,
+    waxNum:0
   },
 
   /**
@@ -27,19 +33,26 @@ Page({
    * dzl
    */
   typeCleanChange: function(e) {
-    console.log(e, 'e')
+    console.log(parseInt(e.detail.split('¥')[1]), 'e')
     this.setData({
-      cleanreslut: e.detail
+      cleanReslut: e.detail,
+      cleanPrice:parseInt(e.detail.split('¥')[1]),
+      countPrice: parseInt(e.detail.split('¥')[1])+parseInt(this.data.waxPrice)
     })
+    console.log(this.data.countPrice)
   },
   /**
    * 打蜡服务复选框
    * dzl
    */
   typeWaxingChange: function(e) {
+    console.log(parseInt(e.detail.split('¥')[1])+this.data.cleanPrice,'hh')
     this.setData({
-      waxingreslut: e.detail
+      waxingReslut: e.detail,
+      waxPrice:e.detail.split('¥')[1],
+      countPrice:parseInt(e.detail.split('¥')[1])+this.data.cleanPrice
     })
+    console.log(this.data.countPrice,'?')
   },
   /**
    * 选择中大型汽车
@@ -64,41 +77,66 @@ Page({
    * @param {*} options 
    */
   buy: function() {
-    let clean = this.data.cleanreslut
-    let wax = this.data.waxingreslut
+    let clean = this.data.cleanReslut
+    let wax = this.data.waxingReslut
     console.log(clean,'clean')
     console.log(wax,'wax')
 
-    let cleanPrice = 0
-    let cleanNum = 0
-    let waxPrice = 0
-    let waxNum = 0
-    if(clean!=='undefined'){
-      clean.forEach(item => {
-        cleanNum = parseInt(item.split('¥')[0]) + cleanNum
-        cleanPrice = parseInt(item.split('¥')[1]) + cleanPrice
-      });
+    if(clean!==undefined){
+      console.log(clean,'!===')
+      // clean.forEach(item => {
+        this.setData({
+          cleanNum:parseInt(clean.split('¥')[0]),
+          cleanPrice:parseInt(clean.split('¥')[1]) 
+        })
+      // });
     }
-    if(wax!=='undefined'){
-      wax.forEach(item => {
-        waxNum = parseInt(item.split('¥')[0]) + waxNum
-        waxPrice = parseInt(item.split('¥')[1]) + waxPrice
-      })
+    if(wax!==undefined){
+      // wax.forEach(item => {
+        this.setData({
+          waxNum:parseInt(wax.split('¥')[0]),
+          waxPrice:parseInt(wax.split('¥')[1])
+        })
+      // })
     }
-    let countPrice = cleanPrice + waxPrice
+    // wx.showToast({
+    //   title:'授权成功',
+    //   icon:'success',
+    //   duration:3000
+    // })  
+    let countPrice = this.data.countPrice
     // let countNum = cleanNum +waxNum
+    let that =this
+    console.log(that)
     wx.login({
       success(res) {
         if (res.code) {
-          request.payCard(res.code, cleanNum, waxNum, countPrice).then(res => {
-            console.log(res, 'res')
+          request.payCard(res.code, that.data.cleanNum, that.data.waxNum, 0.01).then(res => {
+            if(res.status===false){
+              wx.showToast({
+                title:res.description
+              })
+            }else{
+              let description = JSON.parse(res.result)
+              wx.requestPayment({
+                timeStamp:description.timeStamp,
+                nonceStr:description.nonceStr,
+                package:description.package,
+                signType:description.signType,
+                paySign:description.paySign,
+                success(res){
+                  console.log('res')
+                  wx.navigateTo({
+                    url: '../car_beauty_shop_res/index',
+                  })
+                }
+              })
+            }
           })
         }
       }
     })
-    wx.navigateTo({
-      url: '../car_beauty_shop_res/index',
-    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -146,13 +184,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
 
   }
 })

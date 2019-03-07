@@ -1,0 +1,6 @@
+<manager show="{{show}}" type="center" bind:clickMask="clickMask">
+<view class='filterbar-pop'>
+<button>取消</button>
+<button>确定</button>
+</view>
+</manager>
