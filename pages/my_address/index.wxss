@@ -1,5 +1,15 @@
 @import "../../app.wxss";
-page {
+page{
     min-height: 100%;
     background-color: #f3f3f3;
-  }
+}
+.address_btn{
+    line-height:70rpx;
+    color:#b3b3b3;text-align:center;width:300rpx;margin:auto;margin-top:300rpx;
+}
+.bottom_green{border:2rpx solid #00c800;color:#00c800}
+.bottom_btn_address{
+    position: fixed;
+    width:800rpx;
+bottom:30rpx;
+}

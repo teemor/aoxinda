@@ -1,0 +1,11 @@
+@import "../../app.wxss";
+.mine_cell_contain{
+    margin-top:30rpx;
+}
+.mine_cell-list{
+    background: #ffffff;
+}
+page{
+    min-height: 100%;
+    background-color: #f3f3f3;
+}

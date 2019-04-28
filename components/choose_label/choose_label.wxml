@@ -1,0 +1,48 @@
+<view class="cl">
+  <view wx:if="{{ischeckbox}}">
+    <view class="choose_label" bindtap="{{islabel?'reselectPullType':'handleTap'}}">
+      {{label}}
+      <icon class="fr" size="20" color="#C4C4C4" wx:if="{{islabel?false:true}}" type="{{check?'shouqijiantouxiao':'xialajiantouxiao'}}" />
+    </view>
+    <view style="{{check?'':'height:100rpx;overflow:hidden;position:relative'}}">
+      <checkbox-group bind:change="checkboxChange" data-item="{{list}}" data-index="{{index}}">
+        <label wx:for="{{list}}" wx:for-item="item" wx:key="{{item.code}}">
+          <view class="label-group  part_{{part}}">
+            <checkbox class="label-group_check" value="{{item.code+'.'+item.value}}" checked="{{item.checked?'{{item.checked}}':''}}" />
+            <view class="label-group_btn {{item.checked?'label-group_btn--checked':''}}">
+              {{item.value}}
+            </view>
+          </view>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view wx:if="{{!ischeckbox}}" class='choose_pad'>
+    <view class="choose_label high80" bindtap="{{islabel?'':'checkHandle'}}">
+      {{label}}
+      <icon class="fr" size="20" color="#C4C4C4" wx:if="{{islabel?false:true}}" type="{{radio?'shouqijiantouxiao':'xialajiantouxiao'}}" />
+    </view>
+    <view style="{{radio?'':'height:100rpx;overflow:hidden;position:relative'}}">
+      <radio-group bind:change="radioChange" data-item="{{list}}" data-index="{{index}}" style="{{radioCode&&list[0].id?'padding-left:10rpx':''}}">
+        <label wx:for="{{list}}" wx:for-item="item" wx:key="{{item.code}}">
+          <view class="label-group part_{{part}} {{item.id ? 'file-width':''}} {{item.id&&radioCode?'pad-l':''}} {{isFollow ? 'follow-class':''}}">
+            <radio class="label-group_check  {{isFollow ? 'follow-class':''}}" value="{{item.code+'.'+item.value}}" checked="{{item.checked}}" />
+            <!-- 已保存条件使用 -->
+            <block wx:if="{{item.id}}">
+              <view wx:if="{{item.id === radioCode || !radioCode}}" class="label-group_btn {{item.checked?'label-group_btn--checked':''}}">
+                <text class='pad-text'>{{item.screeningName}}</text>
+                <view class='label-delete fr tc' wx:if="{{item.checked}}" bindtap='deleteSearch' data-id='{{item.id}}'>
+                  <icon type="guanbijiantou" size="40" color="#fff" />
+                </view>
+              </view>
+            </block>
+            <!-- 其他筛选使用 -->
+            <view wx:else class="label-group_btn  {{isFollow ? 'follow-class':''}} {{item.checked?'label-group_btn--checked':''}}">
+              <text class='pad-text'>{{item.value}}</text>
+            </view>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+</view>

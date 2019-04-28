@@ -5,10 +5,12 @@
  */
 import {
   HttpServer
+  
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-export const IP_DHTTP = `https://192.168.31.75:8081`
+export const IP_DHTTP = `https://192.168.31.76`
+export const IP_YTHTTP = `http://192.168.31.75:9015`
 export const HTTP = `https://www.maichefu.cn`
 export class Technician {
   // 登录
@@ -115,7 +117,32 @@ export class Technician {
     // 查询自己的会员卡
     findMyCarNumCard = (id) =>{
       return http.httpRequest({
-        url:`${HTTP}/carWash/findMyCarNumCard?id=${id}`
+        url:`${HTTP}/carWash/findMyCarNumCard?userId=${id}`
+      })
+    }
+    // 商城
+    // 获取所有分类信息
+    selectGoodsType = (model) =>{
+      return http.httpRequest({
+        url:`${IP_YTHTTP}/appapi/v1.0/parameter/selectGoodsType`,
+        method:'post',
+        data:model
+      })
+    }
+    // 根据分类查询商品信息
+    selectGoodsList = (model) =>{
+      return http.httpRequest({
+        url:`${IP_YTHTTP}/appapi/v1.0/product/app/selectGoodsList`,
+        data:model,
+        method:'post'
+      })
+    }
+    //商品详情
+    goodsDetail=(model)=>{
+      return http.httpRequest({
+        url:`${IP_YTHTTP}/appapi/v1.0/product/app/editGoods`,
+        data:model,
+        method:'post'
       })
     }
 }

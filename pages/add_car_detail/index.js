@@ -8,7 +8,15 @@ Page({
     this.setData({
       detailData:JSON.parse(options.detailData)
     })
-    console.log(this.data.detailData,'detailData')
+    console.log(this.data.detailData.config[0].carSize,'detailData')
+    let carSize = this.data.detailData.config[0].carSize.split('*')
+    console.log('carSize',carSize)
+    this.setData({
+      long:carSize[0].split('mm')[0],
+      high:carSize[1].split('mm')[0],
+      width:carSize[2].split('mm')[0]
+    })
+    console.log(this.data.width,'宽')
   },
   onReady: function () {
 

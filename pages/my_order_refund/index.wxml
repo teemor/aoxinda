@@ -1,0 +1,31 @@
+<view class="order_step_line"></view>
+<view class="">
+  <view class="order_refund_contain bx-shadow">
+    <i class="order_step_circle"></i>
+    <view class="grey fz30">
+      2019.03.25 12:30
+    </view>
+    <view class="fz30 mtop20">
+      【订单】已提交申请，正在受理
+    </view>
+  </view>
+  <view class="order_refund_contain bx-shadow">
+    <i class="order_step_circle"></i>
+    <view class="grey fz30">
+      2019.03.25 12:30
+    </view>
+    <view class="fz30 mtop20">
+      【订单】取消成功，退款处理中
+    </view>
+  </view>
+  <view class="order_refund_contain bx-shadow">
+    <i class="order_step_circle"></i>
+
+    <view class="grey fz30">
+      2019.03.25 12:30
+    </view>
+    <view class="fz30 mtop20">
+      【订单】取消成功，总额：¥69.00元，退款将按原支付方式返还，预计1-5个工作日到账
+    </view>
+  </view>
+</view>

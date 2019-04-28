@@ -5,6 +5,6 @@
       info="{{ info }}"
       custom-style="right: 4px"
     />
-    {{ title }}
+    {{ title}}
   </view>
 </view>

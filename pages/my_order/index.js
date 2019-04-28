@@ -10,7 +10,20 @@ Page({
   onLoad: function (options) {
 
   },
-
+  /**
+   * 订单详情
+   * dzl
+   */
+ /**
+   * 详情
+   * dzl
+   */
+  orderDetail:function(){
+    console.log('rwerwe')
+    wx.navigateTo({
+      url:'../my_order_detail/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

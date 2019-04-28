@@ -8,8 +8,7 @@
         </swiper-item>
       </block> -->
       <block wx:for="{{background}}" wx:key="*this">
-        <swiper-item class="swiper-item">
-          
+        <swiper-item class="swiper-item"> 
           <image src='../../common/image/car1.png' />
           <view style='margin-top:-350rpx;background:rgba(0,0,0,0.1);width:100%;height:350rpx;position:absolute'>
             <view class='swiper_add' bindtap="addCar">

@@ -1,0 +1,50 @@
+<view>
+  <view class="shop_goods_sort cl">
+    <view wx:for="{{sortType}}" wx:key="{{item}}" class="shop_goods_title tc fl" bindtap="addSort" data-item="{{item}}">
+      {{item.name}}
+    </view>
+  </view>
+  <view class="shop_goods_invite">
+    <image src="../../common/image/shop_bg.png" mode="aspectFit" />
+    <view class="shop_goods_invite_text">为您推荐适合 雪佛兰迈宝瑞...的商品</view>
+    <view class="shop_goods_invite_btn" bindtap="editCar">编辑</view>
+  </view>
+  <view wx:for="{{storeList}}" wx:key="{{item}}">
+    <view class="shop_goods_contain cl" bindtap="shop_detail" data-item="{{item.product_code}}">
+      <view class="shop_goods_box fl">
+        <image src="../../common/image/shop1.png" mode="aspectFit" />
+      </view>
+      <view class="shop_goods_remark fl">
+        <view class="shop_goods_text">{{item.goods_name}}</view>
+        <view class="shop_good_price">
+          <span style="font-size:20rpx">¥</span>
+          <span>{{item.goods_price}}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+  <manager show="{{sortShow}}" type="top" bind:clickMask="closeMask">
+    <view class="bgwhite" style="position:relative;padding:20rpx">
+      <view class="fz26 high80">价格范围</view>
+      <view class="fl">
+        <input type="text" placeholder="最低价" class="fl priceinput" />
+        <view class="fl tc" style="width:60rpx">-</view>
+        <input type="text" placeholder="最高价" class="fl priceinput" />
+      </view>
+      <view class="fz26 cl high80">品牌</view>
+      <view class="cl fz25">
+        <view wx:for="{{brandType}}" wx:key="{{item}}">
+          <view bindtap="labelchoose"  data-index="{{index}}" wx:for-index="index" class="{{item.active?'active':'active_null'}} mbottom30  tc fl fz26">
+      {{item.name}}</view>
+        </view>
+        <view class="cl fz30">
+        <view class="resetbtn fl tc">重置</view>
+        <view class="savebtn fl tc">确定</view>
+        <view class="cl"></view>
+        </view>
+      </view>
+    </view>
+  </manager>
+</view>

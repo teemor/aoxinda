@@ -1,5 +1,5 @@
 <view>
-<code-card/>
+<code-card qrCode="{{qrCode}}"/>
   <view class="car_beauty_shop-attention">
   <view class="cl" style="height:70rpx;">
   <view class="fl fz35">特别注意</view>
@@ -17,8 +17,9 @@
       </van-checkbox-group>
     </view>
   </view>
-  <view class="car_beauty_shop-bottom fz28">
+  <!--<view class="car_beauty_shop-bottom fz28">
     <span class="fz35">赠送好友</span> 洗车(<span class="orange ">2</span>/5) 打蜡(<span class="orange">3</span>/5) 
     <span class="red fr">点击分享</span>
   </view>
+  -->
 </view>

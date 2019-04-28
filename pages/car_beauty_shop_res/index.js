@@ -1,4 +1,9 @@
 import {attentionList} from '../../common/static/api_data'
+import {
+  Technician
+} from '../../common/api/api'
+const request = new Technician
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -30,7 +35,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    request.findMyCarNumCard(app.globalData.id).then(res=>{
+      let obj = {}
+      obj.img=res[0].img
+     obj.washNum=res[0].washNum
+       obj.washedNum=res[0].washedNum
+        obj.waxNum=res[0].waxNum
+        obj.waxedNum=res[0].washedNum
+       
+      that.setData({
+        qrCode:obj
+      })
+      console.log(res[0],'res')
+    })
   },
 
   /**

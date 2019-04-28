@@ -64,7 +64,7 @@
     font-size:26rpx;
     height:50rpx;
     line-height: 50rpx;
-    background: #ff2929;
+    background: #fdbb51;
   }
   .carbeauty_contain-image{
     width:30rpx;

@@ -1,0 +1,45 @@
+<view class="order_detail_bg">
+  <image src="../../common/image/my_bg01.png" />
+  <view class="order_detail_text ">
+    <view class="fz30">等待退款</view>
+  </view>
+</view>
+
+<view class="bgwhite" style="padding:30rpx;">
+<view class="fz28 high80">您已发起退款申请，请耐心等待商城退款处理</view>
+<view class="fz24 grey">退款将原支付路径退回，请您于1-7个工作日关注您支付账户余额变化</view>
+</view>
+  <view class="cl my_order_list_box" bindtap="orderDetail">
+  <view class="fz26 high60">退款信息</view>
+      <view class="fl my_order_list_image">
+        <image src="../../common/image/cart_list_perfume.png" />
+      </view>
+      <view class="fl my_order_list_text fz26">
+        <view class="">【正品授权】美孚速霸1000合成机油5W-30SN级别</view>
+        <view class="fz24 my_order_describe">数量1 产品：全合成5w-30 SN级别，4L</view>
+      </view>
+    </view>
+<view style="" class=" bgwhite">
+<view class="high70 fz26 br_btm_light">
+退款原因：商品信息填写错误
+</view>
+<view class="high70 fz26 br_btm_light">
+退款金额：<span class="red">¥311</span><span class="grey">（含运费）</span>
+</view>
+<view class="high70 fz26 br_btm_light">
+退款数量：1
+</view>
+<view class="high70 fz26 br_btm_light">
+申请时间：2019-04-02 15:38
+</view>
+<view class="high70 fz26 br_btm_light">
+退款编号：23597984646
+</view>
+</view>
+  <view class="bottom_btn_address mtop50">
+    <view class="fz30 fl bg_orange bottom_btn_add" bindtap="addAddress">
+      撤销申请
+    </view>
+    <view class="tc fl br_orange orange bottom_btn_add fz30">修改申请</view>
+  </view>
+

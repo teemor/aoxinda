@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    qrCode:Object
   },
 
   /**
@@ -18,6 +18,19 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    /**
+     * 放大图片
+     * 
+     * dzl
+     */
+    previewImg:function(){
+      let that =this
+      console.log(that)
+      wx.previewImage({
+        current: that.data.qrCode.img, // 当前显示图片的http链接
+        urls:[that.data.qrCode.img] // 需要预览的图片http链接列表
+      })
+    }
+    
   }
 })

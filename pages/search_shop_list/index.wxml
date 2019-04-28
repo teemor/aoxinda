@@ -1,0 +1,24 @@
+<view>
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+  <view>
+    <view style="padding:20rpx">
+      <view class="fl fz28 high80">历史搜索</view>
+      <view class="fr"></view>
+      <view class="cl">
+        <view class="fl myorder_grey fz22 mright20 padding20" wx:for="{{history}}" wx:key="{{item}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    <view class="cl" style="padding:20rpx">
+      <view class="fl fz28 high80">热门搜索</view>
+      <view class="cl">
+        <view style="margin-bottom:30rpx" class="fl myorder_grey fz22 mright20 padding20" wx:for="{{hot}}" wx:key="{{item}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

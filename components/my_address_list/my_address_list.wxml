@@ -8,6 +8,6 @@
       <view><span wx:if="{{addressDefault}}" class="tc fz20 orange my_address_default">默认地址</span> 河北省 唐山市 路北区</view>
       <view>东方大厦c座502</view>
     </view>
-    <view class="fr grey my_address_btn tc">编辑</view>
+    <view class="fr grey my_address_btn tc" bindtap="editAddress">编辑</view>
   </view>
 </view>

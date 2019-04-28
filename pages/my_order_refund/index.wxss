@@ -1,0 +1,30 @@
+@import "../../app.wxss";
+
+.order_refund_contain {
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  width: 83%;
+  margin-left: 5%;
+  background: #fff;
+  padding: 30rpx;
+}
+.order_refund_contain :after{
+
+}
+.order_step_circle{
+    margin-top:50rpx;
+    left:18rpx;
+    width:10rpx;
+    height:10rpx;
+    border-radius:50%;
+    background-color: #fdbb51;
+    position: absolute;
+}
+.order_step_line {
+  height: 100%;
+  background: #ebedf0;
+  width: 2rpx;
+  top: 32rpx;
+  position: absolute;
+  left: 20rpx;
+}

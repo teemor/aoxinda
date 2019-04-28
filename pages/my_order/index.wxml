@@ -3,7 +3,7 @@
       <view wx:for="{{myOrderMenu}}" wx:key="{{item.id}}">
         <van-tab title="{{item.name}}">
         <view class="cl">
-        <order-list/>
+        <order-list  bind:orderDetail="orderDetail"/>
         <order-list/>
         </view>
         </van-tab>

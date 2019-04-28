@@ -1,1 +1,8 @@
-{}
+{
+    "navigationBarTitleText": "商城",
+    "usingComponents": {
+        "van-search": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/search/index",
+        "van-badge": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/badge/index",
+        "van-badge-group": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/badge-group/index"
+    }
+}

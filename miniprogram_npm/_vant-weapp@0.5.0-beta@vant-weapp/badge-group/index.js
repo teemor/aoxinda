@@ -32,7 +32,6 @@ VantComponent({
     setActive: function setActive(badge) {
       var active = this.data.active;
       var badges = this.badges;
-
       if (badge && !isNumber(badge)) {
         active = badges.indexOf(badge);
       }
@@ -42,7 +41,8 @@ VantComponent({
       }
 
       if (this.currentActive !== -1 && badges[this.currentActive]) {
-        this.$emit('change', active);
+        let model = {active:active,title:badge.data.title,id:badge.data.titlea}
+        this.$emit('change', model);
         badges[this.currentActive].setActive(false);
       }
 

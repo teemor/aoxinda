@@ -1,0 +1,19 @@
+<view class="mine_cell_contain">
+  <view class="mine_cell-list">
+      <van-cell title="城市" value="唐山" is-link bind:click="myAddress">
+      </van-cell>
+    </view>
+      <view class="mine_cell-list">
+      <van-cell title="车型" value="选择您的车型" is-link bind:click="myAddress">
+      </van-cell>
+    </view>
+     <view class="mine_cell-list">
+      <van-cell title="购车时间" value="选择购车时间" is-link bind:click="myAddress">
+      </van-cell>
+    </view>
+     <view class="mine_cell-list">
+      <van-cell title="行驶里程" value="公里数 KM" is-link bind:click="myAddress">
+      </van-cell>
+    </view>
+    <view class="fz30 bg_orange bottom_btn" bindtap="addCar">立即添加</view>
+</view>

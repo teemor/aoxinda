@@ -10,3 +10,9 @@
   width:65rpx;
   height:65rpx;
 }
+.my_cart_title{
+  background: #fafafa;
+  height:80rpx;
+  line-height: 80rpx;
+  padding:0 25rpx;
+}

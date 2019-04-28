@@ -1,1 +1,58 @@
-/* pages/shopping_mall/index.wxss */
+@import "../../app.wxss";
+
+.shop_type {
+  width: 180rpx;
+}
+
+.shop_contain {
+  padding: 4rpx;
+  width:560rpx;
+}
+.shop_add_btn_contain{
+  padding-left: 50rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  box-shadow: 0 0 25rpx #dfdfe4;
+  margin-bottom: 30rpx;
+  border-radius: 10rpx;
+}
+.shop_add_btn_img image{
+  margin-right:13rpx;
+width:32rpx;height: 28rpx;
+}
+.shop_add_btn_text{
+  font-size: 25rpx;
+}
+.shop_banner {
+  width: 100%;
+}
+.shop_banner image{
+  width: 100%;
+}
+.shop_goods_title{
+  font-weight: bold;
+  font-size:35rpx;
+  color: #666666;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.shop_goods_contain {
+  width: 160rpx;
+  padding: 13rpx;
+  /* height: 250rpx; */
+}
+.shop_goods_box{
+margin-top:-40rpx;
+}
+.shop_goods_image {
+  height: 250rpx;
+}
+
+.shop_goods_image image {
+  width: 100%;
+  height: 150px;
+}
+
+.shop_goods_text {
+  font-size: 30rpx;
+}

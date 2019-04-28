@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "汽机油",
+  "usingComponents": {
+    "manager":"../../components/manager/manager"
+  }
+}

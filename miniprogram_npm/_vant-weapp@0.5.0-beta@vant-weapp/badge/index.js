@@ -6,7 +6,9 @@ VantComponent({
   },
   props: {
     info: null,
-    title: String
+    title: String,
+    id: String,
+    titlea:Number
   },
   methods: {
     onClick: function onClick() {

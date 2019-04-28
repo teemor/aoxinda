@@ -1,0 +1,89 @@
+
+@import "../../app.wxss";
+.label-group{
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    position: relative;
+    color: #232326;
+    float: left;
+    box-sizing: border-box;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+}
+.part_3{
+    width: 33.333%
+}
+.part_4{
+    width: 190rpx;
+}
+
+.file-width .pad-text {
+  padding: 0 48rpx;
+}
+.part_2{
+    width: 50%
+}
+.part_1{
+    width: 100%
+}
+.label-group_radio, .label-group_check, .label-group_btn{
+    font-size: 27rpx;
+    color: #5A5A5A;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    height: 58rpx;
+    display: block;
+    text-align: center;
+    line-height: 58rpx;
+    background-color:#F7F7F7;
+    border-radius: 10rpx;
+    border: 1rpx solid #F7F7F7;
+    box-sizing: border-box;
+}
+.label-group_radio, .label-group_check{
+    position: absolute;
+    left: 10rpx;
+    top: 0;
+    /* width: 100%; */
+    width: calc(100% - 78rpx);
+    opacity: 0;
+    overflow: hidden;
+}
+.label-group_btn--checked{
+    border-color:#2CB499;
+    color: #2CB499
+}
+checkbox{
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+}
+
+.margin {
+  margin-top: 15rpx;
+}
+
+.label-delete {
+  background: #b2b2b2;
+  width: 78rpx;
+  height: 100%;
+  line-height: 80rpx;
+}
+
+.pad-l {
+  padding: 0;
+}
+
+.pad-lr {
+  padding-left: 10rpx;
+}
+
+.follow-class {
+  height: 100rpx !important;
+  line-height: 100rpx  !important;
+}

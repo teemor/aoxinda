@@ -17,7 +17,7 @@
     <view class="fl carbeauty_contain-title">
       <view class="bold fz40">{{obj.storeName}}</view>
       <view class="fz28 carbeauty_contain-range">业务范围:
-        <span class="red">{{obj.scopeBusiness}}</span>
+        <span class="orange">{{obj.scopeBusiness}}</span>
       </view>
       <view class="fz18 grey carbeauty_contain-address">
         <view class="fl carbeauty_contain_con-image">
@@ -38,15 +38,15 @@
   <!-- 地图 -->
   <view class='service_contain'>
     <view class='service_map'>
-      <map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" show-location></map>
+      <map scale="13" id="myMap" style="width: 100%; height: 600rpx;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" show-location="true"></map>
     </view>
   </view>
   
 <cover-view class="carbeauty_btn_bottom {{isIpx ? 'ipx-bottom1' : ''}}">
   <cover-view class="fl carbeauty_btn_contain">
     <cover-view class="fl carbeauty_btn_times">
-      <cover-view class="fl ">¥</cover-view>
-      <cover-view class="fl ">100</cover-view>
+      <cover-view class="fl fz50">¥</cover-view>
+      <cover-view class="fl fz50">100</cover-view>
       <cover-view class="fl fz20" style="margin-top:15rpx;">/6次</cover-view>
     </cover-view>
     <cover-view class="fl carbeauty_name">全平台通用刷车卡</cover-view>

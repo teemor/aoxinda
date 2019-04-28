@@ -2,6 +2,7 @@ import {
   Technician
 } from '../../common/api/api'
 const request = new Technician
+const app  =  getApp();
 Page({
   data: {
     background: ['demo-text-1'],
@@ -127,6 +128,21 @@ Page({
     })
   },
   onLoad: function(options) {
+    /**
+     * 获取userid
+     */
+    wx.login({
+      success(res){
+        if(res.code){
+          request.login(res.code).then(res=>{
+            console.log('this.')
+            console.log(app,'this')
+            app.globalData.id = res.result
+            console.log(app.globalData.id,'id')
+          })
+        }
+      }
+    })
     this.getList()
   },
   onReady: function() {

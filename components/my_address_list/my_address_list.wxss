@@ -1,5 +1,6 @@
 @import "../../app.wxss";
 .my_address_contain{
+    background:#fff;
     padding: 20rpx;
     height:120rpx;
     margin-bottom: 15rpx;

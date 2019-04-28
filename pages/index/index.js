@@ -52,16 +52,16 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
-    wx.login({
-      success(res){
-        if(res.code){
-          request.login(res.code).then(res=>{
-            console.log(res)
-            app.globalData.id = res.result
-          })
-        }
-      }
-    })
+    // wx.login({
+    //   success(res){
+    //     if(res.code){
+    //       request.login(res.code).then(res=>{
+    //         console.log(res)
+    //         app.globalData.id = res.result
+    //       })
+    //     }
+    //   }
+    // })
     
     // setTimeout()
     // this.mapCtx.moveToLocation()

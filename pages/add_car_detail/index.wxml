@@ -54,9 +54,18 @@
       <view class="add_car_detail-body">
         <view class="fl add_car_detail-space-ce">
           <image src="../../common/image/detail_small_ce.png" />
+          <view style="position:absolute">
+          {{long}}
+          </view>
         </view>
         <view class="fl add_car_detail-space-zheng">
           <image src="../../common/image/detail_small_zheng.png"/>
+          <view>
+          {{width}}
+          </view>
+          <view>
+          {{height}}
+          </view>
         </view>
       </view>
     </view>

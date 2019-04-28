@@ -1,16 +1,17 @@
 @import "../../app.wxss";
 .carbeauty_btn_bottom{
+  border-top:2rpx solid #efefef;
     width: 100%;
     position: fixed;
     bottom:0;
     height:80rpx;
     line-height: 80rpx;
-    background: #2d3c4b;
+    background: #fff;
   }
   .carbeauty_btn_buy{
     font-size:32rpx;
     color: #fff;
-    background: #5d8fcb;
+    background: #f6b245;
     width:250rpx;
     text-align: center;
   }

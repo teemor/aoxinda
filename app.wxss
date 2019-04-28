@@ -39,8 +39,18 @@
 .bg_orange{
   background:#fdbb51;color: #fff;text-align: center
 }
+.br_orange{
+  border:2rpx solid #fdbb51;
+}
 .bg_white{
   background: #fff;color: #fdbb51;text-align: center
+}
+.bottom_btn_add{
+  border-radius: 10rpx;
+  width:320rpx;
+  margin-left:5%;
+  height:75rpx;
+  line-height:75rpx;
 }
 .bottom_btn{
   border-radius: 10rpx;
@@ -77,6 +87,9 @@ height:65rpx;
 .red{
   color:#ff3c3c
 }
+.fzblack{
+  color: #474747;
+}
 .bold{
   font-weight: bolder;
 }
@@ -85,6 +98,9 @@ height:65rpx;
 }
 .br_bottom{
   border-bottom: 2rpx solid #e1e1e1
+}
+.br_btm_light{
+  border-bottom: 2rpx solid #f6f6f6
 }
 .br_btm_deep{
   border-bottom: 2rpx solid #e5e5e5
@@ -136,7 +152,12 @@ font-size: 60rpx;
 }
 .mleft20{margin-left:20rpx;}
 .mleft30{margin-left:30rpx;}
+.mright20{margin-right:20rpx;}
+.mtop50{margin-top:50rpx;}
 .mtop20{margin-top:20rpx}
+.mtop15{margin-top:12rpx;}
+.mbottom30{margin-bottom: 30rpx;}
+.pleft20{padding-left:20rpx;}
 .linked {
   color: #4e4e4e !important;
   text-align: center;
@@ -149,11 +170,11 @@ font-size: 60rpx;
 }
 
 .my_order_list-contain{
+  margin-top:20rpx;
     margin-bottom: 10rpx;
-    margin-top:10rpx;
-    padding:30rpx 50rpx;
+    padding:10rpx 50rpx;
     font-size:30rpx;
-    height: 100rpx;
+    height: 290rpx;
     background:#fff;
 }
 .my_order_list_text{
@@ -165,4 +186,52 @@ font-size: 60rpx;
 }
 .my_order_price{
     margin-top:30rpx;
+}
+.my_order_list_btn{
+  height:80rpx;
+  line-height: 80rpx;
+}
+.my_order_list_btn view{
+  width:120rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 50rpx;
+}
+.myorder_grey{
+  border: 2rpx solid #eeeeee
+}
+.myorder_orange{
+  color: #f6b245;
+  margin-left:20rpx;
+  border:2rpx solid #f6b245
+}
+.bgwhite{
+  background:#fff;
+}
+.high70{
+  padding: 0 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.high80{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.high60{
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.high50{
+  height:50rpx;
+  line-height: 50rpx;
+}
+.greyfont{
+  color: #333;
+}
+.blue{
+  color:#3f98eb
+}
+.padding20{
+padding:10rpx
 }

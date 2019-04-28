@@ -1,4 +1,6 @@
-import {Technician} from '../../common/api/api'
+import {
+  Technician
+} from '../../common/api/api'
 const request = new Technician
 Page({
   /**
@@ -10,13 +12,15 @@ Page({
    * carTypeData 年份字典表
    */
   data: {
-    http:'https://www.maichefu.cn',
+    bHeight: 0,
+    isShowLetter: false,
+    http: 'https://www.maichefu.cn',
     showTypeBrand: true,
     choose_brand: false,
     choose_type: false,
     choose_detail: false,
-    carList:[],
-    carBrand:[],
+    carList: [],
+    carBrand: [],
     activeIndex: "1",
     hotbrandList: [{
       name: '阿斯顿·马丁'
@@ -60,39 +64,102 @@ Page({
     searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
   },
   onLoad: function (options) {
-    request.findBrand().then(res=>{
+    request.findBrand().then(res => {
       this.setData({
-        carList:res
-      })
-      this.setData({
-        carData: this.carData()
+        carList: res
       })
     })
+    let sysInfo = wx.getSystemInfoSync();
+    let winHeight = sysInfo.windowHeight;
+    console.log(winHeight,'winHeight')
+    let searchLetter = this.data.searchLetter 
+    // 添加屏幕高度设置子元素的高度
+    let itemH = (winHeight-50)/searchLetter.length
+    let tempObj = [];
+    for(let i=0;i<searchLetter.length;i++){
+      let temp = {};
+      temp.name = searchLetter[i];
+      temp.tHeight = i*itemH;
+      temp.bHeight = (i+1)*itemH;
+      tempObj.push(temp)
+    }
+    console.log()
+    this.setData({
+      searchLetter:tempObj,
+      carData: this.carData()
+    })
+  },
+  /**
+   * 滚动事件
+   * @param {*} e 
+   */
+  bindScroll: function (e) {
+
   },
   /**
    * 点击大写字母
    * author dzl
    */
   searchStart: function (e) {
-    let showLetter = e.currentTarget.dataset
-    console.log(e.touches[0].pageY, 'pageY')
+    console.log(e.currentTarget.dataset, '字母')
+    let showLetter = e.currentTarget.dataset.letter
+    let pageY = e.touches[0].pageY
+    console.log(pageY, 'pagey')
+    this.nowLetter(pageY, this)
+    this.setData({
+      showLetter: showLetter,
+      isShowLetter: true
+    })
     this.setScrollTop(showLetter)
   },
   /**
-   * 滚动定位
-   * author dzl
+   * 跳转当前选中的信息
    */
-  setScrollTop: function (showLetter) {
-    let scrollTop = 0
+  nowLetter: function (pageY, that) {
+    // 当前选中的信息
+    let letterData = this.data.carList;
+    let bHeight = 0;
+    let tHeight = 0;
+    let showLetter = "";
+    for (let i = 0; i < letterData.length; i++) {
+      if (letterData[i].length <= pageY && pageY <= letterData[i].bHeight) {
+        bHeight = letterData[i].bHeight;
+        tHeight = letterData[i].tHeight;
+        showLetter = letterData[i].name;
+        break;
+      }
+    }
+  that.setData({
+    bHeight:bHeight,
+    tHeight:tHeight,
+    showLetter:showLetter,
+    startPageY:pageY
+  })
   },
+  /**
+   * 移动
+   */
+  /**
+   * 结束点击
+   * dzl
+   */
+  searchEnd: function (e) {
+    let that = this
+    setTimeout(function () {
+      that.setData({
+        isShowLetter: false
+      })
+    }, 1000)
+  },
+
   /**
    * 选择品牌
    * author dzl
    */
   chooseBrand: function (e) {
-    request.findSerial(e.currentTarget.dataset.id).then(res=>{
+    request.findSerial(e.currentTarget.dataset.id).then(res => {
       this.setData({
-        carBrand:res
+        carBrand: res
       })
     })
     this.setData({
@@ -103,9 +170,9 @@ Page({
   /**
    * 
    */
-  clickMask: function(){
+  clickMask: function () {
     this.setData({
-      choose_brand:false
+      choose_brand: false
     })
   },
   /**
@@ -114,30 +181,30 @@ Page({
    */
   chooseType: function (e) {
     this.setData({
-      tabType:e.detail
+      tabType: e.detail
     })
     // 年份的跳转
-    console.log(e.detail,'hehehe')
-    request.findYear(e.detail).then(res=>{
-      if(res.length>0){
+    console.log(e.detail, 'hehehe')
+    request.findYear(e.detail).then(res => {
+      if (res.length > 0) {
         this.setData({
-          carYear:res,
+          carYear: res,
           choose_brand: false,
           choose_type: true,
           showTypeBrand: false
         })
-      }else{
+      } else {
         this.setData({
           choose_type: false
         })
       }
-      console.log(this.data.carYear[0].year,'year')
-      request.findModel(e.detail,this.data.carYear[0].year).then(res=>{
+      console.log(this.data.carYear[0].year, 'year')
+      request.findModel(e.detail, this.data.carYear[0].year).then(res => {
         console.log(res)
         this.setData({
-          carTypeData:res
+          carTypeData: res
         })
-        console.log(this.data.carTypeData,'di')
+        console.log(this.data.carTypeData, 'di')
       })
     })
   },
@@ -156,16 +223,16 @@ Page({
    * 切换年份
    * dzl
    */
-  tabYear:function(e){
+  tabYear: function (e) {
     this.setData({
-      year:e.detail
+      year: e.detail
     })
     console.log(this.data.year)
-    request.findModel(this.data.tabType,e.detail).then(res=>{
+    request.findModel(this.data.tabType, e.detail).then(res => {
       this.setData({
-        carTypeData:res
+        carTypeData: res
       })
-      console.log(this.data.carTypeData,'didi')
+      console.log(this.data.carTypeData, 'didi')
     })
   },
   /**
@@ -173,7 +240,7 @@ Page({
    * dzl
    */
   detailBtn: function (e) {
-    request.findConfig(e.detail).then(res=>{
+    request.findConfig(e.detail).then(res => {
       console.log(res[0])
       // this.setData({
       //   choose_type: false,
@@ -182,11 +249,11 @@ Page({
       // })
       let detailData = JSON.stringify(res[0])
       wx.navigateTo({
-        url:`../add_car_detail/index?detailData=${detailData}`
+        url: `../add_car_detail/index?detailData=${detailData}`
       })
     })
-    
-   
+
+
   },
   /**
    * 退出详情

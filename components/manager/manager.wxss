@@ -81,7 +81,8 @@ pop_mask-hide {
 }
 
 .pop-top .pop_container {
-  top: 0;
+  width:100%;
+  top: 80rpx;
   left: 50%;
   -webkit-transform: translate3d(-50%, -100%, 0);
   transform: translate3d(-50%, -100%, 0);

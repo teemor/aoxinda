@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    ispay:Boolean
   },
 
   /**
@@ -18,6 +18,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    /**
+     * 进入详情
+     */
+    orderDetail:function(){
+      console.log('rwer')
+      this.triggerEvent('orderDetail', {})
+    }
   }
 })

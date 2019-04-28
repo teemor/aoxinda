@@ -11,10 +11,11 @@
       </view>
     </view>
     <!-- 热门品牌 -->
-    <choose_detail detailData="{{detailData}}" show="{{choose_detail}}" bind:exitDetail="exitDetail"/>
+    <choose_detail detailData="{{detailData}}" show="{{choose_detail}}" bind:exitDetail="exitDetail" />
     <choose_type show="{{choose_type}}" carYear="{{carYear}}" carTypeData="{{carTypeData}}" bind:detailBtn="detailBtn" bind:exitType="exitType" bind:tabYear="tabYear"></choose_type>
-     <view wx:if="{{showTypeBrand}}">
-    <view>
+    <view wx:if="{{showTypeBrand}}">
+      <view>
+        <!--
       <view class='add_car_title'>
         热门品牌
       </view>
@@ -26,33 +27,34 @@
           </view>
         </view>
       </view>
-    </view>
-    <!-- 字母 -->
-    <view style='clear:both;zoom:1'>
-      <scroll-view scroll-y scroll-into-view="{{showLetter}}">
+    -->
+      </view>
+      <!-- 字母 -->
+      <view style='clear:both;zoom:1'>
         <view class='add_car_letter-bar_contain'>
           <view class='add_car_letter-bar' wx:for="{{searchLetter}}" wx:key="index" data-letter="{{item}}" catchtouchstart='searchStart' catchtouchmove="searchMove" catchtouchend="searchEnd">
-            {{item}}
+            {{item.name}}
           </view>
         </view>
-        <view class='add_car_letter-contain'>
-          <view wx:for="{{carData}}" wx:key="index" id="{{item.initial}}">
-            <view class='add_car_letter-title'>
-              {{item.initial}}
-            </view>
-            <view wx:for="{{item.carInfo}}" wx:key="index">
-              <view class='add_car_letter-text' bindtap='chooseBrand' data-id="{{item.id}}">
-                <image src='{{http+item.url}}'></image>
-                <view class='add_car_letter-name'>
-                  {{item.carName}}
+        <scroll-view scroll-y scroll-into-view="{{showLetter}}" bindScroll="bindScroll">
+          <view class='add_car_letter-contain'>
+            <view wx:for="{{carData}}" wx:key="index" id="{{item.initial}}">
+              <view class='add_car_letter-title'>
+                {{item.initial}}
+              </view>
+              <view wx:for="{{item.carInfo}}" wx:key="index">
+                <view class='add_car_letter-text' bindtap='chooseBrand' data-id="{{item.id}}">
+                  <image src='{{http+item.url}}'></image>
+                  <view class='add_car_letter-name'>
+                    {{item.carName}}
+                  </view>
                 </view>
               </view>
             </view>
           </view>
-        </view>
-      </scroll-view>
+        </scroll-view>
+      </view>
     </view>
-   </view>
   </view>
   <view hidden="{{activeIndex!=='2'}}" class='scan_contain'>
     <view class='scan_code'>
@@ -65,4 +67,9 @@
     <view class='btnScan' bindtap='btnScan'>扫描行驶证</view>
   </view>
 </view>
+<block wx:if="{{isShowLetter}}">
+  <view class="showSlectedLetter">
+    {{showLetter}}
+  </view>
+</block>
 <choose_brand show="{{choose_brand}}" carBrand="{{carBrand}}" bind:chooseType="chooseType" bind:clickMask="clickMask"></choose_brand>

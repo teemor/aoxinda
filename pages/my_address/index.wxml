@@ -1,7 +1,11 @@
 <view>
-<address-list addressDefault="true"/>
-<address-list/>
-<view class="fz30 bg_orange bottom_btn">
-+添加收货地址
-</view>
+  <address-list addressDefault="true" />
+  <address-list />
+  <view class="bottom_btn_address">
+    <view class="fz30 fl bg_orange bottom_btn_add" bindtap="addAddress">
+      +新建地址
+    </view>
+    <view class="tc fl bottom_green bottom_btn_add fz30">一键导入微信地址</view>
+  </view>
+
 </view>

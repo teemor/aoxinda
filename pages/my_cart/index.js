@@ -10,6 +10,21 @@ Page({
   onChange:function(e){
     console.log(e)
   },
+  /**
+   * 提交订单
+   * @param {*} options 
+   */
+  goOrder:function(){
+    wx.navigateTo({
+      url: '../add_order/index',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
   onLoad: function (options) {
 
   },

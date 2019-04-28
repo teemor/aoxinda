@@ -1,16 +1,24 @@
 <view>
-  <van-checkbox-group>
-  <view class="my_cart_content">
-    <van-checkbox checked-color="#fdbb51" bind:change="onChange">
-    <my_cart_list/>
-    </van-checkbox>
-  </view>
-   </van-checkbox-group>
-  <view>
-    <br-bottom btnRight="付款" price="666">
-    <view class="fl br-bottom">
-    <image src="../../common/image/my_cart_btn.png" />
+  <view class="cl my_cart_title fz30">
+    <view class="fl">
+      <van-checkbox checked-color="#fdbb51" bind:change="allChange">全选</van-checkbox>
     </view>
+    <view class="fr">完成</view>
+  </view>
+  <view class="cl">
+    <van-checkbox-group>
+      <view class="my_cart_content">
+        <van-checkbox checked-color="#fdbb51" bind:change="onChange">
+          <my_cart_list/>
+        </van-checkbox>
+      </view>
+    </van-checkbox-group>
+  </view>
+  <view>
+    <br-bottom btnRight="去结算" price="666" bindtap="goOrder">
+      <view class="fl br-bottom">
+
+      </view>
     </br-bottom>
   </view>
 </view>

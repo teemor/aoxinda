@@ -5,7 +5,10 @@ import {
   typeminiServiceList
 } from '../../common/static/api_data'
 import {
-  Technician
+  Technician 
+
+
+  
 } from '../../common/api/api'
 const request = new Technician
 let iphonex = require('../../mixin/iphonex.js')
@@ -20,7 +23,7 @@ Page({
     typeBigServiceList,
     typeminiServiceList,
     waxPrice:0,
-    cleanprice:0,
+    cleanPrice:0,
     miniClick: true,
     reslut: Object,
     countPrice:0,
@@ -46,6 +49,7 @@ Page({
    * dzl
    */
   typeWaxingChange: function(e) {
+    console.log(e.detail.split('¥')[0],'??')
     console.log(parseInt(e.detail.split('¥')[1])+this.data.cleanPrice,'hh')
     this.setData({
       waxingReslut: e.detail,
@@ -110,7 +114,7 @@ Page({
     console.log(that)
     wx.login({
       success(res) {
-        if (res.code) {
+        if (res.code) { //that.data.countPrice
           request.payCard(res.code, that.data.cleanNum, that.data.waxNum, 0.01).then(res => {
             if(res.status===false){
               wx.showToast({
@@ -126,6 +130,11 @@ Page({
                 paySign:description.paySign,
                 success(res){
                   console.log('res')
+                  let cleanNum = that.data.cleanNum
+                  let waxNum = that.data.waxNum
+                  let model = {}
+                  model.waxNum = waxNum
+                  model.cleanNum = cleanNum
                   wx.navigateTo({
                     url: '../car_beauty_shop_res/index',
                   })

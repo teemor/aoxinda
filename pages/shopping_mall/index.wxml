@@ -1,3 +1,35 @@
 <view>
-商城
+<van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:search="onSearch"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+  <view class="fl shop_type">
+    <van-badge-group active="{{ active }}" bind:change="onChange">
+      <van-badge title="{{item.name}}" titlea="{{item.id}}"  wx:for="{{typeData}}" />
+    </van-badge-group>
+  </view>
+  <view class="fl shop_contain">
+    <view class="shop_add_btn_contain"> 
+      <view class="fl shop_add_btn_img">
+      <image src="../../common/image/shop_addbtn.png"/>
+      </view>
+      <view class="fl shop_add_btn_text">添加您的爱车，享受更精准的推荐</view>
+    </view>
+    <view class="shop_banner">
+      <image src="../../common/image/shop_banner.jpg" mode="widthFix" />
+    </view>
+    <view class="shop_goods_title">{{shop_title}}</view>
+    <view class="shop_goods_box" wx:for="{{storeList}}" wx:key="{{item}}">
+      <view class="fl shop_goods_contain" bindtap="shopList" data-item="{{item}}">
+        <view class="shop_goods_image">
+          <image src="../../common/image/shop1.png" mode="aspectFit" />
+        </view>
+        <view class="shop_goods_text tc">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -31,6 +31,7 @@ Component({
      * 关闭当前所有使用manager组件的弹窗
      */
     closeMask: function () {
+      console.log('rwer')
       this.triggerEvent('clickMask', {})
     }
   }

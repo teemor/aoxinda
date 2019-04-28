@@ -14,6 +14,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    editAddress:function(){
+      wx.navigateTo({
+        url: '../../pages/add_address/index',
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
+    }
   }
 })

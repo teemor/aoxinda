@@ -1,11 +1,11 @@
 <view>
  <view class="carbeauty_btn_bottom">
     <view class="fl carbeauty_btn_contain">
-      <view class="fl carbeauty_btn_times">
+      <view class="fr carbeauty_btn_times">
       <slot/>
-        <span class="fz20">¥</span>
-        <span class="fz50">{{price}}</span>
-        <span class="fz20">元</span>
+        <span class="fz30 fzblack">合计</span>
+        <span class="fz28">¥</span>
+        <span class="fz30">{{price}}</span>
       </view>
       <view wx:if="{{btnBuy!==''}}" class="fl carbeauty_name" bindtap="btnBuy">{{btnBuy}}</view>
     </view>

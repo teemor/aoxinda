@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -15,11 +15,13 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.4.3",
 	"appid": "wx317e65151f04fa7c",
-	"projectname": "technician_miniapp1",
+	"projectname": "%E9%BA%A6%E8%BD%A6%E6%9C%8D",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,12 +40,138 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
 					"name": "洗车美容",
 					"pathName": "pages/car_beauty/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "二维码",
+					"pathName": "pages/car_beauty_shop_res/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加我的爱车",
+					"pathName": "pages/add_car/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城",
+					"pathName": "pages/shopping_mall/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城列表",
+					"pathName": "pages/shop_goods_list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "详情",
+					"pathName": "pages/shop_goods_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/my_cart/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加订单",
+					"pathName": "pages/add_order/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收货地址",
+					"pathName": "pages/my_address/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/my_order_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "开具发票",
+					"pathName": "pages/my_order_invoice/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "申请退款",
+					"pathName": "pages/add_refund/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "退款详情",
+					"pathName": "pages/my_order_refund_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "退款列表",
+					"pathName": "pages/my_order_refund_list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/shop_goods_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品分类+搜索",
+					"pathName": "pages/shopping_mall/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search_shop_list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品列表",
+					"pathName": "pages/shop_goods_list/index",
 					"query": "",
 					"scene": null
 				}
