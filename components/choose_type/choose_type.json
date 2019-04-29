@@ -2,7 +2,7 @@
   "component": true,
   "usingComponents": {
     "choose-list":"../choose_type_list/choose_type_list",
-    "van-tab":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tab/index",
-    "van-tabs":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tabs/index"
+    "van-tab":"../../miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs":"../../miniprogram_npm/vant-weapp/tabs/index"
   }
 }

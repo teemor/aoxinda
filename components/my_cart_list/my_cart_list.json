@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "van-stepper":"../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/stepper/index"
+    "van-stepper":"../miniprogram_npm/vant-weapp/stepper/index"
   }
 }

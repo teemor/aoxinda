@@ -2,7 +2,7 @@
   "navigationBarTitleText": "洗车买单",
   "usingComponents": {
     "code-card":"../../components/my_code_card/my_code_card",
-    "van-checkbox":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/checkbox/index",
-    "van-checkbox-group":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/checkbox-group/index"
+    "van-checkbox":"../../miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group":"../../miniprogram_npm/vant-weapp/checkbox-group/index"
   }
 }

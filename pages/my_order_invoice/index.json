@@ -1,10 +1,10 @@
 {
   "navigationBarTitleText": "开具发票",
   "usingComponents": {
-    "van-field":"../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/field/index",
-    "van-cell": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/cell/index",
-    "van-switch": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/switch/index",
-    "van-radio": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/radio/index",
-    "van-radio-group": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/radio-group/index"
+    "van-field":"../../miniprogram_npm/vant-weapp/field/index",
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
+    "van-switch": "../../miniprogram_npm/vant-weapp/switch/index",
+    "van-radio": "../../miniprogram_npm/vant-weapp/radio/index",
+    "van-radio-group": "../../miniprogram_npm/vant-weapp/radio-group/index"
   }
 }

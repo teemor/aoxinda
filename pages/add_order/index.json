@@ -3,6 +3,6 @@
   "usingComponents": {
     "br-bottom":"../../components/br_bottom/br_bottom",
     "my_order_list":"../../components/my_order_list/my_order_list",
-    "van-cell": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/cell/index"
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index"
   }
 }
