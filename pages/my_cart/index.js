@@ -1,4 +1,6 @@
 
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
 
   data: {
@@ -7,26 +9,30 @@ Page({
   /**
    * 选择
    */
-  onChange:function(e){
+  onChange: function (e) {
     console.log(e)
   },
   /**
    * 提交订单
    * @param {*} options 
    */
-  goOrder:function(){
+  goOrder: function () {
     wx.navigateTo({
       url: '../add_order/index',
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
   },
   onLoad: function (options) {
-
+    request.selectCartList().then(res => {
+      this.setData({
+        cartList: res.data
+      })
+    })
   },
   onReady: function () {
 

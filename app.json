@@ -40,7 +40,8 @@
     "pages/add_refund/index",
     "pages/my_order_refund_list/index",
     "pages/read_book/index",
-    "pages/search_shop_list/index"
+    "pages/search_shop_list/index",
+    "pages/my/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -75,14 +76,14 @@
       },
       {
         "active": false,
-        "pagePath": "pages/message/index",
-        "text": "消息",
+        "pagePath": "pages/my_cart/index",
+        "text": "购物车",
         "iconPath": "/common/image/tab/mes.png",
         "selectedIconPath": "/common/image/tab/mes_after.png"
       },
       {
         "active": false,
-        "pagePath": "pages/mine/index",
+        "pagePath": "pages/my/index",
         "text": "我的",
         "iconPath": "/common/image/tab/mine.png",
         "selectedIconPath": "/common/image/tab/mine_after.png"

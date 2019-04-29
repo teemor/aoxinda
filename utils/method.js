@@ -9,14 +9,14 @@ export class HttpServer {
  * @update dzl
  * @date 2018-10-29
  */
-  httpRequest = ({ url, method, data = {}, token }) => {
+  httpRequest = ({ url, method, data = {}, token={} }) => {
     wx.showLoading({ title: "拼命加载中...", mask: true })
     return new Promise((resolve, reject) => {
       wx.request({
         url,
         data,
         method,
-        header: { 'content-type': 'application/json', 'Accept': 'application/json', "token": app.globalData.Authorization },
+        header: { 'content-type': 'application/json', 'Accept': 'application/json', "token": 'admin' },
         success(res) {
           wx.hideLoading();
           res.statusCode === 200 ? resolve(res.data) : reject(res.data)

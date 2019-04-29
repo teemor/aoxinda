@@ -7,9 +7,9 @@
   </view>
   <view class="cl">
     <van-checkbox-group>
-      <view class="my_cart_content">
+      <view class="my_cart_content" wx:for="{{cartList}}" wx:key="{{item}}">
         <van-checkbox checked-color="#fdbb51" bind:change="onChange">
-          <my_cart_list/>
+          <my_cart_list model="{{item}}"/>
         </van-checkbox>
       </view>
     </van-checkbox-group>

@@ -6,13 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    buy_num: 1,
     dataset: {
       name: '米其林轮胎', price: '666',
-      list: [{
-        name: '类型', list:
-          [{ name: "普通轮胎", id: '1' }, { name: "改装轮胎", id: '2' }], remark: '该商品需延迟发货，预计发货时间为：2019-05-01'
-      },
-      { name: '服务', list: [{ name: "到店安装", id: '01' }, { name: '无需安装', id: '02' }] }]
+      goodstype: [{
+        name: '类型', lists: [{ active: true }]
+      }],
+      list: [
+        { name: '服务', list: [{ name: "到店安装", id: '01' }, { active: true, name: '无需安装', id: '02' }] }]
     },
     cart: false,
     show: false,
@@ -20,16 +21,27 @@ Page({
     buyNumMin: 1,
     buyNumMax: 0,
   },
+  labelChoosed: function (e) {
+    console.log(e, 'e')
+    let that = this
+    let child = that.data.dataset.goodstype[e.currentTarget.dataset.index].lists
+    for (let i = 0; i < child.length; i++) {
+      that.data.dataset.goodstype[e.currentTarget.dataset.index].lists[i].active = false
+    }
+    that.data.dataset.goodstype[e.currentTarget.dataset.index].lists[e.currentTarget.dataset.childindex].active = true;
+    this.setData({
+      dataset: that.data.dataset,
+      goods_id: e.currentTarget.dataset.item.goods_id,
+      goods_detail_id: e.currentTarget.dataset.item.goods_detail_id
+    })
+  },
   labelChoose: function (e) {
-    console.log(e)
     let that = this
     let child = that.data.dataset.list[e.currentTarget.dataset.index].list
-    console.log(child, 'child')
     for (let i = 0; i < child.length; i++) {
       that.data.dataset.list[e.currentTarget.dataset.index].list[i].active = false
     }
     that.data.dataset.list[e.currentTarget.dataset.index].list[e.currentTarget.dataset.childindex].active = true;
-    console.log(e.currentTarget.dataset, 'e')
     this.setData({
       dataset: that.data.dataset
     })
@@ -41,12 +53,10 @@ Page({
     wx.navigateTo({
       url: '../my_cart/index',
       success: (result) => {
-
       },
       fail: () => { },
       complete: () => { }
     });
-
   },
   /**
    * 加入购物车
@@ -60,14 +70,33 @@ Page({
   /**
    * 
    */
-  addCarta:function(){
-    wx.showToast({
-      title: '加入购物车成功',
-      icon: 'success',
-      duration: 2000
-    });
+  addCarta: function () {
+    request.toCart({ buy_num: this.data.buy_num, goods_id: this.data.goods_id, goods_detail_id: this.data.goods_detail_id }).then(res => {
+      if (res.status === 0) {
+        wx.showToast({
+          title: '加入购物车成功',
+          icon: 'success',
+          duration: 2000
+        });
+        this.goodsDetail(this.data.product_code)
+      } else {
+        wx.showToast({
+          title: '加入购物车失败',
+          icon: 'error',
+          duration: 2000
+        });
+      }
+    })
     this.setData({
-      show:false
+      show: false
+    })
+  },
+  /**
+   * 购买数量
+   */
+  onChange: function ({ detail }) {
+    this.setData({
+      buy_num: detail
     })
   },
   /**
@@ -79,41 +108,34 @@ Page({
       show: false
     })
   },
-  numJianTap: function () {
-    if (this.data.buyNumber > this.data.buyNumMin) {
-      var currentNum = this.data.buyNumber;
-      currentNum--;
-      this.setData({
-        buyNumber: currentNum
-      })
-    }
-  },
-  numJiaTap: function () {
-    console.log(this.data.buyNumber, 'buyNumber')
-    console.log(this.data.buyNumMax, 'buyNumMax')
 
-    if (this.data.buyNumber < this.data.buyNumMax) {
-      var currentNum = this.data.buyNumber;
-      currentNum++;
-      this.setData({
-        buyNumber: currentNum
-      })
-    }
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.product_code)
-    request.goodsDetail({ product_code: options.product_code }).then(res => {
+    this.setData({
+      product_code: options.product_code
+    })
+    this.goodsDetail(this.data.product_code)
+  },
+  /**
+   * 详情
+   */
+  goodsDetail: function (code) {
+    request.goodsDetail({ product_code: code }).then(res => {
+      let that = this
+      that.data.dataset.goodstype[0].lists = res.tableDetail
+      that.data.dataset.goodstype[0].lists[0].active = true
       this.setData({
+        cartNum: res.total,
         goodsData: res.mainTable,
-        list:res.tableDetail
+        dataset: that.data.dataset,
+        price: res.tableDetail[0].goods_price,
+        goods_id: res.tableDetail[0].goods_id,
+        goods_detail_id: res.tableDetail[0].goods_detail_id
       })
-      console.log(this.data.goodsData,'goodsData')
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,0 +1,60 @@
+@import "../../app.wxss";
+.location_contain{
+    margin-top: 10rpx;
+    width: 100%;
+    height: 140rpx;
+    background: #fff;
+}
+.location_img{
+    width: 120rpx;
+    height: 90rpx;
+}
+.location_img image{
+    margin-top:40rpx;
+    margin-left:40rpx;
+    width:40rpx;
+    height: 50rpx;
+}
+page{
+    min-height: 100%;
+    background-color: #f3f3f3;
+}
+.location_address{
+    font-size: 30rpx;
+    margin-top:20rpx;
+}
+.location_address_btn image{
+    margin-right: 30rpx;
+    margin-top:55rpx;
+    width: 15rpx;
+    height: 30rpx;
+}
+.my_order_list_text{
+    
+}
+.my_order_describe{
+    margin-top: 10rpx;
+    padding-left:10rpx;
+}
+.my_order_list_box{
+    border-bottom: 2rpx solid #eeeeee;
+    margin:28rpx;
+    background: #fff;
+    padding:5rpx 30rpx 30rpx;
+    height:170rpx;
+}
+.order_detail_bg{
+    position: relative;
+}
+.order_detail_bg image{
+    margin-top:30rpx;
+    width: 96%;
+    margin-left:2%;
+    height:180rpx;
+}
+.order_detail_text{
+    color:#fff;
+    position: absolute;
+    margin-top:-140rpx;
+    margin-left:90rpx;
+}

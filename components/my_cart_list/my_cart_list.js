@@ -1,8 +1,8 @@
 Component({
   properties: {
-
+    model: Object
   },
-  onChange:function(){
+  onChange: function () {
 
   },
   data: {
