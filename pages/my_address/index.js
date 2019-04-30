@@ -1,35 +1,68 @@
-// pages/my_address/index.js
+const app = getApp()
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addressList:[]
   },
- 
+
   /**
    * 添加收货地址
    * dzl
    */
-  addAddress:function(){
+  addAddress: function () {
     wx.navigateTo({
-      url: '../add_address/index',
+      url: '../my_add_address/index',
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
   },
+  /**
+  *  调起用户收货地址
+   */
+   wxAddress:function(){
+     wx.chooseAddress({
+       success: (result) => {
+        request.saveAddress({
+        name: result.userName,
+        phone: result.telNumber,
+        province: result.provinceName,
+        city: result.cityName,
+        county: result.countyName,
+        street: result.detailInfo,
+        is_check: 0
+      }).then(res=>{
+        this.selectAddressList()
+      })
+       },
+       fail: () => {},
+       complete: () => {}
+     });
+       
+   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.selectAddressList()
   },
-
+  /**
+   * 地址列表
+   */
+  selectAddressList: function () {
+    request.selectAddressList().then(res=>{
+      this.setData({
+        addressList:res.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -37,11 +70,8 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    this.selectAddressList();
   },
 
   /**

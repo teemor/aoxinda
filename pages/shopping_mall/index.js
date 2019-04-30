@@ -14,11 +14,12 @@ Page({
    * 2019-03-28
    */
   onChange: function (e) {
+    console.log(e,'e')
     this.setData({
       shop_title:e.detail.title
     })
     console.log(e.detail.title, 'detail')
-    request.selectGoodsType({ parentId: e.detail.id }).then(res => {
+    request.selectGoodsType({ parentId: e.detail.titlea }).then(res => {
       this.setData({
         storeList:res.data.tableData
       })
@@ -41,7 +42,6 @@ Page({
     wx.navigateTo({
       url: `../shop_goods_list/index?id=${model}`
     });
-
   },
   /**
    * 生命周期函数--监听页面加载

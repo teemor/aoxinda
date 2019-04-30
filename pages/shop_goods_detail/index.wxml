@@ -74,7 +74,7 @@
   </view>
   <view>
     <goods-action>
-      <goods-action-icon icon="cart-o" text="购物车" link-type="navigateTo" info="{{cartNum}}" url="../my_cart/index" />
+      <goods-action-icon icon="cart-o" text="购物车" link-type="switchTab" info="{{cartNum}}" url="../my_cart/index" />
       <goods-action-button text="加入购物车" type="warning" bind:click="addCart" />
       <goods-action-button text="立即购买" bind:click="buyGoods" />
     </goods-action>

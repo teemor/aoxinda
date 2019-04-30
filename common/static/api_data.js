@@ -264,6 +264,20 @@ export const messageList = [
     "notice":"0"
   }
 ]
+export const myService = [{
+  "img":"../../common/image/my_cards.png",
+  "title":"洗车卡包"
+},{
+  "img":"../../common/image/my_reservation.png",
+  "title":"我的预约"
+},{
+  "img":"../../common/image/my_address.png",
+  "title":"地址管理",
+  "url":"../my_address/index"
+},{
+  "img":"../../common/image/my_service.png",
+  "title":"用户反馈"
+}]
 export const tabbarConfig = [{
     "active": true,
     "pagePath": "pages/index/index",

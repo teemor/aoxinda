@@ -2,7 +2,8 @@ Component({
   properties: {
     btnRight:String,
     price:String,
-    btnBuy:String
+    btnBuy:String,
+    total:Boolean
   },
 
   /**

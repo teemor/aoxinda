@@ -1,12 +1,12 @@
 <view class="my_address_contain">
   <view class="cl my_address_name">
-    <view class="fl fz32">何佳平</view>
-    <view class="grey fl fz30 phone">15131503009</view>
+    <view class="fl fz32">{{model.name}}</view>
+    <view class="grey fl fz30 phone">{{model.phone}}</view>
   </view>
   <view class="cl fz28">
     <view class="fl">
-      <view><span wx:if="{{addressDefault}}" class="tc fz20 orange my_address_default">默认地址</span> 河北省 唐山市 路北区</view>
-      <view>东方大厦c座502</view>
+      <view><span wx:if="{{addressDefault}}" class="tc fz20 orange my_address_default">默认地址</span>{{model.province}}  {{model.city}}  {{model.street}}</view>
+      <view>{{model.street}}</view>
     </view>
     <view class="fr grey my_address_btn tc" bindtap="editAddress">编辑</view>
   </view>

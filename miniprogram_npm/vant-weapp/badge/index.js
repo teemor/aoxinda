@@ -9,7 +9,8 @@ VantComponent({
     },
     props: {
         info: null,
-        title: String
+        title: String,
+        titlea:Number
     },
     methods: {
         onClick() {
@@ -18,9 +19,11 @@ VantComponent({
                 return;
             }
             const index = parent.badges.indexOf(this);
+            // console.log(parent.badges[index].data,'index')
+            
             parent.setActive(index).then(() => {
                 this.$emit('click', index);
-                parent.$emit('change', index);
+                parent.$emit('change', parent.badges[index].data);
             });
         },
         setActive(active) {

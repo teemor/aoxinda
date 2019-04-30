@@ -1,6 +1,7 @@
 Component({
   properties: {
-    addressDefault:Boolean
+    addressDefault:Boolean,
+    model:Object
   },
 
   /**
@@ -15,8 +16,9 @@ Component({
    */
   methods: {
     editAddress:function(){
+      let  model= encodeURIComponent(JSON.stringify(this.data.model))
       wx.navigateTo({
-        url: '../../pages/add_address/index',
+        url: `../../pages/my_edit_address/index?model=${model}`,
         success: (result) => {
           
         },

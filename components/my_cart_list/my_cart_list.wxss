@@ -7,7 +7,12 @@
 }
 
 .my_cart_title {
+  height:79rpx;
   margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .my_cart_box {

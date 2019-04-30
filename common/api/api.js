@@ -169,6 +169,37 @@ export class Technician {
       method: `post`
     })
   }
+  // 查詢地址列表
+  selectAddressList = () => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/address/selectAddressList`,
+      method: `post`
+    })
+  }
+  // 新增地址
+  saveAddress = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/address/saveAddress`,
+      data: model,
+      method: `post`
+    })
+  }
+  // 編輯地址
+  updateAddress = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/address/updateAddress`,
+      data: model,
+      method: `post`
+    })
+  }
+  // 刪除地址
+  deleteAddress =(model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/address/updateAddress`,
+      data: model,
+      method: `post`
+    })
+  }
 }
 
 

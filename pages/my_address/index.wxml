@@ -1,11 +1,13 @@
 <view>
-  <address-list addressDefault="true" />
-  <address-list />
+<view wx:for="{{addressList}}" wx:key="{{item}}">
+  <address-list addressDefault="{{item.is_check===0?false:true}}" model="{{item}}"/>
+</view>
+
   <view class="bottom_btn_address">
     <view class="fz30 fl bg_orange bottom_btn_add" bindtap="addAddress">
       +新建地址
     </view>
-    <view class="tc fl bottom_green bottom_btn_add fz30">一键导入微信地址</view>
+    <view class="tc fl bottom_green bottom_btn_add fz30" bindtap="wxAddress">一键导入微信地址</view>
   </view>
 
 </view>

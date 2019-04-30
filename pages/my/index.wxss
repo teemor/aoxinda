@@ -58,3 +58,21 @@ page{
     margin-top:-140rpx;
     margin-left:90rpx;
 }
+.service_img{
+    margin:auto;
+    width: 100rpx;
+    display: block;
+}
+.service_img image{
+    margin-left:25rpx;
+    width:50rpx;
+    height: 50rpx;
+}
+.my_service_item{
+    width:230rpx;
+}
+.my_service_box{
+    width:690rpx;
+    height:300rpx;
+    margin: auto;
+}

@@ -1,10 +1,10 @@
 <view>
   <view class="add_address_contain">
     <view class="add_item">
-      <input focus="{{focus}}" value="{{name}}" class="add_item_input" bindinput="nameChange" bindfocus="keyboardNull" type="text" placeholder-class="placeholder" placeholder="收货人姓名" />
+      <input focus="{{focus}}" value="{{content.name}}" class="add_item_input" bindinput="nameChange" bindfocus="keyboardNull" type="text" placeholder-class="placeholder" placeholder="收货人姓名" />
     </view>
     <view class="add_item">
-      <input focus="{{focus}}" value="{{phone}}" class="add_item_input" bindinput="numberChange" bindfocus="keyboardNull" type="number" placeholder-class="placeholder" placeholder="手机号" />
+      <input focus="{{focus}}" value="{{content.phone}}" class="add_item_input" bindinput="numberChange" bindfocus="keyboardNull" type="number" placeholder-class="placeholder" placeholder="手机号" />
     </view>
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
       <view class="add_item add_item_input">
@@ -13,12 +13,12 @@
       </view>
     </picker>
     <view>
-      <textarea maxlength="70" value="{{address}}" bindinput="addressChange" class="add_item_area" style="margin-top:20rpx" placeholder-class="textplaceholder" placeholder="详细地址，如街道、楼牌号等" />
+      <textarea maxlength="70" value="{{content.street}}" bindinput="addressChange" class="add_item_area" style="margin-top:20rpx" placeholder-class="textplaceholder" placeholder="详细地址，如街道、楼牌号等" />
     </view>
     <view class="add_item_area">
       <view class="fl">设置为默认地址</view>
       <view class="fr" style="margin-right:30rpx;">
-        <switch checked bindchange="switchChange" color="#5d8fcb" />
+        <switch checked bindchange="switchChange" color="#fdbb51" />
       </view>
     </view>
     <view wx:if="{{deleteShow===true}}" class="add_item_area red" bindtap="deleteAdd">

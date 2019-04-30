@@ -3,13 +3,13 @@
     <image src="../../common/image/cart_list_perfume.png" />
   </view>
   <view class="fl my_cart_box">
-    <view class="my_cart_title fz30 fl">
+    <view class="my_cart_title fz30">
      {{model.goods_name}}
     </view>
     <view>
       <view class="red fl fz30">¥ {{model.goods_price}}</view>
       <view class="fr">
-        <van-stepper value="{{1}}" bind:change="onChange" />
+        <van-stepper integer value="{{model.buy_num}}" bind:change="numChange" />
       </view>
     </view>
   </view>
