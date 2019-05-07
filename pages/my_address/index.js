@@ -9,7 +9,17 @@ Page({
   data: {
     addressList:[]
   },
+  chooseAddress:function(data){
+    let currentPages =  getCurrentPages();
+    let prevPage = currentPages[currentPages.length-2];
+    prevPage.setData({
+      adddata:data
+    })
+    wx.navigateBack({
+      url: '1'
+    });
 
+  },
   /**
    * 添加收货地址
    * dzl

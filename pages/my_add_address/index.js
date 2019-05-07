@@ -3,7 +3,6 @@ import {
 } from '../../common/api/api'
 const request = new Technician
 Page({
-
   /**
    * 页面的初始数据
    */

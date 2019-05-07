@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    ispay:Boolean
+    ispay:Boolean,
+    goodsList:Object
   },
 
   /**
@@ -22,8 +23,7 @@ Component({
      * 进入详情
      */
     orderDetail:function(){
-      console.log('rwer')
-      this.triggerEvent('orderDetail', {})
+      this.triggerEvent('orderDetail', {id:this.data.goodsList.id})
     }
   }
 })

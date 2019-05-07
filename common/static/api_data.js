@@ -268,7 +268,7 @@ export const myService = [{
   "img":"../../common/image/my_cards.png",
   "title":"洗车卡包"
 },{
-  "img":"../../common/image/my_reservation.png",
+  "img":"../../common/image/my_buy.png",
   "title":"我的预约"
 },{
   "img":"../../common/image/my_address.png",
@@ -277,6 +277,22 @@ export const myService = [{
 },{
   "img":"../../common/image/my_service.png",
   "title":"用户反馈"
+}]
+export const myOrder = [{
+  "img":"../../common/image/my_unpay.png",
+  "title":"待付款"
+},{
+  "img":"../../common/image/my_unship.png",
+  "title":"待收货"
+},{
+  "img":"../../common/image/my_uninstall.png",
+  "title":"待安装"
+},{
+  "img":"../../common/image/my_unevaluation.png",
+  "title":"待评价"
+},{
+  "img":"../../common/image/my_refund.png",
+  "title":"退款/售后"
 }]
 export const tabbarConfig = [{
     "active": true,

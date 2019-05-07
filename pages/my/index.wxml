@@ -3,8 +3,22 @@
   <view class="order_detail_text ">
     <view class="fz30">请登录</view>
   </view>
+   <view class="bgwhite" style="margin:30rpx">
+    <van-cell title="我的订单"  value="全部订单" is-link bind:click="myOrder">
+    </van-cell>
+    <view class="my_order_box">
+    <view class="fl my_order_item" wx:for="{{myOrder}}" wx:key="{{item}}" data-item="{{item.url}}" bindtap="openType">
+      <view class="service_img">
+      <image src="{{item.img}}"/>
+      </view>
+      <view class="tc fz28">
+      {{item.title}}
+      </view>
+    </view>
+    </view>
+  </view>
   <view class="bgwhite" style="margin:30rpx">
-    <van-cell title="我的服务" is-link bind:click="myInvite">
+    <van-cell title="我的服务">
     </van-cell>
     <view class="my_service_box">
     <view class="fl my_service_item" wx:for="{{myService}}" wx:key="{{item}}" data-item="{{item.url}}" bindtap="openType">

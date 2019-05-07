@@ -1,4 +1,6 @@
 import {myOrderMenu} from '../../common/static/api_data'
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
   data: {
     myOrderMenu
@@ -8,7 +10,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+request.selectMyOrder().then(res=>{
+  this.setData({
+    goodsList:res.orderData
+  })
+  
+  console.log(res.orderData,'res')
+})
   },
   /**
    * 订单详情
@@ -18,10 +26,9 @@ Page({
    * 详情
    * dzl
    */
-  orderDetail:function(){
-    console.log('rwerwe')
+  orderDetail:function({detail}){
     wx.navigateTo({
-      url:'../my_order_detail/index'
+      url:`../my_order_detail/index?id=${detail.id}`
     })
   },
   /**

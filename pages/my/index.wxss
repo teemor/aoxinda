@@ -71,8 +71,16 @@ page{
 .my_service_item{
     width:230rpx;
 }
+.my_order_item{
+    width:132rpx;
+}
 .my_service_box{
     width:690rpx;
     height:300rpx;
+    margin: auto;
+}
+.my_order_box{
+    width:690rpx;
+    height:150rpx;
     margin: auto;
 }

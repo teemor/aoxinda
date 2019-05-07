@@ -1,6 +1,6 @@
 <view>
 <view wx:for="{{addressList}}" wx:key="{{item}}">
-  <address-list addressDefault="{{item.is_check===0?false:true}}" model="{{item}}"/>
+  <address-list bind:chooseAddress="chooseAddress" addressDefault="{{item.is_check===0?false:true}}" model="{{item}}"/>
 </view>
 
   <view class="bottom_btn_address">

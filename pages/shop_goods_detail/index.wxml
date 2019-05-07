@@ -60,7 +60,8 @@
           <van-tab title="商品详情">
             <view>
               <view></view>
-              商品详情
+            <rich-text class="" nodes="{{detail}}">
+            </rich-text>
               <view></view>
             </view>
           </van-tab>
@@ -76,7 +77,7 @@
     <goods-action>
       <goods-action-icon icon="cart-o" text="购物车" link-type="switchTab" info="{{cartNum}}" url="../my_cart/index" />
       <goods-action-button text="加入购物车" type="warning" bind:click="addCart" />
-      <goods-action-button text="立即购买" bind:click="buyGoods" />
+      <goods-action-button text="立即购买" bind:click="addCart" />
     </goods-action>
   </view>
   <manager show="{{show}}" type="bottom" bind:clickMask="clickMask">

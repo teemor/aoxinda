@@ -5,9 +5,10 @@ const request = new Technician
 
 Page({
   onLoad: function (options) {
-    console.log(options,'options')
     request.selectInvoice({id:options.id}).then(res=>{
-      console.log(res)
+      this.setData({
+        model:res.data[0]
+      })
     })
   },
   /**
@@ -16,11 +17,7 @@ Page({
   data: {
     checked: true,
     ptchecked: true,
-    radio: 'pt',
-    head: 'p',
-    person:true,
-    invoice_title:0,
-    invoice_type:0
+    person:true
   },
   unitChange: function({
     detail
@@ -77,8 +74,8 @@ Page({
   /**
    * 添加发票
    */
-  saveInvoice: function(data) {
-    request.saveInvoice(data).then(res => {
+  updateInvoice: function(data) {
+    request.updateInvoice(data).then(res => {
       if(res.status===0){
         wx.showToast({
           title: '添加成功'
@@ -99,14 +96,15 @@ Page({
    * @param {*} param0 
    */
   addInvoice: function() {
-    this.saveInvoice({
-      invoice_title: this.data.invoice_title,
-      invoice_type: this.data.invoice_type,
-      unit:this.data.unit,
-      person_code:this.data.person_code,
-      sign_phone:this.data.sign_phone,
-      bank:this.data.bank,
-      bank_account:this.data.bank_account
+    this.updateInvoice({
+      id:this.data.model.id,
+      invoice_title: this.data.model.invoice_title,
+      invoice_type: this.data.model.invoice_type,
+      unit:this.data.model.unit,
+      person_code:this.data.model.person_code,
+      sign_phone:this.data.model.sign_phone,
+      bank:this.data.model.bank,
+      bank_account:this.data.model.bank_account
     })
   },
   /**
@@ -116,26 +114,17 @@ Page({
   invoiceChange: function({
     detail
   }) {
-    this.setData({
-      radio: detail
-    })
-    if (detail === 'pt') {
+    if (detail === '0') {
+      this.data.model.invoice_type=0
       this.setData({
-        ptchecked: true,
-        invoice_type: 0,
-        unit: '',
-        person_code: '',
-        sign_address: '',
-        sign_phone: '',
-        bank: '',
-        bank_account: ''
+       model:this.data.model,
+       ptchecked:true
       })
     } else {
+      this.data.model.invoice_type=1
       this.setData({
-        invoice_type: 1,
-        ptchecked: false,
-        unit: '',
-        person_code: ''
+        model:this.data.model,
+        ptchecked:false
       })
     }
   },
@@ -145,18 +134,17 @@ Page({
   headChange: function({
     detail
   }) {
-    this.setData({
-      head: detail
-    })
-    if (detail === 'p') {
+    if (detail === '0') {
+      this.data.model.invoice_title=0
       this.setData({
         person: true,
-        invoice_title: 0
+        model: this.data.model
       })
     } else {
+       this.data.model.invoice_title=1
       this.setData({
         person: false,
-        invoice_title: 1
+        model: this.data.model
       })
     }
   },

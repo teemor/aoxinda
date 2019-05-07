@@ -5,7 +5,6 @@
  */
 import {
   HttpServer
-
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
@@ -170,34 +169,90 @@ export class Technician {
     })
   }
   // 查詢地址列表
-  selectAddressList = () => {
+  selectAddressList = (model) => {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/address/selectAddressList`,
-      method: `post`
+      method: `post`,
+      data: model
     })
   }
   // 新增地址
-  saveAddress = (model)=>{
+  saveAddress = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/address/saveAddress`,
+      url: `${IP_YTHTTP}/appapi/v1.0/address/saveAddress`,
       data: model,
       method: `post`
     })
   }
   // 編輯地址
-  updateAddress = (model)=>{
+  updateAddress = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/address/updateAddress`,
+      url: `${IP_YTHTTP}/appapi/v1.0/address/updateAddress`,
       data: model,
       method: `post`
     })
   }
   // 刪除地址
-  deleteAddress =(model)=>{
+  deleteAddress = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/address/updateAddress`,
+      url: `${IP_YTHTTP}/appapi/v1.0/address/updateAddress`,
       data: model,
       method: `post`
+    })
+  }
+  // 填写订单
+  writeOrder = (model) => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/order/writeOrder`,
+      data: model,
+      method: `post`
+    })
+  }
+  // 查询订单列表
+  selectMyOrder = () => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/order/selectMyOrder`,
+      method: `post`
+    })
+  }
+  // 查询订单详情
+  selectOrderDetail = (id) => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/order/app/selectOrderDetail`,
+      method: `post`,
+      data:id
+    })
+  }
+  // 查询发票信息
+  selectInvoice = (id) => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/invoice/selectInvoice`,
+      method: `post`,
+      data: id
+    })
+  }
+  // 新增发票信息
+  saveInvoice = (model) => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/invoice/saveInvoice`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 更新发票信息
+  updateInvoice = (model) => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/invoice/updateInvoice`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 提交订单
+  payOrder = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/pay`,
+      method:`post`,
+      data:model
     })
   }
 }
@@ -235,3 +290,4 @@ export class Technician {
 //             }
 //           ]
 // }
+

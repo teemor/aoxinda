@@ -47,25 +47,31 @@ Page({
    * 全选
    */
   allChange: function ({ detail }) {
-    console.log(this.data.result, 'result')
     this.setData({
       checked: !this.data.checked
     })
     let arr = []
     let num = 0
+    let modelarr= []
+    let sum = 0
     if (this.data.checked) {
       this.data.cartList.forEach(item => {
         arr.push(JSON.stringify(item.id))
+        modelarr.push(item)
         num += item.goods_price * item.buy_num
+        sum += item.buy_num
         this.setData({
           total_price: num,
-          result: arr
+          result: arr,
+          modelarr:modelarr,
+          sum:sum
         })
       });
     } else {
       this.setData({
         result: arr,
-        total_price: 0
+        total_price: 0,
+        modelarr:modelarr
       })
     }
   },
@@ -103,8 +109,14 @@ Page({
    * @param {*} options 
    */
   goOrder: function () {
+    let data = {}
+    data.total_price = this.data.total_price
+    data.arr = this.data.modelarr
+    data.sum = this.data.sum
+    let  model= encodeURIComponent(JSON.stringify(data))
+    
     wx.navigateTo({
-      url: '../add_order/index',
+      url: `../add_order/index?model=${model}`,
       success: (result) => {
 
       },

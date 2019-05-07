@@ -14,13 +14,10 @@
       </van-checkbox>
     </van-checkbox-group>
   </view>
-
   <br-bottom style="z-index:333;" wx:if="{{!finish}}" btnRight="去结算" price="{{total_price}}" bindtap="goOrder">
     <view class="fl br-bottom">
     </view>
   </br-bottom>
-
-
   <br-bottom style="z-index:333;" wx:else btnRight="删除" total="true" bindtap="deleteAll">
     <view class="fl br-bottom">
     </view>

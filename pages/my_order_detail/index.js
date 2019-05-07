@@ -1,4 +1,5 @@
-// pages/my_order_detail/index.js
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
 
   /**
@@ -7,33 +8,62 @@ Page({
   data: {
 
   },
+  addInvoice: function () {
+    console.log('1')
+    wx.navigateTo({
+      url: '../my_order_invoice/index'
+    })
+  },
   /**
    * 退款进度
    */
-  refundList:function(){
+  refundList: function () {
     wx.navigateTo({
       url: '../my_order_refund/index',
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
   },
   /**
    * 申请退款
    */
-  goRefund:function(){
+  goRefund: function () {
     wx.navigateTo({
-      url:'../add_refund/index'
+      url: '../add_refund/index'
+    })
+  },
+  editInvoice: function () {
+    console.log('2')
+    wx.navigateTo({
+      url: `../edit_invoice/index?id=${this.data.model.invoice_id}`
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request.selectOrderDetail({ order_id: options.id }).then(res => {
+      let date = new Date(res.create_at)
+      let Y = date.getFullYear() + '-';
+      let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+      let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate();
+      let h = date.getHours() + ':';
+      let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMonth() + ':'
+      let s = date.getSeconds();
+      this.setData({
+        model: res,
+        date: Y + M + D + h + m + s
+      })
+      if (res.invoice_id === 1) {
+        this.setData({
+          id: res.invoiceData.id
+        })
+      }
+    })
   },
 
   /**

@@ -1,9 +1,16 @@
 import {
-  myService
+  myService,
+  myOrder
 } from '../../common/static/api_data'
 Page({
   data: {
-    myService
+    myService,
+    myOrder
+  },
+  myOrder:function(){
+    wx.navigateTo({
+      url:'../my_order/index'
+    })
   },
   /**
    * 跳转

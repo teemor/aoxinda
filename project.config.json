@@ -16,7 +16,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
-	"appid": "wx317e65151f04fa7c",
+	"appid": "wx97a3505497150b66",
 	"projectname": "%E9%BA%A6%E8%BD%A6%E6%9C%8D",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -172,13 +172,6 @@
 				},
 				{
 					"id": -1,
-					"name": "商品列表",
-					"pathName": "pages/shop_goods_list/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "我的页面",
 					"pathName": "pages/my/index",
 					"query": "",
@@ -195,6 +188,42 @@
 					"id": -1,
 					"name": "地址",
 					"pathName": "pages/my_address/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发票",
+					"pathName": "pages/my_order_invoice/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/my_order/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "付款结果",
+					"pathName": "pages/success_order/index",
+					"query": "",
 					"scene": null
 				}
 			]

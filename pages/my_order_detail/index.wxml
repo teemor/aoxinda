@@ -1,8 +1,8 @@
 <view class="order_detail_bg">
   <image src="../../common/image/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30">待付款</view>
-    <view class="fz24">订单为你保留24:59:60,超时后将自动关闭</view>
+    <view class="fz30">{{model.trade_status_name}}</view>
+    <!--<view class="fz24">订单为你保留24:59:60,超时后将自动关闭</view>-->
   </view>
 </view>
 
@@ -12,37 +12,23 @@
   </view>
   <view class="fl location_address">
     <view>{{name===undefined?'收货人信息':name}}</view>
-    <view class="location_mes">{{address===undefined?'填写收货地址信息':address}}</view>
+    <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
   </view>
   <view class="fr location_address_btn">
     <image src="../../common/image/right_arrow.png" />
   </view>
 
 </view>
-<view class="cl my_order_list_box">
+<view class="cl my_order_list_box" wx:for="{{model.goodsData}}" wx:key="{{item}}">
   <view class="fl my_order_list_image">
     <image src="../../common/image/cart_list_perfume.png" />
   </view>
   <view class="fl my_order_list_text">
-    <view class="fz30">【正品授权】美孚速霸1000合成机油</view>
+    <view class="fz30">{{item.goods_name}}</view>
     <view class="my_order_price fz28">
-      <view class="fl red">¥ 199.00</view>
-<view class="my_order_list_btn">
-        <view class="fr myorder_orange" bindtap="refundList">退款中</view>
-      </view>
-    </view>
-  </view>
-</view>
-<view class="cl my_order_list_box">
-  <view class="fl my_order_list_image">
-    <image src="../../common/image/cart_list_perfume.png" />
-  </view>
-  <view class="fl my_order_list_text">
-    <view class="fz30">【正品授权】美孚速霸1000合成机油</view>
-    <view class="my_order_price fz28">
-      <view class="fl red">¥ 199.00</view>
-      <view class="my_order_list_btn">
-        <view class="fr myorder_orange" bindtap="goRefund">申请退款</view>
+      <view class="fl red">¥ {{item.goods_price}}</view>
+      <view class="my_order_list_btn fr">
+        <view class="myorder_orange" bindtap="goRefund">{{item.status}}</view>
       </view>
     </view>
   </view>
@@ -58,26 +44,27 @@
   <view class="cl high70">预约时间：2019-04-08 8:00-12:00</view>
 </view>
 <view class="mtop20">
-  <van-cell title="订单编号" value="77711742"></van-cell>
-  <van-cell title="下单时间" value="2019-03-25 10:30:51"></van-cell>
+  <van-cell title="订单编号" value="{{model.order_code}}"></van-cell>
+  <van-cell title="下单时间" value="{{date}}"></van-cell>
 </view>
 <view class="mtop20">
   <van-cell title="配送方式" value="无需配送，直接进店安装即可安装"></van-cell>
   <van-cell title="支付方式" value="微信支付"></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell title="电子普通发票" value="明细;单位" is-link></van-cell>
+  <van-cell wx:if="{{model.invoice_id===0}}" title="补开发票" bind:click="addInvoice" is-link></van-cell>
+  <van-cell wx:else title="{{model.invoiceData.invoice_type}}" bind:click="editInvoice" value="{{model.invoiceData.invoice_title}}" is-link></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell title="商品总价" value="¥299"></van-cell>
-  <van-cell title="服务费" value="+¥40"></van-cell>
-  <van-cell title="运费" value="+¥0"></van-cell>
+  <van-cell title="商品总价" value="¥{{model.pay_money}}"></van-cell>
+  <van-cell title="服务费" value="+¥{{model.order_server_money}}"></van-cell>
+  <van-cell title="运费" value="+¥{{model.order_freight_money}}"></van-cell>
 </view>
 <view class="bgwhite" style="height:200rpx;">
   <view class="cl" style="height:30rpx;padding-right:20rpx;">
     <view class="fr">
       合计
-      <span class="red">¥:339</span>
+      <span class="red">¥:{{model.pay_money}}</span>
     </view>
   </view>
   <view class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">

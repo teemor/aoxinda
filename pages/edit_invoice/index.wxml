@@ -11,51 +11,50 @@
     <view class="cl">
       <view class="high70">发票类型</view>
       <view class="fz26 mleft20">
-        <van-radio-group value="{{ radio }}" bind:change="invoiceChange">
-          <van-radio class="fl" name="pt" checked-color="#fdbb51">纸质普通发票</van-radio>
-          <van-radio class="fl" name="zzs" checked-color="#fdbb51">纸质增值税专用发票</van-radio>
+        <van-radio-group value="{{ model.invoice_type===0?'0':'1' }}" bind:change="invoiceChange">
+          <van-radio class="fl" name="0" checked-color="#fdbb51">纸质普通发票</van-radio>
+          <van-radio class="fl" name="1" checked-color="#fdbb51">纸质增值税专用发票</van-radio>
         </van-radio-group>
       </view>
     </view>
-
   </view>
   <view wx:if="{{ptchecked}}">
     <view class="invoice_cell fz26">
       <view class="fl">发票抬头</view>
       <view class="fl mleft20" style="height:80rpx;padding-top:20rpx;">
-        <van-radio-group value="{{ head }}" bind:change="headChange">
-          <van-radio class="fl" name="p" checked-color="#fdbb51">个人</van-radio>
-          <van-radio class="fl" name="s" checked-color="#fdbb51">企业</van-radio>
+        <van-radio-group value="{{ model.invoice_title===0?'0':'1' }}" bind:change="headChange">
+          <van-radio class="fl" name="0" checked-color="#fdbb51">个人</van-radio>
+          <van-radio class="fl" name="1" checked-color="#fdbb51">企业</van-radio>
         </van-radio-group>
       </view>
     </view>
     <view wx:if="{{person}}" class="cl bgwhite fz26 high80">
       <view class="fl mleft20">发票内容</view>
       <view class="fl mleft20 fz26">
-        明细
+        {{invoice_content}}
         <span class="grey">(发票内容暂不支持修改)</span>
       </view>
     </view>
     <view wx:else>
-      <van-field value="{{ unit }}" bind:change="unitChange" label="公司名称" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
-      <van-field value="{{ person_code }}" bind:change="person_codeChange" label="税号" type="textarea" placeholder="纳税人识别号" autosize border="{{ false }}" />
+      <van-field value="{{ model.unit }}" bind:change="unitChange" label="公司名称" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
+      <van-field value="{{ model.person_code }}" bind:change="person_codeChange" label="税号" type="textarea" placeholder="纳税人识别号" autosize border="{{ false }}" />
 
       <view class="cl bgwhite fz26 high80">
         <view class="fl mleft20">发票内容</view>
         <view class="fl mleft20 fz26">
-          明细
+          {{invoice_content}}
           <span class="grey">(发票内容暂不支持修改)</span>
         </view>
       </view>
     </view>
   </view>
   <view wx:else>
-    <van-field value="{{ unit }}" bind:change="unitChange" label="公司名称" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
-    <van-field value="{{ person_code }}" bind:change="person_codeChange" label="税号" type="textarea" placeholder="纳税人识别号" autosize border="{{ false }}" />
-    <van-field value="{{ sign_address }}" bind:change="sign_addressChange" label="注册地址" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
-    <van-field value="{{ sign_phone }}" bind:change="sign_phoneChange" label="注册电话" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
-    <van-field value="{{ bank }}" bind:change="bankChange" label="开户银行" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
-    <van-field value="{{ bank_account }}" bind:change="bank_accountChange" label="银行账户" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
+    <van-field value="{{ model.unit }}" bind:change="unitChange" label="公司名称" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
+    <van-field value="{{ model.person_code }}" bind:change="person_codeChange" label="税号" type="textarea" placeholder="纳税人识别号" autosize border="{{ false }}" />
+    <van-field value="{{ model.sign_address }}" bind:change="sign_addressChange" label="注册地址" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
+    <van-field value="{{ model.sign_phone }}" bind:change="sign_phoneChange" label="注册电话" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
+    <van-field value="{{ model.bank }}" bind:change="bankChange" label="开户银行" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
+    <van-field value="{{ model.bank_account }}" bind:change="bank_accountChange" label="银行账户" type="textarea" placeholder="请输入" autosize border="{{ false }}" />
     <view class="cl bgwhite fz26 high80">
       <view class="fl mleft20">发票内容</view>
       <view class="fl mleft20 fz26">

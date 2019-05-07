@@ -20,6 +20,12 @@ export class HttpServer {
         success(res) {
           wx.hideLoading();
           res.statusCode === 200 ? resolve(res.data) : reject(res.data)
+          if(res.statusCode===500){
+            wx.showToast({
+              title: "服务器挂掉了",
+              icon: "none"
+            })
+          }
         },
         fail(res) {
           wx.showToast({

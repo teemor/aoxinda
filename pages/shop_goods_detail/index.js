@@ -50,13 +50,10 @@ Page({
    * 购买
    */
   buyGoods: function () {
-    wx.navigateTo({
-      url: '../my_cart/index',
-      success: (result) => {
-      },
-      fail: () => { },
-      complete: () => { }
-    });
+    this.addCarta();
+    wx.switchTab({
+      url:'../my_cart/index'
+    })
   },
   /**
    * 加入购物车
@@ -125,15 +122,21 @@ Page({
     request.goodsDetail({ product_code: code }).then(res => {
       let that = this
       that.data.dataset.goodstype[0].lists = res.tableDetail
-      that.data.dataset.goodstype[0].lists[0].active = true
       this.setData({
         cartNum: res.total,
         goodsData: res.mainTable,
-        dataset: that.data.dataset,
-        price: res.tableDetail[0].goods_price,
-        goods_id: res.tableDetail[0].goods_id,
-        goods_detail_id: res.tableDetail[0].goods_detail_id
+        detail:res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
+        dataset: that.data.dataset
       })
+      if(res.tableDetail.length>0){
+        that.data.dataset.goodstype[0].lists[0].active = true
+        this.setData({
+          price: res.tableDetail[0].goods_price,
+          goods_id: res.tableDetail[0].goods_id,
+          goods_detail_id: res.tableDetail[0].goods_detail_id
+        })
+      } 
+    
     })
   },
   /**

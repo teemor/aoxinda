@@ -1,23 +1,23 @@
 <view class="{{ispay===true?'my_order_list-contain':'my_order_list-box'}} cl">
   <view class="cl my_order_title" wx:if="{{ispay===true}}">
-    <view class="fl">订单编号：658585858</view>
-    <view class="fr orange">等待支付</view>
+    <view class="fl fz24">订单编号：{{goodsList.order_code}}</view>
+    <view class="fr orange">{{goodsList.trade_status}}</view>
   </view>
-  <view class="cl my_order_list_box" bindtap="orderDetail">
+  <view class="cl my_order_list_box" bindtap="orderDetail" wx:for="{{goodsList.goodsData}}" wx:key="{{item}}">
     <view class="fl my_order_list_image">
       <image src="../../common/image/cart_list_perfume.png" />
     </view>
     <view class="fl my_order_list_text" >
-      <view>【正品授权】美孚速霸1000合成机油</view>
+      <view>{{item.goods_name}}</view>
       <view class="my_order_price fz28">
-        <view class="fl red">¥ 199.00</view>
-        <view class="fr grey">x1</view>
+        <view class="fl red">¥ {{item.goods_price}}</view>
+        <view class="fr grey">x{{item.buy_num}}</view>
       </view>
     </view>
   </view>
   <view class="cl my_order_list_bottom"  wx:if="{{ispay===true}}">
     <view class="fl">
-    合计<span class="red">¥:339</span>
+    合计<span class="red">¥:{{goodsList.pay_money}}</span>
     </view>
     <view class="fr fz24 my_order_list_btn">
       <view class="fl myorder_grey">取消订单</view>

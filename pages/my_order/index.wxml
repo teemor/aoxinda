@@ -2,9 +2,8 @@
  <van-tabs   bind:change="tabchange" color="#fdbb51">
       <view wx:for="{{myOrderMenu}}" wx:key="{{item.id}}">
         <van-tab title="{{item.name}}">
-        <view class="cl">
-        <order-list  bind:orderDetail="orderDetail"/>
-        <order-list/>
+        <view class="cl" wx:for="{{goodsList}}" wx:key="{{item}}">
+        <order-list goodsList="{{item}}" ispay="true" bind:orderDetail="orderDetail"/>
         </view>
         </van-tab>
       </view>

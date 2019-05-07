@@ -15,6 +15,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    chooseAddress:function(){
+      this.triggerEvent('chooseAddress',this.data.model)
+    },
     editAddress:function(){
       let  model= encodeURIComponent(JSON.stringify(this.data.model))
       wx.navigateTo({

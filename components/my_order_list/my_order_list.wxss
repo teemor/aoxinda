@@ -8,9 +8,12 @@
     height:70rpx;
     line-height: 70rpx;
 }
-
+.my_order_list_text{
+    background: #fff;
+}
 
 .my_order_list_box{
+    background: #fff;
     height:120rpx;
 }
 .my_order_list-box{
