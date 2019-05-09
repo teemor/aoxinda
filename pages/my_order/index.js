@@ -5,18 +5,26 @@ Page({
   data: {
     myOrderMenu
     },
-
+    tabchange:function({detail}){
+      console.log(detail,'detail')
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-request.selectMyOrder().then(res=>{
-  this.setData({
-    goodsList:res.orderData
-  })
+    console.log(options,'options')
+    if(options.id){
+      this.setData({
+        id:options.id
+      })
+    }
+// request.selectMyOrder({trade_status:""}).then(res=>{
+//   this.setData({
+//     goodsList:res.orderData
+//   })
   
-  console.log(res.orderData,'res')
-})
+//   console.log(res.orderData,'res')
+// })
   },
   /**
    * 订单详情

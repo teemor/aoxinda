@@ -98,14 +98,14 @@ export const carBrand = [{
 }]
 // 我的订单
 export const myOrderMenu = [{
-  "id":"001","name":"全部订单"},{
-    "id":"002","name":"待付款"
+  "id":"0","name":"全部"},{
+    "id":"1","name":"待付款"
   },{
-    "id":"002","name":"待发货"
+    "id":"2","name":"待收货"
   },{
-    "id":"002","name":"待收货"
+    "id":"3","name":"待安装"
   },{
-    "id":"002","name":"待评价"
+    "id":"4","name":"已完成"
   }]
 export const typeminiServiceList = [{
     "label": "1次洗车 ¥20",
@@ -280,16 +280,20 @@ export const myService = [{
 }]
 export const myOrder = [{
   "img":"../../common/image/my_unpay.png",
-  "title":"待付款"
+  "title":"待付款",
+  "url":"../my_order/index?id=1"
 },{
   "img":"../../common/image/my_unship.png",
-  "title":"待收货"
+  "title":"待收货",
+  "url":"../my_order/index?id=2"
 },{
   "img":"../../common/image/my_uninstall.png",
-  "title":"待安装"
+  "title":"待安装",
+  "url":"../my_order/index?id=3"
 },{
   "img":"../../common/image/my_unevaluation.png",
-  "title":"待评价"
+  "title":"待评价",
+  "url":"../my_order/index?id=4"
 },{
   "img":"../../common/image/my_refund.png",
   "title":"退款/售后",

@@ -209,10 +209,11 @@ export class Technician {
     })
   }
   // 查询订单列表
-  selectMyOrder = () => {
+  selectMyOrder = (model) => {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/order/selectMyOrder`,
-      method: `post`
+      method: `post`,
+      data:model
     })
   }
   // 查询订单详情
