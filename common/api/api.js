@@ -255,6 +255,34 @@ export class Technician {
       data:model
     })
   }
+  selectMyBackOrderList=(model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/selectMyBackOrderList`,
+      method:`post`,
+      data:model
+    })
+  }
+  writeBackOrder=(model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/writeBackOrder`,
+      method:`post`,
+      data:model
+    })
+  }
+  selectBackOrderDetail = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/selectBackOrderDetail`,
+      method:`post`,
+      data:model
+    })
+  }
+  updateBackOrder = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/updateBackOrder`,
+      method:`post`,
+      data:model
+    })
+  }
 }
 
 

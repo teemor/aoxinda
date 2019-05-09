@@ -1,20 +1,45 @@
-// pages/my_order_refund_detail/index.js
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    if(options.id){
+      this.setData({
+        id:options.id
+      })
+      request.selectBackOrderDetail().then(res=>{
+        this.setData({
+          detailData:res
+        })
+      })
+    }
   },
-
+  cancelApply:function(){
+    request.updateBackOrder({id:this.data.id,back_type:'20'}).then(res=>{
+      if(res.status===0){
+        wx.showToast({
+          title: '撤销成功',
+          icon: 'none',
+          image: '',
+          duration: 3500,
+          mask: false,
+          success: (result) => {
+            wx.navigateBack({
+              url: '1'
+            });  
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+          
+             
+      }
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

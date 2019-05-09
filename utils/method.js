@@ -25,6 +25,11 @@ export class HttpServer {
               title: "服务器挂掉了",
               icon: "none"
             })
+          }else if(res.statusCode===404){
+            wx.showToast({
+              title: res.data.message,
+              icon: "none"
+            })
           }
         },
         fail(res) {

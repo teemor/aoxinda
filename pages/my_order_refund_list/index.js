@@ -1,18 +1,36 @@
-// pages/my_order_refund_list/index.js
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
 
   },
+  refundDetail: function (data) {
+    console.log(data,'data')
+    /**
+    * 跳转退款详情
+    */
+    wx.navigateTo({
+      url: `../my_order_refund_detail/index?id=${data.currentTarget.dataset.item}`,
+      success: (result) => {
 
+      },
+      fail: () => { },
+      complete: () => { }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request.selectMyBackOrderList().then(res => {
+      this.setData({
+        refundList: res
+      })
+      console.log(res, 'res')
+    })
   },
 
   /**

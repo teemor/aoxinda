@@ -70,7 +70,7 @@
   <view class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
     <view class="fr fz24 my_order_list_btn">
       <view class="fl myorder_grey">取消订单</view>
-      <view class="fl myorder_orange">付款</view>
+      <view class="fl myorder_orange" bindtap="btnBuy">付款</view>
     </view>
   </view>
 

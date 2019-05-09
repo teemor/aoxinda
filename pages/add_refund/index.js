@@ -1,4 +1,5 @@
-// pages/add_refund/index.js
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
 
   /**
@@ -14,6 +15,19 @@ Page({
    * 跳转退款详情
    */
   refundDetail:function(){
+    request.writeBackOrder({
+      // goods_detail:
+      // order_detail_id:
+      // order_id:
+      // goods_num:
+      // back_money:
+      // back_reason:
+      // goods_status:
+      // order_type:
+      // back_desription:
+    }).then(res=>{
+      console.log(res,'res')
+    })
     wx.navigateTo({
       url: '../my_order_refund_detail/index',
       success: (result) => {
@@ -57,52 +71,4 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

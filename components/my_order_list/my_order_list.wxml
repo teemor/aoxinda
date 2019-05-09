@@ -1,4 +1,4 @@
-<view class="{{ispay===true?'my_order_list-contain':'my_order_list-box'}} cl">
+<view wx:if="{{ispay===true}}" class="{{ispay===true?'my_order_list-contain':'my_order_list-box'}} cl">
   <view class="cl my_order_title" wx:if="{{ispay===true}}">
     <view class="fl fz24">订单编号：{{goodsList.order_code}}</view>
     <view class="fr orange">{{goodsList.trade_status}}</view>
@@ -24,5 +24,18 @@
       <view class="fl myorder_orange">去付款</view>
     </view>
   </view>
-
 </view>
+<view wx:else class="my_order_list-box">
+ <view class="cl my_order_list_box" bindtap="orderDetail" >
+    <view class="fl my_order_list_image">
+      <image src="../../common/image/cart_list_perfume.png" />
+    </view>
+    <view class="fl my_order_list_text" >
+      <view>{{goodsList.goods_name}}</view>
+      <view class="my_order_price fz28">
+        <view class="fl red">¥ {{goodsList.goods_price}}</view>
+        <view class="fr grey">x{{goodsList.buy_num}}</view>
+      </view>
+    </view>
+  </view>
+  </view>

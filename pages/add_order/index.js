@@ -3,8 +3,9 @@ import {
   Technician
 } from '../../common/api/api'
 const request = new Technician
+import pay from '../../mixin/pay'
 Page({
-
+  mixins: [pay],
   /**
    * 页面的初始数据
    */
@@ -13,101 +14,46 @@ Page({
     invoice: '不开具发票'
   },
   /**
+   * 发票
+   */
+  addInvoice: function() {
+    wx.navigateTo({
+      url: '../my_order_invoice/index'
+    })
+  },
+
+  /**
    * 提交订单
    */
-  btnBuy: function () {
+  btnBuy: function() {
     let data = this.data.goodsList.map(item => {
       return {
         goods_detail_id: item.goods_detail_id,
         goods_num: item.buy_num
       }
     })
-    request.writeOrder({
-      invoice_id: this.data.item,
-      order_address: this.data.address,
-      order_phone: this.data.phone,
-      order_express: '普通快递',
-      order_money: this.data.total + 0 + 12,
-      pay_money: this.data.total + 0 + 12,
-      data: data
-    }).then(res => {
-      let id = res.data
-      wx.login({
-        success(res) {
-          if (res.code) {
-            console.log(res.code,'res.code')
-            request.payOrder({ code:res.code,open_id:'o2ZTm5SU5GDoA5ZT4fgsizV7--Zs',price:'1'}).then(res => {
-              if(res.status===false){
-                wx.showToast({
-                  title:res.description
-                })
-              }else{
-                let description = JSON.parse(res.result);
-                wx.requestPayment({
-                  timeStamp: description.timeStamp,
-                  nonceStr: description.nonceStr,
-                  package: description.package,
-                  signType: description.signType,
-                  paySign: description.paySign,
-                  success: (result) => {
-                    let data = {}
-                    data.id = id
-                    data.data = 'success'
-                    let  model= encodeURIComponent(JSON.stringify(data))
-                    wx.navigateTo({
-                      url:`../success_order/index?data=${model}`
-                    })
-                  },
-                  fail: () => {
-                   let data = {}
-                    data.id = id
-                    data.data = 'fail'
-                    let  model= encodeURIComponent(JSON.stringify(data))
-                    wx.navigateTo({
-                      url:`../success_order/index?data=${model}`
-                    })
-                  },
-                  complete: () => {}
-                });
-                  
-              }
-            })
-          }
-        }
-      })
-    })
-   
-
-  },
-  /**
-   * 发票
-   */
-  addInvoice: function () {
-    wx.navigateTo({
-      url: '../my_order_invoice/index'
-    })
+    this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total + 0 + 12, this.data.total + 0 + 12,data)
   },
   /**
    * 地址
    * @param {*} options 
    */
-  locationBtn: function () {
+  locationBtn: function() {
     wx.navigateTo({
       url: '../my_address/index',
       success: (result) => {
 
       },
-      fail: () => { },
-      complete: () => { }
+      fail: () => {},
+      complete: () => {}
     });
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let model = JSON.parse(decodeURIComponent(options.model))
-    console.log(model, 'model')
     this.setData({
       goodsList: model.arr,
       total: model.total_price,
@@ -127,9 +73,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     if (this.data.item) {
-      request.selectInvoice({ id: this.data.item }).then(res => {
+      request.selectInvoice({
+        id: this.data.item
+      }).then(res => {
         if (res.data[0].invoice_type === 1) {
           this.setData({
             invoice: '增值税专用发票'
@@ -161,35 +109,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

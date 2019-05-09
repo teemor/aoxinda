@@ -1,15 +1,30 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
+import pay from '../../mixin/pay'
 Page({
-
+  mixins: [pay],
   /**
    * 页面的初始数据
    */
   data: {
 
   },
+  btnBuy: function () {
+    let data = this.data.model.goodsData.map(item => {
+      return {
+        goods_detail_id: item.goods_detail_id,
+        goods_num: item.buy_num
+      }
+    })
+    this.writeOrder(this.data.model.invoice_id,
+      this.data.model.order_address,
+      this.data.model.order_phone,
+     '普通快递',
+      this.data.model.order_money,
+       this.data.model.pay_money,
+      data)
+  },
   addInvoice: function () {
-    console.log('1')
     wx.navigateTo({
       url: '../my_order_invoice/index'
     })
@@ -51,11 +66,12 @@ Page({
       let Y = date.getFullYear() + '-';
       let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
       let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate();
-      let h = date.getHours() + ':';
-      let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMonth() + ':'
+      let h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+      let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':'
       let s = date.getSeconds();
       this.setData({
-        model: res,
+        model:res,
+        goodsList: res,
         date: Y + M + D + h + m + s
       })
       if (res.invoice_id === 1) {
@@ -66,52 +82,4 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

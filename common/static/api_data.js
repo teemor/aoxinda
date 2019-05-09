@@ -292,7 +292,8 @@ export const myOrder = [{
   "title":"待评价"
 },{
   "img":"../../common/image/my_refund.png",
-  "title":"退款/售后"
+  "title":"退款/售后",
+  "url":"../my_order_refund_list/index"
 }]
 export const tabbarConfig = [{
     "active": true,

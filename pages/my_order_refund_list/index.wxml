@@ -1,14 +1,16 @@
-<view class="br_btm_light" style="padding:30rpx">
+<view  wx:for="{{refundList.backOrderData}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">
+<view class="br_btm_light" style="padding:30rpx" >
   <view class="fl my_order_list_image">
     <image src="../../common/image/cart_list_perfume.png" />
   </view>
-  <view class="fl my_order_list_text fz26">
-    <view class="">【正品授权】美孚速霸1000合成机油5W-30SN级别</view>
-    <view class="fz24 my_order_describe">数量1 产品：全合成5w-30 SN级别，4L</view>
+  <view class="fl my_order_list_text fz28">
+    <view class="fz28">{{item.goods_name}}</view>
+    <view class="fz24 my_order_describe">数量{{item.goods_num}} 产品：{{item.sku_name}}</view>
     <view class="cl">
-    <view class="fl red">¥200</view>
+    <view class="fl red">¥{{item.back_money}}</view>
     <view class="fr">退款数量x1</view>
     </view>
   </view>
-</view>
-  <van-cell title="仅退款，待审核" value="" is-link></van-cell>
+  </view>
+ <van-cell title="{{item.order_type}}" value="" is-link></van-cell>
+ </view>

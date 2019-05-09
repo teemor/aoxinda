@@ -1,7 +1,7 @@
 <view class="order_detail_bg">
   <image src="../../common/image/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30">等待退款</view>
+    <view class="fz30">{{detailData.back_type}}</view>
   </view>
 </view>
 
@@ -15,8 +15,8 @@
         <image src="../../common/image/cart_list_perfume.png" />
       </view>
       <view class="fl my_order_list_text fz26">
-        <view class="">【正品授权】美孚速霸1000合成机油5W-30SN级别</view>
-        <view class="fz24 my_order_describe">数量1 产品：全合成5w-30 SN级别，4L</view>
+        <view class="">{{detailData.goods_name}}</view>
+        <view class="fz24 my_order_describe">数量{{detailData.goods_num}} 产品：{{detailData.sku_name}}</view>
       </view>
     </view>
 <view style="" class=" bgwhite">
@@ -24,20 +24,20 @@
 退款原因：商品信息填写错误
 </view>
 <view class="high70 fz26 br_btm_light">
-退款金额：<span class="red">¥311</span><span class="grey">（含运费）</span>
+退款金额：<span class="red">¥{{detailData.back_money}}</span><span class="grey">（含运费）</span>
 </view>
 <view class="high70 fz26 br_btm_light">
-退款数量：1
+退款数量：{{detailData.goods_num}}
 </view>
 <view class="high70 fz26 br_btm_light">
-申请时间：2019-04-02 15:38
+申请时间：{{detailData.create_at}}
 </view>
 <view class="high70 fz26 br_btm_light">
-退款编号：23597984646
+退款编号：{{detailData.back_code}}
 </view>
 </view>
   <view class="bottom_btn_address mtop50">
-    <view class="fz30 fl bg_orange bottom_btn_add" bindtap="addAddress">
+    <view class="fz30 fl bg_orange bottom_btn_add" bindtap="cancelApply">
       撤销申请
     </view>
     <view class="tc fl br_orange orange bottom_btn_add fz30">修改申请</view>
