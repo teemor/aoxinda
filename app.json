@@ -45,7 +45,8 @@
     "pages/my_cart/index",
     "pages/my_edit_address/index",
     "pages/edit_invoice/index",
-    "pages/success_order/index"
+    "pages/success_order/index",
+    "pages/add_invite/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
