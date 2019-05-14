@@ -109,7 +109,8 @@
               <view bindtap="labelChoose" data-childindex="{{index}}" data-index="{{idx}}" data-item="{{item}}" class="{{item.active?'active':'active_null'}} fl fz28 tc" style="">
                 {{item.name}}</view>
             </view>
-            <view class="cl"></view>
+                      <view class="cl"></view>
+            <view class="cl"  wx:if="{{store}}" bindtap="storeChoose">请选择门店预约</view>
             <view wx:if="{{item.remark}}" class="cl high80 red">{{item.remark}}</view>
           </view>
           <view class="cl buy-num-box">

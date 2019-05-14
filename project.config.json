@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -223,6 +223,13 @@
 					"id": -1,
 					"name": "付款结果",
 					"pathName": "pages/success_order/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录授权",
+					"pathName": "pages/login_userinfo/index",
 					"query": "",
 					"scene": null
 				}

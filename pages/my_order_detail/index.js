@@ -9,6 +9,26 @@ Page({
   data: {
 
   },
+  btnShip:function(){
+    request.updateOrder({order_id:this.data.model.order_id,trade_status:7}).then(res=>{
+      console.log(res,'res')
+      if(res.status===0){
+        wx.showToast({
+          title: '确认收货成功',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {
+            
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+          
+      }
+    })
+  },
   btnBuy: function () {
     let data = this.data.model.goodsData.map(item => {
       return {

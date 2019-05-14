@@ -84,3 +84,12 @@ page{
     height:150rpx;
     margin: auto;
 }
+.order_image image{
+  margin-top:-6rpx;
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50rpx;
+}
+button{border: 0;background: none;color:#fff;font-size: 30rpx}
+.button-hover {background: none}
+button::after{ border: none; } 

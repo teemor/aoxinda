@@ -16,7 +16,7 @@ export class HttpServer {
         url,
         data,
         method,
-        header: { 'content-type': 'application/json', 'Accept': 'application/json', "token": 'admin' },
+        header: { 'content-type': 'application/json', 'Accept': 'application/json', "token": 'o2ZTm5SU5GDoA5ZT4fgsizV7--Zs' },
         success(res) {
           wx.hideLoading();
           res.statusCode === 200 ? resolve(res.data) : reject(res.data)

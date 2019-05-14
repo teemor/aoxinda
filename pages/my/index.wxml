@@ -1,34 +1,49 @@
 <view class="order_detail_bg">
   <image src="../../common/image/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30">请登录</view>
-  </view>
-   <view class="bgwhite" style="margin:30rpx">
-    <van-cell title="我的订单"  value="全部订单" is-link bind:click="myOrder">
-    </van-cell>
-    <view class="my_order_box">
-    <view class="fl my_order_item" wx:for="{{myOrder}}" wx:key="{{item}}" data-item="{{item.url}}" bindtap="openType">
-      <view class="service_img">
-      <image src="{{item.img}}"/>
+    <view class="fz24" wx:if="{{login===true}}" class="order_image">
+      <view class="fl">
+        <image src="../../common/image/my_avatar.png" />
       </view>
-      <view class="tc fz28">
-      {{item.title}}
+      <view class="fl">
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+          请登录
+        </button>
       </view>
     </view>
+    <view wx:else class="order_image">
+      <view class="order_image fl">
+        <image src="{{url}}"></image>
+      </view>
+      <view class='fl' style='height:90rpx;line-height:90rpx;margin-left:30rpx'>{{name}}</view>
+    </view>
+  </view>
+  <view class="bgwhite" style="margin:30rpx">
+    <van-cell title="我的订单" value="全部订单" is-link bind:click="myOrder">
+    </van-cell>
+    <view class="my_order_box">
+      <view class="fl my_order_item" wx:for="{{myOrder}}" wx:key="{{item}}" data-item="{{item.url}}" data-id="{{item.id}}" bindtap="openType">
+        <view class="service_img">
+          <image src="{{item.img}}" />
+        </view>
+        <view class="tc fz28">
+          {{item.title}}
+        </view>
+      </view>
     </view>
   </view>
   <view class="bgwhite" style="margin:30rpx">
     <van-cell title="我的服务">
     </van-cell>
     <view class="my_service_box">
-    <view class="fl my_service_item" wx:for="{{myService}}" wx:key="{{item}}" data-item="{{item.url}}" bindtap="openType">
-      <view class="service_img">
-      <image src="{{item.img}}"/>
+      <view class="fl my_service_item" wx:for="{{myService}}" wx:key="{{item}}" data-item="{{item.url}}" bindtap="openType">
+        <view class="service_img">
+          <image src="{{item.img}}" />
+        </view>
+        <view class="tc fz28">
+          {{item.title}}
+        </view>
       </view>
-      <view class="tc fz28">
-      {{item.title}}
-      </view>
-    </view>
     </view>
   </view>
 </view>

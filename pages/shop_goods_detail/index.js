@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    store:false,
     buy_num: 1,
     dataset: {
       name: '米其林轮胎', price: '666',
@@ -36,6 +37,16 @@ Page({
     })
   },
   labelChoose: function (e) {
+    console.log(e, 'eeee')
+    if (e.currentTarget.dataset.item.name === '无需安装') { 
+      this.setData({
+        store:false
+      })
+    } else {
+      this.setData({
+        store:true
+      })
+    }
     let that = this
     let child = that.data.dataset.list[e.currentTarget.dataset.index].list
     for (let i = 0; i < child.length; i++) {
@@ -52,7 +63,7 @@ Page({
   buyGoods: function () {
     this.addCarta();
     wx.switchTab({
-      url:'../my_cart/index'
+      url: '../my_cart/index'
     })
   },
   /**
@@ -125,18 +136,18 @@ Page({
       this.setData({
         cartNum: res.total,
         goodsData: res.mainTable,
-        detail:res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
+        detail: res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
         dataset: that.data.dataset
       })
-      if(res.tableDetail.length>0){
+      if (res.tableDetail.length > 0) {
         that.data.dataset.goodstype[0].lists[0].active = true
         this.setData({
           price: res.tableDetail[0].goods_price,
           goods_id: res.tableDetail[0].goods_id,
           goods_detail_id: res.tableDetail[0].goods_detail_id
         })
-      } 
-    
+      }
+
     })
   },
   /**

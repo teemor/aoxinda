@@ -109,7 +109,8 @@ VantComponent({
         trigger(eventName, index) {
             this.$emit(eventName, {
                 index,
-                title: this.data.tabs[index].title
+                title: this.data.tabs[index].title,
+                titlea:this.data.tabs[index].titlea
             });
         },
         onTap(event) {

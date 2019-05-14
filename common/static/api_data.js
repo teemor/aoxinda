@@ -65,6 +65,26 @@ export const carList = [{
     "id": "13"
   }
 ]
+
+export const hotData = [{
+  "img": "../../common/image/1.png",
+  "txt": "濠头YU300线圈钢索..."
+}, {
+  "img": "../../common/image/1.png",
+  "txt": "濠头YU300线圈钢索..."
+}, {
+  "img": "../../common/image/1.png",
+  "txt": "濠头YU300线圈钢索..."
+}, {
+  "img": "../../common/image/1.png",
+  "txt": "濠头YU300线圈钢索..."
+}, {
+  "img": "../../common/image/1.png",
+  "txt": "濠头YU300线圈钢索..."
+}, {
+  "img": "../../common/image/1.png",
+  "txt": "濠头YU300线圈钢索..."
+}]
 export const carBrand = [{
   "name": "一汽大众奥迪",
   "data": [{
@@ -98,15 +118,24 @@ export const carBrand = [{
 }]
 // 我的订单
 export const myOrderMenu = [{
-  "id":"0","name":"全部"},{
-    "id":"1","name":"待付款"
-  },{
-    "id":"2","name":"待收货"
-  },{
-    "id":"3","name":"待安装"
-  },{
-    "id":"4","name":"已完成"
-  }]
+  "id": "0",
+  "name": "全部"
+}, {
+  "id": "17",
+  "name": "待付款"
+}, {
+  "id": "4",
+  "name": "待发货"
+}, {
+  "id": "6",
+  "name": "待收货"
+}, {
+  "id": "5",
+  "name": "待安装"
+}, {
+  "id": "7",
+  "name": "已完成"
+}]
 export const typeminiServiceList = [{
     "label": "1次洗车 ¥20",
     "code": "001"
@@ -120,56 +149,56 @@ export const typeminiServiceList = [{
   }
 ]
 export const typeBigServiceList = [{
-  "label": "1次洗车 ¥30",
-  "code": "001"
-}, {
-  "label": "3次洗车 ¥65",
-  "code": "002"
-},
-{
-  "label": "6次洗车 ¥110",
-  "code": "003"
-}
+    "label": "1次洗车 ¥30",
+    "code": "001"
+  }, {
+    "label": "3次洗车 ¥65",
+    "code": "002"
+  },
+  {
+    "label": "6次洗车 ¥110",
+    "code": "003"
+  }
 ]
 export const typeminiWaxingList = [{
-  "label": "1次打蜡 ¥40",
-  "code": "001"
-}, {
-  "label": "3次打蜡 ¥100",
-  "code": "002"
-},
-{
-  "label": "6次打蜡 ¥200",
-  "code": "003"
-}
+    "label": "1次打蜡 ¥40",
+    "code": "001"
+  }, {
+    "label": "3次打蜡 ¥100",
+    "code": "002"
+  },
+  {
+    "label": "6次打蜡 ¥200",
+    "code": "003"
+  }
 ]
 export const typeBigWaxingList = [{
-  "label": "1次打蜡 ¥50",
-  "code": "001"
-}, {
-  "label": "3次打蜡 ¥110",
-  "code": "002"
-},
-{
-  "label": "6次打蜡 ¥210",
-  "code": "003"
-}
+    "label": "1次打蜡 ¥50",
+    "code": "001"
+  }, {
+    "label": "3次打蜡 ¥110",
+    "code": "002"
+  },
+  {
+    "label": "6次打蜡 ¥210",
+    "code": "003"
+  }
 ]
 export const attentionList = [{
-  "label": "仪表台干净",
-  "code": "001"
-}, {
-  "label": "脚踏冲洗",
-  "code": "002"
-},
-{
-  "label": "坐垫吸尘",
-  "code": "003"
-},
-{
-  "label": "轮毂干净",
-  "code": "004"
-}
+    "label": "仪表台干净",
+    "code": "001"
+  }, {
+    "label": "脚踏冲洗",
+    "code": "002"
+  },
+  {
+    "label": "坐垫吸尘",
+    "code": "003"
+  },
+  {
+    "label": "轮毂干净",
+    "code": "004"
+  }
 ]
 export const carTypeData = [{
     "name": "2019款",
@@ -232,72 +261,71 @@ export const carTypeData = [{
     }]
   }
 ]
-export const messageList = [
-  {
-    "img":"../../common/image/mes_exchange.png",
-    "title":"交易物流提醒",
-    "content":"您购买的物品已经出库",
-    "notice":"1"
+export const messageList = [{
+    "img": "../../common/image/mes_exchange.png",
+    "title": "交易物流提醒",
+    "content": "您购买的物品已经出库",
+    "notice": "1"
   },
   {
-    "img":"../../common/image/mes_discount.png",
-    "title":"优惠促销",
-    "content":"内饰清洁剂0.01元，补胎抵制9.9元...",
-    "notice":"2"
+    "img": "../../common/image/mes_discount.png",
+    "title": "优惠促销",
+    "content": "内饰清洁剂0.01元，补胎抵制9.9元...",
+    "notice": "2"
   },
   {
-    "img":"../../common/image/mes_servi.png",
-    "title":"服务消息提醒",
-    "content":"您在奥宝星辉预约的养护服务开始...",
-    "notice":"3"
+    "img": "../../common/image/mes_servi.png",
+    "title": "服务消息提醒",
+    "content": "您在奥宝星辉预约的养护服务开始...",
+    "notice": "3"
   },
   {
-    "img":"../../common/image/mes_set.png",
-    "title":"系统消息",
-    "content":"麦车服APPV3.0版本已经上线，请及时...",
-    "notice":"0"
+    "img": "../../common/image/mes_set.png",
+    "title": "系统消息",
+    "content": "麦车服APPV3.0版本已经上线，请及时...",
+    "notice": "0"
   },
   {
-    "img":"../../common/image/mes_service.png",
-    "title":"客服中心",
-    "content":"暂无消息",
-    "notice":"0"
+    "img": "../../common/image/mes_service.png",
+    "title": "客服中心",
+    "content": "暂无消息",
+    "notice": "0"
   }
 ]
 export const myService = [{
-  "img":"../../common/image/my_cards.png",
-  "title":"洗车卡包"
-},{
-  "img":"../../common/image/my_buy.png",
-  "title":"我的预约"
-},{
-  "img":"../../common/image/my_address.png",
-  "title":"地址管理",
-  "url":"../my_address/index"
-},{
-  "img":"../../common/image/my_service.png",
-  "title":"用户反馈"
+  "img": "../../common/image/my_cards.png",
+  "title": "洗车卡包"
+}, {
+  "img": "../../common/image/my_buy.png",
+  "title": "我的预约"
+}, {
+  "img": "../../common/image/my_address.png",
+  "title": "地址管理",
+  "url": "../my_address/index"
+}, {
+  "img": "../../common/image/my_service.png",
+  "title": "用户反馈"
 }]
 export const myOrder = [{
-  "img":"../../common/image/my_unpay.png",
-  "title":"待付款",
-  "url":"../my_order/index?id=1"
-},{
-  "img":"../../common/image/my_unship.png",
-  "title":"待收货",
-  "url":"../my_order/index?id=2"
-},{
-  "img":"../../common/image/my_uninstall.png",
-  "title":"待安装",
-  "url":"../my_order/index?id=3"
-},{
-  "img":"../../common/image/my_unevaluation.png",
-  "title":"待评价",
-  "url":"../my_order/index?id=4"
-},{
-  "img":"../../common/image/my_refund.png",
-  "title":"退款/售后",
-  "url":"../my_order_refund_list/index"
+  "img": "../../common/image/my_unpay.png",
+  "title": "待付款",
+  "url": "../my_order/index?id=17"
+}, {
+  "img": "../../common/image/my_unship.png",
+  "title": "待收货",
+  "url": "../my_order/index?id=6"
+}, {
+  "img": "../../common/image/my_uninstall.png",
+  "title": "待安装",
+  "url": "../my_order/index?id=5"
+}, {
+  "img": "../../common/image/my_unevaluation.png",
+  "title": "已完成",
+  "url": "../my_order/index?id=7"
+}, {
+  "img": "../../common/image/my_refund.png",
+  "title": "退款/售后",
+  "url": "../my_order_refund_list/index"
 }]
 export const tabbarConfig = [{
     "active": true,

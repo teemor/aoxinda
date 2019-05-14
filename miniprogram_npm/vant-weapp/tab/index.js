@@ -7,6 +7,7 @@ VantComponent({
     props: {
         dot: Boolean,
         info: null,
+        titlea:Number,
         title: String,
         disabled: Boolean,
         titleStyle: String
@@ -18,6 +19,7 @@ VantComponent({
         animated: false
     },
     watch: {
+        titlea:'update',
         title: 'update',
         disabled: 'update',
         dot: 'update',
@@ -27,6 +29,7 @@ VantComponent({
     methods: {
         update() {
             const parent = this.getRelationNodes('../tabs/index')[0];
+            console.log(parent,'parent')
             if (parent) {
                 parent.updateTabs();
             }

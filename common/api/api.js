@@ -284,6 +284,14 @@ export class Technician {
       data:model
     })
   }
+  // 发货
+  updateOrder = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/order/updateOrderStatus`,
+      method:`post`,
+      data:model
+    })
+  }
 }
 
 

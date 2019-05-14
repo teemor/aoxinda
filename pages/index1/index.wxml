@@ -1,0 +1,100 @@
+<view class="container">
+  <!-- 添加爱车 -->
+  <view class='page-section page-section-spacing swiper'>
+    <swiper style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <!-- <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block> -->
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item class="swiper-item">
+          <image src='../../common/image/car1.png' />
+          <view style='margin-top:-350rpx;background:rgba(0,0,0,0.1);width:100%;height:350rpx;position:absolute'>
+            <view class='swiper_add' bindtap="addCar">
+              <image src='../../common/image/add.png' />
+              <view class='swiper_text'>点击添加我的爱车</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='swiper_mes'>
+      <image src='../../common/image/message.png' />
+    </view>
+  </view>
+  <!-- 天气 限行 油价-->
+
+  <!-- 选择 -->
+  <view class='btn_contain'>
+    <view class='btn_flex'>
+      <view class='car_btn' bindtap='carbeautyBtn'>
+        <image src='../../common/image/car_beauty.png' />
+        <view>洗车美容</view>
+      </view>
+      <view class='car_btn' bindtap='upkeepBtn'>
+        <image src='../../common/image/car_main.png' />
+        <view>汽车保养</view>
+      </view>
+      <view class='car_btn'>
+        <image src='../../common/image/car_rescue.png' />
+        <view>汽车商城</view>
+      </view>
+    </view>
+    <view class="cl">
+      <view class="index_pic fl">
+        <image src="../../common/image/index_person.png" />
+      </view>
+      <view class="index_pic fl" style="margin-left:10rpx">
+        <image src="../../common/image/index_clean.png" />
+      </view>
+      <view class="cl">
+        <view class='page-current-contain'>
+          <view class='page-current_box fl'>
+            <!-- <image src="" /> -->
+            <view class="page-current_box-text">
+              -1℃ 晴
+            </view>
+          </view>
+          <view class='fl detail_current-btn'>
+            <view class='cl detail_current-one'>
+              <span class="red bold">今日限行 </span>
+              <span class="">今日尾号
+                <span class="red">78</span>限行</span>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 小麦头条 -->
+  <view class='hot_mes-contain' style="display:none">
+    <view class='hot_mes_icon'>
+      <image src='../../common/image/hot_mes.png'></image>
+    </view>
+
+  </view>
+  <!-- 限时抢购 -->
+  <view class='limited_contain'>
+    <view class='limited_title'>
+      <view class='limited_title-text'>
+        <image src='../../common/image/index_hot.png' />
+      </view>
+    </view>
+    <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot">
+      <view>
+        <image src="{{item.img}}" />
+      </view>
+      <view>{{item.txt}}</view>
+    </view>
+  </view>
+  <!-- 周边服务 -->
+  <view class='limited_contain'>
+    <view class='limited_title'>
+      <view class='limited_title-text'>
+        <image src='../../common/image/index_mall.png' />
+      </view>
+    </view>
+  </view>
+</view>
+<dl-dialog show="{{show}}" />

@@ -46,7 +46,10 @@
     "pages/my_edit_address/index",
     "pages/edit_invoice/index",
     "pages/success_order/index",
-    "pages/add_invite/index"
+    "pages/add_invite/index",
+    "pages/login_userinfo/index",
+    "pages/shop_store_choose/index",
+    "pages/shop_store_service/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

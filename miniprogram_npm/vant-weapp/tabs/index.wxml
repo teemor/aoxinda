@@ -22,7 +22,7 @@
           bind:tap="onTap"
         >
           <view class="van-ellipsis {{ utils.bem('tab__title', { dot: item.dot }) }}" style="{{ item.titleStyle }}">
-            {{ item.title }}
+            {{ item.title }}{{item.id}}
             <van-info
               wx:if="{{ item.info !== null }}"
               info="{{ item.info }}"
