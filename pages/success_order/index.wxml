@@ -1,6 +1,6 @@
 <view wx:if="{{result===false}}" class="fz28 tc result_contain">
 <view class="pay_image">
-<image src="../../common/image/pay_fail.png" mode="aspectFit"/>
+<image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/pay_fail.png" mode="aspectFit"/>
 </view>
   <view class="green fz32">付款成功</view>
   <view class="height80 mtop20">支付方式：微信支付 支付金额：¥351</view>
@@ -11,7 +11,7 @@
 </view>
 <view wx:else class="fz28 tc result_contain">
 <view class="pay_image">
-<image src="../../common/image/pay_success.png" mode="aspectFit"/>
+<image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/pay_success.png" mode="aspectFit"/>
 </view>
   <view class="green fz32">付款失败</view>
   <view class="high40 mtop20">请在

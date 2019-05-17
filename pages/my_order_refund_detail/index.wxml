@@ -1,5 +1,5 @@
 <view class="order_detail_bg">
-  <image src="../../common/image/my_bg01.png" />
+  <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
     <view class="fz30">{{detailData.back_type}}</view>
   </view>
@@ -12,7 +12,7 @@
   <view class="cl my_order_list_box" bindtap="orderDetail">
   <view class="fz26 high60">退款信息</view>
       <view class="fl my_order_list_image">
-        <image src="../../common/image/cart_list_perfume.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
       </view>
       <view class="fl my_order_list_text fz26">
         <view class="">{{detailData.goods_name}}</view>

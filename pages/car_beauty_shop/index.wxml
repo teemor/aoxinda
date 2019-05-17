@@ -21,14 +21,14 @@
       </view>
       <view class="fz18 grey carbeauty_contain-address">
         <view class="fl carbeauty_contain_con-image">
-          <image src="../../common/image/location.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/location.png" />
         </view>
         <view class="fl ">门店地址：{{obj.storeAddress}}</view>
       </view>
     </view>
     <view class="fr carbeauty_contain-btn">
       <view class="fl carbeauty_contain-image">
-        <image src="../../common/image/phone.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/phone.png" />
       </view>
       <view class="fl carbeauty_contain-btn_text" bindtap="makePhone" data-item="{{obj.storePhone}}">拨打电话</view>
     </view>

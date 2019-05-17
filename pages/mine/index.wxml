@@ -2,7 +2,7 @@
   <view class="my_prot_box-contain">
     <view class="my_prot_box">
       <view>
-        <image src="../../common/image/my_prot.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_prot.png" />
       </view>
     </view>
     <view class="my_prot_box-text">In my heart</view>
@@ -10,19 +10,19 @@
   <view class="mine_btn_box">
     <view class="fl" bindtap="myCard">
       <view class="mine_btn bx-shadow">
-        <image src="../../common/image/my_card.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_card.png" />
       </view>
       <view class="mine_btn_text tc fz30">卡包</view>
     </view>
     <view class="fl" bindtap="myCart">
       <view class="mine_btn bx-shadow">
-        <image src="../../common/image/my_cart.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_cart.png" />
       </view>
       <view class="mine_btn_text tc fz30">购物车</view>
     </view>
     <view class="fl" bindtap="myCoupon">
       <view class="mine_btn bx-shadow">
-        <image src="../../common/image/my_account.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_account.png" />
       </view>
       <view class="mine_btn_text tc fz30">优惠券</view>
     </view>

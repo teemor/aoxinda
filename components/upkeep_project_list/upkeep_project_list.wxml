@@ -19,7 +19,7 @@
         <view class='upkeep_project_pro-contain cl'>
           <view class="cl upkeep_project_pro-box">
             <view class="upkeep_project_pro-img fl">
-              <image src="../../common/image/keepup01.png" />
+              <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/keepup01.png" />
             </view>
             <view class="upkeep_project_pro-text fl">
               <view class="upkeep_project_pro-title">美孚速霸2000合成科技机油5w-40 sn级4L装</view>
@@ -31,7 +31,7 @@
           </view>
           <view class="cl upkeep_project_pro-box">
             <view class="upkeep_project_pro-img fl">
-              <image src="../../common/image/keepup02.png" />
+              <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/keepup02.png" />
             </view>
             <view class="upkeep_project_pro-text fl">
               <view class="upkeep_project_pro-title">美孚速霸2000合成科技机油5w-40 sn级4L装</view>

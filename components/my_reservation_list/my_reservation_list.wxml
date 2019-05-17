@@ -1,14 +1,14 @@
 <view class="my_reservation_contain">
   <view class="cl">
     <view class="fl my_reservation_list">
-    <view class="fl my_reservation_list-image"> <image src="../../common/image/reser_location.png"/></view>
+    <view class="fl my_reservation_list-image"> <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/reser_location.png"/></view>
     <view class="fl fz30">服务门店</view>
     </view>
     <view class="fz26 fr my_reservation_btn bg_orange">导航</view>
   </view>
   <view class="cl">
     <view class="fl my_reservation_list-shop">
-       <image src="../../common/image/clean02.png"/>
+       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/clean02.png"/>
     </view>
     <view class="fl my_reservation_list-txt">
       <view class="fz34 cl my_reservation_list-title">奥宝星辉工厂店</view>

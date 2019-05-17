@@ -19,7 +19,7 @@ Component({
      * 点击进入详情
      */
     detailBtn: function (e) {
-      this.triggerEvent('detailBtn', e.currentTarget.dataset.id)
+      this.triggerEvent('detailBtn', e.currentTarget.dataset.item)
     },
     /**
      * 退出

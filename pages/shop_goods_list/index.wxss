@@ -43,7 +43,7 @@
   margin-top:80rpx;
   width:100%;
   height: 80rpx;
-  /* background: url('../../common/image/shop_bg.png') */
+  /* background: url('http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png') */
 }
 .shop_goods_invite_text,.shop_goods_invite_btn{
   position: absolute;

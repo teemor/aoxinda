@@ -7,7 +7,7 @@
     <view class='add_car_search-input'>
       <input type='text' placeholder="点击搜索您爱车的型号…" placeholder-class="add_car_place" />
       <view class='add_car_search-btn'>
-        <image src='../../common/image/search.png'></image>
+        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/search.png'></image>
       </view>
     </view>
     <!-- 热门品牌 -->
@@ -22,7 +22,7 @@
       <view class='add_car_brand-contain'>
         <view wx:for="{{hotbrandList}}" wx:key="{{item}}">
           <view class='add_car_box' bindtap='chooseBrand' >
-            <image src='../../common/image/1.png'></image>
+            <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png'></image>
             <view class='add_car_box-hot-name'>{{item.name}}</view>
           </view>
         </view>
@@ -32,21 +32,21 @@
       <!-- 字母 -->
       <view style='clear:both;zoom:1'>
         <view class='add_car_letter-bar_contain'>
-          <view class='add_car_letter-bar' wx:for="{{searchLetter}}" wx:key="index" data-letter="{{item}}" catchtouchstart='searchStart' catchtouchmove="searchMove" catchtouchend="searchEnd">
+          <view class='add_car_letter-bar' wx:for="{{searchLetter}}" wx:key="index" data-letter="{{item.name}}" catchtouchstart='searchStart' catchtouchmove="searchMove" catchtouchend="searchEnd">
             {{item.name}}
           </view>
         </view>
-        <scroll-view scroll-y scroll-into-view="{{showLetter}}" bindScroll="bindScroll">
+        <scroll-view scroll-y="true" style="height:{{winHeight}}px" scroll-into-view="{{showLetter}}" bindScroll="bindScroll">
           <view class='add_car_letter-contain'>
-            <view wx:for="{{carData}}" wx:key="index" id="{{item.initial}}">
+            <view wx:for="{{carData}}" wx:key="index" id="{{item.firstCode}}">
               <view class='add_car_letter-title'>
-                {{item.initial}}
+                {{item.firstCode}}
               </view>
               <view wx:for="{{item.carInfo}}" wx:key="index">
-                <view class='add_car_letter-text' bindtap='chooseBrand' data-id="{{item.id}}">
-                  <image src='{{http+item.url}}'></image>
+                <view class='add_car_letter-text' bindtap='chooseBrand' data-id="{{item.PP}}">
+                  <image src='{{item.img_url}}'></image>
                   <view class='add_car_letter-name'>
-                    {{item.carName}}
+                    {{item.PP}}
                   </view>
                 </view>
               </view>
@@ -62,7 +62,7 @@
       <view class='scan_mark'>扫描时请保持光线充足，不要反光</view>
     </view>
     <view class='code_exp'>
-      <image src='../../common/image/code_image.png' />
+      <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/code_image.png' />
     </view>
     <view class='btnScan' bindtap='btnScan'>扫描行驶证</view>
   </view>
@@ -72,4 +72,4 @@
     {{showLetter}}
   </view>
 </block>
-<choose_brand show="{{choose_brand}}" carBrand="{{carBrand}}" bind:chooseType="chooseType" bind:clickMask="clickMask"></choose_brand>
+<choose_brand show="{{choose_brand}}" BrandTitle="{{BrandTitle}}" carBrand="{{carBrand}}" bind:chooseType="chooseType" bind:clickMask="clickMask"></choose_brand>

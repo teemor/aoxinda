@@ -2,7 +2,7 @@
   <van-cell title="收货人姓名" icon="user-o" is-link bind:click="myOrder">
     <view class="car_beauty_shop_box">
       <view class="car_beauty_shop_image fl">
-        <image src="../../common/image/shop_phone.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_phone.png" />
       </view>
       <view class="fl">
         15131503009

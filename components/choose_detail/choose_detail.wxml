@@ -1,7 +1,7 @@
 <view wx:if="{{show}}" class='choose_detail-contain'>
   <view class='choose_detail-title'>
   <view class="choose_type-title-image" bindtap="exitDetail">
-     <image src="../../common/image/exit.png"/> 
+     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/exit.png"/> 
   </view>
        车辆详情
   </view>

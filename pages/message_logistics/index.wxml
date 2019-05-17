@@ -1,7 +1,7 @@
 <view>
   <view class="cl mes_logistic_contain br_bottom">
     <view class="fl mes_logistics_img">
-      <image src="../../common/image/logistics.png" />
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/logistics.png" />
     </view>
     <view class="fl mes_logistics_title">
       <view>EMS</view>

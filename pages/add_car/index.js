@@ -2,6 +2,7 @@ import {
   Technician
 } from '../../common/api/api'
 const request = new Technician
+
 Page({
   /**
    *  房源列表
@@ -13,6 +14,7 @@ Page({
    */
   data: {
     bHeight: 0,
+    winHeight:0,
     isShowLetter: false,
     http: 'https://www.maichefu.cn',
     showTypeBrand: true,
@@ -64,29 +66,28 @@ Page({
     searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
   },
   onLoad: function (options) {
-    request.findBrand().then(res => {
+    request.findCarType().then(res => {
       this.setData({
-        carList: res
+        carList: res.data
       })
-    })
-    let sysInfo = wx.getSystemInfoSync();
-    let winHeight = sysInfo.windowHeight;
-    console.log(winHeight,'winHeight')
-    let searchLetter = this.data.searchLetter 
-    // 添加屏幕高度设置子元素的高度
-    let itemH = (winHeight-50)/searchLetter.length
-    let tempObj = [];
-    for(let i=0;i<searchLetter.length;i++){
-      let temp = {};
-      temp.name = searchLetter[i];
-      temp.tHeight = i*itemH;
-      temp.bHeight = (i+1)*itemH;
-      tempObj.push(temp)
-    }
-    console.log()
-    this.setData({
-      searchLetter:tempObj,
-      carData: this.carData()
+      let sysInfo = wx.getSystemInfoSync();
+      let winHeight = sysInfo.windowHeight;
+      let searchLetter = this.data.searchLetter 
+      // 添加屏幕高度设置子元素的高度
+      let itemH = (winHeight-50)/searchLetter.length
+      let tempObj = [];
+      for(let i=0;i<searchLetter.length;i++){
+        let temp = {};
+        temp.name = searchLetter[i];
+        temp.tHeight = i*itemH;
+        temp.bHeight = (i+1)*itemH;
+        tempObj.push(temp)
+      }
+      this.setData({
+        winHeight:winHeight,
+        searchLetter:tempObj,
+        carData: this.carData()
+      })
     })
   },
   /**
@@ -101,16 +102,12 @@ Page({
    * author dzl
    */
   searchStart: function (e) {
-    console.log(e.currentTarget.dataset, '字母')
     let showLetter = e.currentTarget.dataset.letter
-    let pageY = e.touches[0].pageY
-    console.log(pageY, 'pagey')
-    this.nowLetter(pageY, this)
     this.setData({
       showLetter: showLetter,
       isShowLetter: true
     })
-    this.setScrollTop(showLetter)
+    // this.setScrollTop(showLetter)
   },
   /**
    * 跳转当前选中的信息
@@ -139,6 +136,9 @@ Page({
   /**
    * 移动
    */
+  searchMove:function(){
+    console.log('rew')
+  },
   /**
    * 结束点击
    * dzl
@@ -157,9 +157,13 @@ Page({
    * author dzl
    */
   chooseBrand: function (e) {
-    request.findSerial(e.currentTarget.dataset.id).then(res => {
+    this.setData({
+      BrandTitle:e.currentTarget.dataset.id
+    })
+    console.log(this.data.BrandTitle,'BrandTitle')
+    request.findCarList({PP:e.currentTarget.dataset.id}).then(res => {
       this.setData({
-        carBrand: res
+        carBrand: res.data
       })
     })
     this.setData({
@@ -171,6 +175,7 @@ Page({
    * 
    */
   clickMask: function () {
+    console.log('关闭弹窗')
     this.setData({
       choose_brand: false
     })
@@ -180,32 +185,37 @@ Page({
    * author dzl
    */
   chooseType: function (e) {
-    this.setData({
-      tabType: e.detail
-    })
+    console.log(e.detail,'选择类别')
+    // this.setData({
+    //   tabType: e.detail
+    // })
     // 年份的跳转
-    console.log(e.detail, 'hehehe')
-    request.findYear(e.detail).then(res => {
-      if (res.length > 0) {
+    this.setData({
+      choose_type:true
+    })
+    console.log('hhh')
+    request.findCarThird({PP:e.detail.PP,CX:e.detail.CX
+    }).then(res => {
+      if (res.data.length > 0) {
         this.setData({
           carYear: res,
           choose_brand: false,
           choose_type: true,
-          showTypeBrand: false
+          showTypeBrand: false,
+          carTypeData: res.data
         })
       } else {
         this.setData({
           choose_type: false
         })
       }
-      console.log(this.data.carYear[0].year, 'year')
-      request.findModel(e.detail, this.data.carYear[0].year).then(res => {
-        console.log(res)
-        this.setData({
-          carTypeData: res
-        })
-        console.log(this.data.carTypeData, 'di')
-      })
+      // request.findModel(e.detail, this.data.carYear[0].year).then(res => {
+      //   console.log(res)
+      //   this.setData({
+          
+      //   })
+      //   console.log(this.data.carTypeData, 'di')
+      // })
     })
   },
   /**
@@ -240,18 +250,27 @@ Page({
    * dzl
    */
   detailBtn: function (e) {
-    request.findConfig(e.detail).then(res => {
-      console.log(res[0])
-      // this.setData({
-      //   choose_type: false,
-      //   choose_detail: true,
-      //   detailData:res[0]
-      // })
-      let detailData = JSON.stringify(res[0])
-      wx.navigateTo({
-        url: `../add_car_detail/index?detailData=${detailData}`
+    let currentPages =  getCurrentPages();
+      let prevPage = currentPages[currentPages.length-2];
+      prevPage.setData({
+        item:e.detail
       })
-    })
+        wx.navigateBack({
+          url: '1'
+        })
+    // request.findConfig(e.detail).then(res => {
+    //   console.log(res[0])
+    //   // this.setData({
+    //   //   choose_type: false,
+    //   //   choose_detail: true,
+
+    //   //   detailData:res[0]
+    //   // })
+    //   let detailData = JSON.stringify(res[0])
+    //   wx.navigateTo({
+    //     url: `../add_car_detail/index?detailData=${detailData}`
+    //   })
+    // })
 
 
   },
@@ -281,12 +300,12 @@ Page({
   carData: function () {
     let temObj = [];
     for (let i = 0; i < this.data.searchLetter.length; i++) {
-      let initial = this.data.searchLetter[i];
+      let firstCode = this.data.searchLetter[i];
       let carInfo = [];
       let tempArr = {};
-      tempArr.initial = initial;
+      tempArr.firstCode = firstCode;
       for (let j = 0; j < this.data.carList.length; j++) {
-        if (initial == this.data.carList[j].initial) {
+        if (firstCode == this.data.carList[j].firstCode) {
           carInfo.push(this.data.carList[j]);
         }
       }

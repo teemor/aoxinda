@@ -1,11 +1,11 @@
 <view>
   <view class="cl">
     <view bindtap="miniClick" class="fl beauty_con-mini {{miniClick===true?'beauty_con-mini-click':'beauty_con-mini'}}">
-      <image src="../../common/image/{{miniClick===true?'beauty_mini':'beauty_minid'}}.png" />
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/{{miniClick===true?'beauty_mini':'beauty_minid'}}.png" />
       <view class="beauty_text marlef30">轿车</view>
     </view>
     <view bindtap="bigClick" class="fl beauty_con-big {{miniClick===true?'beauty_con-big':'beauty_con-big-click'}}">
-      <image src="../../common/image/{{miniClick===true?'beauty_bigd':'beauty_big'}}.png" />
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/{{miniClick===true?'beauty_bigd':'beauty_big'}}.png" />
       <view class="beauty_text marlef10">中大型车</view>
     </view>
   </view>
@@ -15,7 +15,7 @@
   <view class="cl br_btm_deep car_beauty_shop-contain">
     <view class="fl car_beauty_shop_clean">
       <view class="fl">
-        <image src="../../common/image/clean_car.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/clean_car.png" />
       </view>
       <view class="fl mleft30">洗车服务</view>
     </view>
@@ -32,7 +32,7 @@
   <view class="cl  car_beauty_shop-contain">
     <view class="fl car_beauty_shop_clean">
       <view class="fl">
-        <image src="../../common/image/clean_car.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/clean_car.png" />
       </view>
       <view class="fl mleft30">打蜡服务</view>
     </view>

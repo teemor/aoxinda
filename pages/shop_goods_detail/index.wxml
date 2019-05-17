@@ -1,6 +1,6 @@
 <view>
   <view class="shop_goods_detail_img">
-    <image src="../../common/image/store.jpg" mode="widthFix" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" mode="widthFix" />
   </view>
   <view class="shop_goods_detail_title">
     <view class="shop_goods_title">
@@ -31,16 +31,16 @@
       </view>
       <view class="shop_goods_evaluation_imglist cl">
         <view class="shop_goods_evaluation_img fl">
-          <image src="../../common/image/store.jpg" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
         </view>
         <view class="shop_goods_evaluation_img fl">
-          <image src="../../common/image/store.jpg" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
         </view>
         <view class="shop_goods_evaluation_img fl">
-          <image src="../../common/image/store.jpg" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
         </view>
         <view class="shop_goods_evaluation_img fl">
-          <image src="../../common/image/store.jpg" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
         </view>
       </view>
     </view>
@@ -65,7 +65,6 @@
               <view></view>
             </view>
           </van-tab>
-          <van-tab title="规格参数">内容 2</van-tab>
         </van-tabs>
       </view>
       <view>
@@ -85,7 +84,7 @@
       <view>
         <view class="cart_title_price cl">
           <view class="fl cart_img">
-            <image src="../../common/image/store.jpg" />
+            <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
           </view>
           <view class="fl cart_price">
             <view class="red">¥{{price}}</view>

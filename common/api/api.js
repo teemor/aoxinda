@@ -8,9 +8,10 @@ import {
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-export const IP_DHTTP = `https://192.168.31.76`
 export const IP_YTHTTP = `http://192.168.31.75:9015`
 export const HTTP = `https://www.maichefu.cn`
+export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
+export const IP_WBHTTP = `http://192.168.31.158:8888/mcf/api/v1/c` // 后两
 export class Technician {
   // 登录
   login = (code) => {
@@ -213,7 +214,7 @@ export class Technician {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/order/selectMyOrder`,
       method: `post`,
-      data:model
+      data: model
     })
   }
   // 查询订单详情
@@ -221,7 +222,7 @@ export class Technician {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/order/app/selectOrderDetail`,
       method: `post`,
-      data:id
+      data: id
     })
   }
   // 查询发票信息
@@ -249,47 +250,102 @@ export class Technician {
     })
   }
   // 提交订单
-  payOrder = (model)=>{
+  payOrder = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/pay`,
-      method:`post`,
-      data:model
+      url: `${IP_YTHTTP}/appapi/v1.0/pay`,
+      method: `post`,
+      data: model
     })
   }
-  selectMyBackOrderList=(model)=>{
+  selectMyBackOrderList = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/selectMyBackOrderList`,
-      method:`post`,
-      data:model
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/selectMyBackOrderList`,
+      method: `post`,
+      data: model
     })
   }
-  writeBackOrder=(model)=>{
+  writeBackOrder = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/writeBackOrder`,
-      method:`post`,
-      data:model
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/writeBackOrder`,
+      method: `post`,
+      data: model
     })
   }
-  selectBackOrderDetail = (model)=>{
+  selectBackOrderDetail = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/selectBackOrderDetail`,
-      method:`post`,
-      data:model
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/selectBackOrderDetail`,
+      method: `post`,
+      data: model
     })
   }
-  updateBackOrder = (model)=>{
+  updateBackOrder = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/backOrder/updateBackOrder`,
-      method:`post`,
-      data:model
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/updateBackOrder`,
+      method: `post`,
+      data: model
     })
   }
   // 发货
-  updateOrder = (model)=>{
+  updateOrder = (model) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/order/updateOrderStatus`,
+      url: `${IP_YTHTTP}/appapi/v1.0/order/updateOrderStatus`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 获取车型
+  findCarType = () => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findCarType`,
+      method: `post`,
+      data: { pp: '' }
+    })
+  }
+
+  // 获取车型
+  findCarList = () => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/findCarList`,
+      method: `post`,
+      data: { userId: '1222799294104538bd06930e37a8ab08' }
+    })
+  }
+  // 获取具体车型
+  findCarList = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findCar`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 查询年份类型
+  findCarThird = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findCarDet`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 保存车型
+  saveCar = (model) =>{
+    return http.httpRequest({
+      url:`${IP_WBHTTP}/add/car/save`,
       method:`post`,
       data:model
+    })
+  }
+  // 人气推荐
+  recommendIndex = () => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/fount/recommend`,
+      method: `post`
+    })
+  }
+  // 商城精选
+  chooseIndex = () => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/fount/choose`,
+      method: `post`
     })
   }
 }

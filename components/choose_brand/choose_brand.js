@@ -1,17 +1,18 @@
 Component({
   properties: {
     show: Boolean,
-    carBrand: Array
+    carBrand: Array,
+    BrandTitle: String
   },
 
   data: {
-http:'https://www.maichefu.cn'
+    http: 'https://www.maichefu.cn'
   },
   methods: {
     /**
      * 关闭图层
      */
-    clickMask: function() {
+    clickMask: function () {
       this.setData({
         show: false
       })
@@ -20,8 +21,9 @@ http:'https://www.maichefu.cn'
     /**
      * 选择类别
      */
-    chooseType: function(e) {
-      this.triggerEvent('chooseType',e.currentTarget.dataset.id)
+    chooseType: function (e) {
+      console.log(e.currentTarget.dataset.cx)
+      this.triggerEvent('chooseType', {PP:this.data.BrandTitle,CX:e.currentTarget.dataset.cx})
     }
   }
 })

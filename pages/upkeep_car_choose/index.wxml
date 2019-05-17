@@ -9,7 +9,7 @@
   <view class="upkeep_car_body bx-shadow">
     <view class="upkeep_car_body_title">
       <view class="upkeep_car_box_image fl">
-        <image src="../../common/image/clean02.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/clean02.png" />
       </view>
       <view class="fl fz30" style="margin-left:30rpx;">
         <view class="cl">
@@ -21,7 +21,7 @@
         <view>
           <view class="fl">
           <view class="fl upkeep_car_body_num_img">
-          <image src="../../common/image/tech_icon.png"/>
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/tech_icon.png"/>
           </view>
             <view class="fl fz26">共5位高级技师</view>
           </view>
@@ -35,7 +35,7 @@
     </view>
     <view class="cl">
     <view class="fl upkeep_car_body_image">
-    <image src="../../common/image/techican.png"/>
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/techican.png"/>
     </view>
     <view class="fz30 height90 upkeep_car_choose-title">  麦师傅 18单 4.66分 服务费:¥80元</view>
     

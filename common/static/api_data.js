@@ -2,7 +2,7 @@ export const carList = [{
     "carName": "奥迪",
     "initial": "A",
     "id": "01",
-    "url": "../../common/image/1.png"
+    "url": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png"
   },
   {
     "carName": "安驰",
@@ -67,52 +67,52 @@ export const carList = [{
 ]
 
 export const hotData = [{
-  "img": "../../common/image/1.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png",
   "txt": "濠头YU300线圈钢索..."
 }, {
-  "img": "../../common/image/1.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png",
   "txt": "濠头YU300线圈钢索..."
 }, {
-  "img": "../../common/image/1.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png",
   "txt": "濠头YU300线圈钢索..."
 }, {
-  "img": "../../common/image/1.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png",
   "txt": "濠头YU300线圈钢索..."
 }, {
-  "img": "../../common/image/1.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png",
   "txt": "濠头YU300线圈钢索..."
 }, {
-  "img": "../../common/image/1.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/1.png",
   "txt": "濠头YU300线圈钢索..."
 }]
 export const carBrand = [{
   "name": "一汽大众奥迪",
   "data": [{
     "name": "A4L",
-    "image": "../../common/image/car01.png",
+    "image": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car01.png",
     "price": "29.00-41.99万"
   }, {
     "name": "A4L",
-    "image": "../../common/image/car01.png",
+    "image": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car01.png",
     "price": "29.00-41.99万"
   }, {
     "name": "A4L",
-    "image": "../../common/image/car01.png",
+    "image": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car01.png",
     "price": "29.00-41.99万"
   }]
 }, {
   "name": "进口奥迪",
   "data": [{
     "name": "A4L",
-    "image": "../../common/image/car01.png",
+    "image": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car01.png",
     "price": "29.00-41.99万"
   }, {
     "name": "A4L",
-    "image": "../../common/image/car01.png",
+    "image": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car01.png",
     "price": "29.00-41.99万"
   }, {
     "name": "A4L",
-    "image": "../../common/image/car01.png",
+    "image": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car01.png",
     "price": "29.00-41.99万"
   }]
 }]
@@ -262,68 +262,68 @@ export const carTypeData = [{
   }
 ]
 export const messageList = [{
-    "img": "../../common/image/mes_exchange.png",
+    "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mes_exchange.png",
     "title": "交易物流提醒",
     "content": "您购买的物品已经出库",
     "notice": "1"
   },
   {
-    "img": "../../common/image/mes_discount.png",
+    "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mes_discount.png",
     "title": "优惠促销",
     "content": "内饰清洁剂0.01元，补胎抵制9.9元...",
     "notice": "2"
   },
   {
-    "img": "../../common/image/mes_servi.png",
+    "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mes_servi.png",
     "title": "服务消息提醒",
     "content": "您在奥宝星辉预约的养护服务开始...",
     "notice": "3"
   },
   {
-    "img": "../../common/image/mes_set.png",
+    "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mes_set.png",
     "title": "系统消息",
     "content": "麦车服APPV3.0版本已经上线，请及时...",
     "notice": "0"
   },
   {
-    "img": "../../common/image/mes_service.png",
+    "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mes_service.png",
     "title": "客服中心",
     "content": "暂无消息",
     "notice": "0"
   }
 ]
 export const myService = [{
-  "img": "../../common/image/my_cards.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_cards.png",
   "title": "洗车卡包"
 }, {
-  "img": "../../common/image/my_buy.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_buy.png",
   "title": "我的预约"
 }, {
-  "img": "../../common/image/my_address.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_address.png",
   "title": "地址管理",
   "url": "../my_address/index"
 }, {
-  "img": "../../common/image/my_service.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_service.png",
   "title": "用户反馈"
 }]
 export const myOrder = [{
-  "img": "../../common/image/my_unpay.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_unpay.png",
   "title": "待付款",
   "url": "../my_order/index?id=17"
 }, {
-  "img": "../../common/image/my_unship.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_unship.png",
   "title": "待收货",
   "url": "../my_order/index?id=6"
 }, {
-  "img": "../../common/image/my_uninstall.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_uninstall.png",
   "title": "待安装",
   "url": "../my_order/index?id=5"
 }, {
-  "img": "../../common/image/my_unevaluation.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_unevaluation.png",
   "title": "已完成",
   "url": "../my_order/index?id=7"
 }, {
-  "img": "../../common/image/my_refund.png",
+  "img": "http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_refund.png",
   "title": "退款/售后",
   "url": "../my_order_refund_list/index"
 }]

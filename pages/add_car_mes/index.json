@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "填写爱车信息",
+  "usingComponents": {
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index"
+  }
+}

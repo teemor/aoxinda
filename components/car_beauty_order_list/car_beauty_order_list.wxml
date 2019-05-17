@@ -1,6 +1,6 @@
 <view class="my_order_list-contain cl">
   <view class="fl my_order_list_image">
-    <image src="../../common/image/cart_list_perfume.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
   <view class="fl my_order_list_text">
     <view>【正品授权】美孚速霸1000合成机油</view>

@@ -14,7 +14,6 @@
     custom-class="van-cell__left-icon"
   />
   <slot wx:else name="icon" />
-
   <view
     style="{{ titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : '' }}"
     class="van-cell__title title-class"

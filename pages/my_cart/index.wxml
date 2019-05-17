@@ -25,7 +25,7 @@
 </view>
 <view wx:elif="{{!showNull}}">
   <view class="cart_null_image">
-    <image src="../../common/image/cart_null.png" mode="aspectFit" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_null.png" mode="aspectFit" />
   </view>
   <view class="tc fz26">购物车是空的~</view>
   <view bindtap="typego" class="gobtn bg_orange high80 fz30">再去逛逛</view>

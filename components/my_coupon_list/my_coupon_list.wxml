@@ -1,5 +1,5 @@
 <view class="fl fz60 my_coupon_list_color">
-  <image src="../../common/image/blue.png" />
+  <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/blue.png" />
   <view style="position:absolute;z-index:333;top:30px;left:60rpx;">10<span class="fz30">元</span></view>
 </view>
 <view class="fr my_coupon_list_contain">

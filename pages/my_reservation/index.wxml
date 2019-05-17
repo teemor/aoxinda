@@ -1,7 +1,7 @@
 <view>
   <view class="my_reservation_title orange fz30">
     <view class="fl my_reservation-image">
-      <image src="../../common/image/reser_notice.png" />
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/reser_notice.png" />
     </view>
     <view class="fl">待服务</view>
   </view>

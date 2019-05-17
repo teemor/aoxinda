@@ -11,13 +11,13 @@
     <view class="fl">
       <view class="fl collapse_hidden_pro">
         <view class="collapse_image">
-          <image src="../../../common/image/gasoline1.png" />
+          <image src="../http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gasoline1.png" />
         </view>
         <view class="collapse_text">壳牌全合成0-40w</view>
       </view>
       <view class="fl collapse_hidden_pro">
         <view class="collapse_image">
-          <image src="../../../common/image/gasoline1.png" />
+          <image src="../http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gasoline1.png" />
         </view>
         <view class="collapse_text">壳牌全合成0-40w</view>
       </view>

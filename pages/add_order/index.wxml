@@ -1,13 +1,13 @@
 <view class="location_contain" bindtap="locationBtn">
   <view class="fl location_img">
-    <image src="../../common/image/location.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/location.png" />
   </view>
   <view class="fl location_address">
     <view>{{name===undefined?'收货人信息':name}}</view>
     <view class="location_mes">{{address===undefined?'填写收货地址信息':address}}</view>
   </view>
   <view class="fr location_address_btn">
-    <image src="../../common/image/right_arrow.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/right_arrow.png" />
   </view>
 </view>
 <view>

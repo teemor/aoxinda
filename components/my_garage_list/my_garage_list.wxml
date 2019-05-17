@@ -1,6 +1,6 @@
 <view class="my_garage_list-contain">
   <view class="fl my_garage_list-image">
-    <image src="../../common/image/brand.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/brand.png" />
   </view>
   <view class="fl my_garage_list-txt fz28">
     <view class="">宝马MINI 2018款 智联旗舰...</view>

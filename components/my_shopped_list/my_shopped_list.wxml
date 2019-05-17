@@ -1,6 +1,6 @@
 <view class="my_shopped_box">
   <view class="my_shopped_img fl">
-    <image src="../../common/image/clean01.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/clean01.png" />
   </view>
   <view class="fl my_shopped_content fz30 fz28">
     <view>星辉高端洗护</view>

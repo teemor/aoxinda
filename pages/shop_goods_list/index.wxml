@@ -5,14 +5,14 @@
     </view>
   </view>
   <view class="shop_goods_invite">
-    <image src="../../common/image/shop_bg.png" mode="aspectFit" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
     <view class="shop_goods_invite_text">为您推荐适合 雪佛兰迈宝瑞...的商品</view>
     <view class="shop_goods_invite_btn" bindtap="editCar">编辑</view>
   </view>
   <view wx:for="{{storeList}}" wx:key="{{item}}">
     <view class="shop_goods_contain cl" bindtap="shop_detail" data-item="{{item.product_code}}">
       <view class="shop_goods_box fl">
-        <image src="../../common/image/shop1.png" mode="aspectFit" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop1.png" mode="aspectFit" />
       </view>
       <view class="shop_goods_remark fl">
         <view class="shop_goods_text">{{item.goods_name}}</view>

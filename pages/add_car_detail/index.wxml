@@ -3,28 +3,28 @@
     <view class="add_car_detail_type">
       <view class="fl add_car_detail-part">
         <view class=" add_car_detail-img fz24 grey">
-          <image src="../../common/image/detail_type.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_type.png" />
           <span class="height60">车型级别</span>
         </view>
         <view class="add_car_detail_text height60">{{detailData.config[0].modelLevel}}</view>
       </view>
       <view class="fl add_car_detail-part">
         <view class="add_car_detail-img fz24 grey">
-          <image src="../../common/image/detail_set.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_set.png" />
           <span class="height60">动力类型</span>
         </view>
         <view class="add_car_detail_text height60">{{detailData.config[0].dynamicType}}</view>
       </view>
       <view class="fl add_car_detail-part">
         <view class="add_car_detail-img fz24 grey">
-          <image src="../../common/image/detail_body.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_body.png" />
           <span class="height60">车身型式</span>
         </view>
         <view class="add_car_detail_text height60">{{detailData.config[0].modelPattern}}</view>
       </view>
   <!--    <view class="fl add_car_detail-part">
         <view class="add_car_detail-img fz24 grey">
-          <image src="../../common/image/detail_oil.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_oil.png" />
           <span class="height60">油耗</span>
         </view>
         <view class="add_car_detail_text height60">{{detailData.config[0].}}</view>
@@ -32,14 +32,14 @@
       -->
       <view class="fl add_car_detail-part">
         <view class="add_car_detail-img fz24 grey">
-          <image src="../../common/image/detail_round.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_round.png" />
           <span class="height60">环保标准</span>
         </view>
         <view class="add_car_detail_text height60">{{detailData.config[0].ecoStandard}}</view>
       </view>
     <!--  <view class="fl add_car_detail-part">
         <view class="add_car_detail-img fz24 grey">
-          <image src="../../common/image/detail_oil.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_oil.png" />
           <span class="height60">油耗</span>
         </view>
         <view class="add_car_detail_text height60">8.6-9.7L</view>
@@ -53,13 +53,13 @@
       </view>
       <view class="add_car_detail-body">
         <view class="fl add_car_detail-space-ce">
-          <image src="../../common/image/detail_small_ce.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_small_ce.png" />
           <view style="position:absolute">
           {{long}}
           </view>
         </view>
         <view class="fl add_car_detail-space-zheng">
-          <image src="../../common/image/detail_small_zheng.png"/>
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/detail_small_zheng.png"/>
           <view>
           {{width}}
           </view>

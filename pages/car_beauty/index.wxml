@@ -8,7 +8,7 @@
       </block> -->
       <block wx:for="{{background}}" wx:key="*this">
         <swiper-item class="swiper-item">
-          <image src='../../common/image/banner1.jpg' />
+          <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner1.jpg' />
         </swiper-item>
       </block>
     </swiper>
@@ -16,19 +16,19 @@
   <view class="clean_title">
     <view class="fl clean_title-contain {{sorttype=='1'?'linked':''}}" data-sorttype="1" bindtap='cleanBtn'>
       <view class="clean_title-image">
-        <image src="../../common/image/{{sorttype=='1'?'cleancar1.png':'cleancar01.png'}}" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/{{sorttype=='1'?'cleancar1.png':'cleancar01.png'}}" />
       </view>
       <view class="clean-title-text">洗车</view>
     </view>
     <view class="fl clean_title-contain {{sorttype=='2'?'linked':''}}" data-sorttype="2" bindtap='trimBtn'>
       <view class="clean_title-image">
-        <image src="../../common/image/{{sorttype=='2'?'cleancar2.png':'cleancar02.png'}}" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/{{sorttype=='2'?'cleancar2.png':'cleancar02.png'}}" />
       </view>
       <view class="clean-title-text ">内饰清洗</view>
     </view>
     <view class="fl clean_title-contain {{sorttype=='3'?'linked':''}}" data-sorttype="3" bindtap='skinBtn'>
       <view class="clean_title-image">
-        <image src="../../common/image/{{sorttype=='3'?'cleancar3.png':'cleancar03.png'}}" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/{{sorttype=='3'?'cleancar3.png':'cleancar03.png'}}" />
       </view>
       <view class="clean-title-text">镀晶</view>
     </view>

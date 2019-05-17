@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 28,
 			"list": [
 				{
 					"id": -1,
@@ -231,6 +231,19 @@
 					"name": "登录授权",
 					"pathName": "pages/login_userinfo/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加爱车",
+					"pathName": "pages/add_car/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/we/index",
 					"scene": null
 				}
 			]

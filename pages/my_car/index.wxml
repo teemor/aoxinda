@@ -2,7 +2,7 @@
   <view wx:for="{{list}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
       <view class="mycar_img fl">
-        <image src="../../common/image/car1.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car1.png" />
       </view>
       <view class="fl mycar_remark">
         <view>
@@ -17,13 +17,13 @@
     <view style="margin-top:30rpx">
       <view class="fl shop_edit_box">
         <view class="fl shop_edit_img">
-          <image src="../../common/image/shop_edit.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_edit.png" />
         </view>
         <view class="fl shop_edit_btn" bindtap="editCar">编辑</view>
       </view>
       <view class="fl shop_edit_box">
         <view class="fl shop_edit_img">
-          <image src="../../common/image/shop_del.png" />
+          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_del.png" />
         </view>
         <view class="fl shop_edit_btn">删除</view>
       </view>

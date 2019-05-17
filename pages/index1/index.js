@@ -17,7 +17,7 @@ Page({
     latitude: 39.67386,
     longitude: 118.181576,
     markers: [{
-      iconPath: '../../common/image/map03.png',
+      iconPath: 'http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/map03.png',
       id: 1,
       latitude: 39.677887,
       longitude: 118.183193,
@@ -25,7 +25,7 @@ Page({
       width: 50,
       height: 40
     }, {
-      iconPath: '../../common/image/map01.png',
+      iconPath: 'http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/map01.png',
       id: 1,
       latitude: 39.677026,
       longitude: 118.185672,
@@ -33,7 +33,7 @@ Page({
       width: 15,
       height: 16
     }, {
-      iconPath: '../../common/image/map01.png',
+      iconPath: 'http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/map01.png',
       id: 1,
       latitude: 39.683745,
       longitude: 118.196955,
@@ -41,7 +41,7 @@ Page({
       width: 15,
       height: 16
     }, {
-      iconPath: '../../common/image/map02.png',
+      iconPath: 'http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/map02.png',
       id: 1,
       latitude: 39.673916,
       longitude: 118.181576,

@@ -1,5 +1,5 @@
 <view class="order_detail_bg">
-  <image src="../../common/image/my_bg01.png" />
+  <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
     <view class="fz30">{{model.trade_status_name}}</view>
     <!--<view class="fz24">订单为你保留24:59:60,超时后将自动关闭</view>-->
@@ -8,20 +8,20 @@
 
 <view class="location_contain" bindtap="locationBtn">
   <view class="fl location_img">
-    <image src="../../common/image/location.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/location.png" />
   </view>
   <view class="fl location_address">
     <view>{{name===undefined?'收货人信息':name}}</view>
     <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
   </view>
   <view class="fr location_address_btn">
-    <image src="../../common/image/right_arrow.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/right_arrow.png" />
   </view>
 
 </view>
 <view class="cl my_order_list_box" wx:for="{{model.goodsData}}" wx:key="{{item}}">
   <view class="fl my_order_list_image">
-    <image src="../../common/image/cart_list_perfume.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
   <view class="fl my_order_list_text">
     <view class="fz30">{{item.goods_name}}</view>

@@ -1,16 +1,16 @@
 <view wx:if="{{show}}" class='choose_type-contain'>
   <view class='choose_type-title'>
     <view class="choose_type-title-image" bindtap="exitType">
-      <image src="../../common/image/exit.png" />
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/exit.png" />
     </view>
     {{carTypeData[0].name}}
   </view>
   <view>
-    <van-tabs active="{{index}}" bind:change="tabchange" color="#bdbcbc">
-      <view wx:for="{{carYear}}" wx:key="{{item.id}}">
+    <van-tabs active="{{index}}" color="#bdbcbc">
+      <view wx:for="{{carTypeData}}" wx:key="{{item.name}}">
         <van-tab title="{{item.year}}">
-          <view wx:for="{{carTypeData[0].data}}" wx:key="{{item}}">
-            <view bindtap="detailBtn" data-id="{{item.id}}">
+          <view wx:for="{{item.arr}}" wx:key="{{item}}">
+            <view bindtap="detailBtn" data-item="{{item}}">
               <choose-list list="{{item}}" />
             </view>
           </view>

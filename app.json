@@ -49,7 +49,9 @@
     "pages/add_invite/index",
     "pages/login_userinfo/index",
     "pages/shop_store_choose/index",
-    "pages/shop_store_service/index"
+    "pages/shop_store_service/index",
+    "pages/add_car_mes/index",
+    "pages/we/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -91,7 +93,7 @@
       },
       {
         "active": false,
-        "pagePath": "pages/my/index",
+        "pagePath": "pages/we/index",
         "text": "我的",
         "iconPath": "/common/image/tab/mine.png",
         "selectedIconPath": "/common/image/tab/mine_after.png"

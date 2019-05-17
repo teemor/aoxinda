@@ -6,7 +6,7 @@
     </view>
     <view class="cl mes-discount-box">
       <view class="fl mes-discount-img">
-        <image src="../../common/image/clean01.png" />
+        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/clean01.png" />
       </view>
       <view class="fl mes-discount-text">
         <view>奥宝星辉旗舰店：赠送您100优惠券</view>

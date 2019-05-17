@@ -1,7 +1,7 @@
 <view  wx:for="{{refundList.backOrderData}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">
 <view class="br_btm_light" style="padding:30rpx" >
   <view class="fl my_order_list_image">
-    <image src="../../common/image/cart_list_perfume.png" />
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
   <view class="fl my_order_list_text fz28">
     <view class="fz28">{{item.goods_name}}</view>
