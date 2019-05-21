@@ -1,1 +1,141 @@
-/* pages/shop_store_service/index.wxss */
+/* 门店 */
+
+.sp-box {
+  height: 160rpx;
+  background: #fff;
+  display: flex;
+  font-size: 32rpx;
+  color: #797979;
+}
+
+.sp-logo {
+  width: 150rpx;
+  height: 130rpx;
+  margin-top: 20rpx;
+}
+
+.sp-logo image {
+  width: 150rpx;
+  height: 130rpx;
+}
+
+.sp-text {
+  margin-left: 30rpx;
+  width: 73%;
+}
+
+.sp-text-title, .sp-text-count, .sp-text-location {
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  position: relative;
+}
+
+.sp-text-title-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.sp-box .sp-info {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 32rpx;
+}
+
+/* 服务数量 */
+
+.buy-num-box, .all-price {
+  padding: 8rpx 10rpx 10rpx 0;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+}
+
+.buy-num-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.num-label {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.buy-num-box .num-box {
+  display: flex;
+}
+
+.buy-num-box .num-box .num-jian, .buy-num-box .num-box .num-input,
+.buy-num-box .num-box .num-jia {
+  width: 80rpx;
+  height: 64rpx;
+  line-height: 62rpx;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.buy-num-box .num-box .num-input {
+  font-size: 28rpx;
+}
+
+.buy-num-box .num-box .num-input input {
+  height: 100%;
+}
+
+.all-price {
+  margin-top: 30rpx;
+  font-size: 32rpx;
+}
+
+.all-price text {
+  font-size: 28rpx;
+  color: #797979;
+}
+
+.all-price text.red {
+  font-size: 36rpx;
+  color: #f44;
+}
+
+/* 底部付款 */
+
+.payment {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+}
+
+.paymentinfo {
+  height: 100rpx;
+  width: 100%;
+  overflow: hidden;
+}
+
+.paymentinfo-left {
+  width: 66.7%;
+  height: 100rpx;
+  background-color: #2d3c4b;
+  float: left;
+}
+
+.paymentinfo-right {
+  /* width: 33.3%; */
+  width: 100%;
+  height: 100rpx;
+  background-color: #5d8fcb;
+  float: right;
+}
+
+.paymentinfo-right {
+  color: #fff;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.my-van-cell-5 .van-cell__title {
+  flex: 0.5;
+}
