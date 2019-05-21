@@ -34,7 +34,7 @@
   </view>
 </view>
 <view style="height:210rpx;" class="fz24 bgwhite">
-  <view class="cl high70">
+  <view class="cl high70" bindtap='toServerInfo'>
     <view class="fl">服务：到店服务</view>
     <view class="fr">
       <span class="red">¥</span>

@@ -81,6 +81,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.thisID = options.id
     request.selectOrderDetail({ order_id: options.id }).then(res => {
       let date = new Date(res.create_at)
       let Y = date.getFullYear() + '-';
@@ -102,4 +103,12 @@ Page({
     })
   },
 
+  /**
+   * 查看服务详情
+   */
+  toServerInfo() {
+    wx.navigateTo({
+      url: `../shop_store_service/index?server_order_id=${this.data.model.server_order_id}&id=${this.data.thisID}`
+    })
+  }
 })
