@@ -32,7 +32,12 @@ Page({
         goods_num: item.buy_num
       }
     })
-    this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total + 0 + 12, this.data.total + 0 + 12,data)
+    if (this.data.storeTotal === 0) {
+      this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data)
+    } else {
+      this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id, this.data.goodsList[0].server_order)
+    }
+
   },
   /**
    * 地址
@@ -57,6 +62,7 @@ Page({
     this.setData({
       goodsList: model.arr,
       total: model.total_price,
+      storeTotal: model.storeTotal || 0,
       sum: model.sum
     })
     request.selectAddressList({

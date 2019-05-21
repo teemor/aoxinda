@@ -4,7 +4,7 @@ import {
 } from '../common/api/api'
 const request = new Technician
 module.exports = {
-  writeOrder: function (invoice_id, order_address, order_phone, order_express, order_money, pay_money, data) {
+  writeOrder: function (invoice_id, order_address, order_phone, order_express, order_money, pay_money, data, order_freight_money, order_server_money, server_order_id, serverData) {
     request.writeOrder({
       invoice_id: invoice_id,
       order_address: order_address,
@@ -12,7 +12,11 @@ module.exports = {
       order_express: order_express,
       order_money: order_money,
       pay_money: pay_money,
-      data: data
+      data: data,
+      order_freight_money: order_freight_money,
+      server_order_id: server_order_id,
+      order_server_money: order_server_money,
+      serverData: serverData
     }).then(res => {
       let id = res.data
       wx.login({
