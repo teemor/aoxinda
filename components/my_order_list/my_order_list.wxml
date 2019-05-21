@@ -42,4 +42,9 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{goodsList.off}}">
+    <van-cell title="服务：安装服务" is-link value="￥{{goodsList.server_order.server_time / 60*goodsList.server_order.server_user_money}}x{{goodsList.server_order.server_num}}" url="../shop_store_service/index?server_order_id={{goodsList.server_order_id}}" />
+    <van-cell title="门店：{{goodsList.server_order.store_name}}" />
+    <van-cell title="预约时间：{{goodsList.server_order.server_at}}" />
+  </view>
   </view>
