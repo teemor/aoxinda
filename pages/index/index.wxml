@@ -87,7 +87,7 @@
         <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_hot.png' />
       </view>
     </view>
-    <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl">
+    <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl" bindtap="shopDetail" data-item="{{item}}">
       <view class="limited_img_hot">
         <image src="{{item.path}}" />
       </view>

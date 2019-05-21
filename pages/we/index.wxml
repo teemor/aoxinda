@@ -1,64 +1,68 @@
 <view>
   <view class="my_prot_box-contain">
     <view class="my_prot_box">
-      <view>
+      <view class="fl">
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_avatar.png" />
       </view>
-      <view>sandra</view>
+      <view class="fl">sandra</view>
+      <view class="cl"></view>
     </view>
   </view>
-  <view class="mine_btn_box">
-    <view class="fl" bindtap="myCard">
-      <view class="mine_btn bx-shadow">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_card.png" />
+  <view class="mine_btn_box" >
+    <view class="fl" bindtap="myOrder">
+      <view class="mine_btn">
+        <image src="../../common/image/my_mall_order.png" />
       </view>
       <view class="mine_btn_text tc fz30">商城订单</view>
     </view>
-    <view class="fl" bindtap="myCart">
-      <view class="mine_btn bx-shadow">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_cart.png" />
+    <view class="fl" bindtap="myKeep">
+      <view class="mine_btn">
+        <image src="../../common/image/my_keep_order.png" />
       </view>
       <view class="mine_btn_text tc fz30">保养订单</view>
     </view>
-    <view class="fl" bindtap="myCoupon">
-      <view class="mine_btn bx-shadow">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_account.png" />
+    <view class="fl" bindtap="myCard">
+      <view class="mine_btn">
+        <image src="../../common/image/my_card.png" />
       </view>
       <view class="mine_btn_text tc fz30">洗车美容卡</view>
     </view>
   </view>
+  <view class="mine_partner_img">
+    <image src="../../common/image/my_partner.png" />
+  </view>
   <view class="mine_cell-box">
     <view class="mine_cell-list">
-      <van-cell title="退款售后" is-link bind:click="myOrder">
-      <view slot="icon" class="user_img">
-          <image src="../../common/image/my_refund.png"/>
+      <van-cell title="退款售后" is-link bind:click="myRefund">
+        <view slot="icon" class="user_img">
+          <image src="../../common/image/my_refund.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="我的爱车" is-link bind:click="myOrder">
-      <view slot="icon" class="user_img">
-          <image src="../../common/image/my_car.png"/>
+        <view slot="icon" class="user_img">
+          <image src="../../common/image/my_car.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="地址管理" is-link bind:click="myAddress">
-      <view slot="icon" class="user_img">
-          <image src="../../common/image/my_address.png"/>
+        <view slot="icon" class="user_img">
+          <image src="../../common/image/my_address.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="用户反馈" is-link bind:click="myReservation">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_message.png"/>
+          <image src="../../common/image/my_message.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="客服电话" bind:click="myInvite" value="400-888-1235">
-      <view slot="icon" class="user_img">
+        <view slot="icon" class="user_img">
           <image src="../../common/image/my_service.png" />
         </view>
       </van-cell>

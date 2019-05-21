@@ -3,7 +3,6 @@ import {
 } from '../../common/api/api'
 const request = new Technician
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -45,7 +44,8 @@ Page({
   /**
    * 搜索
    */
-  onSearch: function() {
+  onSearch: function(e) {
+    console.log('rwer',e)
     wx.navigateTo({
       url: '../search_shop_list/index'
     })

@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 30,
 			"list": [
 				{
 					"id": -1,
@@ -244,6 +244,20 @@
 					"id": -1,
 					"name": "我的",
 					"pathName": "pages/we/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "退款列表",
+					"pathName": "pages/my_order_refund_list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "申请退款",
+					"pathName": "pages/add_refund/index",
 					"scene": null
 				}
 			]

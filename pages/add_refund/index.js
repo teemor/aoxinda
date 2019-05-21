@@ -1,5 +1,6 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
+import {img} from "../../utils/method"
 Page({
 
   /**
@@ -10,6 +11,27 @@ Page({
     statusShow:false,
     status:[{name:'未收到货/未安装',text:'包含未收到或者未安装的商品'},{name:'已收到货',text:'已收到货，需要退换已收到的商品，已安装商品不予退换'}],
     reason:[{name:"商品无货",key:'1'},{name:"发货时间问题",key:'1'},{name:"不想要了",key:'1'},{name:"商品信息填写错误",key:'1'},{name:"商品降价",key:'1'},{name:"其他",key:'1'}]
+  },
+  /**
+   * 上传图片
+   */
+  uploadImage:function(){
+    img().then(res=>{
+      wx.showLoading({
+        icon:'loading'
+      });
+      let list = res.tempFilePaths.map(item=>{
+        wx.uploadFile({
+          url:'http://192.168.31.75:9014/mall/v1.0/upload',
+          filePath:item,
+          name:'file',
+
+        })
+        // return request.chooseImage({item}).then(res=>{
+        //   console.log(res,'上传图片')
+        // })
+      })
+    })
   },
   /**
    * 跳转退款详情
