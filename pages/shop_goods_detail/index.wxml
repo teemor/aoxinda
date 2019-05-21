@@ -1,6 +1,18 @@
 <view>
   <view class="shop_goods_detail_img">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" mode="widthFix" />
+  <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <!-- <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block> -->
+      <block wx:for="{{imgList}}" wx:key="*this">
+        <swiper-item>
+        <image src="{{item}}" mode="widthFix"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    
   </view>
   <view class="shop_goods_detail_title">
     <view class="shop_goods_title">
@@ -74,7 +86,7 @@
   </view>
   <view>
     <goods-action>
-      <goods-action-icon icon="cart-o" text="购物车" link-type="switchTab" info="{{cartNum}}" url="../my_cart/index" />
+      <goods-action-icon icon="cart-o" text="购物车" link-type="navigateTo" info="{{cartNum}}" url="../cart_copy/index" />
       <goods-action-button text="加入购物车" type="warning" bind:click="addCart" />
       <goods-action-button text="立即购买" bind:click="addCart" />
     </goods-action>

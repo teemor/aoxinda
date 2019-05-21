@@ -40,6 +40,6 @@
     <view class="fz30 fl bg_orange bottom_btn_add" bindtap="cancelApply">
       撤销申请
     </view>
-    <view class="tc fl br_orange orange bottom_btn_add fz30">修改申请</view>
+    <view class="tc fl br_orange orange bottom_btn_add fz30" bindtap="editApply">修改申请</view>
   </view>
 

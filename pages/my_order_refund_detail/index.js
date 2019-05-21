@@ -17,6 +17,17 @@ Page({
       })
     }
   },
+  editApply:function(){
+    wx.navigateTo({
+      url: '../add_refund/index',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
   cancelApply:function(){
     request.updateBackOrder({id:this.data.id,back_type:'20'}).then(res=>{
       if(res.status===0){

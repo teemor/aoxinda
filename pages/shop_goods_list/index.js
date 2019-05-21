@@ -47,7 +47,7 @@ Page({
    * 商品详情
    * dzl
    */
-  shop_detail: function (e) {
+  shopDetail: function (e) {
     console.log(e)
     wx.navigateTo({
       url: `../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`

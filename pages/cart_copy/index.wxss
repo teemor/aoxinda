@@ -1,0 +1,30 @@
+
+.br-bottom{
+    margin-top: 10rpx;
+  }
+  .br-bottom image{
+  width:65rpx;
+  height:65rpx;
+  }
+  .my_cart_title{
+  z-index:333;
+  width:90%;
+  position: fixed;
+  background: #fafafa;
+  height:80rpx;
+  line-height: 80rpx;
+  padding:0 5%;
+  }
+  .cart_null_image{
+  width:300rpx;
+  margin: auto;
+  }
+  .cart_null_image image{
+  width: 100%;
+  }
+  .gobtn{
+  width:300rpx;margin:auto;margin-top:30rpx;border-radius:20rpx
+  }
+  .my_service_box{
+  
+  }

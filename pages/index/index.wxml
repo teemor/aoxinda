@@ -87,7 +87,7 @@
         <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_hot.png' />
       </view>
     </view>
-    <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl" bindtap="shopDetail" data-item="{{item}}">
+    <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl" bindtap="shopDetail" data-item="{{item.product_code}}">
       <view class="limited_img_hot">
         <image src="{{item.path}}" />
       </view>
@@ -102,7 +102,7 @@
         <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_mall.png' />
       </view>
     </view>
-    <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall">
+    <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall" bindtap="shopList" data-item="{{itemshopList}}">
       <view class="fz28">{{item.name}}</view>
       <view class="fz26 grey">大品牌</view>
       <view class="limited_img_mall">

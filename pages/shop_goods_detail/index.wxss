@@ -11,8 +11,11 @@ page {
 
 .shop_goods_detail_img image {
   width: 100%;
+  height:790rpx;
 }
-
+.swiper-box{
+  height:700rpx;
+}
 .shop_goods_detail_title {
   /* height:400rpx; */
 }

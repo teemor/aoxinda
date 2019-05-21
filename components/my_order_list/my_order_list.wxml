@@ -39,6 +39,7 @@
       <view class="my_order_price fz28">
         <view class="fl red">¥ {{goodsList.goods_price}}</view>
         <view class="fr grey">x{{goodsList.buy_num}}</view>
+        <view class="cl"></view>
       </view>
     </view>
   </view>

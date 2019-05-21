@@ -51,7 +51,8 @@
     "pages/shop_store_choose/index",
     "pages/shop_store_service/index",
     "pages/add_car_mes/index",
-    "pages/we/index"
+    "pages/we/index",
+    "pages/cart_copy/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -64,7 +65,9 @@
       "desc": "你的位置信息将于小程序接口的效果展示"
     }
   },
-  "navigateToMiniProgramAppIdList":["wx317e65151f04fa7c"],
+  "navigateToMiniProgramAppIdList": [
+    "wx317e65151f04fa7c"
+  ],
   "tabBar": {
     "color": "#959595",
     "selectedColor": "#413e3e",

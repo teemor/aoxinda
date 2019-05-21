@@ -26,8 +26,8 @@
     </view>
     <view class="fz22 high60 grey">最多¥299，含12运费</view>
   </view>
-  <van-cell title="商品状态" value="请选择商品状态" bind:click="Shopstatus" is-link />
-  <van-cell title="退款原因" value="请选择退款原因" is-link bind:click="refundReason" />
+  <van-field label="商品状态" value="请选择商品状态" is-link bind:focus="Shopstatus"/>
+    <van-field label="退款原因" value="请选择退款原因" is-link bind:focus="refundReason"/>
 </view>
 <view class="mtop20">
   <van-field value="{{ message }}" label="退款说明" type="textarea" placeholder="选填" autosize border="{{ false }}" />

@@ -1,6 +1,6 @@
 <view class="location_contain" bindtap="locationBtn">
   <view class="fl location_img">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/location.png" />
+    <image src="../../common/image/location.png" />
   </view>
   <view class="fl location_address">
     <view>{{name===undefined?'收货人信息':name}}</view>
