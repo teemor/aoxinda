@@ -21,6 +21,17 @@ Page({
     buyNumber: 1,
     buyNumMin: 1,
     buyNumMax: 0,
+    mineGoods: {//yaoda
+      buy_num: 1,//商品数量
+      product_code: '',//货品编号
+      goods_detail_id: null,//商品详情id
+      goods_id: null,//商品id
+      goods_price: 0,//商品价格
+      sku_id: '',//货品sku
+      sku_name: '',//商品sku
+      goods_name: '',//商品名称
+      set_at: '',//商品服务时间
+    }
   },
   labelChoosed: function (e) {
     console.log(e, 'e')
@@ -34,6 +45,16 @@ Page({
       dataset: that.data.dataset,
       goods_id: e.currentTarget.dataset.item.goods_id,
       goods_detail_id: e.currentTarget.dataset.item.goods_detail_id
+    })
+    //yaoda
+    this.setData({
+      'mineGoods.product_code': e.currentTarget.dataset.item.product_code,
+      'mineGoods.sku_id': e.currentTarget.dataset.item.sku_id,
+      'mineGoods.sku_name': e.currentTarget.dataset.item.sku_name,
+      'mineGoods.goods_price': e.currentTarget.dataset.item.goods_price,
+      'mineGoods.goods_detail_id': e.currentTarget.dataset.item.goods_detail_id,
+      'mineGoods.goods_id': e.currentTarget.dataset.item.goods_id,
+      'mineGoods.set_at': e.currentTarget.dataset.item.set_at
     })
   },
   labelChoose: function (e) {
@@ -61,10 +82,18 @@ Page({
    * 购买
    */
   buyGoods: function () {
+    if (this.data.store) {
+      wx.showToast({
+        title: '请选择门店',
+        icon: 'error',
+        duration: 1500
+      });
+    } else {
     this.addCarta();
     wx.switchTab({
       url: '../my_cart/index'
     })
+    }
   },
   /**
    * 加入购物车
@@ -79,6 +108,13 @@ Page({
    * 
    */
   addCarta: function () {
+    if (this.data.store) {
+      wx.showToast({
+        title: '请选择门店',
+        icon: 'error',
+        duration: 1500
+      });
+    } else {
     request.toCart({ buy_num: this.data.buy_num, goods_id: this.data.goods_id, goods_detail_id: this.data.goods_detail_id }).then(res => {
       if (res.status === 0) {
         wx.showToast({
@@ -98,6 +134,7 @@ Page({
     this.setData({
       show: false
     })
+    }
   },
   /**
    * 购买数量
@@ -139,6 +176,10 @@ Page({
         detail: res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
         dataset: that.data.dataset
       })
+      //yaoda
+      this.setData({
+        'mineGoods.goods_name': res.mainTable.goods_name
+      })
       if (res.tableDetail.length > 0) {
         that.data.dataset.goodstype[0].lists[0].active = true
         this.setData({
@@ -147,7 +188,30 @@ Page({
           goods_detail_id: res.tableDetail[0].goods_detail_id
         })
       }
+      //yaoda
+      this.setData({
+        'mineGoods.product_code': res.tableDetail[0].product_code,
+        'mineGoods.sku_id': res.tableDetail[0].sku_id,
+        'mineGoods.sku_name': res.tableDetail[0].sku_name,
+        'mineGoods.goods_price': res.tableDetail[0].goods_price,
+        'mineGoods.goods_detail_id': res.tableDetail[0].goods_detail_id,
+        'mineGoods.goods_id': res.tableDetail[0].goods_id,
+        'mineGoods.set_at': res.tableDetail[0].set_at
+      })
 
+    })
+  },
+  /**
+   * yaoda
+   * 跳转门店选择
+   */
+  storeChoose: function () {
+    wx.setStorage({
+      key: 'mineGoods',
+      data: this.data.mineGoods,
+    })
+    wx.navigateTo({
+      url: `../shop_store_choose/index`
     })
   },
   /**
