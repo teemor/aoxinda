@@ -85,12 +85,4 @@ Page({
   this.selectOrderDetail(options)
   },
 
-  /**
-   * 查看服务详情
-   */
-  toServerInfo() {
-    wx.navigateTo({
-      url: `../shop_store_service/index?server_order_id=${this.data.model.server_order_id}&id=${this.data.thisID}`
-    })
-  }
 })
