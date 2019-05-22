@@ -17,7 +17,7 @@ Page({
    */
   myCart: function() {
     wx.navigateTo({
-      url: '../my_cart/index'
+      url: '../cart_copy/index'
     })
   },
   /**

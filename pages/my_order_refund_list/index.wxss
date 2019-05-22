@@ -3,7 +3,7 @@
     width:500rpx;
 }
 .br_btm_light{
-    height:100rpx
+    height:140rpx
 }
 .my_order_describe{
     width:500rpx;

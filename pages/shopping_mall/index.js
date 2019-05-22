@@ -2,8 +2,9 @@ import {
   Technician
 } from '../../common/api/api'
 const request = new Technician
+import shop_list from '../../mixin/shop_list'
 Page({
-
+    mixins: [shop_list],
   /**
    * 页面的初始数据
    */
@@ -45,21 +46,13 @@ Page({
   /**
    * 搜索
    */
-  onSearch: function() {
+  onSearch: function(e) {
+    console.log('rwer',e)
     wx.navigateTo({
       url: '../search_shop_list/index'
     })
   },
-  /**
-   * 商品跳转页面
-   * @param {*} options 
-   */
-  shopList: function(e) {
-    let model = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.item))
-    wx.navigateTo({
-      url: `../shop_goods_list/index?id=${model}`
-    });
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

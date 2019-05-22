@@ -1,9 +1,19 @@
 @import "../../app.wxss";
 
-
+/* .my_cart_content{
+  margin-bottom: 1090rpx;
+} */
+.my_cart_content {
+  margin-bottom: 10rpx;
+  clear: both;
+  zoom: 1;
+  padding: 20rpx 0;
+  height:180rpx;
+  /* border-bottom: 2rpx solid #eeeeee */
+}
 .my_cart_list image {
-  width: 130rpx;
-  height: 130rpx;
+  width: 180rpx;
+  height: 180rpx;
 }
 
 .my_cart_title {
@@ -16,6 +26,13 @@
 }
 
 .my_cart_box {
-  width: 500rpx;
+  height:170rpx;
+  position: relative;
+  width: 400rpx;
   margin-left: 10rpx;
+}
+.my_cart_price{
+  width:400rpx;
+  position: absolute;
+  bottom:10rpx
 }

@@ -9,6 +9,7 @@ import {
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
 export const IP_YTHTTP = `http://192.168.31.75:9015`
+export const IP_IMG = `http://192.168.31.75:9014`
 export const HTTP = `https://www.maichefu.cn`
 export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
 export const IP_WBHTTP = `http://192.168.31.158:8888/mcf/api/v1/c` // 后两
@@ -346,6 +347,14 @@ export class Technician {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/fount/choose`,
       method: `post`
+    })
+  }
+  // 上传图片
+  chooseImage = (img)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/upload`,
+      method:`post`,
+      data:img
     })
   }
 }

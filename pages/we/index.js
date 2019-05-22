@@ -2,6 +2,13 @@ Page({
   data: {
 
   },
+
+  myKeep:function(){
+    wx.navigateToMiniProgram({
+      appId:'wx317e65151f04fa7c',
+      envVersion:'trial'
+    })
+  },
   /**
    * 卡包
    * dzl
@@ -9,6 +16,14 @@ Page({
   myCard: function() {
     wx.navigateTo({
       url: '../my_card_coupon/index'
+    })
+  },
+  /**
+   * 退款售后
+   */
+  myRefund:function(){
+    wx.navigateTo({
+      url:`../my_order_refund_list/index`
     })
   },
   /**

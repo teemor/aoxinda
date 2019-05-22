@@ -9,7 +9,7 @@ export class HttpServer {
  * @update dzl
  * @date 2018-10-29
  */
-  httpRequest = ({ url, method, data = {}, token={} }) => {
+  httpRequest = ({ url, method, data = {}, token = {} }) => {
     wx.showLoading({ title: "拼命加载中...", mask: true })
     return new Promise((resolve, reject) => {
       wx.request({
@@ -20,12 +20,12 @@ export class HttpServer {
         success(res) {
           wx.hideLoading();
           res.statusCode === 200 ? resolve(res.data) : reject(res.data)
-          if(res.statusCode===500){
+          if (res.statusCode === 500) {
             wx.showToast({
               title: "服务器挂掉了",
               icon: "none"
             })
-          }else if(res.statusCode===404){
+          } else if (res.statusCode === 404) {
             wx.showToast({
               title: res.data.message,
               icon: "none"
@@ -40,4 +40,25 @@ export class HttpServer {
         }
       })
     })
-  }}
+  }
+}
+export let  img = () => {
+  return new Promise((resolve, reject) => {
+    wx.chooseImage({
+      count: 6,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: (result) => {
+       resolve(result)
+      },
+      fail: () => {
+        wx.showToast({
+          title:'请求错误',
+          icon:'none'
+        })
+      },
+      complete: () => {}
+    });
+      
+  })
+}

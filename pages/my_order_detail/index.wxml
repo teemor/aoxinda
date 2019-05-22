@@ -1,14 +1,17 @@
 <view class="order_detail_bg">
   <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30">{{model.trade_status_name}}</view>
+    <view class="fz30 fl">{{model.trade_status_name}}</view>
+    <view class="fl order_detail_img">
+    <image src="../../common/image/detail.png"/>
+    </view>
     <!--<view class="fz24">订单为你保留24:59:60,超时后将自动关闭</view>-->
   </view>
 </view>
 
 <view class="location_contain" bindtap="locationBtn">
   <view class="fl location_img">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/location.png" />
+    <image src="../../common/image/location.png" />
   </view>
   <view class="fl location_address">
     <view>{{name===undefined?'收货人信息':name}}</view>
@@ -33,8 +36,8 @@
     </view>
   </view>
 </view>
-<view style="height:210rpx;" class="fz24 bgwhite">
-  <view class="cl high70" bindtap='toServerInfo'>
+<view style="height:210rpx;display:none" class="fz24 bgwhite">
+  <view class="cl high70">
     <view class="fl">服务：到店服务</view>
     <view class="fr">
       <span class="red">¥</span>

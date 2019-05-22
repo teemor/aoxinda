@@ -1,12 +1,10 @@
 <view>
 <van-search
   value="{{ value }}"
-  placeholder="请输入搜索关键词"
-  use-action-slot
-  bind:search="onSearch"
->
-  <view slot="action" bind:tap="onSearch">搜索</view>
-</van-search>
+  placeholder="请输入搜索关键词" 
+   bind:focus="onSearch"
+/>
+
   <view class="fl shop_type">
     <van-badge-group active="{{ active }}" bind:change="onChange">
       <van-badge title="{{item.name}}" titlea="{{item.id}}"  wx:for="{{typeData}}" />

@@ -1,10 +1,13 @@
 const app = getApp()
 import {Technician} from '../../common/api/api'
 const request = new Technician
+import shop_detail from '../../mixin/shop_detail'
+import shop_list from '../../mixin/shop_list'
 // import {
 //   hotData
 // } from '../../common/static/api_data'
 Page({
+  mixins: [shop_detail,shop_list],
   data: {
     show:true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
@@ -50,6 +53,11 @@ Page({
       width: 15,
       height: 16
     }],
+  },
+  shopBtn:function(){
+    wx.switchTab({
+      url: `../shopping_mall/index`
+    })
   },
   addCar:function(){
     wx.navigateTo({

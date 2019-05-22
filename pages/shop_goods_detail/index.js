@@ -1,21 +1,14 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
+import shop_detail from '../../mixin/shop_detail'
 Page({
-
+  mixins: [shop_detail],
   /**
    * 页面的初始数据
    */
   data: {
     store:false,
     buy_num: 1,
-    dataset: {
-      name: '米其林轮胎', price: '666',
-      goodstype: [{
-        name: '类型', lists: [{ active: true }]
-      }],
-      list: [
-        { name: '服务', list: [{ name: "到店安装", id: '01' }, { active: true, name: '无需安装', id: '02' }] }]
-    },
     cart: false,
     show: false,
     buyNumber: 1,
@@ -91,7 +84,7 @@ Page({
     } else {
     this.addCarta();
     wx.switchTab({
-      url: '../my_cart/index'
+      url: '../cart_copy/index'
     })
     }
   },
@@ -163,44 +156,7 @@ Page({
     })
     this.goodsDetail(this.data.product_code)
   },
-  /**
-   * 详情
-   */
-  goodsDetail: function (code) {
-    request.goodsDetail({ product_code: code }).then(res => {
-      let that = this
-      that.data.dataset.goodstype[0].lists = res.tableDetail
-      this.setData({
-        cartNum: res.total,
-        goodsData: res.mainTable,
-        detail: res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
-        dataset: that.data.dataset
-      })
-      //yaoda
-      this.setData({
-        'mineGoods.goods_name': res.mainTable.goods_name
-      })
-      if (res.tableDetail.length > 0) {
-        that.data.dataset.goodstype[0].lists[0].active = true
-        this.setData({
-          price: res.tableDetail[0].goods_price,
-          goods_id: res.tableDetail[0].goods_id,
-          goods_detail_id: res.tableDetail[0].goods_detail_id
-        })
-      }
-      //yaoda
-      this.setData({
-        'mineGoods.product_code': res.tableDetail[0].product_code,
-        'mineGoods.sku_id': res.tableDetail[0].sku_id,
-        'mineGoods.sku_name': res.tableDetail[0].sku_name,
-        'mineGoods.goods_price': res.tableDetail[0].goods_price,
-        'mineGoods.goods_detail_id': res.tableDetail[0].goods_detail_id,
-        'mineGoods.goods_id': res.tableDetail[0].goods_id,
-        'mineGoods.set_at': res.tableDetail[0].set_at
-      })
 
-    })
-  },
   /**
    * yaoda
    * 跳转门店选择

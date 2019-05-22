@@ -1,34 +1,34 @@
-.my_cart_content {
-    padding: 20rpx 0;
-    height:160rpx;
-    border-bottom: 2rpx solid #eeeeee
-  }
-  .br-bottom{
-    margin-top: 10rpx;
-  }
+
+page{
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+.br-bottom{
+  margin-top: 10rpx;
+}
 .br-bottom image{
-  width:65rpx;
-  height:65rpx;
+width:65rpx;
+height:65rpx;
 }
 .my_cart_title{
-  z-index:333;
-  width:90%;
-  position: fixed;
-  background: #fafafa;
-  height:80rpx;
-  line-height: 80rpx;
-  padding:0 5%;
+z-index:333;
+width:90%;
+position: fixed;
+background: #fafafa;
+height:80rpx;
+line-height: 80rpx;
+padding:0 5%;
 }
 .cart_null_image{
-  width:300rpx;
-  margin: auto;
+width:300rpx;
+margin: auto;
 }
 .cart_null_image image{
- width: 100%;
+width: 100%;
 }
 .gobtn{
-  width:300rpx;margin:auto;margin-top:30rpx;border-radius:20rpx
+width:300rpx;margin:auto;margin-top:30rpx;border-radius:20rpx
 }
 .my_service_box{
-  
+
 }

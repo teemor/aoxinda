@@ -1,16 +1,18 @@
 <view>
   <view class="shop_goods_sort cl">
     <view wx:for="{{sortType}}" wx:key="{{item}}" class="shop_goods_title tc fl" bindtap="addSort" data-item="{{item}}">
-      {{item.name}}
+      {{item.name}} <van-icon name="arrow-down"/>
     </view>
   </view>
   <view class="shop_goods_invite">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
     <view class="shop_goods_invite_text">为您推荐适合 雪佛兰迈宝瑞...的商品</view>
-    <view class="shop_goods_invite_btn" bindtap="editCar">编辑</view>
+    <view class="shop_goods_invite_btn" bindtap="editCar">
+    <image src="../../common/image/edit.png"/>
+    </view>
   </view>
   <view wx:for="{{storeList}}" wx:key="{{item}}">
-    <view class="shop_goods_contain cl" bindtap="shop_detail" data-item="{{item.product_code}}">
+    <view class="shop_goods_contain cl" bindtap="shopDetail" data-item="{{item.product_code}}">
       <view class="shop_goods_box fl">
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop1.png" mode="aspectFit" />
       </view>
