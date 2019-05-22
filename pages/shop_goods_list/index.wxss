@@ -22,14 +22,15 @@
 }
 .shop_goods_contain{
   height:200rpx;
-  border-bottom: 2rpx solid #f1f1f1
 }
 .shop_goods_box{
   width:180rpx;
 }
 .shop_goods_remark{
   padding:20rpx;
-  width:530rpx;
+  height:160rpx;
+  border-bottom: 2rpx solid #f1f1f1;
+  width:500rpx;
 }
 .shop_goods_text{
   font-size: 28rpx;

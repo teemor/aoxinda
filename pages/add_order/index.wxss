@@ -5,16 +5,7 @@
     height: 140rpx;
     background: #fff;
 }
-.location_img{
-    width: 120rpx;
-    height: 90rpx;
-}
-.location_img image{
-    margin-top:40rpx;
-    margin-left:40rpx;
-    width:60rpx;
-    height: 60rpx;
-}
+
 page{
     min-height: 100%;
     background-color: #f3f3f3;

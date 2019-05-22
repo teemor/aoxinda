@@ -10,7 +10,7 @@ page{
  height: 140rpx
 }
 .my_order_list_text{
-    width:600rpx;
+    width:500rpx;
 }
 .my_order_list_box{
     border-bottom: 2rpx solid #eeeeee;

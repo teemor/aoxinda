@@ -1,7 +1,7 @@
 <view>
   <view class="shop_goods_sort cl">
     <view wx:for="{{sortType}}" wx:key="{{item}}" class="shop_goods_title tc fl" bindtap="addSort" data-item="{{item}}">
-      {{item.name}}
+      {{item.name}} <van-icon name="arrow-down"/>
     </view>
   </view>
   <view class="shop_goods_invite">

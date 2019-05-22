@@ -43,7 +43,7 @@
         <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_main.png' />
         <view>汽车保养</view>
       </view>
-      <view class='car_btn'>
+      <view class='car_btn' bindtap='shopBtn'>
         <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_rescue.png' />
         <view>汽车商城</view>
       </view>
@@ -84,7 +84,7 @@
   <view class='limited_contain'>
     <view class='limited_title'>
       <view class='limited_title-text'>
-        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_hot.png' />
+        <image src='../../common/image/hot.png' />
       </view>
     </view>
     <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl" bindtap="shopDetail" data-item="{{item.product_code}}">
@@ -96,16 +96,16 @@
     <view class="cl"></view>
   </view>
   <!-- 商城精选 -->
-  <view class='limited_contain'>
+  <view class='limited_contain'style="margin-top:20rpx">
     <view class='limited_title'>
       <view class='limited_title-text'>
-        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_mall.png' />
+        <image src='../../common/image/mall.png' />
       </view>
     </view>
     <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall" bindtap="shopList" data-item="{{itemshopList}}">
       <view class="fz28">{{item.name}}</view>
       <view class="fz26 grey">大品牌</view>
-      <view class="limited_img_mall">
+      <view class="limited_img_mall" style="margin-top:15rpx">
         <image src="{{item.path}}" />
       </view>
     </view>

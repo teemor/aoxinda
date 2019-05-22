@@ -54,6 +54,11 @@ Page({
       height: 16
     }],
   },
+  shopBtn:function(){
+    wx.switchTab({
+      url: `../shopping_mall/index`
+    })
+  },
   addCar:function(){
     wx.navigateTo({
       url:'../../add_car_mes/index'
