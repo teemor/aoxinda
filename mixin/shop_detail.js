@@ -8,10 +8,10 @@ module.exports = {
         dataset: {
             name: '米其林轮胎', price: '666',
             goodstype: [{
-                name: '类型', lists: [{ active: true }]
+                name: '类型', lists: []
             }],
             list: [
-                { name: '服务', list: [{ name: "到店安装", id: '01' }, { active: true, name: '无需安装', id: '02' }] }]
+                { name: '服务', list: [{ active:true,name: "到店安装", id: '01' }, { name: '无需安装', id: '02' }] }]
         },
     },
     shopDetail:function(e){
@@ -59,7 +59,8 @@ module.exports = {
                 this.setData({
                     price: res.tableDetail[0].goods_price,
                     goods_id: res.tableDetail[0].goods_id,
-                    goods_detail_id: res.tableDetail[0].goods_detail_id
+                    goods_detail_id: res.tableDetail[0].goods_detail_id,
+                    dataset:that.data.dataset
                 })
             }
         })

@@ -15,6 +15,13 @@
     width:250rpx;
     text-align: center;
   }
+  .carbeauty_btn_disabled{
+    text-align: center;
+    font-size: 32rpx;
+    width:250rpx;
+    background: #999999;
+    color: #fff;
+  }
   .carbeauty_name{
     margin-top: 20rpx;
     margin-left: 30rpx;

@@ -3,13 +3,12 @@
     <view class="fl carbeauty_btn_contain">
         <slot/>
       <view class="fr carbeauty_btn_times" wx:if="{{!total}}">
-  
         <span class="fz30 fzblack">合计</span>
         <span class="fz28">¥</span>
         <span class="fz30">{{price}}</span>
       </view>
       <view wx:if="{{btnBuy!==''}}" class="fl carbeauty_name" bindtap="btnBuy">{{btnBuy}}</view>
     </view>
-    <view class="fr carbeauty_btn_buy" catchtap="carClickBtn">{{btnRight}}</view>
+    <view class="fr {{checked===true?'carbeauty_btn_buy':'carbeauty_btn_disabled'}}" catchtap="carClickBtn">{{btnRight}}</view>
   </view>
 </view>

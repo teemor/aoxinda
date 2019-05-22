@@ -29,27 +29,36 @@ Page({
       
   },
   cancelApply:function(){
-    request.updateBackOrder({id:this.data.id,back_type:'20'}).then(res=>{
-      if(res.status===0){
-        wx.showToast({
-          title: '撤销成功',
-          icon: 'none',
-          image: '',
-          duration: 3500,
-          mask: false,
-          success: (result) => {
-            wx.navigateBack({
-              url: '1'
-            });  
-          },
-          fail: () => {},
-          complete: () => {}
-        });
-          
-             
+    let that =this
+    wx.showModal({
+      content: '您确定要取消本次退款申请吗？',
+      success(res) {
+        if (res.confirm) {
+          request.updateBackOrder({ id: that.data.id, back_type: '20' }).then(res => {
+            if (res.status === 0) {
+              wx.showToast({
+                title: '撤销成功',
+                icon: 'none',
+                image: '',
+                duration: 3500,
+                mask: false,
+                success: (result) => {
+                  wx.navigateBack({
+                    url: '1'
+                  });
+                },
+                fail: () => { },
+                complete: () => { }
+              });
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
-      console.log(res)
     })
+  
+ 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

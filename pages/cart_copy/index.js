@@ -4,7 +4,6 @@ const request = new Technician
 Page({
   data: {
     finish: false,
-    checked: false,
     list: ['a', 'b', 'c'],
     result: [],
     total_price: 0
@@ -52,7 +51,7 @@ Page({
     })
     let arr = []
     let num = 0
-    let modelarr= []
+    let modelarr = []
     let sum = 0
     if (this.data.checked) {
       this.data.cartList.forEach(item => {
@@ -63,15 +62,15 @@ Page({
         this.setData({
           total_price: num,
           result: arr,
-          modelarr:modelarr,
-          sum:sum
+          modelarr: modelarr,
+          sum: sum
         })
       });
     } else {
       this.setData({
         result: arr,
         total_price: 0,
-        modelarr:modelarr
+        modelarr: modelarr
       })
     }
   },
@@ -80,11 +79,20 @@ Page({
    */
   onChange: function ({ detail }) {
     let num = 0;
+    if (detail.length > 0) {
+      this.setData({
+        ischecked: true
+      })
+    } else {
+      this.setData({
+        ischecked: false
+      })
+    }
     this.data.cartList.forEach(item => {
       detail.forEach(e => {
         if (item.id == e) {
           num += item.goods_price * item.buy_num
-          console.log( item.goods_price + 'rwe'+item.buy_num)
+          console.log(item.goods_price + 'rwe' + item.buy_num)
           return
         }
       })
@@ -113,8 +121,8 @@ Page({
     data.total_price = this.data.total_price
     data.arr = this.data.modelarr
     data.sum = this.data.sum
-    let  model= encodeURIComponent(JSON.stringify(data))
-    
+    let model = encodeURIComponent(JSON.stringify(data))
+
     wx.navigateTo({
       url: `../add_order/index?model=${model}`,
       success: (result) => {
@@ -154,14 +162,14 @@ Page({
     let sum = 0
     this.data.result.forEach(item => {
       if (detail.id = item) {
-        sum+=detail.goods_price*detail.buy_num
+        sum += detail.goods_price * detail.buy_num
         console.log(sum)
         this.setData({
-          total_price:sum
+          total_price: sum
         })
       }
     })
-    this.updateCart({id:detail.id,buy_num:detail.buy_num})
+    this.updateCart({ id: detail.id, buy_num: detail.buy_num })
 
   },
   // 购物车服务

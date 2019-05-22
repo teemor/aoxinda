@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    store:false,
+    store:true,
     buy_num: 1,
     cart: false,
     show: false,
@@ -78,7 +78,7 @@ Page({
     if (this.data.store) {
       wx.showToast({
         title: '请选择门店',
-        icon: 'error',
+        image: '../../common/image/store_icon.png',
         duration: 1500
       });
     } else {
@@ -104,7 +104,7 @@ Page({
     if (this.data.store) {
       wx.showToast({
         title: '请选择门店',
-        icon: 'error',
+        image: '../../common/image/store_icon.png',
         duration: 1500
       });
     } else {

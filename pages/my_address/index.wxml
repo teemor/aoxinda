@@ -7,7 +7,7 @@
     <view class="fz30 fl bg_orange bottom_btn_add" bindtap="addAddress">
       +新建地址
     </view>
-    <view class="tc fl bottom_green bottom_btn_add fz30" bindtap="wxAddress">一键导入微信地址</view>
+    <view style="background:#fff" class="tc fl bottom_green bottom_btn_add fz30" bindtap="wxAddress">一键导入微信地址</view>
   </view>
 
 </view>

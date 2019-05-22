@@ -3,7 +3,8 @@ Component({
     btnRight:String,
     price:String,
     btnBuy:String,
-    total:Boolean
+    total:Boolean,
+    checked:Boolean
   },
 
   /**

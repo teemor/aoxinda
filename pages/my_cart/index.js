@@ -4,7 +4,6 @@ const request = new Technician
 Page({
   data: {
     finish: false,
-    checked: false,
     list: ['a', 'b', 'c'],
     result: [],
     total_price: 0
@@ -80,6 +79,15 @@ Page({
    */
   onChange: function ({ detail }) {
     let num = 0;
+    if(detail.length>0){
+      this.setData({
+        ischecked:true
+      })
+    }else{
+      this.setData({
+        ischecked:false
+      })
+    }
     this.data.cartList.forEach(item => {
       detail.forEach(e => {
         if (item.id == e) {

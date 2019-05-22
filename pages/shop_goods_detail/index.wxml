@@ -1,6 +1,6 @@
 <view>
   <view class="shop_goods_detail_img">
-  <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <!-- <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
           <view class="swiper-item {{item}}"></view>
@@ -8,11 +8,11 @@
       </block> -->
       <block wx:for="{{imgList}}" wx:key="*this">
         <swiper-item>
-        <image src="{{item}}" mode="widthFix"/>
+          <image src="{{item}}" mode="widthFix" />
         </swiper-item>
       </block>
     </swiper>
-    
+
   </view>
   <view class="shop_goods_detail_title">
     <view class="shop_goods_title">
@@ -20,20 +20,21 @@
         <view class="fl shop_goods_tit">{{goodsData.goods_name}}</view>
         <!-- <view class="fl shop_goods_favorite">收藏</view>-->
       </view>
-       <view class="cl shop_goods_title_price">¥
+      <view class="cl shop_goods_title_price">¥
         <span class="title_icon">{{price}}</span>
       </view>
     </view>
   </view>
   <view class="shop_goods_choosed">
-    <view>已选 {{goodsData.goods_name}} SN级别,4L,美孚1号，1件</view>
-    <view>店 选择门店购买安装服务</view>
+    <view>
+      <span class="grey">已选</span> {{goodsData.goods_name}} SN级别,4L,美孚1号，1件</view>
+    <view style="margin-top:10rpx;margin-left:70rpx;color:#78a7f1">
+      <view class="fl fz24" style="margin-right:20rpx;width:40rpx;height:40rpx;border-radius:100rpx;line-height:40rpx;text-align:center;background:#f0f6ff">店</view>
+      <view class="fl" style="">选择门店购买安装服务</view>
+    </view>
   </view>
   <view class="shop_goods_evaluation">
-    <view class="shop_goods_evaluation_title">
-      <view class="fl">用户评价（58）</view>
-      <view class="fr">好评率99.7%</view>
-    </view>
+    <van-cell title="用户评价（58）" bind:click="myInvite" value="全部评价" is-link/>
     <view class="shop_goods_evaluation_box cl">
       <view class="shop_goods_evaluation_name cl">
         匿名
@@ -72,8 +73,8 @@
           <van-tab title="商品详情">
             <view>
               <view></view>
-            <rich-text class="" nodes="{{detail}}">
-            </rich-text>
+              <rich-text class="" nodes="{{detail}}">
+              </rich-text>
               <view></view>
             </view>
           </van-tab>
@@ -86,7 +87,7 @@
   </view>
   <view>
     <goods-action>
-      <goods-action-icon icon="cart-o" text="购物车" link-type="navigateTo" info="{{cartNum}}" url="../cart_copy/index" />
+      <goods-action-icon icon="cart-o" text="购物车"  info="{{cartNum}}" url="../add_order/index" />
       <goods-action-button text="加入购物车" type="warning" bind:click="addCart" />
       <goods-action-button text="立即购买" bind:click="addCart" />
     </goods-action>
@@ -105,10 +106,10 @@
           <view class="cl"></view>
         </view>
         <view class="cl fz30">
-        <view class="cart_title_price" wx:for="{{dataset.goodstype}}" wx:key="{{item}}" wx:for-index="idx">
+          <view class="cart_title_price" wx:for="{{dataset.goodstype}}" wx:key="{{item}}" wx:for-index="idx">
             <view class="grey high80">{{item.name}}</view>
             <view wx:for="{{item.lists}}" wx:key="{{item}}">
-              <view bindtap="labelChoosed"  data-childindex="{{index}}" data-index="{{idx}}" data-item="{{item}}" class="{{item.active?'active':'active_null'}} fl fz28 tc" style="">
+              <view bindtap="labelChoosed" data-childindex="{{index}}" data-index="{{idx}}" data-item="{{item}}" class="{{item.active?'active':'active_null'}} fl fz28 tc" style="">
                 {{item.sku_name}}</view>
             </view>
             <view class="cl"></view>
@@ -120,8 +121,13 @@
               <view bindtap="labelChoose" data-childindex="{{index}}" data-index="{{idx}}" data-item="{{item}}" class="{{item.active?'active':'active_null'}} fl fz28 tc" style="">
                 {{item.name}}</view>
             </view>
-                      <view class="cl"></view>
-            <view class="cl"  wx:if="{{store}}" bindtap="storeChoose">请选择门店预约</view>
+            <view class="cl"></view>
+            <view class="cl stores_bg" wx:if="{{store}}" bindtap="storeChoose">
+              <view class="fl stores_img">
+                <image src="../../common/image/stores.png" />
+              </view>
+              <view class="fl">请选择门店预约</view>
+            </view>
             <view wx:if="{{item.remark}}" class="cl high80 red">{{item.remark}}</view>
           </view>
           <view class="cl buy-num-box">
@@ -142,5 +148,4 @@
       </view>
     </view>
   </manager>
-
 </view>
