@@ -83,8 +83,8 @@ Page({
       });
     } else {
     this.addCarta();
-    wx.switchTab({
-      url: '../cart_copy/index'
+    wx.navigateTo({
+      url: '../add_order/index'
     })
     }
   },
