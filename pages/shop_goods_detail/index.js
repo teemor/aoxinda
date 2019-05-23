@@ -27,7 +27,7 @@ Page({
     }
   },
   labelChoosed: function (e) {
-    console.log(e, 'e')
+    console.log(e, 'e23444')
     let that = this
     let child = that.data.dataset.goodstype[e.currentTarget.dataset.index].lists
     for (let i = 0; i < child.length; i++) {
@@ -35,6 +35,7 @@ Page({
     }
     that.data.dataset.goodstype[e.currentTarget.dataset.index].lists[e.currentTarget.dataset.childindex].active = true;
     this.setData({
+      item:e.currentTarget.dataset.item,
       dataset: that.data.dataset,
       goods_id: e.currentTarget.dataset.item.goods_id,
       goods_detail_id: e.currentTarget.dataset.item.goods_detail_id
@@ -54,7 +55,7 @@ Page({
     console.log(e, 'eeee')
     if (e.currentTarget.dataset.item.name === '无需安装') { 
       this.setData({
-        store:false
+        store:false,
       })
     } else {
       this.setData({
@@ -83,8 +84,15 @@ Page({
       });
     } else {
     this.addCarta();
+    let data ={}
+    data.num = this.data.buy_num
+    data.detail = this.data.goodsData
+    data.price =this.data.price
+    data.item = this.data.item
+    let  model= encodeURIComponent(JSON.stringify(data))
+
     wx.navigateTo({
-      url: '../add_order/index'
+      url: `../add_order/index?data=${model}`
     })
     }
   },

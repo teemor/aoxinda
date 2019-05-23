@@ -26,17 +26,24 @@ Page({
    * 提交订单
    */
   btnBuy: function() {
-    let data = this.data.goodsList.map(item => {
-      return {
-        goods_detail_id: item.goods_detail_id,
-        goods_num: item.buy_num
+    if(this.data.goods==false){
+      let data = this.data.goodsList.map(item => {
+        return {
+          goods_detail_id: item.goods_detail_id,
+          goods_num: item.buy_num
+        }
+      })
+      if (this.data.storeTotal === 0) {
+        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data)
+      } else {
+        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id, this.data.goodsList[0].server_order)
       }
-    })
-    if (this.data.storeTotal === 0) {
-      this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data)
-    } else {
-      this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id, this.data.goodsList[0].server_order)
+    }else{
+      console.log(this.data.goodsItem,'goodsItem')
+      this.writeOrder(this.data.item,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.total + this.data.storeTotal + 12,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
     }
+    
+    
 
   },
   /**
@@ -58,13 +65,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let model = JSON.parse(decodeURIComponent(options.model))
-    this.setData({
-      goodsList: model.arr,
-      total: model.total_price,
-      storeTotal: model.storeTotal || 0,
-      sum: model.sum
-    })
+    if(options.data){
+   let model =    JSON.parse(decodeURIComponent(options.data))
+   let goodsList = {}
+   goodsList.goods_name=model.detail.goods_name
+   goodsList.goods_price = model.price,
+   goodsList.buy_num = model.num
+   console.log(model,'model')
+      this.setData({
+        sum:model.num,
+        total:model.num*model.price,
+        goodsItem:goodsList,
+        goods:true,
+        price:model.price,
+        goods_detail_id:model.item.goods_detail_id
+      })
+      request.goodsDetail({product_code:model.item.product_code}).then(res=>{
+        console.log(res,'res')
+      })
+    }else{
+      console.log(options,'options11')
+      let model = JSON.parse(decodeURIComponent(options.model))
+      this.setData({
+        goods:false,
+        goodsList: model.arr,
+        total: model.total_price,
+        storeTotal: model.storeTotal || 0,
+        sum: model.sum
+      })
+    }
+   
     request.selectAddressList({
       is_check: 1
     }).then(res => {

@@ -11,8 +11,15 @@
   </view>
 </view>
 <view>
-  <view wx:for="{{goodsList}}" wx:key="{{item}}">
-    <my_order_list ispay="{{ispay}}" goodsList="{{item}}"/>
+<view  wx:if="{{goods===false}}" >
+<view wx:for="{{goodsList}}" wx:key="{{item}}">
+    <my_order_list ispay="{{ispay}}"  goodsList="{{item?item:goodsList}}"/></view>
+  </view>
+<view wx:else>
+ <my_order_list ispay="{{ispay}}"  goodsList="{{goodsItem}}"/>
+</view>
+  
+  <view>
   </view>
 </view>
 <view>

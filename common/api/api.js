@@ -9,6 +9,7 @@ import {
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
 export const IP_YTHTTP = `http://192.168.31.75:9015`
+// export const IP_YTHTTP = `http://192.168.31.184:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
 export const HTTP = `https://www.maichefu.cn`
 export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三

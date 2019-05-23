@@ -36,7 +36,7 @@
   <view class='btn_contain'>
     <view class='btn_flex'>
       <view class='car_btn' bindtap='carbeautyBtn'>
-        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_beauty.png' />
+        <image src='../../common/image/clean.png' />
         <view>洗车美容</view>
       </view>
       <view class='car_btn' bindtap='upkeepBtn'>

@@ -87,9 +87,9 @@
   </view>
   <view>
     <goods-action>
-      <goods-action-icon icon="cart-o" text="购物车"  info="{{cartNum}}" url="../copy_cart/index" />
+      <goods-action-icon icon="cart-o" text="购物车"  info="{{cartNum}}" url="../cart_copy/index" />
       <goods-action-button text="加入购物车" type="warning" bind:click="addCart" />
-      <goods-action-button text="立即购买" bind:click="addCart" url="../add_order/index" />
+      <goods-action-button text="立即购买" bind:click="addCart" />
     </goods-action>
   </view>
   <manager show="{{show}}" type="bottom" bind:clickMask="clickMask">

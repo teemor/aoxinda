@@ -48,6 +48,7 @@ module.exports = {
             let that = this
             that.data.dataset.goodstype[0].lists = res.tableDetail
             this.setData({
+                orderImg:res.fileList[0],
                 imgList:res.fileList,
                 cartNum: res.total,
                 goodsData: res.mainTable,
