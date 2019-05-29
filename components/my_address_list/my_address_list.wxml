@@ -5,7 +5,7 @@
   </view>
   <view class="cl fz28">
     <view class="fl">
-      <view><span wx:if="{{addressDefault}}" class="tc fz20 orange my_address_default">默认地址</span>{{model.province}}  {{model.city}}  {{model.street}}</view>
+      <view><span wx:if="{{addressDefault}}" class="tc fz20 orange my_address_default">默认地址</span>{{model.province}}  {{model.city}}  {{model.county}}</view>
       <view>{{model.street}}</view>
     </view>
     <view class="fr grey my_address_btn tc" catchtap="editAddress">编辑</view>
