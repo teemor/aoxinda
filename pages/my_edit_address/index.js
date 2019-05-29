@@ -99,7 +99,7 @@ else{
     this.data.content.region = e.detail.value
     this.data.content.province = e.detail.value[0]
     this.data.content.city = e.detail.value[1],
-    this.data.content.area = e.detail.value[2]
+    this.data.content.county = e.detail.value[2]
     this.setData({
       content:this.data.content
     })
