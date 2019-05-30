@@ -161,7 +161,7 @@ Page({
       BrandTitle:e.currentTarget.dataset.id
     })
     console.log(this.data.BrandTitle,'BrandTitle')
-    request.findCarList({PP:e.currentTarget.dataset.id}).then(res => {
+    request.findCars({PP:e.currentTarget.dataset.id}).then(res => {
       this.setData({
         carBrand: res.data
       })

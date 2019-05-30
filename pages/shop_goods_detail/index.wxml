@@ -25,15 +25,18 @@
       </view>
     </view>
   </view>
-  <view class="shop_goods_choosed">
-    <view>
-      <span class="grey">已选</span> {{goodsData.goods_name}} SN级别,4L,美孚1号，1件</view>
-    <view style="margin-top:10rpx;margin-left:70rpx;color:#78a7f1">
+  <view class="shop_goods_choosed" bindtap="addCart">
+    <view class="fz28">
+      <span class="grey" style="margin-right:30rpx;">已选</span> <span class="fz24">{{item[0].sku_name}} SN级别,4L,美孚1号，1件</span></view>
+    <view style="margin-top:10rpx;margin-left:70rpx;color:#78a7f1;margin-bottom:10rpx;">
       <view class="fl fz24" style="margin-right:20rpx;width:40rpx;height:40rpx;border-radius:100rpx;line-height:40rpx;text-align:center;background:#f0f6ff">店</view>
-      <view class="fl" style="">选择门店购买安装服务</view>
+      <view class="fl fz28" style="">选择门店购买安装服务</view>
+       <view class="fr more" style="margin-top:-30rpx">
+              <image src="../../common/image/more.png"/>
+              </view>
     </view>
   </view>
-  <view class="shop_goods_evaluation">
+  <view class="shop_goods_evaluation" style="display:none">
     <van-cell title="用户评价（58）" bind:click="myInvite" value="全部评价" is-link/>
     <view class="shop_goods_evaluation_box cl">
       <view class="shop_goods_evaluation_name cl">
@@ -69,16 +72,16 @@
   <view>
     <view>
       <view style="margin-bottom:100rpx">
-        <van-tabs bind:click="onClick">
-          <van-tab title="商品详情">
+     <van-cell title="商品详情" />
+          
             <view>
               <view></view>
               <rich-text class="" nodes="{{detail}}">
               </rich-text>
               <view></view>
             </view>
-          </van-tab>
-        </van-tabs>
+      
+    
       </view>
       <view>
 
@@ -97,11 +100,14 @@
       <view>
         <view class="cart_title_price cl">
           <view class="fl cart_img">
-            <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
+            <image src="{{imgList[0]}}" />
           </view>
           <view class="fl cart_price">
             <view class="red">¥{{price}}</view>
-            <view class="fz32 mtop20">已选：{{goodsData.goods_name}}</view>
+            <view class="fz32 mtop20" style=" overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">已选：{{item.sku_name}}</view>
+          </view>
+          <view class="fl close" bindtap="clickMask">
+          <image src="../../common/image/close.png"/>
           </view>
           <view class="cl"></view>
         </view>
@@ -127,6 +133,9 @@
                 <image src="../../common/image/stores.png" />
               </view>
               <view class="fl">请选择门店预约</view>
+              <view class="fr more">
+              <image src="../../common/image/more.png"/>
+              </view>
             </view>
             <view wx:if="{{item.remark}}" class="cl high80 red">{{item.remark}}</view>
           </view>

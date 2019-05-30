@@ -1,4 +1,5 @@
-// pages/my_car/index.js
+import { Technician } from '../../common/api/api'
+const request = new Technician
 Page({
 
   /**
@@ -18,7 +19,11 @@ Page({
   /**
    * 添加爱车
    */
-  addCar:function(){},
+  addCar:function(){
+    wx.navigateTo({
+      url:`../add_car_mes/index`
+    })
+  },
   /**
    * 编辑爱车
    * @param {*} options 
@@ -38,7 +43,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.findCarList()
   },
 
   /**
@@ -48,11 +53,15 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  findCarList:function(){
+    request.findCarList({}).then(res => {
+      this.setData({
+        carList: res.result
+      })
+    })
+  },
   onShow: function () {
-
+    this.findCarList()
   },
 
   /**

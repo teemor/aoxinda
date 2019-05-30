@@ -48,6 +48,8 @@ module.exports = {
             let that = this
             that.data.dataset.goodstype[0].lists = res.tableDetail
             this.setData({
+                item: res.tableDetail[0],
+                tableDetail:res.tableDetail,
                 orderImg:res.fileList[0],
                 imgList:res.fileList,
                 cartNum: res.total,
@@ -58,6 +60,7 @@ module.exports = {
             if (res.tableDetail.length > 0) {
                 that.data.dataset.goodstype[0].lists[0].active = true
                 this.setData({
+                    item:res.tableDetail[0],
                     price: res.tableDetail[0].goods_price,
                     goods_id: res.tableDetail[0].goods_id,
                     goods_detail_id: res.tableDetail[0].goods_detail_id,

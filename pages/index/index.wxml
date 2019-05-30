@@ -1,33 +1,25 @@
+<view class="orange" style="height:110rpx;background:#fdbb51">
+<van-search
+  value="{{ value }}"
+  placeholder="请输入要搜索的商品" 
+   bind:focus="onSearch"
+/></view>
 <view class="container">
   <!-- 添加爱车 -->
   <view class='page-section page-section-spacing swiper'>
-    <swiper style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
-      <!-- <block wx:for="{{background}}" wx:key="*this">
-        <swiper-item>
-          <view class="swiper-item {{item}}"></view>
-        </swiper-item>
-      </block> -->
-      <block wx:for="{{background}}" wx:key="*this">
-        <swiper-item class="swiper-item">
-          <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car1.png' />
-          <view style='margin-top:-350rpx;background:rgba(0,0,0,0.1);width:100%;height:350rpx;position:absolute'>
-            <view class='swiper_add' bindtap="addCar">
-              <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/add.png' />
-              <view class='swiper_text'>点击添加我的爱车</view>
-            </view>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class='swiper_mes'>
+ <view style="height:350rpx;position:relative" class="banner_img">
+ <image src="../../common/image/banner.png"/>
+ </view>
+   <!-- <view class='swiper_mes'>
       <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/message.png' />
     </view>
+    -->
   </view>
-  <view class="add_contain">
+  <view class="add_contain" bindtap="addCar">
     <view class="fl add_contain_img">
       <image src="../../common/image/add.png" />
     </view>
-    <view class="fl add_car_text" bindtap="addCar">
+    <view class="fl add_car_text" >
       <view class="fz30">添加我的爱车</view>
       <view class="fz24 mtop15 grey">麦车服按车型为您推荐更精准商品和服务</view>
     </view>
@@ -58,16 +50,18 @@
       <view class="cl">
         <view class='page-current-contain'>
           <view class='page-current_box fl'>
-            <!-- <image src="" /> -->
-            <view class="page-current_box-text">
-              -1℃ 晴
+            <image class="fl" src="{{weatherData[citySelected].realtime.weather.pic}}" />
+            <view class="fl page-current_box-text">
+              {{weatherData[citySelected].realtime.weather.temperature}}℃
+              
+              {{weatherData[citySelected].realtime.weather.info}}
             </view>
           </view>
           <view class='fl detail_current-btn'>
             <view class='cl detail_current-one'>
-              <span class="red bold">今日限行 </span>
+              <span class="red bold fz30"> 今日限行 </span>
               <span class="">今日尾号
-                <span class="red">78</span>限行</span>
+                <span class="red"> 7和8 </span>限行</span>
             </view>
           </view>
         </view>
@@ -91,7 +85,7 @@
       <view class="limited_img_hot">
         <image src="{{item.path}}" />
       </view>
-      <view class="fz24" style="height:60rpx;line-height:60rpx">{{item.goods_name}}<span class="red">¥{{item.goods_price}}</span></view>
+      <view class="fz24" style="height:60rpx;line-height:60rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.goods_name}}<span class="red">¥{{item.goods_price}}</span></view>
     </view>
     <view class="cl"></view>
   </view>

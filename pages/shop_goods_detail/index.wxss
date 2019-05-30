@@ -17,10 +17,18 @@ page {
   font-size:24rpx;
 }
 .stores_img image{
-  margin-top:5rpx;
-width:40rpx;
-height:35rpx;
+  margin-top:10rpx;
+width:30rpx;
+height:25rpx;
 margin-right:30rpx;
+margin-left:20rpx;
+}
+.more image{
+  margin-top:10rpx;
+  width:15rpx;
+  height:25rpx;
+  margin-right:30rpx;
+  margin-left:20rpx;
 }
 .shop_goods_detail_img image {
   width: 100%;
@@ -32,13 +40,16 @@ margin-right:30rpx;
 .shop_goods_detail_title {
   /* height:400rpx; */
 }
-
+.van-cell__title{
+  color:#fdbb51 !important
+}
 .shop_goods_choosed {
   padding: 20rpx;
   margin-top: 20rpx;
-  height: 100rpx;
+  height: 110rpx;
   font-size: 30rpx;
   background: #fff;
+  margin-bottom:20rpx;
 }
 
 .shop_goods_title {
@@ -122,8 +133,15 @@ margin-right:30rpx;
   padding: 30rpx;
   border-bottom: 2rpx solid #f0f0f0;
 }
-
+.close image{
+  width:40rpx;
+  height: 40rpx;
+}
 .cart_price {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  width:430rpx;
   margin-left: 30rpx;
   margin-top: 40rpx;
 }

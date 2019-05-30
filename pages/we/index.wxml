@@ -40,7 +40,7 @@
       </van-cell>
     </view>
     <view class="mine_cell-list">
-      <van-cell title="我的爱车" is-link bind:click="myOrder">
+      <van-cell title="我的爱车" is-link bind:click="myCar">
         <view slot="icon" class="user_img">
           <image src="../../common/image/my_car.png" />
         </view>
@@ -53,7 +53,7 @@
         </view>
       </van-cell>
     </view>
-    <view class="mine_cell-list">
+    <view class="mine_cell-list" style="display:none">
       <van-cell title="用户反馈" is-link bind:click="myReservation">
         <view slot="icon" class="user_img">
           <image src="../../common/image/my_message.png" />

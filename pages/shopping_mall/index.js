@@ -38,10 +38,19 @@ Page({
   /**
    * 编辑我的爱车
    */
-  editCar: function() {
-    wx.navigateTo({
-      url: '../my_car_edit/index'
-    })
+  editCar: function(e) {
+    console.log(e.currentTarget.dataset.item,'e')
+    let item = e.currentTarget.dataset.item
+    if(item!=undefined){
+      wx.navigateTo({
+        url:`../my_car/index`
+      })
+    }else{
+      wx.navigateTo({
+        url: `../add_car_mes/index`
+      })
+    }
+    
   },
   /**
    * 搜索

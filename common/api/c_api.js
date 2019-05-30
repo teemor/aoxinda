@@ -1,9 +1,9 @@
 // 数据接口
 import { HttpServer } from "../../utils/method"
 const http = new HttpServer()
-export const IP_HTTP = `http://192.168.31.46:4444`
-export const IP_MY_HTTP = `http://192.168.31.184:9014`
-export const IP_YT_HTTP = `http://192.168.31.75:9015`
+export const IP_HTTP = `https://www.maichefu.cn:4444`
+export const IP_MY_HTTP = `https://www.maichefu.cn:9015`
+export const IP_YT_HTTP = `https://www.maichefu.cn:9015`
 const app = getApp()
 
 

@@ -1,17 +1,36 @@
 require('./utils/mixin.js')
+import {Technician} from './common/api/api'
+const api = require('./utils/api')
+const request = new Technician
 App({
+  globalData:{
+    openId:''
+  },
   onLaunch: function () {
+    //  加载天气数据
+    this.loadWeatherData();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    let that = this
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      success(res){
+        if(res.code){
+          request.getOpenid(res.code).then(res=>{
+            console.log(res,'thisapi.js')
+            that.globalData.openId = res.openid
+          })
+          // request.login(res.code).then(res=>{
+          //   console.log(res)
+            
+          //   app.globalData.id = res.result
+          // })
+        }
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -32,6 +51,23 @@ App({
         }
       }
     })
+  },
+  loadWeatherData: function() {
+    var citySelected = wx.getStorageSync('citySelected') || [];
+    if (citySelected.length == 0) {
+      citySelected.unshift("__location__");
+      wx.setStorageSync('citySelected', citySelected);
+    }
+
+    var that = this
+    for (var idx in citySelected) {
+      var cityCode = citySelected[idx];
+      api.loadWeatherData(cityCode, function (cityCode, data) {
+        var weatherData = wx.getStorageSync('weatherData') || {};
+        weatherData[cityCode] = data;
+        wx.setStorageSync('weatherData', weatherData);
+      });
+    }
   },
   globalData: {
     userInfo: null,

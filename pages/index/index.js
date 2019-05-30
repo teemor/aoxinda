@@ -3,12 +3,17 @@ import {Technician} from '../../common/api/api'
 const request = new Technician
 import shop_detail from '../../mixin/shop_detail'
 import shop_list from '../../mixin/shop_list'
+const api = require('../../utils/api')
 // import {
 //   hotData
 // } from '../../common/static/api_data'
 Page({
   mixins: [shop_detail,shop_list],
   data: {
+    userInfo: {},
+    citySelected: {},
+    weatherData: {},
+    topCity: {},
     show:true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     vertical: false,
@@ -68,6 +73,21 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
+    // 天气
+    var defaultCityCode = "__location__";
+    var citySelected = wx.getStorageSync('citySelected');
+    var weatherData = wx.getStorageSync('weatherData');
+    if (citySelected.length == 0 || weatherData.length == 0) {
+      var that = this
+      api.loadWeatherData(defaultCityCode, function (cityCode, data) {
+        var weatherData = {}
+        weatherData[cityCode] = data;
+        that.setHomeData([cityCode], weatherData);
+      });
+    } else {
+      this.setHomeData(citySelected, weatherData);
+    }
+    console.log(app,'app')
     // 人气推荐
     request.recommendIndex().then(res=>{
       this.setData({
@@ -80,16 +100,7 @@ Page({
         chooseData:res.data
       })
     })
-    // wx.login({
-    //   success(res){
-    //     if(res.code){
-    //       request.login(res.code).then(res=>{
-    //         console.log(res)
-    //         app.globalData.id = res.result
-    //       })
-    //     }
-    //   }
-    // })
+ 
     
     // setTimeout()
     // this.mapCtx.moveToLocation()
@@ -147,5 +158,30 @@ Page({
     wx.navigateTo({
       url: '../../pages/upkeep_car/index'
     })
-  }
+  },
+  onSearch: function(e) {
+    console.log('rwer',e)
+    wx.navigateTo({
+      url: '../search_shop_list/index'
+    })
+  },
+  // 天气
+  
+  setHomeData: function (citySelected, weatherData) {
+    var topCity = {
+      left: "",
+      center: "",
+      right: "",
+    }
+    try { topCity.center = weatherData[citySelected[0]].realtime.city_name; } catch (e) { }
+    try { topCity.right = weatherData[citySelected[1]].realtime.city_name; } catch (e) { }
+
+    this.setData({
+      weatherData: weatherData,
+      topCity: topCity,
+      citySelected: citySelected,
+    })
+    console.log(this.data.weatherData,'天气')
+    console.log(this.data.citySelected,'城市')
+  },
 })

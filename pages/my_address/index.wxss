@@ -7,9 +7,19 @@ page{
     line-height:70rpx;
     color:#b3b3b3;text-align:center;width:300rpx;margin:auto;margin-top:300rpx;
 }
-.bottom_green{border:2rpx solid #00c800;color:#00c800}
+.bottom_green{border:2rpx solid hsl(120, 100%, 39%);color:#00c800}
 .bottom_btn_address{
     position: fixed;
     width:800rpx;
 bottom:30rpx;
+}
+.my_address_null{
+    width:250rpx;
+    margin: auto;
+}
+.my_address_null image{
+width:250rpx;
+height:170rpx;
+margin-top:200rpx;
+margin-bottom: 30rpx
 }

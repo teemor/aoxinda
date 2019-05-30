@@ -13,7 +13,16 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
+function getLocation(callback){
+  wx.getLocation({
+    success:function(res){
+      callback(true,res.latitude,res.longitude)
+    },
+    fail:function(){
+      callback(false)
+    }
+  })
+}
 module.exports = {
   formatTime: formatTime
 }

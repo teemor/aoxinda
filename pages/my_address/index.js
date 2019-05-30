@@ -68,9 +68,16 @@ Page({
    */
   selectAddressList: function () {
     request.selectAddressList().then(res=>{
-      this.setData({
-        addressList:res.data
-      })
+      if(res.data.length>0){
+        this.setData({
+          addressList:res.data,
+          addressImg:false
+        })
+      }else{
+        this.setData({
+          addressImg:true
+        })
+      }
     })
   },
   /**

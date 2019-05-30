@@ -8,13 +8,24 @@ import {
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-export const IP_YTHTTP = `http://192.168.31.75:9015`
-// export const IP_YTHTTP = `http://192.168.31.184:9015`
+// export const IP_YTHTTP = `https://www.maichefu.cn:9015`
+export const IP_yt = `http://192.168.31.76:9015`
+export const IP_YTHTTP = `http://192.168.31.184:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
+
 export const HTTP = `https://www.maichefu.cn`
-export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
-export const IP_WBHTTP = `http://192.168.31.158:8888/mcf/api/v1/c` // 后两
+// export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
+export const IP_WBHTTP = `http://192.168.31.158:4444/mcf/api/v1/c` // 后两
+export const IP_YXHTTP = `http://192.168.31.158:9015/scm/v1.0` //前三
+// export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
+// export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
 export class Technician {
+  openid=(code)=>{
+    return http.httpRequest({
+      url:`https://api.weixin.qq.com/sns/jscode2session?appid=wx97a3505497150b66&secret=6ec40f87a444d682cba64368e0b30bf1&js_code=${code}&grant_type=authorization_code`,
+      method:`get`
+    })
+  }
   // 登录
   login = (code) => {
     return http.httpRequest({
@@ -183,6 +194,7 @@ export class Technician {
   saveAddress = (model) => {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/address/saveAddress`,
+      // url:`http://192.168.31.76:9015/appapi/v1.0/address/saveAddress`,
       data: model,
       method: `post`
     })
@@ -313,7 +325,7 @@ export class Technician {
     })
   }
   // 获取具体车型
-  findCarList = (model) => {
+  findCars = (model) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/findCar`,
       method: `post`,
@@ -356,6 +368,13 @@ export class Technician {
       url:`${IP_YTHTTP}/appapi/v1.0/upload`,
       method:`post`,
       data:img
+    })
+  }
+  // 获取openid
+  getOpenid = (code)=>{
+    return http.httpRequest({
+      url:`${IP_YTHTTP}/appapi/v1.0/getOpenId?code=${code}`,
+      method:`post`
     })
   }
 }

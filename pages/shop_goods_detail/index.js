@@ -86,7 +86,7 @@ Page({
     this.addCarta();
     let data ={}
     data.num = this.data.buy_num
-    data.detail = this.data.goodsData
+    data.goods_name = this.data.goodsData.goods_name
     data.price =this.data.price
     data.item = this.data.item
     let  model= encodeURIComponent(JSON.stringify(data))

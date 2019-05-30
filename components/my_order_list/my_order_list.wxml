@@ -35,7 +35,10 @@
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
     </view>
     <view class="fl my_order_list_text" >
-      <view>{{goodsList.goods_name}}</view>
+      <view class="myorder_goods_name">{{goodsList.goods_name}}</view>
+      <view class="fz24 mtop20">
+      {{goodsList.sku_name}}
+      </view>
       <view class="my_order_price fz28">
         <view class="fl red">¥ {{goodsList.goods_price}}</view>
         <view class="fr grey">x{{goodsList.buy_num}}</view>

@@ -4,6 +4,7 @@ Page({
 
   onLoad: function (options) {
     let model = JSON.parse(decodeURIComponent(options.data))
+    console.log(model,'model')
     this.setData({
       id:model.id
     })

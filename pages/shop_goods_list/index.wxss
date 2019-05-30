@@ -34,6 +34,11 @@
 }
 .shop_goods_text{
   font-size: 28rpx;
+  overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-box-orient:vertical;
+-webkit-line-clamp:2;
 }
 .shop_good_price{
   font-size: 29rpx;
@@ -61,10 +66,10 @@
 }
 .shop_goods_invite_btn image{
   position: absolute;
-  width:45rpx;
-  height:35rpx;
-margin-top:-65rpx;
-margin-left:630rpx;
+  width:30rpx;
+  height:20rpx;
+margin-top:-60rpx;
+margin-left:680rpx;
 
 }
 .active_null{

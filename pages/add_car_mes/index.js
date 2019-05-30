@@ -15,7 +15,6 @@ Page({
    * 保存
    */
   addCar: function() {
-    console.log(this.data,'this.data')
     request.saveCar({
       PP:this.data.model.PP,
       registerDate: this.data.date,

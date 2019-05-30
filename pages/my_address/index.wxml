@@ -1,8 +1,13 @@
 <view>
-<view wx:for="{{addressList}}" wx:key="{{item}}">
+<view wx:if="{{addressImg==false}}"> 
+<view  wx:for="{{addressList}}" wx:key="{{item}}">
   <address-list bind:chooseAddress="chooseAddress" addressDefault="{{item.is_check===0?false:true}}" model="{{item}}"/>
 </view>
-
+</view>
+<view wx:else class="my_address_null">
+<image src="../../common/image/address_null.png"/>
+<view class="tc fz26">收货地址在哪里~</view>
+</view>
   <view class="bottom_btn_address">
     <view class="fz30 fl bg_orange bottom_btn_add" bindtap="addAddress">
       +新建地址

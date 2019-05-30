@@ -1,4 +1,4 @@
-const app = getApp()
+// let openId = app.openId?app.openId:''
 export class HttpServer {
   /**
  * @author dzl
@@ -9,14 +9,16 @@ export class HttpServer {
  * @update dzl
  * @date 2018-10-29
  */
-  httpRequest = ({ url, method, data = {}, token = {} }) => {
+
+  httpRequest = ({ url, method, data = {}, token ={} }) => {
+    const app = getApp()
     wx.showLoading({ title: "拼命加载中...", mask: true })
     return new Promise((resolve, reject) => {
       wx.request({
         url,
         data,
         method,
-        header: { 'content-type': 'application/json', 'Accept': 'application/json', "token": 'o2ZTm5SU5GDoA5ZT4fgsizV7--Zs' },
+        header: { 'content-type': 'application/json', 'Accept': 'application/json', "token": app.globalData.openId },
         success(res) {
           wx.hideLoading();
           res.statusCode === 200 ? resolve(res.data) : reject(res.data)

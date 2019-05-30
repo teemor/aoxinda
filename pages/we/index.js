@@ -9,6 +9,11 @@ Page({
       envVersion:'trial'
     })
   },
+  myCar:function(){
+    wx.navigateTo({
+      url:`../my_car/index`
+    })
+  },
   /**
    * 卡包
    * dzl

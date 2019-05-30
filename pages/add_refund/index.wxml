@@ -5,12 +5,12 @@
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
       </view>
       <view class="fl my_order_list_text fz26">
-        <view class="">【正品授权】美孚速霸1000合成机油5W-30SN级别</view>
-        <view class="fz24 my_order_describe">数量1 产品：全合成5w-30 SN级别，4L</view>
+        <view class="">{{goodsData.goods_name}}</view>
+        <view class="fz24 my_order_describe">数量{{goodsData.buy_num}} 产品：全合成5w-30 SN级别，4L</view>
         <view class=" fz22">
           <span class="grey fl">单价：</span>
           <view class="fl red">¥ 199.00</view>
-          <view class="fl grey m_left">购买数量：1</view>
+          <view class="fl grey m_left">购买数量：{{goodsData.buy_num}}</view>
         </view>
       </view>
     </view>
@@ -19,14 +19,14 @@
     <view class="bg_refund_contain bgwhite br_btm_light">
       <view class="fz28 high60">退款数量</view>
       <view class="cl high60">
-        <van-stepper class="fl" value="{{1}}" bind:change="onChange" /> <view class="fl grey fz28 mleft20">最多1件</view>
+        <van-stepper class="fl" :min="1" :max="{{goodsData.buy_num}}" value="{{1}}" bind:change="onChange" /> <view class="fl grey fz28 mleft20">最多1件</view>
     </view>
     <view class="cl high60 fz26 ">退款金额
       <span class="red">¥299</span>
     </view>
-    <view class="fz22 high60 grey">最多¥299，含¥12运费</view>
+    <view class="fz22 high60 grey">最多¥299，含¥0运费</view>
   </view>
-  <van-field label="商品状态" value="请选择商品状态" is-link bind:focus="Shopstatus"/>
+  <van-field wx:if="{{shopstatus===true}}" label="商品状态" value="{{statusLabel?statusLabel:'请选择商品状态'}}" is-link bind:focus="Shopstatus"/>
     <van-field label="退款原因" value="请选择退款原因" is-link bind:focus="refundReason"/>
 </view>
 <view class="mtop20">
@@ -42,7 +42,7 @@
 <manager show="{{reasonShow}}" type="bottom" bind:clickMask="clickMask">
   <view class="bgwhite" style="position:relative;padding-bottom:100rpx">
     <view class="tc high70 fz30">退款原因</view>
-    <view class="high70 fz28 br_btm_light" wx:for="{{reason}}" wx:key="{{item}}">
+    <view class="high70 fz28 br_btm_light" wx:for="{{reason}}" wx:key="{{item}}" bindtap="reasonChoose" data-item="{{item}}">
       {{item.name}}
     </view>
     <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>

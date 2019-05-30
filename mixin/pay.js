@@ -19,11 +19,14 @@ module.exports = {
       serverData: serverData
     }).then(res => {
       let id = res.data
+      let that = this
+      console.log(that)
+      
       wx.login({
         success(res) {
-          if (res.code) {
-            console.log(res.code, 'res.code')
-            request.payOrder({ order_id: id, code: res.code, open_id: 'o2ZTm5SU5GDoA5ZT4fgsizV7--Zs', price: '1' }).then(res => {
+          if (res.code) {//(that.data.total+0+0)*100
+            console.log(app, 'res.code')
+            request.payOrder({ order_id: id, code: res.code, open_id:app.globalData.openId, price:  that.data.total}).then(res => {
               if (res.status === false) {
                 wx.showToast({
                   title: res.description
@@ -40,6 +43,7 @@ module.exports = {
                     let data = {}
                     data.id = id
                     data.data = 'success'
+                    data.price = that.data.price
                     let model = encodeURIComponent(JSON.stringify(data))
                     wx.navigateTo({
                       url: `../success_order/index?data=${model}`

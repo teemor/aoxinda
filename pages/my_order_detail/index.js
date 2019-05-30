@@ -54,8 +54,10 @@ Page({
    * 退款进度
    */
   refundList: function () {
+
+
     wx.navigateTo({
-      url: '../my_order_refund/index',
+      url: `../my_order_refund/index`,
       success: (result) => {
 
       },
@@ -67,9 +69,12 @@ Page({
   /**
    * 申请退款
    */
-  goRefund: function () {
+  goRefund: function (e) {
+    console.log(e,'e')
+    console.log(this.data.model,'model')
+    let  model= encodeURIComponent(JSON.stringify(this.data.model))
     wx.navigateTo({
-      url: '../add_refund/index'
+      url: `../add_refund/index?model=${model}`
     })
   },
   editInvoice: function () {

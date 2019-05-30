@@ -1,7 +1,7 @@
 <view>
 <van-search
   value="{{ value }}"
-  placeholder="请输入搜索关键词" 
+  placeholder="请输入要搜索的商品" 
    bind:focus="onSearch"
 />
 
@@ -10,12 +10,12 @@
       <van-badge title="{{item.name}}" titlea="{{item.id}}"  wx:for="{{typeData}}" />
     </van-badge-group>
   </view>
-  <view class="fl shop_contain">
-    <view wx:if="{{car}}" class="shop_add_btn_contain">
+  <view class="fl shop_contain" >
+    <view wx:if="{{car}}" class="shop_add_btn_contain" bindtap="editCar" data-item="{{model.name}}">
       <view class="fl shop_add_btn_img">
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
       </view>
-      <view class="fl shop_add_btn_text" bindtap="editCar">我的爱车：{{model.name}}</view>
+      <view class="fl shop_add_btn_text"  >我的爱车：{{model.name}}</view>
     </view>
       <view wx:else class="shop_add_btn_contain"> 
       <view class="fl shop_add_btn_img">
