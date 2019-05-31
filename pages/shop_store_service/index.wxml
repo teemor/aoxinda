@@ -26,7 +26,7 @@
     </view>
   </view>
 
-  <van-cell title="服务项目" value="安装服务" />
+  <van-cell title="服务项目" value="到店服务" />
   <van-cell title="服务技师" value="{{orderInfo.server_user_name}}" />
   <view class="my-van-cell-5">
     <van-cell title="预约时间" value="{{orderInfo.server_at}}" />
