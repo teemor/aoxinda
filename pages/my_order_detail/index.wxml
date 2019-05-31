@@ -35,15 +35,15 @@
     </view>
   </view>
 </view>
-<view style="height:210rpx;display:none" class="fz24 bgwhite">
-  <view class="cl high70">
+<view style="height:210rpx;" class="fz24 bgwhite" wx:if="{{model.serverData&&model.serverData.length>0}}">
+  <view class="cl high70" data-id="{{model.order_id}}" data-server="{{model.serverData[0].id}}" bindtap="toServerInfo">
     <view class="fl">服务：到店服务</view>
     <view class="fr">
       <span class="red">¥</span>
-      <span class="red">40</span>X1</view>
+      <span class="red">{{model.serverData[0].money}}</span>X{{model.serverData[0].server_num}}</view>
   </view>
-  <view class="cl high70">门店：唐山市星辉高端保养中心</view>
-  <view class="cl high70">预约时间：2019-04-08 8:00-12:00</view>
+  <view class="cl high70">门店：{{model.serverData[0].store_name}}</view>
+  <view class="cl high70">预约时间：{{model.serverData[0].server_at}}</view>
 </view>
 <view class="mtop20">
   <van-cell title="订单编号" value="{{model.order_code}}"></van-cell>

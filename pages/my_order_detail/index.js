@@ -84,6 +84,14 @@ Page({
     })
   },
   /**
+  * 查看服务单详情
+  */
+  toServerInfo: function (e) {
+    wx.navigateTo({
+      url: `../shop_store_service/index?id=${e.currentTarget.dataset.id}&server_order_id=${e.currentTarget.dataset.server}`
+    });
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
