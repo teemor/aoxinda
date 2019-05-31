@@ -105,7 +105,6 @@ Page({
     })
   },
   onLoad: function(options) {
-    console.log(app.globalData)
     if(app.globalData.userInfo.avatarUrl){
       this.setData({
         avatar:app.globalData.userInfo.avatarUrl,
@@ -162,6 +161,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-console.log('rwer')
+
   }
 })

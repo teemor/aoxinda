@@ -27,7 +27,6 @@ Page({
     }
   },
   labelChoosed: function (e) {
-    console.log(e, 'e23444')
     let that = this
     let child = that.data.dataset.goodstype[e.currentTarget.dataset.index].lists
     for (let i = 0; i < child.length; i++) {
@@ -52,7 +51,6 @@ Page({
     })
   },
   labelChoose: function (e) {
-    console.log(e, 'eeee')
     if (e.currentTarget.dataset.item.name === '无需安装') { 
       this.setData({
         store:false,

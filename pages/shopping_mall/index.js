@@ -28,7 +28,6 @@ Page({
     this.setData({
       shop_title: e.detail.title
     })
-    console.log(e.detail.title, 'detail')
     request.selectGoodsType({
       parentId: e.detail.titlea
     }).then(res => {

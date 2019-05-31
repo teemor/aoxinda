@@ -6,7 +6,8 @@ Page({
     finish: false,
     list: ['a', 'b', 'c'],
     result: [],
-    total_price: 0
+    total_price: 0,
+    arrsum:[]
   },
   /**
    * 删除
@@ -28,7 +29,11 @@ Page({
       });
 
     } else {
-      this.updateCart({ ids: this.data.result, version: '-1' })
+      let ids = []
+      this.data.modelarr.forEach(item=>{
+        ids.push(item.id)
+      })
+      this.updateCart({ ids:ids, version: '-1' })
     }
   },
   onShow: function () {
@@ -51,27 +56,26 @@ Page({
     })
     let arr = []
     let num = 0
-    let modelarr= []
+    let modelarr = []
     let sum = 0
     if (this.data.checked) {
       this.data.cartList.forEach(item => {
         arr.push(JSON.stringify(item.id))
         modelarr.push(item)
         num += item.goods_price * item.buy_num
-        console.log(num,'zongjia')
         sum += item.buy_num
         this.setData({
           total_price: num,
           result: arr,
-          modelarr:modelarr,
-          sum:sum
+          modelarr: modelarr,
+          sum: sum
         })
       });
     } else {
       this.setData({
         result: arr,
         total_price: 0,
-        modelarr:modelarr
+        modelarr: modelarr
       })
     }
   },
@@ -79,25 +83,38 @@ Page({
    * 选择
    */
   onChange: function ({ detail }) {
+    let modelarr=[]
     let num = 0;
-    if(detail.length>0){
-      this.setData({
-        ischecked:true
+    if (detail.length > 0) {
+      detail.forEach(item=>{
+     modelarr.push(this.data.cartList[item])
       })
-    }else{
       this.setData({
-        ischecked:false
+        modelarr:modelarr
+      })
+      this.setData({
+        ischecked: true
+      })
+    } else {
+      this.setData({
+        ischecked: false
       })
     }
-    this.data.cartList.forEach(item => {
-      detail.forEach(e => {
-        if (item.id == e) {
-          num += item.goods_price * item.buy_num
-          console.log( item.goods_price + 'rwe'+item.buy_num)
-          return
-        }
-      })
+    console.log(this.data.modelarr,'modelarrar')
+    this.data.modelarr.forEach(item=>{
+      num+=parseFloat(item.goods_price)*item.buy_num
     })
+    // parseFloat(this.data.cartList[item].goods_price)*this.data.cartList
+    // this.data.cartList.forEach(item => {
+     
+    //   detail.forEach(e => {
+    //     if (item.id == e) {
+    //       num += parseFloat(item.goods_price) * item.buy_num
+    //       console.log(item.goods_price + 'rwe' + item.buy_num)
+    //       return
+    //     }
+    //   })
+    // })
     if (this.data.cartList.length === detail.length) {
       this.setData({
         checked: true
@@ -113,6 +130,7 @@ Page({
     })
     console.log(this.data.result)
   },
+
   /**
    * 提交订单
    * @param {*} options 
@@ -122,8 +140,8 @@ Page({
     data.total_price = this.data.total_price
     data.arr = this.data.modelarr
     data.sum = this.data.sum
-    let  model= encodeURIComponent(JSON.stringify(data))
-    
+    let model = encodeURIComponent(JSON.stringify(data))
+
     wx.navigateTo({
       url: `../add_order/index?model=${model}`,
       success: (result) => {
@@ -163,20 +181,20 @@ Page({
     let sum = 0
     this.data.result.forEach(item => {
       if (detail.id = item) {
-        sum+=detail.goods_price*detail.buy_num
+        sum += detail.goods_price * detail.buy_num
         console.log(sum)
         this.setData({
-          total_price:sum
+          total_price: sum
         })
       }
     })
-    this.updateCart({id:detail.id,buy_num:detail.buy_num})
+    this.updateCart({ id: detail.id, buy_num: detail.buy_num })
 
   },
   // 购物车服务
   updateCart: function (data) {
     request.updateCart(data).then(res => {
-      this.cartList()
+      this.onShow();
     })
   },
   typego: function () {

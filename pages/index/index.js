@@ -156,7 +156,5 @@ Page({
       topCity: topCity,
       citySelected: citySelected,
     })
-    console.log(this.data.weatherData,'天气')
-    console.log(this.data.citySelected,'城市')
   },
 })

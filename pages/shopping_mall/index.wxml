@@ -15,7 +15,7 @@
       <view class="fl shop_add_btn_img">
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
       </view>
-      <view class="fl shop_add_btn_text"  >我的爱车：{{model.name}}</view>
+      <view class="fl shop_add_btn_text overflow"  >我的爱车：{{model.name}}</view>
     </view>
       <view wx:else class="shop_add_btn_contain"> 
       <view class="fl shop_add_btn_img">
