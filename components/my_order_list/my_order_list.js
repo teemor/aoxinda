@@ -4,8 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    ispay:Boolean,
-    goodsList:Object
+    ispay: Boolean,
+    goodsList: Object
   },
 
   /**
@@ -22,8 +22,16 @@ Component({
     /**
      * 进入详情
      */
-    orderDetail:function(){
-      this.triggerEvent('orderDetail', {id:this.data.goodsList.id})
+    orderDetail: function () {
+      this.triggerEvent('orderDetail', { id: this.data.goodsList.id })
+    },
+    /**
+     * 查看服务单详情
+     */
+    toServerInfo: function (e) {
+      wx.navigateTo({
+        url: `../shop_store_service/index?server_order_id=${e.currentTarget.dataset.id}`
+      });
     }
   }
 })

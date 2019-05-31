@@ -7,7 +7,7 @@
     <view class="fl my_order_list_image">
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
     </view>
-    <view class="fl my_order_list_text" >
+    <view class="fl my_order_list_text">
       <view>{{item.goods_name}}</view>
       <view class="my_order_price fz28">
         <view class="fl red">¥ {{item.goods_price}}</view>
@@ -15,29 +15,30 @@
       </view>
     </view>
   </view>
-  <view class="cl my_order_list_bottom"  wx:if="{{ispay===true}}">
+  <view class="cl my_order_list_bottom" wx:if="{{ispay===true}}">
     <view class="fl">
-    合计<span class="red">¥:{{goodsList.pay_money}}</span>
+      合计
+      <span class="red">¥:{{goodsList.pay_money}}</span>
     </view>
 
     <view wx:if="{{goodsList.trade_status==='待付款'}}" class="fr fz24 my_order_list_btn">
       <view class="fl myorder_grey">取消订单</view>
       <view class="fl myorder_orange">去付款</view>
     </view>
-     <view wx:elif="{{goodsList.trade_status==='待发货'}}" class="fr fz24 my_order_list_btn">
+    <view wx:elif="{{goodsList.trade_status==='待发货'}}" class="fr fz24 my_order_list_btn">
       <view class="fl myorder_orange">确认收货</view>
     </view>
   </view>
 </view>
 <view wx:else class="my_order_list-box">
- <view class="cl my_order_list_box" bindtap="orderDetail" >
+  <view class="cl my_order_list_box" bindtap="orderDetail">
     <view class="fl my_order_list_image">
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
     </view>
-    <view class="fl my_order_list_text" >
+    <view class="fl my_order_list_text">
       <view class="myorder_goods_name">{{goodsList.goods_name}}</view>
       <view class="fz24 mtop20">
-      {{goodsList.sku_name}}
+        {{goodsList.sku_name}}
       </view>
       <view class="my_order_price fz28">
         <view class="fl red">¥ {{goodsList.goods_price}}</view>
@@ -46,9 +47,13 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{goodsList.off}}">
-    <van-cell title="服务：安装服务" is-link value="￥{{goodsList.server_order.server_time / 60*goodsList.server_order.server_user_money}}x{{goodsList.server_order.server_num}}" url="../shop_store_service/index?server_order_id={{goodsList.server_order_id}}" />
-    <van-cell title="门店：{{goodsList.server_order.store_name}}" />
-    <van-cell title="预约时间：{{goodsList.server_order.server_at}}" />
+  <view wx:if="{{goodsList.off}}" class='server_box'>
+    <view class='server_item' data-id="{{ goodsList.server_order_id }}" bindtap='toServerInfo'>
+      <view class='fl'>服务：安装服务</view>
+      <view class='fr'><text class='red'>￥{{goodsList.server_order.server_time / 60*goodsList.server_order.server_user_money}}</text>x{{goodsList.server_order.server_num}}<van-icon name="arrow" /></view>
+    </view>
+    <view class="cl"></view>
+    <view class='server_item'>门店：{{goodsList.server_order.store_name}}</view>
+    <view class='server_item'>预约时间：{{goodsList.server_order.server_at}}</view>
   </view>
-  </view>
+</view>

@@ -12,6 +12,8 @@
 }
 
 .my_order_list_text {
+  position: relative;
+  height: 180rpx;
   width: 450rpx;
   background: #fff;
 }
@@ -24,12 +26,12 @@
 .my_order_price {
   position: absolute;
   width: 440rpx;
-  bottom: 20rpx;
+  bottom: 0;
 }
 
 .my_order_list-box {
   position: relative;
-  height: 180rpx;
+  /* height: 180rpx; */
   margin-top: 30rpx;
   margin-bottom: 10rpx;
   padding: 30rpx 30rpx;
@@ -37,10 +39,42 @@
   background: #fff;
 }
 
-.myorder_goods_name{
+.myorder_goods_name {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.server_box {
+  margin-top: 30rpx;
+  padding-top: 15px;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  border-top: 1px solid #eee;
+}
+
+.server_box .server_item {
+  margin-bottom: 30rpx;
+}
+
+.server_box .server_item:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.server_box .server_item:last-child {
+  margin-bottom: 0;
+}
+
+.server_box .server_item .fr {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.server_box .server_item .fr .red {
+  margin-right: 4rpx;
+  color: red;
 }
