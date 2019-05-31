@@ -58,6 +58,14 @@ export class choiceSp {
       data: model
     })
   }
+  //更改到店服务
+  updateServerOrder = (model) => {
+    return http.httpRequest({
+      url: `${IP_YT_HTTP}/appapi/v1.0/order/updateServerOrder`,
+      method: `post`,
+      data: model
+    })
+  }
   //查询门店服务单
   selectServerOrder = (model) => {
     return http.httpRequest({
