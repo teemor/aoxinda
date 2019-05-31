@@ -107,7 +107,7 @@ Page({
   },
   // 添加我的爱车
   addCar: function() {
-    if(app.globalData.userInfo.avatarUrl){
+    if(app.globalData.userInfo!==null){
       wx.navigateTo({
         url:'../../pages/add_car_mes/index'
       })

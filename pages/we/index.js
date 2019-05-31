@@ -3,7 +3,20 @@ Page({
   data: {
 
   },
-
+  bindGetUserInfo: function(e) {
+    console.log(e.detail.userInfo)
+    if (e.detail.userInfo) {
+      this.setData({
+        avatar: e.detail.userInfo.avatarUrl,
+        nickName: e.detail.userInfo.nickName,
+        login: true
+      })
+    } else {
+      this.setData({
+        login: false
+      })
+    }
+  },
   myKeep:function(){
     wx.navigateToMiniProgram({
       appId:'wx317e65151f04fa7c',
@@ -106,7 +119,8 @@ Page({
   },
   onLoad: function(options) {
     console.log(app.globalData)
-    if(app.globalData.userInfo.avatarUrl){
+    if(app.globalData.userInfo!==null){
+      console.log(app.globalData.userInfo)
       this.setData({
         avatar:app.globalData.userInfo.avatarUrl,
         nickName :app.globalData.userInfo.nickName,
