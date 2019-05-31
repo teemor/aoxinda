@@ -3,19 +3,21 @@
     <view slot="action bg_orange" bind:tap="onSearch">搜索</view>
   </van-search>
   <view>
-    <view style="padding:20rpx">
-      <view class="fl fz28 high80">历史搜索</view>
+    <view style="padding:0 34rpx">
+      <view class="fl fz28 high80" style='width:100%'>历史搜索
+        <van-icon custom-style='float:right;height:80rpx;line-height:80rpx' name="delete" bind:click="deleteHistory"></van-icon>
+      </view>
       <view class="fr"></view>
       <view class="cl">
-        <view class="fl myorder_grey fz22 mright20 padding20" wx:for="{{history}}" wx:key="{{item}}">
+        <view class="fl myorder_grey fz22 mright20 padding20" wx:for="{{history}}" wx:key="{{index}}" data-info="{{item}}" bindtap='onHistorySearch'>
           {{item.name}}
         </view>
       </view>
     </view>
-    <view class="cl" style="padding:20rpx">
+    <view class="cl" style="padding:0 34rpx;display:none">
       <view class="fl fz28 high80">热门搜索</view>
       <view class="cl">
-        <view style="margin-bottom:30rpx" class="fl myorder_grey fz22 mright20 padding20" wx:for="{{hot}}" wx:key="{{item}}">
+        <view style="margin-bottom:30rpx" class="fl myorder_grey fz22 mright20 padding20" wx:for="{{hot}}" wx:key="{{index}}">
           {{item.name}}
         </view>
       </view>
