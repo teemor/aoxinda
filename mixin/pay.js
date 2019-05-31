@@ -26,9 +26,10 @@ module.exports = {
       }
     })
   },
-  writeOrder: function (invoice_id, order_address, order_phone, order_express, order_money, pay_money, data, order_freight_money, order_server_money, server_order_id) {
+  writeOrder: function (invoice_id, order_person, order_address, order_phone, order_express, order_money, pay_money, data, order_freight_money, order_server_money, server_order_id) {
     request.writeOrder({
       invoice_id: invoice_id,
+      order_person: order_person,
       order_address: order_address,
       order_phone: order_phone,
       order_express: order_express,

@@ -39,13 +39,13 @@ Page({
         }
       })
       if (!this.data.goodsList[0].server_order_id) {
-        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total+0 , data)
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total+0 , data)
       } else {
-        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total +this.data.storeTotal+0 , data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id,
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total +this.data.storeTotal+0 , data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id,
         )
       }
     }else{
-      this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total+0,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
+      this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total+0,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
     }
     
     
