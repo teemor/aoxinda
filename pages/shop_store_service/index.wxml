@@ -1,5 +1,5 @@
 <view>
-  <van-cell title="门店及服务项目" is-link value="更换门店" url="../shop_store_choose/index" />
+  <van-cell title="门店及服务项目" is-link value="更换门店" url="../shop_store_choose/index" wx:if="{{id?false:true}}" />
   <view class='sp-box'>
     <view class='sp-logo'>
       <image src='{{orderInfo.store_img}}'></image>
@@ -21,7 +21,7 @@
     </view>
     <view class="fr ">
       <view class="num-box">
-        <van-stepper value="{{ orderInfo.server_num }}" bind:change="onChange" />
+        <van-stepper disabled="{{id?true:false}}" value="{{ orderInfo.server_num }}" bind:change="onChange" />
       </view>
     </view>
   </view>
