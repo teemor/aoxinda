@@ -1,0 +1,20 @@
+<view class='getUserPhone_wrap' wx:if="{{phoneMask == 0}}">
+  <view class='getPhoneMask'>
+    <view class='wxChatLogo_wrap'>
+      <image class='wxChatLogo' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/login_bgm.png'></image>
+    </view>
+    <view class='prompt_txt'>麦车服请求获取您的手机号，请您允许。</view>
+    <button class='getPhone' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  </view>
+</view>
+<view class='getUserPhone_wrap' wx:if="{{loginMask == 0}}">
+  <view class='getPhoneMask'>
+    <view class='wxChatLogo_wrap'>
+      <image class='wxChatLogo' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/login_bgm.png'></image>
+    </view>
+    <view class='prompt_txt'>微信授权登录</view>
+     <button class='getPhone' open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn">
+    微信授权登录
+  </button>
+  </view>
+</view>
