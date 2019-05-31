@@ -10,20 +10,22 @@ const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
 // export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_yt = `http://192.168.31.76:9015`
-export const IP_YTHTTP = `http://192.168.31.184:9015`
+export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
-
 export const HTTP = `https://www.maichefu.cn`
 // export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
 export const IP_WBHTTP = `http://192.168.31.158:4444/mcf/api/v1/c` // 后两
 export const IP_YXHTTP = `http://192.168.31.158:9015/scm/v1.0` //前三
+export const WB_WX =`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
 // export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
 export class Technician {
-  openid=(code)=>{
+  // 登录查询
+  loginQuery=(user)=>{
     return http.httpRequest({
-      url:`https://api.weixin.qq.com/sns/jscode2session?appid=wx97a3505497150b66&secret=6ec40f87a444d682cba64368e0b30bf1&js_code=${code}&grant_type=authorization_code`,
-      method:`get`
+      url:`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`,
+      method:`post`,
+      data:user
     })
   }
   // 登录
@@ -31,6 +33,12 @@ export class Technician {
     return http.httpRequest({
       url: `${HTTP}/user/loginByWx?code=${code}`,
       method: `get`
+    })
+  }
+  // 登录
+  query = () =>{
+    return http.httpRequest({
+      url: `${HTTP}/http://192.168.31.75:4444/mcf/api/v1/c/login/query`
     })
   }
   // 添加我的爱车
@@ -317,11 +325,11 @@ export class Technician {
   }
 
   // 获取车型
-  findCarList = () => {
+  findCarList = (userid) => {
     return http.httpRequest({
       url: `${IP_WBHTTP}/findCarList`,
       method: `post`,
-      data: { userId: '1222799294104538bd06930e37a8ab08' }
+      data: userid
     })
   }
   // 获取具体车型

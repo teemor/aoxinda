@@ -77,7 +77,11 @@ page {
   margin-top:20rpx;
   height: 240rpx;
 }
-
+.order_image image{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50rpx;
+}
 .mine_partner_img image {
   margin-top:20rpx;
   margin-left: 30rpx;

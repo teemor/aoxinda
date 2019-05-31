@@ -1,10 +1,21 @@
 <view>
   <view class="my_prot_box-contain">
-    <view class="my_prot_box">
-      <view class="fl">
+    <view wx:if="{{login===true}}" class="my_prot_box order_image">
+      <view class="fl order_image">
+        <image src="{{avatar}}" />
+      </view>
+      <view class="fl">{{nickName}}</view>
+      <view class="cl"></view>
+    </view>
+    <view wx:else class="my_prot_box">
+    <view class="fl" >
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_avatar.png" />
       </view>
-      <view class="fl">sandra</view>
+       <view class="fl">
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+          请登录
+        </button>
+      </view>
       <view class="cl"></view>
     </view>
   </view>

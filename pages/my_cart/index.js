@@ -58,6 +58,7 @@ Page({
         arr.push(JSON.stringify(item.id))
         modelarr.push(item)
         num += item.goods_price * item.buy_num
+        console.log(num,'zongjia')
         sum += item.buy_num
         this.setData({
           total_price: num,

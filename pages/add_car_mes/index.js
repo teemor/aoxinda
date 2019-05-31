@@ -2,6 +2,9 @@ import {
   Technician
 } from '../../common/api/api'
 const request = new Technician
+const app =  getApp();
+
+  
 Page({
 
   /**
@@ -15,27 +18,42 @@ Page({
    * 保存
    */
   addCar: function() {
-    request.saveCar({
-      PP:this.data.model.PP,
-      registerDate: this.data.date,
-      carTypeId: this.data.model.LevelID,
-      engineNum: this.data.model.FDJXH,
-      mileage: this.data.kmTxt,
-      model: this.data.model.XSMC,
-      vehicleType: this.data.model.CX,
-      userId: '29ef3c97c26847fcba1bccdbc22ab695',UserName:'露霸霸',UserTel:'13785518945',
-    }).then(res => {
-      if(res.status===true){
-        wx.showToast({
-          title:'添加成功'
+  let that = this
+    wx.getStorage({
+      key:'userPhone',
+      success:(result)=>{
+        that.setData({
+          userTel:result.data
         })
-        wx.navigateBack({
-          url: '1'
-        });
-          
       }
-      console.log(res, 'res')
     })
+    wx.getStorage({
+      key: 'user',
+      success: (result) => {
+        request.saveCar({
+          PP:this.data.model.PP,
+          registerDate: this.data.date,
+          carTypeId: this.data.model.LevelID,
+          engineNum: this.data.model.FDJXH,
+          mileage: this.data.kmTxt,
+          model: this.data.model.XSMC,
+          vehicleType: this.data.model.CX,
+          userId:result.data.unionId ,userName:result.data.nickName,userTel:that.data.userTel,
+        }).then(res => {
+          if(res.status===true){
+            wx.showToast({
+              title:'添加成功'
+            })
+            wx.navigateBack({
+              url: '1'
+            });
+              
+          }
+        })
+      },
+      fail: () => {},
+      complete: () => {}
+    });
   },
   kmChange: function(e) {
     this.setData({

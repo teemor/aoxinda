@@ -27,7 +27,6 @@ Component({
      * dzl
      */
     btnBuy:function(){
-      console.log('rwer')
       this.triggerEvent('btnBuy',{})
     }
   }

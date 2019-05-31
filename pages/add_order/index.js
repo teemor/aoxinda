@@ -38,13 +38,14 @@ Page({
           goods_num: item.buy_num
         }
       })
-      if (this.data.storeTotal === 0) {
-        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data)
+      if (!this.data.goodsList[0].server_order_id) {
+        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.storeTotal+0 , data)
       } else {
-        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 12, data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id, this.data.goodsList[0].server_order)
+        this.writeOrder(this.data.item, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.storeTotal+0 , data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id,
+        )
       }
     }else{
-      this.writeOrder(this.data.item,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.total + this.data.storeTotal + 12,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
+      this.writeOrder(this.data.item,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.storeTotal+0,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
     }
     
     
@@ -71,7 +72,6 @@ Page({
   onLoad: function(options) {
     if(options.data){
    let model =    JSON.parse(decodeURIComponent(options.data))
-   console.log(model,'model')
    let goodsList = {}
    goodsList.goods_name=model.goods_name
    goodsList.goods_price = model.price,
@@ -90,33 +90,23 @@ Page({
       // })
     }else{
       let model = JSON.parse(decodeURIComponent(options.model))
+      console.log(model,'storetotal')
       this.setData({
         goods:false,
         goodsList: model.arr,
-        total: model.total_price,
+        total: model.total_price+0,
         storeTotal: model.storeTotal || 0,
         sum: model.sum
       })
     }
-   
-    request.selectAddressList({
-      is_check: 1
-    }).then(res => {
-      if(res.data.length>0){
-        this.setData({
-          name: res.data[0].name,
-          phone: res.data[0].phone,
-          address: res.data[0].province + res.data[0].city + res.data[0].county + res.data[0].street
-        })
-      }
-    
-      console.log(res, 'res')
-    })
+    this.chooseAddress();
   },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.chooseAddress();
     if (this.data.item) {
       request.selectInvoice({
         id: this.data.item

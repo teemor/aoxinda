@@ -16,13 +16,7 @@
   margin-bottom: 30rpx;
   border-radius: 10rpx;
 }
-.shop_add_btn_img image{
-  margin-right:13rpx;
-width:32rpx;height: 28rpx;
-}
-.shop_add_btn_text{
-  font-size: 25rpx;
-}
+
 .shop_banner {
   width: 100%;
 }

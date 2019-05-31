@@ -12,7 +12,6 @@ Component({
      * 切换年份
      */
     tabchange: function (e) {
-      console.log(e.detail,'heh')
       this.triggerEvent('tabYear', e.detail.title)
     },
     /**

@@ -25,7 +25,6 @@ Component({
      */
     previewImg:function(){
       let that =this
-      console.log(that)
       wx.previewImage({
         current: that.data.qrCode.img, // 当前显示图片的http链接
         urls:[that.data.qrCode.img] // 需要预览的图片http链接列表

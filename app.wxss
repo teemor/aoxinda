@@ -275,3 +275,11 @@ padding:10rpx
   width:60rpx;
   height: 60rpx;
 }
+.shop_add_btn_img image{
+  margin-right:13rpx;
+width:32rpx;height: 28rpx;
+}
+.shop_add_btn_text{
+  width:300rpx;
+  font-size: 25rpx;
+}

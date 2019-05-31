@@ -3,7 +3,7 @@
 <image src="../../common/image/pay_success.png" mode="aspectFit"/>
 </view>
   <view class="green fz32">付款成功</view>
-  <view class="height80 mtop20">支付方式：微信支付 支付金额：¥351</view>
+  <view class="height80 mtop20">支付方式：微信支付 支付金额：¥0</view>
   <view class="mtop20 cl">
     <view class="back_btn fl bg_orange height75" bindtap="orderList">查看订单</view>
     <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="goCart">继续逛逛</view>

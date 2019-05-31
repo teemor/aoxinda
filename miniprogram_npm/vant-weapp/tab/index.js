@@ -29,7 +29,6 @@ VantComponent({
     methods: {
         update() {
             const parent = this.getRelationNodes('../tabs/index')[0];
-            console.log(parent,'parent')
             if (parent) {
                 parent.updateTabs();
             }

@@ -4,7 +4,9 @@ const api = require('./utils/api')
 const request = new Technician
 App({
   globalData:{
-    openId:''
+    openId:'',
+    userInfo: null,
+    id:''
   },
   onLaunch: function () {
     //  加载天气数据
@@ -19,7 +21,6 @@ App({
       success(res){
         if(res.code){
           request.getOpenid(res.code).then(res=>{
-            console.log(res,'thisapi.js')
             that.globalData.openId = res.openid
           })
           // request.login(res.code).then(res=>{
@@ -68,9 +69,5 @@ App({
         wx.setStorageSync('weatherData', weatherData);
       });
     }
-  },
-  globalData: {
-    userInfo: null,
-    id:''
   }
 })

@@ -22,7 +22,6 @@ Component({
      * 选择类别
      */
     chooseType: function (e) {
-      console.log(e.currentTarget.dataset.cx)
       this.triggerEvent('chooseType', {PP:this.data.BrandTitle,CX:e.currentTarget.dataset.cx})
     }
   }

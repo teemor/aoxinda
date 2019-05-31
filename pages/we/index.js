@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   data: {
 
@@ -104,7 +105,19 @@ Page({
     })
   },
   onLoad: function(options) {
-
+    console.log(app.globalData)
+    if(app.globalData.userInfo.avatarUrl){
+      this.setData({
+        avatar:app.globalData.userInfo.avatarUrl,
+        nickName :app.globalData.userInfo.nickName,
+        login:true
+      })
+    }else{
+      this.setData({
+        login:false
+      })
+    }
+    
   },
   onReady: function() {
 

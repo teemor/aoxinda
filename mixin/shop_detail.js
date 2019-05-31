@@ -44,6 +44,9 @@ module.exports = {
      * 详情
      */
     goodsDetail: function (code) {
+        wx.removeStorage({
+            key: 'mineGoods'
+      })
         request.goodsDetail({ product_code: code }).then(res => {
             let that = this
             that.data.dataset.goodstype[0].lists = res.tableDetail
@@ -66,6 +69,15 @@ module.exports = {
                     goods_detail_id: res.tableDetail[0].goods_detail_id,
                     dataset:that.data.dataset
                 })
+                this.setData({
+                    'mineGoods.product_code': res.tableDetail[0].product_code,
+                    'mineGoods.sku_id': res.tableDetail[0].sku_id,
+                    'mineGoods.sku_name': res.tableDetail[0].sku_name,
+                    'mineGoods.goods_price': res.tableDetail[0].goods_price,
+                    'mineGoods.goods_detail_id': res.tableDetail[0].goods_detail_id,
+                    'mineGoods.goods_id': res.tableDetail[0].goods_id,
+                    'mineGoods.set_at': res.tableDetail[0].set_at
+                  })
             }
         })
     },

@@ -3,8 +3,10 @@ import {
 } from '../../common/api/api'
 const request = new Technician
 import shop_list from '../../mixin/shop_list'
+import find_car from '../../mixin/find_car'
+const app = getApp();
 Page({
-    mixins: [shop_list],
+    mixins: [shop_list,find_car],
   /**
    * 页面的初始数据
    */
@@ -66,15 +68,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    request.findCarList().then(res => {
-      if (res.result.length > 0) {
-        this.setData({
-          car: true,
-          model: res.result[0]
-        })
-      }
-
-    })
+    this.findCarList();
     request.selectGoodsType().then(res => {
       this.setData({
         shop_title: res.data.tableData[0].name,
@@ -89,21 +83,12 @@ Page({
         console.log(res, 'res')
       })
     })
-
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function() {
-
+    this.findCarList();
   },
 
   /**

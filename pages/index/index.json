@@ -2,6 +2,7 @@
     "navigationBarTitleText": "麦车服",
     "usingComponents":{
       "axd-progress":"../../components/progress/progress",
-      "van-search": "../../miniprogram_npm/vant-weapp/search/index"
+      "van-search": "../../miniprogram_npm/vant-weapp/search/index",
+      "login_phone":"../../components/login_phone/login_phone"
     }
 }

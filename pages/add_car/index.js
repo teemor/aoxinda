@@ -24,38 +24,6 @@ Page({
     carList: [],
     carBrand: [],
     activeIndex: "1",
-    hotbrandList: [{
-      name: '阿斯顿·马丁'
-    },
-    {
-      name: '大众'
-    },
-    {
-      name: '雪佛兰'
-    },
-    {
-      name: '大众'
-    },
-    {
-      name: '大众'
-    },
-    {
-      name: '大众'
-    },
-
-    {
-      name: '大众'
-    },
-    {
-      name: '大众'
-    },
-    {
-      name: '大众'
-    },
-    {
-      name: '大众'
-    }
-    ],
     tabData: [{
       name: '手动添加',
       key: '1'

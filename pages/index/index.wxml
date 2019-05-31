@@ -15,7 +15,13 @@
     </view>
     -->
   </view>
-  <view class="add_contain" bindtap="addCar">
+  <view wx:if="{{car}}" class="add_contain" bindtap="editCar" data-item="{{model.name}}">
+      <view class="fl shop_add_btn_img">
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
+      </view>
+      <view class="fl shop_add_btn_text"  >我的爱车：{{model.name}}</view>
+    </view>
+  <view wx:else class="add_contain" bindtap="addCar">
     <view class="fl add_contain_img">
       <image src="../../common/image/add.png" />
     </view>
@@ -42,10 +48,10 @@
     </view>
     <view class="cl">
       <view class="index_pic fl">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_person.png" />
+        <image src="../../common/image/index_person.png" />
       </view>
       <view class="index_pic fl" style="margin-left:10rpx">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/index_clean.png" />
+        <image src="../../common/image/index_clean.png" />
       </view>
       <view class="cl">
         <view class='page-current-contain'>
@@ -107,3 +113,4 @@
   </view>
 </view>
 <dl-dialog show="{{show}}" />
+<login_phone phoneMask="{{phoneMask}}" loginMask="{{loginMask}}" bind:getPhoneNumber="getPhoneNumber" bind:getUserInfoBtn="getUserInfoBtn"/>
