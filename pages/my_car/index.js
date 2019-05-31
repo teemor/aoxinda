@@ -1,20 +1,15 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
+import find_car from '../../mixin/find_car'
+
 Page({
+  mixins: [find_car],
 
   /**
    * 页面的初始数据
    */
   data: {
     list: ['', '']
-  },
-  /**
-   * 编辑爱车
-   */
-  editCar:function(){
-    wx.navigateTo({
-      url:'../'
-    })
   },
   /**
    * 添加爱车
@@ -43,7 +38,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.findCarList()
   },
 
   /**
@@ -53,13 +47,6 @@ Page({
 
   },
 
-  findCarList:function(){
-    request.findCarList({}).then(res => {
-      this.setData({
-        carList: res.result
-      })
-    })
-  },
   onShow: function () {
     this.findCarList()
   },

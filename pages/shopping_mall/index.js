@@ -68,7 +68,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.findCarList();
     request.selectGoodsType().then(res => {
       this.setData({
         shop_title: res.data.tableData[0].name,
@@ -80,7 +79,6 @@ Page({
         this.setData({
           storeList: res.data.tableData
         })
-        console.log(res, 'res')
       })
     })
   },

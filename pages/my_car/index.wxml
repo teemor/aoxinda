@@ -7,10 +7,10 @@
       <view class="fl mycar_remark">
         <view>
           <view class="fl mycar_remark_title">{{item.name}}</view>
-          <view class="fl mycar_remark_km">行驶里程:1,000KM</view>
+          <!--<view class="fl mycar_remark_km">行驶里程:1,000KM</view> -->
         </view>
         <view class="mycar_remark_text cl">
-          2014年款 迈宝瑞 1.6T 手动 舒适版
+          <!--{{item.carTypeId}}-->
         </view>
       </view>
     </view>
