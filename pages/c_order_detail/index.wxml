@@ -1,0 +1,103 @@
+<view class='order_detail fz28'>
+  <view class='status'>
+    <block wx:if="{{orderDetail.isPay == 0}}">
+      <view class='font'>待付款</view>
+      <view>为您能享受到专业服务，请及时付款。</view>
+    </block>
+    <block wx:if="{{orderDetail.isPay == 1}}">
+      <view class='font'>已付款</view>
+    </block>
+    <block wx:if="{{orderDetail.orderStatus == 0}}">
+      <view class='font'>未进店</view>
+    </block>
+    <block wx:if="{{orderDetail.orderStatus == 3}}">
+      <view class='font'>待取车</view>
+    </block>
+    <block wx:if="{{orderDetail.orderStatus == 5}}">
+      <view class='font'>退单</view>
+    </block>
+    <block wx:if="{{orderDetail.orderStatus === 1}}">
+      <view class='font'>已接车</view>
+      <!-- <view>请您按预约时间准时到店享受安装服务。</view> -->
+    </block>
+    <block wx:if="{{orderDetail.orderStatus === 2}}">
+      <view class='font'>施工中</view>
+      <view>请耐心等待施工完成，祝您购物愉快。</view>
+    </block>
+    <block wx:if="{{orderDetail.orderStatus === 4}}">
+      <view class='font'>已完成</view>
+      <view>感谢您的支持。</view>
+    </block>
+  </view>
+  <view class='user_info'>
+    <view>
+      <text decode="{{true}}">{{orderDetail.userName || ''}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      <text>{{orderDetail.userTel || ''}}</text>
+    </view>
+    <view>安装门店：{{orderDetail.mcfSpShop.name || ''}}</view>
+    <view>预约时间：{{orderDetail.orderDate || ''}}</view>
+  </view>
+  <view class='product'>
+    <view class='inner' wx:key="property" wx:for="{{orderDetail.mcfCProduct}}" bindtap='goods_detail' data-code='{{item.productCode || ""}}'>
+      <view class='sku_name'>{{item.goodsName || ''}}</view>
+      <view>
+        <text>数量 {{item.goodsNum || 0}}</text>
+        <text decode="{{true}}">&nbsp;&nbsp;产品： {{item.skuName || ''}}</text>
+      </view>
+      <view class='price'>￥{{item.price || 0}}</view>
+    </view>
+  </view>
+  <view class='order_info'>
+    <van-cell-group>
+      <van-cell title="订单编号" value="{{orderDetail.id || ''}}" />
+      <van-cell title="下单时间" value="{{order_detail_wx.bar(orderDetail.createtime)}}"/>
+      <van-cell title="配送方式" value="无需配送，直接进店安装即可" />
+      <!-- <van-cell title="支付方式" value="内容" /> -->
+    </van-cell-group>
+  </view>
+  <!-- <view class='order_info'>
+    <van-cell title="补开发票" is-link value="{{isInvoice}}" bindtap="onInvoice" data-status="1"/>
+    <van-cell title="是否需要旧件" is-link value="{{isOldparts}}" bindtap="onInvoice" data-status="2"/>
+  </view> -->
+
+  <view class='order_info'>
+    <van-cell-group>
+      <van-cell title="订单金额" value="{{orderDetail.orderMoney || 0}}" />
+      <van-cell title="技师工时费" value="{{orderDetail.thCost || 0}}" />
+    </van-cell-group>
+    <view class="total">
+      <text decode="{{true}}">共{{orderDetail.mcfCProduct.length || 0}}件商品&nbsp;&nbsp;小计:</text>
+      <text class='order_price'>￥{{orderDetail.allOrderMoney || 0}}</text>
+    </view>
+  </view>
+
+  <view class='clickBtn'>
+    <button class='agreen' bindtap="goPayment">付款</button>
+    <button class='refuse' bindtap='refuse' wx:if="{{tabType == 4}}">拒绝</button>
+  </view>
+
+  <!-- 底部付款 -->
+  <!-- <view class='payment'>
+    <view class='payment-left'>
+      <view class='payment-text fl'><text decode="{{true}}">共{{orderDetail.mcfCProduct.length}}件商品&nbsp;&nbsp;合计：</text></view>
+      <view class='payment-price fl'>¥ {{orderDetail.allOrderMoney}}</view>
+      <view class='payment-unit' style='padding-left:10rpx;'>元</view>
+    </view>
+    <view class='payment-right' catchtap='goPayment'>付款</view>
+  </view> -->
+
+  <!-- <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-picker columns="{{ columns }}" bind:change="onChange"/>
+  </van-popup> -->
+</view>
+
+<wxs module="order_detail_wx">
+  var bar = function (time) {
+    var date = getDate(time);
+    var result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+    return result;
+  }
+  module.exports = {
+    bar: bar
+  };
+</wxs>

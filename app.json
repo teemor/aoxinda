@@ -51,8 +51,7 @@
     "pages/shop_store_choose/index",
     "pages/shop_store_service/index",
     "pages/add_car_mes/index",
-    "pages/we/index",
-    "pages/cart_copy/index"
+    "pages/we/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

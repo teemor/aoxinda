@@ -1,0 +1,93 @@
+<view class="upkeep_car_contain">
+  <view class="upkeep_car_exchange-title">
+    <view class="upkeep_car_exchang-mark fl">
+      <view class="upkeep_car_exchange-text">{{carName}}</view>
+      <view class="unkeep_car_exchange-btn">
+        <span class="fl"> 当前里程</span>
+        <input placeholder='1000' class='fl' value='{{carMiles}}'></input>
+        <view class='fl'>km</view>
+        <view class="red fl edit" bindtap='editMiles'>修改</view>
+        <!-- 弹出输入框 -->
+        <van-dialog use-slot async-close show="{{show}}"  bind:close="onClose">
+        <view class='carMiles'>
+          <input type='number' placeholder='请输入车辆公里数' bindinput='carMilesValue' maxlength="6"></input>
+        </view>
+        </van-dialog>
+        <!-- 弹出输入框 -->
+      </view>
+    </view>
+  </view>
+  <!-- 保养流程-->
+  <view class="upkeep_step_contain">
+    <view class="upkeep_step_title">
+      <view class="fl">保养服务流程</view>
+      <view class="red fr fz20">了解详情</view>
+    </view>
+    <view class="cl upkeep_step_box-list">
+      <view class="upkeep_step_box fl">
+        <view class="upkeep_step_box-detail fl">
+          <view class="upkeep_step_box-img">
+            <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/step1.png" />
+          </view>
+          <view class="upkeep_step_box-text">选择项目</view>
+        </view>
+      </view>
+      <view class="upkeep_step_arrows fl" style="">
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrows.png" />
+      </view>
+      <view class="upkeep_step_box fl">
+        <view class="upkeep_step_box-detail fl">
+          <view class="upkeep_step_box-img">
+            <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/step2.png" />
+          </view>
+          <view class="upkeep_step_box-text">选择门店/技师</view>
+        </view>
+      </view>
+      <view class="upkeep_step_arrows fl" style="">
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrows.png" />
+      </view>
+      <view class="upkeep_step_box fl">
+        <view class="upkeep_step_box-detail">
+          <view class="upkeep_step_box-img" style="width:60rpx;height:40rpx;margin-top:20rpx">
+            <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/step3.png" style="height:40rpx;" />
+          </view>
+          <view class="upkeep_step_box-text">配送到店</view>
+        </view>
+      </view>
+      <view class="upkeep_step_arrows fl" style="">
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrows.png" />
+      </view>
+      <view class="upkeep_step_box fl">
+        <view class="upkeep_step_box-detail">
+          <view class="upkeep_step_box-img">
+            <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/step4.png" />
+          </view>
+          <view class="upkeep_step_box-text">到店服务</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 智能推荐保养项目 -->
+  <view class="upkeep_project_contain">
+    <view class="upkeep_step_title">智能推荐保养项目</view>
+    <view>
+      <project-list bind:getCheckedBtn="getCheckedBtn" goodsList="{{goodsList}}"/>
+    </view>
+  </view>
+  <!-- 付款 -->
+  <view class='payment'>
+    <view class='paymentinfo'>
+      <view class='paymentinfo-left'>
+        <view class='shopimg fl'>
+          <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/shop.png'></image>
+        </view>
+        <view class='money fl'>
+          <text>合计：¥{{allPrice}}</text>
+        </view>
+      </view>
+      <view class='paymentinfo-right' bindtap='choicetech'>
+        <text>选技师施工</text>
+      </view>
+    </view>
+  </view>
+</view>

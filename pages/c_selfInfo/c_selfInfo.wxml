@@ -1,0 +1,69 @@
+<!-- 个人信息 -->
+<view class='container'>
+  <view class='list headerimg'>
+    <view class='list-text'>头像</view>
+    <view class='list-info avatar'>
+      <image src="{{headerImg}}"></image>
+    </view>
+    <view class="arrow-wrap">
+      <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+    </view>
+  </view>
+
+  <view class='list headerimg'>
+    <view class='list-text'>姓名</view>
+    <view class="list-info">
+      <input placeholder="请输入姓名" style="text-align:right" bindblur='username' value='{{username}}'></input>
+    </view>
+    <view class="arrow-wrap">
+      <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+    </view>
+  </view>
+
+  <view class='list headerimg'>
+    <view class='list-text'>手机号</view>
+    <view class="list-info">
+      <input placeholder='请输入手机号' style="text-align:right" bindblur='phoneNum' value='{{phoneNum}}'></input>
+    </view>
+    <view class="arrow-wrap">
+      <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+    </view>
+  </view>
+  <picker mode='selector' value="{{sex}}" range='{{sexList}}' bindchange="setSexFun">
+    <view class='list headerimg'>
+      <view class='list-text'>性别</view>
+      <view class="list-info">
+        <text>{{sex == '' ? '请选择' : sex }}</text>
+      </view>
+      <view class="arrow-wrap">
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+      </view>
+    </view>
+  </picker>
+
+  <view class='list headerimg'>
+    <view class='list-text'>出生年月</view>
+    <view class="list-info">
+      <picker mode="date" value="{{date}}" start="" end="" bindchange="setDateFun">
+        <text>{{date == null ? '请选择' : date }}</text>
+      </picker>
+    </view>
+    <view class="arrow-wrap">
+      <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+    </view>
+  </view>
+
+  <view class='list headerimg'>
+    <view class='list-text'>常驻地址</view>
+    <view class="list-info">
+      <input placeholder='请输入常驻地址' style="text-align:right" bindblur='addressValue' value='{{addressValue}}'></input>
+    </view>
+    <view class="arrow-wrap">
+      <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+    </view>
+  </view>
+
+  <view class='tjBtn'>
+    <button catchtap='editCard'>提交</button>
+  </view>
+</view>

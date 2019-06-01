@@ -1,0 +1,41 @@
+.scoring-level,.stars{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 100rpx;
+  text-align: center;
+}
+
+.stars{
+  width: 100%;
+}
+.level{
+   flex: 1;
+}
+.starImg{
+  height: 50rpx;
+  width: 50rpx;
+  margin: 0 24rpx;
+}
+.scoring-title{
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-left:30rpx;
+}
+.scoring-service{
+  margin:20rpx 30rpx 0 30rpx;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.level{
+  font-size: 30rpx;
+}
+.submit{
+  position:fixed;
+  bottom: 10rpx;
+  width: 100%;
+}
+.submitBtn{
+  width: 90%;
+  background-color: #f6b245;
+  color: #fff;
+}

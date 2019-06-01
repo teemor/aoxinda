@@ -1,0 +1,182 @@
+@import "../../app.wxss";
+page{
+  padding-bottom:100rpx; 
+}
+.upkeep_car_exchange-img{
+    width:70rpx;
+    height:70rpx;
+}
+.upkeep_car_exchange-img image{
+    margin-top:15rpx;
+    width:100%;
+    height:70rpx;
+}
+.unkeep_car_exchange-btn{
+    font-size: 26rpx;
+    height:80rpx;
+    line-height: 80rpx;
+}
+.unkeep_car_exchange-btn input{
+  width:120rpx;
+  margin-top:18rpx;
+  text-align:center;
+}
+.unkeep_car_exchange-btn .edit{
+  padding-left: 20rpx;
+}
+.upkeep_car_exchange-title{
+    height:100rpx;
+    box-shadow: 0 0 20rpx #e1e1e1;
+    padding:20rpx;
+    font-size: 30rpx;
+}
+.upkeep_car_exchang-mark{
+    color:#424242;
+    width:80%;
+    margin-left:30rpx;
+}
+.upkeep_car_exchange-text{
+    width:550rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.upkeep_step_contain{
+    box-shadow: 0 0 20rpx #e1e1e1;
+    margin-top:30rpx;
+    font-size:28rpx;
+}
+.upkeep_step_title{
+    padding:0 30rpx;
+    height:60rpx;
+    line-height: 60rpx;
+    border-bottom: 1px solid #e1e1e1;
+ }
+ .upkeep_step_box{
+     height:100rpx;
+ }
+ .upkeep_step_box-detail{
+     font-size:20rpx;
+     margin: auto;
+     width:140rpx;
+     text-align: center;
+ }
+ .upkeep_step_box-img{
+     margin-top:10rpx;
+     margin-left:50rpx;
+     width:50rpx;
+     height:55rpx;
+ }
+ .upkeep_step_box-img image{
+     width:100%;
+     height:55rpx;
+ }
+ .upkeep_step_box-text{
+     height:40rpx;
+     line-height: 40rpx;
+ }
+ .upkeep_step_box-list{
+     width:90%;
+     margin-left:5%;
+     height: 100rpx;
+ }
+ .upkeep_step_arrows {
+    width:35rpx;height:10rpx;
+    margin-top:30rpx;
+ }
+ .upkeep_step_arrows image{
+width:100%;
+height:30rpx;
+ }
+ .upkeep_project_contain{
+    box-shadow: 0 0 20rpx #e1e1e1;
+     margin-top:20rpx;
+     font-size:28rpx;
+ }
+ /* 底部付款 */
+.payment{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+}
+/* .discountMsg{
+  height: 40rpx;
+  background-color:#fff0d7;
+  font-size: 30rpx;
+  color:#ff3c3c;
+  padding: 0 50rpx;
+}
+.discountMsg image{
+  height: 30rpx;
+  width: 30rpx;
+  margin-left: 15rpx;
+  position: absolute;
+  top:6rpx; 
+} */
+.paymentinfo{
+  height: 100rpx;
+  width: 100%;
+  overflow: hidden;
+}
+.paymentinfo-left{
+  width: 66.7%;
+  height: 100rpx;
+  background-color:#2d3c4b;
+  float: left;
+}
+.paymentinfo-right{
+  width: 33.3%;
+  height: 100rpx;
+  background-color:#5d8fcb;
+  float: right;
+}
+.shopimg{
+  position: relative;
+}
+.red-point{
+  position: absolute;
+  color: #fff;
+  top: 5rpx;
+  font-size: 20rpx;
+  right: -8rpx;
+  background-color: #ff4040;
+  height: 30rpx;
+  line-height: 30rpx;
+  width: 30rpx;
+  text-align: center;
+  border-radius: 50%;
+}
+.shopimg image{
+  width: 80rpx;
+  height: 80rpx;
+  padding:10rpx 0 0 50rpx;
+}
+.paymentinfo-right{
+  color: #fff;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.money{
+  color: #ff4040;
+  font-size: 40rpx;
+  line-height: 100rpx;
+  padding-left: 40rpx;
+}
+/* .paymentbtn{
+  background-color: #5d8fcb;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 25rpx;
+  margin: 20rpx 40rpx 0 0;
+  float: right;
+} */
+.carMiles{
+  height: 100rpx;
+  width: 100%;
+  text-align: center;
+}
+.carMiles input{
+  width: 100%;
+}

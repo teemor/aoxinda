@@ -1,0 +1,20 @@
+<!-- 评分 -->
+<view class='container'>
+  <view class='scoring-title'>请您给该门店打分：</view>
+  <view class='scoring-list'>
+    <view class='scoring-service' wx:key="" wx:for="{{scoreList}}" wx:for-index="father_index" data-index="{{father_index}}">
+      <view class='scoring-service-title red'>{{item.title}}</view>
+      <view class='scoring-level cl'>
+        <view class='level' wx:key="" wx:for="{{item.levelText}}" wx:for-item="sonItem">{{sonItem}}</view>
+      </view>
+      <view class='stars'>
+        <image class='starImg' wx:key="" wx:for="{{item.stars}}" wx:for-item="sunItem" src="{{sunItem.flag==1? sunItem.bgImg:sunItem.bgfImg}}" data-index="{{father_index}}" data-bindex="{{index}}" bindtap='starScore'>
+        </image>
+      </view>
+    </view>
+  </view>
+
+  <view class='submit'>
+    <button class='submitBtn' catchtap='submitScore'>提交</button>
+  </view>
+</view> 

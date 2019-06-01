@@ -1,0 +1,153 @@
+<!-- 技师选择与时间 -->
+<view class='container'>
+  <!-- 头部附近 -->
+  <view class='near'>
+    <view class='near-box-top'>
+      区域附近所有维修店
+    </view>
+    <view class='near-box-bottom'>
+      <view class='near-address fl'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/address.png'></image>
+      </view>
+      <view class='near-text fl'>{{userLoaction === '' ? '请选择您得当前位置' : userLoaction}}</view>
+      <view class='near-text-change red' bindtap='getUserLocation'>修改</view>
+    </view>
+  </view>
+  <!-- 头部附近 -->
+
+  <!-- 搜索技师 -->
+  <view class='search'>
+    <input type='text' placeholder="点击搜索门店" placeholder-class="search_text" bindconfirm='searchSp' bindblur='searchSp' />
+    <view class='search_btn'>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/search.png'></image>
+    </view>
+  </view>
+  <!-- 搜索技师 -->
+
+  <!-- 没有门店显示 -->
+  <view wx:if="{{isshowSp}}" class='noshop'>对不起，暂无门店</view>
+  <!-- 没有门店显示 -->
+
+  <!-- 选择门店技师与时间 -->
+  <view class='choice-tech' wx:if="{{showSpInfo}}">
+    <!-- 门店 -->
+    <van-collapse value="{{activeNames}}" wx:key="" wx:for="{{sp_List.content}}" wx:for-index="sp_index" name="sp_index" data-index="{{sp_index}}" bind:change="onChange" class="sp">
+      <van-collapse-item data-index="{{sp_index}}" name="{{sp_index}}" is-link="{{checked}}">
+        <view slot="title">
+          <view class='sp-box'>
+            <view class='sp-logo'>
+              <image src='{{item.logo}}'></image>
+            </view>
+            <view class='sp-text'>
+              <view class='sp-text-title'>
+                <view class='sp-text-title-left'>{{item.name}}</view>
+                <view class='sp-text-title-right'>{{item.score}}分</view>
+              </view>
+              <view class='sp-text-count'>
+                <view class='sp-text-count-left'>
+                  <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/jishi.png' class='fl'></image>
+                  <view class='tech-counts'>共
+                    <text class='red'>{{item.mcfSysEmpList.length}}</text>位高级技工</view>
+                </view>
+                <view class='sp-text-count-right'>已售{{item.orderNum}}单</view>
+              </view>
+              <view class='sp-text-location'>
+                <view class='sp-text-location-left'>{{item.address}}</view>
+                <view class='sp-text-location-right'>距我{{item.distance}}km</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      <!-- 门店 -->
+        <!-- 技师与时间 -->
+        <view class='technician-list-box cl' wx:for='{{item.mcfSysEmpList}}' data-sp_index="{{sp_index}}" data-index='{{th_index}}' catchtap='onClickBtn' wx:key="" wx:for-item="sonItem" wx:for-index="th_index" id="{{sonItem.flag}}">
+          <view class='technician-info cl'>
+            <view class='technician-logo-img fl'>
+              <image src='{{sonItem.headPortrait}}' class='technician-logo fl'></image>
+            </view>
+            <view class='technician-name fl'>{{sonItem.name}}</view>
+            <view class='technician-works fl'>{{sonItem.typeReceipt}}单</view>
+            <view class='technician-scores fl'>{{sonItem.userScore}}分</view>
+            <view class='technician-service fl'>服务费：￥{{sonItem.thCost}}元</view>
+            
+            <view class='nullClass' catchtap='nullFun'>
+              <picker mode="date" value="{{date}}" start="{{noGoodsList.length == '0' ?todaySysDate:chooseDate}}" data-sp_index="{{sp_index}}" data-index='{{th_index}}'  end="" bindchange="bindDateChange">
+                <view class='technician-date fl'>
+                  <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/date.png'></image>
+                </view>
+              </picker>
+            </view>
+          </view>
+
+          <view class='time-list {{uhide==sonItem.flag?"":"hidden"}}'>
+            <view class='time-catalog cl'>
+              <view class='reservation'>点击预约</view>
+              <view class='reservation-date'>{{dateChoice == '' ? todaySysDate : dateChoice}}</view>
+              <view class='reservation-date'>{{tomSysDate}}</view>
+              <view class='reservation-date'>{{tomAftSysDate}}</view>
+            </view>
+            <view class='time-list_nowork'>
+              <view></view>
+              <view>{{spFirstStatus}}</view>
+              <view>{{spSecStatus}}</view>
+              <view>{{spThreeStatus}}</view>
+            </view>
+            <view class='time-list-wrap'>
+              <view class='time_wrap'>
+                <view class='time_ele'>8:00-12:00</view>
+                <view class='time_ele'>12:00-18:00</view>
+                <view class='time_ele'>18:00-22:00</view>
+              </view>
+              <view class='time_wrap'>
+                <block wx:for="{{timeTh[0]}}" wx:key="">
+                  <button class='time_ele btn_class' disabled='{{item === true? false:true}}' catchtap='timeBtn' data-id='0' data-thIndex="{{th_index}}" data-index="{{index}}" data-spIndex="{{sp_index}}" style="{{sp_index+'_'+th_index+'_'+'0_'+index== alltimeBtnIndex?'background:#f6b245;color:#fff':''}}">{{item === true ? "可预约" : "不可预约"}}</button>
+                </block>
+              </view>
+              <view class='time_wrap'>
+                <block wx:for="{{timeTh[1]}}" wx:key="">
+                  <button class='time_ele btn_class' disabled='{{item === true? false:true}}' catchtap='timeBtn' data-id='1' data-thIndex="{{th_index}}" data-index="{{index}}" data-spIndex="{{sp_index}}" style="{{sp_index+'_'+th_index+'_'+'1_'+index== alltimeBtnIndex?'background:#f6b245;color:#fff':''}}">{{item === true ? "可预约" : "不可预约"}}</button>
+                </block>
+              </view>
+              <view class='time_wrap'>
+                <block wx:for="{{timeTh[2]}}" wx:key="">
+                  <button class='time_ele btn_class' disabled='{{item === true? false:true}}' catchtap='timeBtn' data-id='2' data-thIndex="{{th_index}}" data-index="{{index}}" data-spIndex="{{sp_index}}" style="{{sp_index+'_'+th_index+'_'+'2_'+index== alltimeBtnIndex?'background:#f6b245;color:#fff':''}}">{{item === true ? "可预约" : "不可预约"}}</button>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 技师与时间 -->
+      </van-collapse-item>
+
+    </van-collapse>
+    <!-- 底部付款 -->
+    <view class='payment'>
+      <view class='paymentinfo cl'>
+        <view class='paymentinfo-left'>
+          <view class='shopimg fl' bindtap="goodsInfo">
+            <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/shop.png'></image>
+          </view>
+          <view class='red fz40 money fl'>
+            <text>¥{{totalPrice}}</text>
+          </view>
+          <view class='price-all fl txt_white fz30'>
+            <view>商品￥{{allPrice}}</view>
+            <view>服务费￥{{thCost}}</view>
+          </view>
+        </view>
+        <view class='paymentinfo-right' catchtap='payment'>
+          <text>付款</text>
+        </view>
+      </view>
+    </view>
+    <!-- 底部付款 -->
+  </view>
+
+  <!-- 提示 -->
+  <view class='choose_wrap' wx:if="{{showLocation}}">
+    <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+    <button catchtap='btnFun' class='choose_btn'>开启授权地理位置</button>
+  </view>
+  <!-- 提示 -->
+
+</view>
