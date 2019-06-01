@@ -19,7 +19,7 @@
     <view class="bg_refund_contain bgwhite br_btm_light">
       <view class="fz28 high60">退款数量</view>
       <view class="cl high60">
-        <van-stepper class="fl" :min="1" :max="{{goodsData.buy_num}}" value="{{1}}" bind:change="onChange" /> <view class="fl grey fz28 mleft20">最多1件</view>
+        <van-stepper class="fl" min="1" max="{{goodsData.buy_num}}" bind:change="onChange" /> <view class="fl grey fz28 mleft20">最多1件</view>
     </view>
     <view class="cl high60 fz26 ">退款金额
       <span class="red">¥299</span>
@@ -27,7 +27,9 @@
     <view class="fz22 high60 grey">最多¥299，含¥0运费</view>
   </view>
   <van-field wx:if="{{shopstatus===true}}" label="商品状态" value="{{statusLabel?statusLabel:'请选择商品状态'}}" is-link bind:focus="Shopstatus"/>
-    <van-field label="退款原因" value="请选择退款原因" is-link bind:focus="refundReason"/>
+    <view bindtap='refundReason'>
+      <van-field label="退款原因" value="{{reasonInfo.name}}" readonly is-link/>
+    </view>
 </view>
 <view class="mtop20">
   <van-field value="{{ message }}" label="退款说明" type="textarea" placeholder="选填" autosize border="{{ false }}" />
@@ -45,6 +47,7 @@
     <view class="high70 fz28 br_btm_light" wx:for="{{reason}}" wx:key="{{item}}" bindtap="reasonChoose" data-item="{{item}}">
       {{item.name}}
     </view>
+    <view style="height:40rpx"></view>
     <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>
   </view>
 </manager>

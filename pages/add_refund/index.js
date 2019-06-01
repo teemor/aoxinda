@@ -7,6 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    reasonInfo:{
+      key:'',
+      name:'请选择退款原因'
+    },
     reasonShow: false,
     statusShow: false,
     status: [{ name: '未收到货/未安装', id: '0', text: '包含未收到或者未安装的商品' }, { id: '1', name: '已收到货', text: '已收到货，需要退换已收到的商品，已安装商品不予退换' }],
@@ -80,7 +84,11 @@ Page({
   },
   /** */
   reasonChoose:function(e){
-    console.log(e)
+    console.log(e.currentTarget.dataset.item)
+    this.setData({
+      reasonShow: false,
+      reasonInfo: e.currentTarget.dataset.item
+    })
   },
   /**
    * 选择退款原因
