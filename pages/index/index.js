@@ -36,6 +36,14 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
+    if(app.globalData.userInfo!==null&&app.globalData.phoneNum!==""){
+        this.setData({
+          loginMask:1,
+          phoneMask:1
+        })
+    }else{
+      this.getStorageInfo()
+    }
     this.findCarList();
     // 天气
     var defaultCityCode = "__location__";
@@ -108,7 +116,7 @@ Page({
   // 添加我的爱车
   addCar: function() {
     console.log(app.globalData)
-    if(app.globalData.userInfo!==null){
+    if(app.globalData.userInfo!==null&&app.globalData.phoneNum!==""){
       wx.navigateTo({
         url:'../../pages/add_car_mes/index'
       })

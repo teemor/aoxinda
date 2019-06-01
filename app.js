@@ -4,6 +4,7 @@ const api = require('./utils/api')
 const request = new Technician
 App({
   globalData:{
+    phoneNum:'',
     openId:'',
     userInfo: null,
     id:''
