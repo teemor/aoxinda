@@ -3,11 +3,11 @@
   "usingComponents": {
     "manager": "../../components/manager/manager",
     "choose-label": "../../components/choose_label/choose_label",
-    "goods-action": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/goods-action/index",
-    "goods-action-icon": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/goods-action-icon/index",
-    "goods-action-button": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/goods-action-button/index",
-    "van-tab": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tab/index",
-    "van-tabs": "../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/tabs/index",
-    "van-stepper": "../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/stepper/index"
+    "goods-action": "../../miniprogram_npm/vant-weapp/goods-action/index",
+    "goods-action-icon": "../../miniprogram_npm/vant-weapp/goods-action-icon/index",
+    "goods-action-button": "../../miniprogram_npm/vant-weapp/goods-action-button/index",
+    "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
+    "van-stepper": "../../miniprogram_npm/vant-weapp/stepper/index"
   }
 }

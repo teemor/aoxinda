@@ -4,7 +4,7 @@ var checkBtn
 import {
   careItem
 } from '../../common/api/c_api.js'
-import Dialog from '../../miniprogram_npm/_vant-weapp@0.5.0-beta@vant-weapp/dialog/dialog';
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 
 const request = new careItem
 Page({
