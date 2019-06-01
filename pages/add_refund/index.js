@@ -99,10 +99,17 @@ Page({
     request.writeBackOrder(this.data.orderInfo).then(res => {
       console.log(res, 'res')
     })
+    let order_id = this.data.orderInfo.order_id
     wx.navigateTo({
-      url: '../my_order_refund_detail/index'
+      url: `../my_order_refund_detail/index?id=${order_id}`
     });
 
+  },
+  /**
+   * 退款说明
+   */
+  description: function (e) {
+    console.log(e,'e123')
   },
   /**
    * 数量变化
@@ -119,6 +126,14 @@ Page({
   showShopstatus: function (e) {
     this.setData({
       statusShow: true
+    })
+  },
+  /**
+   * 选择退款原因
+   */
+  refundReason: function () {
+    this.setData({
+      reasonShow: true
     })
   },
   /**

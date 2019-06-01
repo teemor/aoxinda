@@ -10,7 +10,7 @@ Page({
       this.setData({
         id:options.id
       })
-      request.selectBackOrderDetail().then(res=>{
+      request.selectBackOrderDetail({id:this.data.id}).then(res=>{
         this.setData({
           detailData:res
         })
