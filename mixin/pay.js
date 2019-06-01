@@ -4,20 +4,21 @@ import {
 } from '../common/api/api'
 const request = new Technician
 module.exports = {
-  chooseAddress:function(){
+  chooseAddress: function () {
     request.selectAddressList({}).then(res => {
       let arr = [];
       res.data.forEach(item => {
-        if(item.is_check==1){
+        if (item.is_check == 1) {
           arr.push(item)
-      }})
-      if(arr.length===0){
+        }
+      })
+      if (arr.length === 0) {
         this.setData({
           name: res.data[0].name,
           phone: res.data[0].phone,
           address: res.data[0].province + res.data[0].city + res.data[0].county + res.data[0].street
         })
-      }else{
+      } else {
         this.setData({
           name: arr[0].name,
           phone: arr[0].phone,
@@ -43,51 +44,54 @@ module.exports = {
       let id = res.data
       let that = this
       console.log(that)
-      
-      wx.login({
-        success(res) {
-          if (res.code) {//(that.data.total+0+0)*100
-            console.log(app, 'res.code')
-            request.payOrder({ order_id: id, code: res.code, open_id: app.globalData.openId, price: pay_money}).then(res => {
-              if (res.status === false) {
-                wx.showToast({
-                  title: res.description
-                })
-              } else {
-                let description = JSON.parse(res.result);
-                wx.requestPayment({
-                  timeStamp: description.timeStamp,
-                  nonceStr: description.nonceStr,
-                  package: description.package,
-                  signType: description.signType,
-                  paySign: description.paySign,
-                  success: (result) => {
-                    let data = {}
-                    data.id = id
-                    data.data = 'success'
-                    data.price = that.data.price
-                    let model = encodeURIComponent(JSON.stringify(data))
-                    wx.navigateTo({
-                      url: `../success_order/index?data=${model}`
-                    })
-                  },
-                  fail: () => {
-                    let data = {}
-                    data.id = id
-                    data.data = 'fail'
-                    let model = encodeURIComponent(JSON.stringify(data))
-                    wx.navigateTo({
-                      url: `../success_order/index?data=${model}`
-                    })
-                  },
-                  complete: () => { }
-                });
-
-              }
-            })
-          }
-        }
-      })
+      that.pay(id)
     })
-  }
+  },
+   pay:function(id){
+     let that = this
+    wx.login({
+      success(res) {
+        if (res.code) {//(that.data.total+0+0)*100
+          request.payOrder({ order_id: id, code: res.code, open_id:app.globalData.openId, price:  that.data.total}).then(res => {
+            if (res.status === false) {
+              wx.showToast({
+                title: res.description
+              })
+            } else {
+              let description = JSON.parse(res.result);
+              wx.requestPayment({
+                timeStamp: description.timeStamp,
+                nonceStr: description.nonceStr,
+                package: description.package,
+                signType: description.signType,
+                paySign: description.paySign,
+                success: (result) => {
+                  let data = {}
+                  data.id = id
+                  data.data = 'success'
+                  data.price = that.data.total
+                  let model = encodeURIComponent(JSON.stringify(data))
+                  wx.navigateTo({
+                    url: `../success_order/index?data=${model}`
+                  })
+                },
+                fail: () => {
+                  let data = {}
+                  data.id = id
+                  data.data = 'fail'
+                  let model = encodeURIComponent(JSON.stringify(data))
+                  wx.navigateTo({
+                    url: `../success_order/index?data=${model}`
+                  })
+                },
+                complete: () => { }
+              });
+  
+            }
+          })
+        }
+      }
+    })
+   }
+  
 }

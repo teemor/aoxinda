@@ -24,7 +24,7 @@
 }
 .mycar_remark_title{
     height: 70rpx;
-    width:200rpx;
+    width:370rpx;
     font-size:32rpx;
 }
 .mycar_remark_km{

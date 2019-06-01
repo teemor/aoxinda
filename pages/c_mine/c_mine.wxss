@@ -1,0 +1,8 @@
+/* pages/mine/index.wxss */
+.mine{
+  color:#fff;
+  padding:20rpx 50rpx;
+  text-align:center;
+  margin: 50rpx 30rpx;
+  border-radius: 20rpx;
+}

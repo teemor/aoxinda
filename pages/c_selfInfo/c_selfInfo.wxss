@@ -1,0 +1,50 @@
+.list {
+    background: #f8f8f8;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 35rpx;
+    border: 1px solid #f8f8f8;
+    background: #fff;
+    font-size: 32rpx;
+}
+.list-text {
+    float: left;
+    font-size: 32rpx;
+}
+.list-info{
+    display: inline-block;
+    position:absolute;
+    right:80rpx;
+    font-size: 26rpx;
+    color: #999;
+}
+.list-info input{
+  margin-top: 25rpx;
+  overflow: hidden;
+}
+.avatar image {
+    margin-top:10rpx;
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%;
+}
+.arrow-wrap {
+    float: right;
+    color: #999;
+    line-height: 100rpx;
+}
+.list-arrow {
+    width:  25rpx;
+    height: 25rpx;
+}
+.tjBtn{
+ padding-top: 150rpx;
+}
+.tjBtn button{
+  margin: 0 30rpx;
+  color: #fff;
+  background:#f6b245;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+}
+

@@ -1,0 +1,134 @@
+page{
+  background-color:#f3f3f3;
+}
+
+/* 头部 */
+.userinfo{
+  height: 186rpx;
+  width: 100%;
+  background-color: #fff;
+  font-size: 32rpx;
+}
+.user{
+  height: 93rpx;
+  line-height: 93rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+  display: flex;
+  padding: 0 30rpx; 
+}
+.user input{width: 300rpx;padding-left: 20rpx;margin-top: 20rpx;}
+.arrow{
+  height: 25rpx;
+  width: 25rpx;
+  float: right;
+}
+.useraddress{
+  height: 93rpx;
+  line-height: 93rpx;
+  padding:0 30rpx; 
+}
+.userimg{
+  height: 45rpx;
+  width: 45rpx;
+  margin-top: 25rpx;
+}
+.useraddress .addressinfo{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  padding-left: 20rpx;
+  width: 70%;
+  display: inline-block;
+}
+
+/* 商品 */
+.goods{
+  margin-top: 30rpx;
+  background-color: #fff;
+}
+.goodslist{
+  width: 90%;
+  height: 160rpx;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+  font-size: 30rpx;
+}
+/* .goodslist-img{
+  width: 25%;
+  height: 158rpx;
+}
+.goodslist-img image{
+  height: 158rpx;
+  width: 158rpx;
+} */
+
+.goodslist-text{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.goodslist-price-list{
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  position: relative;
+}
+.goodslist-count{
+  position: absolute;
+  right: 0
+}
+/* 发票 */
+.discount{
+  margin-top: 10rpx;
+  background-color: #fff;
+}
+.discount-list{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding:0 30rpx; 
+  font-size: 30rpx;
+}
+.discount-text{
+  float:left;
+}
+.discount-info{
+  display: inline-block;
+  position: absolute;
+  right: 80rpx;
+}
+.list-arrow{
+  height: 25rpx;
+  width: 25rpx;
+}
+.arrow-wrap{
+  float:right;
+  line-height: 100rpx;
+}
+/* 底部付款 */
+.payment{
+  width: 100%;
+  height: 100rpx;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+}
+.payment-left{
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 66.7%;
+  background-color:#2d3c4b;
+  float: left;
+  display: inline-block;
+  color:#ff3c3c;
+  font-size:32rpx; 
+}
+.payment-right{
+ height: 100rpx;
+ line-height: 100rpx;
+ text-align: center;
+ color:#fff;
+ width: 33.3%;
+ float: right;
+  background-color:#5d8fcb;
+}
+.payment-text{padding-left: 30rpx;}
+.payment-price{font-size: 50rpx;}

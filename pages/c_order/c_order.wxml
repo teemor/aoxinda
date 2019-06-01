@@ -1,0 +1,69 @@
+<view class='container'>
+  <!-- 收货人姓名地址头部 -->
+  <view class='userinfo' catchtap='setAddress'>
+    <view class='user'>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/user.png' class='userimg'></image>
+      <input placeholder='收货人姓名' type='text' disabled='true' value='{{nameValue}}'></input>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/iphone.png' class='userimg'></image>
+      <input placeholder='输入手机号' type='number' disabled='true' value='{{phoneValue}}'></input>
+      <view class='arrow-wrap'>
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+      </view>
+    </view>
+    <view class='useraddress'>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/address.png' class='userimg fl'></image>
+      <view class='addressinfo'>收货地址：{{address}}</view>
+      <view class='arrow-wrap'>
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 商品 -->
+  <view class='goods'>
+    <block wx:for="{{orderList}}" wx:key="">
+        <view class='goodslist'>
+          <view class='goodslist-info'>
+            <view class='goodslist-text'>
+              {{item.goodsName}}
+            </view>
+            <view class='goodslist-price-list'>
+              <view class='goodslist-price red'>¥ {{item.price}}</view>
+              <view class='goodslist-count'>x1</view>
+            </view>
+          </view>
+        </view>
+    </block>
+  </view>
+  <!-- 发票 -->
+  <view class='discount'>
+    <view class='discount-list'>
+     <picker bindchange="invoiceFun" value='{{invoiceIndex}}' range="{{invoice}}">
+        <view class='discount-text'>发票</view>
+        <view class='discount-info'>{{invoice[invoiceIndex]}}</view>
+        <view class='arrow-wrap'>
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+        </view>
+     </picker>   
+    </view>
+
+    <view class='discount-list'>
+     <picker bindchange="oldpartsFun" value='{{oldpartsIndex}}' range="{{oldparts}}">
+        <view class='discount-text'>是否要旧件</view>
+        <view class='discount-info'>{{oldparts[oldpartsIndex]}}</view>
+        <view class='arrow-wrap'>
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
+        </view>
+     </picker>   
+    </view>
+  </view>
+
+  <!-- 底部付款 -->
+  <view class='payment'>
+    <view class='payment-left'>
+      <view class='payment-text fl'>合计：</view>
+      <view class='payment-price fl'>¥ {{totalPrice}}</view>
+      <view class='payment-unit' style='padding-left:10rpx;'>元</view>
+    </view>
+    <view class='payment-right' catchtap='payment'>付款</view>
+  </view>
+</view>

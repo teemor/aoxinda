@@ -14,7 +14,7 @@
     <image src="../../common/image/location.png" />
   </view>
   <view class="fl location_address">
-    <view>{{name===undefined?'收货人信息':name+' '+model.order_phone}}</view>
+    <view>{{model.order_phone===undefined?'收货人信息':name+' '+model.order_phone}}</view>
     <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
   </view>
   <view class="fr location_address_btn">
@@ -27,9 +27,12 @@
   </view>
   <view class="fl my_order_list_text">
     <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.goods_name}}</view>
-    <view class="my_order_price fz28">
+    <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+    数量{{item.buy_num}} 产品:{{item.sku_name}}
+    </view>
+    <view class="fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
-      <view class="my_order_list_btn fr" wx:if="{{item.status}}">
+      <view wx:if="{{item.status!==''}}" class="my_order_list_btn fr">
         <view class="myorder_orange" bindtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
       </view>
     </view>
@@ -50,7 +53,7 @@
   <van-cell title="下单时间" value="{{date}}"></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell title="配送方式" value="无需配送，直接进店安装即可安装"></van-cell>
+  <van-cell title="配送方式" value="普通快递"></van-cell>
   <view class="refund_type fz28">
 <view class="fl">支付方式</view>
 <view class="fr cell_img"><image src="../../common/image/wx.png"/>微信支付</view>
@@ -61,7 +64,7 @@
   <van-cell wx:else title="{{model.invoiceData.invoice_type}}" bind:click="editInvoice" value="{{model.invoiceData.invoice_title}}" is-link></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell title="商品总价" value="¥{{model.pay_money}}"></van-cell>
+  <van-cell title="商品总价" value="¥{{model.order_money}}"></van-cell>
   <van-cell title="服务费" value="+¥{{model.order_server_money}}"></van-cell>
   <van-cell title="运费" value="+¥{{model.order_freight_money}}"></van-cell>
 </view>
@@ -69,7 +72,7 @@
   <view class="cl" style="height:30rpx;padding-right:20rpx;">
     <view class="fr">
       合计
-      <span class="red">¥:{{model.pay_money}}</span>
+      <span class="red">¥:{{model.order_money}}</span>
     </view>
   </view>
   <view wx:if="{{model.trade_status_name==='已发货'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">

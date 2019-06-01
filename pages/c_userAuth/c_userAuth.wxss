@@ -1,0 +1,68 @@
+/* pages/sa_attendance/sa_attendance_technician.wxss */
+page{
+  background:#f3f3f3;
+}
+.orderList{
+  /* height: 320rpx; */
+  width: 95%;
+  background: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin:20rpx;
+  box-shadow: 2rpx 2rpx 2rpx 2rpx #ddd;
+  border-radius: 30rpx;
+}
+.orderTitle{
+  font-size: 34rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.orderCont{
+  font-size: 28rpx;
+}
+.userAuthBtn{
+  height: 80rpx;
+  width: 100%;
+  padding-top: 20rpx;
+  overflow: hidden;
+  display: flex;
+}
+.refuseBtn, .agreeBtn{
+  flex:1;
+  height: 60rpx;
+  font-size: 28rpx;
+  border-radius:16rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin: 0 20rpx;
+  background: #dddddd;
+  color: #ffffff;
+}
+.agreeBtn{
+  background: #37d65c;
+}
+.completeBtn{
+  margin-top: 20rpx;
+  background: #37d65c;
+}
+/* 提示 */
+.choose_wrap{
+  width: 600rpx;
+  text-align: center;
+  margin: 150rpx auto;
+}
+
+.choose_bgm{
+  height: 392rpx;
+  width: 346rpx;
+  margin: auto;
+  margin-bottom: 30rpx;
+}
+
+.choose_txt{
+  width: 100%;
+  font-size: 34rpx;
+  line-height: 60rpx;
+  color: #797979;
+}
+/* 提示 */

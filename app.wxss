@@ -203,7 +203,7 @@ font-size: 60rpx;
   height: 68rpx;
   line-height: 68rpx;
   background: #fff;
-  margin: 0 26rpx;
+  padding: 0 26rpx;
 }
 .my_order_list_image image{
   margin-right:10rpx;
@@ -280,6 +280,23 @@ padding:10rpx
 width:32rpx;height: 28rpx;
 }
 .shop_add_btn_text{
-  width:300rpx;
+  
   font-size: 25rpx;
+}
+.overflow{
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.third_overflow{
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+}
+.two_overflow{
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
 }

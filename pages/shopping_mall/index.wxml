@@ -15,7 +15,7 @@
       <view class="fl shop_add_btn_img">
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
       </view>
-      <view class="fl shop_add_btn_text"  >我的爱车：{{model.name}}</view>
+      <view class="fl shop_add_btn_text overflow"  >我的爱车：{{model.name}}</view>
     </view>
       <view wx:else class="shop_add_btn_contain"> 
       <view class="fl shop_add_btn_img">
@@ -30,7 +30,7 @@
     <view class="shop_goods_box" wx:for="{{storeList}}" wx:key="{{item}}">
       <view class="fl shop_goods_contain" bindtap="shopList" data-item="{{item}}">
         <view class="shop_goods_image">
-          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop1.png" mode="aspectFit" />
+          <image src="{{item.file_url}}" mode="aspectFit" />
         </view>
         <view class="shop_goods_text tc">{{item.name}}</view>
       </view>

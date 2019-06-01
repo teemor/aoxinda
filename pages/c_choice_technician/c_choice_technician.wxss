@@ -1,0 +1,409 @@
+.container{
+  padding-bottom: 120rpx;
+}
+/* 头部附近的店 */
+page{
+  background-color:#f3f3f3;
+}
+.near{
+  background-color: #fff;
+  height: 160rpx;
+  margin: 0 30rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  box-shadow: 0 0 20rpx #e1e1e1;
+  }
+
+.near-box-top{
+  margin: 0 150rpx;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 25rpx;
+  color: #797979;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.near-address image{
+  height: 30rpx;
+  width: 30rpx;
+}
+.near-box-bottom{
+  /* margin: 0 190rpx; */
+  width: 52%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  height: 90rpx;
+  line-height:90rpx;
+  text-align: center;
+}
+.near-text{
+  width: calc(100% - 110rpx);
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.near-text-change{
+  font-size: 25rpx;
+  position: absolute;
+  bottom: -6rpx;
+  right: 0;
+}
+/* 搜索框 */
+.search {
+  padding:10rpx 30rpx;
+  margin: 30rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  background: #fff;
+  position: relative;
+}
+.search_btn {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+.search_btn image {
+  width: 100%;
+  height: 30rpx;
+}
+/* 技师 */
+.van-collapse-item__content{
+  padding: 0!important;
+}
+.technician-info{
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  font-size: 30rpx;
+  border-bottom: 2rpx solid #e5e5e5;
+  padding-right: 30rpx;
+}
+.technician-logo-img{
+  height: 55rpx;
+  width: 55rpx;
+  padding:22rpx 10rpx 22rpx 20rpx; 
+}
+.technician-logo {
+  height: 55rpx;
+  width: 55rpx;
+  border-radius: 50%;
+}
+.technician-works,.technician-scores,.technician-date,.technician-service{
+  margin-left: 28rpx;
+}
+.nullClass{
+  overflow: hidden;
+}
+.technician-date{
+  padding-top: 10rpx;
+}
+.technician-date image{
+  height: 50rpx;
+  width: 50rpx;
+}
+.checkbox{
+  margin-left: 20rpx;
+}
+/* 未选中样式 */
+checkbox .wx-checkbox-input{
+border-radius: 50%;
+height: 30rpx;
+width: 30rpx;
+}
+/* 选中后的 背景样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: #f6b245;
+}
+/* 选中后的 对勾样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;
+   width: 30rpx;
+   height: 30rpx;
+   line-height: 30rpx;
+   text-align: center;
+   font-size:30rpx; 
+   color:#fff;
+}
+/* 预约时间 */
+.time-list{
+  height: 400rpx;
+  background-color: #fff;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.time-catalog,.time-up,.time-middle,.time-bottom{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 30rpx;
+}
+.time-catalog view:nth-of-type(1),
+.time-catalog view:nth-of-type(2),
+.time-catalog view:nth-of-type(3){
+  flex-grow: 1;
+}
+.reservation{
+  font-size: 35rpx;
+  color:#f6b245;
+}
+.reservation-date,.time-up,.time-middle,.time-bottom{
+  font-size: 30rpx;
+}
+.time-up button,
+.time-middle button,
+.time-bottom button{
+  font-size: 25rpx;
+}
+.time-up, button:nth-of-type(3),
+.time-middle button:nth-of-type(3),
+.time-bottom button:nth-of-type(3){
+  margin-right: 0;
+}
+/* 歇业 */
+.time-list_nowork{
+  display: flex;
+  height: 50rpx;
+  padding: 0 30rpx;
+  text-align: center
+}
+.time-list_nowork view{
+  flex: 1;
+}
+/* 歇业 */
+
+/* 底部付款 */
+.payment{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+}
+.paymentinfo{
+  height: 100rpx;
+  width: 100%;
+  overflow: hidden;
+}
+.paymentinfo-left{
+  width: 66.7%;
+  height: 100rpx;
+  background-color:#2d3c4b;
+  float: left;
+}
+.paymentinfo-right{
+  width: 33.3%;
+  height: 100rpx;
+  background-color:#5d8fcb;
+  float: right;
+}
+.shopimg{
+  position: relative;
+}
+.red-point{
+  position: absolute;
+  color: #fff;
+  top: 5rpx;
+  font-size: 20rpx;
+  right: -8rpx;
+  background-color: #ff4040;
+  height: 30rpx;
+  line-height: 30rpx;
+  width: 30rpx;
+  text-align: center;
+  border-radius: 50%;
+}
+.shopimg image{
+  width: 80rpx;
+  height: 80rpx;
+  padding:10rpx 0 0 50rpx;
+}
+.paymentinfo-right{
+  color: #fff;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.money{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 40rpx;
+}
+.price-all{
+ padding:16rpx 40rpx;
+ font-size: 26rpx;
+}
+/* 购物车 */
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 100rpx;
+    background: #000;
+    z-index: 8;
+    opacity: 0.5;
+}
+.goodsInfo{
+    overflow: hidden;
+    position: fixed;
+    bottom: 100rpx;
+    width: 100%;
+    z-index: 9;
+    background-color: #fff;
+    font-size: 28rpx;
+}
+.goods-all-title,.service-title{
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.goods-all,.service{
+  border-bottom: 2rpx solid #e5e5e5;
+  margin: 0 30rpx;
+}
+.goods-list{
+  height: 120rpx;
+  margin-bottom: 30rpx;
+}
+.goods-text-price{
+  padding-top: 50rpx;
+}
+.service-info{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+/* 发票 */
+.invoice-list{
+  height: 60rpx;
+  line-height: 60rpx;
+  margin:0 30rpx; 
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.invoice-info{
+  display: inline-block;
+  position: absolute;
+  right: 80rpx;
+}
+.list-arrow{
+  height: 25rpx;
+  width: 25rpx;
+}
+
+
+/* lt */
+.time-list-wrap{
+  width: 100%;
+  padding: 10rpx 30rpx; 
+  box-sizing: border-box;
+  display: flex;
+}
+
+.time_wrap{
+  flex: 1;
+  overflow: hidden;
+}
+
+.time_ele{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.btn_class{
+  width: 80%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 20rpx;
+  text-align: center;
+  margin: auto;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn_class:nth-last-child(1){
+  margin-bottom: 0;
+  margin-left: 10%;
+}
+/* lt */
+
+/* 提示 */
+.choose_wrap{
+  width: 600rpx;
+  text-align: center;
+  margin: 150rpx auto;
+}
+.choose_bgm{
+  height: 392rpx;
+  width: 346rpx;
+  margin: auto;
+  margin-bottom: 30rpx;
+}
+.choose_btn{
+  background:#f6b245;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  color:#fff;
+}
+/* 提示 */
+.hidden{
+  display:none;
+}
+.noshop{
+  font-size: 30rpx;
+  margin-top: 150rpx;
+  text-align: center;
+}
+
+/* 门店 */
+.sp-box{
+   height:160rpx;
+    background: #fff;
+    display: flex;
+    color: #797979;
+}
+.sp-logo{
+    width:150rpx;
+    height:130rpx;
+    margin-top:20rpx;
+}
+.sp-logo image{
+  width:150rpx;
+  height:130rpx;
+}
+.sp-text{
+  margin-left: 30rpx;
+  width: 73%;
+}
+.sp-text-title,.sp-text-count,.sp-text-location{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  position: relative
+}
+.sp-text-title-right{
+  position: absolute;
+  right: 0;
+  top:0;
+}
+.sp-text-count-left{
+  display: flex;
+}
+.sp-text-count-left image{
+  height: 50rpx;
+  width: 50rpx;
+  margin-left: -10rpx;
+}
+.sp-text-count-right{
+  position: absolute;
+  right: 0;
+  top: 2rpx;
+}
+.sp-text-location-right{
+  position: absolute;
+  right: 0;
+  top: 4rpx;
+  font-size: 20rpx;
+}
+

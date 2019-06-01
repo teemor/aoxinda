@@ -1,0 +1,26 @@
+<!--pages/sa_attendance/sa_attendance_technician.wxml-->
+<view id='userAuth'>
+  <block wx:for="{{mesgList}}" wx:key="">
+    <view class='orderList cl'>
+      <view class='orderTxt'>
+        <view class='orderTitle'>{{item.title}} ></view>
+        <view class='orderCont'>您的订单号为：{{item.orderId}}的订单，正在请求一键授权</view>
+      </view>
+
+      <view class='userAuthBtn ' wx:if="{{item.status === 1}}">
+        <button class='agreeBtn' data-index="{{index}}" bindtap='agreeBtn'>同意</button>
+        <button class='refuseBtn' data-index="{{index}}" bindtap='refuseBtn'>拒绝</button>
+      </view>
+      <view class='userAuthBtn ' wx:if="{{item.status === 0}}">
+        <button class='agreeBtn'  wx:if="{{item.result == 2}}">您已同意</button>
+        <button class='refuseBtn' wx:if="{{item.result == 1}}">您已拒绝</button>
+      </view>
+    </view>
+  </block>
+   <!-- 提示 -->
+  <view class='choose_wrap' wx:if="{{mesgList.length == 0}}">
+    <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+    <view class='choose_txt'>~ 您还没有一键授权申请哦 ~</view>
+  </view>
+  <!-- 提示 -->
+</view>

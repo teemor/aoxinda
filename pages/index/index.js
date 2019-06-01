@@ -107,7 +107,8 @@ Page({
   },
   // 添加我的爱车
   addCar: function() {
-    if(app.globalData.userInfo.avatarUrl){
+    console.log(app.globalData)
+    if(app.globalData.userInfo!==null){
       wx.navigateTo({
         url:'../../pages/add_car_mes/index'
       })
@@ -115,6 +116,11 @@ Page({
       this.getStorageInfo()
     }
     
+  },
+  editCar:function(){
+    wx.navigateTo({
+      url:'../../pages/my_car/index'
+    })
   },
   // 汽车美容
   carbeautyBtn: function() {
@@ -150,7 +156,5 @@ Page({
       topCity: topCity,
       citySelected: citySelected,
     })
-    console.log(this.data.weatherData,'天气')
-    console.log(this.data.citySelected,'城市')
   },
 })

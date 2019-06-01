@@ -1,12 +1,15 @@
 <view class="my_cart_content">
-  <view class='my_cart_list fl'>
+  <view class='my_cart_list fl' catchtap="detail">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
   <view class="fl my_cart_box">
-    <view class="my_cart_title fz30">
+    <view class="my_cart_title fz30" catchtap="detail">
      {{model.goods_name}}
     </view>
-    <view class="my_cart_price">
+    <view class="fz24 cl" style="color:#999">
+    {{model.sku_name}}
+    </view>
+    <view class="my_cart_price cl">
       <view class="red fl fz30">¥ {{model.goods_price}}</view>
       <view class="fr">
         <van-stepper integer value="{{model.buy_num}}" bind:change="numChange" />

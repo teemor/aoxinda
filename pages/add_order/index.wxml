@@ -41,11 +41,11 @@
     <view class="fr ">
       <view class="grey fz26 fl order_total_num">共{{sum}}件商品</view>
       <view class="fl fz30">小计：
-      <span class="red fz30">¥{{total+0}}</span>
+      <span class="red fz30">¥{{total}}</span>
       </view>
     </view>
     </view>
-    <br-bottom checked="true" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total+0}}">
+    <br-bottom checked="true" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total}}">
 
   </br-bottom>
   </view>

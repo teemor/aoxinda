@@ -405,7 +405,7 @@ width:240rpx;
 }
 
 .page-current-contain {
-  width:700rpx;
+  width:710rpx;
   margin-left:20rpx;
   background: #fcfcfc;
   font-size: 30rpx;
@@ -418,7 +418,7 @@ width:240rpx;
   width: 250rpx;
   height: 40rpx;
   line-height: 40rpx;
-  margin-top: 30rpx;
+  margin-top: 25rpx;
 }
 .page-current_box image{
   margin-right:20rpx;
@@ -428,7 +428,6 @@ width:240rpx;
 }
 .detail_current-btn {
   padding-left: 30rpx;
-  font-size: 24rpx;
   width: 400rpx;
 }
 

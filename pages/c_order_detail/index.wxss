@@ -1,0 +1,87 @@
+page{
+  background: #f3f3f3;
+}
+.order_detail{
+  width: 100%;
+}
+.order_detail .status{
+  text-align: center;
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #ccc;
+  background: #fff;
+}
+.order_detail .status .font{
+  color: #fdbb51;
+}
+.order_detail .status view{
+  margin: 10rpx 0;
+}
+.order_detail .user_info{
+  /* border-bottom: 1rpx solid #cccccc;  */
+  padding-left: 60rpx;
+  background: #fff;
+}
+.order_detail .user_info view{
+  line-height: 60rpx;
+}
+.order_detail .product{
+  padding: 20rpx;
+  padding-left: 40rpx;
+  background: #fff;
+  margin-top:20rpx;
+}
+.order_detail .product .inner{
+  border-bottom: 1rpx solid #ccc;
+  padding: 10rpx 0;
+}
+.order_detail .product .inner:last-child{
+  border:none;
+}
+.order_detail .product .inner view{
+  line-height: 60rpx;
+}
+.order_detail .product .sku_name{
+  font-weight: bold;
+}
+.order_detail .product .price{
+  font-weight: bold;
+  color:red;
+}
+.order_detail .order_info{
+  background: #fff;
+  margin-top:20rpx;
+}
+.order_detail .total{
+  line-height: 100rpx;
+  text-align: right;
+}
+.order_detail .order_info .order_price{
+  color: red;
+}
+
+/* 底部付款 */
+.clickBtn,.payBtn{
+  width:100%;
+  margin-top: 20rpx;
+  display: flex;
+}
+.payClickBtn{
+  background:green;
+  color: #ffff;
+  height: 60rpx;
+  font-size: 26rpx;
+  width: 40%;
+}
+.clickBtn button{
+  width: 40%;
+  height: 60rpx;
+  font-size: 26rpx;
+  color:#fff;
+}
+
+.agreen{
+  background:green
+}
+.refuse{
+  background:red;
+}

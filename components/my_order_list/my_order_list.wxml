@@ -8,8 +8,11 @@
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
     </view>
     <view class="fl my_order_list_text">
-      <view>{{item.goods_name}}</view>
-      <view class="my_order_price fz28">
+      <view class="fz28 two_overflow">{{item.goods_name}}</view>
+        <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+    数量{{item.buy_num}} 产品:{{item.sku_name}}
+    </view>
+      <view class="fz28">
         <view class="fl red">¥ {{item.goods_price}}</view>
         <view class="fr grey">x{{item.buy_num}}</view>
       </view>
@@ -22,8 +25,8 @@
     </view>
 
     <view wx:if="{{goodsList.trade_status==='待付款'}}" class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey">取消订单</view>
-      <view class="fl myorder_orange">去付款</view>
+     <!-- <view class="fl myorder_grey">取消订单</view>-->
+      <view class="fl myorder_orange" bindtap="goOrder">去付款</view>
     </view>
     <view wx:elif="{{goodsList.trade_status==='待发货'}}" class="fr fz24 my_order_list_btn">
       <view class="fl myorder_orange">确认收货</view>
