@@ -7,10 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    reasonInfo:{
-      key:'',
-      name:'请选择退款原因'
+    reasonInfo: {
+      key: '',
+      name: '请选择退款原因'
     },
+    imgList: [],
     reasonShow: false,
     statusShow: false,
     status: [{ name: '未收到货/未安装', id: '0', text: '包含未收到或者未安装的商品' }, { id: '1', name: '已收到货', text: '已收到货，需要退换已收到的商品，已安装商品不予退换' }],
@@ -29,17 +30,40 @@ Page({
    * 上传图片
    */
   uploadImage: function () {
+    let that = this
     img().then(res => {
+      let tempFilePath = res.tempFilePaths, uploadImgCount = 0;
       wx.showLoading({
         icon: 'loading'
       });
-      let list = res.tempFilePaths.map(item => {
+
+      let list = tempFilePath.map(item => {
         console.log(item, 'item')
         wx.uploadFile({
-          url: 'http://192.168.31.156:9014/mall/v1.0/upload',
+          url: 'http://www.maichefu.cn:9014/mall/v1.0/upload',
           filePath: item,
           name: 'file',
+          success: function (res) {
+            uploadImgCount++;
+            that.data.imgList.push(JSON.parse(res.data).data)
+            let arr = that.data.imgList
+            that.setData({
+              imgList: arr
+            });
 
+            //如果是最后一张,则隐藏等待中
+            if (uploadImgCount == tempFilePath.length) {
+              wx.hideLoading();
+            }
+          },
+          fail: function (res) {
+            wx.hideLoading();
+            wx.showModal({
+              title: '错误提示',
+              content: '上传图片失败',
+              showCancel: false
+            })
+          }
         })
         // return request.chooseImage({item}).then(res=>{
         //   console.log(res,'上传图片')
@@ -83,7 +107,7 @@ Page({
     })
   },
   /** */
-  reasonChoose:function(e){
+  reasonChoose: function (e) {
     console.log(e.currentTarget.dataset.item)
     this.setData({
       reasonShow: false,
@@ -113,26 +137,36 @@ Page({
    */
   onLoad: function (options) {
     let model = JSON.parse(decodeURIComponent(options.model))
-    console.log(model,'退款model')
+    console.log(model, '退款model')
     this.setData({
-      goodsData:model.goodsData[0]
+      goodsData: model.goodsData[0]
     })
     if (model.trade_status_name == "待发货") {
       console.log('代发货')
       this.setData({
-        reason:this.data.reasonA
+        reason: this.data.reasonA
       })
-    } else if (model.trade_status_name == "已发货" || model.trade_status_name == "已安装") {
-      console.log('已发货')
+    } else if (model.trade_status_name == "已发货" || model.trade_status_name == "待安装") {
+      console.log('已发货--待安装')
       this.setData({
         shopstatus: true
       })
+      if (model.trade_status_name == "已发货") {
+        this.setData({
+          reason: this.data.reasonA
+        })
+      } else {
+        this.setData({
+          reason: this.data.reasonB
+        })
+      }
     } else if (model.trade_status_name == "已收货") {
       console.log('已收货')
       this.setData({
-        reason:this.data.reasonB
+        reason: this.data.reasonB
       })
     }
+    代付款
   },
 
 })
