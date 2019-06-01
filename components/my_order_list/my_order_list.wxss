@@ -24,9 +24,7 @@
 }
 
 .my_order_price {
-  position: absolute;
   width: 440rpx;
-  bottom: 0;
 }
 
 .my_order_list-box {

@@ -27,11 +27,11 @@ module.exports = {
             let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate();
             let h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
             let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':'
-            let s = date.getSeconds();
+            let s = date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds();
             this.setData({
                 model: res,
                 goodsList: res,
-                date: Y + M + D + h + m + s
+                date: Y + M + D +' '+ h + m + s
             })
             if (res.invoice_id === 1) {
                 this.setData({

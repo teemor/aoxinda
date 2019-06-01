@@ -9,7 +9,7 @@
     <view  wx:for="{{cartList}}" wx:key="index" data:for-index="index" style="background:#fff;margin-bottom:20rpx;padding-left:30rpx;">
       <van-checkbox checked-color="#fdbb51"  data-index="{{index}}" name="{{index}}">
         <view class="my_cart_content">
-          <my_cart_list model="{{item}}" bind:numChange="numChange" />
+          <my_cart_list model="{{item}}" bind:numChange="numChange" bind:detail="detail" />
         </view>
       </van-checkbox>
       </view>
@@ -21,7 +21,8 @@
     </view>
   </br-bottom>
   <br-bottom checked="{{ischecked}}" style="z-index:333;" wx:else btnRight="删除" price="{{total_price}}" bind:carClickBtn="deleteAll">
-    <view class="fl br-bottom">
+    <view class="fl br-bottom" style="margin-left:30rpx;margin-top:-6rpx">
+          <van-checkbox value="{{checked}}" checked-color="#fdbb51" bind:change="allChange">全选</van-checkbox>
     </view>
   </br-bottom>
 </view>

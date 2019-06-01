@@ -48,7 +48,6 @@ Page({
    * dzl
    */
   shopDetail: function (e) {
-    console.log(e)
     wx.navigateTo({
       url: `../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`
     })

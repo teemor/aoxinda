@@ -63,9 +63,9 @@
               {{weatherData[citySelected].realtime.weather.info}}
             </view>
           </view>
-          <view class='fl detail_current-btn'>
+          <view class='fl detail_current-btn fz30'>
             <view class='cl detail_current-one'>
-              <span class="red bold fz30"> 今日限行 </span>
+              <span class="red bold "> 今日限行 </span>
               <span class="">今日尾号
                 <span class="red"> 7和8 </span>限行</span>
             </view>

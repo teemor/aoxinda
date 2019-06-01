@@ -10,7 +10,8 @@ Page({
     })
     if (model.data === 'success') {
       this.setData({
-        result: false
+        result: false,
+        price:model.price
       })
     } else {
       console.log('2')
