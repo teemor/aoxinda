@@ -48,7 +48,7 @@ module.exports = {
         success(res) {
           if (res.code) {//(that.data.total+0+0)*100
             console.log(app, 'res.code')
-            request.payOrder({ order_id: id, code: res.code, open_id:app.globalData.openId, price:  that.data.total+0}).then(res => {
+            request.payOrder({ order_id: id, code: res.code, open_id: app.globalData.openId, price: pay_money}).then(res => {
               if (res.status === false) {
                 wx.showToast({
                   title: res.description
