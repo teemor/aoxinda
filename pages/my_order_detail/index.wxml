@@ -29,7 +29,7 @@
     <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.goods_name}}</view>
     <view class="my_order_price fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
-      <view class="my_order_list_btn fr">
+      <view class="my_order_list_btn fr" wx:if="{{item.status}}">
         <view class="myorder_orange" bindtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
       </view>
     </view>
