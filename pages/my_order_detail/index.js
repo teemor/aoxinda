@@ -38,6 +38,7 @@ Page({
       }
     })
     this.writeOrder(this.data.model.invoice_id,
+      this.data.model.order_person,
       this.data.model.order_address,
       this.data.model.order_phone,
      '普通快递',
