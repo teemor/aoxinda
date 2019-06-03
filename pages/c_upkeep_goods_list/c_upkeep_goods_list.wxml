@@ -1,0 +1,50 @@
+<view>
+  <view class="shop_goods_sort cl">
+    <view wx:for="{{sortType}}" wx:key="{{item}}" class="shop_goods_title tc fl" bindtap="addSort" data-item="{{item}}">
+      {{item.name}}<van-icon name="arrow-down"/>
+    </view>
+  </view>
+  <view class="shop_goods_invite">
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+    <view class="shop_goods_invite_text" bindtap='editCar'>为您推荐适合 {{car_name}} 的商品</view>
+  </view>
+  <view wx:for="{{storeList}}" wx:key="{{item}}" style='padding:0 20rpx'>
+    <view class="shop_goods_contain cl" data-item="{{item.productCode}}" data-info="{{item}}" bindtap="shop_detail">
+      <view class="shop_goods_box fl">
+        <image src="{{item.img}}" mode="aspectFit" />
+      </view>
+      <view class="shop_goods_remark fl">
+        <view class="shop_goods_text">{{item.goods_name}}</view>
+        <view class="shop_goods_text" style='font-size:24rpx;color:gray;'>{{item.goods_sku}}</view>
+        <view class="shop_good_price">
+          <span style="font-size:20rpx">¥</span>
+          <span>{{item.price}}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+  <manager show="{{sortShow}}" type="top" bind:clickMask="closeMask">
+    <view class="bgwhite" style="position:relative;padding:20rpx">
+      <view class="fz26 high80">价格范围</view>
+      <view class="fl">
+        <input type="text" placeholder="最低价" class="fl priceinput" bindinput="minimum" />
+        <view class="fl tc" style="width:60rpx">-</view>
+        <input type="text" placeholder="最高价" class="fl priceinput" bindinput="highest" />
+      </view>
+      <view class="fz26 cl high80">品牌</view>
+      <view class="cl fz25">
+        <view wx:for="{{brandType}}" wx:key="{{item}}">
+          <view bindtap="labelchoose" data-index="{{index}}" wx:for-index="index" class="{{search.brand==item.id?'active':'active_null'}} mbottom30  tc fl fz26">
+            {{item.name}}</view>
+        </view>
+        <view class="cl fz30">
+          <view class="resetbtn fl tc" bindtap="resetSX">重置</view>
+          <view class="savebtn fl tc" bindtap="changeGoods">确定</view>
+          <view class="cl"></view>
+        </view>
+      </view>
+    </view>
+  </manager>
+</view>
