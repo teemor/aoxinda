@@ -1,17 +1,17 @@
 <view>
   <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
-      <view class="mycar_img fl">
+      <!-- <view class="mycar_img fl">
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car1.png" />
-      </view>
+      </view> -->
       <view class="fl mycar_remark">
         <view>
           <view class="fl mycar_remark_title">{{item.name}}</view>
-          <!--<view class="fl mycar_remark_km">行驶里程:1,000KM</view> -->
+          <view class="fl mycar_remark_km">{{item.carType}}</view>
         </view>
-        <view class="mycar_remark_text cl">
-          <!--{{item.carTypeId}}-->
-        </view>
+        <!-- <view class="mycar_remark_text cl">
+          {{item.carTypeId}}
+        </view> -->
       </view>
     </view>
     <view style="margin-top:30rpx">

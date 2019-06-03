@@ -6,12 +6,12 @@
       {{item.CJ}}
     </view>
     <view wx:for="{{item.arr}}" class='cartype_box_contain' data-cx="{{item.CX}}" bindtap='chooseType'>
-      <view class='cartype_image'>
+      <!-- <view class='cartype_image'>
         <image src='{{http+item.image}}'></image>
-      </view>
+      </view> -->
       <view class='cartype_detail'>
-        <view class='cartype_detail_text'>{{item.CJ+item.CX}}</view>
-        <view class='cartype_detail_price'>{{item.SCZT}}</view>
+        <view class='cartype_detail_text'>{{item.CX}}</view>
+        <!-- <view class='cartype_detail_price'>{{item.SCZT}}</view> -->
       </view>
     </view>
   </view>

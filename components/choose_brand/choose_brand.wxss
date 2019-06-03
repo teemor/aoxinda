@@ -35,8 +35,9 @@
 }
 
 .cartype_box_contain {
-  margin-top: 50rpx;
-  height: 150rpx;
+  padding-left:20rpx;
+  /* margin-top: 50rpx;
+  height: 150rpx; */
   border-bottom: 2rpx solid #f0f0f0;
 }
 
@@ -44,6 +45,8 @@
 }
 
 .cartype_detail_text {
+  font-size:28rpx;
+  line-height:80rpx;
   color:#292929;
 }
 
