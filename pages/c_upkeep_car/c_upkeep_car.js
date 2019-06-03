@@ -111,7 +111,7 @@ Page({
               show: res.result[0].mileage ? false : true,
               carMiles: res.result[0].mileage || 0,
               carInfo: res.result[0],
-              carName: `${res.result[0].model}（${res.result[0].vehicleType}）`
+              carName: res.result[0].model
             })
             if (res.result[0].mileage) {
               that.recommendItem() //调推荐保养项目
@@ -130,7 +130,7 @@ Page({
                     url: '../../pages/add_car/index'
                   })
                 } else {
-                  wx.navigateTo({
+                  wx.reLaunch({
                     url: '../../pages/index/index'
                   })
                 }
@@ -145,7 +145,8 @@ Page({
           confirmText: '回到首页',
           showCancel: false,
           success(res) {
-            wx.navigateTo({
+            console.log(111)
+            wx.reLaunch({
               url: '../../pages/index/index'
             })
           }
@@ -266,5 +267,12 @@ Page({
         duration: 2000
       })
     }
+  },
+
+  //更换爱车
+  toCar: function () {
+    wx.navigateTo({
+      url: '../../pages/c_my_car/c_my_car'
+    })
   }
 })

@@ -39,13 +39,13 @@ page {
 }
 
 .upkeep_car_exchang-mark {
+  position: relative;
   color: #424242;
-  width: 80%;
-  margin-left: 30rpx;
+  width: 100%;
+  text-align: center;
 }
 
 .upkeep_car_exchange-text {
-  width: 550rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
