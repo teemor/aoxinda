@@ -29,7 +29,8 @@ Page({
   onShow(){
     let params = {
       "userId": that.data.mineInfo.id,
-      "status": that.data.tabType
+      "status": that.data.tabType,
+      "page": 1
     }
     that.getOrderList(params);
   },
@@ -52,7 +53,7 @@ Page({
         let params = {
           "userId": res.data.id,
           "status": that.data.tabType,
-          "page":0
+          "page": 1
         }
         that.getOrderList(params)
       },
@@ -67,7 +68,8 @@ Page({
     })
     let params = {
       "userId": that.data.mineInfo.id,//    dcb3ca6c364a41989d486854cb7f0ce4
-      "status": Number(type)
+      "status": Number(type),
+      "page": 1
     }
     that.getOrderList(params);
   },
@@ -127,7 +129,8 @@ Page({
            if (res.confirm) {
              let params = {
                "userId": that.data.mineInfo.id,
-               "status": that.data.tabType
+               "status": that.data.tabType,
+               "page": 1
              }
              that.getOrderList(params);
            } else if (res.cancel) {
@@ -170,7 +173,8 @@ Page({
           request.agreenPay(params).then(res => {
             let params = {
               "userId": that.data.mineInfo.id,
-              "status": that.data.tabType
+              "status": that.data.tabType,
+              "page": 1
             }
             that.getOrderList(params);
             if (res.code == '200') {
@@ -209,7 +213,7 @@ Page({
   //代付款
   payFun(e){
     let orderId = e.currentTarget.dataset.id;
-    let orderIndex = that.data.orderList[e.currentTarget.dataset.index];
+    let orderIndex = that.data.tabType == 0 ? that.data.orderList.content[e.currentTarget.dataset.index] : that.data.orderList[e.currentTarget.dataset.index];
     let allOrderMoney = orderIndex.allOrderMoney;
     wx.navigateTo({
       url: '/pages/c_order_detail/index?allOrderMoney=' + allOrderMoney + '&tabType=' + that.data.tabType + '&orderId=' + orderId

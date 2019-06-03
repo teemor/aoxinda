@@ -1,7 +1,3 @@
-// pages/c_order_detail/index.js
-import { Technician } from '../../common/api/api'
-const requestTe = new Technician
-
 import { orderStatus } from '../../common/api/c_api.js'
 const request = new orderStatus
 
@@ -45,7 +41,7 @@ Page({
    * 获取订单详情
    */
   getDetail(){
-    requestTe.orderEntity(that.data.orderId).then(res => {
+    request.orderEntity(that.data.orderId).then(res => {
       if (res.code == '200') {
         this.setData({
           orderDetail: res.result

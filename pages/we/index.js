@@ -5,9 +5,12 @@ Page({
   },
 
   myKeep:function(){
-    wx.navigateToMiniProgram({
-      appId:'wx317e65151f04fa7c',
-      envVersion:'trial'
+    // wx.navigateToMiniProgram({
+    //   appId:'wx317e65151f04fa7c',
+    //   envVersion:'trial'
+    // })
+    wx.navigateTo({
+      url: `../c_order_all/c_order_all`
     })
   },
   myCar:function(){
