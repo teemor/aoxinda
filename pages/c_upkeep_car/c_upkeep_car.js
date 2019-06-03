@@ -13,69 +13,11 @@ Page({
    */
   data: {
     carMiles: '', //用户输入的公里数
-    show: true,
+    show: false,
     carInfo: '', //车辆信息
     carName: '', //车辆名字
-    goodsList: {
-      // result: true,
-      // status: 0,
-      // count: '总记录数',
-      // data: [{
-      //   maintainId: "保养id",
-      //   maintainName: '小保养',
-      //   pickLevel: '推荐等级',
-      //   adviseKil: '推荐保养公里数',
-      //   adviseCycle: '推荐保养周期',
-      //   checkedBtn: false,
-      //   goodsMsg: [{
-      //     goodsName: '美孚速霸2000合成科技机油5w-40 sn级4L装',
-      //     productCode: '货品编号',
-      //     skuId: "sku码",
-      //     batchNo: '批次号',
-      //     goodsModel: '规格型号',
-      //     goodsCode: '商品编码1',
-      //     price: 199,
-      //     profit: 100,
-      //     useTime: 100,
-      //     uderMil: '使用里程',
-      //     checkedBtn: false
-      //   }, {
-      //     goodsName: '美孚速霸2000合成科技机油5w-40 sn级4L装',
-      //     productCode: '货品编号',
-      //     skuId: "sku码",
-      //     batchNo: '批次号',
-      //     goodsModel: '规格型号',
-      //     goodsCode: '商品编码2',
-      //     price: 229,
-      //     profit: 137,
-      //     useTime: 100,
-      //     uderMil: '使用里程',
-      //     checkedBtn: false
-      //   }]
-      // }, {
-      //   maintainId: "保养id",
-      //   maintainName: '常规保养',
-      //   pickLevel: '推荐等级',
-      //   adviseKil: '推荐保养公里数',
-      //   adviseCycle: '推荐保养周期',
-      //   checkedBtn: false,
-      //   goodsMsg: [{
-      //     img: '../../common/image/keepup02.png',
-      //     goodsName: '美孚速霸2000合成科技机油5w-40 sn级4L装',
-      //     productCode: '货品编号',
-      //     skuId: "sku码",
-      //     batchNo: '批次号',
-      //     goodsModel: '规格型号',
-      //     goodsCode: '商品编码3',
-      //     price: 359,
-      //     profit: 14,
-      //     useTime: 100,
-      //     uderMil: '使用里程',
-      //     checkedBtn: false
-      //   }]
-      // }
-      // ],
-    }, //保养项目列表
+    goodsList: {}, //保养项目列表
+    activeList: [], //用户选中保养index
     checkMaintain: [], //用户选中保养列表
     allPrice: 0, //合计价格
   },
@@ -86,54 +28,31 @@ Page({
   onLoad: function (options) {
     that = this;
     that.getCarInfo();
+    if (options.info) {
+      wx.getStorage({
+        key: 'ghInfo',
+        success: function (res) {
+          that.setData({
+            allPrice: res.data.allPrice,
+            activeList: res.data.activeList,
+            checkMaintain: res.data.checkMaintain,
+            goodsList: res.data.goodsList
+          })
+        },
+      })
+
+      //更换返回来的--带有单个商品数
+    }
   },
 
   //获取check值
   getCheckedBtn(e) {
-    var allPrice = 0;
-    checkBtn = e.detail.a.checkedBtn;
-    if (checkBtn === true) {
-      that.data.checkMaintain.push(e.detail.a)
-      that.setData({
-        checkMaintain: that.data.checkMaintain
-      })
-      for (var i = 0; i < that.data.checkMaintain.length; i++) {
-        for (var j = 0; j < that.data.checkMaintain[i].goodsMsg.length; j++) {
-
-          allPrice += that.data.checkMaintain[i].goodsMsg[j].price;
-        }
-      }
-      that.setData({
-        allPrice: allPrice
-      })
-      //用户选中保养项目缓存
-      wx.setStorage({
-        key: 'checkMaintain',
-        data: that.data.checkMaintain,
-      })
-    } else if (checkBtn === false) {
-      let a = 0;
-      for (let i = 0; i < that.data.checkMaintain.length; i++) {
-        if (that.data.checkMaintain[i].checkedBtn === true) {
-          for (let j = 0; j < that.data.checkMaintain[i].goodsMsg.length; j++) {
-
-            a += that.data.checkMaintain[i].goodsMsg[j].price;
-          }
-        } else {
-          that.data.checkMaintain.splice(i, 1);
-        }
-      }
-      that.setData({
-        checkMaintain: that.data.checkMaintain,
-        allPrice: that.data.allPrice - (that.data.allPrice - a)
-      })
-
-      //用户选中保养项目缓存
-      wx.setStorage({
-        key: 'checkMaintain',
-        data: that.data.checkMaintain,
-      })
-    }
+    that.setData({
+      allPrice: e.detail.allPrice,
+      activeList: e.detail.activeList,
+      checkMaintain: e.detail.checkMaintain,
+      goodsList: e.detail.goodsList
+    })
   },
 
   //弹出输入框
@@ -160,8 +79,7 @@ Page({
         });
         that.editCarMiles(); //调用修改车辆公里数
       }
-    } else {
-    }
+    } else { }
   },
 
   //获取用户输入公里数
@@ -181,30 +99,80 @@ Page({
   //获取车辆信息
   getCarInfo() {
     wx.getStorage({
-      key: 'carInfo',
+      key: 'userPhone',
       success: function (res) {
-        that.setData({
-          carInfo: res.data,
-          carName: res.data[0].model
+        request.isCarInfo(res.data).then(res => {
+          if (res.code === "200") {
+            wx.setStorage({
+              key: 'carInfo',
+              data: res.result,
+            })
+            that.setData({
+              show: res.result[0].mileage ? false : true,
+              carMiles: res.result[0].mileage || 0,
+              carInfo: res.result[0],
+              carName: `${res.result[0].model}（${res.result[0].vehicleType}）`
+            })
+            if (res.result[0].mileage) {
+              that.recommendItem() //调推荐保养项目
+            } else {
+              that.editMiles()
+            }
+          } else if (res.code === "300") {
+            wx.showModal({
+              title: '麦车服',
+              content: '您还没有认证车辆',
+              confirmText: '去认证',
+              showCancel: false,
+              success(res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: '../../pages/add_car/index'
+                  })
+                } else {
+                  wx.navigateTo({
+                    url: '../../pages/index/index'
+                  })
+                }
+              }
+            })
+          }
         })
-      },
+      }, fail: function (res) {
+        wx.showModal({
+          title: '麦车服',
+          content: '您还没有许可手机号',
+          confirmText: '回到首页',
+          showCancel: false,
+          success(res) {
+            wx.navigateTo({
+              url: '../../pages/index/index'
+            })
+          }
+        })
+      }
     })
   },
 
   //修改车辆公里数
   editCarMiles() {
     let editCar = {
-      "id": that.data.carInfo[0].id,
+      "id": that.data.carInfo.id,
       "mileage": that.data.carMiles
     }
     request.editCarMiles(editCar).then(res => {
       if (res.code == '200') {
-        that.recommendItem() //调推荐保养项目
-        that.data.carInfo[0].mileage = that.data.carMiles;
+        that.data.carInfo.mileage = that.data.carMiles;
         wx.setStorage({
           key: 'carInfo',
           data: that.data.carInfo
         })
+        that.setData({
+          allPrice: 0,
+          activeList: null,
+          goodsList: []
+        })
+        that.recommendItem() //调推荐保养项目
       } else if (res.code == '500') {
         wx.showToast({
           title: '服务器错误',
@@ -218,15 +186,61 @@ Page({
   //智能推荐保养项目
   recommendItem() {
     let params = {
-      "carTypeId": that.data.carInfo[0].carTypeId,
-      "kilometres": that.data.carInfo[0].mileage
+      "last_time": that.data.carInfo.registerDate, //上牌时间
+      "LevelID": that.data.carInfo.carTypeId, //车类型
+      "jy_km": that.data.carInfo.mileage, //车里程
+      "last_km": that.data.carInfo.lastMileage //车上次里程
     }
     request.recommendItem(params).then(res => {
-      if (res.code == '200') {
+      if (res.result) {
+        //处理返回数据 添加购买数量
+        //0为默认选中-算价格
+        let c_price = 0,
+          c_index = [],
+          arr = res.data.sort((a, b) => {
+            return a.checkedBtn - b.checkedBtn
+          }).filter(n => {
+            if (n.goodsMsg && n.goodsMsg.length > 0) {
+              return true
+            }
+          }).map((n, i) => {
+            n.checkedBtn = n.checkedBtn === 0 ? true : false;
+            if (n.checkedBtn) {
+              //初始选中的集合
+              c_index.push(i);
+              //初始算选中的总价
+              n.goodsMsg.forEach(m => {
+                c_price += m.price
+              })
+            }
+            //初始数据添加--数量
+            n.goodsMsg = n.goodsMsg.map(m => {
+              m.goodsNum = 1
+              return m
+            })
+            return n
+          })
         that.setData({
-          goodsList: res.result
+          allPrice: c_price,
+          activeList: c_index,
+          goodsList: {
+            result: res.result,
+            status: res.status,
+            count: res.count,
+            data: arr
+          },
+          checkMaintain: arr.filter((n, i) => {
+            let off = false;
+            c_index.forEach(m => {
+              if (i == m) {
+                off = true;
+              }
+            })
+            return off
+          })
         })
-      } else if (res.code == '500') {
+
+      } else {
         wx.showToast({
           title: '获取列表失败',
           icon: 'loading',
@@ -238,18 +252,19 @@ Page({
 
   // 跳转选择技师与时间
   choicetech: function () {
-    wx.navigateTo({
-      url: '../../pages/c_choice_technician/c_choice_technician?allPrice=' + that.data.allPrice,
-    })
-    // if (checkBtn === true) {
-    //   wx.navigateTo({
-    //     url: '../../pages/c_choice_technician/c_choice_technician?allPrice=' + that.data.allPrice,
-    //   })
-    // } else {
-    //   wx.showToast({
-    //     title: '请选择保养项目',
-    //     duration: 2000
-    //   })
-    // }
-  },
+    if (that.data.activeList.length > 0) {
+      wx.setStorage({
+        key: 'checkMaintain',
+        data: that.data.checkMaintain,
+      })
+      wx.navigateTo({
+        url: '../../pages/c_choice_technician/c_choice_technician?allPrice=' + that.data.allPrice,
+      })
+    } else {
+      wx.showToast({
+        title: '请选择保养项目',
+        duration: 2000
+      })
+    }
+  }
 })

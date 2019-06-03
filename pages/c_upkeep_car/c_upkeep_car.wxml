@@ -71,7 +71,7 @@
   <view class="upkeep_project_contain">
     <view class="upkeep_step_title">智能推荐保养项目</view>
     <view>
-      <project-list bind:getCheckedBtn="getCheckedBtn" goodsList="{{goodsList}}"/>
+      <project-list bind:getCheckedBtn="getCheckedBtn" goodsList="{{goodsList}}" activeList="{{activeList}}"/>
     </view>
   </view>
   <!-- 付款 -->
