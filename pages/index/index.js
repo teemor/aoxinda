@@ -134,6 +134,12 @@ Page({
       url: '../../pages/c_upkeep_car/c_upkeep_car'
     })
   },
+  // 邀请
+  myInvite: function() {
+    wx.navigateTo({
+      url: '../../pages/my_invite/index'
+    })
+  },
   onSearch: function(e) {
     console.log('rwer',e)
     wx.navigateTo({

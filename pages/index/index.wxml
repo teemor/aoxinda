@@ -47,7 +47,7 @@
       </view>
     </view>
     <view class="cl">
-      <view class="index_pic fl">
+      <view class="index_pic fl" bindtap='myInvite'>
         <image src="../../common/image/index_person.png" />
       </view>
       <view class="index_pic fl" style="margin-left:10rpx">

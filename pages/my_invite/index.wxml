@@ -1,8 +1,53 @@
 <view>
-  <view>
-    
+  <view class="image_bg">
+    <image src="{{imgUrl}}/invite_bg.png" />
   </view>
-  <view class="fz30 bg_orange bottom_btn">
-    立即分享
+  <view class='top'>
+  <block wx:if="{{is_recommender == 1}}">
+    <image class='head' src="{{imgUrl}}/invite_user_head.png" />
+    <image class='title' src="{{imgUrl}}/invite_user_title.png" />
+  </block>
+    <view class='invite_count'>
+      <image src="{{imgUrl}}/invite_user_jb.png" />
+      <text>我邀请的新用户</text>
+      <text class='invite_peopel'>{{inviteCount}}</text>
+      <text>人</text>
+    </view>
+    <view class='invite_record' bindtap="inviteRecord">我的邀请记录>></view>
   </view>
+  <view class='center'>
+    <view class='fz30 title'>邀请攻略</view>
+    <view class='invite_strategy'>
+      <view class='step'>
+        <image src="{{imgUrl}}/binding.png" />
+        <view class='fz28 explain'>分享绑定</view>
+      </view>
+    </view>
+    <image src="{{imgUrl}}/step_arrow.png" class='arrow_first' />
+    <view class='invite_strategy'>
+      <view class='step'>
+        <image src="{{imgUrl}}/place_order.png" />
+        <view class='fz28 explain'>好友下单</view>
+      </view>
+    </view>
+    <image src="{{imgUrl}}/step_arrow.png" class='arrow_second' />
+    <view class='invite_strategy'>
+      <view class='step'>
+        <image src="{{imgUrl}}/commission.png" />
+        <view class='fz28 explain'>商城分佣</view>
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <view class='fz30 title'>合伙人规则</view>
+    <view class='fz24 content'>
+      <view><text decode="{{true}}">1. &nbsp;&nbsp;做为麦车服老客户，邀请好友达xx及xx人以上，将可成为麦车服合伙人，自己及自己推荐的客户在商城购买任何产品享有销售额30%的返利。</text></view>
+      <view class='distance'><text decode="{{true}}">2. &nbsp;&nbsp;邀请好友绑定关系后，好友下单确认收货七天后，商城分佣即可到账。</text></view>
+    </view>
+  </view>
+
+  <button class="fz30 bg_orange bottom_btn" open-type='share'>
+    立即邀请
+  </button>
+  
 </view>
