@@ -20,40 +20,30 @@
   </view>
   <!-- 商品 -->
   <view class='goods'>
-    <block wx:for="{{orderList}}" wx:key="">
-        <view class='goodslist'>
-          <view class='goodslist-info'>
-            <view class='goodslist-text'>
-              {{item.goodsName}}
-            </view>
-            <view class='goodslist-price-list'>
-              <view class='goodslist-price red'>¥ {{item.price}}</view>
-              <view class='goodslist-count'>x1</view>
-            </view>
-          </view>
-        </view>
+    <block wx:for="{{orderList}}" wx:key="index">
+      <van-card num="{{item.goodsNum}}" price="{{item.price}}" desc="{{item.goods_sku}}" title="{{item.goods_name}}" thumb="{{ item.img }}" custom-class="goodslistCard" title-class="goodslistCard-text" />
     </block>
   </view>
   <!-- 发票 -->
   <view class='discount'>
     <view class='discount-list'>
-     <picker bindchange="invoiceFun" value='{{invoiceIndex}}' range="{{invoice}}">
+      <picker bindchange="invoiceFun" value='{{invoiceIndex}}' range="{{invoice}}">
         <view class='discount-text'>发票</view>
         <view class='discount-info'>{{invoice[invoiceIndex]}}</view>
         <view class='arrow-wrap'>
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
         </view>
-     </picker>   
+      </picker>
     </view>
 
     <view class='discount-list'>
-     <picker bindchange="oldpartsFun" value='{{oldpartsIndex}}' range="{{oldparts}}">
+      <picker bindchange="oldpartsFun" value='{{oldpartsIndex}}' range="{{oldparts}}">
         <view class='discount-text'>是否要旧件</view>
         <view class='discount-info'>{{oldparts[oldpartsIndex]}}</view>
         <view class='arrow-wrap'>
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/toC/arrow.png" class="list-arrow"></image>
         </view>
-     </picker>   
+      </picker>
     </view>
   </view>
 
