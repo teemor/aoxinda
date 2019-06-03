@@ -131,7 +131,7 @@ Page({
   // 车保养
   upkeepBtn: function() {
     wx.navigateTo({
-      url: '../../pages/upkeep_car/index'
+      url: '../../pages/c_upkeep_car/c_upkeep_car'
     })
   },
   onSearch: function(e) {
