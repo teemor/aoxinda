@@ -1,72 +1,52 @@
-<view>
+<view id='upkeep_project_list'>
   <view class="">
-    <van-collapse value="{{activeNames}}" bind:change="changeCollapse">
-      <van-collapse-item name="1" is-link="{{checked}}">
+    <van-collapse value="{{activeNames}}" bind:change="changeCollapse" wx:for="{{goodsList.data}}" wx:key="index" data-index="{{index}}">
+      <van-collapse-item data-index="{{index}}" name="{{index}}" is-link="{{checked}}">
         <view slot="title">
           <view class='cl upkeep_project_title height60'>
             <view class='fl'>
-              <van-checkbox value="true" checked-color="#fdbb51" bind:change="onChange">
-                <view class="fl">小保养</view>
+              <van-checkbox value="{{item.checkedBtn}}" checked-color="#fdbb51" data-itemIndex="{{index}}">
+                <view class="fl">{{item.maintainName}}</view>
               </van-checkbox>
             </view>
-            <view class="fl orange upkeep_project_speity fz20">强烈推荐</view>
-            <view class="fr red height60 upkeep_project_edit" bindtap="add">编辑</view>
+            <!-- <view class="fl orange upkeep_project_speity fz20">强烈推荐</view> -->
           </view>
           <view class="grey upkeep_project_remark fz20">
-            建议7500公里/6个月保养一次
+            建议{{item.adviseKil}}公里/{{item.adviseCycle}}个月保养一次
           </view>
         </view>
-        <view class='upkeep_project_pro-contain cl'>
+
+        <view class='upkeep_project_pro-contain cl' wx:for="{{item.goodsMsg}}" wx:key="subIndex" wx:for-index="subIndex" wx:for-item="subItem">
           <view class="cl upkeep_project_pro-box">
-            <view class="upkeep_project_pro-img fl">
-              <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/keepup01.png" />
+            <view class='upkeep_project_pro-img fl'>
+              <image src='{{subItem.img}}' alt='{{subItem.goods_name}}'></image>
             </view>
-            <view class="upkeep_project_pro-text fl">
-              <view class="upkeep_project_pro-title">美孚速霸2000合成科技机油5w-40 sn级4L装</view>
-              <view class="cl upkeep_project_pro-price">
-                <view class="fl red">¥ 229</view>
-                <view class="fr grey">x1</view>
-              </view>
+            <view class="upkeep_project_pro-text fr">
+
+              <van-swipe-cell :key="{{subItem.goods_sku}}" right-width="{{ 230 }}" async-close bind:close="onClose">
+                <view>
+                  <view class="upkeep_project_pro-title">{{subItem.goods_name + ' ' +subItem.goods_sku}}</view>
+                  <view class="cl upkeep_project_pro-price">
+                    <view class="fl red">¥ {{subItem.price}} x{{subItem.goodsNum}}</view>
+                  </view>
+                </view>
+                <view slot="right">
+                  <view class='cl upkeep_project_pro-cbox'>
+                    <view class='fl'>
+                      <van-stepper size="mini" value="{{subItem.goodsNum}}" data-i="{{subIndex}}" data-j="{{index}}" bind:change="numChange" />
+                    </view>
+                    <view class='fl upkeep_project_pro-btn'>
+                      <van-button size="small" type="danger" data-i="{{subIndex}}" data-j="{{index}}" bindtap="toDetele">删除</van-button>
+                    </view>
+                    <view class='fr upkeep_project_pro-btn_' data-i="{{subIndex}}" data-j="{{index}}" data-type="{{item.goodsType}}" bindtap="toChange">更换</view>
+                  </view>
+                </view>
+              </van-swipe-cell>
+
             </view>
-          </view>
-          <view class="cl upkeep_project_pro-box">
-            <view class="upkeep_project_pro-img fl">
-              <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/keepup02.png" />
-            </view>
-            <view class="upkeep_project_pro-text fl">
-              <view class="upkeep_project_pro-title">美孚速霸2000合成科技机油5w-40 sn级4L装</view>
-              <view class="cl upkeep_project_pro-price">
-                <view class="fl red">¥ 229</view>
-                <view class="fr grey">x1</view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </van-collapse-item>
-      <van-collapse-item name="2">
-        <view slot="title">
-          <view class='cl upkeep_project_title height60'>
-            <view class='fl'>
-              <van-checkbox value="true" checked-color="#fdbb51" bind:change="onChange">
-                <view class="fl">常规保养项目</view>
-              </van-checkbox>
-            </view>
-            <view class="fl grey upkeep_project_speity fz20">已选
-              <span class="red">2</span>项</view>
-          </view>
-        </view>
-        <view>
-          <view>
-          <view>空气过滤器</view>
-          <view>建议7500公里/6个月保养一次</view>
-          </view>
-          <view>
-          <van-checkbox checked-color="#fdbb51"></van-checkbox>
           </view>
         </view>
       </van-collapse-item>
     </van-collapse>
   </view>
-
-
 </view>
