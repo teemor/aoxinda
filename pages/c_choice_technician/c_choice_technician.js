@@ -1,6 +1,8 @@
 var systemTime = require("../../utils/systemTime.js");
 var that;
-import { choiceSp } from '../../common/api/c_api.js'
+import {
+  choiceSp
+} from '../../common/api/c_api.js'
 const request = new choiceSp
 Page({
   /**
@@ -26,21 +28,21 @@ Page({
     alltimeBtnIndex: '', //预约按钮索引
     constructTime: '', //商品到货时间
     userReserveTime: {}, //用户预订的详细信息
-    checkMaintain: [],//用户选择的保养项目
-    timeBtnIdCont: '',//用户选择的日期
-    userLoaction: '',//用户地址
+    checkMaintain: [], //用户选择的保养项目
+    timeBtnIdCont: '', //用户选择的日期
+    userLoaction: '', //用户地址
     showLocation: false, //获取地理位置失败显示提示
-    allPrice: 0,//商品价格
-    thCost: 0,//技师服务费
-    totalPrice: 0,//商品和服务费总价格
-    stopWork: '',  // 歇业日期
-    goodsCode: [],//商品编码
+    allPrice: 0, //商品价格
+    thCost: 0, //技师服务费
+    totalPrice: 0, //商品和服务费总价格
+    stopWork: '', // 歇业日期
+    goodsCode: [], //商品编码
     getGoodsTime: {}, //奥新达商品到货时间
-    noGoodsList: [],//无货时的商品到货时间列表
-    goodsTime_Date: '',//商品到货日期
-    spFirstStatus: '',//门店第一天状态
-    spSecStatus: '',//门店第二天状态
-    spThreeStatus: '',//门店第三天状态
+    noGoodsList: [], //无货时的商品到货时间列表
+    goodsTime_Date: '', //商品到货日期
+    spFirstStatus: '', //门店第一天状态
+    spSecStatus: '', //门店第二天状态
+    spThreeStatus: '', //门店第三天状态
     chooseThDate: '',
     spIndex: -1, // 点击技师的索引（防止连续点击）
   },
@@ -48,7 +50,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var dateSysList = systemTime.SystemTime()
     that = this;
     that.setData({
@@ -81,13 +83,13 @@ Page({
         })
       }
     })
-    that.getMaintain()//调用用户选中保养项目
+    that.getMaintain() //调用用户选中保养项目
   },
 
   // 获取用户地理位置
   getUserLocation() {
     wx.chooseLocation({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           userLoaction: res.name,
           lat: res.latitude,
@@ -104,7 +106,7 @@ Page({
         // 调用所有门店
         that.distanceSp(userdistance)
       },
-      fail: function (res) {
+      fail: function(res) {
         that.setData({
           showLocation: true
         })
@@ -185,7 +187,7 @@ Page({
 
   },
   // 点击购物车弹出层
-  goodsInfo: function (e) {
+  goodsInfo: function(e) {
     var animation = wx.createAnimation({
       duration: 500,
       timingFunction: 'linear'
@@ -196,7 +198,7 @@ Page({
       that.setData({
         animationData: animation.export()
       })
-      setTimeout(function () {
+      setTimeout(function() {
         that.setData({
           goodsInfo: false
         })
@@ -206,7 +208,7 @@ Page({
         animationData: animation.export(),
         goodsInfo: true
       })
-      setTimeout(function () {
+      setTimeout(function() {
         animation.translateY(0).step()
         that.setData({
           animationData: animation.export()
@@ -215,7 +217,7 @@ Page({
     }
   },
   // 点击遮罩层隐藏弹出层
-  hideModal: function (e) {
+  hideModal: function(e) {
     var that = this;
     var animation = wx.createAnimation({
       duration: 500,
@@ -226,7 +228,7 @@ Page({
     that.setData({
       animationData: animation.export()
     })
-    setTimeout(function () {
+    setTimeout(function() {
       that.setData({
         goodsInfo: false
       })
@@ -235,7 +237,7 @@ Page({
 
   //点击门店
   onChange(e) {
-    let spIndex = e.currentTarget.dataset.index;  //门店索引
+    let spIndex = e.currentTarget.dataset.index; //门店索引
     let currentShop = that.data.sp_List.content[spIndex];
     that.noGoods(spIndex, currentShop, e.detail);
 
@@ -245,7 +247,7 @@ Page({
   getMaintain() {
     wx.getStorage({
       key: 'checkMaintain',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           checkMaintain: res.data
         })
@@ -289,7 +291,7 @@ Page({
       "userClickSp": that.data.sp_List.content[spIndex],
       "userClickTh": that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex],
       "userClickMaintain": that.data.checkMaintain,
-      "userClickTime": timeBtnIndex,//上午下午晚上时间段
+      "userClickTime": timeBtnIndex, //上午下午晚上时间段
       "timeBtnIdCont": timeBtnIdCont //预约时间
     }
     that.setData({
@@ -353,9 +355,9 @@ Page({
           let restStartTime = that.data.sp_List.content[spIndex].restStartTime
           let restEndTime = that.data.sp_List.content[spIndex].restEndTime
           //将用户选择的时间转换为时间戳
-          let userChoict_tamp = new Date(that.data.chooseThDate).getTime();    //用户选择的第一天
-          let userTwo_tamp = new Date(that.data.tomSysDate).getTime();  // 用户选择的第二天
-          let userThree_tamp = new Date(that.data.tomAftSysDate).getTime();//用户选择的第三天
+          let userChoict_tamp = new Date(that.data.chooseThDate).getTime(); //用户选择的第一天
+          let userTwo_tamp = new Date(that.data.tomSysDate).getTime(); // 用户选择的第二天
+          let userThree_tamp = new Date(that.data.tomAftSysDate).getTime(); //用户选择的第三天
           let restStartTime_tamp = new Date(restStartTime).getTime();
           let restEndTime_tamp = new Date(restEndTime).getTime();
           //判断用户选择的日期是否在歇业区间内
@@ -432,7 +434,7 @@ Page({
             that.setData({
               noGoodsList: that.data.noGoodsList
             })
-            Array.prototype.max = function () {
+            Array.prototype.max = function() {
               var max = this[0];
               for (var m = 0; m < this.length; m++) {
                 if (this[m] > max) {
@@ -488,8 +490,7 @@ Page({
                   tomSysDate: tomorrow_date,
                   tomAftSysDate: tomAft_date
                 })
-              } else if (res.cancel) {
-              }
+              } else if (res.cancel) {}
             }
           })
         } else {
@@ -521,7 +522,7 @@ Page({
     })
   },
 
-  nullFun: function (e) {
+  nullFun: function(e) {
 
   },
 
@@ -550,9 +551,9 @@ Page({
         let restStartTime = that.data.sp_List.content[spIndex].restStartTime
         let restEndTime = that.data.sp_List.content[spIndex].restEndTime
         //将用户选择的时间转换为时间戳
-        let userChoict_tamp = new Date(e.detail.value).getTime();    //用户选择的第一天
-        let userTwo_tamp = new Date(that.data.tomSysDate).getTime();  // 用户选择的第二天
-        let userThree_tamp = new Date(that.data.tomAftSysDate).getTime();//用户选择的第三天
+        let userChoict_tamp = new Date(e.detail.value).getTime(); //用户选择的第一天
+        let userTwo_tamp = new Date(that.data.tomSysDate).getTime(); // 用户选择的第二天
+        let userThree_tamp = new Date(that.data.tomAftSysDate).getTime(); //用户选择的第三天
         let restStartTime_tamp = new Date(restStartTime).getTime();
         let restEndTime_tamp = new Date(restEndTime).getTime();
         //判断用户选择的日期是否在歇业区间内
@@ -609,17 +610,26 @@ Page({
   },
 
   // 跳转付款
-  payment: function () {
-    wx.navigateTo({
-      url: `../c_order/c_order?totalPrice=${that.data.totalPrice}&allPrice=${that.data.allPrice}&thCost=${that.data.thCost}`
-    })
-    that.setData({
-      alltimeBtnIndex: '',
-    })
+  payment: function() {
+    if (that.data.alltimeBtnIndex == '') {
+      wx.showToast({
+        title: '请选择技师',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else {
+      wx.navigateTo({
+        url: `../c_order/c_order?totalPrice=${that.data.totalPrice}&allPrice=${that.data.allPrice}&thCost=${that.data.thCost}`
+      })
+      that.setData({
+        alltimeBtnIndex: '',
+      })
+    }
+
   },
 
   // 打开权限
-  btnFun: function (e) {
+  btnFun: function(e) {
     wx.openSetting({
       success(res) {
         that.getUserLocation();
@@ -627,7 +637,7 @@ Page({
     })
   },
   //门店分页
-  onReachBottom: function (e) {
+  onReachBottom: function(e) {
     wx.showNavigationBarLoading();
     wx.showLoading({
       title: '加载中',
