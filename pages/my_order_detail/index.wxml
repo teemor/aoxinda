@@ -14,7 +14,7 @@
     <image src="../../common/image/location.png" />
   </view>
   <view class="fl location_address">
-    <view>{{model.order_phone===undefined?'收货人信息':name+' '+model.order_phone}}</view>
+    <view>{{model.order_phone===undefined?'收货人信息':model.order_person+' '+model.order_phone}}</view>
     <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
   </view>
   <view class="fr location_address_btn">
@@ -72,7 +72,7 @@
   <view class="cl" style="height:30rpx;padding-right:20rpx;">
     <view class="fr">
       合计
-      <span class="red">¥:{{model.order_money}}</span>
+      <span class="red">¥:{{model.order_money + model.order_server_money}}</span>
     </view>
   </view>
   <view wx:if="{{model.trade_status_name==='已发货'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">

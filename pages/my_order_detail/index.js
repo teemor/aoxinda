@@ -38,8 +38,10 @@ Page({
       }
     })
     this.setData({
-      total:this.data.model.order_money
+      total:this.data.model.order_money,
+      storeTotal: this.data.model.order_server_money || 0
     })
+    console.log(this.data.model)
     this.writeOrder(this.data.model.invoice_id,
       this.data.model.order_person,
       this.data.model.order_address,
