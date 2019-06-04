@@ -72,7 +72,12 @@
   <view>
     <view>
       <view style="margin-bottom:100rpx">
-     <van-cell title="商品详情" />
+     <!-- <van-cell title="商品详情" /> -->
+      <view class='shop_detail'>
+        <image src="../../common/image/rectangle.png"/>
+          <text class='detail_font fz30'>商品详情</text>
+        <image src="../../common/image/rectangle.png"/>
+      </view>
           
             <view>
               <view></view>
