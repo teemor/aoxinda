@@ -8,9 +8,9 @@
     <view class="fz24 my_order_describe">数量{{item.goods_num}} 产品：{{item.sku_name}}</view>
     <view class="cl">
     <view class="fl red">¥{{item.back_money}}</view>
-    <view class="fr">退款数量x1</view>
+    <view class="fr">退款数量X{{item.goods_num}}</view>
     </view>
   </view>
   </view>
- <van-cell title="{{item.order_type}}" value="" is-link></van-cell>
+ <van-cell title="{{item.order_type+' '+item.back_type}}" value="" is-link></van-cell>
  </view>
