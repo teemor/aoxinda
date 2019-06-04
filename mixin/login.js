@@ -126,6 +126,7 @@ module.exports = {
             sessionKey: res.data
           }
           requestWB.authDecode(param).then(res => {
+            app.globalData.phoneNum = res.phoneNumber
             let phoneNum = res.phoneNumber;
             wx.setStorage({
               key: 'userPhone',

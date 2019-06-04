@@ -12,7 +12,7 @@
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_avatar.png" />
       </view>
        <view class="fl">
-        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfoBtn">
           请登录
         </button>
       </view>

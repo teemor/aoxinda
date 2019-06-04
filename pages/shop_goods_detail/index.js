@@ -117,11 +117,14 @@ Page({
     request.toCart({ buy_num: this.data.buy_num, goods_id: this.data.goods_id, goods_detail_id: this.data.goods_detail_id }).then(res => {
       if (res.status === 0) {
         wx.showToast({
-          title: '加入购物车成功',
+          title: '成功加入购物车',
           icon: 'success',
-          duration: 2000
+          duration: 1500,
+          success:function(){
+            this.goodsDetail(this.data.product_code)
+          }
         });
-        this.goodsDetail(this.data.product_code)
+        
       } else {
         wx.showToast({
           title: '加入购物车失败',

@@ -20,7 +20,7 @@
       <view class="fz28 high60">退款数量</view>
       <view class="cl high60">
         <van-stepper class="fl" min="1" max="{{goodsData.buy_num}}" value="{{orderInfo.goods_num}}" bind:change="onChange" />
-        <view class="fl grey fz28 mleft20">最多1件</view>
+        <view class="fl grey fz28 mleft20">最多{{goodsData.buy_num}}件</view>
       </view>
       <view class="cl high60 fz26 ">退款金额
         <span class="red">¥{{orderInfo.back_money}}</span>
@@ -33,7 +33,7 @@
     </view>
   </view>
   <view class="mtop20">
-    <van-field value="{{ orderInfo.back_desription }}" label="退款说明" type="textarea" placeholder="选填" autosize border="{{ false }}" />
+    <van-field value="{{ orderInfo.back_desription }}" bind:change="description" label="退款说明" type="textarea" placeholder="选填" autosize border="{{ false }}" />
     <view class="bgwhite">
       <view class="fz26 pleft30 greyfont">上传退款凭证</view>
       <view bindtap="uploadImage" class="add_refund_box">
@@ -46,7 +46,7 @@
   </view>
 </view>
 <manager show="{{reasonShow}}" type="bottom" bind:clickMask="clickMask">
-  <view class="bgwhite" style="position:relative;padding-bottom:100rpx">
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
     <view class="tc high70 fz30">退款原因</view>
     <view class="high70 fz28 br_btm_light" wx:for="{{reason}}" wx:key="{{item}}" bindtap="reasonChoose" data-item="{{item}}">
       {{item.name}}

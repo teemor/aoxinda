@@ -6,8 +6,8 @@
 </view>
 
 <view class="bgwhite" style="padding:30rpx;">
-<view class="fz28 high80">您已发起退款申请，请耐心等待商城退款处理</view>
-<view class="fz24 grey">退款将原支付路径退回，请您于1-7个工作日关注您支付账户余额变化</view>
+<view class="fz28 high80">{{detailData.back_express}}</view>
+<!--<view class="fz24 grey">退款将原支付路径退回，请您于1-7个工作日关注您支付账户余额变化</view>-->
 </view>
   <view class="cl my_order_list_box" bindtap="orderDetail">
   <view class="fz26 high60">退款信息</view>

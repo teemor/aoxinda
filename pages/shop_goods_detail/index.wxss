@@ -123,7 +123,9 @@ margin-left:20rpx;
 .cart_contain {
   background: #fff;
 }
-
+.van-button--warning{
+  background: #f6b245 !important
+}
 .cart_img image {
   width: 170rpx;
   height: 170rpx;

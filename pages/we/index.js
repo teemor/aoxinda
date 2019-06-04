@@ -1,5 +1,7 @@
 const app = getApp();
+import login from '../../mixin/login'
 Page({
+  mixins:[login],
   data: {
 
   },

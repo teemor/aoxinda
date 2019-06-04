@@ -41,7 +41,7 @@ page{
     margin-top:10rpx;
     background: #fff;
     padding:10rpx 30rpx 30rpx;
-    height:200rpx;
+    height:250rpx;
     width: 100%;
 }
 .order_detail_bg{

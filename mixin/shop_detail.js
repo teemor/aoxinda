@@ -19,19 +19,24 @@ module.exports = {
           url: `../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`
         })
       },
+      formateDate:function(time){
+        let date = new Date(time)
+        let Y = date.getFullYear() + '-';
+        let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate();
+        let h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+        let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':'
+        let s = date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds();
+        return  Y + M + D +' '+ h + m + s
+      },
     selectOrderDetail: function (options) {
         request.selectOrderDetail({ order_id: options.id }).then(res => {
-            let date = new Date(res.create_at)
-            let Y = date.getFullYear() + '-';
-            let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-            let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate();
-            let h = date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
-            let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':'
-            let s = date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds();
             this.setData({
                 model: res,
                 goodsList: res,
-                date: Y + M + D +' '+ h + m + s
+                date: this.formateDate(res.create_at),
+                pay_at:this.formateDate(res.pay_at),
+                send_at:this.formateDate(res.send_at)
             })
             if (res.invoice_id === 1) {
                 this.setData({

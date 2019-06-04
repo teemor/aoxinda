@@ -7,9 +7,14 @@
   <view class="cl" style="padding-top:80rpx;padding-bottom:80rpx">
     <van-checkbox-group value="{{result}}" bind:change="onChange"   >
     <view  wx:for="{{cartList}}" wx:key="index" data:for-index="index" style="background:#fff;margin-bottom:20rpx;padding-left:30rpx;">
-      <van-checkbox checked-color="#fdbb51"  data-index="{{index}}" name="{{index}}">
+     <van-checkbox wx:if="{{item.goods_detail_id}}" checked-color="#fdbb51"  data-index="{{index}}" name="{{index}}">
         <view class="my_cart_content">
           <my_cart_list model="{{item}}" bind:numChange="numChange" bind:detail="detail" />
+        </view>
+      </van-checkbox>
+      <van-checkbox wx:else   disabled  data-index="{{index}}" name="{{index}}">
+        <view class="my_cart_content">
+          <my_cart_list model="{{item}}" disabled="{{true}}"  />
         </view>
       </van-checkbox>
       </view>

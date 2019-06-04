@@ -1,6 +1,7 @@
 Component({
   properties: {
-    model: Object
+    model: Object,
+    disabled:Boolean
   },
   data: {
 

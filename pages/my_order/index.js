@@ -19,7 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, 'options')
     if (options.id==="17") {
       this.setData({
         active: 1
@@ -37,7 +36,7 @@ Page({
         active:4
       })
     }
-    this.selectOrder({})
+this.onShow();
   },
   goOrder:function(e){
     this.setData({
@@ -77,7 +76,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.selectOrder({})
   },
 
   /**
