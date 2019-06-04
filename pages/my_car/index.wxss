@@ -1,64 +1,80 @@
 @import "../../app.wxss";
-.mycar_contain{
-    box-shadow: 0 0 25rpx #dfdfe4;
-    margin-left: 30rpx;
-    margin-top:30rpx;
-    width:640rpx;
-    height:300rpx;
-    border-radius: 30rpx;
-    padding: 30rpx;
+
+.mycar_contain {
+  box-shadow: 0 0 25rpx #dfdfe4;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  width: 640rpx;
+  height: 300rpx;
+  border-radius: 30rpx;
+  padding: 30rpx;
 }
-.mycar_box{
-    padding-top:30rpx;
-    height:180rpx;
-    border-bottom: 2rpx solid #dfdfe4;
+
+.mycar_box {
+  padding-top: 30rpx;
+  height: 180rpx;
+  border-bottom: 2rpx solid #dfdfe4;
 }
-.mycar_img image{
-    width:90rpx;
-    height: 90rpx;
-    border-radius: 50rpx;
+
+.mycar_img image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50rpx;
 }
-.mycar_remark{
-    margin-left: 50rpx;
-    width:500rpx;
+
+.mycar_remark {
+  margin-left: 50rpx;
+  width: 500rpx;
 }
-.mycar_remark_title{
-    height: 70rpx;
-    width:370rpx;
-    font-size:32rpx;
+
+.mycar_remark_title {
+  height: 70rpx;
+  width: 370rpx;
+  font-size: 32rpx;
 }
-.mycar_remark_km{
-    color: #b9b9b9;
-    font-size: 26rpx;
+
+.mycar_remark_km {
+  color: #b9b9b9;
+  font-size: 26rpx;
 }
-.mycar_remark_text{
-    font-size:28rpx;
+
+.mycar_remark_text {
+  font-size: 28rpx;
 }
-.shop_edit_box{
-    color: #a7a7a7;
-    border-right: 2rpx solid #dfdfe4;
-    text-align: center;
-    width:200rpx;
-font-size: 30rpx;
+
+.shop_edit_box {
+  color: #a7a7a7;
+  border-right: 2rpx solid #dfdfe4;
+  text-align: center;
+  width: 200rpx;
+  font-size: 30rpx;
 }
-.shop_edit_img image{
-    margin-left:40rpx;
-    margin-right: 10rpx;
-width:34rpx;
-height: 40rpx;
+
+.shop_edit_img image {
+  margin-left: 40rpx;
+  margin-right: 10rpx;
+  width: 34rpx;
+  height: 40rpx;
 }
-.shop_edit_btn{
-font-size: 32rpx;
+
+.shop_edit_btn {
+  font-size: 32rpx;
 }
-.shop_set_btn{
-    color: #a7a7a7;
-    margin-left:40rpx;
-font-size: 28rpx;
-border-radius: 50rpx;
-padding: 4rpx;
-width: 180rpx;
-text-align: center;
-border:2rpx solid #dfdfe4;
-height: 50rpx;
-line-height: 50rpx;
+
+.shop_set_btn {
+  color: #a7a7a7;
+  margin-left: 40rpx;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+  padding: 4rpx;
+  width: 180rpx;
+  text-align: center;
+  border: 2rpx solid #dfdfe4;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.shop_set_btn_ {
+  color: #fdbb51;
+  border-color: #fdbb51;
 }

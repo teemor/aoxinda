@@ -27,7 +27,8 @@
         </view>
         <view class="fl shop_edit_btn">删除</view>
       </view>
-      <view class="fl shop_set_btn">设为常用车</view>
+      <view class="fl shop_set_btn shop_set_btn_" wx:if="{{item.def=='0'}}">常用车</view>
+      <view class="fl shop_set_btn" wx:else>设为常用车</view>
     </view>
   </view>
   <view class="fz30 bg_orange bottom_btn" bindtap="addCar">添加爱车</view>
