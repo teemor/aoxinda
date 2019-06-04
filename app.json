@@ -51,7 +51,15 @@
     "pages/shop_store_choose/index",
     "pages/shop_store_service/index",
     "pages/add_car_mes/index",
-    "pages/we/index"
+    "pages/we/index",
+    "pages/c_upkeep_car/c_upkeep_car",
+    "pages/c_my_car/c_my_car",
+    "pages/c_upkeep_goods_list/c_upkeep_goods_list",
+    "pages/c_choice_technician/c_choice_technician",
+    "pages/c_order/c_order",
+    "pages/c_order_all/c_order_all",
+    "pages/c_order_detail/index",
+    "pages/c_selfInfo/c_selfInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
