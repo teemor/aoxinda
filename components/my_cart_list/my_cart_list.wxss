@@ -17,7 +17,7 @@
 }
 
 .my_cart_title {
-  height:79rpx;
+
   margin-bottom: 10rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -33,6 +33,5 @@
 }
 .my_cart_price{
   width:400rpx;
-  position: absolute;
-  bottom:10rpx
+
 }

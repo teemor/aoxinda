@@ -1,6 +1,6 @@
 <view>
   <view class="shop_goods_detail_img">
-    <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <!-- <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
           <view class="swiper-item {{item}}"></view>

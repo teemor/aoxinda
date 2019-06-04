@@ -1,0 +1,13 @@
+<!--pages/mine/index.wxml-->
+<view class='container'>
+  <view class='bg_blue mine' bindtap='mineTap'>
+    我的全部订单
+  </view>
+  <view class='bg_blue mine' bindtap='selfInof'>
+    个人信息
+  </view>
+  <view class='bg_blue mine' bindtap='myInvite'>
+    我的邀请
+  </view>
+</view>
+

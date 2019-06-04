@@ -2,6 +2,7 @@ import {
     Technician
 } from '../common/api/api'
 const request = new Technician
+
 module.exports = {
     data: {
         car: false
@@ -15,12 +16,21 @@ module.exports = {
     wx.getStorage({
       key: 'userPhone',
       success: (result) => {
-        console.log(result,'result')
         request.findCarList({ userTel:result.data  }).then(res => {
           if (res.result.length > 0) {
+            let arr=[]
+            res.result.forEach(item=>{
+              if(item.def==='0'){
+                arr.push(item)
+              }
+            })
+            if(arr.length===0){
+              arr.push(res.result[0])
+            }
             that.setData({
               car: true,
-              model: res.result[0]
+              model: arr[0],
+              carList:res.result
             })
           }
         })

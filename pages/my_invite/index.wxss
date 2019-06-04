@@ -1,1 +1,130 @@
-/* pages/my_invite/index.wxss */
+page {
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+.image_bg image{
+  position: absolute;
+  top: -10rpx;
+  width: 750rpx;
+  height: 300rpx;
+}
+.top{
+  width: 700rpx;
+  height: 270rpx;
+  background: #fff;
+  position: absolute;
+  top: 70rpx;
+  left: 50%;
+  margin-left: -350rpx;
+}
+.top .head{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: -50rpx;
+  left: 50%;
+  margin-left: -50rpx;
+}
+.top .title{
+  width: 300rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 60rpx;
+  left: 50%;
+  margin-left: -150rpx;
+}
+.invite_count{
+  margin-top: 140rpx;
+  padding-left: 140rpx;
+}
+.invite_count .invite_peopel{
+  font-size: 40rpx;
+  color: orange;
+}
+.invite_count image{
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align:middle;
+}
+.invite_count text{
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  font-family:"微软雅黑";
+}
+.top .invite_record{
+  font-size: 26rpx;
+  color: #0099FF;
+  text-align: center;
+  line-height: 90rpx;
+}
+.center{
+  width: 700rpx;
+  height: 340rpx;
+  background: #fff;
+  position: absolute;
+  top: 360rpx;
+  left: 50%;
+  margin-left: -350rpx;
+}
+.center .title,.bottom .title{
+  height: 40rpx;
+  padding-left: 20rpx;
+  border-left: 6rpx solid orange;
+  margin: 30rpx 0;
+}
+.center .invite_strategy{
+  float: left;
+  margin: 0 46rpx;
+}
+.center .invite_strategy .step image{
+  width: 140rpx;
+  height: 140rpx;
+}
+.center .invite_strategy .step .explain{
+  margin: 16rpx 0;
+  text-align: center;
+}
+.center .arrow_first{
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 164rpx;
+  left: 220rpx;
+}
+.center .arrow_second{
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 164rpx;
+  left: 456rpx;
+}
+.bottom{
+  width: 700rpx;
+  background: #fff;
+  position: absolute;
+  top: 720rpx;
+  left: 50%;
+  margin-left: -350rpx;
+}
+.bottom .content{
+  padding: 0 40rpx 20rpx;
+  line-height: 44rpx;
+  color: #9c9897;
+  font-family:"微软雅黑";font-weight:500;
+}
+.bottom .content .distance{
+  margin: 10rpx 0;
+}
+.bottom_btn{
+  border-radius: 10rpx;
+  width:90%;
+  margin-left:5%;
+  position: fixed;
+  bottom:0rpx;
+  height:75rpx;
+  line-height:75rpx;
+}
+.bg_orange{
+  background:#fdbb51;color: #fff;text-align: center
+}

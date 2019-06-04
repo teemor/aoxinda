@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单确认",
+  "usingComponents": {
+    "van-card": "../../miniprogram_npm/vant-weapp/card/index"
+  }
+}

@@ -33,9 +33,9 @@ Page({
   },
   addSort:function(e){
     if(e.currentTarget.dataset.item.name==="销量"){
-      this.selectGoodsList({goodsType:this.data.goodsType,sailNum:'sailNum',sorting:'desc'})
+      this.selectGoodsList({ goodsType: this.data.goodsType, sailNum: 'sailNum', sorting: 'desc', goodsName: this.data.goodsName})
     }else if(e.currentTarget.dataset.item.name==='价格'){
-      this.selectGoodsList({goodsType:this.data.goodsType,goodsPrice:'goodsPrice',sorting:'desc'})
+      this.selectGoodsList({ goodsType: this.data.goodsType, goodsPrice: 'goodsPrice', sorting: 'desc', goodsName: this.data.goodsName})
 
     }else{
       this.setData({
@@ -48,7 +48,6 @@ Page({
    * dzl
    */
   shopDetail: function (e) {
-    console.log(e)
     wx.navigateTo({
       url: `../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`
     })
@@ -68,14 +67,16 @@ Page({
    */
   onLoad: function (options) {
     let model = decodeURIComponent(options.id)
-   let id = JSON.parse(model).id
-   wx.setNavigationBarTitle({
-     title:JSON.parse(model).name
-   })
-   this.setData({
-     goodsType:id
-   })
-    this.selectGoodsList({goodsType:id})
+    let id = JSON.parse(model).id
+    let goods_name = JSON.parse(model).goodsName || ""
+    wx.setNavigationBarTitle({
+      title: JSON.parse(model).name
+    })
+    this.setData({
+      goodsType: id,
+      goodsName: goods_name
+    })
+    this.selectGoodsList({ goodsType: id, goodsName: goods_name })
   },
   /**
    * 列表

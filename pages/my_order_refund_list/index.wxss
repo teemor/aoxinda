@@ -1,9 +1,9 @@
 @import "../../app.wxss";
 .my_order_list_text{
-    width:500rpx;
+    width:400rpx;
 }
 .br_btm_light{
-    height:140rpx
+    height:180rpx
 }
 .my_order_describe{
     width:500rpx;

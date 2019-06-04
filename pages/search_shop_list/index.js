@@ -1,33 +1,102 @@
 // pages/search_shop_list/index.js
+let that
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    history:[{name:"机油",id:"1"},{name:"轮胎",id:"2"},{name:"行车记录仪",id:"3"}],
-    hot:[{name:"汽车坐垫",id:"1"},{name:"行车记录仪",id:"2"},{name:"灭火器",id:"3"},
-    {name:"汽车坐垫",id:"4"},{name:"行车记录仪",id:"5"},{name:"灭火器",id:"6"}]
+    value: '',
+    history: [],
+    hot: [
+      { name: "汽车坐垫", id: null, goodsName: "汽车坐垫" }
+    ]
   },
+  /**
+   * 输入时赋值
+   */
+  inValue: function (e) {
+    this.setData({
+      value: e.detail
+    })
+  },
+
   /**
    * 搜索列表页的跳转
    */
-  onSearch:function(){
+  onSearch: function (e) {
+    let json = {};
+    if (this.data.value != '') {
+      json = { name: this.data.value, id: null, goodsName: this.data.value }
+      //添加历史纪录
+      let old = 0;
+      that.data.history.forEach(n => {
+        if (n.name == this.data.value) {
+          old++
+        }
+      })
+      if (old === 0) {
+        if (that.data.history.length >= 10) {
+          that.data.history.shift()
+        }
+        that.data.history.push(json)
+        wx.setStorage({
+          key: 'searchHistory',
+          data: that.data.history
+        })
+      }
+    } else {
+      json = { name: "全部商品", id: null, goodsName: null }
+    }
+
+
+    //跳转-列表
+    let model = encodeURIComponent(JSON.stringify(json))
     wx.navigateTo({
-      url: '../shop_goods_list/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
+      url: `../shop_goods_list/index?id=${model}`
     });
-      
+  },
+  /**
+   * 搜索列表 历史 跳转
+   */
+  onHistorySearch: function (e) {
+    let model = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.info))
+    wx.navigateTo({
+      url: `../shop_goods_list/index?id=${model}`
+    })
+  },
+  /**
+   * 搜索列表 删除历史
+   */
+  deleteHistory: function () {
+    wx.removeStorage({
+      key: 'searchHistory',
+      success(res) {
+        that.setData({
+          history: []
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this
+    //获取历史搜索
+    wx.getStorage({
+      key: 'searchHistory',
+      success: function (res) {
+        that.setData({
+          history: res.data
+        })
+      },
+      fail: function () {
+        that.setData({
+          history: []
+        })
+      }
+    })
   },
 
   /**

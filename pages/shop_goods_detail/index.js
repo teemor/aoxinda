@@ -27,7 +27,6 @@ Page({
     }
   },
   labelChoosed: function (e) {
-    console.log(e, 'e23444')
     let that = this
     let child = that.data.dataset.goodstype[e.currentTarget.dataset.index].lists
     for (let i = 0; i < child.length; i++) {
@@ -52,7 +51,6 @@ Page({
     })
   },
   labelChoose: function (e) {
-    console.log(e, 'eeee')
     if (e.currentTarget.dataset.item.name === '无需安装') { 
       this.setData({
         store:false,
@@ -119,11 +117,14 @@ Page({
     request.toCart({ buy_num: this.data.buy_num, goods_id: this.data.goods_id, goods_detail_id: this.data.goods_detail_id }).then(res => {
       if (res.status === 0) {
         wx.showToast({
-          title: '加入购物车成功',
+          title: '成功加入购物车',
           icon: 'success',
-          duration: 2000
+          duration: 1500,
+          success:function(){
+            this.goodsDetail(this.data.product_code)
+          }
         });
-        this.goodsDetail(this.data.product_code)
+        
       } else {
         wx.showToast({
           title: '加入购物车失败',
@@ -142,7 +143,8 @@ Page({
    */
   onChange: function ({ detail }) {
     this.setData({
-      buy_num: detail
+      buy_num: detail,
+      'mineGoods.buy_num': detail
     })
   },
   /**

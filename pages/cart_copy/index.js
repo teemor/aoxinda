@@ -1,12 +1,24 @@
 
 import { Technician } from '../../common/api/api'
 const request = new Technician
+import shop_detail from '../../mixin/shop_detail'
 Page({
+  mixins: [shop_detail],
   data: {
     finish: false,
     list: ['a', 'b', 'c'],
     result: [],
-    total_price: 0
+    total_price: 0,
+    arrsum: []
+  },
+  /**
+   * 详情
+   */
+  detail: function (e) {
+    console.log(e, '进入')
+    wx.navigateTo({
+      url: `../shop_goods_detail/index?product_code=${e.detail.product_code}`
+    })
   },
   /**
    * 删除
@@ -28,7 +40,15 @@ Page({
       });
 
     } else {
-      this.updateCart({ ids: this.data.result, version: '-1' })
+      let ids = []
+      this.data.modelarr.forEach(item => {
+        ids.push(item.id)
+      })
+      this.updateCart({ ids: ids, version: '-1' })
+      this.setData({
+        result: [],
+        ischecked: false
+      })
     }
   },
   onShow: function () {
@@ -49,26 +69,34 @@ Page({
     this.setData({
       checked: !this.data.checked
     })
-    let arr = []
+
     let num = 0
     let modelarr = []
     let sum = 0
+    let arr = []
     if (this.data.checked) {
+      for (let i = 0; i < this.data.cartList.length; i++) {
+        arr.push(i.toString())
+      }
+      this.setData({
+        result: arr
+      })
+      console.log(this.data.result, 'result')
       this.data.cartList.forEach(item => {
-        arr.push(JSON.stringify(item.id))
         modelarr.push(item)
         num += item.goods_price * item.buy_num
         sum += item.buy_num
         this.setData({
+          ischecked: true,
           total_price: num,
-          result: arr,
           modelarr: modelarr,
           sum: sum
         })
       });
     } else {
       this.setData({
-        result: arr,
+        ischecked: false,
+        result: [],
         total_price: 0,
         modelarr: modelarr
       })
@@ -78,25 +106,42 @@ Page({
    * 选择
    */
   onChange: function ({ detail }) {
+    let modelarr = []
     let num = 0;
     if (detail.length > 0) {
+      detail.forEach(item => {
+        modelarr.push(this.data.cartList[item])
+      })
       this.setData({
+        modelarr: modelarr,
         ischecked: true
+      })
+      this.data.modelarr.forEach(item => {
+        num += parseFloat(item.goods_price) * item.buy_num
+      })
+      this.setData({
+        total_price: num
       })
     } else {
       this.setData({
-        ischecked: false
+        ischecked: false,
+        total_price:0
       })
+      console.log(this.data.total_price,'total_price')
     }
-    this.data.cartList.forEach(item => {
-      detail.forEach(e => {
-        if (item.id == e) {
-          num += item.goods_price * item.buy_num
-          console.log(item.goods_price + 'rwe' + item.buy_num)
-          return
-        }
-      })
-    })
+    console.log(this.data.modelarr, 'modelarrar')
+    
+    // parseFloat(this.data.cartList[item].goods_price)*this.data.cartList
+    // this.data.cartList.forEach(item => {
+
+    //   detail.forEach(e => {
+    //     if (item.id == e) {
+    //       num += parseFloat(item.goods_price) * item.buy_num
+    //       console.log(item.goods_price + 'rwe' + item.buy_num)
+    //       return
+    //     }
+    //   })
+    // })
     if (this.data.cartList.length === detail.length) {
       this.setData({
         checked: true
@@ -107,11 +152,11 @@ Page({
       })
     }
     this.setData({
-      total_price: num,
       result: detail
     })
-    console.log(this.data.result)
+    console.log(this.data.result, '选中')
   },
+
   /**
    * 提交订单
    * @param {*} options 
@@ -158,24 +203,28 @@ Page({
    */
   numChange: function ({ detail }) {
     console.log(detail, 'detao')
-    console.log(this.data.result, 'detail')
-    let sum = 0
-    this.data.result.forEach(item => {
-      if (detail.id = item) {
-        sum += detail.goods_price * detail.buy_num
-        console.log(sum)
-        this.setData({
-          total_price: sum
-        })
-      }
-    })
+    console.log(this.data.modelarr, 'modelarr')
     this.updateCart({ id: detail.id, buy_num: detail.buy_num })
+    let sum = 0
+    // if(){
+
+    // }
+    // this.data.result.forEach(item => {
+    //   if (detail.id = item) {
+    //     sum += detail.goods_price * detail.buy_num
+    //     console.log(sum)
+    //     this.setData({
+    //       total_price: sum
+    //     })
+    //   }
+    // })
+
 
   },
   // 购物车服务
   updateCart: function (data) {
     request.updateCart(data).then(res => {
-      this.cartList()
+      this.onShow();
     })
   },
   typego: function () {

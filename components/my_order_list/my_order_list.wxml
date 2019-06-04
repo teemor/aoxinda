@@ -8,26 +8,33 @@
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
     </view>
     <view class="fl my_order_list_text">
-      <view>{{item.goods_name}}</view>
-      <view class="my_order_price fz28">
+      <view class="fz28 two_overflow">{{item.goods_name}}</view>
+        <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+    数量{{item.buy_num}} 产品:{{item.sku_name}}
+    </view>
+      <view class="fz28">
         <view class="fl red">¥ {{item.goods_price}}</view>
         <view class="fr grey">x{{item.buy_num}}</view>
       </view>
     </view>
   </view>
   <view class="cl my_order_list_bottom" wx:if="{{ispay===true}}">
+  <view class="fl" style="margin-right:30rpx;">
+  共{{goodsList.total}}件商品    
+  </view>
     <view class="fl">
-      合计
+      应付
       <span class="red">¥:{{goodsList.pay_money}}</span>
     </view>
 
     <view wx:if="{{goodsList.trade_status==='待付款'}}" class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey">取消订单</view>
-      <view class="fl myorder_orange">去付款</view>
+     <!-- <view class="fl myorder_grey">取消订单</view>-->
+      <view class="fl myorder_orange" bindtap="goOrder">去付款</view>
     </view>
-    <view wx:elif="{{goodsList.trade_status==='待发货'}}" class="fr fz24 my_order_list_btn">
+    <!--<view wx:elif="{{goodsList.trade_status==='待收货'}}" class="fr fz24 my_order_list_btn">
       <view class="fl myorder_orange">确认收货</view>
     </view>
+    -->
   </view>
 </view>
 <view wx:else class="my_order_list-box">
@@ -49,8 +56,8 @@
   </view>
   <view wx:if="{{goodsList.off}}" class='server_box'>
     <view class='server_item' data-id="{{ goodsList.server_order_id }}" bindtap='toServerInfo'>
-      <view class='fl'>服务：安装服务</view>
-      <view class='fr'><text class='red'>￥{{goodsList.server_order.server_time / 60*goodsList.server_order.server_user_money}}</text>x{{goodsList.server_order.server_num}}<van-icon name="arrow" /></view>
+      <view class='fl'>服务：到店服务</view>
+      <view class='fr'><text class='red'>￥{{goodsList.server_order.server_time*goodsList.server_order.server_user_money}}</text>x{{goodsList.server_order.server_num}}<van-icon name="arrow" /></view>
     </view>
     <view class="cl"></view>
     <view class='server_item'>门店：{{goodsList.server_order.store_name}}</view>

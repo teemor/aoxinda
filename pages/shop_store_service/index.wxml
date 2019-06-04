@@ -1,5 +1,5 @@
 <view>
-  <van-cell title="门店及服务项目" is-link value="更换门店" url="../shop_store_choose/index" />
+  <van-cell title="门店及服务项目" is-link value="更换门店" url="../shop_store_choose/index" wx:if="{{id?false:true}}" />
   <view class='sp-box'>
     <view class='sp-logo'>
       <image src='{{orderInfo.store_img}}'></image>
@@ -21,12 +21,12 @@
     </view>
     <view class="fr ">
       <view class="num-box">
-        <van-stepper value="{{ orderInfo.server_num }}" bind:change="onChange" />
+        <van-stepper disabled="{{id?true:false}}" max="{{maxNum}}" value="{{ orderInfo.server_num }}" bind:change="onChange" />
       </view>
     </view>
   </view>
 
-  <van-cell title="服务项目" value="安装服务" />
+  <van-cell title="服务项目" value="到店服务" />
   <van-cell title="服务技师" value="{{orderInfo.server_user_name}}" />
   <view class="my-van-cell-5">
     <van-cell title="预约时间" value="{{orderInfo.server_at}}" />
@@ -36,7 +36,7 @@
 
   <view class="all-price">
     服务总价：
-    <text><text class='red'>￥{{orderInfo.server_time/60*orderInfo.server_user_money}}</text>x{{orderInfo.server_num}}</text>
+    <text><text class='red'>￥{{orderMoney}}</text>x{{orderInfo.server_num}}</text>
   </view>
 
   <view class='payment'>

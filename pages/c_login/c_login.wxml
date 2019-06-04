@@ -1,0 +1,24 @@
+<!--login.wxml-->
+<view id="sa_login">
+  <view class='logo_name'>麦车服C端</view>
+  <view class='login_logo_wrap'>
+    <image class='login_logo' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/login_bgm.png'></image>
+  </view>
+  <!-- 获取用户信息 -->
+  <button class='login_btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn">
+    微信授权登录
+  </button>
+  <!-- 获取用户信息 -->
+</view>
+
+<!-- 获取手机号 -->
+<view class='getUserPhone_wrap' wx:if="{{loginMask == 0}}">
+  <view class='getPhoneMask'>
+    <view class='wxChatLogo_wrap'>
+      <image class='wxChatLogo' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/login_bgm.png'></image>
+    </view>
+    <view class='prompt_txt'>麦车服请求获取您的手机号，请您允许。</view>
+    <button class='getPhone' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  </view>
+</view>
+<!-- 获取手机号 -->

@@ -2,14 +2,15 @@
   <view class="fl location_img">
     <image src="../../common/image/location.png" />
   </view>
-  <view class="fl location_address">
-    <view>{{name===undefined?'收货人信息':name}}</view>
-    <view class="location_mes">{{address===undefined?'填写收货地址信息':address}}</view>
+  <view class="fl location_address" style="{{storeTotal==0?'':'height:100rpx;line-height:100rpx'}}">
+    <view>{{name===undefined?'收货人信息':name}}  <text style='margin-left:20rpx'>{{phone}}</text></view>
+    <view class="location_mes" wx:if="{{storeTotal==0}}">{{address===undefined?'填写收货地址信息':address}}</view>
   </view>
   <view class="fr location_address_btn">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/right_arrow.png" />
   </view>
 </view>
+
 <view>
 <view  wx:if="{{goods==false}}" >
 <view wx:for="{{goodsList}}" wx:key="{{item}}">
@@ -35,17 +36,17 @@
 <view>
   <view class="mtop20">
     <van-cell title="商品总价" value="¥{{total}}" />
-    <van-cell title="服务费" value="+¥0" />
+    <van-cell title="服务费" value="+¥{{storeTotal}}" />
     <van-cell title="运费" value="+¥0" />
     <view class="order_total" >
     <view class="fr ">
       <view class="grey fz26 fl order_total_num">共{{sum}}件商品</view>
       <view class="fl fz30">小计：
-      <span class="red fz30">¥{{total+0}}</span>
+      <span class="red fz30">¥{{total + storeTotal}}</span>
       </view>
     </view>
     </view>
-    <br-bottom checked="true" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total+0}}">
+    <br-bottom checked="true" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total + storeTotal}}">
 
   </br-bottom>
   </view>

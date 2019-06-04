@@ -9,6 +9,6 @@
       </view>
       <view wx:if="{{btnBuy!==''}}" class="fl carbeauty_name" bindtap="btnBuy">{{btnBuy}}</view>
     </view>
-    <view class="fr {{checked===true?'carbeauty_btn_buy':'carbeauty_btn_disabled'}}" catchtap="carClickBtn">{{btnRight}}</view>
+    <view class="fr {{checked===true?'carbeauty_btn_buy':'carbeauty_btn_disabled'}}" catchtap="{{checked===true?'carClickBtn':''}}">{{btnRight}}</view>
   </view>
 </view>

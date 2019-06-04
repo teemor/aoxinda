@@ -12,7 +12,7 @@
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_avatar.png" />
       </view>
        <view class="fl">
-        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfoBtn">
           请登录
         </button>
       </view>
@@ -40,7 +40,7 @@
     </view>
   </view>
   <view class="mine_partner_img">
-    <image src="../../common/image/my_partner.png" />
+    <image src="../../common/image/my_partner.png" bindtap='myInvite'/>
   </view>
   <view class="mine_cell-box">
     <view class="mine_cell-list">

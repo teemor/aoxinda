@@ -14,11 +14,8 @@
     <image src="../../common/image/location.png" />
   </view>
   <view class="fl location_address">
-    <view>{{name===undefined?'收货人信息':name+' '+model.order_phone}}</view>
+    <view>{{model.order_phone===undefined?'收货人信息':model.order_person+' '+model.order_phone}}</view>
     <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
-  </view>
-  <view class="fr location_address_btn">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/right_arrow.png" />
   </view>
 </view>
 <view class="cl my_order_list_box" wx:for="{{model.goodsData}}" wx:key="{{item}}">
@@ -27,41 +24,46 @@
   </view>
   <view class="fl my_order_list_text">
     <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.goods_name}}</view>
-    <view class="my_order_price fz28">
+    <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+    数量{{item.buy_num}} 产品:{{item.sku_name}}
+    </view>
+    <view class="fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
-      <view class="my_order_list_btn fr">
+      <view wx:if="{{item.status!==''}}" class="my_order_list_btn fr">
         <view class="myorder_orange" bindtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
       </view>
     </view>
   </view>
 </view>
-<view style="height:210rpx;display:none" class="fz24 bgwhite">
-  <view class="cl high70">
+<view style="height:210rpx;" class="fz24 bgwhite" wx:if="{{model.serverData&&model.serverData.length>0}}">
+  <view class="cl high70" data-id="{{model.order_id}}" data-server="{{model.serverData[0].id}}" bindtap="toServerInfo">
     <view class="fl">服务：到店服务</view>
     <view class="fr">
       <span class="red">¥</span>
-      <span class="red">40</span>X1</view>
+      <span class="red">{{model.serverData[0].money}}</span>X{{model.serverData[0].server_num}}</view>
   </view>
-  <view class="cl high70">门店：唐山市星辉高端保养中心</view>
-  <view class="cl high70">预约时间：2019-04-08 8:00-12:00</view>
+  <view class="cl high70">门店：{{model.serverData[0].store_name}}</view>
+  <view class="cl high70">预约时间：{{model.serverData[0].server_at}}</view>
 </view>
 <view class="mtop20">
   <van-cell title="订单编号" value="{{model.order_code}}"></van-cell>
   <van-cell title="下单时间" value="{{date}}"></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell title="配送方式" value="无需配送，直接进店安装即可安装"></van-cell>
+  <van-cell title="配送方式" value="普通快递"></van-cell>
   <view class="refund_type fz28">
 <view class="fl">支付方式</view>
 <view class="fr cell_img"><image src="../../common/image/wx.png"/>微信支付</view>
 </view>
+  <van-cell wx:if="{{model.pay_at}}" title="支付时间" value="{{pay_at}}"></van-cell>
+  <van-cell wx:if="{{model.send_at}}" title="发货时间" value="{{send_at}}"></van-cell>
 </view>
 <view class="mtop20">
   <van-cell wx:if="{{model.invoice_id===0}}" title="补开发票" bind:click="addInvoice" is-link></van-cell>
   <van-cell wx:else title="{{model.invoiceData.invoice_type}}" bind:click="editInvoice" value="{{model.invoiceData.invoice_title}}" is-link></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell title="商品总价" value="¥{{model.pay_money}}"></van-cell>
+  <van-cell title="商品总价" value="¥{{model.order_money}}"></van-cell>
   <van-cell title="服务费" value="+¥{{model.order_server_money}}"></van-cell>
   <van-cell title="运费" value="+¥{{model.order_freight_money}}"></van-cell>
 </view>
@@ -69,18 +71,17 @@
   <view class="cl" style="height:30rpx;padding-right:20rpx;">
     <view class="fr">
       合计
-      <span class="red">¥:{{model.pay_money}}</span>
+      <span class="red">¥:{{model.order_money + model.order_server_money}}</span>
     </view>
   </view>
   <view wx:if="{{model.trade_status_name==='已发货'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
     <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey">取消订单</view>
-      <view class="fl myorder_orange" bindtap="btnShip">发货</view>
+      <view class="fl myorder_orange" bindtap="btnShip">确认收货</view>
     </view>
   </view>
   <view wx:if="{{model.trade_status_name==='待付款'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
     <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey">取消订单</view>
+      <view class="fl myorder_grey" bindtap="canOrder">取消订单</view>
       <view class="fl myorder_orange" bindtap="btnBuy">付款</view>
     </view>
   </view>

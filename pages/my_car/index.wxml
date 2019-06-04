@@ -1,17 +1,17 @@
 <view>
   <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
-      <view class="mycar_img fl">
+      <!-- <view class="mycar_img fl">
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car1.png" />
-      </view>
+      </view> -->
       <view class="fl mycar_remark">
         <view>
           <view class="fl mycar_remark_title">{{item.name}}</view>
-          <view class="fl mycar_remark_km">行驶里程:1,000KM</view>
+          <view class="fl mycar_remark_km">{{item.carType}}</view>
         </view>
-        <view class="mycar_remark_text cl">
-          2014年款 迈宝瑞 1.6T 手动 舒适版
-        </view>
+        <!-- <view class="mycar_remark_text cl">
+          {{item.carTypeId}}
+        </view> -->
       </view>
     </view>
     <view style="margin-top:30rpx">
@@ -27,7 +27,8 @@
         </view>
         <view class="fl shop_edit_btn">删除</view>
       </view>
-      <view class="fl shop_set_btn">设为常用车</view>
+      <view class="fl shop_set_btn shop_set_btn_" wx:if="{{item.def=='0'}}">常用车</view>
+      <view class="fl shop_set_btn" wx:else>设为常用车</view>
     </view>
   </view>
   <view class="fz30 bg_orange bottom_btn" bindtap="addCar">添加爱车</view>

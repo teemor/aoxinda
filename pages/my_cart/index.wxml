@@ -5,11 +5,16 @@
     <view class="fr" bindtap="finishclick">{{finish?'完成':'编辑全部'}}</view>
   </view>
   <view class="cl" style="padding-top:80rpx;padding-bottom:80rpx">
-    <van-checkbox-group value="{{result}}" bind:change="onChange" >
-    <view  wx:for="{{cartList}}" wx:key="index" style="background:#fff;margin-bottom:20rpx;padding-left:30rpx;">
-      <van-checkbox checked-color="#fdbb51" name="{{item.id}}">
+    <van-checkbox-group value="{{result}}" bind:change="onChange"   >
+    <view  wx:for="{{cartList}}" wx:key="index" data:for-index="index" style="background:#fff;margin-bottom:20rpx;padding-left:30rpx;">
+     <van-checkbox wx:if="{{item.goods_detail_id}}" checked-color="#fdbb51"  data-index="{{index}}" name="{{index}}">
         <view class="my_cart_content">
-          <my_cart_list model="{{item}}" bind:numChange="numChange" />
+          <my_cart_list model="{{item}}" bind:numChange="numChange" bind:detail="detail" />
+        </view>
+      </van-checkbox>
+      <van-checkbox wx:else   disabled  data-index="{{index}}" name="{{index}}">
+        <view class="my_cart_content">
+          <my_cart_list model="{{item}}" disabled="{{true}}"  />
         </view>
       </van-checkbox>
       </view>
@@ -20,8 +25,9 @@
           <van-checkbox value="{{checked}}" checked-color="#fdbb51" bind:change="allChange">全选</van-checkbox>
     </view>
   </br-bottom>
-  <br-bottom checked="{{checked}}" style="z-index:333;" wx:else btnRight="删除" total="true" bindtap="deleteAll">
-    <view class="fl br-bottom">
+  <br-bottom checked="{{ischecked}}" style="z-index:333;" wx:else btnRight="删除" price="{{total_price}}" bind:carClickBtn="deleteAll">
+    <view class="fl br-bottom" style="margin-left:30rpx;margin-top:-6rpx">
+          <van-checkbox value="{{checked}}" checked-color="#fdbb51" bind:change="allChange">全选</van-checkbox>
     </view>
   </br-bottom>
 </view>

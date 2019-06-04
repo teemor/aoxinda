@@ -8,6 +8,9 @@ Page({
    */
   data: {
     id: null,
+    server_id: null,
+    orderMoney: 0,
+    maxNum: 1,
     orderInfo: {
       store_id: '', //门店id
       store_name: '', //门店名称
@@ -33,14 +36,17 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    console.log(options.id)
-    that.data.id = options.id ? options.id : null
+    that.setData({
+      id: options.id ? options.id : null,
+      server_id: options.server_order_id ? options.server_order_id : null,
+    })
     if (options.server_order_id) {
       request.selectServerOrder({ id: options.server_order_id }).then(res => {
         for (let key in res.server_order_id[0]) {
           that.data.orderInfo[key] = res.server_order_id[0][key]
         }
         that.setData({
+          orderMoney: that.data.orderInfo.server_time * that.data.orderInfo.server_user_money.toFixed(2),
           orderInfo: that.data.orderInfo
         })
       })
@@ -53,11 +59,21 @@ Page({
             that.data.orderInfo[key] = res.data[key]
           }
           that.setData({
+            orderMoney: that.data.orderInfo.server_time * that.data.orderInfo.server_user_money.toFixed(2),
             orderInfo: that.data.orderInfo
           })
         }
       })
     }
+    wx.getStorage({
+      key: 'mineGoods',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          maxNum: res.data.buy_num
+        })
+      },
+    })
   },
 
   /**
@@ -127,6 +143,41 @@ Page({
       wx.navigateTo({
         url: `../my_order_detail/index?id=${that.data.id}`
       });
+    } else if (that.data.server_id) {
+      let json = {
+        id: that.data.server_id,
+        server_num: this.data.orderInfo.server_num
+      };
+      request.updateServerOrder(json).then(res => {
+        if (res.status) {
+          wx.showToast({
+            title: res.errmsg,
+            icon: 'loading',
+            duration: 1000
+          })
+        } else {
+          let id = that.data.server_id
+          wx.getStorage({
+            key: 'mineGoods',
+            success: function (res) {
+              res.data.server_order_id = id
+              res.data.off = true
+              res.data.server_order = that.data.orderInfo
+              let json = {
+                total_price: res.data.buy_num * res.data.goods_price,
+                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time * that.data.orderInfo.server_user_money,
+                sum: 1,
+                arr: [res.data]
+              };
+              let model = encodeURIComponent(JSON.stringify(json))
+
+              wx.navigateTo({
+                url: `../add_order/index?model=${model}`
+              });
+            },
+          })
+        }
+      })
     } else {
       request.writeServerOrder(this.data.orderInfo).then(res => {
         if (res.status) {
@@ -145,7 +196,7 @@ Page({
               res.data.server_order = that.data.orderInfo
               let json = {
                 total_price: res.data.buy_num * res.data.goods_price,
-                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time / 60 * that.data.orderInfo.server_user_money,
+                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time * that.data.orderInfo.server_user_money,
                 sum: 1,
                 arr: [res.data]
               };

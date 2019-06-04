@@ -36,6 +36,14 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
+    if(app.globalData.userInfo!==null&&app.globalData.phoneNum!==""){
+        this.setData({
+          loginMask:1,
+          phoneMask:1
+        })
+    }else{
+      this.getStorageInfo()
+    }
     this.findCarList();
     // 天气
     var defaultCityCode = "__location__";
@@ -107,7 +115,12 @@ Page({
   },
   // 添加我的爱车
   addCar: function() {
+<<<<<<< HEAD
     if(app.globalData.userInfo!==null){
+=======
+    console.log(app.globalData)
+    if(app.globalData.userInfo!==null&&app.globalData.phoneNum!==""){
+>>>>>>> yd
       wx.navigateTo({
         url:'../../pages/add_car_mes/index'
       })
@@ -115,6 +128,11 @@ Page({
       this.getStorageInfo()
     }
     
+  },
+  editCar:function(){
+    wx.navigateTo({
+      url:'../../pages/my_car/index'
+    })
   },
   // 汽车美容
   carbeautyBtn: function() {
@@ -125,7 +143,13 @@ Page({
   // 车保养
   upkeepBtn: function() {
     wx.navigateTo({
-      url: '../../pages/upkeep_car/index'
+      url: '../../pages/c_upkeep_car/c_upkeep_car'
+    })
+  },
+  // 邀请
+  myInvite: function() {
+    wx.navigateTo({
+      url: '../../pages/my_invite/index'
     })
   },
   onSearch: function(e) {
@@ -150,7 +174,5 @@ Page({
       topCity: topCity,
       citySelected: citySelected,
     })
-    console.log(this.data.weatherData,'天气')
-    console.log(this.data.citySelected,'城市')
   },
 })

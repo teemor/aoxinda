@@ -20,8 +20,6 @@ module.exports = {
           that.setData({
             loginMask: 0
           })
-          console.log(that.data.loginMask, 'loginMask')
-
         }
       },
       fail: function () {
@@ -33,7 +31,6 @@ module.exports = {
   },
   getUserInfoBtn:function(e){
     let that =this
-    console.log(e,'getUserInfoBtn')
     wx.showNavigationBarLoading();
     wx.showLoading({
       title: '授权中···',
@@ -129,6 +126,7 @@ module.exports = {
             sessionKey: res.data
           }
           requestWB.authDecode(param).then(res => {
+            app.globalData.phoneNum = res.phoneNumber
             let phoneNum = res.phoneNumber;
             wx.setStorage({
               key: 'userPhone',

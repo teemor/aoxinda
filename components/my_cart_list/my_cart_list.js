@@ -1,6 +1,7 @@
 Component({
   properties: {
-    model: Object
+    model: Object,
+    disabled:Boolean
   },
   data: {
 
@@ -12,6 +13,9 @@ Component({
       model.goods_price = this.data.model.goods_price
       model.buy_num=detail
       this.triggerEvent('numChange', model)
+    },
+    detail:function(){
+      this.triggerEvent('detail',this.data.model)
     }
   }
 })

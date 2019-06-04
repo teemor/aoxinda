@@ -1,7 +1,9 @@
 import { myOrderMenu } from '../../common/static/api_data'
 import { Technician } from '../../common/api/api'
+import pay from '../../mixin/pay'
 const request = new Technician
 Page({
+  mixins:[pay],
   data: {
     myOrderMenu,
     active:0
@@ -12,13 +14,11 @@ Page({
     }else{
       this.selectOrder({trade_status:detail.titlea})
     }
-    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, 'options')
     if (options.id==="17") {
       this.setData({
         active: 1
@@ -36,7 +36,13 @@ Page({
         active:4
       })
     }
-    this.selectOrder({})
+this.onShow();
+  },
+  goOrder:function(e){
+    this.setData({
+      total:e.detail.pay_money
+    })
+    this.pay(e.detail.id)
   },
   selectOrder: function (model) {
     console.log(model)
@@ -70,7 +76,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.selectOrder({})
   },
 
   /**

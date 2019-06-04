@@ -1,0 +1,113 @@
+<!--pages/th_order/th_order_all/th_order_all.wxml-->
+<view id='order_all'>
+  <view class='tab-list-box fz30'>
+    <view class='tab-item {{ tabType === 0 ? "active" : "" }}' bindtap='changeTab' data-id='0'>全部</view>
+    <view class='tab-item {{ tabType === 1 ? "active" : "" }}' bindtap='changeTab' data-id='1'>待施工</view>
+    <view class='tab-item {{ tabType === 2 ? "active" : "" }}' bindtap='changeTab' data-id='2'>施工中</view>
+    <view class='tab-item {{ tabType === 3 ? "active" : "" }}' bindtap='changeTab' data-id='3'>已完成</view>
+    <view class='tab-item {{ tabType === 4 ? "active" : "" }}' bindtap='changeTab' data-id='4'>待确认</view>
+    <view class='tab-item {{ tabType === 5 ? "active" : "" }}' bindtap='changeTab' data-id='5'>待付款</view>
+  </view>
+
+  <view class='p_t_20 p_40' wx:if="{{tabType === 0}}">
+    <view class='list-box  fz28 p_t_20 pos_relative bg_white' wx:for="{{orderList.content}}" wx:key="" bindtap='payFun' data-index="{{index}}" data-id="{{item.id}}" data-status="0">
+      <view>{{item.mcfSpShop.name}}</view>
+      <view class='orderTime'>预约时间：{{item.orderDate}}</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 0}}">未进店</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 1}}">已接车</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 2}}">施工中</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 3}}">待取车</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 4}}">已完成</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 5}}">退单</view>
+      <view class='pos_absolute ispay'>{{item.isPay == 0 ? '未付款':'已付款'}}</view>
+      <view class='pos_absolute payment fz24'>¥ {{item.allOrderMoney}}</view>
+    </view>
+    <view class='choose_wrap' wx:if="{{orderList.content.length === 0}}">
+      <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+      <view class='choose_txt'>~ 您还没有订单哦 ~</view>
+    </view>
+  </view>
+
+  <view class='p_t_20 p_40' wx:if="{{tabType === 1}}">
+    <view class='list-box  fz28 p_t_20 pos_relative bg_white' wx:for="{{orderList}}" wx:key="" bindtap='payFun' data-index="{{index}}" data-id="{{item.id}}">
+      <view>{{item.mcfSpShop.name}}</view>
+      <view class='orderTime'>预约时间：{{item.orderDate}}</view>
+      <view class='pos_absolute txt_blue status'>待施工</view>
+      <view class='pos_absolute ispay'>{{item.isPay == 0 ? '未付款':'已付款'}}</view>
+      <view class='pos_absolute payment fz24'>¥ {{item.allOrderMoney}}</view>
+    </view>
+      <view class='choose_wrap' wx:if="{{orderList.length === 0}}">
+        <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+        <view class='choose_txt'>~ 您还没有待施工中订单哦 ~</view>
+      </view>
+  </view>
+
+  <view class='p_t_20 p_40' wx:if="{{tabType === 2}}">
+    <view class='list-box  fz28 p_t_20 pos_relative bg_white' wx:for="{{orderList}}" wx:key="" bindtap='payFun' data-index="{{index}}" data-id="{{item.id}}">
+      <view>{{item.mcfSpShop.name}}</view>
+      <view class='orderTime'>预约时间：{{item.orderDate}}</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 1}}">已接车</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 2}}">施工中</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 3}}">待取车</view>
+      <view class='pos_absolute ispay'>{{item.isPay == 0 ? '未付款':'已付款'}}</view>
+      <view class='pos_absolute payment fz24'>¥ {{item.allOrderMoney}}</view>
+    </view>
+      <view class='choose_wrap' wx:if="{{orderList.length === 0}}">
+        <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+        <view class='choose_txt'>~ 您还没有施工中订单哦 ~</view>
+      </view>
+  </view>
+
+  <view class='p_t_20 p_40' wx:if="{{tabType === 3}}">
+    <view class='list-box  fz28 p_t_20 pos_relative bg_white' wx:for="{{orderList}}" wx:key="" bindtap='payFun' data-index="{{index}}" data-id="{{item.id}}">
+      <view>{{item.mcfSpShop.name}}</view>
+      <view class='orderTime'>预约时间：{{item.orderDate}}</view>
+      <view class='pos_absolute txt_blue status' bindtap='userScore' data-index="{{index}}" data-id='{{item.id}}'>{{orderList[index].scoreSa == 0 ? "待评价" : "已评价"}}</view>
+      <view class='pos_absolute payment fz24'>¥ {{item.allOrderMoney}}</view>
+    </view>
+      <view class='choose_wrap' wx:if="{{orderList.length === 0}}">
+        <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+        <view class='choose_txt'>~ 您还没有已完成订单哦 ~</view>
+      </view>
+  </view>
+
+  <view class='p_t_20 p_40 ' wx:if="{{tabType === 4}}">
+    <view class='list-box confirmed fz28 p_t_20 pos_relative bg_white' wx:for="{{orderList}}" wx:key="" bindtap='payFun' data-index="{{index}}" data-id="{{item.id}}">
+      <view>{{item.mcfSpShop.name}}</view>
+      <view class='orderTime'>预约时间：{{item.orderDate}}</view>
+      <view class='pos_absolute txt_blue status'>待确认</view>
+      <view class='pos_absolute payment fz24'>¥ {{item.allOrderMoney}}</view>
+      <!-- <view class='clickBtn'>
+        <button class='agreen' bindtap="agreen" data-index="{{index}}">付款</button>
+        <button class='refuse' bindtap='refuse' data-id="{{item.id}}">拒绝</button>
+      </view> -->
+    </view>
+      <view class='choose_wrap' wx:if="{{orderList.length === 0}}">
+        <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+        <view class='choose_txt'>~ 您还没有待确认订单哦 ~</view>
+      </view>
+  </view>
+
+  <view class='p_t_20 p_40' wx:if="{{tabType === 5}}">
+    <view class='list-box  fz28 p_t_20 pos_relative bg_white confirmed' wx:for="{{orderList}}" wx:key="" bindtap='payFun' data-index="{{index}}" data-id="{{item.id}}">
+      <view>{{item.mcfSpShop.name}}</view>
+      <view class='orderTime'>预约时间：{{item.orderDate}}</view>
+        <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 0}}">未进店</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 1}}">已接车</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 2}}">施工中</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 3}}">待取车</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 4}}">已完成</view>
+      <view class='pos_absolute txt_blue status' wx:if="{{item.orderStatus === 5}}">退单</view>
+      <view class='pos_absolute ispay'>{{item.isPay == 0 ? '未付款':'已付款'}}</view>
+      <view class='pos_absolute payment fz24'>¥ {{item.allOrderMoney}}</view>
+      <!-- <view class='payBtn'>
+        <button class='payClickBtn' bindtap='payFun' data-index="{{index}}">付款</button>
+      </view> -->
+    </view>
+      <view class='choose_wrap' wx:if="{{orderList.length === 0}}">
+        <image class='choose_bgm' src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/choose_bgm.png'></image>
+        <view class='choose_txt'>~ 您还没有待付款订单哦 ~</view>
+      </view>
+  </view>
+
+</view>

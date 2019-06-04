@@ -1,5 +1,7 @@
 const app = getApp();
+import login from '../../mixin/login'
 Page({
+  mixins:[login],
   data: {
 
   },
@@ -18,9 +20,12 @@ Page({
     }
   },
   myKeep:function(){
-    wx.navigateToMiniProgram({
-      appId:'wx317e65151f04fa7c',
-      envVersion:'trial'
+    // wx.navigateToMiniProgram({
+    //   appId:'wx317e65151f04fa7c',
+    //   envVersion:'trial'
+    // })
+    wx.navigateTo({
+      url: `../c_order_all/c_order_all`
     })
   },
   myCar:function(){
@@ -118,9 +123,13 @@ Page({
     })
   },
   onLoad: function(options) {
+<<<<<<< HEAD
     console.log(app.globalData)
     if(app.globalData.userInfo!==null){
       console.log(app.globalData.userInfo)
+=======
+    if(app.globalData.userInfo.avatarUrl){
+>>>>>>> yd
       this.setData({
         avatar:app.globalData.userInfo.avatarUrl,
         nickName :app.globalData.userInfo.nickName,
@@ -176,6 +185,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-console.log('rwer')
+
   }
 })

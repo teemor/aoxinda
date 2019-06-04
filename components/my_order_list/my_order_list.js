@@ -32,6 +32,12 @@ Component({
       wx.navigateTo({
         url: `../shop_store_service/index?server_order_id=${e.currentTarget.dataset.id}`
       });
+    },
+    /**
+     * 去付款
+     */
+    goOrder: function () {
+      this.triggerEvent('goOrder',this.data.goodsList)
     }
   }
 })
