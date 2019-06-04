@@ -11,7 +11,7 @@ Page({
   data: {
     goodsInfo: false,
     animationData: {},
-    activeNames: ['1'],
+    activeNames: [],
     checked: false,
     sp_List: [], //门店列表
     dateChoice: '', //选择日期
@@ -237,6 +237,23 @@ Page({
 
   //点击门店
   onChange(e) {
+    //清楚之前数据
+    if (e.detail.length === 0) {
+      return false;
+    }
+    wx.removeStorage({
+      key: 'userReserveTime'
+    })
+    that.setData({
+      activeNames: "",
+      spIndex: "",
+      dateChoice: "",
+      chooseThDate: "",
+      tomSysDate: "",
+      tomAftSysDate: "",
+      uhide: null,
+      alltimeBtnIndex: ''
+    })
     let spIndex = e.currentTarget.dataset.index; //门店索引
     let currentShop = that.data.sp_List.content[spIndex];
     that.noGoods(spIndex, currentShop, e.detail);

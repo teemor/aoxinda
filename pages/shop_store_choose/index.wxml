@@ -60,8 +60,8 @@
         </view>
         <!-- 门店 -->
         <!-- 技师与时间 -->
-        <view class='technician-list-box cl' wx:for='{{item.mcfSysEmpList}}' data-sp_index="{{sp_index}}" data-index='{{th_index}}' catchtap='onClickBtn' wx:key="" wx:for-item="sonItem" wx:for-index="th_index" id="{{sonItem.flag}}">
-          <view class='technician-info cl'>
+        <view class='technician-list-box cl' wx:for='{{item.mcfSysEmpList}}' wx:key="th_index" wx:for-item="sonItem" wx:for-index="th_index" id="{{sonItem.flag}}">
+          <view class='technician-info cl' data-sp_index="{{sp_index}}" data-index='{{th_index}}' catchtap='onClickBtn'>
             <view class='technician-logo-img fl'>
               <image src='{{sonItem.headPortrait}}' class='technician-logo fl'></image>
             </view>
@@ -78,7 +78,6 @@
               </picker>
             </view>
           </view>
-
           <view class='time-list {{uhide==sonItem.flag?"":"hidden"}}'>
             <view class='time-catalog cl'>
               <view class='reservation'>点击预约</view>
