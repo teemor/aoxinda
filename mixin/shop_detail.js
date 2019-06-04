@@ -62,7 +62,7 @@ module.exports = {
                 imgList:res.fileList,
                 cartNum: res.total,
                 goodsData: res.mainTable,
-                detail: res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
+                detail: res.mainTable.content ? res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ') : '',
                 dataset: that.data.dataset
             })
             this.setData({
