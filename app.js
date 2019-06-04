@@ -8,6 +8,7 @@ App({
     userInfo: null,
     id:''
   },
+  appid: "wx97a3505497150b66",
   onLaunch: function () {
     //  加载天气数据
     this.loadWeatherData();
