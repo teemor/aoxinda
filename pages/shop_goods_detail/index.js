@@ -140,7 +140,8 @@ Page({
    */
   onChange: function ({ detail }) {
     this.setData({
-      buy_num: detail
+      buy_num: detail,
+      'mineGoods.buy_num': detail
     })
   },
   /**

@@ -60,6 +60,9 @@ module.exports = {
                 detail: res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
                 dataset: that.data.dataset
             })
+            this.setData({
+              'mineGoods.goods_name': res.mainTable.goods_name
+            })
             if (res.tableDetail.length > 0) {
                 that.data.dataset.goodstype[0].lists[0].active = true
                 this.setData({
