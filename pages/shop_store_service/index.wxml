@@ -36,7 +36,7 @@
 
   <view class="all-price">
     服务总价：
-    <text><text class='red'>￥{{orderInfo.server_time/60*orderInfo.server_user_money}}</text>x{{orderInfo.server_num}}</text>
+    <text><text class='red'>￥{{orderMoney}}</text>x{{orderInfo.server_num}}</text>
   </view>
 
   <view class='payment'>

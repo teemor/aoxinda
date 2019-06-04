@@ -9,6 +9,7 @@ Page({
   data: {
     id: null,
     server_id: null,
+    orderMoney: 0,
     orderInfo: {
       store_id: '', //门店id
       store_name: '', //门店名称
@@ -44,6 +45,7 @@ Page({
           that.data.orderInfo[key] = res.server_order_id[0][key]
         }
         that.setData({
+          orderMoney: that.data.orderInfo.server_time * that.data.orderInfo.server_user_money.toFixed(2),
           orderInfo: that.data.orderInfo
         })
       })
@@ -56,6 +58,7 @@ Page({
             that.data.orderInfo[key] = res.data[key]
           }
           that.setData({
+            orderMoney: that.data.orderInfo.server_time * that.data.orderInfo.server_user_money.toFixed(2),
             orderInfo: that.data.orderInfo
           })
         }
@@ -152,7 +155,7 @@ Page({
               res.data.server_order = that.data.orderInfo
               let json = {
                 total_price: res.data.buy_num * res.data.goods_price,
-                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time / 60 * that.data.orderInfo.server_user_money,
+                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time * that.data.orderInfo.server_user_money,
                 sum: 1,
                 arr: [res.data]
               };
@@ -183,7 +186,7 @@ Page({
               res.data.server_order = that.data.orderInfo
               let json = {
                 total_price: res.data.buy_num * res.data.goods_price,
-                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time / 60 * that.data.orderInfo.server_user_money,
+                storeTotal: that.data.orderInfo.server_num * that.data.orderInfo.server_time * that.data.orderInfo.server_user_money,
                 sum: 1,
                 arr: [res.data]
               };
