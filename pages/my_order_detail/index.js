@@ -10,6 +10,22 @@ Page({
   data: {
 
   },
+  /**
+   * 取消订单
+   */
+  canOrder:function(){
+    request.canOrder({trade_status:1,order_id:this.data.model.order_id}).then(res=>{
+      console.log(res,'res')
+      wx.showToast({
+        title:'取消订单成功',
+        icon:'none'
+      })
+     wx.navigateBack({
+      url: '1'
+      });
+        
+    })
+  },
   btnShip: function () {
     request.updateOrder({ order_id: this.data.model.order_id, trade_status: 7 }).then(res => {
       console.log(res, 'res')
@@ -21,7 +37,9 @@ Page({
           duration: 1500,
           mask: false,
           success: (result) => {
-
+            wx.navigateBack({
+              url:'1'
+            })
           },
           fail: () => { },
           complete: () => { }

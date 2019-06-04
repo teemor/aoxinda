@@ -9,11 +9,11 @@ Page({
   data: {
     orderInfo: {
       order_id: null, // 订单id
-      order_type: null, // 0仅退款1退款退货
+      order_type: 0, // 0仅退款1退款退货
       back_desription: '',// 退款理由
       back_reason: '',// 退款原因
       back_money: null,// 退款钱
-      goods_num: null,// 退款数
+      goods_num: 1,// 退款数
       goods_status: null,// 状态
       goods_detail_id: null,// 商品id
       order_detail_id: null,// 订单详情id
@@ -97,18 +97,38 @@ Page({
    */
   refundDetail: function () {
     request.writeBackOrder(this.data.orderInfo).then(res => {
-      console.log(res, 'res')
+      if(this.data.back_reason==''){
+        wx.showToast({
+          title: '退款原因不能为空',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {
+            
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+      }else if(this.data.back_desription==''){
+        wx.showToast({
+          title:'退款描述不能为空'
+        })
+      }else{
+        let order_id = res.data
+        wx.navigateTo({
+          url: `../my_order_refund_detail/index?id=${order_id}`
+        });
+      }
     })
-    let order_id = this.data.orderInfo.order_id
-    wx.navigateTo({
-      url: `../my_order_refund_detail/index?id=${order_id}`
-    });
-
   },
   /**
    * 退款说明
    */
   description: function (e) {
+    this.setData({
+      'orderInfo.back_desription':e.detail
+    })
     console.log(e,'e123')
   },
   /**
@@ -164,6 +184,8 @@ Page({
     this.setData({
       'orderInfo.order_id': model.order_id,
       'orderInfo.back_money': model.goodsData[0].goods_price,
+      'orderInfo.goods_detail_id':model.goodsData[0].goodsData_detail_id,
+      'orderInfo.order_detail_id':model.goodsData[0].order_detail_id,
       goodsData: model.goodsData[0]
     })
     if (model.trade_status_name == "待发货") {

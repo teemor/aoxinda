@@ -11,8 +11,11 @@
     </view>
     <view class="my_cart_price cl">
       <view class="red fl fz30">¥ {{model.goods_price}}</view>
-      <view class="fr">
-        <van-stepper integer value="{{model.buy_num}}" bind:change="numChange" />
+      <view  wx:if="{{disabled}}" class="fr fz28">
+      商品已下架
+      </view>
+      <view wx:else class="fr">
+        <van-stepper integer  value="{{model.buy_num}}" bind:change="numChange" />
       </view>
     </view>
   </view>

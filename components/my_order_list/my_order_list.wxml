@@ -19,8 +19,11 @@
     </view>
   </view>
   <view class="cl my_order_list_bottom" wx:if="{{ispay===true}}">
+  <view class="fl" style="margin-right:30rpx;">
+  共{{goodsList.total}}件商品    
+  </view>
     <view class="fl">
-      合计
+      应付
       <span class="red">¥:{{goodsList.pay_money}}</span>
     </view>
 
@@ -28,9 +31,10 @@
      <!-- <view class="fl myorder_grey">取消订单</view>-->
       <view class="fl myorder_orange" bindtap="goOrder">去付款</view>
     </view>
-    <view wx:elif="{{goodsList.trade_status==='待发货'}}" class="fr fz24 my_order_list_btn">
+    <!--<view wx:elif="{{goodsList.trade_status==='待收货'}}" class="fr fz24 my_order_list_btn">
       <view class="fl myorder_orange">确认收货</view>
     </view>
+    -->
   </view>
 </view>
 <view wx:else class="my_order_list-box">

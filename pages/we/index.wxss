@@ -88,3 +88,6 @@ page {
   width: 690rpx;
   height: 200rpx;
 }
+button{border: 0;background: none;color:#fff;font-size: 30rpx}
+.button-hover {background: none}
+button::after{ border: none; } 
