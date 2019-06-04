@@ -10,6 +10,7 @@ Page({
     id: null,
     server_id: null,
     orderMoney: 0,
+    maxNum: 1,
     orderInfo: {
       store_id: '', //门店id
       store_name: '', //门店名称
@@ -64,6 +65,15 @@ Page({
         }
       })
     }
+    wx.getStorage({
+      key: 'mineGoods',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          maxNum: res.data.buy_num
+        })
+      },
+    })
   },
 
   /**

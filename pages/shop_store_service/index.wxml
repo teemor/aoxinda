@@ -21,7 +21,7 @@
     </view>
     <view class="fr ">
       <view class="num-box">
-        <van-stepper disabled="{{id?true:false}}" value="{{ orderInfo.server_num }}" bind:change="onChange" />
+        <van-stepper disabled="{{id?true:false}}" max="{{maxNum}}" value="{{ orderInfo.server_num }}" bind:change="onChange" />
       </view>
     </view>
   </view>
