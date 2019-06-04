@@ -10,13 +10,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    storeTotal: 0,
     ispay: false,
     invoice: '不开具发票'
   },
   /**
    * 发票
    */
-  addInvoice: function() {
+  addInvoice: function () {
     wx.navigateTo({
       url: '../my_order_invoice/index'
     })
@@ -25,13 +26,13 @@ Page({
   /**
    * 提交订单
    */
-  btnBuy: function() {
-    if(this.data.address===undefined){
+  btnBuy: function () {
+    if (this.data.address === undefined) {
       wx.showToast({
         title: '请填写收货地址',
         icon: 'none'
       });
-    } else if(this.data.goods==false){
+    } else if (this.data.goods == false) {
       let data = this.data.goodsList.map(item => {
         return {
           goods_detail_id: item.goods_detail_id,
@@ -39,63 +40,66 @@ Page({
         }
       })
       if (!this.data.goodsList[0].server_order_id) {
-        this.writeOrder(this.data.item,this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.storeTotal+0 , data)
+        //购物车
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + 0, data)
       } else {
-        this.writeOrder(this.data.item,this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.storeTotal+0 , data, 12, this.data.storeTotal, this.data.goodsList[0].server_order_id,
+        //服务
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 0, data, 0, this.data.storeTotal, this.data.goodsList[0].server_order_id,
         )
       }
-    }else{
-      this.writeOrder(this.data.item,this.data.name,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.storeTotal+0,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
+    } else {
+      //立即购买进来
+      this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + 0, [{ goods_detail_id: this.data.goods_detail_id, goods_num: this.data.goodsItem.buy_num }])
     }
-    
-    
+
+
 
   },
   /**
    * 地址
    * @param {*} options 
    */
-  locationBtn: function() {
+  locationBtn: function () {
     wx.navigateTo({
       url: '../my_address/index',
       success: (result) => {
 
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    if(options.data){
-   let model =    JSON.parse(decodeURIComponent(options.data))
-   let goodsList = {}
-   goodsList.goods_name=model.goods_name
-   goodsList.goods_price = model.price,
-   goodsList.buy_num = model.num
-   goodsList.sku_name = model.item.sku_name
+  onLoad: function (options) {
+    if (options.data) {
+      let model = JSON.parse(decodeURIComponent(options.data))
+      let goodsList = {}
+      goodsList.goods_name = model.goods_name
+      goodsList.goods_price = model.price
+      goodsList.buy_num = model.num
+      goodsList.sku_name = model.item.sku_name
       this.setData({
-        sum:model.num,
-        total:model.num*model.price,
-        goodsItem:goodsList,
-        goods:true,
-        price:model.price,
-        goods_detail_id:model.item.goods_detail_id
+        sum: model.num,
+        total: parseFloat(model.num * model.price.toFixed(2)),
+        goodsItem: goodsList,
+        goods: true,
+        price: model.price,
+        goods_detail_id: model.item.goods_detail_id
       })
       // request.goodsDetail({product_code:model.item.product_code}).then(res=>{
       //   console.log(res,'res')
       // })
-    }else{
+    } else {
       // 购物车
       let model = JSON.parse(decodeURIComponent(options.model))
-      console.log(model,'storetotal')
+      console.log(model, 'storetotal')
       this.setData({
-        goods:false,
+        goods: false,
         goodsList: model.arr,
-        total:  parseFloat(model.total_price).toFixed(2),
+        total: parseFloat(parseFloat(model.total_price).toFixed(2)),
         storeTotal: model.storeTotal || 0,
         sum: model.sum
       })
@@ -106,7 +110,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.chooseAddress();
     if (this.data.item) {
       request.selectInvoice({
@@ -135,6 +139,7 @@ Page({
       let address = this.data.adddata.detail
       this.setData({
         name: address.name,
+        phone: address.phone,
         address: address.province + address.city + address.county + address.street
       })
     }
@@ -143,35 +148,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
