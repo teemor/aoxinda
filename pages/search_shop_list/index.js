@@ -6,33 +6,49 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value: '',
     history: [],
     hot: [
       { name: "汽车坐垫", id: null, goodsName: "汽车坐垫" }
     ]
   },
   /**
+   * 输入时赋值
+   */
+  inValue: function (e) {
+    this.setData({
+      value: e.detail
+    })
+  },
+
+  /**
    * 搜索列表页的跳转
    */
   onSearch: function (e) {
-    let json = { name: e.detail, id: null, goodsName: e.detail }
-    //添加历史纪录
-    let old = 0;
-    that.data.history.forEach(n => {
-      if (n.name == e.detail) {
-        old++
-      }
-    })
-    if (old === 0) {
-      if (that.data.history.length >= 10) {
-        that.data.history.shift()
-      }
-      that.data.history.push(json)
-      wx.setStorage({
-        key: 'searchHistory',
-        data: that.data.history
+    let json = {};
+    if (this.data.value != '') {
+      json = { name: this.data.value, id: null, goodsName: this.data.value }
+      //添加历史纪录
+      let old = 0;
+      that.data.history.forEach(n => {
+        if (n.name == this.data.value) {
+          old++
+        }
       })
+      if (old === 0) {
+        if (that.data.history.length >= 10) {
+          that.data.history.shift()
+        }
+        that.data.history.push(json)
+        wx.setStorage({
+          key: 'searchHistory',
+          data: that.data.history
+        })
+      }
+    } else {
+      json = { name: "全部商品", id: null, goodsName: null }
     }
+
 
     //跳转-列表
     let model = encodeURIComponent(JSON.stringify(json))
