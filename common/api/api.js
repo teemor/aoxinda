@@ -8,11 +8,11 @@ import {
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-// export const IP_YTHTTP = `https://www.maichefu.cn:9015`
-export const IP_yt = `http://192.168.31.76:9015`
+export const IP_YTHTTP = `https://www.maichefu.cn:9015`
+// export const IP_yt = `http://192.168.31.76:9015`
 // export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
-export const IP_YTHTTP = `http://192.168.31.76:9015`
+// export const IP_YTHTTP = `http://192.168.31.76:9015`
 // export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
 export const IP_WBHTTP = `http://192.168.31.158:4444/mcf/api/v1/c` // 后两
 export const IP_YXHTTP = `http://192.168.31.158:9015/scm/v1.0` //前三
