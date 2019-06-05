@@ -2,9 +2,9 @@
   <view class="fl location_img">
     <image src="../../common/image/location.png" />
   </view>
-  <view class="fl location_address" style="{{storeTotal==0?'':'height:100rpx;line-height:100rpx'}}">
+  <view class="fl location_address" style="{{storeTotalOff?'':'height:100rpx;line-height:100rpx'}}">
     <view>{{name===undefined?'收货人信息':name}}  <text style='margin-left:20rpx'>{{phone}}</text></view>
-    <view class="location_mes" wx:if="{{storeTotal==0}}">{{address===undefined?'填写收货地址信息':address}}</view>
+    <view class="location_mes" wx:if="{{storeTotalOff}}">{{address===undefined?'填写收货地址信息':address}}</view>
   </view>
   <view class="fr location_address_btn">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/right_arrow.png" />
