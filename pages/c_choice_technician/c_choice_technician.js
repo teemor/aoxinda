@@ -244,13 +244,11 @@ Page({
     wx.removeStorage({
       key: 'userReserveTime'
     })
+
     that.setData({
       activeNames: "",
       spIndex: "",
       dateChoice: "",
-      chooseThDate: "",
-      tomSysDate: "",
-      tomAftSysDate: "",
       uhide: null,
       alltimeBtnIndex: ''
     })
