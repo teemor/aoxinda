@@ -4,7 +4,8 @@
     "br-bottom":"../../components/br_bottom/br_bottom",
     "my_order_list":"../../components/my_order_list/my_order_list",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
-    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
+    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index",
+    "van-checkbox":"../../miniprogram_npm/vant-weapp/checkbox/index"
 
   }
 }

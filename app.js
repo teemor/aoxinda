@@ -7,7 +7,8 @@ App({
     phoneNum:'',
     openId:'',
     userInfo: null,
-    id:''
+    id:'',
+    options:''
   },
   appid: "wx97a3505497150b66",
   onLaunch: function () {

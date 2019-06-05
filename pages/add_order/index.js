@@ -12,7 +12,7 @@ Page({
   data: {
     storeTotal: 0,
     ispay: false,
-    invoice: '不开具发票'
+    // invoice: '不开具发票'
   },
   /**
    * 发票
@@ -22,7 +22,11 @@ Page({
       url: '../my_order_invoice/index'
     })
   },
-
+  onChange:function(e){
+    this.setData({
+      inCheck:e.detail
+    })
+  },
   /**
    * 提交订单
    */
@@ -40,6 +44,7 @@ Page({
         }
       })
       if (!this.data.goodsList[0].server_order_id) {
+<<<<<<< HEAD
         //购物车
         this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + 0, data)
       } else {
@@ -50,6 +55,15 @@ Page({
     } else {
       //立即购买进来
       this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + 0, [{ goods_detail_id: this.data.goods_detail_id, goods_num: this.data.goodsItem.buy_num }])
+=======
+        this.writeOrder(this.data.item,this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.total, data)
+      } else {
+        this.writeOrder(this.data.item,this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.total , data, 12, this.data.total, this.data.goodsList[0].server_order_id,
+        )
+      }
+    }else{
+      this.writeOrder(this.data.item,this.data.name,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.total,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
+>>>>>>> refund
     }
   },
   /**
