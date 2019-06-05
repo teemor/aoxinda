@@ -69,7 +69,7 @@ Page({
     let params = {
       "userId": that.data.mineInfo.id,//    dcb3ca6c364a41989d486854cb7f0ce4
       "status": Number(type),
-      "page": 1
+      "page": 0
     }
     that.getOrderList(params);
   },
