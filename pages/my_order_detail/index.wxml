@@ -29,13 +29,8 @@
     </view>
     <view class="fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
-<<<<<<< HEAD
-      <view wx:if="{{item.status}}" class="my_order_list_btn fr">
-        <view class="myorder_orange" bindtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
-=======
       <view wx:if="{{item.status!==''}}" class="my_order_list_btn fr">
         <view class="myorder_orange" catchtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
->>>>>>> refund
       </view>
     </view>
   </view>

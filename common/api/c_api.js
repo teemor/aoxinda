@@ -1,13 +1,8 @@
 // 数据接口
 import { HttpServer } from "../../utils/method"
 const http = new HttpServer()
-<<<<<<< HEAD
-export const IP_HTTP = `http://192.168.31.76:444`
-export const IP_HTTP_API = `http://192.168.31.156:9015`
-=======
 export const IP_HTTP = `https://www.maichefu.cn:444`
 export const IP_HTTP_API = `https://www.maichefu.cn:9015`
->>>>>>> refund
 const app = getApp()
 
 /****c端登录 start */
