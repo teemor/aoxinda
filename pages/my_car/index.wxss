@@ -29,7 +29,7 @@
 
 .mycar_remark_title {
   height: 70rpx;
-  width: 370rpx;
+  width: 100%;
   font-size: 32rpx;
 }
 
