@@ -2,7 +2,7 @@
  <view class="carbeauty_btn_bottom">
     <view class="fl carbeauty_btn_contain">
         <slot/>
-      <view class="fr carbeauty_btn_times" wx:if="{{!total}}">
+      <view class="{{addOrder==='1'?'fl':'fr'}} carbeauty_btn_times" wx:if="{{!total}}">
         <span class="fz30 fzblack">合计</span>
         <span class="fz28">¥</span>
         <span class="fz30">{{price}}</span>

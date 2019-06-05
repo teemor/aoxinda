@@ -53,7 +53,7 @@
       </view>
     </view>
     </view>
-    <br-bottom checked="true" addOrder="{{addOrder}}" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total + storeTotal}}">
+    <br-bottom checked="true" addOrder="1" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total + storeTotal}}">
 
   </br-bottom>
   </view>
