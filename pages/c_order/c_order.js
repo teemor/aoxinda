@@ -32,7 +32,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     that = this;
     that.setData({
       totalPrice: options.totalPrice,
@@ -47,13 +47,13 @@ Page({
   },
 
   // 设置用户权限--收货地址
-  setSeting: function(e) {
+  setSeting: function (e) {
     wx.openSetting({
-      success(res) {}
+      success(res) { }
     })
   },
   // 管理收货地址
-  setAddress: function(e) {
+  setAddress: function (e) {
     wx.chooseAddress({
       success(res) {
         let address = res.provinceName + res.cityName + res.detailInfo;
@@ -67,10 +67,10 @@ Page({
   },
 
   //  获取用户信息
-  getUser: function(e) {
+  getUser: function (e) {
     wx.getStorage({
       key: 'user',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           user: res.data
         })
@@ -93,7 +93,7 @@ Page({
   },
 
   // 选择施工服务
-  serviceFun: function(e) {
+  serviceFun: function (e) {
     this.setData({
       serviceIndex: e.detail.value
     })
@@ -130,7 +130,7 @@ Page({
   getOderList() {
     wx.getStorage({
       key: 'userReserveTime',
-      success: function(res) {
+      success: function (res) {
         let text = JSON.stringify(res.data.userClickMaintain); //  将数组转换成字符串
         that.setData({
           userReserveTime: res.data,
@@ -149,13 +149,27 @@ Page({
           that.setData({
             allProfits: that.data.allProfits
           })
+          // let obj = {
+          //   "goodsName": that.data.orderList[q].goodsName,
+          //   "id": "",
+          //   "price": that.data.orderList[q].price,
+          //   "profits": that.data.orderList[q].profit,
+          //   "goodsCode": that.data.orderList[q].goodsCode,
+          //   "useTime": that.data.orderList[q].useTime
+          // }
+
           let obj = {
-            "goodsName": that.data.orderList[q].goodsName,
+            //订单
+            "goodsName": that.data.orderList[q].goods_name,//商品名称
+            "goodsCode": `${that.data.orderList[q].productCode}*${that.data.orderList[q].product_sku}`,//商品code--'code+sku'--给供应链
             "id": "",
-            "price": that.data.orderList[q].price,
-            "profits": that.data.orderList[q].profit,
-            "goodsCode": that.data.orderList[q].goodsCode,
-            "useTime": that.data.orderList[q].useTime   //商品使用时间,
+            "price": that.data.orderList[q].price,//商品单价
+            "profits": that.data.orderList[q].profit,//商品利润
+            "useTime": that.data.orderList[q].useTime,//商品使用时间
+            //新加的
+            "goodsNum": that.data.orderList[q].goodsNum,//商品数量
+            "productCode": that.data.orderList[q].productCode,//查询商品详情用
+            "skuName": that.data.orderList[q].goods_sku,//商品sku
           }
           that.data.checkObj.push(obj)
           that.setData({
@@ -170,7 +184,7 @@ Page({
   getCarInfo() {
     wx.getStorage({
       key: 'carInfo',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           carInfo: res.data
         })
@@ -187,7 +201,7 @@ Page({
         showCancel: true,
         cancelText: '拒绝',
         confirmText: '去授权',
-        success: function(res) {
+        success: function (res) {
           if (res.confirm) {
             that.setSeting()
           } else if (res.cancel) {
@@ -209,7 +223,7 @@ Page({
     } else {
       wx.getStorage({
         key: 'mineInfo',
-        success: function(res) {
+        success: function (res) {
           let mcfSysOrder = {
             "allOrderMoney": that.data.totalPrice, //商品加服务费
             "authorizer": 1,
@@ -242,12 +256,17 @@ Page({
             "wechatOrder": '微信流水单号', //微信流水单号
             "isPay": 1,
           }
+          let minePrice = 0;
+          that.data.checkObj.forEach(n => {
+            minePrice += parseFloat(n.price)
+          })
           let params = {
             "appId": app.appid,
             "openId": that.data.user.openId,
             "price": that.data.totalPrice
           }
           // that.data.totalPrice
+          // minePrice + parseFloat(that.data.thCost)
           request.payment(params).then(res => {
             let payObj = JSON.parse(res.description);
             mcfSysOrder.wechatOrder = payObj.outTradeNo;
@@ -305,15 +324,12 @@ Page({
           title: '预约成功',
           icon: 'success',
           duration: 1500,
-          success(res){
-            setTimeout(() => {
-              wx.reLaunch({
-                url: '../index/index'
-              })
-            }, 1000)
-          }
+          success(res) { }
         })
+
+        that.saveMineOrder(mcfSysOrder, res.result.id) //保存订单到另一个表
         that.sendMesg(res.result) //调用给sa和技师发短信
+
       } else if (res.code == '500') {
         wx.showToast({
           title: '预约失败',
@@ -322,5 +338,58 @@ Page({
         })
       }
     })
+  },
+
+  //将订单保存到另一个表中-明远供应链
+  saveMineOrder(mcfSysOrder, orderNum) {
+    let time, arr;
+    if (mcfSysOrder.orderTime == 0) {
+      time = '08:00-12:00'
+    } else if (mcfSysOrder.orderTime == 1) {
+      time = '12:00-18:00'
+    } else if (mcfSysOrder.orderTime == 2) {
+      time = '18:00-22:00'
+    }
+
+    let json = {
+      orderNum: orderNum,
+      shopId: mcfSysOrder.shopId,
+      userPhoneNumber: mcfSysOrder.userTel,
+      ownerName: mcfSysOrder.userName,
+      orderAmount: mcfSysOrder.allOrderMoney,
+      appointmentTime: mcfSysOrder.orderDate + ' ' + time,
+      goods: mcfSysOrder.mcfCProduct.map(n => {
+        return {
+          goods_name: n.goodsName,//商品名称
+          goods_price: n.price,
+          goods_num: n.goodsNum,
+          goods_code: n.goodsCode.split('*')[0],
+          sku: n.goodsCode.split('*')[1]
+        }
+      })
+    }
+    request.saveMineOrder(json).then(res => {
+      if (res.result) {
+        wx.showToast({
+          title: '订单保存成功',
+          icon: 'success',
+          duration: 1500,
+          success(res) {
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '../index/index'
+              })
+            }, 1000)
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '订单保存失败',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    })
   }
+  
 })

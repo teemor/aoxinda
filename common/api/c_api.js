@@ -105,21 +105,6 @@ export class careItem {
 
 /** 选择门店与技师 start */
 export class choiceSp {
-  // 获取openId
-  getOpenId = (code) => {
-    return http.httpRequest({
-      url: `${IP_HTTP}/mcf/api/v1/sys/auth/sessionkey?appid=${app.appid}&secret=${app.appSecret}&js_code=${code}&grant_type=authorization_code`,
-      method: `get`
-    })
-  }
-  // 获取用户信息
-  authDecode = (params) => {
-    return http.httpRequest({
-      url: `${IP_HTTP}/mcf/api/v1/sys/auth/decode`,
-      method: `post`,
-      data: params
-    })
-  }
   //搜索门店
   searchSp = (searchValue) => {
     return http.httpRequest({
@@ -247,6 +232,23 @@ export class orderStatus {
       url: `${IP_HTTP}/mcf/api/v1/c/order/save`,
       method: `post`,
       data: mcfSysOrder
+    })
+  }
+
+  //订单详情
+  orderEntity = (id) => {
+    return http.httpRequest({
+      url: `${IP_HTTP}/mcf/api/v1/th/order/entity?id=${id}`,
+      method: `post`
+    })
+  }
+
+  //订单保存到另一个表
+  saveMineOrder = (json) => {
+    return http.httpRequest({
+      url: `${IP_HTTP_API}/scm/v1.0/beforePaymentSplitMatch`,
+      data: json,
+      method: `post`
     })
   }
 
