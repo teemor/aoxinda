@@ -8,16 +8,15 @@ import {
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-// export const IP_YTHTTP = `https://www.maichefu.cn:9015`
-export const IP_yt = `http://192.168.31.156:9015`
-// export const IP_YTHTTP = `https://www.maichefu.cn:9015`
+export const IP_yt = `http://192.168.31.76:9015`
+export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
-export const IP_YTHTTP = `http://192.168.31.156:9015`
-// export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
-// export const IP_WBHTTP = `http://192.168.31.158:4444/mcf/api/v1/c` // 后两
+// export const IP_YTHTTP = `http://192.168.31.76:9015`
+export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
+export const IP_WBHTTP = `http://192.168.31.158:444/mcf/api/v1/c` // 后两
 // export const IP_YXHTTP = `http://192.168.31.158:9015/scm/v1.0` //前三
-export const IP_WBHTTP = `https://www.maichefu.cn:444/mcf/api/v1/c` // 后两
-export const IP_YXHTTP = `https://www.maichefu.cn:9015/scm/v1.0` //前三
+// export const IP_WBHTTP = `https://www.maichefu.cn:444/mcf/api/v1/c` // 后两
+// export const IP_YXHTTP = `https://www.maichefu.cn:9015/scm/v1.0` //前三
 export const WB_WX =`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
 // export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
@@ -393,6 +392,31 @@ export class Technician {
     return http.httpRequest({
       url:`${IP_YTHTTP}/appapi/v1.0/getOpenId?code=${code}`,
       method:`post`
+    })
+  }
+
+// 设置默认车型
+  updateDef = (model) =>{
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/updateDef`,
+      method:`post`,
+      data:model
+    })
+  }
+  // 修改车型
+  updateCar = (model) =>{
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/updateCar`,
+      method:`post`,
+      data:model
+    })
+  }
+  // 删除车型
+  deleteCar = (model) =>{
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/deleteCar`,
+      method:`post`,
+      data:model
     })
   }
 }

@@ -4,8 +4,8 @@ import {
   Technician
 } from '../common/api/api'
 const request = new Technician
-import {choiceSp} from '../common/api/c_api'
-const requestWB = new choiceSp
+import { c_login } from '../common/api/c_api'
+const requestWB = new c_login
 module.exports = {
   // 获取用户信息
   getStorageInfo: function () {
