@@ -14,9 +14,9 @@ Page({
   /**
    * 添加爱车
    */
-  addCar:function(){
+  addCar: function () {
     wx.navigateTo({
-      url:`../add_car_mes/index`
+      url: `../add_car_mes/index`
     })
   },
   /**
@@ -27,12 +27,73 @@ Page({
     wx.navigateTo({
       url: '../my_car_edit/index',
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
+  },
+  /**
+   * 设置默认爱车
+   * @param {*} options 
+   */
+  toDefaultCar: function (e) {
+    let that = this
+    wx.getStorage({
+      key: 'userPhone',
+      success: function (res) {
+        request.updateDef({ userTel: res.data, carId: e.currentTarget.dataset.id }).then(res => {
+          if (res.code == '200') {
+            wx.showToast({
+              title: '设置成功',
+              icon: 'success'
+            })
+            that.findCarList()
+          } else {
+            wx.showToast({
+              title: '设置失败',
+              icon: 'error'
+            })
+          }
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '未获取到手机号',
+          icon: 'error'
+        })
+      }
+    })
+  },
+  /**
+   * 删除爱车
+   * @param {*} options 
+   */
+  toDeleteCar: function (e) {
+    let that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除',
+      success(res) {
+        if (res.confirm) {
+          request.deleteCar({ carId: e.currentTarget.dataset.id }).then(res => {
+            if (res.code == '200') {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'success'
+              })
+              that.findCarList()
+            } else {
+              wx.showToast({
+                title: '删除失败',
+                icon: 'error'
+              })
+            }
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

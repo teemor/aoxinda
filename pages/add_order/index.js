@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storeTotal: 0,
+    storeTotalOff: true,
     ispay: false,
     // invoice: '不开具发票'
   },
@@ -22,9 +22,9 @@ Page({
       url: '../my_order_invoice/index'
     })
   },
-  onChange:function(e){
+  onChange: function (e) {
     this.setData({
-      inCheck:e.detail
+      inCheck: e.detail
     })
   },
   /**
@@ -44,13 +44,13 @@ Page({
         }
       })
       if (!this.data.goodsList[0].server_order_id) {
-        this.writeOrder(this.data.item,this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.total, data)
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, data)
       } else {
-        this.writeOrder(this.data.item,this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total,  this.data.total , data, 12, this.data.total, this.data.goodsList[0].server_order_id,
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, data, 12, this.data.total, this.data.goodsList[0].server_order_id,
         )
       }
-    }else{
-      this.writeOrder(this.data.item,this.data.name,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.total,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
+    } else {
+      this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, [{ goods_detail_id: this.data.goods_detail_id, goods_num: this.data.goodsItem.buy_num }])
     }
   },
   /**
@@ -98,9 +98,18 @@ Page({
         goods: false,
         goodsList: model.arr,
         total: parseFloat(parseFloat(model.total_price).toFixed(2)),
-        storeTotal: model.storeTotal || 0,
         sum: model.sum
       })
+      if (model.storeTotal || model.storeTotal===0){
+        this.setData({
+          storeTotal: model.storeTotal,
+          storeTotalOff: false
+        })
+      }else{
+        this.setData({
+          storeTotalOff: true
+        })
+      }
     }
     this.chooseAddress();
   },

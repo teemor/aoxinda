@@ -21,14 +21,14 @@
         </view>
         <view class="fl shop_edit_btn" bindtap="editCar">编辑</view>
       </view>
-      <view class="fl shop_edit_box">
+      <view class="fl shop_edit_box" data-id='{{item.carId}}' bindtap='toDeleteCar'>
         <view class="fl shop_edit_img">
           <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_del.png" />
         </view>
         <view class="fl shop_edit_btn">删除</view>
       </view>
       <view class="fl shop_set_btn shop_set_btn_" wx:if="{{item.def=='0'}}">常用车</view>
-      <view class="fl shop_set_btn" wx:else>设为常用车</view>
+      <view class="fl shop_set_btn" data-id='{{item.carId}}' wx:else bindtap='toDefaultCar'>设为常用车</view>
     </view>
   </view>
 

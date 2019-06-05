@@ -250,6 +250,23 @@ export class orderStatus {
     })
   }
 
+  //订单详情
+  orderEntity = (id) => {
+    return http.httpRequest({
+      url: `${IP_HTTP}/mcf/api/v1/th/order/entity?id=${id}`,
+      method: `post`
+    })
+  }
+
+  //订单保存到另一个表
+  saveMineOrder = (json) => {
+    return http.httpRequest({
+      url: `${IP_HTTP_API}/scm/v1.0/beforePaymentSplitMatch`,
+      data: json,
+      method: `post`
+    })
+  }
+
   //用户评分
   userScore = (oderScore) => {
     return http.httpRequest({
