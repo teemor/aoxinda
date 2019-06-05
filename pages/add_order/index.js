@@ -44,12 +44,14 @@ Page({
         }
       })
       if (!this.data.goodsList[0].server_order_id) {
+        //购物车
         this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, data)
       } else {
-        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, data, 12, this.data.total, this.data.goodsList[0].server_order_id,
-        )
+        //商品待服务
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal, data, 0, this.data.goodsList[0].server_order_id, this.data.storeTotal)
       }
     } else {
+      //立即购买
       this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, [{ goods_detail_id: this.data.goods_detail_id, goods_num: this.data.goodsItem.buy_num }])
     }
   },
