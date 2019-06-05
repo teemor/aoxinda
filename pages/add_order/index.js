@@ -48,7 +48,7 @@ Page({
         this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, data)
       } else {
         //商品待服务
-        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal, data, 0, this.data.goodsList[0].server_order_id, this.data.storeTotal)
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal, data, 0, this.data.storeTotal, this.data.goodsList[0].server_order_id)
       }
     } else {
       //立即购买
@@ -102,6 +102,8 @@ Page({
         total: parseFloat(parseFloat(model.total_price).toFixed(2)),
         sum: model.sum
       })
+      console.log(this.data.total,'total')
+
       if (model.storeTotal || model.storeTotal===0){
         this.setData({
           storeTotal: model.storeTotal,
