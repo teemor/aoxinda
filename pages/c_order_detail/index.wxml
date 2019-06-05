@@ -2,7 +2,7 @@
   <view class='status'>
     <block wx:if="{{orderDetail.isPay == 0}}">
       <view class='font'>待付款</view>
-      <view>为您能享受到专业服务，请及时付款。</view>
+      <!-- <view>为您能享受到专业服务，请及时付款。</view> -->
     </block>
     <block wx:if="{{orderDetail.isPay == 1}}">
       <view class='font'>已付款</view>
@@ -22,11 +22,11 @@
     </block>
     <block wx:if="{{orderDetail.orderStatus === 2}}">
       <view class='font'>施工中</view>
-      <view>请耐心等待施工完成，祝您购物愉快。</view>
+      <!-- <view>请耐心等待施工完成，祝您购物愉快。</view> -->
     </block>
     <block wx:if="{{orderDetail.orderStatus === 4}}">
       <view class='font'>已完成</view>
-      <view>感谢您的支持。</view>
+      <!-- <view>感谢您的支持。</view> -->
     </block>
   </view>
   <view class='user_info'>
@@ -41,9 +41,9 @@
     <view class='inner' wx:key="property" wx:for="{{orderDetail.mcfCProduct}}" bindtap='goods_detail' data-code='{{item.productCode || ""}}'>
       <view class='sku_name'>{{item.goodsName || ''}}</view>
       <view>
-        <text>数量 {{item.goodsNum || 0}}</text>
-        <text decode="{{true}}">&nbsp;&nbsp;产品： {{item.skuName || ''}}</text>
+        <text decode="{{true}}">产品： {{item.skuName || ''}}</text>
       </view>
+      <view>数量 {{item.goodsNum || 0}}</view>
       <view class='price'>￥{{item.price || 0}}</view>
     </view>
   </view>
@@ -72,8 +72,10 @@
   </view>
 
   <view class='clickBtn'>
-    <button class='agreen' bindtap="goPayment">付款</button>
+  <button class='agreen' bindtap="goPayment" wx:if="{{orderDetail.isPay == 0}}">付款</button>
     <button class='refuse' bindtap='refuse' wx:if="{{tabType == 4}}">拒绝</button>
+    <button class='refuse' bindtap='refuse' wx:if="{{tabType == 1 && orderDetail.isPay == 0 && orderDetail.authorizer == 1}}">拒绝</button>
+    <button class='refuse' bindtap='refuse' wx:if="{{tabType == 0 && orderDetail.isPay == 0 && orderDetail.authorizer == 1}}">拒绝</button>
   </view>
 
   <!-- 底部付款 -->
@@ -94,7 +96,7 @@
 <wxs module="order_detail_wx">
   var bar = function (time) {
     var date = getDate(time);
-    var result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+    var result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
     return result;
   }
   module.exports = {
