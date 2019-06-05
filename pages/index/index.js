@@ -35,6 +35,9 @@ Page({
   onReady: function() {
     this.mapCtx = wx.createMapContext('myMap')
   },
+  onShow:function(){
+    this.findCarList();
+  },
   onLoad: function() {
     console.log(app.globalData.userInfo,'userinfo')
     if(app.globalData.userInfo!==null){
@@ -45,7 +48,7 @@ Page({
     }else{
       this.getStorageInfo()
     }
-    this.findCarList();
+    this.onShow();
     // 天气
     var defaultCityCode = "__location__";
     var citySelected = wx.getStorageSync('citySelected');

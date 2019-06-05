@@ -52,7 +52,8 @@ module.exports = {
     wx.login({
       success(res) {
         if (res.code) {//(that.data.total+0+0)*100
-          request.payOrder({ order_id: id, code: res.code, open_id: app.globalData.openId, price: that.data.total + that.data.storeTotal}).then(res => {
+          console.log(that.data.total,' + that.data.storeTotal')
+          request.payOrder({ order_id: id, code: res.code, open_id: app.globalData.openId, price: that.data.total}).then(res => {
             if (res.status === false) {
               wx.showToast({
                 title: res.description
