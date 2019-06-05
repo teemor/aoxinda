@@ -78,15 +78,9 @@ else{
    * 是否为默认地址
    */
   switchChange:function(e){
-    let defaultAddress
-    if(e.detail.value===true){
-       defaultAddress = 1
-    }else{
-      defaultAddress=0
-    }
-    this.data.content.is_check = defaultAddress
+    this.data.content.is_check = e.detail === 0 ? 1 : 0
     this.setData({
-      content:this.data.content
+      content: this.data.content
     })
   },
   onReady: function () {

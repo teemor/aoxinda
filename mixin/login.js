@@ -172,7 +172,9 @@ module.exports = {
   // 判断用户注册
   checkFun: function (params) {
     request.loginQuery(params).then(res => {
+      console.log(res,'res')
       if (res.code === "200") {
+        console.log(res,'res')
         wx.setStorage({
           key: 'mineInfo',
           data: res.result,
@@ -187,6 +189,10 @@ module.exports = {
           title: '服务器错误···',
           icon: 'loading',
           duration: 1500
+        })
+      }else{
+        wx.showToast({
+          title:res.respMsg
         })
       }
     })

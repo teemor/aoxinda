@@ -12,7 +12,7 @@ Page({
   data: {
     storeTotal: 0,
     ispay: false,
-    invoice: '不开具发票'
+    // invoice: '不开具发票'
   },
   /**
    * 发票
@@ -22,7 +22,11 @@ Page({
       url: '../my_order_invoice/index'
     })
   },
-
+  onChange:function(e){
+    this.setData({
+      inCheck:e.detail
+    })
+  },
   /**
    * 提交订单
    */
@@ -48,9 +52,6 @@ Page({
     }else{
       this.writeOrder(this.data.item,this.data.name,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.total,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
     }
-
-
-
   },
   /**
    * 地址
@@ -108,7 +109,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.chooseAddress();
     if (this.data.item) {
       request.selectInvoice({
         id: this.data.item

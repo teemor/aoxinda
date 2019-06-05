@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: '请选择',
+    region: '',
     content: {},
     defaultAddress: 1
   },
@@ -41,15 +41,11 @@ Page({
    * 是否为默认地址
    */
   switchChange: function(e) {
-    if (e.detail.value === true) {
-      this.setData({
-        defaultAddress: 1
-      })
-    } else {
-      this.setData({
-        defaultAddress: 0
-      })
-    }
+    console.log(e)
+    this.setData({
+      defaultAddress: e.detail === 1 ? 0 : 1
+    })
+    console.log(this.data.defaultAddress)
   },
   /**
    * 生命周期函数--监听页面加载

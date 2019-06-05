@@ -18,7 +18,7 @@
     <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
   </view>
 </view>
-<view class="cl my_order_list_box" wx:for="{{model.goodsData}}" wx:key="{{item}}">
+<view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.goodsData}}" wx:key="{{item}}">
   <view class="fl my_order_list_image">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
@@ -30,7 +30,7 @@
     <view class="fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
       <view wx:if="{{item.status!==''}}" class="my_order_list_btn fr">
-        <view class="myorder_orange" bindtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
+        <view class="myorder_orange" catchtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
       </view>
     </view>
   </view>
