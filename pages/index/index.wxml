@@ -19,7 +19,7 @@
       <view class="fl shop_add_btn_img" style='margin-left:30rpx;margin-top:30rpx;'>
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
       </view>
-      <view class="fl shop_add_btn_text" >我的爱车：{{model.name}}</view>
+      <view class="fl shop_add_btn_text" >我的爱车：{{model.model+' '+model.vehicleType}}</view>
     </view>
   <view wx:else class="add_contain" bindtap="addCar">
     <view class="fl add_contain_img">
