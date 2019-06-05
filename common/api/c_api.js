@@ -105,21 +105,6 @@ export class careItem {
 
 /** 选择门店与技师 start */
 export class choiceSp {
-  // 获取openId
-  getOpenId = (code) => {
-    return http.httpRequest({
-      url: `${IP_HTTP}/mcf/api/v1/sys/auth/sessionkey?appid=${app.appid}&secret=${app.appSecret}&js_code=${code}&grant_type=authorization_code`,
-      method: `get`
-    })
-  }
-  // 获取用户信息
-  authDecode = (params) => {
-    return http.httpRequest({
-      url: `${IP_HTTP}/mcf/api/v1/sys/auth/decode`,
-      method: `post`,
-      data: params
-    })
-  }
   //搜索门店
   searchSp = (searchValue) => {
     return http.httpRequest({
