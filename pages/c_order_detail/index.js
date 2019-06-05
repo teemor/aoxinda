@@ -40,7 +40,7 @@ Page({
   /**
    * 获取订单详情
    */
-  getDetail(){
+  getDetail() {
     request.orderEntity(that.data.orderId).then(res => {
       if (res.code == '200') {
         this.setData({
@@ -76,10 +76,10 @@ Page({
     this.setData({ show: false });
   },
 
-  onInvoice(s){
-    if(s.currentTarget.dataset.status == "1"){
+  onInvoice(s) {
+    if (s.currentTarget.dataset.status == "1") {
       that.showStatus = 1;
-    }else{
+    } else {
       that.showStatus = 2;
     }
     this.setData({ show: true });
@@ -87,11 +87,11 @@ Page({
 
   onChange(event) {
     const { picker, value, index } = event.detail;
-    if (that.showStatus == 1){
+    if (that.showStatus == 1) {
       this.setData({
         isInvoice: value
       })
-    }else{
+    } else {
       this.setData({
         isOldparts: value
       })
@@ -100,7 +100,7 @@ Page({
   },
 
   //跳转付款页面
-  goPayment(){
+  goPayment() {
     let params = {
       "appId": app.appid,
       "openId": that.data.user.openId,
@@ -126,6 +126,7 @@ Page({
               "status": that.data.tabType
             }
             that.getOrderList(params);
+            that.saveMineOrder();
             if (res.code == '200') {
             } else if (res.code == '500') {
             }
@@ -181,9 +182,63 @@ Page({
   },
 
   //打开商品详情页
-  goods_detail(e){
+  goods_detail(e) {
     wx.navigateTo({
       url: '/pages/c_goods_detail/index?product_code=' + e.currentTarget.dataset.code
+    })
+  },
+
+
+  //将订单保存到另一个表中-明远供应链
+  saveMineOrder() {
+    let mcfSysOrder = that.data.orderDetail
+    let time, arr;
+    if (mcfSysOrder.orderTime == 0) {
+      time = '08:00-12:00'
+    } else if (mcfSysOrder.orderTime == 1) {
+      time = '12:00-18:00'
+    } else if (mcfSysOrder.orderTime == 2) {
+      time = '18:00-22:00'
+    }
+
+    let json = {
+      orderNum: mcfSysOrder.id,
+      shopId: mcfSysOrder.shopId,
+      userPhoneNumber: mcfSysOrder.userTel,
+      ownerName: mcfSysOrder.userName,
+      orderAmount: mcfSysOrder.allOrderMoney,
+      appointmentTime: mcfSysOrder.orderDate + ' ' + time,
+      goods: mcfSysOrder.mcfCProduct.map(n => {
+        return {
+          goods_name: n.goodsName,//商品名称
+          goods_price: n.price,
+          goods_num: n.goodsNum,
+          goods_code: n.goodsCode.split('*')[0],
+          sku: n.goodsCode.split('*')[1]
+        }
+      })
+    }
+    request.saveMineOrder(json).then(res => {
+      if (res.result) {
+        wx.showToast({
+          title: '订单保存成功',
+          icon: 'success',
+          duration: 1500,
+          success(res) {
+            setTimeout(() => {
+              wx.reLaunch({
+                url: '../index/index'
+              })
+            }, 1000)
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '订单保存失败',
+          icon: 'success',
+          duration: 2000
+        })
+      }
     })
   },
 
