@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "新增地址",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-radio": "../../miniprogram_npm/vant-weapp/radio/index",
+    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
+  }
 }
