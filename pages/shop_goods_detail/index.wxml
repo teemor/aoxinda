@@ -1,6 +1,6 @@
 <view>
-  <view class="shop_goods_detail_img">
-    <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+  <view class="shop_goods_detail_img" style='position:relative'>
+    <swiper class="swiper-box" style='position:relative' indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px" bindchange="onSwiperChange">
       <!-- <block wx:for="{{background}}" wx:key="*this">
         <swiper-item>
           <view class="swiper-item {{item}}"></view>
@@ -12,6 +12,7 @@
         </swiper-item>
       </block>
     </swiper>
+    <view style='position:absolute;right:10px;bottom:20rpx;padding:5rpx 20rpx;font-size:24rpx;background-color:rgba(0,0,0,.5);color:#fff;border-radius:20rpx;'>{{current}}/{{imgList.length}}</view>
 
   </view>
   <view class="shop_goods_detail_title">
@@ -72,7 +73,12 @@
   <view>
     <view>
       <view style="margin-bottom:100rpx">
-     <van-cell title="商品详情" />
+     <!-- <van-cell title="商品详情" /> -->
+      <view class='shop_detail'>
+        <image src="../../common/image/rectangle.png"/>
+          <text class='detail_font fz30'>商品详情</text>
+        <image src="../../common/image/rectangle.png"/>
+      </view>
           
             <view>
               <view></view>

@@ -212,3 +212,20 @@ margin-left:20rpx;
 .buy-num-box .num-box .hui {
   background-color: #f5f5f9;
 }
+
+.shop_detail{
+  background: white;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+.shop_detail image{
+  height: 2rpx;
+  width: 80rpx;
+  vertical-align: middle;
+}
+.shop_detail .detail_font{
+  color: #f6b245;
+  margin: 0 20rpx;
+}

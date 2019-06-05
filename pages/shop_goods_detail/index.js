@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    current: 1,
     store:true,
     buy_num: 1,
     cart: false,
@@ -25,6 +26,11 @@ Page({
       goods_name: '',//商品名称
       set_at: '',//商品服务时间
     }
+  },
+  onSwiperChange: function (e) {
+    this.setData({
+      current: e.detail.current + 1
+    })
   },
   labelChoosed: function (e) {
     let that = this
@@ -107,6 +113,7 @@ Page({
    * 
    */
   addCarta: function () {
+    let that = this
     if (this.data.store) {
       wx.showToast({
         title: '请选择门店',
@@ -121,7 +128,7 @@ Page({
           icon: 'success',
           duration: 1500,
           success:function(){
-            this.goodsDetail(this.data.product_code)
+            that.goodsDetail(that.data.product_code)
           }
         });
         

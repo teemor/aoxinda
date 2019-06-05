@@ -52,9 +52,6 @@ Page({
     }else{
       this.writeOrder(this.data.item,this.data.name,this.data.address, this.data.phone, '普通快递',this.data.total, this.data.total,[{goods_detail_id: this.data.goods_detail_id,goods_num:this.data.goodsItem.buy_num}])
     }
-
-
-
   },
   /**
    * 地址
@@ -112,7 +109,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.chooseAddress();
     if (this.data.item) {
       request.selectInvoice({
         id: this.data.item
