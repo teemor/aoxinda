@@ -123,13 +123,7 @@ Page({
     })
   },
   onLoad: function(options) {
-<<<<<<< HEAD
-    console.log(app.globalData)
-    if(app.globalData.userInfo!==null){
-      console.log(app.globalData.userInfo)
-=======
     if(app.globalData.userInfo.avatarUrl){
->>>>>>> yd
       this.setData({
         avatar:app.globalData.userInfo.avatarUrl,
         nickName :app.globalData.userInfo.nickName,
