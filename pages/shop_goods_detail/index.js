@@ -113,6 +113,7 @@ Page({
    * 
    */
   addCarta: function () {
+    let that = this
     if (this.data.store) {
       wx.showToast({
         title: '请选择门店',
@@ -127,7 +128,7 @@ Page({
           icon: 'success',
           duration: 1500,
           success:function(){
-            this.goodsDetail(this.data.product_code)
+            that.goodsDetail(that.data.product_code)
           }
         });
         
