@@ -2,7 +2,7 @@
 import { HttpServer } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `http://192.168.31.76:444`
-export const IP_HTTP_API = `http://192.168.31.76:9015`
+export const IP_HTTP_API = `http://192.168.31.156:9015`
 const app = getApp()
 
 /****c端登录 start */
