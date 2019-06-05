@@ -27,7 +27,7 @@
   </view>
   <view class="shop_goods_choosed" bindtap="addCart">
     <view class="fz28">
-      <span class="grey" style="margin-right:30rpx;">已选</span> <span class="fz24">{{item[0].sku_name}}{{item[0].buy_num}}</span></view>
+      <span class="grey" style="margin-right:30rpx;">已选</span> <span class="fz24">{{item.sku_name}}{{item.buy_num}}</span></view>
     <view style="margin-top:10rpx;margin-left:70rpx;color:#78a7f1;margin-bottom:10rpx;">
       <view class="fl fz24" style="margin-right:20rpx;width:40rpx;height:40rpx;border-radius:100rpx;line-height:40rpx;text-align:center;background:#f0f6ff">店</view>
       <view class="fl fz28" style="">选择门店购买安装服务</view>

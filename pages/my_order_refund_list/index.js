@@ -5,10 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
   },
   refundDetail: function (data) {
-    console.log(data,'data')
+    console.log(data, 'data')
     /**
     * 跳转退款详情
     */
@@ -29,6 +28,15 @@ Page({
       this.setData({
         refundList: res
       })
+      if (res.backOrderData.length = 0) { 
+        this.setData({
+          back:0
+        })
+      } else {
+        this.setData({
+          back:1
+        })
+      }
       console.log(res, 'res')
     })
   },

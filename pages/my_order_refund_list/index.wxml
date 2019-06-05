@@ -1,4 +1,11 @@
-<view  wx:for="{{refundList.backOrderData}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">
+<view wx:if="{{back==0}}">
+<view class="my_address_null">
+<image src="../../common/image/refund_null.png"/>
+</view>
+<view class="tc fz26">还没有相关订单呢</view>
+</view>
+<view wx:else >
+<view wx:for="{{refundList.backOrderData}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">
 <view class="br_btm_light" style="padding:30rpx" >
   <view class="fl my_order_list_image">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
@@ -13,4 +20,5 @@
   </view>
   </view>
  <van-cell title="{{item.order_type+' '+item.back_type}}" value="" is-link></van-cell>
+ </view>
  </view>

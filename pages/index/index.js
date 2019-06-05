@@ -36,7 +36,8 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onLoad: function() {
-    if(app.globalData.userInfo!==null&&app.globalData.phoneNum!==""){
+    console.log(app.globalData.userInfo,'userinfo')
+    if(app.globalData.userInfo!==null){
         this.setData({
           loginMask:1,
           phoneMask:1

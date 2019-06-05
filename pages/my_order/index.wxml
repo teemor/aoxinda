@@ -1,11 +1,19 @@
 <view>
- <van-tabs  active="{{active}}" bind:change="tabchange" color="#fdbb51">
-      <view wx:for="{{myOrderMenu}}" wx:key="{{item.id}}">
-        <van-tab title="{{item.name}}" titlea="{{item.id}}">
-        <view class="cl" wx:for="{{goodsList}}" wx:key="{{item}}">
-        <order-list bind:goOrder="goOrder" goodsList="{{item}}" ispay="true" bind:orderDetail="orderDetail"/>
+  <van-tabs active="{{active}}" bind:change="tabchange" color="#fdbb51">
+    <view wx:for="{{myOrderMenu}}" wx:key="{{item.id}}">
+      <van-tab title="{{item.name}}" titlea="{{item.id}}">
+        <view wx:if="{{goodsList.length>0}}">
+          <view class="cl" wx:for="{{goodsList}}" wx:key="{{item}}">
+            <order-list bind:goOrder="goOrder" goodsList="{{item}}" ispay="true" bind:orderDetail="orderDetail" />
+          </view>
         </view>
-        </van-tab>
-      </view>
-    </van-tabs>
+        <view wx:else>
+          <view class="my_address_null">
+            <image src="../../common/image/refund_null.png" />
+          </view>
+          <view class="tc fz26">还没有相关订单呢</view>
+        </view>
+      </van-tab>
+    </view>
+  </van-tabs>
 </view>

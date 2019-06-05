@@ -12,7 +12,7 @@ Page({
   data: {
     storeTotal: 0,
     ispay: false,
-    invoice: '不开具发票'
+    // invoice: '不开具发票'
   },
   /**
    * 发票
@@ -22,7 +22,11 @@ Page({
       url: '../my_order_invoice/index'
     })
   },
-
+  onChange:function(e){
+    this.setData({
+      inCheck:e.detail
+    })
+  },
   /**
    * 提交订单
    */

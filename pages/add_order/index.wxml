@@ -26,12 +26,19 @@
 <view style="background:#fff">
   <van-cell title="配送方式" value="普通快递" ></van-cell>
 <view class="refund_type fz28">
-<view class="fl">支付方式</view>
+<view class="fl">
+支付方式</view>
 <view class="fr cell_img"><image src="../../common/image/wx.png"/>微信支付</view>
 <view class="cl"></view>
 </view>
+<view class="refund_type fz28" >
+<view class="fl"><van-checkbox checked-color="#fdbb51" value="{{inCheck}}" bind:change="onChange">
+{{invoice?invoice:'我要开发票'}}</van-checkbox></view>
+<view class="fr cell_img" bindtap="addInvoice">></view>
 
-  <van-cell title="开具发票" value="{{invoice}}" is-link bind:click="addInvoice"></van-cell>
+<view class="cl"></view>
+</view>
+  <!-- <van-cell title="开具发票" value="{{invoice}}" is-link bind:click="addInvoice"></van-cell>-->
 </view>
 <view>
   <view class="mtop20">
