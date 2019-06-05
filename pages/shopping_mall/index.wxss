@@ -34,7 +34,7 @@
   line-height: 80rpx;
 }
 .shop_goods_contain {
-  width: 160rpx;
+  width: 156rpx;
   padding: 13rpx;
   /* height: 250rpx; */
 }
@@ -42,14 +42,17 @@
 margin-top:-40rpx;
 }
 .shop_goods_image {
-  height: 250rpx;
+  height: 240rpx;
 }
 
 .shop_goods_image image {
-  width: 100%;
+  width: 96%;
   height: 150px;
 }
 
 .shop_goods_text {
-  font-size: 30rpx;
+  font-size: 28rpx;
+}
+.van-badge{
+  background: white !important;
 }

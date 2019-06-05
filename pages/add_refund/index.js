@@ -184,7 +184,7 @@ Page({
     this.setData({
       'orderInfo.order_id': model.order_id,
       'orderInfo.back_money': model.goodsData[0].goods_price,
-      'orderInfo.goods_detail_id': model.goodsData[0].goods_detail_id,
+      'orderInfo.goods_detail_id':model.goodsData[0].goods_detail_id,
       'orderInfo.order_detail_id':model.goodsData[0].order_detail_id,
       goodsData: model.goodsData[0]
     })

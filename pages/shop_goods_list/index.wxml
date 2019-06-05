@@ -14,7 +14,7 @@
   <view wx:for="{{storeList}}" wx:key="{{item}}">
     <view class="shop_goods_contain cl" bindtap="shopDetail" data-item="{{item.product_code}}">
       <view class="shop_goods_box fl">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop1.png" mode="aspectFit" />
+        <image src="{{item.goods_pic}}" mode="aspectFit" />
       </view>
       <view class="shop_goods_remark fl">
         <view class="shop_goods_text">{{item.goods_name}}</view>

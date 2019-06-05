@@ -4,7 +4,8 @@ Component({
     price:String,
     btnBuy:String,
     total:Boolean,
-    checked:Boolean
+    checked:Boolean,
+    addOrder:Boolean
   },
 
   /**
