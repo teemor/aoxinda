@@ -1,12 +1,13 @@
 <view>
   <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
-      <!-- <view class="mycar_img fl">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car1.png" />
-      </view> -->
+    <!--  <view class="mycar_img fl">
+        <image src="{{item.img}}" />
+      </view> 
+      -->
       <view class="fl mycar_remark">
         <view>
-          <view class="fl mycar_remark_title">{{item.name}}</view>
+          <view class="fl mycar_remark_title">{{item.model+' '+item.vehicleType}}</view>
           <view class="fl mycar_remark_km">{{item.carType}}</view>
         </view>
         <!-- <view class="mycar_remark_text cl">
@@ -15,11 +16,11 @@
       </view>
     </view>
     <view style="margin-top:30rpx">
-      <view class="fl shop_edit_box">
+      <view class="fl shop_edit_box" data-model='{{item}}'  bindtap="editCar">
         <view class="fl shop_edit_img">
           <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_edit.png" />
         </view>
-        <view class="fl shop_edit_btn" bindtap="editCar">编辑</view>
+        <view class="fl shop_edit_btn">编辑</view>
       </view>
       <view class="fl shop_edit_box" data-id='{{item.carId}}' bindtap='toDeleteCar'>
         <view class="fl shop_edit_img">
@@ -31,7 +32,6 @@
       <view class="fl shop_set_btn" data-id='{{item.carId}}' wx:else bindtap='toDefaultCar'>设为常用车</view>
     </view>
   </view>
-
   <view class='no_data_car' wx:if="{{carList.length == 0}}">
     <image src="../../common/image/no_car.png" />
     <view class='fz28 no_car_font'>
