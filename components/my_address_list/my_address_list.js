@@ -1,6 +1,7 @@
 Component({
   properties: {
     addressDefault:Boolean,
+    chooseOff:Boolean,
     model:Object
   },
 
@@ -16,7 +17,9 @@ Component({
    */
   methods: {
     chooseAddress:function(){
-      this.triggerEvent('chooseAddress',this.data.model)
+      if (this.data.chooseOff) {
+        this.triggerEvent('chooseAddress', this.data.model)
+      }
     },
     editAddress:function(){
       let  model= encodeURIComponent(JSON.stringify(this.data.model))
