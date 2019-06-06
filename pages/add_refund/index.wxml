@@ -19,13 +19,15 @@
     <view class="bg_refund_contain bgwhite br_btm_light">
       <view class="fz28 high60">退款数量</view>
       <view class="cl high60">
-        <van-stepper class="fl" min="1" max="{{goodsData.buy_num}}" value="{{orderInfo.goods_num}}" bind:change="onChange" />
-        <view class="fl grey fz28 mleft20">最多{{goodsData.buy_num}}件</view>
+        <van-stepper class="fl" min="1" max="{{goodsData.buy_num}}" value="{{orderInfo.goods_num}}" disabled="{{serverData?true:false}}" bind:change="onChange" />
+        <view class="fl grey fz28 mleft20" wx:if="{{!serverData}}">最多{{goodsData.buy_num}}件</view>
       </view>
       <view class="cl high60 fz26 ">退款金额
         <span class="red">¥{{orderInfo.back_money}}</span>
       </view>
-      <view class="fz22 high60 grey">最多¥{{goodsData.goods_price*goodsData.buy_num + (serverData.money*serverData.server_num||0)}}，含¥0运费
+      <view class="fz22 high60 grey">
+        <text wx:if="{{!serverData}}">最多¥{{goodsData.goods_price*goodsData.buy_num}}，</text>
+        含¥0运费
         <text wx:if="{{serverData}}">，含¥{{serverData.money*serverData.server_num}}服务费</text>
       </view>
     </view>

@@ -183,12 +183,13 @@ Page({
     console.log(model, '退款model')
     if (model.serverData && model.serverData.length > 0) {
       this.setData({
+        'orderInfo.goods_num': model.goodsData[0].buy_num,
         serverData: model.serverData[0]
       })
     }
     this.setData({
       'orderInfo.order_id': model.order_id,
-      'orderInfo.back_money': model.goodsData[0].goods_price + (this.data.serverData ? this.data.serverData.money : 0),
+      'orderInfo.back_money': this.data.serverData ? model.goodsData[0].goods_price * model.goodsData[0].buy_num + this.data.serverData.money * this.data.serverData.server_num : model.goodsData[0].goods_price,
       'orderInfo.goods_detail_id':model.goodsData[0].goods_detail_id,
       'orderInfo.order_detail_id':model.goodsData[0].order_detail_id,
       goodsData: model.goodsData[0]
