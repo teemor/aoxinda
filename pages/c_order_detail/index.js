@@ -125,11 +125,10 @@ Page({
               "userId": that.data.mineInfo.id,
               "status": that.data.tabType
             }
-            that.getOrderList(params);
             that.saveMineOrder();
-            if (res.code == '200') {
-            } else if (res.code == '500') {
-            }
+            wx.redirectTo({
+              url: '/pages/c_order_all/c_order_all',
+            })
           })
         },
         'fail': function (err) {
@@ -166,8 +165,9 @@ Page({
                 "userId": that.data.mineInfo.id,
                 "status": that.data.tabType
               }
-              that.getOrderList(params);
-            } else if (res.cancel) {
+              wx.redirectTo({
+                url: '/pages/c_order_all/c_order_all',
+              })
             }
           }
         })
@@ -223,14 +223,7 @@ Page({
         wx.showToast({
           title: '订单保存成功',
           icon: 'success',
-          duration: 1500,
-          success(res) {
-            setTimeout(() => {
-              wx.reLaunch({
-                url: '../index/index'
-              })
-            }, 1000)
-          }
+          duration: 1500
         })
       } else {
         wx.showToast({
