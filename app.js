@@ -8,7 +8,8 @@ App({
     openId:'',
     userInfo: null,
     id:'',
-    options:''
+    options:'',
+    carType:''//车型
   },
   appid: "wx97a3505497150b66",
   onLaunch: function () {

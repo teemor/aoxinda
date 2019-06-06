@@ -164,7 +164,7 @@ Page({
         })
       } else if (res.code === "500") {
         wx.showToast({
-          title: '服务器错误',
+          title:  res.description,
           icon: 'loading',
           duration: 1500
         })

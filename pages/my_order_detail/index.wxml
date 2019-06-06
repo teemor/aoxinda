@@ -5,10 +5,9 @@
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <!--<view class="fz24">订单为你保留24:59:60,超时后将自动关闭</view>-->
+    <view class="fz24 cl" style="width:300rpx">订单为你保留{{create}},超时后将自动关闭</view>
   </view>
 </view>
-
 <view class="location_contain" bindtap="locationBtn">
   <view class="fl location_img">
     <image src="../../common/image/location.png" />
@@ -59,8 +58,8 @@
   <van-cell wx:if="{{model.send_at}}" title="发货时间" value="{{send_at}}"></van-cell>
 </view>
 <view class="mtop20">
-  <van-cell wx:if="{{model.invoice_id===0}}" title="补开发票" bind:click="addInvoice" is-link></van-cell>
-  <van-cell wx:else title="{{model.invoiceData.invoice_type}}" bind:click="editInvoice" value="{{model.invoiceData.invoice_title}}" is-link></van-cell>
+<van-cell wx:if="{{invoice}}" title="{{invoice}}" ></van-cell>
+  <van-cell wx:else title="补开发票" bind:click="addInvoice" is-link></van-cell>
 </view>
 <view class="mtop20">
   <van-cell title="商品总价" value="¥{{model.order_money}}"></van-cell>

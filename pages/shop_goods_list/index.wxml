@@ -4,11 +4,18 @@
       {{item.name}} <van-icon name="arrow-down"/>
     </view>
   </view>
-  <view class="shop_goods_invite"  bindtap="editCar">
+  <view wx:if="carType" class="shop_goods_invite"  bindtap="editCar">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-    <view class="shop_goods_invite_text">为您推荐适合 雪佛兰迈宝瑞...的商品</view>
+    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的商品</view>
     <view class="shop_goods_invite_btn">
     <image src="../../common/image/edit.png"/>
+    </view>
+  </view>
+  <view wx:else>
+   <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+    <view class="shop_goods_invite_text">暂未添加爱车</view>
+    <view class="shop_goods_invite_btn" bindtap="addCar">
+    立即添加
     </view>
   </view>
   <view wx:for="{{storeList}}" wx:key="{{item}}">

@@ -1,5 +1,6 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
+const app = getApp();
 Page({
 
   /**
@@ -60,12 +61,23 @@ Page({
     wx.navigateTo({
       url: '../my_car/index',
     });
-
+  },
+  /**
+   * 添加爱车
+   */
+  addCar:function(){
+    wx.navigateTo({
+      url: '../../pages/add_car/index'
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      carType:app.globalData.carType
+    })
+    console.log(app)
     let model = decodeURIComponent(options.id)
     let id = JSON.parse(model).id
     let goods_name = JSON.parse(model).goodsName || ""

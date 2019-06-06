@@ -2,8 +2,8 @@
   <view class='my_cart_list fl' catchtap="detail">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
-  <view class="fl my_cart_box">
-    <view class="my_cart_title fz30" catchtap="detail">
+  <view class="fl my_cart_box"  catchtap="detail">
+    <view class="my_cart_title fz30">
      {{model.goods_name}}
     </view>
     <view class="fz24 cl" style="color:#999">

@@ -30,14 +30,24 @@ module.exports = {
         return  Y + M + D +' '+ h + m + s
       },
     selectOrderDetail: function (options) {
+        let timestamp = Date.parse(new Date());
+        console.log(timestamp,'当前时间')
         request.selectOrderDetail({ order_id: options.id }).then(res => {
             this.setData({
                 model: res,
                 goodsList: res,
                 date: this.formateDate(res.create_at),
                 pay_at:this.formateDate(res.pay_at),
-                send_at:this.formateDate(res.send_at)
+                send_at:this.formateDate(res.send_at),
+                create:res.create_at+86400000-timestamp
             })
+            console.log(res.create_at,'create')
+
+            if(res.invoiceData){
+                this.setData({
+                    invoice:res.invoiceData.invoice_title+res.invoiceData.invoice_type
+                })
+            }
             if (res.invoice_id === 1) {
                 this.setData({
                     id: res.invoiceData.id
@@ -56,6 +66,7 @@ module.exports = {
             let that = this
             that.data.dataset.goodstype[0].lists = res.tableDetail
             this.setData({
+                invoiceData:res.invoiceData,
                 item: res.tableDetail[0],
                 tableDetail:res.tableDetail,
                 orderImg:res.fileList[0],
