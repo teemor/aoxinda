@@ -30,6 +30,8 @@ module.exports = {
         return  Y + M + D +' '+ h + m + s
       },
     selectOrderDetail: function (options) {
+        let timestamp = Date.parse(new Date());
+        console.log(timestamp,'当前时间')
         request.selectOrderDetail({ order_id: options.id }).then(res => {
             this.setData({
                 model: res,
@@ -37,15 +39,11 @@ module.exports = {
                 date: this.formateDate(res.create_at),
                 pay_at:this.formateDate(res.pay_at),
                 send_at:this.formateDate(res.send_at),
-                create:this.formateDate(res.create_at)
+                create:res.create_at+86400000-timestamp
             })
-            let date = new Date()
-            if(date.getMonth){
-                
-            }
-            date.getHours()
-            console.log(date,'date')
-            if(res.invoiceData.invoice_title){
+            console.log(res.create_at,'create')
+
+            if(res.invoiceData){
                 this.setData({
                     invoice:res.invoiceData.invoice_title+res.invoiceData.invoice_type
                 })
