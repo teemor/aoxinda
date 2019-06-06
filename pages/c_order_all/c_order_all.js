@@ -30,7 +30,7 @@ Page({
     let params = {
       "userId": that.data.mineInfo.id,
       "status": that.data.tabType,
-      "page": 1
+      "page": 0
     }
     that.getOrderList(params);
   },
