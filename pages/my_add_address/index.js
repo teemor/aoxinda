@@ -41,11 +41,9 @@ Page({
    * 是否为默认地址
    */
   switchChange: function(e) {
-    console.log(e)
     this.setData({
-      defaultAddress: e.detail === 1 ? 0 : 1
+      defaultAddress: e.detail? 1 : 0
     })
-    console.log(this.data.defaultAddress)
   },
   /**
    * 生命周期函数--监听页面加载
