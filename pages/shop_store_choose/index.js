@@ -360,39 +360,65 @@ Page({
                 icon: 'loading',
                 duration: 1500
               })
-            } else if (that.data.noGoodsList.length != 0) {
-              wx.showModal({
-                title: '麦车服提示您',
-                content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
-                success(res) {
-                  if (res.confirm) {
-                    var obj = systemTime.SystemTime(that.data.goodsTime_Date);
-                    var tomorrow_date = obj.tom_Date;
-                    var tomAft_date = obj.tomAfter_Date;
-                    that.setData({
-                      activeNames: e.detail,
-                      dateChoice: that.data.goodsTime_Date,
-                      chooseThDate: that.data.goodsTime_Date,
-                      tomSysDate: tomorrow_date,
-                      tomAftSysDate: tomAft_date
-                    })
-                  } else if (res.cancel) {
-                  }
-                }
-              })
             } else {
-              if (currentShop.hasstation) {
+              if (that.data.noGoodsList.length != 0) {
+                wx.showModal({
+                  title: '麦车服提示您',
+                  content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
+                  success(res) {
+                    if (res.confirm) {
+                      var obj = systemTime.SystemTime(that.data.goodsTime_Date);
+                      var tomorrow_date = obj.tom_Date;
+                      var tomAft_date = obj.tomAfter_Date;
+                      that.setData({
+                        activeNames: e.detail,
+                        dateChoice: that.data.goodsTime_Date,
+                        chooseThDate: that.data.goodsTime_Date,
+                        tomSysDate: tomorrow_date,
+                        tomAftSysDate: tomAft_date
+                      })
+                    }
+                  }
+                })
+              } else {
                 that.setData({
                   activeNames: e.detail
                 })
-              } else {
-                wx.showToast({
-                  title: '该门店没工位',
-                  icon: 'loading',
-                  duration: 1500
-                })
               }
             }
+            // else if (that.data.noGoodsList.length != 0) {
+            //   wx.showModal({
+            //     title: '麦车服提示您',
+            //     content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
+            //     success(res) {
+            //       if (res.confirm) {
+            //         var obj = systemTime.SystemTime(that.data.goodsTime_Date);
+            //         var tomorrow_date = obj.tom_Date;
+            //         var tomAft_date = obj.tomAfter_Date;
+            //         that.setData({
+            //           activeNames: e.detail,
+            //           dateChoice: that.data.goodsTime_Date,
+            //           chooseThDate: that.data.goodsTime_Date,
+            //           tomSysDate: tomorrow_date,
+            //           tomAftSysDate: tomAft_date
+            //         })
+            //       } else if (res.cancel) {
+            //       }
+            //     }
+            //   })
+            // } else {
+            //   if (currentShop.hasstation) {
+            //     that.setData({
+            //       activeNames: e.detail
+            //     })
+            //   } else {
+            //     wx.showToast({
+            //       title: '该门店没工位',
+            //       icon: 'loading',
+            //       duration: 1500
+            //     })
+            //   }
+            // }
 
           } else if (res.code == '500') {
             wx.showToast({
