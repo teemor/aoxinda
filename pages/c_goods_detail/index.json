@@ -8,6 +8,7 @@
     "goods-action-button": "../../miniprogram_npm/vant-weapp/goods-action-button/index",
     "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
-    "van-stepper": "../../miniprogram_npm/vant-weapp/stepper/index"
+    "van-stepper": "../miniprogram_npm/vant-weapp/stepper/index",
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index"
   }
 }

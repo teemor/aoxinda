@@ -1,6 +1,18 @@
 <view>
   <view class="shop_goods_detail_img">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" mode="widthFix" />
+    <swiper class="swiper-box" style='position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <!-- <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}"></view>
+        </swiper-item>
+      </block> -->
+      <block wx:for="{{imgList}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+
   </view>
   <view class="shop_goods_detail_title">
     <view class="shop_goods_title">
@@ -8,20 +20,24 @@
         <view class="fl shop_goods_tit">{{goodsData.goods_name}}</view>
         <!-- <view class="fl shop_goods_favorite">收藏</view>-->
       </view>
-       <view class="cl shop_goods_title_price">¥
+      <view class="cl shop_goods_title_price">¥
         <span class="title_icon">{{price}}</span>
       </view>
     </view>
   </view>
   <view class="shop_goods_choosed">
-    <view>已选 {{goodsData.goods_name}} SN级别,4L,美孚1号，1件</view>
-    <view>店 选择门店购买安装服务</view>
+    <view class="fz28">
+      <span class="grey" style="margin-right:30rpx;">已选</span> <span class="fz24">{{tableDetail[0].sku_name}}</span></view>
+    <!-- <view style="margin-top:10rpx;margin-left:70rpx;color:#78a7f1;margin-bottom:10rpx;">
+      <view class="fl fz24" style="margin-right:20rpx;width:40rpx;height:40rpx;border-radius:100rpx;line-height:40rpx;text-align:center;background:#f0f6ff">店</view>
+      <view class="fl fz28" style="">选择门店购买安装服务</view>
+       <view class="fr more" style="margin-top:-30rpx">
+              <image src="../../images/more.png"/>
+              </view>
+    </view> -->
   </view>
-  <view class="shop_goods_evaluation">
-    <view class="shop_goods_evaluation_title">
-      <view class="fl">用户评价（58）</view>
-      <view class="fr">好评率99.7%</view>
-    </view>
+  <view class="shop_goods_evaluation" style="display:none">
+    <van-cell title="用户评价（58）" bind:click="myInvite" value="全部评价" is-link/>
     <view class="shop_goods_evaluation_box cl">
       <view class="shop_goods_evaluation_name cl">
         匿名
@@ -56,79 +72,16 @@
   <view>
     <view>
       <view style="margin-bottom:100rpx">
-        <van-tabs bind:click="onClick">
-          <van-tab title="商品详情">
+     <van-cell title="商品详情" />
             <view>
               <view></view>
-            <rich-text class="" nodes="{{detail}}">
-            </rich-text>
+              <rich-text class="" nodes="{{detail}}">
+              </rich-text>
               <view></view>
             </view>
-          </van-tab>
-        </van-tabs>
       </view>
       <view>
-
       </view>
     </view>
   </view>
-  <!-- <view>
-    <goods-action>
-      <goods-action-icon icon="cart-o" text="购物车" link-type="switchTab" info="{{cartNum}}" url="../my_cart/index" />
-      <goods-action-button text="加入购物车" type="warning" bind:click="addCart" />
-      <goods-action-button text="立即购买" bind:click="addCart" />
-    </goods-action>
-  </view>
-  <manager show="{{show}}" type="bottom" bind:clickMask="clickMask">
-    <view class="cart_contain">
-      <view>
-        <view class="cart_title_price cl">
-          <view class="fl cart_img">
-            <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/store.jpg" />
-          </view>
-          <view class="fl cart_price">
-            <view class="red">¥{{price}}</view>
-            <view class="fz32 mtop20">已选：{{goodsData.goods_name}}</view>
-          </view>
-          <view class="cl"></view>
-        </view>
-        <view class="cl fz30">
-        <view class="cart_title_price" wx:for="{{dataset.goodstype}}" wx:key="{{item}}" wx:for-index="idx">
-            <view class="grey high80">{{item.name}}</view>
-            <view wx:for="{{item.lists}}" wx:key="{{item}}">
-              <view bindtap="labelChoosed"  data-childindex="{{index}}" data-index="{{idx}}" data-item="{{item}}" class="{{item.active?'active':'active_null'}} fl fz28 tc" style="">
-                {{item.sku_name}}</view>
-            </view>
-            <view class="cl"></view>
-            <view wx:if="{{item.remark}}" class="cl high80 red">{{item.remark}}</view>
-          </view>
-          <view class="cart_title_price" wx:for="{{dataset.list}}" wx:key="{{item}}" wx:for-index="idx">
-            <view class="grey high80">{{item.name}}</view>
-            <view wx:for="{{item.list}}" wx:key="{{item}}">
-              <view bindtap="labelChoose" data-childindex="{{index}}" data-index="{{idx}}" data-item="{{item}}" class="{{item.active?'active':'active_null'}} fl fz28 tc" style="">
-                {{item.name}}</view>
-            </view>
-                      <view class="cl"></view>
-            <view class="cl"  wx:if="{{store}}" bindtap="storeChoose">请选择门店预约</view>
-            <view wx:if="{{item.remark}}" class="cl high80 red">{{item.remark}}</view>
-          </view>
-          <view class="cl buy-num-box">
-            <view class="fl num-label">
-              购买数量
-            </view>
-            <view class="fr ">
-              <view class="num-box">
-                <van-stepper value="{{ 1 }}" bind:change="onChange" />
-              </view>
-            </view>
-          </view>
-          <view class="cl shop_goods_btn fz30">
-            <view class="shop_goods_addbtn fl" bindtap="addCarta">加入购物车</view>
-            <view class="shop_goods_buybtn fl" bindtap="buyGoods">立即购买</view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </manager> -->
-
 </view>

@@ -1,158 +1,51 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
-Page({
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    store: false,
-    buy_num: 1,
     dataset: {
       name: '米其林轮胎', price: '666',
       goodstype: [{
-        name: '类型', lists: [{ active: true }]
+        name: '类型', lists: []
       }],
       list: [
-        { name: '服务', list: [{ name: "到店安装", id: '01' }, { active: true, name: '无需安装', id: '02' }] }]
-    },
-    cart: false,
-    show: false,
-    buyNumber: 1,
-    buyNumMin: 1,
-    buyNumMax: 0,
-    mineGoods: {//yaoda
-      buy_num: 1,//商品数量
-      product_code: '',//货品编号
-      goods_detail_id: null,//商品详情id
-      goods_id: null,//商品id
-      goods_price: 0,//商品价格
-      sku_id: '',//货品sku
-      sku_name: '',//商品sku
-      goods_name: '',//商品名称
-      set_at: '',//商品服务时间
+        { name: '服务', list: [{ active: true, name: "到店安装", id: '01' }, { name: '无需安装', id: '02' }] }]
     }
   },
-  labelChoosed: function (e) {
-    console.log(e, 'e')
-    let that = this
-    let child = that.data.dataset.goodstype[e.currentTarget.dataset.index].lists
-    for (let i = 0; i < child.length; i++) {
-      that.data.dataset.goodstype[e.currentTarget.dataset.index].lists[i].active = false
-    }
-    that.data.dataset.goodstype[e.currentTarget.dataset.index].lists[e.currentTarget.dataset.childindex].active = true;
-    this.setData({
-      dataset: that.data.dataset,
-      goods_id: e.currentTarget.dataset.item.goods_id,
-      goods_detail_id: e.currentTarget.dataset.item.goods_detail_id
-    })
-    //yaoda
-    this.setData({
-      'mineGoods.product_code': e.currentTarget.dataset.item.product_code,
-      'mineGoods.sku_id': e.currentTarget.dataset.item.sku_id,
-      'mineGoods.sku_name': e.currentTarget.dataset.item.sku_name,
-      'mineGoods.goods_price': e.currentTarget.dataset.item.goods_price,
-      'mineGoods.goods_detail_id': e.currentTarget.dataset.item.goods_detail_id,
-      'mineGoods.goods_id': e.currentTarget.dataset.item.goods_id,
-      'mineGoods.set_at': e.currentTarget.dataset.item.set_at
-    })
-  },
-  labelChoose: function (e) {
-    console.log(e, 'eeee')
-    if (e.currentTarget.dataset.item.name === '无需安装') {
+
+  /**
+       * 详情
+       */
+  goodsDetail: function (code) {
+    request.goodsDetail({ product_code: code }).then(res => {
+      let that = this
+      that.data.dataset.goodstype[0].lists = res.tableDetail
       this.setData({
-        store: false
+        item: res.tableDetail[0],
+        tableDetail: res.tableDetail,
+        orderImg: res.fileList[0],
+        imgList: res.fileList,
+        cartNum: res.total,
+        goodsData: res.mainTable,
+        detail: res.mainTable.content ? res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ') : '',
+        dataset: that.data.dataset
       })
-    } else {
-      this.setData({
-        store: true
-      })
-    }
-    let that = this
-    let child = that.data.dataset.list[e.currentTarget.dataset.index].list
-    for (let i = 0; i < child.length; i++) {
-      that.data.dataset.list[e.currentTarget.dataset.index].list[i].active = false
-    }
-    that.data.dataset.list[e.currentTarget.dataset.index].list[e.currentTarget.dataset.childindex].active = true;
-    this.setData({
-      dataset: that.data.dataset
+      if (res.tableDetail.length > 0) {
+        that.data.dataset.goodstype[0].lists[0].active = true
+        this.setData({
+          item: res.tableDetail[0],
+          price: res.tableDetail[0].goods_price,
+          goods_id: res.tableDetail[0].goods_id,
+          goods_detail_id: res.tableDetail[0].goods_detail_id,
+          dataset: that.data.dataset
+        })
+      }
     })
   },
-  /**
-   * 购买
-   */
-  buyGoods: function () {
-    if (this.data.store) {
-      wx.showToast({
-        title: '请选择门店',
-        icon: 'error',
-        duration: 1500
-      });
-    } else {
-      this.addCarta();
-      wx.switchTab({
-        url: '../my_cart/index'
-      })
-    }
-  },
-  /**
-   * 加入购物车
-   * @param {} options 
-   */
-  addCart: function () {
-    this.setData({
-      show: true
-    })
-  },
-  /**
-   * 
-   */
-  addCarta: function () {
-    if (this.data.store) {
-      wx.showToast({
-        title: '请选择门店',
-        icon: 'error',
-        duration: 1500
-      });
-    } else {
-      request.toCart({ buy_num: this.data.buy_num, goods_id: this.data.goods_id, goods_detail_id: this.data.goods_detail_id }).then(res => {
-        if (res.status === 0) {
-          wx.showToast({
-            title: '加入购物车成功',
-            icon: 'success',
-            duration: 2000
-          });
-          this.goodsDetail(this.data.product_code)
-        } else {
-          wx.showToast({
-            title: '加入购物车失败',
-            icon: 'error',
-            duration: 2000
-          });
-        }
-      })
-      this.setData({
-        show: false
-      })
-    }
-  },
-  /**
-   * 购买数量
-   */
-  onChange: function ({ detail }) {
-    this.setData({
-      buy_num: detail
-    })
-  },
-  /**
-   * 关闭弹窗
-   * @param {*} options 
-   */
-  clickMask: function () {
-    this.setData({
-      show: false
-    })
-  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -163,57 +56,8 @@ Page({
     })
     this.goodsDetail(this.data.product_code)
   },
-  /**
-   * 详情
-   */
-  goodsDetail: function (code) {
-    request.goodsDetail({ product_code: code }).then(res => {
-      let that = this
-      that.data.dataset.goodstype[0].lists = res.tableDetail
-      this.setData({
-        cartNum: res.total,
-        goodsData: res.mainTable,
-        detail: res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" '),
-        dataset: that.data.dataset
-      })
-      //yaoda
-      this.setData({
-        'mineGoods.goods_name': res.mainTable.goods_name
-      })
-      if (res.tableDetail.length > 0) {
-        that.data.dataset.goodstype[0].lists[0].active = true
-        this.setData({
-          price: res.tableDetail[0].goods_price,
-          goods_id: res.tableDetail[0].goods_id,
-          goods_detail_id: res.tableDetail[0].goods_detail_id
-        })
-      }
-      //yaoda
-      this.setData({
-        'mineGoods.product_code': res.tableDetail[0].product_code,
-        'mineGoods.sku_id': res.tableDetail[0].sku_id,
-        'mineGoods.sku_name': res.tableDetail[0].sku_name,
-        'mineGoods.goods_price': res.tableDetail[0].goods_price,
-        'mineGoods.goods_detail_id': res.tableDetail[0].goods_detail_id,
-        'mineGoods.goods_id': res.tableDetail[0].goods_id,
-        'mineGoods.set_at': res.tableDetail[0].set_at
-      })
 
-    })
-  },
-  /**
-   * yaoda
-   * 跳转门店选择
-   */
-  storeChoose: function () {
-    wx.setStorage({
-      key: 'mineGoods',
-      data: this.data.mineGoods,
-    })
-    wx.navigateTo({
-      url: `../shop_store_choose/index`
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
