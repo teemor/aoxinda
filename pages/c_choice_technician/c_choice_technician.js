@@ -248,6 +248,7 @@ Page({
     that.setData({
       activeNames: "",
       spIndex: "",
+      noGoodsList: [],
       dateChoice: "",
       uhide: null,
       alltimeBtnIndex: ''
