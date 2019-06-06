@@ -25,7 +25,9 @@
       <view class="cl high60 fz26 ">退款金额
         <span class="red">¥{{orderInfo.back_money}}</span>
       </view>
-      <view class="fz22 high60 grey">最多¥{{goodsData.goods_price*goodsData.buy_num}}，含¥0运费</view>
+      <view class="fz22 high60 grey">最多¥{{goodsData.goods_price*goodsData.buy_num + (serverData.money*serverData.server_num||0)}}，含¥0运费
+        <text wx:if="{{serverData}}">，含¥{{serverData.money*serverData.server_num}}服务费</text>
+      </view>
     </view>
     <van-field wx:if="{{shopstatus===true}}" label="商品状态" value="{{statusLabel?statusLabel:'请选择商品状态'}}" is-link bind:focus="showShopstatus" />
     <view bindtap='refundReason'>

@@ -136,7 +136,7 @@ Page({
    */
   onChange: function (e) {
     this.setData({
-      'orderInfo.back_money': e.detail * this.data.goodsData.goods_price,
+      'orderInfo.back_money': e.detail * this.data.goodsData.goods_price + (this.data.serverData ? e.detail * this.data.serverData.money : 0),
       'orderInfo.goods_num': e.detail
     })
   },
@@ -181,9 +181,14 @@ Page({
   onLoad: function (options) {
     let model = JSON.parse(decodeURIComponent(options.model))
     console.log(model, '退款model')
+    if (model.serverData && model.serverData.length > 0) {
+      this.setData({
+        serverData: model.serverData[0]
+      })
+    }
     this.setData({
       'orderInfo.order_id': model.order_id,
-      'orderInfo.back_money': model.goodsData[0].goods_price,
+      'orderInfo.back_money': model.goodsData[0].goods_price + (this.data.serverData ? this.data.serverData.money : 0),
       'orderInfo.goods_detail_id':model.goodsData[0].goods_detail_id,
       'orderInfo.order_detail_id':model.goodsData[0].order_detail_id,
       goodsData: model.goodsData[0]
