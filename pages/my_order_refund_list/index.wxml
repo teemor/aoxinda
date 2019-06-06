@@ -1,8 +1,8 @@
-<view wx:if="{{back==0}}">
+<view wx:if="{{refundList.backOrderData.length===0}}">
 <view class="my_address_null">
 <image src="../../common/image/refund_null.png"/>
 </view>
-<view class="tc fz26">还没有相关订单呢</view>
+<view class="tc fz26">您对购买的商品都很满意</view>
 </view>
 <view wx:else >
 <view wx:for="{{refundList.backOrderData}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">

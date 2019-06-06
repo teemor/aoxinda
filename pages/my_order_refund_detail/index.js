@@ -37,9 +37,9 @@ Page({
           request.updateBackOrder({ id: that.data.id, back_type: '20' }).then(res => {
             if (res.status === 0) {
               wx.showToast({
-                title: '撤销成功',
+                title: '撤销',
                 icon: 'none',
-                image: '',
+                image: '撤销退款申请成功',
                 duration: 3500,
                 mask: false,
                 success: (result) => {

@@ -59,14 +59,7 @@ Page({
       total:this.data.model.order_money,
       storeTotal: this.data.model.order_server_money || 0
     })
-    this.writeOrder(this.data.model.invoice_id,
-      this.data.model.order_person,
-      this.data.model.order_address,
-      this.data.model.order_phone,
-      '普通快递',
-      this.data.model.order_money,
-      this.data.model.pay_money,
-      data)
+    this.pay(this.data.model.order_id)
   },
   addInvoice: function () {
     wx.navigateTo({
