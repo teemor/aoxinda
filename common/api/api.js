@@ -13,9 +13,9 @@ export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
 // export const IP_YTHTTP = `http://192.168.31.76:9015`
 // export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
-// export const IP_WBHTTP = `http://192.168.31.158:444/mcf/api/v1/c` // 后两
+export const IP_WBHTTP = `http://192.168.31.158:444/mcf/api/v1/c` // 后两
 // export const IP_YXHTTP = `http://192.168.31.158:9015/scm/v1.0` //前三
-export const IP_WBHTTP = `https://www.maichefu.cn:444/mcf/api/v1/c` // 后两
+// export const IP_WBHTTP = `https://www.maichefu.cn:444/mcf/api/v1/c` // 后两
 export const IP_YXHTTP = `https://www.maichefu.cn:9015/scm/v1.0` //前三
 export const WB_WX =`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
@@ -282,28 +282,28 @@ export class Technician {
   }
   selectMyBackOrderList = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/selectMyBackOrderList`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/selectMyBackOrderList`,
       method: `post`,
       data: model
     })
   }
   writeBackOrder = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/writeBackOrder`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/writeBackOrder`,
       method: `post`,
       data: model
     })
   }
   selectBackOrderDetail = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/selectBackOrderDetail`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/selectBackOrderDetail`,
       method: `post`,
       data: model
     })
   }
   updateBackOrder = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/updateBackOrder`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/updateBackOrder`,
       method: `post`,
       data: model
     })
@@ -312,7 +312,7 @@ export class Technician {
   updateOrder = (model) => {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/order/updateOrderStatus`,
-      method: `post`,
+      method: `poszhiq t`,
       data: model
     })
   }

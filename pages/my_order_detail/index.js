@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    invoice:''
   },
   /**
    * 取消订单
@@ -60,7 +60,6 @@ Page({
       total:this.data.model.order_money,
       storeTotal: this.data.model.order_server_money || 0
     })
-    console.log(this.data.model)
     this.writeOrder(this.data.model.invoice_id,
       this.data.model.order_person,
       this.data.model.order_address,
@@ -124,6 +123,33 @@ Page({
     this.selectOrderDetail(options)
   },
   onShow:function(){
+    console.log(this.data.item,'item')
+      /**
+     * 补开发票
+     * @param {*} data 
+     */
+      if (this.data.item) {
+        request.selectInvoice({
+          id: this.data.item
+        }).then(res => {
+          if (res.data[0].invoice_type === 1) {
+            this.setData({
+              invoice: '增值税专用发票'
+            })
+          } else if (res.data[0].invoice_type === 0) {
+            if (res.data[0].invoice_title === 0) {
+              this.setData({
+                invoice: '纸质普通发票 个人'
+              })
+            } else {
+              this.setData({
+                invoice: '纸质普通发票 公司'
+              })
+            }
+  
+          }
+        })
+      }
     console.log(app.globalData.options)
     this.selectOrderDetail(app.globalData.options)
   }

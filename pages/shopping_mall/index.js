@@ -24,7 +24,6 @@ Page({
    * 2019-03-28
    */
   onChange: function(e) {
-
     this.setData({
       shop_title: e.detail.title
     })

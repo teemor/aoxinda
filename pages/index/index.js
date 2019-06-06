@@ -39,22 +39,34 @@ Page({
     this.findCarList();
   },
   onLoad: function() {
-    console.log(app.globalData.userInfo,'userinfo')
-    if(app.globalData.userInfo!==null){
-        this.setData({
-          loginMask:1,
-          phoneMask:1
-        })
-    }else{
-      this.getStorageInfo()
-    }
+    let that = this
+    wx.getStorage({
+      key: 'user',
+      success: function (res){
+        if(res.data.avatarUrl!==''){
+          that.setData({
+            loginMask:1,
+          })
+          wx.getStorage({
+            key:'userPhone',
+            success:function(res){
+              if(res.data){
+                that.setData({
+                  phoneMask:1
+                })
+              }
+            }
+          })
+        }else{
+          that.getStorageInfo()
+        }
+      }})
     this.onShow();
     // 天气
     var defaultCityCode = "__location__";
     var citySelected = wx.getStorageSync('citySelected');
     var weatherData = wx.getStorageSync('weatherData');
     if (citySelected.length == 0 || weatherData.length == 0) {
-      var that = this
       api.loadWeatherData(defaultCityCode, function (cityCode, data) {
         var weatherData = {}
         weatherData[cityCode] = data;

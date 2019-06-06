@@ -2,7 +2,7 @@ import {
     Technician
 } from '../common/api/api'
 const request = new Technician
-
+const app = getApp();
 module.exports = {
     data: {
         car: false
@@ -32,6 +32,8 @@ module.exports = {
               model: arr[0],
               carList:res.result
             })
+            app.globalData.carType = this.data.model
+            console.log(app,'appfwer')
           }
         })
       },

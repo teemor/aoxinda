@@ -1,4 +1,4 @@
-<view class="invoice_cell">
+<view class="invoice_cell" style="display:none">
   <view class="fl fz30">
     开具发票
   </view>

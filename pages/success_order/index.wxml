@@ -6,7 +6,7 @@
   <view class="height80 mtop20">支付方式：微信支付 支付金额：¥{{price}}</view>
   <view class="mtop20 cl">
     <view class="back_btn fl bg_orange height75" bindtap="orderList">查看订单</view>
-    <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="goCart">继续逛逛</view>
+    <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="orderList">继续逛逛</view>
   </view>
 </view>
 <view wx:else class="fz28 tc result_contain">
