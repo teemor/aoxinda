@@ -36,7 +36,7 @@ Page({
         active:4
       })
     }
-this.onShow();
+    this.selectOrder({})
   },
   goOrder:function(e){
     this.setData({
@@ -76,7 +76,7 @@ this.onShow();
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.selectOrder({})
+
   },
 
   /**
