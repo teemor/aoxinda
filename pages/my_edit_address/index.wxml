@@ -8,8 +8,8 @@
     </view>
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
       <view class="add_item add_item_input">
-        <view class="fl">省份、城市、区县</view>
-        <view class="fr" style="margin-right:30rpx;">{{content.province}}{{content.city}}{{content.county}}</view>
+        <view class="fl">{{content.province}} {{content.city}} {{content.county}}</view>
+        <view class="fr" style="margin-right:30rpx;"><van-icon name="arrow" /></view>
       </view>
     </picker>
     <view>
@@ -17,7 +17,7 @@
     </view>
   </view>
   <view class="add_item_area">
-    <van-radio checked-color="#fdbb51" value="{{1}}"  name="{{content.is_check}}" bind:change="switchChange">设置为默认地址</van-radio>
+    <van-checkbox checked-color="#fdbb51" value="{{ content.is_check==1?true:false }}" bind:change="switchChange">设置为默认地址</van-checkbox>
     <!-- <view class="fl">设置为默认地址</view>
     <view class="fr" style="margin-right:30rpx;">
       <switch checked="{{content.is_check===0?false:true}}" bindchange="switchChange" color="#fdbb51" />
