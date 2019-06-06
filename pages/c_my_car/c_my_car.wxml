@@ -1,6 +1,6 @@
 <view>
   <view wx:for="{{carList}}" wx:key="{{index}}">
-    <van-panel title="{{item.name}}" desc="{{item.carType}}" status="{{item.def=='0'?'常用车':''}}" custom-class="car_list_box" header-class="car_list_header" data-carid="{{item.carId}}" bindtap="toFWcar"></van-panel>
+    <van-panel title="{{item.model}}" desc="{{item.carType}}" status="{{item.def=='0'?'常用车':''}}" custom-class="car_list_box" header-class="car_list_header" data-carid="{{item.carId}}" bindtap="toFWcar"></van-panel>
   </view>
   <view class="fz30 bg_orange bottom_btn" bindtap="addCar">添加爱车</view>
 </view>

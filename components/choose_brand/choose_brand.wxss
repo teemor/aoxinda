@@ -35,22 +35,24 @@
 }
 
 .cartype_box_contain {
-  padding-left:20rpx;
+  padding:0 20rpx;
   /* margin-top: 50rpx;
   height: 150rpx; */
   border-bottom: 2rpx solid #f0f0f0;
 }
 
 .cartype_detail {
+  display: flex;
+  font-size:28rpx;
+  line-height:80rpx;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cartype_detail_text {
-  font-size:28rpx;
-  line-height:80rpx;
   color:#292929;
 }
 
 .cartype_detail_price {
   color: #f6b245;
-  font-size: 30rpx;
 }

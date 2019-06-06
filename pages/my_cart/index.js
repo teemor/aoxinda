@@ -108,6 +108,7 @@ Page({
   onChange: function ({ detail }) {
     let modelarr = []
     let num = 0;
+    let sum = 0;
     if (detail.length > 0) {
       detail.forEach(item => {
         modelarr.push(this.data.cartList[item])
@@ -118,6 +119,7 @@ Page({
       })
       this.data.modelarr.forEach(item => {
         num += parseFloat(item.goods_price) * item.buy_num
+        sum += item.buy_num
       })
       this.setData({
         total_price: parseFloat(num).toFixed(2)
@@ -154,6 +156,9 @@ Page({
       result: detail
     })
     console.log(this.data.result, '选中')
+    this.setData({
+      sum: sum
+    })
   },
 
   /**

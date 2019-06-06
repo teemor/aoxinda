@@ -10,9 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storeTotal: 0,
+    storeTotalOff: true,
     ispay: false,
-    invoice: '不开具发票'
+    // invoice: '不开具发票'
   },
   /**
    * 发票
@@ -22,7 +22,11 @@ Page({
       url: '../my_order_invoice/index'
     })
   },
-
+  onChange: function (e) {
+    this.setData({
+      inCheck: e.detail
+    })
+  },
   /**
    * 提交订单
    */
@@ -41,19 +45,15 @@ Page({
       })
       if (!this.data.goodsList[0].server_order_id) {
         //购物车
-        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + 0, data)
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, data)
       } else {
-        //服务
-        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal + 0, data, 0, this.data.storeTotal, this.data.goodsList[0].server_order_id,
-        )
+        //商品待服务
+        this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + this.data.storeTotal, data, 0, this.data.storeTotal, this.data.goodsList[0].server_order_id)
       }
     } else {
-      //立即购买进来
-      this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total + 0, [{ goods_detail_id: this.data.goods_detail_id, goods_num: this.data.goodsItem.buy_num }])
+      //立即购买
+      this.writeOrder(this.data.item, this.data.name, this.data.address, this.data.phone, '普通快递', this.data.total, this.data.total, [{ goods_detail_id: this.data.goods_detail_id, goods_num: this.data.goodsItem.buy_num }])
     }
-
-
-
   },
   /**
    * 地址
@@ -100,9 +100,20 @@ Page({
         goods: false,
         goodsList: model.arr,
         total: parseFloat(parseFloat(model.total_price).toFixed(2)),
-        storeTotal: model.storeTotal || 0,
         sum: model.sum
       })
+      console.log(this.data.total,'total')
+
+      if (model.storeTotal || model.storeTotal===0){
+        this.setData({
+          storeTotal: model.storeTotal,
+          storeTotalOff: false
+        })
+      }else{
+        this.setData({
+          storeTotalOff: true
+        })
+      }
     }
     this.chooseAddress();
   },
@@ -111,7 +122,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.chooseAddress();
     if (this.data.item) {
       request.selectInvoice({
         id: this.data.item

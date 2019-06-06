@@ -2,6 +2,7 @@ import { Technician } from '../../common/api/api'
 const request = new Technician
 import pay from '../../mixin/pay'
 import shop_detail from '../../mixin/shop_detail'
+const app = getApp();
 Page({
   mixins: [pay, shop_detail],
   /**
@@ -20,10 +21,9 @@ Page({
         title:'取消订单成功',
         icon:'none'
       })
-     wx.navigateBack({
-      url: '1'
-      });
-        
+      this.setData({
+        'model.trade_status_name':'用户取消'
+      })
     })
   },
   btnShip: function () {
@@ -71,15 +71,13 @@ Page({
   },
   addInvoice: function () {
     wx.navigateTo({
-      url: '../my_order_invoice/index'
+      url: `../my_order_invoice/index?options=${this.data.options}`
     })
   },
   /**
    * 退款进度
    */
   refundList: function () {
-
-
     wx.navigateTo({
       url: `../my_order_refund/index`,
       success: (result) => {
@@ -89,6 +87,11 @@ Page({
       complete: () => { }
     });
 
+  },
+  goDetail:function(e){
+    wx.navigateTo({
+      url:`../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`
+    })
   },
   /**
    * 申请退款
@@ -116,7 +119,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.globalData.options=options
     this.selectOrderDetail(options)
   },
-
+  onShow:function(){
+    console.log(app.globalData.options)
+    this.selectOrderDetail(app.globalData.options)
+  }
 })

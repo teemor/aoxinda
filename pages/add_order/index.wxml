@@ -2,9 +2,11 @@
   <view class="fl location_img">
     <image src="../../common/image/location.png" />
   </view>
-  <view class="fl location_address" style="{{storeTotal==0?'':'height:100rpx;line-height:100rpx'}}">
-    <view>{{name===undefined?'收货人信息':name}}  <text style='margin-left:20rpx'>{{phone}}</text></view>
-    <view class="location_mes" wx:if="{{storeTotal==0}}">{{address===undefined?'填写收货地址信息':address}}</view>
+  <view class="fl location_address" style="{{storeTotalOff?'':'height:100rpx;line-height:100rpx'}}">
+    <view>{{name===undefined?'收货人信息':name}}
+      <text style='margin-left:20rpx'>{{phone}}</text>
+    </view>
+    <view class="location_mes" wx:if="{{storeTotalOff}}">{{address===undefined?'填写收货地址信息':address}}</view>
   </view>
   <view class="fr location_address_btn">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/right_arrow.png" />
@@ -12,42 +14,47 @@
 </view>
 
 <view>
-<view  wx:if="{{goods==false}}" >
-<view wx:for="{{goodsList}}" wx:key="{{item}}">
-    <my_order_list ispay="{{ispay}}"  goodsList="{{item?item:goodsList}}"/></view>
+  <view wx:if="{{goods==false}}">
+    <view wx:for="{{goodsList}}" wx:key="{{item}}">
+      <my_order_list ispay="{{ispay}}" goodsList="{{item?item:goodsList}}" />
+    </view>
   </view>
-<view wx:else>
- <my_order_list ispay="{{ispay}}"  goodsList="{{goodsItem}}"/>
-</view>
-  
-  <view>
+  <view wx:else>
+    <my_order_list ispay="{{ispay}}" goodsList="{{goodsItem}}" />
   </view>
 </view>
 <view style="background:#fff">
-  <van-cell title="配送方式" value="普通快递" ></van-cell>
-<view class="refund_type fz28">
-<view class="fl">支付方式</view>
-<view class="fr cell_img"><image src="../../common/image/wx.png"/>微信支付</view>
-<view class="cl"></view>
-</view>
-
-  <van-cell title="开具发票" value="{{invoice}}" is-link bind:click="addInvoice"></van-cell>
+  <van-cell title="配送方式" value="普通快递"></van-cell>
+  <view class="refund_type fz28">
+    <view class="fl">
+      支付方式</view>
+    <view class="fr cell_img">
+      <image src="../../common/image/wx.png" />微信支付</view>
+    <view class="cl"></view>
+  </view>
+  <view class="refund_type fz28">
+    <view class="fl">
+      <van-checkbox checked-color="#fdbb51" value="{{inCheck}}" bind:change="onChange">
+        {{invoice?invoice:'我要开发票'}}</van-checkbox>
+    </view>
+    <view class="fr cell_img" bindtap="addInvoice">></view>
+    <view class="cl"></view>
+  </view>
+  <!-- <van-cell title="开具发票" value="{{invoice}}" is-link bind:click="addInvoice"></van-cell>-->
 </view>
 <view>
   <view class="mtop20">
     <van-cell title="商品总价" value="¥{{total}}" />
-    <van-cell title="服务费" value="+¥{{storeTotal}}" />
+    <van-cell title="服务费" value="+¥{{storeTotal}}" wx:if="{{!storeTotalOff}}" />
     <van-cell title="运费" value="+¥0" />
-    <view class="order_total" >
-    <view class="fr ">
-      <view class="grey fz26 fl order_total_num">共{{sum}}件商品</view>
-      <view class="fl fz30">小计：
-      <span class="red fz30">¥{{total + storeTotal}}</span>
+    <view class="order_total">
+      <view class="fr ">
+        <view class="grey fz26 fl order_total_num">共{{sum}}件商品</view>
+        <view class="fl fz30">小计：
+          <span class="red fz30">¥{{!storeTotalOff?total + storeTotal:total}}</span>
+        </view>
       </view>
     </view>
-    </view>
-    <br-bottom checked="true" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{total + storeTotal}}">
-
-  </br-bottom>
+    <br-bottom checked="true" addOrder="1" btnRight="提交订单" bind:carClickBtn="btnBuy" price="{{!storeTotalOff?total + storeTotal:total}}"></br-bottom>
   </view>
 </view>

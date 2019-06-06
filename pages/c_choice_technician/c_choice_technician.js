@@ -11,7 +11,7 @@ Page({
   data: {
     goodsInfo: false,
     animationData: {},
-    activeNames: ['1'],
+    activeNames: [],
     checked: false,
     sp_List: [], //门店列表
     dateChoice: '', //选择日期
@@ -237,6 +237,21 @@ Page({
 
   //点击门店
   onChange(e) {
+    //清楚之前数据
+    if (e.detail.length === 0) {
+      return false;
+    }
+    wx.removeStorage({
+      key: 'userReserveTime'
+    })
+
+    that.setData({
+      activeNames: "",
+      spIndex: "",
+      dateChoice: "",
+      uhide: null,
+      alltimeBtnIndex: ''
+    })
     let spIndex = e.currentTarget.dataset.index; //门店索引
     let currentShop = that.data.sp_List.content[spIndex];
     that.noGoods(spIndex, currentShop, e.detail);
@@ -474,38 +489,64 @@ Page({
             icon: 'loading',
             duration: 1500
           })
-        } else if (that.data.noGoodsList.length != 0) {
-          wx.showModal({
-            title: '麦车服提示您',
-            content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
-            success(res) {
-              if (res.confirm) {
-                var obj = systemTime.SystemTime(that.data.goodsTime_Date);
-                var tomorrow_date = obj.tom_Date;
-                var tomAft_date = obj.tomAfter_Date;
-                that.setData({
-                  activeNames: detail,
-                  dateChoice: that.data.goodsTime_Date,
-                  chooseThDate: that.data.goodsTime_Date,
-                  tomSysDate: tomorrow_date,
-                  tomAftSysDate: tomAft_date
-                })
-              } else if (res.cancel) {}
-            }
-          })
-        } else {
-          if (currentShop.hasstation) {
+        } else{
+          if (that.data.noGoodsList.length != 0){
+            wx.showModal({
+              title: '麦车服提示您',
+              content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
+              success(res) {
+                if (res.confirm) {
+                  var obj = systemTime.SystemTime(that.data.goodsTime_Date);
+                  var tomorrow_date = obj.tom_Date;
+                  var tomAft_date = obj.tomAfter_Date;
+                  that.setData({
+                    activeNames: detail,
+                    dateChoice: that.data.goodsTime_Date,
+                    chooseThDate: that.data.goodsTime_Date,
+                    tomSysDate: tomorrow_date,
+                    tomAftSysDate: tomAft_date
+                  })
+                } else if (res.cancel) {}
+              }
+            })
+          }else{
             that.setData({
               activeNames: detail
             })
-          } else {
-            wx.showToast({
-              title: '该门店没工位',
-              icon: 'loading',
-              duration: 1500
-            })
           }
         }
+        // else if (that.data.noGoodsList.length != 0) {
+        //   wx.showModal({
+        //     title: '麦车服提示您',
+        //     content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
+        //     success(res) {
+        //       if (res.confirm) {
+        //         var obj = systemTime.SystemTime(that.data.goodsTime_Date);
+        //         var tomorrow_date = obj.tom_Date;
+        //         var tomAft_date = obj.tomAfter_Date;
+        //         that.setData({
+        //           activeNames: detail,
+        //           dateChoice: that.data.goodsTime_Date,
+        //           chooseThDate: that.data.goodsTime_Date,
+        //           tomSysDate: tomorrow_date,
+        //           tomAftSysDate: tomAft_date
+        //         })
+        //       } else if (res.cancel) {}
+        //     }
+        //   })
+        // } else {
+        //   if (currentShop.hasstation) {
+        //     that.setData({
+        //       activeNames: detail
+        //     })
+        //   } else {
+        //     wx.showToast({
+        //       title: '该门店没工位',
+        //       icon: 'loading',
+        //       duration: 1500
+        //     })
+        //   }
+        // }
       } else if (res.code == '500' || res.status == '500') {
         wx.showToast({
           title: '服务器错误',

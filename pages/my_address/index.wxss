@@ -13,13 +13,3 @@ page{
     width:800rpx;
 bottom:30rpx;
 }
-.my_address_null{
-    width:250rpx;
-    margin: auto;
-}
-.my_address_null image{
-width:250rpx;
-height:170rpx;
-margin-top:200rpx;
-margin-bottom: 30rpx
-}

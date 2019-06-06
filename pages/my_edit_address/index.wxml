@@ -8,24 +8,25 @@
     </view>
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
       <view class="add_item add_item_input">
-        <view class="fl">省份、城市、区县</view>
-        <view class="fr" style="margin-right:30rpx;">{{content.province}}{{content.city}}{{content.county}}</view>
+        <view class="fl">{{content.province}} {{content.city}} {{content.county}}</view>
+        <view class="fr" style="margin-right:30rpx;"><van-icon name="arrow" /></view>
       </view>
     </picker>
     <view>
       <textarea maxlength="70" value="{{content.street}}" bindinput="addressChange" class="add_item_area" style="margin-top:20rpx" placeholder-class="textplaceholder" placeholder="详细地址，如街道、楼牌号等" />
     </view>
-    <view class="add_item_area">
-      <view class="fl">设置为默认地址</view>
-      <view class="fr" style="margin-right:30rpx;">
-        <switch checked="{{content.is_check===0?false:true}}" bindchange="switchChange" color="#fdbb51" />
-      </view>
-    </view>
-    <view wx:if="{{deleteShow===true}}" class="add_item_area red" bindtap="deleteAdd">
-      删除收货地址
-    </view>
   </view>
-  <view class="fz30 bg_orange bottom_btn {{isIpx ? 'ipx-bottom1' : ''}}" bindtap="saveAddress">
+  <view class="add_item_area">
+    <van-checkbox checked-color="#fdbb51" value="{{ content.is_check==1?true:false }}" bind:change="switchChange">设置为默认地址</van-checkbox>
+    <!-- <view class="fl">设置为默认地址</view>
+    <view class="fr" style="margin-right:30rpx;">
+      <switch checked="{{content.is_check===0?false:true}}" bindchange="switchChange" color="#fdbb51" />
+    </view> -->
+  </view>
+  <view class="fz30 bg_orange bottom_btn {{isIpx ? 'ipx-bottom1' : ''}}" style='width:40%;' bindtap="saveAddress">
     保存
+  </view>
+  <view class="fz30 bg_orange bottom_btn" style='width:40%;left:50%;' wx:if="{{deleteShow===true}}" bindtap="deleteAdd">
+    删除
   </view>
 </view>

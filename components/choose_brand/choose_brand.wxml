@@ -11,7 +11,7 @@
       </view> -->
       <view class='cartype_detail'>
         <view class='cartype_detail_text'>{{item.CX}}</view>
-        <!-- <view class='cartype_detail_price'>{{item.SCZT}}</view> -->
+        <view class='cartype_detail_price'>{{item.SCZT}}</view>
       </view>
     </view>
   </view>

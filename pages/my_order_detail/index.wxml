@@ -18,7 +18,7 @@
     <view class="location_mes">{{model.order_address===undefined?'填写收货地址信息':model.order_address}}</view>
   </view>
 </view>
-<view class="cl my_order_list_box" wx:for="{{model.goodsData}}" wx:key="{{item}}">
+<view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.goodsData}}" wx:key="{{item}}">
   <view class="fl my_order_list_image">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
@@ -29,8 +29,8 @@
     </view>
     <view class="fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
-      <view wx:if="{{item.status!==''}}" class="my_order_list_btn fr">
-        <view class="myorder_orange" bindtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
+      <view wx:if="{{item.status}}" class="my_order_list_btn fr">
+        <view class="myorder_orange" catchtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
       </view>
     </view>
   </view>
@@ -64,14 +64,14 @@
 </view>
 <view class="mtop20">
   <van-cell title="商品总价" value="¥{{model.order_money}}"></van-cell>
-  <van-cell title="服务费" value="+¥{{model.order_server_money}}"></van-cell>
+  <van-cell title="服务费" value="+¥{{model.order_server_money}}" wx:if="{{model.serverData&&model.serverData.length>0}}"></van-cell>
   <van-cell title="运费" value="+¥{{model.order_freight_money}}"></van-cell>
 </view>
 <view class="bgwhite" style="height:200rpx;">
   <view class="cl" style="height:30rpx;padding-right:20rpx;">
     <view class="fr">
       合计
-      <span class="red">¥:{{model.order_money + model.order_server_money}}</span>
+      <span class="red">¥:{{model.serverData&&model.serverData.length>0 ? model.order_money + model.order_server_money : model.order_money}}</span>
     </view>
   </view>
   <view wx:if="{{model.trade_status_name==='已发货'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">

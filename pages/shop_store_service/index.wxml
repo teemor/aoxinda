@@ -1,6 +1,6 @@
-<view>
-  <van-cell title="门店及服务项目" is-link value="更换门店" url="../shop_store_choose/index" wx:if="{{id?false:true}}" />
-  <view class='sp-box'>
+<view style='background-color:#fafafa;'>
+  <van-cell title="门店及服务项目" is-link value="更换门店" url="../shop_store_choose/index" wx:if="{{id?false:true}}" custom-class="sp-chose-box" />
+  <view class='sp-box' style='padding:15rpx 30rpx 0'>
     <view class='sp-logo'>
       <image src='{{orderInfo.store_img}}'></image>
     </view>
@@ -13,9 +13,13 @@
       <view class='sp-info'>联系电话:{{orderInfo.store_phone}}</view>
     </view>
   </view>
-  <van-cell title="{{orderInfo.store_address}}" icon="location-o" />
-  <van-cell title="到店安装" size="large" label="现货，请您按预约时间准时到店安装。" />
-  <view class="cl buy-num-box">
+  <view style='margin-bottom:30rpx'>
+    <van-cell title="{{orderInfo.store_address}}" icon="location-o" />
+  </view>
+  <view style='margin-bottom:30rpx'>
+    <van-cell title="到店安装" size="large" label="现货，请您按预约时间准时到店安装。" />
+  </view>
+  <view class="cl buy-num-box" style='margin-bottom:30rpx'>
     <view class="fl num-label">
       服务数量
     </view>
@@ -34,16 +38,19 @@
   <van-cell title="工时费" value="{{orderInfo.server_user_money}}元/小时" />
   <van-cell title="服务时间" value="{{orderInfo.server_time}}分钟x1" />
 
-  <view class="all-price">
+  <view class="all-price" style='text-align:right'>
     服务总价：
     <text><text class='red'>￥{{orderMoney}}</text>x{{orderInfo.server_num}}</text>
   </view>
 
-  <view class='payment'>
+  <view style='padding:30rpx' catchtap='confirm'>
+    <view style='border-radius:10rpx;background-color:#f6b245;color:#fff;font-size:30rpx;line-height:70rpx;text-align:center;'>确定</view>
+  </view>
+  <!-- <view class='payment'>
     <view class='paymentinfo cl'>
       <view class='paymentinfo-right' catchtap='confirm'>
         <text>确定</text>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

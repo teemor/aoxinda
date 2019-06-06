@@ -1,53 +1,55 @@
 @import "../../app.wxss";
+
 page {
-    min-height: 100%;
-    background-color: #f3f3f3;
-  }
-  
-  .add_address_contain {
-    margin-top: 20rpx;
-    background: #fff;
-    height: 390rpx;
-  }
-  
-  .add_item {
-    height: 80rpx;
-    line-height: 80rpx;
-    border-bottom: 2rpx solid #eee;
-  }
-  
-  .address_set {
-    background: #fff;
-    height: 300rpx;
-    width: 100%;
-  }
-  .red{
-    color: #ff0000
-  }
-  .placeholder {
-    font-size: 30rpx;
-  }
-  
-  .add_item_input {
-    font-size: 30rpx;
-    height: 80rpx;
-    line-height: 80rpx;
-    padding-left: 20rpx;
-  }
-  
-  .textplaceholder {
-    width: 860rpx;
-    height: 200rpx;
-  }
-  
-  .add_item_area {
-    font-size: 30rpx;
-    margin-top:60rpx;
-    background: #fff;
-    padding: 20rpx 5%;
-    font-size: 30rpx;
-    height: 50rpx;
-    line-height: 50rpx;
-    width:90%;
-  }
-  
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+
+.add_address_contain {
+  background: #fff;
+}
+
+.add_item {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.address_set {
+  background: #fff;
+  height: 300rpx;
+  width: 100%;
+}
+
+.red {
+  color: #f00;
+}
+
+.placeholder {
+  font-size: 30rpx;
+}
+
+.add_item_input {
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+}
+
+.textplaceholder {
+  height: 200rpx;
+}
+
+.add_item_area {
+  padding: 30rpx 20rpx;
+  font-size: 26rpx;
+}
+
+.add_address_contain .add_item_area {
+  padding: 20rpx;
+  width: 100%;
+  font-size: 30rpx;
+  height: 120rpx;
+  line-height: 40rpx;
+  box-sizing: border-box;
+}

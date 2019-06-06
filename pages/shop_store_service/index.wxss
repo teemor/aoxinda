@@ -1,7 +1,6 @@
 /* 门店 */
 
 .sp-box {
-  height: 160rpx;
   background: #fff;
   display: flex;
   font-size: 32rpx;
@@ -46,9 +45,7 @@
 /* 服务数量 */
 
 .buy-num-box, .all-price {
-  padding: 8rpx 10rpx 10rpx 0;
-  margin-left: 30rpx;
-  margin-top: 10rpx;
+  padding: 20rpx 30rpx;
 }
 
 .buy-num-box {
@@ -56,6 +53,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eee;
+  background-color: #fff;
 }
 
 .num-label {
@@ -85,8 +83,9 @@
 }
 
 .all-price {
-  margin-top: 30rpx;
+  padding-top: 30rpx;
   font-size: 32rpx;
+  background-color: #fff;
 }
 
 .all-price text {
@@ -138,4 +137,8 @@
 
 .my-van-cell-5 .van-cell__title {
   flex: 0.5;
+}
+
+.sp-chose-box {
+  background-color: #fff2e2 !important;
 }

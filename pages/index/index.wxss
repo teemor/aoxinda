@@ -5,6 +5,10 @@
 .van-search__content{
   border-radius: 50rpx !important;
 }
+.shop_add_btn_text{
+  padding: 30rpx 20rpx;
+  width: 500rpx;
+}
 page {
   min-height: 100%;
   background-color: #f3f3f3;

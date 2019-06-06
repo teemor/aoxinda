@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox/index",
+    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
+  }
 }

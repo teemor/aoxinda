@@ -83,7 +83,7 @@ Page({
    */
   myAddress: function() {
     wx.navigateTo({
-      url: '../my_address/index',
+      url: '../my_address/index?index=true',
     })
   },
   /**

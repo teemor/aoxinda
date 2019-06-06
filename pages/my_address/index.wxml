@@ -1,7 +1,7 @@
 <view>
 <view wx:if="{{addressImg==false}}"> 
 <view  wx:for="{{addressList}}" wx:key="{{item}}">
-  <address-list bind:chooseAddress="chooseAddress" addressDefault="{{item.is_check===0?false:true}}" model="{{item}}"/>
+  <address-list bind:chooseAddress="chooseAddress" addressDefault="{{item.is_check===0?false:true}}" chooseOff="{{chooseOff}}" model="{{item}}"/>
 </view>
 </view>
 <view wx:else class="my_address_null">

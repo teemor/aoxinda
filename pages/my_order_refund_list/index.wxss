@@ -8,3 +8,13 @@
 .my_order_describe{
     width:500rpx;
 }
+.my_address_null{
+    width:250rpx;
+    margin: auto;
+  }
+  .my_address_null image{
+  width:250rpx;
+  height:230rpx;
+  margin-top:200rpx;
+  margin-bottom: 30rpx
+  }

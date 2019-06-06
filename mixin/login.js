@@ -4,8 +4,8 @@ import {
   Technician
 } from '../common/api/api'
 const request = new Technician
-import {choiceSp} from '../common/api/c_api'
-const requestWB = new choiceSp
+import { c_login } from '../common/api/c_api'
+const requestWB = new c_login
 module.exports = {
   // 获取用户信息
   getStorageInfo: function () {
@@ -172,7 +172,9 @@ module.exports = {
   // 判断用户注册
   checkFun: function (params) {
     request.loginQuery(params).then(res => {
+      console.log(res,'res')
       if (res.code === "200") {
+        console.log(res,'res')
         wx.setStorage({
           key: 'mineInfo',
           data: res.result,
@@ -187,6 +189,10 @@ module.exports = {
           title: '服务器错误···',
           icon: 'loading',
           duration: 1500
+        })
+      }else{
+        wx.showToast({
+          title:res.respMsg
         })
       }
     })

@@ -29,7 +29,7 @@
 
 .mycar_remark_title {
   height: 70rpx;
-  width: 370rpx;
+  width: 100%;
   font-size: 32rpx;
 }
 
@@ -77,4 +77,18 @@
 .shop_set_btn_ {
   color: #fdbb51;
   border-color: #fdbb51;
+}
+.no_data_car{
+  position: absolute;
+  top: 200rpx;
+  left:126rpx;
+  text-align: center;
+}
+.no_data_car image{
+  width: 500rpx;
+  height: 353rpx;
+}
+.no_car_font{
+  margin-top: 10rpx;
+  line-height: 50rpx;
 }
