@@ -102,7 +102,7 @@ Page({
       key: 'userPhone',
       success: function (res) {
         request.isCarInfo(res.data).then(res => {
-          if (res.code === "200") {
+          if (res.code === "200" && res.result && res.result.length>0) {
             wx.setStorage({
               key: 'carInfo',
               data: res.result,
@@ -118,7 +118,7 @@ Page({
             } else {
               that.editMiles()
             }
-          } else if (res.code === "300") {
+          } else {
             wx.showModal({
               title: '麦车服',
               content: '您还没有认证车辆',

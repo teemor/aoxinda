@@ -63,14 +63,14 @@
 </view>
 <view class="mtop20">
   <van-cell title="商品总价" value="¥{{model.order_money}}"></van-cell>
-  <van-cell title="服务费" value="+¥{{model.order_server_money}}"></van-cell>
+  <van-cell title="服务费" value="+¥{{model.order_server_money}}" wx:if="{{model.serverData&&model.serverData.length>0}}"></van-cell>
   <van-cell title="运费" value="+¥{{model.order_freight_money}}"></van-cell>
 </view>
 <view class="bgwhite" style="height:200rpx;">
   <view class="cl" style="height:30rpx;padding-right:20rpx;">
     <view class="fr">
       合计
-      <span class="red">¥:{{model.order_money + model.order_server_money}}</span>
+      <span class="red">¥:{{model.serverData&&model.serverData.length>0 ? model.order_money + model.order_server_money : model.order_money}}</span>
     </view>
   </view>
   <view wx:if="{{model.trade_status_name==='已发货'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">

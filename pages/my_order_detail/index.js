@@ -21,10 +21,9 @@ Page({
         title:'取消订单成功',
         icon:'none'
       })
-     wx.navigateBack({
-      url: '1'
-      });
-        
+      this.setData({
+        'model.trade_status_name':'用户取消'
+      })
     })
   },
   btnShip: function () {
