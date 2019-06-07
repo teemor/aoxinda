@@ -5,7 +5,10 @@
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <view class="fz24 cl" style="width:300rpx">订单为你保留{{create}},超时后将自动关闭</view>
+    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.trade_status_name==='待发货'}}">
+    预计{{sys_at}}发货，请及时关注物流状态
+    </view>
+    <view wx:else class="fz24 cl" style="width:300rpx">订单为你保留{{creates}},超时后将自动关闭</view>
   </view>
 </view>
 <view class="location_contain" bindtap="locationBtn">

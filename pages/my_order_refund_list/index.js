@@ -9,7 +9,7 @@ Page({
   refundDetail: function (data) {
     console.log(data, 'data')
     /**
-    * 跳转退款详情
+    * 跳转退款详情0
     */
     wx.navigateTo({
       url: `../my_order_refund_detail/index?id=${data.currentTarget.dataset.item}`,
