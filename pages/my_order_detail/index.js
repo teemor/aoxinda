@@ -113,6 +113,7 @@ Page({
   onLoad: function (options) {
     app.globalData.options=options
     this.selectOrderDetail(options)
+    this.timer()
   },
   onShow:function(){
     console.log(this.data.item,'item')

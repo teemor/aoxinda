@@ -6,30 +6,33 @@ Page({
   },
 
   onLoad: function (options) {
-    if(options.id){
+    if (options.id) {
       this.setData({
-        id:options.id
+        id: options.id
       })
-      request.selectBackOrderDetail({id:this.data.id}).then(res=>{
-        this.setData({
-          detailData:res
-        })
-      })
+      this.selectOrderDetail({ id: this.data.id })
     }
   },
-  editApply:function(){
+  selectOrderDetail: function (id) {
+    request.selectBackOrderDetail(id).then(res => {
+      this.setData({
+        detailData: res
+      })
+    })
+  },
+  editApply: function () {
     wx.navigateTo({
       url: '../add_refund/index',
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
   },
-  cancelApply:function(){
-    let that =this
+  cancelApply: function () {
+    let that = this
     wx.showModal({
       content: '您确定要取消本次退款申请吗？',
       success(res) {
@@ -37,15 +40,14 @@ Page({
           request.updateBackOrder({ id: that.data.id, back_type: '20' }).then(res => {
             if (res.status === 0) {
               wx.showToast({
-                title: '撤销',
+                title: '撤销退款申请成功',
                 icon: 'none',
-                image: '撤销退款申请成功',
                 duration: 3500,
                 mask: false,
                 success: (result) => {
-                  wx.navigateBack({
-                    url: '1'
-                  });
+                  setTimeout(function () {
+                    that.selectOrderDetail({ id: that.data.id })
+                  }, 2000)
                 },
                 fail: () => { },
                 complete: () => { }
@@ -57,8 +59,8 @@ Page({
         }
       }
     })
-  
- 
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

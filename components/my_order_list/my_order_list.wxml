@@ -13,7 +13,7 @@
     数量{{item.buy_num}} 产品:{{item.sku_name}}
     </view>
       <view class="fz28">
-        <view class="fl red">¥ {{item.goods_price}}</view>
+        <view class="fl red" style="display:none">¥ {{item.goods_price}}</view>
         <view class="fr grey">x{{item.buy_num}}</view>
       </view>
     </view>
