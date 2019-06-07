@@ -45,16 +45,12 @@ Page({
           data: that.data.history
         })
       }
-    } else {
-      json = { name: "全部商品", id: null, goodsName: null }
+      //跳转-列表
+      let model = encodeURIComponent(JSON.stringify(json))
+      wx.navigateTo({
+        url: `../shop_goods_list/index?id=${model}`
+      });
     }
-
-
-    //跳转-列表
-    let model = encodeURIComponent(JSON.stringify(json))
-    wx.navigateTo({
-      url: `../shop_goods_list/index?id=${model}`
-    });
   },
   /**
    * 搜索列表 历史 跳转
