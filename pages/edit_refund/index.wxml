@@ -5,12 +5,12 @@
         <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
       </view>
       <view class="fl my_order_list_text fz26">
-        <view class="">{{goodsData.goods_name}}</view>
-        <view class="fz24 my_order_describe">{{goodsData.sku_name}}</view>
+        <view class="">{{model.goods_name}}</view>
+        <view class="fz24 my_order_describe">{{model.sku_name}}</view>
         <view class=" fz22">
           <span class="grey fl">单价：</span>
-          <view class="fl red">¥ {{goodsData.goods_price}}</view>
-          <view class="fl grey m_left">购买数量：{{goodsData.buy_num}}</view>
+          <view class="fl red">¥ {{model.goods_price}}</view>
+          <view class="fl grey m_left">购买数量：{{model.buy_num}}</view>
         </view>
       </view>
     </view>

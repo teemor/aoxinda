@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    agree:false,
     checked: true,
     ptchecked: true,
     radio: 'pt',
@@ -75,26 +76,38 @@ Page({
     });
   },
   
-
+  argeeChange:function(e){
+    console.log(e,'fdsf')
+    this.setData({
+      agree:e.detail
+    })
+  },
   /**
    * 添加发票
    */
   saveInvoice: function(data) {
-    request.saveInvoice(data).then(res => {
-      if(res.status===0){
-        wx.showToast({
-          title: '添加成功'
-        })
-      let currentPages =  getCurrentPages();
-      let prevPage = currentPages[currentPages.length-2];
-      prevPage.setData({
-        item:res.data
+    if(this.data.radio==='zzs'&&this.data.agree===false){
+      wx.showToast({
+        title:'请阅读并同意'
       })
-        wx.navigateBack({
-          url: '1'
+    }else{
+      request.saveInvoice(data).then(res => {
+        if(res.status===0){
+          wx.showToast({
+            title: '添加成功'
+          })
+        let currentPages =  getCurrentPages();
+        let prevPage = currentPages[currentPages.length-2];
+        prevPage.setData({
+          item:res.data
         })
-      }
-    })
+          wx.navigateBack({
+            url: '1'
+          })
+        }
+      })
+    }
+    
   },
   /**
    * 保存

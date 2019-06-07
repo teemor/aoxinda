@@ -20,9 +20,13 @@ Page({
       })
     })
   },
+
   editApply: function () {
+    console.log(JSON.stringify(this.data.detailData),'fd')
+    let model = encodeURIComponent(JSON.stringify(this.data.detailData))
+
     wx.navigateTo({
-      url: '../add_refund/index',
+      url: `../edit_refund/index?model=${model}`,
       success: (result) => {
 
       },

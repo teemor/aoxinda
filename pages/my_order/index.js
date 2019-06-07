@@ -16,7 +16,10 @@ Page({
     }
   },
   onPullDownRefresh:function(){
-    
+    this.setData({
+      active:this.data.active
+    })
+    this.selectOrder({})
     wx.stopPullDownRefresh()
       
   },

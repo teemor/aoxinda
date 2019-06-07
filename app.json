@@ -59,7 +59,8 @@
     "pages/c_order/c_order",
     "pages/c_order_all/c_order_all",
     "pages/c_order_detail/index",
-    "pages/c_selfInfo/c_selfInfo"
+    "pages/c_selfInfo/c_selfInfo",
+    "pages/edit_refund/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
