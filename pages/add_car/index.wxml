@@ -1,13 +1,13 @@
 <view class="add_car_contain {{choose_brand?'fixed':''}}">
-  <view class="add_car_search">
+  <!-- <view class="add_car_search">
     <tabbar width="400rpx" list="{{tabData}}" selectedId="{{activeIndex}}" bind:tabchange="tabchange" />
-  </view>
+  </view> -->
   <view hidden="{{activeIndex!=='1'}}">
     <!-- 搜索 -->
     <view class='add_car_search-input'>
-      <input type='text' placeholder="点击搜索您爱车的型号…" placeholder-class="add_car_place" />
+      <input type='text' placeholder="点击搜索您爱车的型号…" placeholder-class="add_car_place" bindinput="bindKeyInput" />
       <view class='add_car_search-btn'>
-        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/search.png'></image>
+        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/search.png' bindtap='toSearch'></image>
       </view>
     </view>
     <!-- 热门品牌 -->
@@ -32,13 +32,13 @@
       <!-- 字母 -->
       <view style='clear:both;zoom:1'>
         <view class='add_car_letter-bar_contain'>
-          <view class='add_car_letter-bar' wx:for="{{searchLetter}}" wx:key="index" data-letter="{{item.name}}" catchtouchstart='searchStart' catchtouchmove="searchMove" catchtouchend="searchEnd">
+          <view class='add_car_letter-bar' wx:for="{{searchLetterOld}}" wx:key="index" data-letter="{{item.name}}" catchtouchstart='searchStart' catchtouchmove="searchMove" catchtouchend="searchEnd">
             {{item.name}}
           </view>
         </view>
         <scroll-view scroll-y="true" style="height:{{winHeight}}px" scroll-into-view="{{showLetter}}" bindScroll="bindScroll">
           <view class='add_car_letter-contain'>
-            <view wx:for="{{carData}}" wx:key="index" id="{{item.firstCode}}">
+            <view wx:if="{{item.carInfo.length>0}}" wx:for="{{carData}}" wx:key="index" id="{{item.firstCode}}">
               <view class='add_car_letter-title'>
                 {{item.firstCode}}
               </view>

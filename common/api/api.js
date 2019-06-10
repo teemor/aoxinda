@@ -325,11 +325,11 @@ export class Technician {
     })
   }
   // 获取车型
-  findCarType = () => {
+  findCarType = (PP) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/findCarType`,
       method: `post`,
-      data: { pp: '' }
+      data: { PP: PP || '' }
     })
   }
 
