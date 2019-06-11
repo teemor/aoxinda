@@ -79,7 +79,19 @@ module.exports = {
                 item: res.tableDetail[0],
                 tableDetail: res.tableDetail,
                 orderImg: res.fileList[0],
-                imgList: res.fileList,
+                imgList: res.fileList.map(n=>{
+                  if (RegExp(/.jpg|.JPG|.png|.PNG|.jpeg|.JPEG/).test(n)){
+                    return {
+                      img:n,
+                      off:true
+                    }
+                  }else{
+                    return {
+                      img: n,
+                      off: false
+                    }
+                  }
+                }),
                 cartNum: res.total,
                 goodsData: res.mainTable,
                 detail: res.mainTable.content ? res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ') : '',
