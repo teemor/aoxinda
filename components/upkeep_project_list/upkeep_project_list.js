@@ -98,6 +98,7 @@ Component({
         case 'right':
           if (closeOff) {
             instance.close();
+            closeOff = !closeOff
           }
           break;
       }
@@ -117,21 +118,24 @@ Component({
     //删除
     toDetele: function (e) {
       closeOff = true
-      this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.splice(e.currentTarget.dataset.i, 1)
-      if (this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.length === 0) {
-        this.data.activeNames.forEach((n, i) => {
-          if (n === e.currentTarget.dataset.j) {
-            this.data.activeNames.splice(i, 1)
-          }
+      if (this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.length > 1) {
+        this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.splice(e.currentTarget.dataset.i, 1)
+        if (this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.length === 0) {
+          this.data.activeNames.forEach((n, i) => {
+            if (n === e.currentTarget.dataset.j) {
+              this.data.activeNames.splice(i, 1)
+            }
+          })
+          this.data.goodsList.data[e.currentTarget.dataset.j].checkedBtn = false
+        }
+        let arr = this.data.goodsList
+        this.setData({
+          activeNames: this.data.activeNames,
+          goodsList: arr
         })
-        this.data.goodsList.data[e.currentTarget.dataset.j].checkedBtn = false
+        this.dataGo();
       }
-      let arr = this.data.goodsList
-      this.setData({
-        activeNames: this.data.activeNames,
-        goodsList: arr
-      })
-      this.dataGo();
+
     },
 
     //更换

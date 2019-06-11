@@ -27,13 +27,15 @@
                 <view>
                   <view class="upkeep_project_pro-title">{{subItem.goods_name + ' ' +subItem.goods_sku}}</view>
                   <view class="cl upkeep_project_pro-price">
-                    <view class="fl red">¥ {{subItem.price}} x{{subItem.goodsNum}}</view>
+                    <view class="fl red" wx:if='{{item.maintainName=="机油"}}'>¥ {{subItem.price}} x {{subItem.goodsNum}}L</view>
+                    <view class="fl red" wx:else>¥ {{subItem.price}} x {{subItem.goodsNum}}</view>
                   </view>
                 </view>
                 <view slot="right">
                   <view class='cl upkeep_project_pro-cbox'>
                     <view class='fl'>
-                      <van-stepper size="mini" value="{{subItem.goodsNum}}" data-i="{{subIndex}}" data-j="{{index}}" bind:change="numChange" />
+                      <van-stepper integer step="0.5" size="mini" value="{{subItem.goodsNum}}" data-i="{{subIndex}}" data-j="{{index}}" bind:change="numChange" wx:if='{{item.maintainName=="机油"}}' />
+                      <van-stepper step="1" size="mini" value="{{subItem.goodsNum}}" data-i="{{subIndex}}" data-j="{{index}}" bind:change="numChange" wx:else />
                     </view>
                     <view class='fl upkeep_project_pro-btn'>
                       <van-button size="small" type="danger" data-i="{{subIndex}}" data-j="{{index}}" bindtap="toDetele">删除</van-button>
