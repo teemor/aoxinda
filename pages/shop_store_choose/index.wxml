@@ -85,7 +85,7 @@
               <view class='reservation-date'>{{tomSysDate}}</view>
               <view class='reservation-date'>{{tomAftSysDate}}</view>
             </view>
-            <view class='time-list_nowork'>
+            <view class='time-list_nowork' wx:if="{{spFirstStatus!=''||spSecStatus!=''||spThreeStatus!=''}}">
               <view></view>
               <view>{{spFirstStatus}}</view>
               <view>{{spSecStatus}}</view>

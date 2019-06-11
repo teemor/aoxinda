@@ -169,7 +169,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  height: 100rpx;
+  height: 80rpx;
   padding: 0 30rpx;
 }
 
@@ -486,4 +486,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.technician-list-box {
+  border-bottom: 1px solid #e5e5e5;
 }

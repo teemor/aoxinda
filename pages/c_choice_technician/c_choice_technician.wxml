@@ -58,7 +58,7 @@
             </view>
           </view>
         </view>
-      <!-- 门店 -->
+        <!-- 门店 -->
         <!-- 技师与时间 -->
         <view class='technician-list-box cl' wx:for='{{item.mcfSysEmpList}}' wx:key="" wx:for-item="sonItem" wx:for-index="th_index" id="{{sonItem.flag}}">
           <view class='technician-info cl' data-sp_index="{{sp_index}}" data-index='{{th_index}}' catchtap='onClickBtn'>
@@ -69,9 +69,9 @@
             <view class='technician-works fl'>{{sonItem.typeReceipt}}单</view>
             <view class='technician-scores fl'>{{sonItem.userScore}}分</view>
             <view class='technician-service fl'>服务费：￥{{sonItem.thCost}}元</view>
-            
+
             <view class='nullClass' catchtap='nullFun'>
-              <picker mode="date" value="{{date}}" start="{{noGoodsList.length == '0' ?todaySysDate:chooseDate}}" data-sp_index="{{sp_index}}" data-index='{{th_index}}'  end="" bindchange="bindDateChange">
+              <picker mode="date" value="{{date}}" start="{{noGoodsList.length == '0' ?todaySysDate:chooseDate}}" data-sp_index="{{sp_index}}" data-index='{{th_index}}' end="" bindchange="bindDateChange">
                 <view class='technician-date fl'>
                   <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/date.png'></image>
                 </view>
@@ -86,7 +86,7 @@
               <view class='reservation-date'>{{tomSysDate}}</view>
               <view class='reservation-date'>{{tomAftSysDate}}</view>
             </view>
-            <view class='time-list_nowork'>
+            <view class='time-list_nowork' wx:if="{{spFirstStatus!=''||spSecStatus!=''||spThreeStatus!=''}}">
               <view></view>
               <view>{{spFirstStatus}}</view>
               <view>{{spSecStatus}}</view>
