@@ -30,13 +30,13 @@
                   <view class="cl upkeep_project_pro-price">
                     <view class='cl'>
                       <text class="red">¥ {{subItem.price}}</text>
-                      <text class="fr">x {{subItem.goodsNum}}</text>
+                      <text class="fr" wx:if="{{item.maintainName!='机油'}}">x {{subItem.goodsNum}}</text>
                     </view>
                   </view>
-                  <view class="cl upkeep_project_pro-price_">
+                  <view class="cl upkeep_project_pro-price_" wx:if="{{item.maintainName=='机油'}}">
                     保养用量:
-                    <text class="red">3L</text> 价格:
-                    <text class="red">￥60</text>
+                    <text class="red">{{subItem.goodsNum}}L</text> 价格:
+                    <text class="red">￥{{subItem.priceAll}}</text>
                   </view>
                 </view>
                 <view slot="right">

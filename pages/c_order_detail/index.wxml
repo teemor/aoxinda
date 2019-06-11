@@ -50,7 +50,7 @@
   <view class='order_info'>
     <van-cell-group>
       <van-cell title="订单编号" value="{{orderDetail.id || ''}}" />
-      <van-cell title="下单时间" value="{{order_detail_wx.bar(orderDetail.createtime)}}"/>
+      <van-cell title="下单时间" value="{{orderDetail.createtime}}"/>
       <van-cell title="配送方式" value="无需配送，直接进店安装即可" />
       <!-- <van-cell title="支付方式" value="内容" /> -->
     </van-cell-group>
@@ -92,14 +92,3 @@
     <van-picker columns="{{ columns }}" bind:change="onChange"/>
   </van-popup> -->
 </view>
-
-<wxs module="order_detail_wx">
-  var bar = function (time) {
-    var date = getDate(time);
-    var result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
-    return result;
-  }
-  module.exports = {
-    bar: bar
-  };
-</wxs>

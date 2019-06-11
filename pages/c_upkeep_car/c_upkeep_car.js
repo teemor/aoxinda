@@ -27,8 +27,19 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    that.getCarInfo();
+    //更换返回来的--带有单个商品数
     if (options.info) {
+      wx.getStorage({
+        key: 'carInfo',
+        success: function (res) {
+          that.setData({
+            show: res.data[0].mileage ? false : true,
+            carMiles: res.data[0].mileage || 0,
+            carInfo: res.data[0],
+            carName: res.data[0].model
+          })
+        },
+      })
       wx.getStorage({
         key: 'ghInfo',
         success: function (res) {
@@ -41,7 +52,8 @@ Page({
         },
       })
 
-      //更换返回来的--带有单个商品数
+    } else {
+      that.getCarInfo();
     }
   },
 
@@ -102,7 +114,7 @@ Page({
       key: 'userPhone',
       success: function (res) {
         request.isCarInfo(res.data).then(res => {
-          if (res.code === "200" && res.result && res.result.length>0) {
+          if (res.code === "200" && res.result && res.result.length > 0) {
             wx.setStorage({
               key: 'carInfo',
               data: res.result,
@@ -145,7 +157,6 @@ Page({
           confirmText: '回到首页',
           showCancel: false,
           success(res) {
-            console.log(111)
             wx.reLaunch({
               url: '../../pages/index/index'
             })
@@ -206,19 +217,26 @@ Page({
             }
           }).map((n, i) => {
             n.checkedBtn = n.checkedBtn === 0 ? true : false;
+            //初始数据添加--数量
+            n.goodsMsg = n.goodsMsg.map(m => {
+              if (n.jzl && n.maintainName == "机油") {
+                m.priceAll = Math.round(m.price / m.goods_measure * n.jzl * 100) / 100
+                m.goodsNum = n.jzl
+              } else if (n.jzl && n.maintainName != "机油") {
+                m.goodsNum = Math.ceil(n.jzl / m.goods_measure)
+              } else {
+                m.goodsNum = 1
+              }
+              return m
+            })
             if (n.checkedBtn) {
               //初始选中的集合
               c_index.push(i);
               //初始算选中的总价
               n.goodsMsg.forEach(m => {
-                c_price += m.price
+                c_price += m.priceAll ? m.priceAll : m.price * m.goodsNum
               })
             }
-            //初始数据添加--数量
-            n.goodsMsg = n.goodsMsg.map(m => {
-              m.goodsNum = 1
-              return m
-            })
             return n
           })
         that.setData({
@@ -256,7 +274,12 @@ Page({
     if (that.data.activeList.length > 0) {
       wx.setStorage({
         key: 'checkMaintain',
-        data: that.data.checkMaintain,
+        data: that.data.checkMaintain.map((n, i) => {
+          if (n.jzl && n.maintainName == "机油") {
+            n.goodsMsg[0].price = n.goodsMsg[0].price / n.goodsMsg[0].goods_measure
+          }
+          return n
+        }),
       })
       wx.navigateTo({
         url: '../../pages/c_choice_technician/c_choice_technician?allPrice=' + that.data.allPrice,
