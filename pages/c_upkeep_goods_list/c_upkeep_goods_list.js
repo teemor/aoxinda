@@ -138,7 +138,7 @@ Page({
           key: 'ghInfo',
           data: _otherInfo,
         })
-        wx.navigateTo({
+        wx.redirectTo({
           url: `../c_upkeep_car/c_upkeep_car?info=true`
         })
       },

@@ -25,10 +25,18 @@
 
               <van-swipe-cell :key="{{subItem.goods_sku}}" right-width="{{ 230 }}" async-close bind:close="onClose">
                 <view>
-                  <view class="upkeep_project_pro-title">{{subItem.goods_name + ' ' +subItem.goods_sku}}</view>
+                  <view class="upkeep_project_pro-title">{{subItem.goods_name}}</view>
+                  <view class="upkeep_project_pro-subtitle">{{subItem.goods_sku}}</view>
                   <view class="cl upkeep_project_pro-price">
-                    <view class="fl red" wx:if='{{item.maintainName=="机油"}}'>¥ {{subItem.price}} x {{subItem.goodsNum}}L</view>
-                    <view class="fl red" wx:else>¥ {{subItem.price}} x {{subItem.goodsNum}}</view>
+                    <view class='cl'>
+                      <text class="red">¥ {{subItem.price}}</text>
+                      <text class="fr">x {{subItem.goodsNum}}</text>
+                    </view>
+                  </view>
+                  <view class="cl upkeep_project_pro-price_">
+                    保养用量:
+                    <text class="red">3L</text> 价格:
+                    <text class="red">￥60</text>
                   </view>
                 </view>
                 <view slot="right">
