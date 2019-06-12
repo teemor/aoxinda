@@ -13,6 +13,7 @@ Page({
    * carTypeData 年份字典表
    */
   data: {
+    searchValue: '',
     bHeight: 0,
     winHeight:0,
     isShowLetter: false,
@@ -31,7 +32,8 @@ Page({
       name: '扫描行车本',
       key: '2'
     }],
-    searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"]
+    searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
+    searchLetterOld: []
   },
   onLoad: function (options) {
     request.findCarType().then(res => {
@@ -40,22 +42,47 @@ Page({
       })
       let sysInfo = wx.getSystemInfoSync();
       let winHeight = sysInfo.windowHeight;
-      let searchLetter = this.data.searchLetter 
+      let searchLetterOld = this.data.searchLetter 
       // 添加屏幕高度设置子元素的高度
-      let itemH = (winHeight-50)/searchLetter.length
+      let itemH = (winHeight - 50) / searchLetterOld.length
       let tempObj = [];
-      for(let i=0;i<searchLetter.length;i++){
+      for (let i = 0; i < searchLetterOld.length;i++){
         let temp = {};
-        temp.name = searchLetter[i];
+        temp.name = searchLetterOld[i];
         temp.tHeight = i*itemH;
         temp.bHeight = (i+1)*itemH;
         tempObj.push(temp)
       }
       this.setData({
         winHeight:winHeight,
-        searchLetter:tempObj,
+        searchLetterOld:tempObj,
         carData: this.carData()
       })
+    })
+  },
+  /**
+   * 输入赋值
+   * @param {*}
+   */
+  bindKeyInput: function (e) {
+    this.setData({
+      searchValue: e.detail.value
+    })
+  },
+  /**
+   * 搜索
+   * @param {*}
+   */
+  toSearch: function (e) {
+    request.findCarType(this.data.searchValue).then(res => {
+      this.setData({
+        carList: res.data
+      })
+      setTimeout(()=>{
+        this.setData({
+          carData: this.carData()
+        })
+      },30)
     })
   },
   /**
