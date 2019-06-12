@@ -17,6 +17,12 @@
   padding: 0 60rpx;
 }
 
+.upkeep_project_pro-contain::after {
+  clear: both;
+  display: block;
+  content: "";
+}
+
 .upkeep_project_pro-box {
   width: 615rpx;
 }
