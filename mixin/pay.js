@@ -72,7 +72,7 @@ module.exports = {
                   data.data = 'success'
                   data.price = that.data.total
                   let model = encodeURIComponent(JSON.stringify(data))
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: `../success_order/index?data=${model}`
                   })
                 },
@@ -81,7 +81,7 @@ module.exports = {
                   data.id = id
                   data.data = 'fail'
                   let model = encodeURIComponent(JSON.stringify(data))
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: `../success_order/index?data=${model}`
                   })
                 },

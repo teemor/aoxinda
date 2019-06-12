@@ -110,7 +110,7 @@ Page({
     })
   },
   onLoad: function(options) {
-    if(app.globalData.userInfo.avatarUrl){
+    if(app.globalData.userInfo){
       this.setData({
         avatar:app.globalData.userInfo.avatarUrl,
         nickName :app.globalData.userInfo.nickName,

@@ -1,1 +1,19 @@
-/* pages/login/index.wxss */
+@import "../../app.wxss";
+.btn{
+    border-radius: 10rpx;
+    width:90%;
+    margin-left:5%;
+    height:75rpx;
+    line-height:75rpx;
+}
+.login_logo{
+    width: 400rpx;
+    margin: auto;
+}
+.login_logo image{
+    width:400rpx;
+    margin: auto
+}
+button{border: 0;background: none;color:#fff;font-size: 30rpx}
+.button-hover {background: none}
+button::after{ border: none; } 

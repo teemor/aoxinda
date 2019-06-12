@@ -12,11 +12,12 @@ Page({
       order_type: 0, // 0仅退款1退款退货
       back_desription: '',// 退款理由
       back_reason: '',// 退款原因
-      back_money: null,// 退款钱
+      back_money: 0,// 退款钱
       goods_num: 1,// 退款数
       goods_status: null,// 状态
       goods_detail_id: null,// 商品id
       order_detail_id: null,// 订单详情id
+      id:''
     },
     imgList: [],// 图片说明
     goodsData: {},// 商品信息
@@ -61,7 +62,7 @@ Page({
       let list = tempFilePath.map(item => {
         console.log(item, 'item')
         wx.uploadFile({
-          url: 'http://www.maichefu.cn:9014/mall/v1.0/upload',
+          url: 'https://www.maichefu.cn:9015/appapi/v1.0/upload',
           filePath: item,
           name: 'file',
           success: function (res) {
@@ -96,8 +97,8 @@ Page({
    * 跳转退款详情
    */
   refundDetail: function () {
-    request.writeBackOrder(this.data.orderInfo).then(res => {
-      if(this.data.back_reason==''){
+    request.updateBackOrder(this.data.orderInfo).then(res => {
+      if (this.data.back_reason == '') {
         wx.showToast({
           title: '退款原因不能为空',
           icon: 'none',
@@ -105,19 +106,18 @@ Page({
           duration: 1500,
           mask: false,
           success: (result) => {
-            
+
           },
-          fail: () => {},
-          complete: () => {}
+          fail: () => { },
+          complete: () => { }
         });
-      }else if(this.data.back_desription==''){
+      } else if (this.data.back_desription == '') {
         wx.showToast({
-          title:'退款描述不能为空'
+          title: '退款描述不能为空'
         })
-      }else{
-        let order_id = res.data
-        wx.navigateTo({
-          url: `../my_order_refund_detail/index?id=${order_id}`
+      } else {
+        wx.redirectTo({
+          url: `../my_order_refund_detail/index?id=${this.data.model.id}`
         });
       }
     })
@@ -127,16 +127,16 @@ Page({
    */
   description: function (e) {
     this.setData({
-      'orderInfo.back_desription':e.detail
+      'orderInfo.back_desription': e.detail
     })
-    console.log(e,'e123')
+    console.log(e, 'e123')
   },
   /**
    * 数量变化
    */
   onChange: function (e) {
     this.setData({
-      'orderInfo.back_money': e.detail * this.data.goodsData.goods_price + (this.data.serverData ? e.detail * this.data.serverData.money : 0),
+      'orderInfo.back_money': e.detail * this.data.model.back_money + (this.data.serverData ? e.detail * this.data.serverData.money : 0),
       'orderInfo.goods_num': e.detail
     })
   },
@@ -180,19 +180,19 @@ Page({
    */
   onLoad: function (options) {
     let model = JSON.parse(decodeURIComponent(options.model))
-    console.log(model, '退款model')
-    if (model.serverData && model.serverData.length > 0) {
-      this.setData({
-        'orderInfo.goods_num': model.goodsData[0].buy_num,
-        serverData: model.serverData[0]
-      })
-    }
     this.setData({
-      'orderInfo.order_id': model.order_id,
-      'orderInfo.back_money': this.data.serverData ? model.goodsData[0].goods_price * model.goodsData[0].buy_num + this.data.serverData.money * this.data.serverData.server_num : model.goodsData[0].goods_price,
-      'orderInfo.goods_detail_id':model.goodsData[0].goods_detail_id,
-      'orderInfo.order_detail_id':model.goodsData[0].order_detail_id,
-      goodsData: model.goodsData[0]
+      model:model
+    })
+    console.log(model, '退款model')
+    // if (model.serverData && model.serverData.length > 0) {
+    //   this.setData({
+    //     'orderInfo.goods_num': model.goodsData[0].buy_num,
+    //     serverData: model.serverData[0]
+    //   })
+    // }
+    this.setData({
+      'orderInfo.id':model.id,
+      'orderInfo.back_money': model.back_money
     })
     if (model.trade_status_name == "待发货") {
       console.log('代发货')
