@@ -1,5 +1,5 @@
 .car_beauty_shop {
-  border-radius: 20rpx;
+  border-radius: 20rx;
   margin: 30rpx;
   height: 300rpx;
 }
