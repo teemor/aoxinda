@@ -124,23 +124,6 @@
       <view style='padding:10rpx 40rpx;' catchtap='payment'>
         <view style='border-radius:10rpx;background-color:#f6b245;color:#fff;font-size:30rpx;line-height:70rpx;text-align:center;'>下一步</view>
       </view>
-      <!-- <view class='paymentinfo cl'>
-        <view class='paymentinfo-left'>
-          <view class='shopimg fl' bindtap="goodsInfo">
-            <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/shop.png'></image>
-          </view>
-          <view class='red fz40 money fl'>
-            <text>¥{{totalPrice}}</text>
-          </view>
-          <view class='price-all fl txt_white fz30'>
-            <view>商品￥{{allPrice}}</view>
-            <view>服务费￥{{thCost}}</view>
-          </view>
-        </view>
-        <view class='paymentinfo-right' catchtap='payment'>
-          <text>下一步</text>
-        </view>
-      </view> -->
     </view>
     <!-- 底部付款 -->
   </view>

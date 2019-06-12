@@ -124,13 +124,11 @@
     <view class='payment'>
       <view class='paymentinfo cl'>
         <view class='paymentinfo-left'>
-          <view class='shopimg fl' bindtap="goodsInfo">
+          <!-- <view class='shopimg' bindtap="goodsInfo">
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/shop.png'></image>
-          </view>
-          <view class='red fz40 money fl'>
-            <text>¥{{totalPrice}}</text>
-          </view>
-          <view class='price-all fl txt_white fz30' style='color:#fff'>
+          </view> -->
+          <view class='red money'>合计：¥{{totalPrice}}</view>
+          <view class='price-all txt_white fz30' style='color:#fff'>
             <view>商品￥{{allPrice}}</view>
             <view>服务费￥{{thCost}}</view>
           </view>

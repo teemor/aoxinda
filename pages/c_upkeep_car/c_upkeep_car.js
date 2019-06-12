@@ -43,8 +43,9 @@ Page({
       wx.getStorage({
         key: 'ghInfo',
         success: function (res) {
+          console.log(res)
           that.setData({
-            allPrice: res.data.allPrice,
+            allPrice: Math.round(res.data.allPrice * 100) / 100,
             activeList: res.data.activeList,
             checkMaintain: res.data.checkMaintain,
             goodsList: res.data.goodsList
@@ -240,7 +241,7 @@ Page({
             return n
           })
         that.setData({
-          allPrice: c_price,
+          allPrice: Math.round(c_price * 100) / 100,
           activeList: c_index,
           goodsList: {
             result: res.result,

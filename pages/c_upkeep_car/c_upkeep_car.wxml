@@ -80,12 +80,10 @@
   <view class='payment'>
     <view class='paymentinfo'>
       <view class='paymentinfo-left'>
-        <view class='shopimg fl'>
+        <!-- <view class='shopimg fl'>
           <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/toC/shop.png'></image>
-        </view>
-        <view class='money fl'>
-          <text>合计：¥{{allPrice}}</text>
-        </view>
+        </view> -->
+        <view class='money fl'>合计：¥{{allPrice}}</view>
       </view>
       <view class='paymentinfo-right' bindtap='choicetech'>
         <text>选技师施工</text>

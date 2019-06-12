@@ -192,9 +192,9 @@ page {
 
 .money {
   color: #ff4040;
-  font-size: 40rpx;
   line-height: 100rpx;
-  padding-left: 40rpx;
+  padding: 0 20rpx 0 30rpx;
+  font-size: 36rpx;
 }
 
 /* .paymentbtn{
