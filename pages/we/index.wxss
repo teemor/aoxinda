@@ -70,6 +70,9 @@ page {
   width: 35rpx;
   height: 35rpx;
 }
+button{border: 0;background: none;color:#fff;font-size: 30rpx}
+.button-hover {background: none}
+button::after{ border: none; } 
 
 .mine_partner_img {
   width:100%;

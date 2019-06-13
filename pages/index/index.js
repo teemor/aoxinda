@@ -135,9 +135,8 @@ Page({
 
   },
   // 添加我的爱车
-  addCar: function () {
-    console.log(app.globalData)
-    if (app.globalData.userInfo !== null && app.globalData.phoneNum !== "") {
+  addCar: function() {
+    if(app.globalData.userInfo!==null){
       wx.navigateTo({
         url: '../../pages/add_car_mes/index'
       })
