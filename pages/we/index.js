@@ -5,20 +5,7 @@ Page({
   data: {
 
   },
-  bindGetUserInfo: function(e) {
-    console.log(e.detail.userInfo)
-    if (e.detail.userInfo) {
-      this.setData({
-        avatar: e.detail.userInfo.avatarUrl,
-        nickName: e.detail.userInfo.nickName,
-        login: true
-      })
-    } else {
-      this.setData({
-        login: false
-      })
-    }
-  },
+
   myKeep:function(){
     // wx.navigateToMiniProgram({
     //   appId:'wx317e65151f04fa7c',
