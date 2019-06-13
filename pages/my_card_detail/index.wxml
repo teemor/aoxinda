@@ -1,0 +1,5 @@
+<view>
+<view class="car_beauty_shop">
+    <image src="../../common/image/card_bg.png" />
+  </view>
+</view>

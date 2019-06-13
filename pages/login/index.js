@@ -1,11 +1,9 @@
-// pages/login/index.js
+import login from '../../mixin/login'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  mixins: [login],
   data: {
-
+    loginMask: 1,
+    phoneMask: 1
   },
 
   /**

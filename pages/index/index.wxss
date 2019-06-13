@@ -5,9 +5,14 @@
 .van-search__content{
   border-radius: 50rpx !important;
 }
+.shop_add_btn_img image{
+  margin-right:13rpx;
+width:60rpx;height: 55rpx;
+}
 .shop_add_btn_text{
   padding: 30rpx 20rpx;
   width: 500rpx;
+  margin-top:20rpx;
 }
 page {
   min-height: 100%;

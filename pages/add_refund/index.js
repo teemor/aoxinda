@@ -61,7 +61,7 @@ Page({
       let list = tempFilePath.map(item => {
         console.log(item, 'item')
         wx.uploadFile({
-          url: 'http://www.maichefu.cn:9014/mall/v1.0/upload',
+          url: 'https://www.maichefu.cn:9015/appapi/v1.0/upload',
           filePath: item,
           name: 'file',
           success: function (res) {
@@ -116,7 +116,7 @@ Page({
         })
       }else{
         let order_id = res.data
-        wx.navigateTo({
+        wx.redirectTo({
           url: `../my_order_refund_detail/index?id=${order_id}`
         });
       }

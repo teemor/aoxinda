@@ -1,6 +1,4 @@
-import { Technician } from '../../common/api/api'
-const request = new Technician
-const app = getApp()
+// pages/my_card_detail/index.js
 Page({
 
   /**
@@ -9,24 +7,12 @@ Page({
   data: {
 
   },
-  detail:function(){
-   wx.navigateTo({
-      url: '../my_card_detail/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // request.findMyCarNumCard(app.globalData.id).then(res=>{
-    //   console.log(res)
-    // })
+
   },
 
   /**

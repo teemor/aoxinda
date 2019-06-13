@@ -44,6 +44,7 @@ module.exports = {
         console.log(timestamp,'当前时间')
         request.selectOrderDetail({ order_id: options.id }).then(res => {
             this.setData({
+                send_at:this.formateDate(res.send_at),
                 model: res,
                 goodsList: res,
                 sys_at: res.sys_at,

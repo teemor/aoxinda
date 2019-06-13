@@ -1,0 +1,10 @@
+.car_beauty_shop {
+  border-radius: 20rx;
+  margin: 30rpx;
+  height: 300rpx;
+}
+
+.car_beauty_shop image{
+    width: 100%;
+    height:300rpx
+}

@@ -1,13 +1,14 @@
-  <view class="car_beauty_shop-code-contain">
-    <view class="fl car_beauty_shop-code">
-      <image src="{{qrCode.img}}" />
-      <view class="fz28 tc" style="width:280rpx;" bindtap="previewImg">点击放大</view>
+<view class="car_beauty_shop-code-contain" bindtap="detail">
+  <view class="car_beauty_shop">
+    <image src="../../common/image/card_bg.png" />
+  </view>
+  <view class="fl car_beauty_shop-text">
+    <view class="car_beauty_img">
+      <image src="../../common/image/card.png" />
     </view>
-    <view class="fl car_beauty_shop-text">
-      <view class="fz80" style="height:110rpx">Payment</view>
-      <view style="margin-bottom:30rpx;">
-      <view class="fz35 ">洗车 (<span class="orange">{{qrCode.washedNum}}</span>/{{qrCode.washNum}})</view>
-      <view class="fz35">打蜡(<span class="orange">{{qrCode.waxedNum}}</span>/{{qrCode.waxNum}})</view>
-      </view>
+    <view class="fz24 car_beauty_card">
+      <span style="color:#fffaee">剩余项目18次</span>
+      <span style="margin-left:40rpx;color:#83632a">有效期720天</span>
     </view>
   </view>
+</view>
