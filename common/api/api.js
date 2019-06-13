@@ -137,9 +137,11 @@ export class Technician {
     })
   }
   // 查询自己的会员卡
-  findMyCarNumCard = (id) => {
+  findMyCarNumCard = (params) => {
     return http.httpRequest({
-      url: `${HTTP}/carWash/findMyCarNumCard?userId=${id}`
+      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectMyCard`,
+      method: `post`,
+      data: params
     })
   }
   // 商城

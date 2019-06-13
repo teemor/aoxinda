@@ -7,16 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cardData: []
   },
-  detail:function(){
-   wx.navigateTo({
-      url: '../my_card_detail/index',
+  detail:function(e){
+    wx.navigateTo({
+      url: `../my_card_detail/index?id=${e.detail.id}`,
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
       
   },
@@ -27,6 +27,15 @@ Page({
     // request.findMyCarNumCard(app.globalData.id).then(res=>{
     //   console.log(res)
     // })
+    let that = this
+    //app.globalData.openId
+    request.findMyCarNumCard({ buy_user_id: "ooUEg5S9qM1117FuuTF3rRS5ROls" }).then(res => {
+      if (res.data && res.data.length) {
+        that.setData({
+          cardData: res.data
+        })
+      }
+    })
   },
 
   /**

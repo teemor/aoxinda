@@ -30,8 +30,8 @@ Component({
         urls:[that.data.qrCode.img] // 需要预览的图片http链接列表
       })
     },
-    detail:function(){
-      this.triggerEvent('detail')
+    detail:function(e){
+      this.triggerEvent('detail', { id: e.currentTarget.dataset.id })
     }
     
   }
