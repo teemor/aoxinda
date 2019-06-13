@@ -14,7 +14,7 @@ width:60rpx;height: 55rpx;
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 0 20rpx 40rpx;
-  width: 520rpx;
+  width: 549rpx;
   height: 150rpx;
   box-sizing: border-box;
   font-size: 25rpx;

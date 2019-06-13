@@ -11,11 +11,18 @@
     </van-badge-group>
   </view>
   <view class="fl shop_contain" >
-    <view wx:if="{{car}}" class="shop_add_btn_contain" bindtap="editCar" data-item="{{model.model+' '+model.vehicleType}}">
+    <view wx:if="{{car}}" class="shop_add_btn_contain shop_add_btn_contain_" bindtap="editCar" data-item="{{model.model+' '+model.vehicleType}}">
       <view class="fl shop_add_btn_img">
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
       </view>
-      <view class="fl shop_add_btn_text overflow"  >我的爱车：{{model.model+' '+model.vehicleType}}</view>
+      <!-- <view class="fl shop_add_btn_text overflow"  >我的爱车：{{model.model+' '+model.vehicleType}}</view> -->
+      <view class="fl shop_add_btn_text shop_add_btn_text_">
+        <view class='shop_add_info'>
+          <view class='shop_add_info_car'>我的爱车：{{model.model+' '+model.vehicleType+' '+model.carType}}</view>
+          <view class='shop_add_info_km'>行驶里程：{{model.mileage || 0}}KM</view>
+        </view>
+        <image src='../../common/image/edit_index.png' class='shop_add_edit'></image>
+      </view>
     </view>
       <view wx:else class="shop_add_btn_contain"> 
       <view class="fl shop_add_btn_img">
