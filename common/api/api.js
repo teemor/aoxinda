@@ -144,6 +144,29 @@ export class Technician {
       data: params
     })
   }
+  // 查询自己的会员卡详情
+  selectMyCardDetail = (params) => {
+    return http.httpRequest({
+      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectMyCardDetail`,
+      method: `post`,
+      data: params
+    })
+  }
+  //查询卡包所需门店
+  selectShopList = () => {
+    return http.httpRequest({
+      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectShopList`,
+      method: `post`
+    })
+  }
+  // 新人有礼
+  //获取服务项目
+  selectFirstActivity = () => {
+    return http.httpRequest({
+      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectFirstActivity`,
+      method: `post`
+    })
+  }
   // 商城
   // 获取所有分类信息
   selectGoodsType = (model) => {
