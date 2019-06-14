@@ -139,7 +139,7 @@ export class Technician {
   // 查询自己的会员卡
   findMyCarNumCard = (params) => {
     return http.httpRequest({
-      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectMyCard`,
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectMyCard`,
       method: `post`,
       data: params
     })
@@ -147,7 +147,7 @@ export class Technician {
   // 查询自己的会员卡详情
   selectMyCardDetail = (params) => {
     return http.httpRequest({
-      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectMyCardDetail`,
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectMyCardDetail`,
       method: `post`,
       data: params
     })
@@ -155,7 +155,7 @@ export class Technician {
   //查询卡包所需门店
   selectShopList = () => {
     return http.httpRequest({
-      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectShopList`,
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectShopList`,
       method: `post`
     })
   }
@@ -163,7 +163,7 @@ export class Technician {
   //获取服务项目
   selectFirstActivity = () => {
     return http.httpRequest({
-      url: `http://192.168.31.76:9015/appapi/v1.0/card/selectFirstActivity`,
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectFirstActivity`,
       method: `post`
     })
   }
