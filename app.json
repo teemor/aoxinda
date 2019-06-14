@@ -63,6 +63,14 @@
     "pages/edit_refund/index",
     "pages/my_card_detail/index"
   ],
+  "subPackages":[
+    {
+      "root":"packageA",
+      "pages":[
+        "pages/index/index"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f6b245",

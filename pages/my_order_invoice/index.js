@@ -14,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    agree:false,
+    agree:false, 
     checked: true,
     ptchecked: true,
     radio: 'pt',

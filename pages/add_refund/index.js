@@ -1,8 +1,10 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
 import { img } from "../../utils/method"
-Page({
+import shop_detail from '../../mixin/shop_detail'
 
+Page({
+  mixins: [shop_detail],
   /**
    * 页面的初始数据
    */
@@ -181,6 +183,8 @@ Page({
   onLoad: function (options) {
     let model = JSON.parse(decodeURIComponent(options.model))
     console.log(model, '退款model')
+        this.selectOrderDetail(model)
+
     if (model.serverData && model.serverData.length > 0) {
       this.setData({
         'orderInfo.goods_num': model.goodsData[0].buy_num,
@@ -194,22 +198,6 @@ Page({
       'orderInfo.order_detail_id':model.goodsData[0].order_detail_id,
       goodsData: model.goodsData[0]
     })
-    if (model.trade_status_name == "待发货") {
-      console.log('代发货')
-      this.setData({
-        reason: this.data.reasonA
-      })
-    } else if (model.trade_status_name == "已发货" || model.trade_status_name == "待安装") {
-      console.log('已发货--待安装')
-      this.setData({
-        shopstatus: true
-      })
-    } else if (model.trade_status_name == "已收货") {
-      console.log('已收货')
-      this.setData({
-        reason: this.data.reasonB
-      })
-    }
   }
 
 })

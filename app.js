@@ -13,12 +13,15 @@ App({
   },
   appid: "wx97a3505497150b66",
   onLaunch: function () {
+    let that = this
     wx.getStorage({
       key: 'user',
       success: function (res) {
+        that.userInfo=res.data
         wx.getStorage({
           key: 'userPhone',
           success: function (res) {
+         
           },
           fail:()=>{
             console.log('hehe1')
@@ -49,12 +52,11 @@ App({
 
 
     //  加载天气数据
-    this.loadWeatherData();
+    that.loadWeatherData();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    let that = this
     // 登录
     wx.login({
       success(res){

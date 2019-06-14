@@ -102,7 +102,7 @@
         <image src='../../common/image/mall.png' />
       </view>
     </view>
-    <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall" bindtap="shopList" data-item="{{itemshopList}}">
+    <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall" bindtap="shopList" data-item="{{item}}">
       <view class="fz28">{{item.name}}</view>
       <view class="fz26 grey">大品牌</view>
       <view class="limited_img_mall" style="margin-top:15rpx">

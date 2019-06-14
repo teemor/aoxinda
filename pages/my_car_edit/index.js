@@ -31,6 +31,7 @@ Page({
       key: 'user',
       success: (result) => {
         request.updateCar({
+          CMS:this.data.model.CMS,
           carId:this.data.carId,
           PP:this.data.model.PP,
           registerDate: this.data.date,

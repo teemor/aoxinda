@@ -1,0 +1,19 @@
+<view>
+<view class="banner">
+<image src="../../common/img/banner.png"/>
+</view>
+<view class="cl">
+<view class="fl">
+附近门店
+</view>
+<view class="fl">人民购物广场</view><view class="fr">全部</view>
+</view>
+<view wx:if="carType" class="shop_goods_invite"  bindtap="editCar">
+    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的商品</view>
+    <view class="shop_goods_invite_btn">
+    <image src="../../../common/image/edit.png"/>
+    </view>
+  </view>                                                   
+<view></view>
+</view>

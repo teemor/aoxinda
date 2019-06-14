@@ -31,6 +31,7 @@ Page({
       key: 'user',
       success: (result) => {
         request.saveCar({
+          CMS:this.data.model.CMS,
           PP:this.data.model.PP,
           registerDate: this.data.date,
           carTypeId: this.data.model.LevelID,

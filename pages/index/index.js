@@ -153,8 +153,11 @@ Page({
   },
   // 汽车美容
   carbeautyBtn: function () {
+    // wx.navigateTo({
+    //   url: '../../pages/car_beauty/index',
+    // })
     wx.navigateTo({
-      url: '../../pages/car_beauty/index',
+      url: '../../packageA/pages/index/index',
     })
   },
   // 车保养
