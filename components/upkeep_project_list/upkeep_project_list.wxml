@@ -60,3 +60,4 @@
     </van-collapse>
   </view>
 </view>
+<view wx:if="{{goodsList.data.length==0}}" style='text-align:center;height:100rpx;line-height:100rpx;'>暂无推荐保养商品</view>
