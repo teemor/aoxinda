@@ -17,7 +17,7 @@
               </view>
             </van-dialog>
             <!-- 弹出输入框 -->
-            <view class='fr red'>更换爱车>></view>
+            <view class='fr red' bindtap='toCar'>更换爱车>></view>
           </view>
         </view>
       </view>
