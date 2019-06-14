@@ -75,3 +75,30 @@
 .car_list_box .panel-index--van-panel__header-value {
   color: #fdbb51;
 }
+
+.panel-box {
+  position: relative;
+}
+
+.panel-img-box {
+  position: absolute;
+  left: 30rpx;
+  top: 0;
+  width: 100rpx;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.panel-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.car_list_box {
+  padding-left: 120rpx;
+}

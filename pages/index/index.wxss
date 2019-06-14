@@ -10,9 +10,25 @@
 width:60rpx;height: 55rpx;
 }
 .shop_add_btn_text{
-  padding: 30rpx 20rpx;
-  width: 500rpx;
-  margin-top:20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0 20rpx 40rpx;
+  width: 549rpx;
+  height: 150rpx;
+  box-sizing: border-box;
+  font-size: 25rpx;
+}
+.shop_add_btn_text .shop_add_info_car{
+  margin-bottom: 20rpx;
+  width: 360rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shop_add_btn_text .shop_add_edit{
+  width: 48rpx;
+  height: 48rpx;
 }
 page {
   min-height: 100%;

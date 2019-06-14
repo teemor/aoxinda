@@ -1,21 +1,25 @@
 <view class="upkeep_car_contain">
   <view class="upkeep_car_exchange-title">
-    <view class="upkeep_car_exchang-mark fl">
-      <view class="upkeep_car_exchange-text">{{carName}}
-        <van-icon name="exchange" custom-style="float:right;line-height:40rpx;font-size:30rpx;" bindtap='toCar' />
-      </view>
-      <view class="unkeep_car_exchange-btn">
-        <text class=""> 当前里程</text>
-        <text class="" style='padding: 0 15rpx;'> {{carMiles}}</text>
-        <text class=''>km</text>
-        <text class="red edit" bindtap='editMiles'>修改</text>
-        <!-- 弹出输入框 -->
-        <van-dialog use-slot async-close show="{{show}}" bind:close="onClose">
-          <view class='carMiles'>
-            <input type='number' placeholder='请输入车辆公里数' bindinput='carMilesValue' maxlength="6"></input>
+    <view class='upkeep_car_exchange-box'>
+      <image mode='aspectFit' src='{{carInfo.img_url}}' class='upkeep_car_exchange-box-img'></image>
+      <view class='upkeep_car_exchange-box-item'>
+        <view class="upkeep_car_exchang-mark">
+          <view class="upkeep_car_exchange-text">{{carName}}</view>
+          <view class="unkeep_car_exchange-btn">
+            <text class=""> 当前里程</text>
+            <text class="" style='padding: 0 15rpx;'> {{carMiles}}</text>
+            <text class=''>km</text>
+            <text class="red edit" bindtap='editMiles'>修改</text>
+            <!-- 弹出输入框 -->
+            <van-dialog use-slot async-close show="{{show}}" bind:close="onClose">
+              <view class='carMiles'>
+                <input type='number' placeholder='请输入车辆公里数' bindinput='carMilesValue' maxlength="6"></input>
+              </view>
+            </van-dialog>
+            <!-- 弹出输入框 -->
+            <view class='fr red' bindtap='toCar'>更换爱车>></view>
           </view>
-        </van-dialog>
-        <!-- 弹出输入框 -->
+        </view>
       </view>
     </view>
   </view>

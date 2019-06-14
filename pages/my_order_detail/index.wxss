@@ -52,3 +52,27 @@ page{
     margin-top:-140rpx;
     margin-left:90rpx;
 }
+.location_contain{
+  display: flex;
+  align-items: center;
+}
+.location_img{
+  height:60rpx;
+}
+.location_img image{
+  margin-top: 0;
+}
+.location_address{
+  margin-right: 40rpx;
+  padding-left: 10rpx;
+  margin-top: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.location_address>view{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 46rpx;
+}

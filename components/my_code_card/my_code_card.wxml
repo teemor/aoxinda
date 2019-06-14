@@ -1,4 +1,4 @@
-<view class="car_beauty_shop-code-contain" bindtap="detail">
+<!-- <view class="car_beauty_shop-code-contain" bindtap="detail">
   <view class="car_beauty_shop">
     <image src="../../common/image/card_bg.png" />
   </view>
@@ -10,5 +10,13 @@
       <span style="color:#fffaee">剩余项目18次</span>
       <span style="margin-left:40rpx;color:#83632a">有效期720天</span>
     </view>
+  </view>
+</view> -->
+<view class='card_bag' style='background-image:url(../../common/image/card_bg.png)' wx:for="{{qrCode}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='detail'>
+  <view class='card_title'>{{item.card_name}}</view>
+  <view class='card_content'>
+    <text>剩余项目{{item.use_times}}次</text>
+    <text class='line'>|</text>
+    <text class='brown'>有效期{{item.use_days}}天</text>
   </view>
 </view>

@@ -19,7 +19,13 @@
       <view class="fl shop_add_btn_img" style='margin-left:30rpx;margin-top:50rpx;'>
       <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
       </view>
-      <view class="fl shop_add_btn_text" >我的爱车：{{model.model+' '+model.vehicleType}}</view>
+      <view class="fl shop_add_btn_text">
+        <view class='shop_add_info'>
+          <view class='shop_add_info_car'>我的爱车：{{model.model+' '+model.vehicleType+' '+model.carType}}</view>
+          <view class='shop_add_info_km'>行驶里程：{{model.mileage || 0}}KM</view>
+        </view>
+        <image src='../../common/image/edit_index.png' class='shop_add_edit'></image>
+      </view>
     </view>
   <view wx:else class="add_contain" bindtap="addCar">
     <view class="fl add_contain_img">

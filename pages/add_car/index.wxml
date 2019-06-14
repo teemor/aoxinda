@@ -5,7 +5,7 @@
   <view hidden="{{activeIndex!=='1'}}">
     <!-- 搜索 -->
     <view class='add_car_search-input'>
-      <input type='text' placeholder="点击搜索您爱车的型号…" placeholder-class="add_car_place" bindinput="bindKeyInput" />
+      <input type='text' placeholder="点击搜索您爱车的型号…" placeholder-class="add_car_place" bindinput="bindKeyInput" bindconfirm="toSearch" class='add_car_input' />
       <view class='add_car_search-btn'>
         <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/search.png' bindtap='toSearch'></image>
       </view>
