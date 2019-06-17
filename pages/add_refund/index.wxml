@@ -2,7 +2,7 @@
   <view>
     <view class="cl my_order_list_box" bindtap="orderDetail">
       <view class="fl my_order_list_image">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+        <image src="{{goodsData.file_url}}" />
       </view>
       <view class="fl my_order_list_text fz26">
         <view class="">{{goodsData.goods_name}}</view>
