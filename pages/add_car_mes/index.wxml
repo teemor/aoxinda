@@ -1,10 +1,10 @@
 <view class="mine_cell_contain">
-  <view class="mine_cell-list">
+  <!-- <view class="mine_cell-list">
     <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
       <van-cell title="城市" value="{{region?region[0]+region[1]+region[2]:'请选择所在城市'}}" is-link bind:click="myAddress">
       </van-cell>
     </picker>
-  </view>
+  </view> -->
   <view class="mine_cell-list">
     <van-cell title="车型" url="../add_car/index" value="{{carType===''?'选择您的车型':carType}}" is-link bind:click="myAddress">
     </van-cell>
