@@ -9,6 +9,11 @@ Page({
   data: {
     CleanStore
   },
+  storeDetail:function(){
+    wx.navigateTo({
+      url:'../../pages/store_detail/index'
+    })
+  },
   storeList:function(){
     wx.navigateTo({
       url: '../../pages/store_list/index',

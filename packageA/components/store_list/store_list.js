@@ -18,6 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    storeDetail:function(){
+      this.triggerEvent('storeDetail',this.data.item)
+    }
   }
 })

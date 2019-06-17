@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
 
   },
 

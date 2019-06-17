@@ -1,4 +1,5 @@
-   <view class="space_store_img fl" bindtap="">
+   <view bindtap="storeDetail">
+   <view class="space_store_img fl" >
         <image src="{{item.img}}" />
       </view>
       <view class="fl space_store_text">
@@ -29,4 +30,4 @@
         </view>
       </view>
       <view class="cl"></view>
-   
+   </view>
