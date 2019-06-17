@@ -9,14 +9,10 @@ Page({
   data: {
     CleanStore
   },
-  storeDetail:function(){
+  storeDetail:function(e){
+    console.log(e)
     wx.navigateTo({
-      url:'../../pages/store_detail/index'
-    })
-  },
-  storeList:function(){
-    wx.navigateTo({
-      url: '../../pages/store_list/index',
+      url: '../../pages/store_detail/index',
       success: (result) => {
         
       },

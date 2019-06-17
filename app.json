@@ -63,11 +63,13 @@
     "pages/edit_refund/index",
     "pages/my_card_detail/index"
   ],
-  "subPackages":[
+  "subPackages": [
     {
-      "root":"packageA",
-      "pages":[
-        "pages/index/index"
+      "root": "packageA",
+      "pages": [
+        "pages/index/index",
+        "pages/store_list/index",
+        "pages/store_detail/index"
       ]
     }
   ],

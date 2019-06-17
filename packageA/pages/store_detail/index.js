@@ -1,30 +1,14 @@
-import {
-  CleanStore
-} from '../../common/static/api_data'
+// packageA/pages/store_detail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    CleanStore
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+
   },
-  storeDetail:function(){
-    wx.navigateTo({
-      url:'../../pages/store_detail/index'
-    })
-  },
-  storeList:function(){
-    wx.navigateTo({
-      url: '../../pages/store_list/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
