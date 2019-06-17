@@ -4,6 +4,7 @@
     height:320rpx;
 }
 .shop_goods_invite image{
+  margin-top: 15rpx;
     width:100%;
     height: 80rpx;
     /* background: url('http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png') */
@@ -28,4 +29,44 @@
   margin-top:-60rpx;
   margin-left:680rpx;
   
+  }
+  .space_contain{
+    margin-top:20rpx;
+  }
+  .keepup{
+    height:80rpx;line-height:80rpx;
+  }
+  .grey{
+    color:#999999
+  }
+  .space_box{
+    width: 160rpx;
+    margin-bottom: 30rpx;
+  }
+  .space_img{
+    width:35rpx;
+margin: auto;
+  }
+  .space_img image{
+    margin: auto;
+width:35rpx;
+height:35rpx;
+  }
+  .space_list{
+    background: #f3f3f3;
+  }
+  .space_store_img{
+    width: 160rpx;
+    margin-right:30rpx;
+  }
+  .space_store_img image{
+    margin: auto;
+    width:160rpx;
+    height:160rpx
+  }
+  .space_store_box{
+    margin-bottom: 20rpx;
+    height: 180rpx;
+    background: #fff;
+    padding:10rpx 30rpx;
   }
