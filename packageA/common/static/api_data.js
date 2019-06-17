@@ -1,5 +1,37 @@
 export const CleanStore = [{
     "img":"../../common/img/store.png",
     "title":"奥宝星辉保养维修",
-    
+    "km":"11.3km",
+    "address":"河北省唐山市丰润区防风路162号东西南北",
+    "service":["洗车","镀膜","漆面养护","打蜡"],
+    "type":"洗",
+    "remark":"标准洗车-5座洗车",
+    "price":"30"
+},{
+    "img":"../../common/img/store.png",
+    "title":"奥宝星辉保养维修",
+    "km":"11.3km",
+    "address":"河北省唐山市丰润区防风路162号东西南北",
+    "service":["洗车","镀膜","漆面养护","打蜡"],
+    "type":"洗",
+    "remark":"标准洗车-5座洗车",
+    "price":"30"
+},{
+    "img":"../../common/img/store.png",
+    "title":"奥宝星辉保养维修",
+    "km":"11.3km",
+    "address":"河北省唐山市丰润区防风路162号东西南北",
+    "service":["洗车","镀膜","漆面养护","打蜡"],
+    "type":"洗",
+    "remark":"标准洗车-5座洗车",
+    "price":"30"
+},{
+    "img":"../../common/img/store.png",
+    "title":"奥宝星辉保养维修",
+    "km":"11.3km",
+    "address":"河北省唐山市丰润区防风路162号东西南北",
+    "service":["洗车","镀膜","漆面养护","打蜡"],
+    "type":"洗",
+    "remark":"标准洗车-5座洗车",
+    "price":"30"
 }]

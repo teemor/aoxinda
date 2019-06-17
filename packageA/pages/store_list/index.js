@@ -9,17 +9,7 @@ Page({
   data: {
     CleanStore
   },
-  storeList:function(){
-    wx.navigateTo({
-      url: '../../pages/store_list/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

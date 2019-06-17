@@ -6,14 +6,27 @@
     <view class="fl  tc bold" style="width:180rpx;border-bottom:4rpx solid #fdbb51;">
       附近门店
     </view>
-    <view class="fl fz30 grey">人民购物广场</view>
-    <view class="fr grey">全部</view>
+    <view class="fl fz30 grey">
+      <view class="fl loc_img">
+        <image src="../../common/img/location.png" />
+      </view>
+      <view class="fl">人民购物广场</view>
+    </view>
+    <view class="fr grey fz26" bindtap="storeList">
+      <view class="fl">全部</view>
+      <view class="fl all_img">
+        <image src="../../common/img/all.png" />
+      </view>
+    </view>
   </view>
   <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
     <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的商品</view>
-    <view class="shop_goods_invite_btn">
+    <view class="shop_edit">
       <image src="../../../common/image/edit.png" />
+    </view>
+    <view class="shop_close">
+      <image src="../../../common/image/close.png" />
     </view>
   </view>
   <view class="cl space_contain">
@@ -48,24 +61,9 @@
       <view class="fz30">打蜡</view>
     </view>
   </view>
-  <view class="space_list fz28 cl" wx:for="{{}}" wx:key="{{item}}">
-    <view class="space_store_box">
-      <view class="space_store_img fl">
-        <image src="../../common/img/store.png" />
-      </view>
-      <view class="fl">
-        <view>奥宝星辉保养维修（恒益店）</view>
-        <view></view>
-        <view>
-          <view>11.3km</view>
-          <view>河北省唐山市丰润区唐丰路</view>
-        </view>
-        <view></view>
-        <view>
-        全车打蜡-5座洗车
-        </view>
-      </view>
+  <view class="space_list fz28 cl">
+    <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
+    <storeList item="{{item}}"/>
     </view>
-     
   </view>
 </view>

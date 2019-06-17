@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 38,
+			"current": 39,
 			"list": [
 				{
 					"id": -1,
@@ -322,6 +322,13 @@
 					"id": -1,
 					"name": "门店",
 					"pathName": "packageA/pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店列表",
+					"pathName": "packageA/pages/store_list/index",
 					"scene": null
 				}
 			]

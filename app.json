@@ -61,13 +61,15 @@
     "pages/c_order_detail/index",
     "pages/c_selfInfo/c_selfInfo",
     "pages/edit_refund/index",
-    "pages/my_card_detail/index"
+    "pages/my_card_detail/index",
+    "packageA/pages/store_detail/index"
   ],
-  "subPackages":[
+  "subPackages": [
     {
-      "root":"packageA",
-      "pages":[
-        "pages/index/index"
+      "root": "packageA",
+      "pages": [
+        "pages/index/index",
+        "pages/store_list/index"
       ]
     }
   ],
