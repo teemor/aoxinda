@@ -110,9 +110,8 @@ Page({
     })
     if (options.info) {
       let car = JSON.parse(options.info)
-      let date_ = new Date(car.lastUpkeep);
       this.setData({
-        date: date_.getFullYear() + '-' + (date_.getMonth() + 1) + '-' + date_.getDate(),
+        date: car.registerDate,
         kmTxt: car.mileage,
         carType: car.model + car.vehicleType,
         carTypeId_: car.LevelID,
