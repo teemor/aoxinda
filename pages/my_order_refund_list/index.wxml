@@ -11,7 +11,7 @@
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
   </view>
   <view class="fl my_order_list_text fz28">
-    <view class="fz28">{{item.goods_name}}</view>
+    <view class="fz28 order_text_over">{{item.goods_name}}</view>
     <view class="fz24 my_order_describe">数量{{item.goods_num}} 产品：{{item.sku_name}}</view>
     <view class="cl">
     <view class="fl red">¥{{item.back_money}}</view>

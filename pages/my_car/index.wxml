@@ -1,4 +1,4 @@
-<view>
+<view style='padding-bottom:120rpx;'>
   <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
    <view class="mycar_img fl">

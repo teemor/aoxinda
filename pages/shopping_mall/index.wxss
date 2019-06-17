@@ -51,7 +51,8 @@ margin-top:-40rpx;
 }
 
 .shop_goods_text {
-  font-size: 28rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
 }
 .van-badge{
   background: white !important;

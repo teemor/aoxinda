@@ -10,7 +10,7 @@ Page({
     desc:true,
     list: [1, 3, 4, 6],
     sortShow:false,
-    brandType:[{name:'宝马(BMN)',id:'1'},{name:'博世(BOS)',id:'2'},{name:'博世(BOS)',id:'3'},{name:'博世(BOS)',id:'3'}],
+    brandType:[],
     sortType: [{ name: '销量', id: '1' }, { name: '价格', id: '2' },{name:'筛选',id:'3'}]
   },
   startPrice:function(e){
