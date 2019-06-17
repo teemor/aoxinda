@@ -29,8 +29,12 @@ page{
     width: 15rpx;
     height: 30rpx;
 }
-.my_order_list_text{
-    
+.my_order_list_text text{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .my_order_describe{
     margin-top: 10rpx;
@@ -41,8 +45,8 @@ page{
     margin-top:10rpx;
     background: #fff;
     padding:10rpx 30rpx 30rpx;
-    height:250rpx;
     width: 100%;
+    box-sizing: border-box;
 }
 .order_detail_bg{
     position: relative;
@@ -58,4 +62,8 @@ page{
     position: absolute;
     margin-top:-140rpx;
     margin-left:90rpx;
+}
+.tk_box{
+  display: flex;
+  align-items: center;
 }
