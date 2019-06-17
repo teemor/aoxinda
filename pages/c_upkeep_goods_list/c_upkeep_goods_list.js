@@ -27,9 +27,6 @@ Page({
     }, {
       name: '价格',
       id: '2'
-    }, {
-      name: '筛选',
-      id: '3'
     }],
     search: {
       car_type: '', //车型

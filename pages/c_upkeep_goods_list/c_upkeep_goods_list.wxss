@@ -3,7 +3,7 @@
 .shop_goods_title {
   height: 80rpx;
   line-height: 80rpx;
-  width: 245rpx;
+  width: 50%;
   font-size: 30rpx;
 }
 
