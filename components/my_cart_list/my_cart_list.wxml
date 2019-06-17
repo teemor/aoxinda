@@ -1,6 +1,6 @@
 <view class="my_cart_content">
   <view class='my_cart_list fl' catchtap="detail">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+    <image src="{{model.pic_id}}" />
   </view>
   <view class="fl my_cart_box"  catchtap="detail">
     <view class="my_cart_title fz30">
