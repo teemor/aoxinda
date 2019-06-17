@@ -24,7 +24,7 @@
 </view>
 <view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.goodsData}}" wx:key="{{item}}">
   <view class="fl my_order_list_image">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+    <image src="{{item.file_url}}" />
   </view>
   <view class="fl my_order_list_text">
     <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.goods_name}}</view>
