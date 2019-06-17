@@ -107,7 +107,7 @@
       <view>
         <view class="cart_title_price cl">
           <view class="fl cart_img">
-            <image src="{{imgList[0]}}" />
+            <image src="{{item.file_url}}" />
           </view>
           <view class="fl cart_price">
             <view class="red">¥{{price}}</view>
