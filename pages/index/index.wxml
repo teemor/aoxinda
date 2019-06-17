@@ -90,7 +90,7 @@
   <view class='limited_contain'>
     <view class='limited_title'>
       <view class='limited_title-text'>
-        <image src='../../common/image/hot.png' />
+        <image src='../../common/image/hot.png' bindtap='toMall' />
       </view>
     </view>
     <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl" bindtap="shopDetail" data-item="{{item.product_code}}">
@@ -105,7 +105,7 @@
   <view class='limited_contain'style="margin-top:20rpx">
     <view class='limited_title'>
       <view class='limited_title-text'>
-        <image src='../../common/image/mall.png' />
+        <image src='../../common/image/mall.png' bindtap='toMall' />
       </view>
     </view>
     <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall" bindtap="shopList" data-item="{{item}}">
