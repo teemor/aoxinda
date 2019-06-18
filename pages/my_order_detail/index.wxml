@@ -5,7 +5,7 @@
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <view  class="fz24 cl" style="width:440rpx;margin-top:50rpx;" wx:if="{{model.expect_sent_at}}">
+    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.expect_sent_at&&model.trade_status_name!=='已完成'&&model.trade_status_name!=='已安装'}}">
     预计{{expect_sent_at}}发货，请及时关注物流状态
     </view>
     <view wx:elif="{{model.trade_status_name===''}}">
