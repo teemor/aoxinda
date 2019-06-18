@@ -19,7 +19,9 @@
     <view bind:tap="onClick" class="van-cell van-cell van-cell--clickable van-cell--clickable van-cell--hover van-cell--hover" hover-class="van-cell--hover hover-class" hover-stay-time="70" style="" role="" aria-label="">
       <view class="van-cell__title van-cell__title" style="" role="" aria-label="">行驶里程</view>
       <view class="van-cell__value van-cell__value" role="" aria-label="">
-      <input type="text" class="fl" style="width:200rpx" placeholder="公里数" value="{{kmTxt}}" bindinput="kmChange"/>  KM</view>
+        <text class='fr' style='line-height:1.45rem;margin-left:10rpx;'>KM</text>
+        <input type="number" class="fr" style="width:200rpx" placeholder="公里数" value="{{kmTxt}}" bindinput="kmChange"/>
+      </view>
       <view bind:tap="onClick" class="cell-index--van-cell__right-icon van-icon van-icon van-icon-arrow van-icon-arrow" style="" role="" aria-label=""></view>
     </view>
 
