@@ -38,14 +38,13 @@ page {
 
 .upkeep_car_exchange-box-img {
   margin-right: 20rpx;
-  width: 100rpx;
+  width: 150rpx;
   height: 100rpx;
-  border-radius: 50%;
-  overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .upkeep_car_exchange-box-item {
-  flex: 1;
+  flex: 0 1 auto;
 }
 
 .upkeep_car_exchange-title {
@@ -58,7 +57,7 @@ page {
 .upkeep_car_exchang-mark {
   position: relative;
   color: #424242;
-  width: 100%;
+  width: 85%;
 }
 
 .upkeep_car_exchange-text {

@@ -5,7 +5,7 @@
   </view>
   <view class="cl my_order_list_box" bindtap="orderDetail" wx:for="{{goodsList.goodsData}}" wx:key="{{item}}">
     <view class="fl my_order_list_image">
-      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+      <image src="{{item.file_url}}" />
     </view>
     <view class="fl my_order_list_text">
       <view class="fz28 two_overflow">{{item.goods_name}}</view>
@@ -40,7 +40,7 @@
 <view wx:else class="my_order_list-box">
   <view class="cl my_order_list_box" bindtap="orderDetail">
     <view class="fl my_order_list_image">
-      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+      <image src="{{goodsList.file_url}}" />
     </view>
     <view class="fl my_order_list_text">
       <view class="myorder_goods_name">{{goodsList.goods_name}}</view>

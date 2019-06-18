@@ -13,7 +13,7 @@
   <view class="fz26 high60">退款信息</view>
   <view class='tk_box'>
     <view class="my_order_list_image">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+        <image src="{{detailData.file_url}}" />
       </view>
       <view class="my_order_list_text fz26">
         <view class="">{{detailData.goods_name}}</view>
