@@ -57,11 +57,11 @@ page {
 .upkeep_car_exchang-mark {
   position: relative;
   color: #424242;
-  width: 85%;
+  width: 100%;
 }
 
 .upkeep_car_exchange-text {
-  width: 100%;
+  width: 500rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
