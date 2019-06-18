@@ -5,8 +5,8 @@
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <view  class="fz24 cl" style="width:440rpx;margin-top:50rpx;" wx:if="{{model.send_at}}">
-    预计{{send_at}}发货，请及时关注物流状态
+    <view  class="fz24 cl" style="width:440rpx;margin-top:50rpx;" wx:if="{{model.expect_sent_at}}">
+    预计{{expect_sent_at}}发货，请及时关注物流状态
     </view>
     <view wx:elif="{{model.trade_status_name===''}}">
     </view>
