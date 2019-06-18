@@ -167,7 +167,7 @@
 
 .add_car_letter-text image {
   float: left;
-  width: 70rpx;
+  width: 105rpx;
   height: 70rpx;
   margin-top: 15rpx;
   margin-right: 20rpx;
