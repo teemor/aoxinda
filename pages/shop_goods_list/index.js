@@ -187,9 +187,9 @@ Page({
       checked: event.detail
     });
     if (event.detail) {
-      this.selectGoodsList({ goodsType: this.data.goodsType, car_type: this.data.car_type })
+      this.selectGoodsList({ goodsType: this.data.goodsType, goodsName: this.data.goodsName, car_type: this.data.car_type })
     } else {
-      this.selectGoodsList({ goodsType: this.data.goodsType })
+      this.selectGoodsList({ goodsType: this.data.goodsType, goodsName: this.data.goodsName })
     }
   }
 })
