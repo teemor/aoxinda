@@ -5,12 +5,13 @@
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.send_at}}">
+    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.send_at&&model.trade_status_name!=='已完成'&&model.trade_status_name!=='已安装'}}">
     预计{{send_at}}发货，请及时关注物流状态
     </view>
     <view wx:elif="{{model.trade_status_name===''}}">
     </view>
     <view wx:elif="{{model.trade_status_name==='待付款'}}" class="fz24 cl" style="width:300rpx">订单为你保留{{creates}},超时后将自动关闭</view>
+    <view wx:else></view>
   </view>
 </view>
 <view class="location_contain" bindtap="locationBtn">
