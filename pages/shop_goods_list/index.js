@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    checked: true,
     desc:true,
     list: [1, 3, 4, 6],
     sortShow:false,
@@ -104,7 +105,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      carType:app.globalData.carType
+      carType: app.globalData.carType
     })
     console.log(app)
     let model = decodeURIComponent(options.id)
@@ -115,9 +116,10 @@ Page({
     })
     this.setData({
       goodsType: id,
-      goodsName: goods_name
+      goodsName: goods_name,
+      car_type: this.data.carType.LevelID
     })
-    this.selectGoodsList({ goodsType: id, goodsName: goods_name })
+    this.selectGoodsList({ goodsType: id, goodsName: goods_name, car_type: this.data.car_type })
   },
   /**
    * 列表
@@ -178,5 +180,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //是否推荐车相关
+  onChange(event) {
+    this.setData({
+      checked: event.detail
+    });
+    if (event.detail) {
+      this.selectGoodsList({ goodsType: this.data.goodsType, car_type: this.data.car_type })
+    } else {
+      this.selectGoodsList({ goodsType: this.data.goodsType })
+    }
   }
 })
