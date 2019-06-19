@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "我的卡包",
-  "usingComponents": {
-    "code-card":"../../components/my_code_card/my_code_card"
-  }
+  "usingComponents": {}
 }
