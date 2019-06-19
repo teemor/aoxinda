@@ -1,10 +1,11 @@
+const app = getApp();
 import login from '../../mixin/login'
 Page({
   mixins: [login],
   data: {
     loginMask: 1,
-    phoneMask: 1,
-    parentOpenId:''
+    phoneMask: 1
+    // parentOpenId:''
   },
 
   /**
@@ -13,9 +14,10 @@ Page({
   onLoad: function (options) {
     if (options.parentOpenId) {
       //是否存在推荐人openId
-      this.setData({
-        parentOpenId: options.parentOpenId
-      })
+      // this.setData({
+      //   parentOpenId: options.parentOpenId
+      // })
+      app.globalData.parentOpenId = options.parentOpenId
     }
   },
 
