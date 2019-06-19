@@ -31,6 +31,22 @@ page {
   padding-left: 20rpx;
 }
 
+.upkeep_car_exchange-box {
+  display: flex;
+  align-items: center;
+}
+
+.upkeep_car_exchange-box-img {
+  margin-right: 20rpx;
+  width: 150rpx;
+  height: 100rpx;
+  flex: 0 0 auto;
+}
+
+.upkeep_car_exchange-box-item {
+  flex: 0 1 auto;
+}
+
 .upkeep_car_exchange-title {
   height: 100rpx;
   box-shadow: 0 0 20rpx #e1e1e1;
@@ -41,11 +57,11 @@ page {
 .upkeep_car_exchang-mark {
   position: relative;
   color: #424242;
-  width: 100%;
-  text-align: center;
+  width: 85%;
 }
 
 .upkeep_car_exchange-text {
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -192,9 +208,9 @@ page {
 
 .money {
   color: #ff4040;
-  font-size: 40rpx;
   line-height: 100rpx;
-  padding-left: 40rpx;
+  padding: 0 20rpx 0 30rpx;
+  font-size: 36rpx;
 }
 
 /* .paymentbtn{

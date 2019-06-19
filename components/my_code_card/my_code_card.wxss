@@ -2,18 +2,75 @@
 .car_beauty_shop-code-contain {
   border-radius: 20rpx;
   margin: 30rpx;
-  height: 300rpx;
-  padding: 35rpx 35rpx 50rpx 35rpx;
-  box-shadow: 0px 0px 25rpx #a7a6a6c4;
+  height: 270rpx;
+  /* padding: 35rpx 35rpx 50rpx 35rpx; */
+  /* box-shadow: 0px 0px 25rpx #a7a6a6c4; */
 }
-
+.car_beauty_shop image{
+  width:690rpx;
+  height:270rpx;
+}
 .car_beauty_shop-code {
 }
-
+.car_beauty_card{
+  margin-left:70rpx;
+  margin-top:20rpx;
+}
 .car_beauty_shop-code image {
   width: 280rpx;
   height: 280rpx;
 }
 .car_beauty_shop-text{
-    padding:40rpx 0rpx 0rpx 20rpx;
+  position: absolute; 
+  margin-top: -200rpx
+}
+.car_beauty_img image{
+  margin-left:70rpx;
+  width:390rpx;
+  height:38rpx;
+}
+
+/* +++++ */
+
+.card_bag {
+  margin: 30rpx auto 0;
+  padding: 0 54rpx;
+  width: 690rpx;
+  height: 252rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
+  background: no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card_bag .card_title {
+  margin-bottom: 30rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+  line-height: 40rpx;
+  color: #fff;
+}
+
+.card_bag .card_content {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.card_bag .card_content text {
+  vertical-align: middle;
+}
+
+.card_bag .card_content text.line {
+  margin: 0 20rpx;
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.card_bag .card_content text.brown {
+  color: #826229;
 }

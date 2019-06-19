@@ -2,7 +2,6 @@
   "navigationBarTitleText": "车保养",
   "usingComponents":{
     "project-list":"../../components/upkeep_project_list/upkeep_project_list",
-    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog/index",
-    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
+    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog/index"
   }
 }

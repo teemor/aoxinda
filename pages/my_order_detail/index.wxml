@@ -5,10 +5,12 @@
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.trade_status_name==='待发货'}}">
-    预计{{sys_at}}发货，请及时关注物流状态
+    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.send_at&&model.trade_status_name!=='已完成'&&model.trade_status_name!=='已安装'}}">
+    预计{{send_at}}发货，请及时关注物流状态
     </view>
-    <view wx:else class="fz24 cl" style="width:300rpx">订单为你保留{{creates}},超时后将自动关闭</view>
+    <view wx:elif="{{model.trade_status_name===''}}">
+    </view>
+    <view wx:elif="{{model.trade_status_name==='待付款'}}" class="fz24 cl" style="width:440rpx;margin-top:50rpx;">订单为你保留{{creates}},超时后将自动关闭</view>
   </view>
 </view>
 <view class="location_contain" bindtap="locationBtn">
@@ -22,7 +24,7 @@
 </view>
 <view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.goodsData}}" wx:key="{{item}}">
   <view class="fl my_order_list_image">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+    <image src="{{item.file_url}}" />
   </view>
   <view class="fl my_order_list_text">
     <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.goods_name}}</view>
@@ -32,7 +34,8 @@
     <view class="fz28">
       <view class="fl red">¥ {{item.goods_price}}</view>
       <view wx:if="{{item.status}}" class="my_order_list_btn fr">
-        <view class="myorder_orange" catchtap="goRefund" data-refund="{{item}}">{{item.status}}</view>
+
+        <view class="myorder_orange" catchtap="{{item.status==='退款失败'?'disabled':'goRefund'}}" data-refund="{{item}}">{{item.status}}</view>
       </view>
     </view>
   </view>

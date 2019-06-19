@@ -51,8 +51,37 @@ margin-top:-40rpx;
 }
 
 .shop_goods_text {
-  font-size: 28rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
 }
 .van-badge{
   background: white !important;
+}
+
+.shop_add_btn_contain_{
+  padding: 0 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.shop_add_btn_text_{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 446rpx;
+}
+.shop_add_btn_text_ .shop_add_info{
+  padding: 15rpx 0 15rpx 20rpx;
+  width: 340rpx;
+  line-height: 30rpx;
+}
+.shop_add_btn_text_ .shop_add_info_car{
+  margin-bottom: 15rpx;
+  width: 340rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shop_add_btn_text_ .shop_add_edit{
+  width: 44rpx;
+  height: 44rpx;
 }

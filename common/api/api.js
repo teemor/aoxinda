@@ -8,7 +8,7 @@ import {
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-export const IP_yt = `http://192.168.31.76:9015`
+// export const IP_yt = `http://192.168.31.76:9015`
 export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
 // export const IP_YTHTTP = `http://192.168.31.76:9015`
@@ -137,9 +137,34 @@ export class Technician {
     })
   }
   // 查询自己的会员卡
-  findMyCarNumCard = (id) => {
+  findMyCarNumCard = (params) => {
     return http.httpRequest({
-      url: `${HTTP}/carWash/findMyCarNumCard?userId=${id}`
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectMyCard`,
+      method: `post`,
+      data: params
+    })
+  }
+  // 查询自己的会员卡详情
+  selectMyCardDetail = (params) => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectMyCardDetail`,
+      method: `post`,
+      data: params
+    })
+  }
+  //查询卡包所需门店
+  selectShopList = () => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectShopList`,
+      method: `post`
+    })
+  }
+  // 新人有礼
+  //获取服务项目
+  selectFirstActivity = () => {
+    return http.httpRequest({
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectFirstActivity`,
+      method: `post`
     })
   }
   // 商城
@@ -312,7 +337,7 @@ export class Technician {
   updateOrder = (model) => {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/order/updateOrderStatus`,
-      method: `poszhiq t`,
+      method: `post`,
       data: model
     })
   }
@@ -325,11 +350,11 @@ export class Technician {
     })
   }
   // 获取车型
-  findCarType = () => {
+  findCarType = (PP) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/findCarType`,
       method: `post`,
-      data: { pp: '' }
+      data: { PP: PP || '' }
     })
   }
 

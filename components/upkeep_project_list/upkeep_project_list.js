@@ -98,6 +98,7 @@ Component({
         case 'right':
           if (closeOff) {
             instance.close();
+            closeOff = !closeOff
           }
           break;
       }
@@ -106,7 +107,11 @@ Component({
     //保存数量
     numChange: function (e) {
       closeOff = false
-      this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg[e.currentTarget.dataset.i].goodsNum = e.detail
+      let goods_item = this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg[e.currentTarget.dataset.i];
+      goods_item.goodsNum = e.detail
+      if (goods_item.priceAll) {
+        goods_item.priceAll = Math.round(goods_item.price / goods_item.goods_measure * goods_item.goodsNum * 100) / 100
+      }
       let arr = this.data.goodsList
       this.setData({
         goodsList: arr
@@ -117,21 +122,24 @@ Component({
     //删除
     toDetele: function (e) {
       closeOff = true
-      this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.splice(e.currentTarget.dataset.i, 1)
-      if (this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.length === 0) {
-        this.data.activeNames.forEach((n, i) => {
-          if (n === e.currentTarget.dataset.j) {
-            this.data.activeNames.splice(i, 1)
-          }
+      if (this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.length > 1) {
+        this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.splice(e.currentTarget.dataset.i, 1)
+        if (this.data.goodsList.data[e.currentTarget.dataset.j].goodsMsg.length === 0) {
+          this.data.activeNames.forEach((n, i) => {
+            if (n === e.currentTarget.dataset.j) {
+              this.data.activeNames.splice(i, 1)
+            }
+          })
+          this.data.goodsList.data[e.currentTarget.dataset.j].checkedBtn = false
+        }
+        let arr = this.data.goodsList
+        this.setData({
+          activeNames: this.data.activeNames,
+          goodsList: arr
         })
-        this.data.goodsList.data[e.currentTarget.dataset.j].checkedBtn = false
+        this.dataGo();
       }
-      let arr = this.data.goodsList
-      this.setData({
-        activeNames: this.data.activeNames,
-        goodsList: arr
-      })
-      this.dataGo();
+
     },
 
     //更换
@@ -168,12 +176,12 @@ Component({
       this.data.goodsList.data.forEach(n => {
         if (n.checkedBtn && n.goodsMsg && n.goodsMsg.length > 0) {
           n.goodsMsg.forEach(m => {
-            money += m.price * m.goodsNum
+            money += m.priceAll ? m.priceAll : m.price * m.goodsNum
           })
         }
       })
       let json = {
-        allPrice: money,
+        allPrice: Math.round(money * 100) / 100,
         activeList: this.data.activeNames,
         checkMaintain: this.data.goodsList.data.filter((n, i) => {
           let off = false;

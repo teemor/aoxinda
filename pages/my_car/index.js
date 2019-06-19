@@ -26,7 +26,7 @@ Page({
   editCar: function (e) {
     console.log(e.currentTarget.dataset.model,'编辑我的爱车')
     wx.navigateTo({
-      url: `../my_car_edit/index?id=${e.currentTarget.dataset.model.carId}`,
+      url: `../my_car_edit/index?id=${e.currentTarget.dataset.model.carId}&info=${JSON.stringify(e.currentTarget.dataset.model)}`,
       success: (result) => {
 
       },

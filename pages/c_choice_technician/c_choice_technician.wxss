@@ -169,7 +169,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  height: 100rpx;
+  height: 80rpx;
   padding: 0 30rpx;
 }
 
@@ -231,6 +231,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   height: 100rpx;
   background-color: #2d3c4b;
   float: left;
+  display: flex;
+  align-items: center;
 }
 
 .paymentinfo-right {
@@ -261,7 +263,6 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .shopimg image {
   width: 80rpx;
   height: 80rpx;
-  padding: 10rpx 0 0 50rpx;
 }
 
 .paymentinfo-right {
@@ -274,11 +275,11 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .money {
   height: 100rpx;
   line-height: 100rpx;
-  padding-left: 40rpx;
+  padding: 0 20rpx 0 30rpx;
+  font-size: 36rpx;
 }
 
 .price-all {
-  padding: 16rpx 40rpx;
   font-size: 26rpx;
 }
 
@@ -486,4 +487,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.technician-list-box {
+  border-bottom: 1px solid #e5e5e5;
 }

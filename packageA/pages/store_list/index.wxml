@@ -1,0 +1,30 @@
+<view class="fz28">
+  <view class="fl sort tc">
+    <view class="sort_type">
+      <view class="fl">全城</view>
+      <view class="fl sort_img">
+        <image src="../../common/img/down.png" />
+      </view>
+    </view>
+  </view>
+  <view class="fl sort tc">
+    <view class="sort_type">
+      <view class="fl">全部服务</view>
+      <view class="fl sort_img">
+        <image src="../../common/img/down.png" />
+      </view>
+    </view>
+  </view>  <view class="fl sort tc">
+    <view class="sort_type">
+      <view class="fl">距离优先</view>
+      <view class="fl sort_img">
+        <image src="../../common/img/down.png" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="space_list fz28 cl">
+  <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
+    <storeList item="{{item}}" bind:storeDetail="storeDetail"/>
+  </view>
+</view>

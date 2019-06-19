@@ -53,7 +53,7 @@ Page({
         let params = {
           "userId": res.data.id,
           "status": that.data.tabType,
-          "page": 1
+          "page": 0
         }
         that.getOrderList(params)
       },

@@ -12,8 +12,8 @@
       <view class="high70">发票类型</view>
       <view class="fz26 mleft20">
         <van-radio-group value="{{ radio }}" bind:change="invoiceChange">
-          <van-radio class="fl" name="pt" checked-color="#fdbb51">纸质普通发票</van-radio>
-          <van-radio class="fl" name="zzs" checked-color="#fdbb51">纸质增值税专用发票</van-radio>
+          <van-radio class="fl fz24" name="pt" checked-color="#fdbb51">纸质普通发票</van-radio>
+          <van-radio class="fl fz24" name="zzs" checked-color="#fdbb51">纸质增值税专用发票</van-radio>
         </van-radio-group>
       </view>
     </view>
@@ -63,7 +63,11 @@
         <span class="grey">(发票内容暂不支持修改)</span>
       </view>
     </view>
-    <view class="fz26 high80 mleft20" style=""><span class="grey">我已阅读并同意</span><span class="blue" bindtap="read">《增票资质确认书》</span></view>
+    <view class="fz26 high80 mleft20" style="">
+  <van-checkbox checked-color="#fdbb51" value="{{agree}}" bind:change="argeeChange">
+ <span class="grey">我已阅读并同意</span><span class="blue" bindtap="read">《增票资质确认书》</span>
+ </van-checkbox>
+  </view>
   </view>
   <view class="grey fz24 mtop50" style="padding:20rpx;display:none">
     <view class="high50">发票须知:</view>

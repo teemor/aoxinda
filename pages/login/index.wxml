@@ -1,3 +1,12 @@
-<view>
-登录
+<view class="login_logo">
+<image src="../../common/image/logo1.png" mode="aspectFit"/>
 </view>
+<view>
+<view class="btn bg_orange fz30">
+ <button class='login_btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn">
+    微信授权登录
+  </button>
+</view>
+<view class="btn bg_white fz30 br_orange" style="margin-top:40rpx"  bindgetuserinfo="getUserInfoBtn">手机号登录</view>
+</view>
+<login_phone phoneMask="{{phoneMask}}" loginMask="{{loginMask}}" bind:getPhoneNumber="getPhoneNumber" bind:getUserInfoBtn="getUserInfoBtn"/>

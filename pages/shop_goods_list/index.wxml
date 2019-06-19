@@ -38,19 +38,19 @@
     <view class="bgwhite" style="position:relative;padding:20rpx">
       <view class="fz26 high80">价格范围</view>
       <view class="fl">
-        <input type="text" placeholder="最低价" class="fl priceinput" />
+        <input type="text" value="{{startPrice}}" bindchange="startPrice" placeholder="最低价" class="fl priceinput" />
         <view class="fl tc" style="width:60rpx">-</view>
-        <input type="text" placeholder="最高价" class="fl priceinput" />
+        <input type="text" value="{{endPrice}}" bindchange="endPrice" placeholder="最高价" class="fl priceinput" />
       </view>
       <view class="fz26 cl high80">品牌</view>
       <view class="cl fz25">
         <view wx:for="{{brandType}}" wx:key="{{item}}">
-          <view bindtap="labelchoose"  data-index="{{index}}" wx:for-index="index" class="{{item.active?'active':'active_null'}} mbottom30  tc fl fz26">
-      {{item.name}}</view>
+          <view bindtap="labelchoose"  data-item="{{item.goods_brand}}" data-index="{{index}}" wx:for-index="index" class="{{item.active?'active':'active_null'}} mbottom30  tc fl fz26">
+      {{item.goods_brand}}</view>
         </view>
         <view class="cl fz30">
-        <view class="resetbtn fl tc">重置</view>
-        <view class="savebtn fl tc">确定</view>
+        <view class="resetbtn fl tc" bindtap="clear">重置</view>
+        <view class="savebtn fl tc" bindtap="saveSort">确定</view>
         <view class="cl"></view>
         </view>
       </view>

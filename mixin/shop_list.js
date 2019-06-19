@@ -10,7 +10,7 @@
    * @param {*} options 
    */
   shopList: function(e) {
-      console.log(e)
+      console.log(e,'》')
     let model = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.item))
     wx.navigateTo({
       url: `../shop_goods_list/index?id=${model}`

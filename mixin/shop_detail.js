@@ -42,8 +42,9 @@ module.exports = {
     selectOrderDetail: function (options) {
         let timestamp = Date.parse(new Date());
         console.log(timestamp,'当前时间')
-        request.selectOrderDetail({ order_id: options.id }).then(res => {
+        request.selectOrderDetail({ order_id: options.id?options.id:options.order_id }).then(res => {
             this.setData({
+                send_at:this.formateDate(res.send_at),
                 model: res,
                 goodsList: res,
                 sys_at: res.sys_at,
@@ -62,6 +63,22 @@ module.exports = {
                     id: res.invoiceData.id
                 })
             }
+            if (this.data.model.trade_status_name == "待发货") {
+                console.log('代发货')
+                this.setData({
+                  reason: this.data.reasonA
+                })
+              } else if (this.data.model.trade_status_name == "已发货" || this.data.model.trade_status_name == "待安装") {
+                console.log('已发货--待安装')
+                this.setData({
+                  shopstatus: true
+                })
+              } else if (this.data.model.trade_status_name == "已收货") {
+                console.log('已收货')
+                this.setData({
+                  reason: this.data.reasonB
+                })
+              }
         })
     },
     /**
@@ -79,7 +96,19 @@ module.exports = {
                 item: res.tableDetail[0],
                 tableDetail: res.tableDetail,
                 orderImg: res.fileList[0],
-                imgList: res.fileList,
+                imgList: res.fileList.map(n=>{
+                  if (RegExp(/.jpg|.JPG|.png|.PNG|.jpeg|.JPEG/).test(n)){
+                    return {
+                      img:n,
+                      off:true
+                    }
+                  }else{
+                    return {
+                      img: n,
+                      off: false
+                    }
+                  }
+                }),
                 cartNum: res.total,
                 goodsData: res.mainTable,
                 detail: res.mainTable.content ? res.mainTable.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ') : '',

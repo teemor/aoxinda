@@ -50,12 +50,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var dateSysList = systemTime.SystemTime()
     that = this;
     that.setData({
-      allPrice: options.allPrice || 0,
-      totalPrice: options.allPrice || 0,
+      allPrice: Math.round(options.allPrice * 100) / 100 || 0,
+      totalPrice: Math.round(options.allPrice * 100) / 100 || 0,
       todaySysDate: dateSysList.dateSys,
       chooseThDate: dateSysList.dateSys,
       tomSysDate: dateSysList.tom_Date,
@@ -89,7 +89,7 @@ Page({
   // 获取用户地理位置
   getUserLocation() {
     wx.chooseLocation({
-      success: function(res) {
+      success: function (res) {
         that.setData({
           userLoaction: res.name,
           lat: res.latitude,
@@ -106,7 +106,7 @@ Page({
         // 调用所有门店
         that.distanceSp(userdistance)
       },
-      fail: function(res) {
+      fail: function (res) {
         that.setData({
           showLocation: true
         })
@@ -187,7 +187,7 @@ Page({
 
   },
   // 点击购物车弹出层
-  goodsInfo: function(e) {
+  goodsInfo: function (e) {
     var animation = wx.createAnimation({
       duration: 500,
       timingFunction: 'linear'
@@ -198,7 +198,7 @@ Page({
       that.setData({
         animationData: animation.export()
       })
-      setTimeout(function() {
+      setTimeout(function () {
         that.setData({
           goodsInfo: false
         })
@@ -208,7 +208,7 @@ Page({
         animationData: animation.export(),
         goodsInfo: true
       })
-      setTimeout(function() {
+      setTimeout(function () {
         animation.translateY(0).step()
         that.setData({
           animationData: animation.export()
@@ -217,7 +217,7 @@ Page({
     }
   },
   // 点击遮罩层隐藏弹出层
-  hideModal: function(e) {
+  hideModal: function (e) {
     var that = this;
     var animation = wx.createAnimation({
       duration: 500,
@@ -228,7 +228,7 @@ Page({
     that.setData({
       animationData: animation.export()
     })
-    setTimeout(function() {
+    setTimeout(function () {
       that.setData({
         goodsInfo: false
       })
@@ -248,6 +248,7 @@ Page({
     that.setData({
       activeNames: "",
       spIndex: "",
+      noGoodsList: [],
       dateChoice: "",
       uhide: null,
       alltimeBtnIndex: ''
@@ -258,72 +259,124 @@ Page({
 
   },
 
-  //获取选择保养项目缓存
-  getMaintain() {
-    wx.getStorage({
-      key: 'checkMaintain',
-      success: function(res) {
-        that.setData({
-          checkMaintain: res.data
-        })
-        for (var i = 0; i < res.data.length; i++) {
-          for (var j = 0; j < res.data[i].goodsMsg.length; j++) {
-            that.data.goodsCode.push({
-              goods_num: res.data[i].goodsMsg[j].goodsNum,
-              goods_code: res.data[i].goodsMsg[j].productCode,
-              sku: res.data[i].goodsMsg[j].goods_sku,
-            });
+  //无货时调用奥鑫达供应链计算到货时间（应该放到点击门店下）
+  noGoods(i, currentShop, detail) {
+    // let isGoods = {
+    //   "orderCode": that.data.goodsCode,
+    //   "storeId": that.data.sp_List[i]
+    // }
+    let isGoods = {
+      shopId: that.data.sp_List.content[i].id,
+      goods: that.data.goodsCode
+    };
+    if (currentShop.mcfSysEmpList.length === 0) {
+      wx.showToast({
+        title: '本店暂无技师',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (currentShop.saNum === 0) {
+      wx.showToast({
+        title: '暂无服务顾问',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else {
+      request.noGoods(isGoods).then(res => {
+        if (res.result == '200') {
+          that.setData({
+            getGoodsTime: res
+          })
+          for (var i = 0; i < that.data.getGoodsTime.data.length; i++) {
+            if (that.data.getGoodsTime.data[i].hasGoods == 1) {
+              that.data.noGoodsList.push(that.data.getGoodsTime.data[i].constructTime)
+              that.setData({
+                noGoodsList: that.data.noGoodsList
+              })
+              Array.prototype.max = function () {
+                var max = this[0];
+                for (var m = 0; m < this.length; m++) {
+                  if (this[m] > max) {
+                    max = this[m];
+                  }
+                  return max;
+                }
+              }
+              var maxTime = that.data.noGoodsList.max()
+
+              //计算商品到货时间
+              var todayDate = new Date(that.data.todaySysDate);
+              var today_timetamp = todayDate.getTime();
+
+              //选择到货日期
+              var getgoods_timetap = today_timetamp + 24 * 60 * 60 * 1000 * maxTime;
+              var goodsTime = new Date(getgoods_timetap);
+              var goodsTime_year = goodsTime.getFullYear();
+              var goodsTime_month = goodsTime.getMonth() + 1 < 10 ? '0' + (goodsTime.getMonth() + 1) : goodsTime.getMonth() + 1;
+              var goodsTime_day = goodsTime.getDate() < 10 ? '0' + goodsTime.getDate() : goodsTime.getDate();
+              var goodsTime_Date = goodsTime_year + '-' + goodsTime_month + '-' + goodsTime_day;
+
+              that.setData({
+                goodsTime_Date: goodsTime_Date
+              })
+            }
+          }
+
+          if (that.data.noGoodsList.length != 0) {
+            wx.showModal({
+              title: '麦车服提示您',
+              content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
+              success(res) {
+                if (res.confirm) {
+                  var obj = systemTime.SystemTime(that.data.goodsTime_Date);
+                  var tomorrow_date = obj.tom_Date;
+                  var tomAft_date = obj.tomAfter_Date;
+                  that.setData({
+                    activeNames: detail,
+                    dateChoice: that.data.goodsTime_Date,
+                    chooseThDate: that.data.goodsTime_Date,
+                    tomSysDate: tomorrow_date,
+                    tomAftSysDate: tomAft_date
+                  })
+                } else if (res.cancel) { }
+              }
+            })
+          } else {
             that.setData({
-              goodsCode: that.data.goodsCode
+              activeNames: detail
             })
           }
+        } else if (res.code == '500' || res.status == '500') {
+          wx.showToast({
+            title: '服务器错误',
+            icon: 'loading',
+            duration: 2000
+          })
+        } else {
+          wx.showToast({
+            title: '访问出错，请重试',
+            icon: 'loading',
+            duration: 2000
+          })
         }
-      },
-    })
+      })
+    }
+    //if (currentShop.hasstation) {
+    //     that.setData({
+    //       activeNames: detail
+    //     })
+    //   } else {
+    //     wx.showToast({
+    //       title: '该门店没工位',
+    //       icon: 'loading',
+    //       duration: 1500
+    //     })
+    //   }
+
   },
 
-  //预约按钮
-  timeBtn(e) {
-    var timeBtnId = e.currentTarget.dataset.id; //预约按钮ID
-    var timeBtnIndex = e.currentTarget.dataset.index; //预约按钮index
-    var thIndex = e.currentTarget.dataset.thindex;
-    var spIndex = e.currentTarget.dataset.spindex;
-    var alltimeBtnIndex = spIndex + '_' + thIndex + '_' + timeBtnId + '_' + timeBtnIndex;
-    var userClickSpId, userClickThId, userClickThName, timeBtnIdCont;
-
-    //判断第几天
-    if (timeBtnId == "0") {
-      timeBtnIdCont = that.data.chooseThDate;
-    } else if (timeBtnId == "1") {
-      timeBtnIdCont = that.data.tomSysDate;
-    } else if (timeBtnId == "2") {
-      timeBtnIdCont = that.data.tomAftSysDate
-    }
-    that.setData({
-      timeBtnIdCont: timeBtnIdCont
-    })
-    var userReserveTime = {
-      "userClickSp": that.data.sp_List.content[spIndex],
-      "userClickTh": that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex],
-      "userClickMaintain": that.data.checkMaintain,
-      "userClickTime": timeBtnIndex, //上午下午晚上时间段
-      "timeBtnIdCont": timeBtnIdCont //预约时间
-    }
-    that.setData({
-      thCost: that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex].thCost,
-      alltimeBtnIndex: alltimeBtnIndex,
-      userReserveTime: userReserveTime
-    })
-    var totalPrice = Number(that.data.allPrice) + Number(that.data.thCost);
-    that.setData({
-      totalPrice: totalPrice
-    })
-    //用户选择门店技师和时间缓存
-    wx.setStorage({
-      key: 'userReserveTime',
-      data: that.data.userReserveTime,
-    })
-  },
+  //选择日期
+  nullFun: function (e) {},
 
   //点击预约技师
   onClickBtn(e) {
@@ -334,7 +387,8 @@ Page({
       "id": that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex].id
     }
 
-    if (that.data.spIndex != spIndex) {
+    // if (that.data.spIndex != spIndex) {
+    if (that.data.uhide != that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex].flag) {
       that.setData({
         spIndex: spIndex
       })
@@ -428,145 +482,6 @@ Page({
 
   },
 
-  //无货时调用奥鑫达供应链计算到货时间（应该放到点击门店下）
-  noGoods(i, currentShop, detail) {
-    // let isGoods = {
-    //   "orderCode": that.data.goodsCode,
-    //   "storeId": that.data.sp_List[i]
-    // }
-    let isGoods = {
-      shopId: that.data.sp_List.content[i].id,
-      goods: that.data.goodsCode
-    };
-    request.noGoods(isGoods).then(res => {
-      if (res.result == '200') {
-        that.setData({
-          getGoodsTime: res
-        })
-        for (var i = 0; i < that.data.getGoodsTime.data.length; i++) {
-          if (that.data.getGoodsTime.data[i].hasGoods == 1) {
-            that.data.noGoodsList.push(that.data.getGoodsTime.data[i].constructTime)
-            that.setData({
-              noGoodsList: that.data.noGoodsList
-            })
-            Array.prototype.max = function() {
-              var max = this[0];
-              for (var m = 0; m < this.length; m++) {
-                if (this[m] > max) {
-                  max = this[m];
-                }
-                return max;
-              }
-            }
-            var maxTime = that.data.noGoodsList.max()
-
-            //计算商品到货时间
-            var todayDate = new Date(that.data.todaySysDate);
-            var today_timetamp = todayDate.getTime();
-
-            //选择到货日期
-            var getgoods_timetap = today_timetamp + 24 * 60 * 60 * 1000 * maxTime;
-            var goodsTime = new Date(getgoods_timetap);
-            var goodsTime_year = goodsTime.getFullYear();
-            var goodsTime_month = goodsTime.getMonth() + 1 < 10 ? '0' + (goodsTime.getMonth() + 1) : goodsTime.getMonth() + 1;
-            var goodsTime_day = goodsTime.getDate() < 10 ? '0' + goodsTime.getDate() : goodsTime.getDate();
-            var goodsTime_Date = goodsTime_year + '-' + goodsTime_month + '-' + goodsTime_day;
-
-            that.setData({
-              goodsTime_Date: goodsTime_Date
-            })
-          }
-        }
-        if (currentShop.mcfSysEmpList.length === 0) {
-          wx.showToast({
-            title: '本店暂无技师',
-            icon: 'loading',
-            duration: 1500
-          })
-        } else if (currentShop.saNum === 0) {
-          wx.showToast({
-            title: '暂无服务顾问',
-            icon: 'loading',
-            duration: 1500
-          })
-        } else{
-          if (that.data.noGoodsList.length != 0){
-            wx.showModal({
-              title: '麦车服提示您',
-              content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
-              success(res) {
-                if (res.confirm) {
-                  var obj = systemTime.SystemTime(that.data.goodsTime_Date);
-                  var tomorrow_date = obj.tom_Date;
-                  var tomAft_date = obj.tomAfter_Date;
-                  that.setData({
-                    activeNames: detail,
-                    dateChoice: that.data.goodsTime_Date,
-                    chooseThDate: that.data.goodsTime_Date,
-                    tomSysDate: tomorrow_date,
-                    tomAftSysDate: tomAft_date
-                  })
-                } else if (res.cancel) {}
-              }
-            })
-          }else{
-            that.setData({
-              activeNames: detail
-            })
-          }
-        }
-        // else if (that.data.noGoodsList.length != 0) {
-        //   wx.showModal({
-        //     title: '麦车服提示您',
-        //     content: '商品暂时缺货，商品到货日期为：' + that.data.goodsTime_Date,
-        //     success(res) {
-        //       if (res.confirm) {
-        //         var obj = systemTime.SystemTime(that.data.goodsTime_Date);
-        //         var tomorrow_date = obj.tom_Date;
-        //         var tomAft_date = obj.tomAfter_Date;
-        //         that.setData({
-        //           activeNames: detail,
-        //           dateChoice: that.data.goodsTime_Date,
-        //           chooseThDate: that.data.goodsTime_Date,
-        //           tomSysDate: tomorrow_date,
-        //           tomAftSysDate: tomAft_date
-        //         })
-        //       } else if (res.cancel) {}
-        //     }
-        //   })
-        // } else {
-        //   if (currentShop.hasstation) {
-        //     that.setData({
-        //       activeNames: detail
-        //     })
-        //   } else {
-        //     wx.showToast({
-        //       title: '该门店没工位',
-        //       icon: 'loading',
-        //       duration: 1500
-        //     })
-        //   }
-        // }
-      } else if (res.code == '500' || res.status == '500') {
-        wx.showToast({
-          title: '服务器错误',
-          icon: 'loading',
-          duration: 2000
-        })
-      } else {
-        wx.showToast({
-          title: '访问出错，请重试',
-          icon: 'loading',
-          duration: 2000
-        })
-      }
-    })
-  },
-
-  nullFun: function(e) {
-
-  },
-
   // 预约技师日期选择
   bindDateChange(e) {
     let thIndex = e.currentTarget.dataset.index; // 技师索引
@@ -650,8 +565,75 @@ Page({
 
   },
 
+  //预约按钮
+  timeBtn(e) {
+    var timeBtnId = e.currentTarget.dataset.id; //预约按钮ID
+    var timeBtnIndex = e.currentTarget.dataset.index; //预约按钮index
+    var thIndex = e.currentTarget.dataset.thindex;
+    var spIndex = e.currentTarget.dataset.spindex;
+    var alltimeBtnIndex = spIndex + '_' + thIndex + '_' + timeBtnId + '_' + timeBtnIndex;
+    var userClickSpId, userClickThId, userClickThName, timeBtnIdCont;
+
+    //判断第几天
+    if (timeBtnId == "0") {
+      timeBtnIdCont = that.data.chooseThDate;
+    } else if (timeBtnId == "1") {
+      timeBtnIdCont = that.data.tomSysDate;
+    } else if (timeBtnId == "2") {
+      timeBtnIdCont = that.data.tomAftSysDate
+    }
+    that.setData({
+      timeBtnIdCont: timeBtnIdCont
+    })
+    var userReserveTime = {
+      "userClickSp": that.data.sp_List.content[spIndex],
+      "userClickTh": that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex],
+      "userClickMaintain": that.data.checkMaintain,
+      "userClickTime": timeBtnIndex, //上午下午晚上时间段
+      "timeBtnIdCont": timeBtnIdCont //预约时间
+    }
+    that.setData({
+      thCost: that.data.sp_List.content[spIndex].mcfSysEmpList[thIndex].thCost,
+      alltimeBtnIndex: alltimeBtnIndex,
+      userReserveTime: userReserveTime
+    })
+    var totalPrice = Number(that.data.allPrice) + Number(that.data.thCost);
+    that.setData({
+      totalPrice: Math.round(totalPrice * 100) / 100
+    })
+    //用户选择门店技师和时间缓存
+    wx.setStorage({
+      key: 'userReserveTime',
+      data: that.data.userReserveTime,
+    })
+  },
+
+  //获取选择保养项目缓存
+  getMaintain() {
+    wx.getStorage({
+      key: 'checkMaintain',
+      success: function (res) {
+        that.setData({
+          checkMaintain: res.data
+        })
+        for (var i = 0; i < res.data.length; i++) {
+          for (var j = 0; j < res.data[i].goodsMsg.length; j++) {
+            that.data.goodsCode.push({
+              goods_num: res.data[i].goodsMsg[j].goodsNum,
+              goods_code: res.data[i].goodsMsg[j].productCode,
+              sku: res.data[i].goodsMsg[j].goods_sku,
+            });
+            that.setData({
+              goodsCode: that.data.goodsCode
+            })
+          }
+        }
+      },
+    })
+  },
+
   // 跳转付款
-  payment: function() {
+  payment: function () {
     if (that.data.alltimeBtnIndex == '') {
       wx.showToast({
         title: '请选择技师',
@@ -670,15 +652,16 @@ Page({
   },
 
   // 打开权限
-  btnFun: function(e) {
+  btnFun: function (e) {
     wx.openSetting({
       success(res) {
         that.getUserLocation();
       }
     })
   },
+
   //门店分页
-  onReachBottom: function(e) {
+  onReachBottom: function (e) {
     wx.showNavigationBarLoading();
     wx.showLoading({
       title: '加载中',
@@ -713,5 +696,6 @@ Page({
       wx.hideNavigationBarLoading();
       wx.hideLoading();
     }
-  },
+  }
+
 })

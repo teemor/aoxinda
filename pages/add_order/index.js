@@ -81,6 +81,7 @@ Page({
       goodsList.goods_price = model.price
       goodsList.buy_num = model.num
       goodsList.sku_name = model.item.sku_name
+      goodsList.file_url = model.item.file_url
       this.setData({
         sum: model.num,
         total: parseFloat(model.num * model.price.toFixed(2)),

@@ -59,7 +59,19 @@
     "pages/c_order/c_order",
     "pages/c_order_all/c_order_all",
     "pages/c_order_detail/index",
-    "pages/c_selfInfo/c_selfInfo"
+    "pages/c_selfInfo/c_selfInfo",
+    "pages/edit_refund/index",
+    "pages/my_card_detail/index"
+  ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/index/index",
+        "pages/store_list/index",
+        "pages/store_detail/index"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",
