@@ -50,7 +50,7 @@ module.exports = {
                 sys_at: res.sys_at,
                 date: this.formateDate(res.create_at),
                 pay_at: this.formateDate(res.pay_at),
-                send_at: this.formateDate(res.send_at),
+                expect_sent_at: this.formateDate(res.expect_sent_at),
                 create: moment(res.create_at).subtract(0, 'h').valueOf() + 24 * 60 * 60 * 1000,
             })
             if (res.invoiceData) {

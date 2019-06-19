@@ -4,12 +4,10 @@
       {{item.name}} <van-icon name="arrow-down"/>
     </view>
   </view>
-  <view wx:if="carType" class="shop_goods_invite"  bindtap="editCar">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的商品</view>
-    <view class="shop_goods_invite_btn">
-    <image src="../../common/image/edit.png"/>
-    </view>
+  <view style='height:80rpx;'></view>
+  <view style='background-image:url(http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png)' class='shopList_car' wx:if="carType">
+    <van-checkbox custom-class="shopList_car_van" label-class="shopList_car_label" checked-color="#f9d090" value="{{ checked }}" bind:change="onChange">为您推荐适合<text class='shopList_car_text'>{{carType.model}}{{carType.vehicleType}}</text>的商品</van-checkbox>
+    <image src="../../common/image/edit.png" class='shopList_car_img' bindtap="editCar"/>
   </view>
   <view wx:else>
    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />

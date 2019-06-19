@@ -5,13 +5,27 @@
 }
 
 .search_box .search_box_btn {
-  padding: 10rpx 20rpx;
+  padding: 10rpx 30rpx;
   color: #fff;
-  height: 40rpx;
-  line-height: 40rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   border-radius: 10rpx;
 }
 
 .mright20 {
   margin-bottom: 20rpx;
+}
+
+.van-search .van-cell {
+  line-height: 54rpx;
+}
+
+.van-search .van-field__input {
+  height: 54rpx;
+  min-height: 54rpx;
+  line-height: 54rpx;
+}
+
+.van-search .van-icon {
+  padding-top: 8rpx;
 }
