@@ -1,0 +1,23 @@
+<view>
+  <block wx:if="{{listData.length > 0}}">
+    <view class="image_bg">
+      <image src="{{imgUrl}}/invite_bg.png" />
+    </view>
+    <view class="table">
+      <view class="tr">
+        <view class="th">邀请的用户</view>
+        <view class="th">邀请时间</view>
+      </view>
+      <block wx:for="{{listData}}" wx:key="{{code}}">
+        <view class="tr">
+          <view class="td">{{item.NAME}}</view>
+          <view class="td">{{item.createtime}}</view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+      <!-- 暂无数据 -->
+      <image src="{{imgUrl}}/no_record.png" />
+  </block>
+</view>

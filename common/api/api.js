@@ -444,6 +444,25 @@ export class Technician {
       data:model
     })
   }
+  //邀请人数量
+  inviteCount = (openId) => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/user/inviteCount`,
+      data: {
+        "recommenderId": openId,
+        "userType": "1"
+      },
+      method: `post`
+    })
+  }
+  // 查询邀请记录列表
+  selectInviteRecord = (openId) => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/user/recommender?openid=${openId}`,
+      method: `post`
+    })
+  }
+
 }
 
 
