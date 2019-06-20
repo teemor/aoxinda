@@ -21,11 +21,12 @@ export class CardHttp {
       data: params
     })
   }
-  //查询卡包所需门店
-  selectShopList = () => {
+  //查询卡包所需门店 - 查询全部门店
+  selectShopList = (params) => {
     return http.httpRequest({
       url: `${IP_HTTP}/card/selectShopList`,
       method: `POST`,
+      data: params
     })
   }
   /**
@@ -61,14 +62,6 @@ export class CardHttp {
   selectPayCard = (params) => {
     return http.httpRequest({
       url: `${IP_HTTP}/selectPayCard`,
-      method: `POST`,
-      data: params
-    })
-  }
-  // 查询全部门店
-  selectPayCard = (params) => {
-    return http.httpRequest({
-      url: `${IP_HTTP}/card/selectShopList`,
       method: `POST`,
       data: params
     })
