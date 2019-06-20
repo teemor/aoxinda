@@ -1,5 +1,6 @@
 import { CardHttp } from '../../common/api/card_api'
 import QR from '../../utils/qrcode.js'
+import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 const request = new CardHttp
 let that
 Page({
@@ -10,9 +11,14 @@ Page({
   data: {
     canvasHidden: false,
     imagePath: '',
-    carInfo: {},
+    active: 0,
+    pay: {
+      show: false,
+      money: 0.00
+    },
+    cardInfo: {},
     shareInfo: null,
-    store: [],
+    storeInfo: [],
     serverInfo: [],
     payInfo: []
   },
@@ -26,63 +32,37 @@ Page({
       //获取卡包详情
       request.selectPayCard({ id: options.card_id }).then(res => {
         if (res.data && res.data.length > 0) {
-          let date = new Date(res.data[0].end_use_at),
-            month = (date.getMonth() + 1).toString().length > 1 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1),
-            _date = date.getDate().toString().length > 1 ? date.getDate() : '0' + date.getDate()
-          res.data[0].end_use_at = `${date.getFullYear()}.${month}.${_date}`
+          wx.getLocation({
+            type: 'gcj02',
+            success(res) {
+              that.setData({
+                storeInfo: json.storeData.map(n => {
+                  let km = that.getDistance(n.LAT, n.LOG, res.latitude, res.longitude)
+                  n.DISTANCE = km;
+                  n.TIME = Math.round(km / 50 * 60 * 100) / 100;
+                  return n
+                })
+              })
+            },
+            fail(res) {
+              that.setData({
+                storeInfo: json.storeData
+              })
+            }
+          })
           that.setData({
-            carInfo: res.data[0],
-            shareInfo: res.data[0].activity_id,
-            serverInfo: res.serverData,
-            payInfo: res.payData
+            cardInfo: json.data[0],
+            shareInfo: json.data[0].card_no,
+            rechargeInfo: json.rechargeData,
+            payInfo: json.payData
           })
           var size = this.setCanvasSize(); //动态设置画布大小
-          this.createQrCode(that.data.shareInfo.toString(), "canvas", size.w, size.h);
+          this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
         } else {
           wx.showToast({
             title: '服务器错误',
             icon: 'loading',
             duration: 1500
-          })
-        }
-      })
-      //获取门店
-      request.selectShopList().then(res => {
-        if (res.data && res.data.length > 0) {
-          let arr, oldData = res.data.map(n => {
-            return {
-              name: n.NAME,
-              address: n.ADDRESS,
-              phone: n.TEL,
-              coordinate: {
-                latitude: n.LAT,
-                longitude: n.LOG,
-              },
-            }
-          });
-          wx.getLocation({
-            type: 'gcj02',
-            success(res) {
-              arr = oldData.map(n => {
-                let km = that.getDistance(n.coordinate.latitude, n.coordinate.longitude, res.latitude, res.longitude)
-                n.distance = km;
-                n.time = Math.round(km / 50 * 60 * 100) / 100;
-                return n
-              })
-              that.setData({
-                store: arr
-              })
-            },
-            fail(res) {
-              arr = oldData.map(n => {
-                n.distance = '--';
-                n.time = '--';
-                return n
-              })
-              that.setData({
-                store: arr
-              })
-            }
           })
         }
       })
@@ -137,12 +117,12 @@ Page({
   },
   //查看门店地址
   onAddress(e) {
-    let json = that.data.store[e.currentTarget.dataset.index]
+    let json = that.data.storeInfo[e.currentTarget.dataset.index]
     wx.openLocation({
-      latitude: json.coordinate.latitude,
-      longitude: json.coordinate.longitude,
-      name: json.name,
-      address: json.address,
+      latitude: json.LAT,
+      longitude: json.LOG,
+      name: json.NAME,
+      address: json.ADDRESS,
       scale: 10
     })
   },
@@ -165,5 +145,70 @@ Page({
     s = Math.round(s * 10000) / 10000;
     s = s.toFixed(2) //保留两位小数(公里/km)
     return s
+  },
+  //消费记录与充值记录切换
+  onTabChange(e) {
+    console.log(e)
+  },
+  //充值按钮
+  toPay(e) {
+    this.setData({
+      'pay.show': true
+    })
+  },
+  //充值输入
+  payValue(e) {
+    this.setData({
+      'pay.money': Number(e.detail.value),
+    })
+  },
+  //充值
+  onPayClose(e) {
+    console.log(e)
+    if (e.detail == 'confirm') {
+      this.setData({
+        'pay.show': false
+      })
+      console.log(this.data.pay.money)
+      if (this.data.pay.money >= 500) {
+        request.payCard({ price: this.data.pay.money, type: 1, account_id: this.data.cardInfo.account_id }).then((res) => {
+          this.setData({
+            'pay.show': false,
+            'pay.money': 0.00,
+          })
+          if (res.status === false) {
+            wx.showToast({
+              title: res.description
+            })
+          } else {
+            let description = JSON.parse(res.result);
+            wx.requestPayment({
+              timeStamp: description.timeStamp,
+              nonceStr: description.nonceStr,
+              package: description.package,
+              signType: description.signType,
+              paySign: description.paySign,
+              success: (res) => {
+                console.log('付款成功')
+              },
+              fail: (res) => {
+                console.log('付款失败')
+              }
+            });
+
+          }
+        })
+      } else {
+        Notify('充值金额需要大于上次金额');
+        this.setData({
+          'pay.show': true
+        })
+      }
+    } else {
+      this.setData({
+        'pay.show': false,
+        'pay.money': 0.00,
+      })
+    }
   }
 })

@@ -132,6 +132,7 @@ page {
 
 .card_share .share_btn {
   display: inline-block;
+  margin: 0 20rpx;
   padding: 20rpx 80rpx;
   font-size: 26rpx;
   line-height: 30rpx;
@@ -159,6 +160,17 @@ page {
 
 .card_service_n .red {
   color: red;
+}
+
+.card_service_cont {
+  padding: 40rpx 30rpx;
+  font-size: 25rpx;
+  line-height: 40rpx;
+}
+
+.card_service_info {
+  padding: 0 30rpx 30rpx;
+  font-size: 28rpx;
 }
 
 /* 适用门店 */
@@ -246,3 +258,26 @@ page {
   font-size: 24rpx;
   color: #999;
 }
+
+.card_recharge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx 30rpx;
+}
+
+.card_recharge text {
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+
+.card_recharge input {
+  padding-bottom:6rpx;
+  height: 38rpx;
+  font-size: 38rpx;
+  line-height: 38rpx;
+}
+/* 
+.van-notify{
+  z-index: 3000
+} */
