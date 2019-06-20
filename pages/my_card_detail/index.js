@@ -11,7 +11,7 @@ Page({
   data: {
     canvasHidden: false,
     imagePath: '',
-    carInfo: {},
+    cardInfo: {},
     shareInfo: null,
     store: [],
     serverInfo: [],
@@ -34,7 +34,7 @@ Page({
             _date = date.getDate().toString().length > 1 ? date.getDate() : '0' + date.getDate()
           res.data[0].end_use_at = `${date.getFullYear()}.${month}.${_date}`
           that.setData({
-            carInfo: res.data[0],
+            cardInfo: res.data[0],
             shareInfo: res.data[0].activity_id,
             serverInfo: res.serverData,
             payInfo: res.payData
