@@ -1,17 +1,17 @@
 <view class='card_top'>
   <view class='card_bag' style='background-image:url(../../common/image/card_bg.png)'>
     <view class='card_bag_top'>
-      <view class='card_title'>{{carInfo.card_name || '99超值尊享大麦卡'}}</view>
-      <view class='card_info'>{{carInfo.card_content || '十大尊享超值优惠'}}</view>
+      <view class='card_title'>{{cardInfo.card_name || '99超值尊享大麦卡'}}</view>
+      <view class='card_info'>{{cardInfo.card_content || '十大尊享超值优惠'}}</view>
     </view>
     <view class='card_bag_bottom'>
       <view class='card_bm_info'>
-        <view class='card_price'>￥{{carInfo.card_price || '99'}}元</view>
-        <view class='card_time'>有效期至{{carInfo.end_use_at || '2021.05.28'}}</view>
+        <view class='card_price'>￥{{cardInfo.card_price || '99'}}元</view>
+        <view class='card_time'>有效期至{{cardInfo.end_use_at || '2021.05.28'}}</view>
       </view>
       <view class='card_surplus'>
         剩余
-        <text>{{carInfo.use_times || '38'}}</text>次
+        <text>{{cardInfo.use_times || '38'}}</text>次
       </view>
     </view>
   </view>

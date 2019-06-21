@@ -62,7 +62,9 @@
     "pages/c_selfInfo/c_selfInfo",
     "pages/edit_refund/index",
     "pages/my_card_detail/index",
-    "pages/my_invite_record/index"
+    "pages/my_invite_record/index",
+    "pages/stored_value_card/index",
+    "pages/stored_value_info/index"
   ],
   "subPackages": [
     {

@@ -1,9 +1,7 @@
 // pages/my_card_detail/index.js
-import {
-  Technician
-} from '../../common/api/api'
+import { CardHttp } from '../../common/api/card_api'
 import QR from '../../utils/qrcode.js'
-const request = new Technician
+const request = new CardHttp
 let that
 Page({
 
@@ -13,7 +11,7 @@ Page({
   data: {
     canvasHidden: false,
     imagePath: '',
-    carInfo: {},
+    cardInfo: {},
     shareInfo: null,
     store: [],
     serverInfo: [],
@@ -30,18 +28,26 @@ Page({
       request.selectMyCardDetail({
         id: options.id
       }).then(res => {
-        let date = new Date(res.data[0].end_use_at),
-          month = (date.getMonth() + 1).toString().length > 1 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1),
-          _date = date.getDate().toString().length > 1 ? date.getDate() : '0' + date.getDate()
-        res.data[0].end_use_at = `${date.getFullYear()}.${month}.${_date}`
-        that.setData({
-          carInfo: res.data[0],
-          shareInfo: res.data[0].activity_id,
-          serverInfo: res.serverData,
-          payInfo: res.payData
-        })
-        var size = this.setCanvasSize(); //动态设置画布大小
-        this.createQrCode(that.data.shareInfo.toString(), "canvas", size.w, size.h);
+        if (res.data && res.data.length > 0) {
+          let date = new Date(res.data[0].end_use_at),
+            month = (date.getMonth() + 1).toString().length > 1 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1),
+            _date = date.getDate().toString().length > 1 ? date.getDate() : '0' + date.getDate()
+          res.data[0].end_use_at = `${date.getFullYear()}.${month}.${_date}`
+          that.setData({
+            cardInfo: res.data[0],
+            shareInfo: res.data[0].activity_id,
+            serverInfo: res.serverData,
+            payInfo: res.payData
+          })
+          var size = this.setCanvasSize(); //动态设置画布大小
+          this.createQrCode(that.data.shareInfo.toString(), "canvas", size.w, size.h);
+        } else {
+          wx.showToast({
+            title: '服务器错误',
+            icon: 'loading',
+            duration: 1500
+          })
+        }
       })
       //获取门店
       request.selectShopList().then(res => {
