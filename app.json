@@ -69,7 +69,8 @@
       "pages": [
         "pages/index/index",
         "pages/store_list/index",
-        "pages/store_detail/index"
+        "pages/store_detail/index",
+        "pages/city_select/index"
       ]
     }
   ],

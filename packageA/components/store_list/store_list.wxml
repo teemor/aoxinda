@@ -1,31 +1,32 @@
    <view bindtap="storeDetail">
    <view class="space_store_img fl" >
-        <image src="{{item.img}}" />
+        <image src="{{item.logo}}" />
       </view>
       <view class="fl space_store_text">
-        <view>{{item.title}}</view>
-        <view>
+        <view>{{item.name}}</view>
+        <!--<view>
           <van-rate value="3" size="10" />
         </view>
+        -->
         <view class="cl fz24 grey">
-          <view class="fl">{{item.km}}</view>
+          <view class="fl">{{item.distance}}km</view>
           <view class="fr space_store_address">{{item.address}}</view>
           <view class="cl"></view>
         </view>
-        <view wx:for="{{item.service}}" wx:key="{{item}}">
+        <view wx:for="{{item.serType}}" wx:key="{{item}}">
           <van-tag color="#999" plain class="fl" style="margin-right:20rpx">
-            {{item}}
+            {{item.actName}}
           </van-tag>
         </view>
         <view class="cl">
-          <view class="fl" style="margin-top:8rpx">
-            <van-tag type="primary">{{item.type}}</van-tag>
+          <view class="fl bg_orange" style="margin-top:25rpx;width:10rpx;height:10rpx;border-radius:50rpx">
+         
           </view>
           <view class="fl grey fz24" style="margin-top:12rpx;margin-left:10rpx">
-            {{item.remark}}
+            {{item.serType[0].serName}}
           </view>
           <view class="fr red fz24" style="margin-top:10rpx">
-            ¥{{item.price}}
+            ¥{{item.serType[0].serPrice}}
           </view>
         </view>
       </view>

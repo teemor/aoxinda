@@ -3,6 +3,12 @@
     width: 100%;
     height:320rpx;
 }
+.space_store_box{
+  margin-bottom: 20rpx;
+  height: 200rpx;
+  background: #fff;
+  padding:10rpx 30rpx;
+}
 .shop_goods_invite image{
   margin-top: 15rpx;
     width:100%;
@@ -12,12 +18,7 @@
   .shop_goods_invite_text,.shop_goods_invite_btn{
     position: absolute;
   }
-  .space_store_box{
-    margin-bottom: 20rpx;
-    height: 200rpx;
-    background: #fff;
-    padding:10rpx 30rpx;
-  }
+
   .shop_goods_invite_text{
     width:380rpx;
     margin-left: 35rpx;
@@ -53,9 +54,7 @@
   .keepup{
     height:80rpx;line-height:80rpx;
   }
-  .grey{
-    color:#999999
-  }
+
   .space_box{
     width: 160rpx;
     margin-bottom: 30rpx;

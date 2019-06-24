@@ -1,6 +1,10 @@
 {
+  "navigationBarTitleText": "门店详情",
   "usingComponents": {
     "van-tag":"../../miniprogram_npm/vant-weapp/tag/index",
-    "van-rate":"../../miniprogram_npm/vant-weapp/rate/index"
+    "van-rate":"../../miniprogram_npm/vant-weapp/rate/index",
+    "van-tabs":"../../miniprogram_npm/vant-weapp/tabs/index",
+    "van-tab":"../../miniprogram_npm/vant-weapp/tab/index",
+    "van-stepper":"../../miniprogram_npm/vant-weapp/steppers/index"
   }
 }

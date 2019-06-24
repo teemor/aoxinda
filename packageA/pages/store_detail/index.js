@@ -1,19 +1,39 @@
-// packageA/pages/store_detail/index.js
-Page({
+import {
+  store
+} from '../../common/api/api'
+const request = new store
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-
+    add:false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  addNum:function(){
+    this.setData({
+      add:true
+    })
+  },
+  makePhone:function({currentTarget}){
+    console.log(currentTarget.dataset.item)
+    if(currentTarget.dataset.item){
+      wx.makePhoneCall({
+        phoneNumber:currentTarget.dataset.item
+      })
+    }
+   
+  },
   onLoad: function (options) {
-
+    if(options.model){
+      let model = JSON.parse(decodeURIComponent(options.model))
+      console.log(model,'options')
+      this.setData({
+        model:model
+      })
+      // request.findShopDet({id:model.id}).then(res=>{
+      //   console.log(res)
+      // })
+    }
+    
   },
 
   /**

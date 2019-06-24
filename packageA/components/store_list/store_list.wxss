@@ -10,7 +10,7 @@
   }
  
   .space_store_text{
-    width:444rpx;
+    width:500rpx;
   }
 
   .space_store_address{

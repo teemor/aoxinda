@@ -10,7 +10,7 @@
       <view class="fl loc_img">
         <image src="../../common/img/location.png" />
       </view>
-      <view class="fl">人民购物广场</view>
+      <view class="fl" bindtap="locationChoose">{{location==''?'请选择您的当前位置':location}}</view>
     </view>
     <view class="fr grey fz26" bindtap="storeList">
       <view class="fl">全部</view>
@@ -21,7 +21,7 @@
   </view>
   <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的商品</view>
+    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
     <view class="shop_edit">
       <image src="../../../common/image/edit.png" />
     </view>
@@ -29,7 +29,7 @@
       <image src="../../../common/image/close.png" />
     </view>
   </view>
-  <view class="cl space_contain">
+  <!--<view class="cl space_contain">
     <view class="space_box tc fl">
       <view class="space_img">
         <image src="../../common/img/space.png" />
@@ -61,6 +61,7 @@
       <view class="fz30">打蜡</view>
     </view>
   </view>
+  -->
   <view class="space_list fz28 cl">
     <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
     <storeList item="{{item}}"  bind:storeDetail="storeDetail"/>

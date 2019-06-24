@@ -9,6 +9,11 @@ Page({
   data: {
     CleanStore
   },
+  allCity:function(){
+    wx.navigateTo({
+      url:'../../pages/city_select/index'
+    })
+  },
   storeDetail:function(e){
     console.log(e)
     wx.navigateTo({
