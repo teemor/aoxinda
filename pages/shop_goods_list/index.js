@@ -1,15 +1,41 @@
 import { Technician } from '../../common/api/api'
 const request = new Technician
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    checked: true,
+    desc:true,
     list: [1, 3, 4, 6],
     sortShow:false,
-    brandType:[{name:'宝马(BMN)',id:'1'},{name:'博世(BOS)',id:'2'},{name:'博世(BOS)',id:'3'},{name:'博世(BOS)',id:'3'}],
+    brandType:[],
     sortType: [{ name: '销量', id: '1' }, { name: '价格', id: '2' },{name:'筛选',id:'3'}]
+  },
+  startPrice:function(e){
+    this.setData({
+      startPrice:e.detail.value
+    })
+  },
+  clear:function(){
+    this.setData({
+      endPrice:'',
+      startPrice:''      
+    })
+  },
+  saveSort:function(){
+    this.selectGoodsList({ goods_brand:this.data.goods_brand,start_price:this.data.startPrice,end_price:this.data.endPrice,goodsType: this.data.goodsType, sailNum: 'sailNum', sorting: this.data.desc?'desc':'asc', goodsName: this.data.goodsName})
+    this.setData({
+      sortShow:false
+    })
+  },
+  endPrice:function(e){
+    this.setData({
+      endPrice:e.detail.value
+    })
+    console.log(e,'end')
   },
   /**
    * 选择品牌
@@ -22,9 +48,11 @@ Page({
     }
     child[e.currentTarget.dataset.index].active=true;
     this.setData({
-      brandType:child
+      brandType:child,
+      goods_brand:e.currentTarget.dataset.item
     })
-    console.log(this.data.brandType)
+
+    console.log(e,'是我')
   },
   closeMask:function(){
     this.setData({
@@ -33,13 +61,16 @@ Page({
   },
   addSort:function(e){
     if(e.currentTarget.dataset.item.name==="销量"){
-      this.selectGoodsList({ goodsType: this.data.goodsType, sailNum: 'sailNum', sorting: 'desc', goodsName: this.data.goodsName})
+      this.selectGoodsList({ goodsType: this.data.goodsType, sailNum: 'sailNum', sorting: this.data.desc?'desc':'asc', goodsName: this.data.goodsName})
     }else if(e.currentTarget.dataset.item.name==='价格'){
-      this.selectGoodsList({ goodsType: this.data.goodsType, goodsPrice: 'goodsPrice', sorting: 'desc', goodsName: this.data.goodsName})
+      this.setData({
+        desc:!this.data.desc
+      })
+      this.selectGoodsList({ goodsType: this.data.goodsType, goodsPrice: 'goodsPrice', sorting: this.data.desc?'asc':'desc', goodsName: this.data.goodsName})
 
     }else{
       this.setData({
-        sortShow:true
+        sortShow:!this.data.sortShow
       })
     }
   },
@@ -60,12 +91,23 @@ Page({
     wx.navigateTo({
       url: '../my_car/index',
     });
-
+  },
+  /**
+   * 添加爱车
+   */
+  addCar:function(){
+    wx.navigateTo({
+      url: '../../pages/add_car/index'
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      carType: app.globalData.carType
+    })
+    console.log(app)
     let model = decodeURIComponent(options.id)
     let id = JSON.parse(model).id
     let goods_name = JSON.parse(model).goodsName || ""
@@ -74,19 +116,27 @@ Page({
     })
     this.setData({
       goodsType: id,
-      goodsName: goods_name
+      goodsName: goods_name,
+      car_type: this.data.carType.LevelID
     })
-    this.selectGoodsList({ goodsType: id, goodsName: goods_name })
+    this.selectGoodsList({ goodsType: id, goodsName: goods_name, car_type: this.data.car_type })
   },
   /**
    * 列表
    */
   selectGoodsList: function (model) {
     request.selectGoodsList(model).then(res=>{
-      this.setData({
-        storeList:res.data.tableData
-      })
-      console.log(res,'res')
+      if (res.data) {
+        this.setData({
+          storeList: res.data.tableData,
+          brandType: res.brandData
+        })
+      } else {
+        this.setData({
+          storeList: [],
+          brandType: []
+        })
+      }
     })
   },
   /**
@@ -136,5 +186,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //是否推荐车相关
+  onChange(event) {
+    this.setData({
+      checked: event.detail
+    });
+    if (event.detail) {
+      this.selectGoodsList({ goodsType: this.data.goodsType, goodsName: this.data.goodsName, car_type: this.data.car_type })
+    } else {
+      this.selectGoodsList({ goodsType: this.data.goodsType, goodsName: this.data.goodsName })
+    }
   }
 })

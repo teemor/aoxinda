@@ -1,17 +1,17 @@
-<view wx:if="{{back==0}}">
+<view wx:if="{{refundList.backOrderData.length===0}}">
 <view class="my_address_null">
 <image src="../../common/image/refund_null.png"/>
 </view>
-<view class="tc fz26">还没有相关订单呢</view>
+<view class="tc fz26">您对购买的商品都很满意</view>
 </view>
 <view wx:else >
 <view wx:for="{{refundList.backOrderData}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">
 <view class="br_btm_light" style="padding:30rpx" >
   <view class="fl my_order_list_image">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+    <image src="{{item.file_url}}" />
   </view>
   <view class="fl my_order_list_text fz28">
-    <view class="fz28">{{item.goods_name}}</view>
+    <view class="fz28 order_text_over">{{item.goods_name}}</view>
     <view class="fz24 my_order_describe">数量{{item.goods_num}} 产品：{{item.sku_name}}</view>
     <view class="cl">
     <view class="fl red">¥{{item.back_money}}</view>

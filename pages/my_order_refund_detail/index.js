@@ -6,30 +6,37 @@ Page({
   },
 
   onLoad: function (options) {
-    if(options.id){
+    if (options.id) {
       this.setData({
-        id:options.id
+        id: options.id
       })
-      request.selectBackOrderDetail({id:this.data.id}).then(res=>{
-        this.setData({
-          detailData:res
-        })
-      })
+      this.selectOrderDetail({ id: this.data.id })
     }
   },
-  editApply:function(){
-    wx.navigateTo({
-      url: '../add_refund/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
+  selectOrderDetail: function (id) {
+    request.selectBackOrderDetail(id).then(res => {
+      this.setData({
+        detailData: res
+      })
+    })
   },
-  cancelApply:function(){
-    let that =this
+
+  editApply: function () {
+    console.log(JSON.stringify(this.data.detailData),'fd')
+    let model = encodeURIComponent(JSON.stringify(this.data.detailData))
+
+    wx.navigateTo({
+      url: `../edit_refund/index?model=${model}`,
+      success: (result) => {
+
+      },
+      fail: () => { },
+      complete: () => { }
+    });
+
+  },
+  cancelApply: function () {
+    let that = this
     wx.showModal({
       content: '您确定要取消本次退款申请吗？',
       success(res) {
@@ -37,15 +44,14 @@ Page({
           request.updateBackOrder({ id: that.data.id, back_type: '20' }).then(res => {
             if (res.status === 0) {
               wx.showToast({
-                title: '撤销成功',
+                title: '撤销退款申请成功',
                 icon: 'none',
-                image: '',
                 duration: 3500,
                 mask: false,
                 success: (result) => {
-                  wx.navigateBack({
-                    url: '1'
-                  });
+                  setTimeout(function () {
+                    that.selectOrderDetail({ id: that.data.id })
+                  }, 2000)
                 },
                 fail: () => { },
                 complete: () => { }
@@ -57,8 +63,8 @@ Page({
         }
       }
     })
-  
- 
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -71,7 +77,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

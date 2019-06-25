@@ -148,7 +148,8 @@ module.exports = {
                   "tel": phoneNum,
                   "userSource": that.data.userSource,
                   "unionid": that.data.user.unionId,
-                  "partnentID": that.data.partnentID
+                  "partnentID": that.data.partnentID,
+                  "recommenderId": app.globalData.parentOpenId 
                 };
                 // 判断用户注册
                 that.checkFun(params);
@@ -186,7 +187,7 @@ module.exports = {
         })
       } else if (res.code === "500") {
         wx.showToast({
-          title: '服务器错误···',
+          title: res.description,
           icon: 'loading',
           duration: 1500
         })
@@ -217,7 +218,7 @@ module.exports = {
       "userSource": that.data.userSource,
       "unionid": that.data.user.unionId,
       "partnentID": that.data.partnentID,
-      "recommenderId": that.data.parentOpenId
+      "recommenderId": app.globalData.parentOpenId
     }
     request.loginQuery(params).then(res => {
       if (res.code === "200") {

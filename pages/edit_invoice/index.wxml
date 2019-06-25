@@ -1,4 +1,4 @@
-<view class="invoice_cell">
+<view class="invoice_cell" style="display:none">
   <view class="fl fz30">
     开具发票
   </view>
@@ -64,7 +64,7 @@
     </view>
     <view class="fz26 high80 mleft20" style=""><span class="grey">我已阅读并同意</span><span class="blue" bindtap="read">《增票资质确认书》</span></view>
   </view>
-  <view class="grey fz24 mtop50" style="padding:20rpx">
+  <view class="grey fz24 mtop50" style="padding:20rpx;display:none">
     <view class="high50">发票须知:</view>
     <view class="high50">1. 发票内容将显示详细商品名称与实际支付价格；</view>
     <view class="high50">2. 因发货仓库所在归属地政策原因，订单可能为您拆分开具多张发票</view>

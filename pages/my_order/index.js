@@ -15,6 +15,14 @@ Page({
       this.selectOrder({trade_status:detail.titlea})
     }
   },
+  onPullDownRefresh:function(){
+    this.setData({
+      active:this.data.active
+    })
+    this.selectOrder({})
+    wx.stopPullDownRefresh()
+      
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -36,7 +44,7 @@ Page({
         active:4
       })
     }
-this.onShow();
+    this.selectOrder({})
   },
   goOrder:function(e){
     this.setData({
@@ -76,7 +84,7 @@ this.onShow();
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.selectOrder({})
+
   },
 
   /**

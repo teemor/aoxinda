@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "商品",
+  "navigationBarTitleText": "保养商品",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "manager": "../../components/manager/manager",

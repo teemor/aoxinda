@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    focus: false,
     carType: '',
     region: ['河北省', '唐山市', '路北区'],
   },
@@ -31,6 +32,7 @@ Page({
       key: 'user',
       success: (result) => {
         request.saveCar({
+          CMS:this.data.model.CMS,
           PP:this.data.model.PP,
           registerDate: this.data.date,
           carTypeId: this.data.model.LevelID,
@@ -54,6 +56,12 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+  },
+  //点击行驶里程获取焦点
+  openKeyboard: function(e) {
+    this.setData({
+      focus: true
+    })
   },
   kmChange: function(e) {
     this.setData({

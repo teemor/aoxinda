@@ -2,6 +2,7 @@
   "navigationBarTitleText": "汽机油",
   "usingComponents": {
     "manager":"../../components/manager/manager",
+    "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox/index",
     "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
   }
 }

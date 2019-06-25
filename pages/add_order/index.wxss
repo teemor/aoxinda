@@ -19,6 +19,7 @@ page {
 }
 
 .location_address {
+  width:500rpx;
   font-size: 30rpx;
   margin-top: 20rpx;
 }

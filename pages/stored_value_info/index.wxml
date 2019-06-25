@@ -1,0 +1,90 @@
+<view class='card_top'>
+  <view class='card_bag' style='background-image:url(../../common/image/card_bg.png)'>
+    <view class='card_bag_top'>
+      <view class='card_title'>{{cardInfo.card_name}}</view>
+      <view class='card_info'>{{cardInfo.card_no}}</view>
+    </view>
+    <view class='card_bag_bottom'>
+      <view class='card_bm_info'>
+        <view class='card_price'>￥{{cardInfo.card_price || '99'}}元</view>
+        <view class='card_time'>有效期至{{cardInfo.end_use_at || '2021.05.28'}}</view>
+      </view>
+      <view class='card_surplus'>
+        剩余
+        <text>{{cardInfo.use_times || '38'}}</text>次
+      </view>
+    </view>
+  </view>
+  <view class='card_bag_'>
+    <view class='code_box'>
+      <!-- 存放二维码的图片-->
+      <image mode="scaleToFill" src="{{imagePath}}" class='wx_code'></image>
+      <image mode="aspectFit" src="../../common/image/card_info_code.png" class='wx_code_bg'></image>
+      <!-- 画布，用来画二维码，只用来站位，不用来显示-->
+      <view class="canvas-box">
+        <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;" canvas-id="canvas" />
+      </view>
+    </view>
+    <view class='wx_code_text'>{{shareInfo}}</view>
+  </view>
+  <view class='card_share'>
+    <text class='share_btn' bindtap="toShare">分享好友</text>
+    <text class='share_btn' bindtap="toPay">充值</text>
+  </view>
+</view>
+<view class='card_service card_item'>
+  <van-cell title="服务详情">
+    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
+  </van-cell>
+  <view class='card_service_cont'>金麦卡储值金额可用于适用门店的所有洗车美容及保养业务，具体价格，已店面为准，金麦卡享受店面折扣优惠</view>
+  <view class='card_service_info'>此处需要商定服务详情</view>
+</view>
+<view class='card_store card_item'>
+  <van-cell title="适用门店" is-link value="全部">
+    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
+  </van-cell>
+  <view class='address' wx:for="{{storeInfo}}" wx:key="{{index}}">
+    <view class='address_title'>{{item.NAME}}</view>
+    <view class='address_box'>
+      <image mode='aspectFit' src='../../common/image/location_.png' class='location' data-index="{{index}}" bindtap='onAddress'></image>
+      <view class='address_cont'>
+        <view class='cont_title'>{{item.ADDRESS}}</view>
+        <view class='cont_text'>距您约{{item.DISTANCE}}km，驾车需约{{item.TIME}}分钟</view>
+      </view>
+      <image mode='aspectFit' src='../../common/image/phone.png' class='phone' data-phone="{{item.TEL}}" bindtap='onContact'></image>
+    </view>
+  </view>
+</view>
+<view class='card_record card_item'>
+  <van-tabs active="{{ active }}" bind:change="onTabChange">
+    <van-tab title="消费记录">
+      <view class='address' wx:for="{{payInfo}}" wx:key="{{index}}">
+        <view class='address_box'>
+          <view class='address_cont'>
+            <view class='cont_title'>{{item.pay_store}}</view>
+            <view class='cont_text'>{{item.pay_server}} {{item.trade_price}}元</view>
+          </view>
+          <view class='time'>{{item.create_at}}</view>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="充值记录">
+      <view class='address' wx:for="{{rechargeInfo}}" wx:key="{{index}}">
+        <view class='address_box'>
+          <view class='address_cont'>
+            <view class='cont_title'>充值{{item.trade_price}}元</view>
+          </view>
+          <view class='time'>{{item.create_at}}</view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<van-dialog z-index="100" use-slot async-close show-cancel-button show="{{pay.show}}" bind:close="onPayClose">
+  <view class='card_recharge'>
+    <text>充值金额：￥</text>
+    <input type='number' value='{{pay.money}}' bindinput='payValue' maxlength="6"></input>
+  </view>
+</van-dialog>
+<van-notify id="van-notify" />

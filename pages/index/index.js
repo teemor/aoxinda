@@ -1,5 +1,5 @@
 const app = getApp()
-import {Technician} from '../../common/api/api'
+import { Technician } from '../../common/api/api'
 const request = new Technician
 import shop_detail from '../../mixin/shop_detail'
 import shop_list from '../../mixin/shop_list'
@@ -10,51 +10,68 @@ const api = require('../../utils/api')
 //   hotData
 // } from '../../common/static/api_data'
 Page({
-  mixins: [shop_detail,shop_list,login,find_car],
+  mixins: [shop_detail, shop_list, login, find_car],
   data: {
     userInfo: {},
     citySelected: {},
     weatherData: {},
     topCity: {},
-    show:true,
+    show: true,
     vertical: false,
     autoplay: false,
     circular: false,
     interval: 2000,
-    duration: 500, 
+    duration: 500,
     previousMargin: 0,
     nextMargin: 0,
-    loginMask:1,
-    phoneMask:1
+    loginMask: 1,
+    phoneMask: 1
   },
-  shopBtn:function(){
+  shopBtn: function () {
     wx.switchTab({
       url: `../shopping_mall/index`
     })
   },
-  onReady: function() {
+  onReady: function () {
     this.mapCtx = wx.createMapContext('myMap')
   },
-  onShow:function(){
+  onShow: function () {
     this.findCarList();
   },
-  onLoad: function() {
-    console.log(app.globalData.userInfo,'userinfo')
-    if(app.globalData.userInfo!==null){
-        this.setData({
-          loginMask:1,
-          phoneMask:1
-        })
-    }else{
-      this.getStorageInfo()
-    }
+  onLoad: function () {
+    let that = this
+    // wx.getStorage({
+    //   key: 'user',
+    //   success: function (res) {
+    //     if (res.data.avatarUrl !== '') {
+    //       that.setData({
+    //         loginMask: 1, //1不显示
+    //       })
+    //       wx.getStorage({
+    //         key: 'userPhone',
+    //         success: function (res) {
+    //           if (res.data) {
+    //             that.setData({
+    //               phoneMask: 1
+    //             })
+    //           }
+    //         }
+    //       })
+    //     } else {
+    //       that.getStorageInfo()
+    //     }
+    //   },
+    //   fail: function (res) {
+    //     console.log('234')
+    //     that.getStorageInfo()
+    //   }
+    // })
     this.onShow();
     // 天气
     var defaultCityCode = "__location__";
     var citySelected = wx.getStorageSync('citySelected');
     var weatherData = wx.getStorageSync('weatherData');
     if (citySelected.length == 0 || weatherData.length == 0) {
-      var that = this
       api.loadWeatherData(defaultCityCode, function (cityCode, data) {
         var weatherData = {}
         weatherData[cityCode] = data;
@@ -63,21 +80,21 @@ Page({
     } else {
       this.setHomeData(citySelected, weatherData);
     }
-    console.log(app,'app')
+    console.log(app, 'app')
     // 人气推荐
-    request.recommendIndex().then(res=>{
+    request.recommendIndex().then(res => {
       this.setData({
-        hotData:res.data
+        hotData: res.data
       })
     })
     // 商城精选
-    request.chooseIndex().then(res=>{
+    request.chooseIndex().then(res => {
       this.setData({
-        chooseData:res.data
+        chooseData: res.data
       })
     })
- 
-    
+
+
     // setTimeout()
     // this.mapCtx.moveToLocation()
   },
@@ -110,55 +127,59 @@ Page({
   //   console.log(e.detail)
   // },
   // 点击查看
-  detailBtn: function() {
+  detailBtn: function () {
 
   },
   // 倒计时
-  showTime: function() {
+  showTime: function () {
 
   },
   // 添加我的爱车
-  addCar: function() {
-    if(app.globalData.userInfo!==null){
+  addCar: function () {
+    console.log(app.globalData)
+    if (app.globalData.userInfo !== null && app.globalData.phoneNum !== "") {
       wx.navigateTo({
-        url:'../../pages/add_car_mes/index'
+        url: '../../pages/add_car_mes/index'
       })
-    }else{
+    } else {
       this.getStorageInfo()
     }
-    
+
   },
-  editCar:function(){
+  editCar: function () {
     wx.navigateTo({
-      url:'../../pages/my_car/index'
+      url: '../../pages/my_car/index'
     })
   },
   // 汽车美容
-  carbeautyBtn: function() {
+  carbeautyBtn: function () {
+    // wx.navigateTo({
+    //   url: '../../pages/car_beauty/index',
+    // })
     wx.navigateTo({
-      url: '../../pages/car_beauty/index',
+      url: '../../packageA/pages/index/index',
     })
   },
   // 车保养
-  upkeepBtn: function() {
+  upkeepBtn: function () {
     wx.navigateTo({
       url: '../../pages/c_upkeep_car/c_upkeep_car'
     })
   },
   // 邀请
-  myInvite: function() {
+  myInvite: function () {
     wx.navigateTo({
       url: '../../pages/my_invite/index'
     })
   },
-  onSearch: function(e) {
-    console.log('rwer',e)
+  onSearch: function (e) {
+    console.log('rwer', e)
     wx.navigateTo({
       url: '../search_shop_list/index'
     })
   },
   // 天气
-  
+
   setHomeData: function (citySelected, weatherData) {
     var topCity = {
       left: "",
@@ -172,6 +193,13 @@ Page({
       weatherData: weatherData,
       topCity: topCity,
       citySelected: citySelected,
+    })
+  },
+
+  //人气推荐和商城精选
+  toMall: function () {
+    wx.switchTab({
+      url: '../../pages/shopping_mall/index'
     })
   },
 })

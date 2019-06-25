@@ -5,20 +5,22 @@
   </view>
 </view>
 
-<view class="bgwhite" style="padding:30rpx;">
+<view wx:if="{{detailData.back_express!==''}}" class="bgwhite" style="padding:30rpx;">
 <view class="fz28 high80">{{detailData.back_express}}</view>
-<!--<view class="fz24 grey">退款将原支付路径退回，请您于1-7个工作日关注您支付账户余额变化</view>-->
+<view class="fz24 grey" wx:if="{{detailData.back_type==='等待退款'}}">退款将原支付路径退回，请您于1-7个工作日关注您支付账户余额变化</view>
 </view>
-  <view class="cl my_order_list_box" bindtap="orderDetail">
+<view class="cl my_order_list_box" bindtap="orderDetail">
   <view class="fz26 high60">退款信息</view>
-      <view class="fl my_order_list_image">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+  <view class='tk_box'>
+    <view class="my_order_list_image">
+        <image src="{{detailData.file_url}}" />
       </view>
-      <view class="fl my_order_list_text fz26">
+      <view class="my_order_list_text fz26">
         <view class="">{{detailData.goods_name}}</view>
-        <view class="fz24 my_order_describe">数量{{detailData.goods_num}} 产品：{{detailData.sku_name}}</view>
+        <view class="fz24 my_order_describe"> 产品：{{detailData.sku_name}}</view>
       </view>
-    </view>
+  </view>
+</view>
 <view style="" class=" bgwhite">
 <view class="high70 fz26 br_btm_light">
 退款原因：商品信息填写错误
@@ -36,7 +38,7 @@
 退款编号：{{detailData.back_code}}
 </view>
 </view>
-  <view class="bottom_btn_address mtop50">
+  <view wx:if="{{detailData.back_type==='等待退款'}}" class="bottom_btn_address mtop50">
     <view class="fz30 fl bg_orange bottom_btn_add" bindtap="cancelApply">
       撤销申请
     </view>

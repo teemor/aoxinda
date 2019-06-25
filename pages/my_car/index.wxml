@@ -1,10 +1,10 @@
-<view>
+<view style='padding-bottom:120rpx;'>
   <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
-    <!--  <view class="mycar_img fl">
+   <view class="mycar_img fl">
         <image src="{{item.img}}" />
       </view> 
-      -->
+   
       <view class="fl mycar_remark">
         <view>
           <view class="fl mycar_remark_title">{{item.model+' '+item.vehicleType}}</view>

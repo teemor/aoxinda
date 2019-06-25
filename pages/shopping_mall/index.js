@@ -24,12 +24,12 @@ Page({
    * 2019-03-28
    */
   onChange: function(e) {
-
     this.setData({
       shop_title: e.detail.title
     })
     request.selectGoodsType({
-      parentId: e.detail.titlea
+      parentId: e.detail.titlea,
+      fy: 1
     }).then(res => {
       this.setData({
         storeList: res.data.tableData
@@ -73,7 +73,8 @@ Page({
         typeData: res.data.tableData,
       })
       request.selectGoodsType({
-        parentId: res.data.tableData[0].id
+        parentId: res.data.tableData[0].id,
+        fy: 1
       }).then(res => {
         this.setData({
           storeList: res.data.tableData

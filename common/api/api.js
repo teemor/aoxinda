@@ -8,7 +8,7 @@ import {
 } from "../../utils/method"
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
-export const IP_yt = `http://192.168.31.76:9015`
+// export const IP_yt = `http://192.168.31.76:9015`
 export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
 // export const IP_YTHTTP = `http://192.168.31.76:9015`
@@ -137,9 +137,11 @@ export class Technician {
     })
   }
   // 查询自己的会员卡
-  findMyCarNumCard = (id) => {
+  findMyCarNumCard = (params) => {
     return http.httpRequest({
-      url: `${HTTP}/carWash/findMyCarNumCard?userId=${id}`
+      url: `${IP_YTHTTP}/appapi/v1.0/card/selectMyCard`,
+      method: `post`,
+      data: params
     })
   }
   // 商城
@@ -282,28 +284,28 @@ export class Technician {
   }
   selectMyBackOrderList = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/selectMyBackOrderList`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/selectMyBackOrderList`,
       method: `post`,
       data: model
     })
   }
   writeBackOrder = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/writeBackOrder`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/writeBackOrder`,
       method: `post`,
       data: model
     })
   }
   selectBackOrderDetail = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/selectBackOrderDetail`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/selectBackOrderDetail`,
       method: `post`,
       data: model
     })
   }
   updateBackOrder = (model) => {
     return http.httpRequest({
-      url: `${IP_yt}/appapi/v1.0/backOrder/updateBackOrder`,
+      url: `${IP_YTHTTP}/appapi/v1.0/backOrder/updateBackOrder`,
       method: `post`,
       data: model
     })
@@ -325,11 +327,11 @@ export class Technician {
     })
   }
   // 获取车型
-  findCarType = () => {
+  findCarType = (PP) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/findCarType`,
       method: `post`,
-      data: { pp: '' }
+      data: { PP: PP || '' }
     })
   }
 
@@ -419,6 +421,25 @@ export class Technician {
       data:model
     })
   }
+  //邀请人数量
+  inviteCount = (openId) => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/user/inviteCount`,
+      data: {
+        "recommenderId": openId,
+        "userType": "1"
+      },
+      method: `post`
+    })
+  }
+  // 查询邀请记录列表
+  selectInviteRecord = (openId) => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/user/recommender?openid=${openId}`,
+      method: `post`
+    })
+  }
+
 }
 
 

@@ -1,0 +1,3 @@
+<!--pages/stored_value_card/index.wxml-->
+<text>{{min_pay}}</text>
+<button bindtap='toStorageValue'>我要储值</button>

@@ -1,5 +1,5 @@
-import { Technician } from '../../common/api/api'
-const request = new Technician
+import { CardHttp } from '../../common/api/card_api'
+const request = new CardHttp
 const app = getApp()
 Page({
 
@@ -7,15 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cardData: []
+  },
+  detail: function (e) {
+    wx.navigateTo({
+      url: `../my_card_detail/index?id=${e.detail.id}`
+    });
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request.findMyCarNumCard(app.globalData.id).then(res=>{
-      console.log(res)
+    let that = this
+    //app.globalData.openId
+    request.selectMyCard({ buy_user_id: "ooUEg5S9qM1117FuuTF3rRS5ROls" }).then(res => {
+      if (res.data && res.data.length) {
+        that.setData({
+          cardData: res.data
+        })
+      }
     })
   },
 

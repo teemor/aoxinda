@@ -23,29 +23,34 @@ Page({
    * 跳转车保养
    */
   toFWcar: function (e) {
-    console.log(e)
-    wx.getStorage({
-      key: 'userPhone',
-      success: function (res) {
-        request.updateDef({
-          userTel: res.data,
-          carId: e.currentTarget.dataset.carid
-        }).then(res => {
-          if (res.code == '200') {
-            wx.navigateTo({
-              url: `../c_upkeep_car/c_upkeep_car`
-            })
-          } else {
-            wx.showToast({
-              title: '设置失败',
-              icon: 'warning',
-              duration: 1500
-            })
-          }
-        })
+    if (e.currentTarget.dataset.status == '0') {
+      wx.redirectTo({
+        url: `../c_upkeep_car/c_upkeep_car`
+      })
+    } else {
+      wx.getStorage({
+        key: 'userPhone',
+        success: function (res) {
+          request.updateDef({
+            userTel: res.data,
+            carId: e.currentTarget.dataset.carid
+          }).then(res => {
+            if (res.code == '200') {
+              wx.redirectTo({
+                url: `../c_upkeep_car/c_upkeep_car`
+              })
+            } else {
+              wx.showToast({
+                title: '设置失败',
+                icon: 'warning',
+                duration: 1500
+              })
+            }
+          })
 
-      },
-    })
+        },
+      })
+    }
 
   },
   /**

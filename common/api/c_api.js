@@ -243,6 +243,15 @@ export class orderStatus {
     })
   }
 
+  //商品详情
+  goodsDetail = (model) => {
+    return http.httpRequest({
+      url: `${IP_HTTP_API}/appapi/v1.0/product/app/editGoods`,
+      data: model,
+      method: 'post'
+    })
+  }
+
   //订单保存到另一个表
   saveMineOrder = (json) => {
     return http.httpRequest({

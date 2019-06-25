@@ -5,20 +5,7 @@ Page({
   data: {
 
   },
-  bindGetUserInfo: function(e) {
-    console.log(e.detail.userInfo)
-    if (e.detail.userInfo) {
-      this.setData({
-        avatar: e.detail.userInfo.avatarUrl,
-        nickName: e.detail.userInfo.nickName,
-        login: true
-      })
-    } else {
-      this.setData({
-        login: false
-      })
-    }
-  },
+
   myKeep:function(){
     // wx.navigateToMiniProgram({
     //   appId:'wx317e65151f04fa7c',
@@ -123,18 +110,22 @@ Page({
     })
   },
   onLoad: function(options) {
-    if(app.globalData.userInfo.avatarUrl){
-      this.setData({
-        avatar:app.globalData.userInfo.avatarUrl,
-        nickName :app.globalData.userInfo.nickName,
-        login:true
-      })
-    }else{
-      this.setData({
-        login:false
-      })
-    }
-    
+    let that = this
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          avatar: res.data.avatarUrl,
+          nickName:res.data.nickName,
+          login: true
+        })
+      },
+      fail:function(res){
+        that.setData({
+          fail:false
+        })
+      }
+    })
   },
   onReady: function() {
 

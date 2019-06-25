@@ -2,7 +2,7 @@
   <view>
     <view class="cl my_order_list_box" bindtap="orderDetail">
       <view class="fl my_order_list_image">
-        <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/cart_list_perfume.png" />
+        <image src="{{goodsData.file_url}}" />
       </view>
       <view class="fl my_order_list_text fz26">
         <view class="">{{goodsData.goods_name}}</view>
@@ -19,20 +19,24 @@
     <view class="bg_refund_contain bgwhite br_btm_light">
       <view class="fz28 high60">退款数量</view>
       <view class="cl high60">
-        <van-stepper class="fl" min="1" max="{{goodsData.buy_num}}" value="{{orderInfo.goods_num}}" bind:change="onChange" />
-        <view class="fl grey fz28 mleft20">最多{{goodsData.buy_num}}件</view>
+        <van-stepper class="fl" min="1" max="{{goodsData.buy_num}}" value="{{orderInfo.goods_num}}" disabled="{{serverDatas?true:false}}" bind:change="onChange" />
+        <view class="fl grey fz28 mleft20" wx:if="{{!serverDatas}}">最多{{goodsData.buy_num}}件</view>
       </view>
       <view class="cl high60 fz26 ">退款金额
         <span class="red">¥{{orderInfo.back_money}}</span>
       </view>
-      <view class="fz22 high60 grey">最多¥{{goodsData.goods_price*goodsData.buy_num}}，含¥0运费</view>
+      <view class="fz22 high60 grey">
+        <text wx:if="{{!serverDatas}}">最多¥{{goodsData.goods_price*goodsData.buy_num}}，</text>
+        含¥0运费
+        <text wx:if="{{serverDatas}}">，含¥{{serverDatas.money*serverDatas.server_num}}服务费</text>
+      </view>
     </view>
     <van-field wx:if="{{shopstatus===true}}" label="商品状态" value="{{statusLabel?statusLabel:'请选择商品状态'}}" is-link bind:focus="showShopstatus" />
     <view bindtap='refundReason'>
       <van-field label="退款原因" value="{{orderInfo.back_reason}}" readonly is-link/>
     </view>
   </view>
-  <view class="mtop20">
+  <view class="mtop20" wx:if="{{reasonShow===false}}">
     <van-field value="{{ orderInfo.back_desription }}" bind:change="description" label="退款说明" type="textarea" placeholder="选填" autosize border="{{ false }}" />
     <view class="bgwhite">
       <view class="fz26 pleft30 greyfont">上传退款凭证</view>

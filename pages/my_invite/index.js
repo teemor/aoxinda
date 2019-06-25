@@ -101,7 +101,7 @@ Page({
     // if (res.from === 'button') {
     return {
       title: "分享",
-      path: '/pages/c_login/c_login?parentOpenId='+ that.data.user.openId,
+      path: '/pages/login/index?parentOpenId='+ that.data.user.openId,
       success: function (res) {
         // 转发成功
         wx.showToast({

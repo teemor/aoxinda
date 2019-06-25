@@ -17,14 +17,13 @@
 }
 
 .mycar_img image {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 50rpx;
+  width: 150rpx;
+  height: 100rpx;
 }
 
 .mycar_remark {
-  margin-left: 50rpx;
-  width: 500rpx;
+  margin-left: 30rpx;
+  width: 460rpx;
 }
 
 .mycar_remark_title {

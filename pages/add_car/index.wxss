@@ -1,6 +1,7 @@
 .add_car_contain {
   /* padding: 10rpx; */
 }
+
 .showSlectedLetter {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
@@ -15,7 +16,9 @@
   height: 100px;
   border-radius: 10px;
   font-size: 26px;
-  z-index: 1; }
+  z-index: 1;
+}
+
 .fixed {
   left: 0px;
   width: 100%;
@@ -98,12 +101,17 @@
   height: 30rpx;
   position: absolute;
   right: 20rpx;
-  top: 10rpx;
+  top: 15rpx;
 }
 
 .add_car_search-btn image {
   width: 100%;
   height: 30rpx;
+}
+
+.add_car_input {
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
 .add_car_place {
@@ -159,7 +167,7 @@
 
 .add_car_letter-text image {
   float: left;
-  width: 70rpx;
+  width: 105rpx;
   height: 70rpx;
   margin-top: 15rpx;
   margin-right: 20rpx;

@@ -1,10 +1,10 @@
 <view class="mine_cell_contain">
-  <view class="mine_cell-list">
+  <!-- <view class="mine_cell-list">
     <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
       <van-cell title="城市" value="{{region?region[0]+region[1]+region[2]:'请选择所在城市'}}" is-link bind:click="myAddress">
       </van-cell>
     </picker>
-  </view>
+  </view> -->
   <view class="mine_cell-list">
     <van-cell title="车型" url="../add_car/index" value="{{carType===''?'选择您的车型':carType}}" is-link bind:click="myAddress">
     </van-cell>
@@ -15,14 +15,16 @@
       </van-cell>
     </picker>
   </view>
-  <view class="mine_cell-list">
+  <view class="mine_cell-list"  bindtap="openKeyboard">
     <view bind:tap="onClick" class="van-cell van-cell van-cell--clickable van-cell--clickable van-cell--hover van-cell--hover" hover-class="van-cell--hover hover-class" hover-stay-time="70" style="" role="" aria-label="">
       <view class="van-cell__title van-cell__title" style="" role="" aria-label="">行驶里程</view>
       <view class="van-cell__value van-cell__value" role="" aria-label="">
-      <input type="text" class="fl" style="width:200rpx" placeholder="公里数" bindinput="kmChange"/>  KM</view>
+        <text class='fr' style='line-height:1.45rem;margin-left:10rpx;'>KM</text>
+        <input type="number" class="fr" style="width:220rpx" placeholder="公里数"  focus="{{focus}}" value="{{kmTxt}}" bindinput="kmChange"/>
+      </view>
       <view bind:tap="onClick" class="cell-index--van-cell__right-icon van-icon van-icon van-icon-arrow van-icon-arrow" style="" role="" aria-label=""></view>
     </view>
 
   </view>
-  <view class="fz30 bg_orange bottom_btn" bindtap="addCar">立即添加</view>
+  <view class="fz30 bg_orange bottom_btn" bindtap="addCar">立即修改</view>
 </view>

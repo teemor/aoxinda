@@ -1,0 +1,74 @@
+<view>
+  <view>
+    <view class="cl my_order_list_box" bindtap="orderDetail">
+      <view class="fl my_order_list_image">
+        <image src="{{model.file_url}}" />
+      </view>
+      <view class="fl my_order_list_text fz26">
+        <view class="">{{model.goods_name}}</view>
+        <view class="fz24 my_order_describe">{{model.sku_name}}</view>
+        <view class=" fz22">
+          <span class="grey fl">单价：</span>
+          <view class="fl red">¥ {{model.back_money}}</view>
+          <view class="fl grey m_left">购买数量：{{model.goods_num}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mtop20">
+    <view class="bg_refund_contain bgwhite br_btm_light">
+      <view class="fz28 high60">退款数量</view>
+      <view class="cl high60">
+        <van-stepper class="fl" min="1" max="{{model.buy_num}}" value="{{model.model}}" disabled="{{serverData?true:false}}" bind:change="onChange" />
+        <view class="fl grey fz28 mleft20" >最多{{model.goods_num}}件</view>
+      </view>
+      <view class="cl high60 fz26 ">退款金额
+        <span class="red">¥{{model.back_money}}</span>
+      </view>
+      <view class="fz22 high60 grey">
+        <text wx:if="{{!serverData}}">最多¥{{model.back_money*model.goods_num}}，</text>
+        含¥0运费
+        <text wx:if="{{serverData}}">，含¥{{serverData.money*serverData.server_num}}服务费</text>
+      </view>
+    </view>
+    <van-field wx:if="{{shopstatus===true}}" label="商品状态" value="{{statusLabel?statusLabel:'请选择商品状态'}}" is-link bind:focus="showShopstatus" />
+    <view bindtap='refundReason'>
+      <van-field label="退款原因" value="{{orderInfo.back_reason}}" readonly is-link/>
+    </view>
+  </view>
+  <view class="mtop20" wx:if="{{reasonShow===false}}">
+    <van-field value="{{ orderInfo.back_desription }}" bind:change="description" label="退款说明" type="textarea" placeholder="选填" autosize border="{{ false }}" />
+    <view class="bgwhite">
+      <view class="fz26 pleft30 greyfont">上传退款凭证</view>
+      <view bindtap="uploadImage" class="add_refund_box">
+        <image src="../../common/image/upload.png" wx:if="{{imgList.length===0}}" />
+        <view wx:else>
+          <image src="{{item.url}}" wx:for="{{imgList}}" wx:key="{{index}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<manager show="{{reasonShow}}" type="bottom" bind:clickMask="clickMask">
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+    <view class="tc high70 fz30">退款原因</view>
+    <view class="high70 fz28 br_btm_light" wx:for="{{reason}}" wx:key="{{item}}" bindtap="reasonChoose" data-item="{{item}}">
+      {{item.name}}
+    </view>
+    <view style="height:40rpx"></view>
+    <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>
+  </view>
+</manager>
+<manager show="{{statusShow}}" type="bottom" bind:clickMask="clickMask">
+  <view class="bgwhite" style="position:relative;padding-bottom:300rpx">
+    <view class="tc high70 fz30">商品状态</view>
+    <view class=" fz28 br_btm_light" style="height:150rpx" data-item="{{item}}" bindtap="statusChoose" wx:for="{{status}}" wx:key="{{item}}">
+      <view class="high70 fz30">{{item.name}}</view>
+      <view class="high70 fz24 grey">{{item.text}}</view>
+    </view>
+    <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>
+  </view>
+</manager>
+<view class="fz30 bg_orange bottom_btn" bindtap="refundDetail">
+  提交
+</view>

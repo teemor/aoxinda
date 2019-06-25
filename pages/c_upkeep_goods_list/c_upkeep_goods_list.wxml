@@ -6,7 +6,7 @@
   </view>
   <view class="shop_goods_invite">
     <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-    <view class="shop_goods_invite_text" bindtap='editCar'>为您推荐适合 {{car_name}} 的商品</view>
+    <view class="shop_goods_invite_text">为您推荐适合 <text>{{car_name}}</text> 的商品</view>
   </view>
   <view wx:for="{{storeList}}" wx:key="{{item}}" style='padding:0 20rpx'>
     <view class="shop_goods_contain cl" data-item="{{item.productCode}}" data-info="{{item}}" bindtap="shop_detail">

@@ -24,7 +24,7 @@ Page({
    * 查看订单
    */
   orderList:function(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: `../my_order_detail/index?id=${this.data.id}`,
       success: (result) => {
       },
