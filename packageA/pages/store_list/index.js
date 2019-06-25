@@ -16,7 +16,7 @@ Page({
   },
   allCity:function(){
     wx.navigateTo({
-      url:'../../pages/city_select/index'
+      url:'../../pages/city_select/ind25ex'
     })
   },
   sortType:function(){
