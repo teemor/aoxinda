@@ -1,17 +1,34 @@
+import store from '../../../mixin/store'
+const app = getApp()
 import {
-  CleanStore
+  serviceData
 } from '../../common/static/api_data'
 Page({
-
+  mixins: [store],
+  
   /**
    * 页面的初始数据
    */
   data: {
-    CleanStore
+    serviceData,
+    city:'',
+    service:false
   },
   allCity:function(){
     wx.navigateTo({
       url:'../../pages/city_select/index'
+    })
+  },
+  sortType:function(){
+    this.setData({
+      service:false,
+      sort:!this.data.sort
+    })
+  },
+  allService:function(){
+    this.setData({
+      service:!this.data.service,
+      sort:false
     })
   },
   storeDetail:function(e){
@@ -30,7 +47,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.findShopList(app.globalData.latitude,app.globalData.longitude)
   },
 
   /**
@@ -44,7 +61,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.item){
+      this.setData({
+        city:this.data.item
+      })
+    }
+console.log(this.data.item)
   },
 
   /**

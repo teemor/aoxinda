@@ -29,9 +29,9 @@ Page({
       this.setData({
         model:model
       })
-      // request.findShopDet({id:model.id}).then(res=>{
-      //   console.log(res)
-      // })
+      request.findShopDet({shopId:model.id}).then(res=>{
+        console.log(res)
+      })
     }
     
   },

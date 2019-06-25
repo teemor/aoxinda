@@ -9,8 +9,11 @@ App({
     userInfo: null,
     id:'',
     options:'',
-    carType:''//车型
+    carType:'',
+    longitude:'',
+    latitude:''
   },
+  address:'',
   appid: "wx97a3505497150b66",
   onLaunch: function () {
     let that = this

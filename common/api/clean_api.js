@@ -1,6 +1,6 @@
 import {
     HttpServer
-  } from "../../../utils/method"
+  } from "../../utils/method"
   const http = new HttpServer()
  export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 

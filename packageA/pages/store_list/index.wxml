@@ -1,20 +1,21 @@
-<view class="fz28">
+<view class="fz28 bgwhite" style="top:0;height:80rpx;line-height:80rpx;z-index:334;position:fixed">
   <view class="fl sort tc">
     <view class="sort_type" bindtap="allCity">
-      <view class="fl">全城</view>
+      <view class="fl">{{city==''?'全城':city}}</view>
       <view class="fl sort_img">
         <image src="../../common/img/down.png" />
       </view>
     </view>
   </view>
   <view class="fl sort tc">
-    <view class="sort_type">
+    <view class="sort_type" bindtap="allService">
       <view class="fl">全部服务</view>
       <view class="fl sort_img">
         <image src="../../common/img/down.png" />
       </view>
     </view>
-  </view>  <view class="fl sort tc">
+  </view>  
+  <view class="fl sort tc" bindtap="sortType">
     <view class="sort_type">
       <view class="fl">距离优先</view>
       <view class="fl sort_img">
@@ -38,3 +39,15 @@
     <storeList item="{{item}}" bind:storeDetail="storeDetail"/>
   </view>
 </view>
+<manager show="{{service}}" type="top" bind:clickMask="allService">
+ <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+ <van-badge-group active="{{ active }}" bind:change="onChange">
+      <van-badge title="{{item.name}}" titlea="{{item.id}}" wx:for="{{serviceData}}" />
+    </van-badge-group>
+ </view>
+</manager>
+<manager show="{{sort}}" type="top" bind:clickMask="sortType">
+ <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+  
+ </view>
+</manager>

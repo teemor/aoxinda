@@ -1,13 +1,9 @@
-import {
-  CleanStore
-} from '../../common/static/api_data'
 
-import {
-  store
-} from '../../common/api/api'
-const request = new store
+import store from '../../../mixin/store'
 
+const app = getApp()
 Page({
+  mixins: [store],
 
   /**
    * 页面的初始数据
@@ -28,6 +24,8 @@ Page({
           latitude:result.latitude,
           longitude:result.longitude
         })
+        app.globalData.latitude= result.latitude
+        app.globalData.longitude = result.longitude
       },
       fail: () => {},
       complete: () => {}
@@ -93,15 +91,18 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    wx.getLocation({
+     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
         })
-
-        console.log(that.data.latitude,'rewr')
+        console.log(res,'rererere')
+        app.globalData.latitude= res.latitude
+        app.globalData.longitude = res.longitude
+        that.findShopList(that.data.longitude,that.data.latitude)
+        that.address(that.data.longitude,that.data.latitude)
         // that.moveTolocation();
       },
       fail:function(){
@@ -120,7 +121,6 @@ Page({
           
       }
     })
-   
     wx.getSetting({
       success: (result) => {
         

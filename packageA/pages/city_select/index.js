@@ -1,5 +1,10 @@
-Page({
+import {
+    cityObj
+  } from '../../common/static/api_data'
+  const app = getApp()
+  Page({
   data: {
+      cityObj,
       searchLetter:  ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
       showLetter: "",
       winHeight: 0,
@@ -10,22 +15,22 @@ Page({
       isShowLetter: false,
       scrollTop: 0,
       city: "",
-      cityArr: [],
-      src: './dw.png'
-  },
+      cityArr: []
+      },
+
   onLoad: function onLoad(options) {
       //历史选择，应该在缓存中记录，或者在在app中全局记录
       //当前城市通过之前的页面穿过来或者调用定位
-      var c = '北京';
-      var cityArr = ['上海', '北京'];
+      var c = app.address;
+      var cityArr = ['唐山', '北京'];
       this.setData({
           cityArr: cityArr,
           city: c
       });
       // 生命周期函数--监听页面加载
-      var searchLetter = city.searchLetter;
-      var cityList = city.cityList();
-      // console.log(cityInfo);
+      var searchLetter = this.data.searchLetter;
+      var cityList = this.cityList();
+      console.log(cityList,4);
 
       var sysInfo = wx.getSystemInfoSync();
       console.log(sysInfo);
@@ -50,9 +55,24 @@ Page({
           searchLetter: tempObj,
           cityList: cityList
       });
-
-      console.log(this.data.cityInfo);
   },
+  cityList:function(){
+    let tempObj = [];
+    for(let i=0;i<this.data.searchLetter.length;i++){
+      let initial = this.data.searchLetter[i];
+      let cityInfo = [];
+      let tempArr = {};
+      tempArr.initial = initial;
+      for (let j = 0; j < this.data.cityObj.length; j++) {
+          if (initial == this.data.cityObj[j].initial) {
+              cityInfo.push(this.data.cityObj[j]);
+          }
+      }
+      tempArr.cityInfo = cityInfo;
+      tempObj.push(tempArr);
+    }
+    return tempObj;
+},
   searchStart: function searchStart(e) {
       var showLetter = e.currentTarget.dataset.letter;
       var pageY = e.touches[0].pageY;
@@ -148,6 +168,15 @@ Page({
       var city = e.target.dataset.text;
       //可以跳转了
       console.log('选择了城市：', city);
+      let currentPages =  getCurrentPages();
+      let prevPage = currentPages[currentPages.length-2];
+      prevPage.setData({
+        item:city
+      })
+      wx.navigateBack({
+          url:'1'
+      });
+        
   },
   cxgps: function cxgps(e) {
       var that = this;
