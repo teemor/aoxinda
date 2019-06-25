@@ -1,16 +1,24 @@
+const app = getApp();
 import login from '../../mixin/login'
 Page({
   mixins: [login],
   data: {
     loginMask: 1,
     phoneMask: 1
+    // parentOpenId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.parentOpenId) {
+      //是否存在推荐人openId
+      // this.setData({
+      //   parentOpenId: options.parentOpenId
+      // })
+      app.globalData.parentOpenId = options.parentOpenId
+    }
   },
 
   /**

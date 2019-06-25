@@ -144,29 +144,6 @@ export class Technician {
       data: params
     })
   }
-  // 查询自己的会员卡详情
-  selectMyCardDetail = (params) => {
-    return http.httpRequest({
-      url: `${IP_YTHTTP}/appapi/v1.0/card/selectMyCardDetail`,
-      method: `post`,
-      data: params
-    })
-  }
-  //查询卡包所需门店
-  selectShopList = () => {
-    return http.httpRequest({
-      url: `${IP_YTHTTP}/appapi/v1.0/card/selectShopList`,
-      method: `post`
-    })
-  }
-  // 新人有礼
-  //获取服务项目
-  selectFirstActivity = () => {
-    return http.httpRequest({
-      url: `${IP_YTHTTP}/appapi/v1.0/card/selectFirstActivity`,
-      method: `post`
-    })
-  }
   // 商城
   // 获取所有分类信息
   selectGoodsType = (model) => {
@@ -444,6 +421,25 @@ export class Technician {
       data:model
     })
   }
+  //邀请人数量
+  inviteCount = (openId) => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/user/inviteCount`,
+      data: {
+        "recommenderId": openId,
+        "userType": "1"
+      },
+      method: `post`
+    })
+  }
+  // 查询邀请记录列表
+  selectInviteRecord = (openId) => {
+    return http.httpRequest({
+      url: `${IP_WBHTTP}/user/recommender?openid=${openId}`,
+      method: `post`
+    })
+  }
+
 }
 
 

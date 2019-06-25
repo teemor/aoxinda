@@ -89,3 +89,47 @@ margin-left:680rpx;
 .savebtn, .resetbtn{
   width: 50%
 }
+.shopList_car{
+  padding: 10rpx 30rpx;
+  height: 50rpx;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shopList_car_img{
+  width: 30rpx;
+  height: 20rpx;
+  flex: 0 1 auto;
+}
+.shopList_car_van{
+  width: 100%;
+  height: 100%;
+  line-height: 50rpx;
+}
+.shopList_car_van .van-checkbox__icon-wrap,
+.shopList_car_van .van-checkbox__label{
+  line-height: 35rpx;
+}
+.shopList_car_van .van-checkbox__icon{
+  width: 35rpx;
+  height: 35rpx;
+}
+.shopList_car_van .van-checkbox__icon .van-icon{
+  line-height: 35rpx!important;
+}
+.shopList_car_van .shopList_car_label{
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 50rpx;
+}
+.shopList_car_text{
+  display: inline-block;
+  max-width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}

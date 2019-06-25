@@ -1,12 +1,12 @@
 <view class="order_detail_bg">
   <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30 fl">{{model.trade_status_name}}</view>
+    <view class="fz30 fl">{{model.trade_status_name=='用户取消'?'已取消':model.trade_status_name}}</view>
     <view class="fl order_detail_img">
       <image src="../../common/image/detail.png" />
     </view>
-    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.send_at&&model.trade_status_name!=='已完成'&&model.trade_status_name!=='已安装'}}">
-    预计{{send_at}}发货，请及时关注物流状态
+    <view  class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.expect_sent_at&&model.trade_status_name!=='已完成'&&model.trade_status_name!=='已安装'}}">
+    预计{{expect_sent_at}}发货，请及时关注物流状态
     </view>
     <view wx:elif="{{model.trade_status_name===''}}">
     </view>

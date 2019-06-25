@@ -1,3 +1,10 @@
 <view>
-<code-card qrCode="{{cardData}}" bind:detail="detail"/>
+  <view class='card_bag' style='background-image:url(../../common/image/card_bg.png)' wx:for="{{cardData}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='detail'>
+    <view class='card_title'>{{item.card_name}}</view>
+    <view class='card_content'>
+      <text>剩余项目{{item.use_times}}次</text>
+      <text class='line'>|</text>
+      <text class='brown'>有效期{{item.use_days}}天</text>
+    </view>
+  </view>
 </view>

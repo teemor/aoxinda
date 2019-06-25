@@ -148,7 +148,8 @@ module.exports = {
                   "tel": phoneNum,
                   "userSource": that.data.userSource,
                   "unionid": that.data.user.unionId,
-                  "partnentID": that.data.partnentID
+                  "partnentID": that.data.partnentID,
+                  "recommenderId": app.globalData.parentOpenId 
                 };
                 // 判断用户注册
                 that.checkFun(params);
@@ -217,7 +218,7 @@ module.exports = {
       "userSource": that.data.userSource,
       "unionid": that.data.user.unionId,
       "partnentID": that.data.partnentID,
-      "recommenderId": that.data.parentOpenId
+      "recommenderId": app.globalData.parentOpenId
     }
     request.loginQuery(params).then(res => {
       if (res.code === "200") {

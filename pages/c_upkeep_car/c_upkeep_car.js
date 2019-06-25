@@ -138,15 +138,9 @@ Page({
               confirmText: '去认证',
               showCancel: false,
               success(res) {
-                if (res.confirm) {
-                  wx.navigateTo({
-                    url: '../../pages/add_car/index'
-                  })
-                } else {
-                  wx.reLaunch({
-                    url: '../../pages/index/index'
-                  })
-                }
+                wx.reLaunch({
+                  url: '../../pages/index/index'
+                })
               }
             })
           }
