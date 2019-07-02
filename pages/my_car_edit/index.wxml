@@ -26,5 +26,16 @@
     </view>
 
   </view>
+  <view class="mine_cell-list"  bindtap="showPlate">
+    <view class="van-cell van-cell--hover">
+      <view class="van-cell__title van-cell__title">车牌号</view>
+      <view class="van-cell__value van-cell__value">
+        <input value='{{ plateNum }}' disabled placeholder='请选择车牌号'></input>
+      </view>
+    </view>
+  </view>
   <view class="fz30 bg_orange bottom_btn" bindtap="addCar">立即修改</view>
 </view>
+<van-popup custom-class="_popup" show="{{ show }}" position="bottom" bind:close="onClose">
+  <license_plate bind:getPlate="getPlate" bind:onClose="onClose" licensePlate="{{ plateNum }}"></license_plate>
+</van-popup>

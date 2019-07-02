@@ -12,6 +12,8 @@ Page({
    */
   data: {
     focus: false,
+    show: false,
+    plateNum: '',
     carType: '',
     region: ['河北省', '唐山市', '路北区'],
   },
@@ -34,6 +36,7 @@ Page({
         let json = {}
         if (this.data.model) {
           json = {
+            plateNum: this.data.plateNum,
             carId: this.data.carId,
             registerDate: this.data.date,
             carTypeId: this.data.model.LevelID,
@@ -45,6 +48,7 @@ Page({
           }
         } else {
           json = {
+            plateNum: this.data.plateNum,
             carId: this.data.carId,
             registerDate: this.data.date,
             carTypeId: this.data.carTypeId_,
@@ -118,6 +122,7 @@ Page({
     if (options.info) {
       let car = JSON.parse(options.info)
       this.setData({
+        plateNum: car.plateNum,
         date: car.registerDate,
         kmTxt: car.mileage,
         carType: car.model + car.vehicleType,
@@ -149,5 +154,24 @@ Page({
    */
   onHide: function() {
 
+  },
+  //展示弹框
+  showPlate() {
+    this.setData({
+      show: true
+    })
+  },
+  //隐藏弹框
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  //隐藏弹框
+  getPlate(e) {
+    this.onClose();
+    this.setData({
+      plateNum: e.detail
+    })
   }
 })
