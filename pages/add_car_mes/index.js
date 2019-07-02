@@ -12,6 +12,8 @@ Page({
    */
   data: {
     focus: false,
+    show: false,
+    plateNum: '',
     carType: '',
     region: ['河北省', '唐山市', '路北区'],
   },
@@ -32,6 +34,7 @@ Page({
       key: 'user',
       success: (result) => {
         request.saveCar({
+          plateNum: this.data.plateNum,
           CMS:this.data.model.CMS,
           PP:this.data.model.PP,
           registerDate: this.data.date,
@@ -106,5 +109,24 @@ Page({
    */
   onHide: function() {
 
+  },
+  //展示弹框
+  showPlate() {
+    this.setData({
+      show: true
+    })
+  },
+  //隐藏弹框
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  //隐藏弹框
+  getPlate(e) {
+    this.onClose();
+    this.setData({
+      plateNum: e.detail
+    })
   }
 })
