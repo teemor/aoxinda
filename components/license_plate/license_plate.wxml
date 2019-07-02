@@ -1,0 +1,24 @@
+<view class='_popup'>
+  <view class='_popup_top'>
+    <view class='_popup_clearn' bindtap='onClose'>关闭</view>
+    <view class='_popup_title'>{{ plate || licensePlate }}</view>
+    <view class='_popup_confirm' bindtap='onConfirm'>确定</view>
+  </view>
+  <view class='_popup_cont'>
+    <!-- 省份 -->
+    <view class='_popup_provinces' hidden='{{ !cont_show }}'>
+      <view class='item_box' wx:for="{{ provinces }}" wx:key="{{ index }}" data-val="{{ item }}" bindtap='choseProvinces'>{{ item }}</view>
+    </view>
+    <!-- 字母-数字-未字 -->
+    <view class='_popup_other' hidden='{{ cont_show }}'>
+      <!-- 数字 -->
+      <view class='item_box item_box_number {{disabled_n?"disabled":""}}' wx:for="{{ number }}" wx:key="{{ index }}" data-val="{{ item }}" data-off="{{disabled_n?true:false}}" bindtap='choseNumber'>{{ item }}</view>
+      <!-- 字母 -->
+      <view class='item_box item_box_letter' wx:for="{{ letter }}" wx:key="{{ index }}" data-val="{{ item }}" bindtap='choseLetter'>{{ item }}</view>
+      <!-- 未字 -->
+      <view class='item_box item_box_text {{disabled_t?"disabled":""}}' wx:for="{{ text }}" wx:key="{{ index }}" data-val="{{ item }}" data-off="{{disabled_n?true:false}}" bindtap='choseText'>{{ item }}</view>
+      <view class='item_box item_box_delete' bindtap='deletePlate'>删除</view>
+      <view class='item_box item_box_back' bindtap='goBack'>上一步</view>
+    </view>
+  </view>
+</view>
