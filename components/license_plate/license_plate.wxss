@@ -7,7 +7,7 @@
   padding: 20rpx 30rpx;
   font-size: 26rpx;
   line-height: 30rpx;
-  color: #1989fa;
+  color: #5a97ef;
   border-bottom: 1px solid #ebedf0;
 }
 
