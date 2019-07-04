@@ -1,0 +1,50 @@
+<view>
+  <view>
+    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png" />
+  </view>
+  <view class="bgwhite" style="padding:30rpx">
+    <view class="high60 bold">
+      {{model.actName}}
+    </view>
+    <view class="red fz32">
+      <span class="fz24">¥</span>{{model.actPrice}}
+      <!--<span class="fz24 grey" style="margin-left:30rpx">已售  123</span>-->
+    </view>
+  </view>
+</view>
+<view class="bgwhite fz30" style="margin:20rpx 0">
+  <view class="cl high80" style="padding:0 30rpx;border-bottom:2rpx solid #f0f0f0">
+    <view class="fl">
+      适用门店
+    </view>
+    <view class="fr grey">
+      全部
+    </view>
+    <view class="cl"></view>
+  </view>
+
+  <view class="cl" style="padding:20rpx 30rpx;">
+  <view class="fz28 high50">
+  {{model.shop.shop.name}}
+  </view>
+  <view class="fz28 high50 grey">
+  {{model.shop.shop.address}}
+  </view>
+  <view class="high50" style="color:#d3d3d3">
+  距您{{model.shop.distance}}km,驾车约15分钟
+  </view>
+  </view>
+</view>
+<view>
+  <van-tabs active="{{active}}" bind:change="onChange" color="#fdbb51">
+    <van-tab title="服务详情">
+      <view>{{model.actCon}}</view>
+      <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
+        <service_list item="{{item}}" bind:numChange="numChange" />
+      </view>
+    </van-tab>
+    <van-tab title="购买须知"></van-tab>
+
+    <van-tab title="评价"></van-tab>
+  </van-tabs>
+</view>

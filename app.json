@@ -72,15 +72,18 @@
         "pages/index/index",
         "pages/store_list/index",
         "pages/store_detail/index",
-        "pages/city_select/index"
+        "pages/city_select/index",
+        "pages/service_detail/index",
+        "pages/person_card_detail/index",
+        "pages/add_order/index"
       ]
     }
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f6b245",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "麦车服",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "permission": {
     "scope.userLocation": {

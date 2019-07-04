@@ -14,7 +14,7 @@
         <image src="../../common/img/down.png" />
       </view>
     </view>
-  </view>  
+  </view>
   <view class="fl sort tc" bindtap="sortType">
     <view class="sort_type">
       <view class="fl">距离优先</view>
@@ -24,30 +24,30 @@
     </view>
   </view>
 </view>
-  <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
-    <view class="shop_edit">
-      <image src="../../../common/image/edit.png" />
-    </view>
-    <view class="shop_close">
-      <image src="../../../common/image/close.png" />
-    </view>
+<view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
+  <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+  <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
+  <view class="shop_edit">
+    <image src="../../../common/image/edit.png" />
   </view>
+  <view class="shop_close">
+    <image src="../../../common/image/close.png" />
+  </view>
+</view>
 <view class="space_list fz28 cl">
   <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
-    <storeList item="{{item}}" bind:storeDetail="storeDetail"/>
+    <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
   </view>
 </view>
 <manager show="{{service}}" type="top" bind:clickMask="allService">
- <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
- <van-badge-group active="{{ active }}" bind:change="onChange">
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+    <van-badge-group active="{{ active }}" bind:change="onChange">
       <van-badge title="{{item.name}}" titlea="{{item.id}}" wx:for="{{serviceData}}" />
     </van-badge-group>
- </view>
+  </view>
 </manager>
 <manager show="{{sort}}" type="top" bind:clickMask="sortType">
- <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
-  
- </view>
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+
+  </view>
 </manager>

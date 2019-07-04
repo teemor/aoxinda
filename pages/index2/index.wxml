@@ -1,0 +1,121 @@
+<view class="orange" style="height:110rpx;background:#fdbb51">
+<van-search
+  value="{{ value }}"
+  placeholder="请输入要搜索的商品" 
+   bind:focus="onSearch"
+/></view>
+<view class="container">
+  <!-- 添加爱车 -->
+  <view class='page-section page-section-spacing swiper'>
+ <view style="height:350rpx;position:relative" class="banner_img">
+ <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png"/>
+ </view>
+   <!-- <view class='swiper_mes'>
+      <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/message.png' />
+    </view>
+    -->
+  </view>
+  <view wx:if="{{car}}" class="add_contain" bindtap="editCar" data-item="{{model.name}}">
+      <view class="fl shop_add_btn_img" style='margin-left:30rpx;margin-top:50rpx;'>
+      <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png"/>
+      </view>
+      <view class="fl shop_add_btn_text">
+        <view class='shop_add_info'>
+          <view class='shop_add_info_car'>我的爱车：{{model.model+' '+model.vehicleType+' '+model.carType}}</view>
+          <view class='shop_add_info_km'>行驶里程：{{model.mileage || 0}}KM</view>
+        </view>
+        <image src='../../common/image/edit_index.png' class='shop_add_edit'></image>
+      </view>
+    </view>
+  <view wx:else class="add_contain" bindtap="addCar">
+    <view class="fl add_contain_img">
+      <image src="../../common/image/add.png" />
+    </view>
+    <view class="fl add_car_text" >
+      <view class="fz30">添加我的爱车</view>
+      <view class="fz24 mtop15 grey">麦车服按车型为您推荐更精准商品和服务</view>
+    </view>
+  </view>
+  <!-- 选择 -->
+  <view class='btn_contain'>
+    <view class='btn_flex'>
+      <view class='car_btn' bindtap='carbeautyBtn'>
+        <image src='../../common/image/clean.png' />
+        <view>洗车美容</view>
+      </view>
+      <view class='car_btn' bindtap='upkeepBtn'>
+        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_main.png' />
+        <view>汽车保养</view>
+      </view>
+      <view class='car_btn' bindtap='shopBtn'>
+        <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_rescue.png' />
+        <view>汽车商城</view>
+      </view>
+    </view>
+    <view class="cl">
+      <view class="index_pic fl" bindtap='myInvite'>
+        <image src="../../common/image/index_person.png" />
+      </view>
+      <view class="index_pic fl" style="margin-left:10rpx">
+        <image src="../../common/image/index_clean.png" />
+      </view>
+      <view class="cl">
+        <view class='page-current-contain'>
+          <view class='page-current_box fl'>
+            <image class="fl" src="{{weatherData[citySelected].realtime.weather.pic}}" />
+            <view class="fl page-current_box-text">
+              {{weatherData[citySelected].realtime.weather.temperature}}℃
+              
+              {{weatherData[citySelected].realtime.weather.info}}
+            </view>
+          </view>
+          <view class='fl detail_current-btn fz30'>
+            <view class='cl detail_current-one'>
+              <span class="red bold "> 今日限行 </span>
+              <span class="">今日尾号
+                <span class="red"> 7和8 </span>限行</span>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 小麦头条 -->
+  <view class='hot_mes-contain' style="display:none">
+    <view class='hot_mes_icon'>
+      <image src='http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/hot_mes.png'></image>
+    </view>
+  </view>
+  <!-- 人气推荐 -->
+  <view class='limited_contain'>
+    <view class='limited_title'>
+      <view class='limited_title-text'>
+        <image src='../../common/image/hot.png' bindtap='toMall' />
+      </view>
+    </view>
+    <view wx:for="{{hotData}}" wx:key="{{item}}" class="limited_hot fl" bindtap="shopDetail" data-item="{{item.product_code}}">
+      <view class="limited_img_hot">
+        <image src="{{item.path}}" />
+      </view>
+      <view class="fz24" style="height:60rpx;line-height:60rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.goods_name}}<span class="red">¥{{item.goods_price}}</span></view>
+    </view>
+    <view class="cl"></view>
+  </view>
+  <!-- 商城精选 -->
+  <view class='limited_contain'style="margin-top:20rpx">
+    <view class='limited_title'>
+      <view class='limited_title-text'>
+        <image src='../../common/image/mall.png' bindtap='toMall' />
+      </view>
+    </view>
+    <view wx:for="{{chooseData}}" wx:key="{{item}}" class="fl limited_contain_mall" bindtap="shopList" data-item="{{item}}">
+      <view class="fz28">{{item.name}}</view>
+      <view class="fz26 grey">大品牌</view>
+      <view class="limited_img_mall" style="margin-top:15rpx">
+        <image src="{{item.path}}" />
+      </view>
+    </view>
+    <view class="cl"></view>
+  </view>
+</view>
+<dl-dialog show="{{show}}" />

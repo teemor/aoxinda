@@ -52,7 +52,7 @@
     margin-top:20rpx;
   }
   .keepup{
-    height:80rpx;line-height:80rpx;
+    /* height:80rpx;line-height:80rpx; */
   }
 
   .space_box{
@@ -88,3 +88,47 @@ height:35rpx;
     width:20rpx;
     height: 30rpx;
   }
+  .btn_contain {
+    padding: 25rpx 30rpx 20rpx 30rpx;
+    margin-bottom: 20rpx;
+  }
+  
+.btn_flex {
+  margin-bottom: 32rpx;
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}.car_btn {
+  width: 150rpx;
+  float: left;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.car_btn image {
+  margin: auto;
+  width: 70%;
+  height: 103rpx;
+}
+.card_contain{
+  width:250rpx;
+  height:180rpx;
+  position: relative;
+}
+.car_btn view {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.card_img image{
+  width:250rpx;
+  height:180rpx;
+}
+.card_text{
+  margin-left:50rpx;
+  margin-top:-150rpx;
+  color: #fff;
+  position: absolute;
+}

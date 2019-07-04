@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "填写订单",
+  "usingComponents": {
+    "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index"
+  }
+}

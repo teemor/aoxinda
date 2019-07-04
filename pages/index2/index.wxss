@@ -1,5 +1,7 @@
 @import "../../app.wxss";
-
+.van-search{
+  background: #fdbb51 !important
+}
 .van-search__content{
   border-radius: 50rpx !important;
 }
@@ -33,7 +35,7 @@ page {
   background-color: #f3f3f3;
 }
 .banner_img image{
-  height:300rpx;
+  height:350rpx;
   width:100%;
 }
 button::after {
@@ -115,22 +117,14 @@ button::after {
   align-items: center;
   flex-wrap: wrap;
 }
-.car_bg_img image{
-width:800rpx
-}
-.addbgcontain{
-  height:600rpx;
- }
 .add_contain{
-  margin-top:20rpx;
+  position: absolute;
+  margin-top:-70rpx;
   width:680rpx;
   height:150rpx;
   margin-left:35rpx;
   background:#fff;
-  border-top-right-radius: 30rpx;
-  border-bottom-right-radius: 90rpx;
-  border-top-left-radius: 30rpx;
-  border-bottom-left-radius:90rpx;
+  border-radius:10rpx;
   box-shadow: 0px 0px 10rpx #dfdfe4;
 }
 .add_car_text{
@@ -148,10 +142,10 @@ width:800rpx
   width:70rpx;
   height:70rpx;
 }
-
 .btn_contain {
-  width:98%;
-  padding: 25rpx 30rpx 20rpx 30rpx;
+  margin-top:4rpx;
+  background: #fff;
+  padding: 105rpx 0 20rpx 0;
   margin-bottom: 20rpx;
 }
 
@@ -181,24 +175,13 @@ width:800rpx
   width: 83%;
   float: left;
 }
-.crowd_contain{
-  padding: 0
-}
- .service_title {
+
+.crowd_contain, .service_title {
   padding: 10rpx 30rpx;
 }
-.crowd_box{
-  margin-top:-130rpx;
-  margin-left:40rpx;
-  position: absolute
-}
-.crowd_title image{
-  height:300rpx
-}
+
 .crowd_contain {
   margin-bottom: 40rpx;
-  height:750rpx;
-  background: #fff;
 }
 
 .crowd_car_tire {
@@ -221,30 +204,29 @@ width:800rpx
 
 .limited_contain {
   background: #fcfcfc;
+  padding: 10rpx 0rpx 40rpx 30rpx;
   box-shadow: 0px 0px 5px #f5f5f5;
 }
-.contain{
-  padding:30rpx;
-  background: #fcfcfc;
-  box-shadow: 0px 0px 5px #f5f5f5;
-}
+
 .crowd_title {
+  width: 70%;
   margin-bottom: 20rpx;
 }
 
 .crowd_title image {
   width: 100%;
-  height:220rpx;
+  height: 50rpx;
 }
 
 .limited_title {
-
+  font-size: 30rpx;
+  font-style: oblique;
   width: 100%;
   margin-bottom: 20rpx;
-
 }
 
 .limited_title-text {
+  margin: auto;
   width: 30%;
 }
 .limited_img_hot image{
@@ -261,11 +243,13 @@ width:800rpx
 width:240rpx;
 }
 .limited_title image {
+  margin-top:30rpx;
+  margin-bottom: 30rpx;
   width: 100%;
-  height:180rpx;
+  height: 38rpx;
 }
 .limited_contain_mall{
-  
+  width:240rpx;
 }
 .limited_second {
   margin-left: 5%;
@@ -288,7 +272,7 @@ width:240rpx;
 .limited_mini {
   font-size: 28rpx;
 }
- 
+
 .service_title {
   width: 75%;
 }
@@ -302,7 +286,6 @@ width:240rpx;
 }
 
 .crowd_top {
-  width: 670rpx;
   position: relative;
   zoom: 1;
   clear: both;
@@ -415,18 +398,7 @@ width:240rpx;
 .limited_img_price span {
   font-size: 20rpx;
 }
-.limited_imgs{
-  position: absolute;
-  margin-top: -30rpx;
-  margin-left:100rpx;
-}
-.limited_boxs{
-  background:#f1f4ff;padding:20rpx;height:127.5rpx
-}
-.limited_imgs image{
-  width: 90rpx;
-  height:90rpx;
-}
+
 .service_map {
   position: relative;
   width: 100%;
@@ -496,13 +468,4 @@ width:240rpx;
 .index_pic image {
   width: 350rpx;
   height: 180rpx;
-}
-.hot_goods_contain{
-   background: #fff;
-   height:840rpx;
- 
-}
-.hot_goods_img image{
-  width: 100%;
-  height:160rpx;
 }

@@ -1,0 +1,17 @@
+<view class="store_list">
+  <view class="service_img fl">
+    <image src="{{item.path}}" />
+  </view>
+  <view class="fl service_contain">
+    <view class="service_box fl">
+      <view class="fz28">{{item.serName}}</view>
+      <view class="red fz30" style="margin-top:20rpx">
+        <span class="fz24">¥</span>78</view>
+    </view>
+    <view class="add_img fr">
+      <van-stepper value="{{ 1 }}" bind:change="numChange" wx:if="{{add}}" />
+      <image src="../../common/img/add.png" wx:if="{{!add}}" bindtap="addNum" />
+    </view>
+  </view>
+  <view class="fl"></view>
+</view>

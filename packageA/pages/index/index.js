@@ -1,44 +1,60 @@
 
 import store from '../../../mixin/store'
+import find_car from '../../../mixin/find_car'
 
 const app = getApp()
 Page({
-  mixins: [store],
-
+  mixins: [store,find_car],
   /**
    * 页面的初始数据
    */
   data: {
-    location:'',
-    CleanStore:[]
+    location: '',
+    CleanStore: []
+  },
+  personDetail:function(){
+    wx.navigateTo({
+      url:`../../pages/person_card_detail/index`
+    })
   },
   /**
    * 选择地理位置
    */
-  locationChoose:function(){ 
-    let that =this
+  locationChoose: function () {
+    let that = this
     wx.chooseLocation({
       success: (result) => {
         that.setData({
-          location:result.name,
-          latitude:result.latitude,
-          longitude:result.longitude
+          location: result.name,
+          latitude: result.latitude,
+          longitude: result.longitude
         })
-        app.globalData.latitude= result.latitude
+        app.globalData.latitude = result.latitude
         app.globalData.longitude = result.longitude
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
   },
-  storeDetail:function({detail}){
-    let  model= encodeURIComponent(JSON.stringify(detail))
+  serviceDetail: function ({ detail }) {
+    let model = encodeURIComponent(JSON.stringify(detail))
     wx.navigateTo({
-      url:`../../pages/store_detail/index?model=${model}`
+      url: `../../pages/service_detail/index?model=${model}`
     })
   },
-  scopeSetting:function(){
+  storeDetail: function ({ detail }) {
+    let model = encodeURIComponent(JSON.stringify(detail))
+    wx.navigateTo({
+      url: `../../pages/store_detail/index?model=${model}`
+    })
+  },
+  monthList: function () {
+    wx.navigateTo({
+      url: `../../pages/store_detail/index?model=${model}`
+    })
+  },
+  scopeSetting: function () {
     var that = this;
     wx.getSetting({
       success(res) {
@@ -75,58 +91,59 @@ Page({
       }
     })
   },
-  storeList:function(){
+  storeList: function () {
     wx.navigateTo({
       url: '../../pages/store_list/index',
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.findCarList()
     let that = this
-     wx.getLocation({
+    wx.getLocation({
       type: 'gcj02',
       success: function (res) {
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
         })
-        console.log(res,'rererere')
-        app.globalData.latitude= res.latitude
+        console.log(res, 'rererere')
+        app.globalData.latitude = res.latitude
         app.globalData.longitude = res.longitude
-        that.findShopList(that.data.longitude,that.data.latitude)
-        that.address(that.data.longitude,that.data.latitude)
+        that.findShopList(that.data.longitude, that.data.latitude)
+        that.address(that.data.longitude, that.data.latitude)
         // that.moveTolocation();
       },
-      fail:function(){
-       wx.showToast({
+      fail: function () {
+        wx.showToast({
           title: '获取地理位置失败',
           icon: 'none',
           image: '',
           duration: 1500,
           mask: false,
           success: (result) => {
-            
+
           },
-          fail: () => {},
-          complete: () => {}
+          fail: () => { },
+          complete: () => { }
         });
-          
+
       }
     })
     wx.getSetting({
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
 
   },

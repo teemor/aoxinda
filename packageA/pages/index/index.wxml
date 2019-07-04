@@ -1,16 +1,101 @@
 <view>
   <view class="banner">
-    <image src="../../common/img/banner.png" />
+    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner2.png" />
   </view>
+  <view class='btn_contain'>
+    <view class='btn_flex'>
+      <view class='car_btn' bindtap='carbeautyBtn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/01.png' />
+        <view>洗车美容A</view>
+      </view>
+      <view class='car_btn' bindtap='upkeepBtn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/02.png' />
+        <view>洗车美容B</view>
+      </view>
+      <view class='car_btn' bindtap='shopBtn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/03.png' />
+        <view>洗车美容B</view>
+      </view>
+      <view class='car_btn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/04.png' />
+        <view>洗车美容B</view>
+      </view>
+    </view>
+    <view class='btn_flex'>
+      <view class='car_btn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/05.png' />
+        <view>洗车美容B</view>
+      </view>
+      <view class='car_btn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/06.png' />
+        <view>洗车美容B</view>
+      </view>
+      <view class='car_btn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/07.png' />
+        <view>洗车美容B</view>
+      </view>
+      <view class='car_btn'>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/08.png' />
+        <view>洗车美容B</view>
+      </view>
+    </view>
+  </view>
+  <!-- 精选服务-->
+  <view>
+    <view class="cl fz32  bold" style="margin-left:30rpx;padding-left:20rpx;border-left:6rpx solid #3a8df9"> 精选服务</view>
+    <view class="cl">
+      <view class="card_contain fl" bindtap="storeList">
+        <view class="card_img">
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/counts_card.png" />
+        </view>
+        <view class="card_text fz30">
+          <view class="bold">
+            月月
+          </view>
+          <view class="fz28" style="margin-top:10rpx">
+            美容洗车卡
+          </view>
+        </view>
+        <view></view>
+      </view>
+      <view class="card_contain fl" bindtap="storeList">
+        <view class="card_img">
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/month_card.png" />
+        </view>
+        <view class="card_text fz30" bindtap="personDetail">
+          <view class="bold">
+            麦车服
+          </view>
+          <view class="fz28" style="margin-top:10rpx">
+            金麦卡
+          </view>
+        </view>
+      </view>
+      <view class="card_contain fl">
+        <view class="card_img">
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gold_card.png" />
+        </view>
+        <view class="card_text fz30">
+          <view class="bold">
+            不限次
+          </view>
+          <view class="fz28" style="margin-top:10rpx">
+            美容洗车卡
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
   <view class="cl fz32 keepup">
-    <view class="fl  tc bold" style="width:180rpx;border-bottom:4rpx solid #fdbb51;">
+    <view class="fl  tc bold" style="margin-left:30rpx;padding-left:20rpx;border-left:6rpx solid #3a8df9">
       附近门店
     </view>
     <view class="fl fz30 grey">
       <view class="fl loc_img">
         <image src="../../common/img/location.png" />
       </view>
-      <view class="fl" bindtap="locationChoose">{{location==''?'请选择您的当前位置':location}}</view>
+      <view class="fl" bindtap="locationChoose" style="width:350rpx;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{location==''?'请选择您的当前位置':location}}</view>
     </view>
     <view class="fr grey fz26" bindtap="storeList">
       <view class="fl">全部</view>
@@ -20,7 +105,7 @@
     </view>
   </view>
   <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
     <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
     <view class="shop_edit">
       <image src="../../../common/image/edit.png" />
@@ -29,42 +114,10 @@
       <image src="../../../common/image/close.png" />
     </view>
   </view>
-  <!--<view class="cl space_contain">
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">全部</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">标准洗车</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">精致洗车</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">打蜡</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">打蜡</view>
-    </view>
-  </view>
-  -->
+
   <view class="space_list fz28 cl">
     <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
-    <storeList item="{{item}}"  bind:storeDetail="storeDetail"/>
+      <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
     </view>
   </view>
 </view>

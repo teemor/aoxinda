@@ -2,7 +2,7 @@
   <swiper style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
     <block wx:for="{{background}}" wx:key="*this">
       <swiper-item class="swiper-item">
-        <image src='../../common/img/banner.png' />
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png' />
       </swiper-item>
     </block>
   </swiper>  
@@ -36,7 +36,7 @@
   </view>
 </view>
 <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-  <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+  <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
   <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
   <view class="shop_edit">
     <image src="../../../common/image/edit.png" />
@@ -45,27 +45,24 @@
     <image src="../../../common/image/close.png" />
   </view>
 </view>
-<view style="background:#fff;">
-  <view class="fz28" style="margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #f8a615">
+<view class="bgwhite" style="">
+  <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #f8a615">
     门店会员卡
   </view>
-  <view class="cl" style="margin-left:25rpx">
-    <view class="fl card_contain">
-      <view class="card_img">
+  <view class="cl" style="margin-left:25rpx;position:relative">
+    <view class="fl"  wx:for="{{detailModel}}" wx:key="{{item}}">
+      <view class="card_img" wx:if="{{item.name=='月卡'}}">
         <image src="../../common/img/month.png" />
       </view>
-      <view class="card_text">
-        <view class="fz28">小型轿车不限次...</view>
-        <view class="fz28 bold">¥199/月</view>
+      <view class="card_img" wx:elif="{{item.name=='季卡'}}">
+        <image src="../../common/img/quarter.png" />
       </view>
-    </view>
-    <view class="fl">
-      <view class="card_img">
+      <view class="card_img" wx:else>
         <image src="../../common/img/quarter.png" />
       </view>
       <view class="card_text">
-        <view class="fz28">小型轿车不限次...</view>
-        <view class="fz28 bold">¥199/季</view>
+        <view class="fz28">{{item.name}}</view>
+        <view class="fz28 bold">¥{{item.actPrice}}/{{item.name[0]}}</view>
       </view>
     </view>
     <view class="cl down_img">
@@ -78,24 +75,8 @@
     <van-tabs active="{{active}}" bind:change="onChange">
       <van-tab title="服务">
         <view></view>
-        <view>
-          <view class="store_list">
-            <view class="service_img fl">
-             <image src="../../common/img/car.png"/>
-            </view>
-            <view class="fl service_contain">
-              <view class="service_box fl">
-                <view class="fz28">洗车美容项目A</view>
-                <view class="red fz30" style="margin-top:20rpx"><span class="fz24">¥</span>78</view>
-              </view>
-              <view class="add_img fr">
-              <van-stepper value="{{ 1 }}" bind:change="onChange" wx:if="{{add}}"/>
-              <image src="../../common/img/add.png" wx:if="{{!add}}" bindtap="addNum"/>
-              </view>
-            </view>
-            <view class="fl"></view>
-          </view>
-
+        <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
+        <service_list item="{{item}}" bind:numChange="numChange"/>
         </view>
       </van-tab>
       <van-tab title="技师"></van-tab>
@@ -105,3 +86,22 @@
   </view>
 
 </view>
+<van-submit-bar
+  button-text="确认"
+  bind:submit="onClickButton"
+>
+<view class="cart_img" bindtap='showCartList'>
+<image src="../../common/img/cart.png"/>
+</view>
+<view>
+合计：780
+</view>
+</van-submit-bar>
+<manager show="{{cartShow}}" type="bottom" bind:clickMask="allService">
+ <view class="bgwhite" style="width:100%;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
+  <view wx:for="{{cartModel}}" wx:key="{{item}}">
+    <view class="fl">{{item.actName}}</view>
+    <van-stepper value="{{item.cartNum}}" class="fl" min="1"  bind:change="onChange" />
+  </view>
+ </view>
+</manager>

@@ -50,15 +50,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 43,
+			"current": 46,
 			"list": [
-				{
-					"id": -1,
-					"name": "洗车美容",
-					"pathName": "pages/car_beauty/index",
-					"query": "",
-					"scene": null
-				},
 				{
 					"id": -1,
 					"name": "二维码",
@@ -357,6 +350,35 @@
 					"id": -1,
 					"name": "门店列表",
 					"pathName": "packageA/pages/store_list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "服务详情",
+					"pathName": "packageA/pages/service_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ces ",
+					"pathName": "pages/index2/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "改版前",
+					"pathName": "pages/index2/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "洗车美容",
+					"pathName": "packageA/pages/index/index",
+					"query": "",
 					"scene": null
 				}
 			]
