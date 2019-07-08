@@ -1,0 +1,22 @@
+<view class='recharge'>
+  <view class='recharge_box'>
+    <view class='title'>充值金额
+      <text>（最低充值金额￥300）</text>
+    </view>
+    <view class='money_box'>
+      <view class='money_icon'>￥</view>
+      <view class='money_input_box'>
+        <input class='money_input' placeholder="300" type='number' value='' bindinput="bindKeyInput" />
+      </view>
+    </view>
+    <view class='pay_box'>
+      <view>支付方式：</view>
+      <view class='pay_type' bindtap='chosePayType'>
+        <van-icon custom-class="pay_icon" name="wechat" />
+        <!-- <image mode='' src=''></image> -->
+        <text>微信支付</text>
+      </view>
+    </view>
+  </view>
+  <van-button custom-class="next_button" round size="large" type="info" disabled="" bindtap='toPay'>下一步</van-button>
+</view>

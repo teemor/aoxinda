@@ -1,0 +1,72 @@
+page {
+  background-color: #f3f3f3;
+}
+
+.recharge {
+  border-top: 1rpx solid #eee;
+}
+
+.recharge_box {
+  padding: 50rpx 40rpx 0;
+  background-color: #fff;
+}
+
+.recharge_box .title {
+  font-size: 34rpx;
+}
+
+.recharge_box .title text {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.recharge_box .money_box, .recharge_box .pay_box {
+  display: flex;
+  align-items: center;
+}
+
+.recharge_box .money_box {
+  padding: 20rpx 0;
+  font-size: 60rpx;
+  line-height: 140rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.recharge_box .money_box .money_icon {
+  padding-right: 30rpx;
+  font-weight: bold;
+}
+
+.recharge_box .money_box .money_input_box {
+  flex: 1;
+}
+
+.recharge_box .money_box .money_input_box .money_input {
+  height: 140rpx;
+}
+
+.recharge_box .pay_box {
+  padding: 30rpx 0;
+  font-size: 28rpx;
+}
+
+.recharge_box .pay_box .pay_type {
+  vertical-align: middle;
+}
+
+.recharge_box .pay_box .pay_type text {
+  margin-left: 10rpx;
+}
+
+.recharge_box .pay_box .pay_icon {
+  transform: scale(1.2);
+  color: #07c160;
+}
+
+.recharge .next_button {
+  margin: 70rpx 80rpx;
+  width: auto;
+  display: block;
+  height: 80rpx;
+  line-height: 78rpx;
+}
