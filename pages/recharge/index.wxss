@@ -45,12 +45,25 @@ page {
   height: 140rpx;
 }
 
+.recharge_box .error_message {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  color: #f41;
+}
+
 .recharge_box .pay_box {
   padding: 30rpx 0;
   font-size: 28rpx;
 }
 
 .recharge_box .pay_box .pay_type {
+  flex: 1;
+  vertical-align: middle;
+}
+
+.recharge_box .pay_box .pay_type image {
+  width: 40rpx;
+  height: 40rpx;
   vertical-align: middle;
 }
 
@@ -69,4 +82,24 @@ page {
   display: block;
   height: 80rpx;
   line-height: 78rpx;
+}
+
+_popup_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  color: #5a97ef;
+  border-bottom: 1px solid #ebedf0;
+}
+
+._popup_top ._popup_title {
+  color: #333;
+}
+
+._popup_cont {
+  padding: 0 10rpx 40rpx;
+  background-color: #f0f3f6;
 }

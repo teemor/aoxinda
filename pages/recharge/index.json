@@ -2,6 +2,8 @@
   "navigationBarTitleText": "充值",
   "usingComponents": {
     "van-icon": "../../miniprogram_npm/vant-weapp/icon/index",
+    "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
+    "van-picker": "../../miniprogram_npm/vant-weapp/picker/index",
     "van-button": "../../miniprogram_npm/vant-weapp/button/index"
   }
 }
