@@ -12,7 +12,7 @@
     <view class="error_message">{{ errorMsg }}</view>
     <view class='pay_box'>
       <view>支付方式：</view>
-      <view class='pay_type' bindtap='onPayTypeShow'>
+      <view class='pay_type'>
         <van-icon wx:if="{{ payType.icon }}" custom-class="pay_icon" name="{{ payType.icon }}" />
         <image wx:else mode='aspectFit' src='{{ payType.img }}'></image>
         <text>{{ payType.text }}</text>
