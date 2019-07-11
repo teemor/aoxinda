@@ -1,1 +1,103 @@
 /* pages/stored_value_card/index.wxss */
+
+.HeadBox {
+  width: 100%;
+  padding-top: 100%;
+  background: #e4e4e4;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 100rpx;
+}
+
+.HeadContent {
+  background: #c9c9c9;
+  position: absolute;
+  width: 70%;
+  height: 85%;
+  top: 0px;
+  left: 15%;
+}
+
+.CardsRights {
+  padding: 10rpx;
+  height: 1000rpx;
+  width: 80%;
+  margin: 0 auto;
+  border: 1rpx solid #e4e4e4;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  position: absolute;
+  width: 60%;
+  background: #fff;
+  top: -45rpx;
+  left: 20%;
+}
+
+.title view {
+  text-align: center;
+}
+
+.content {
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 50rpx;
+}
+
+.content view {
+  display: inline-block;
+}
+
+.logo {
+  height: 80rpx;
+  width: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  border-radius: 50%;
+  border: 1px dotted #000;
+}
+
+.GoldWheatCard {
+  width: 180rpx;
+  height: 70rpx;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 70rpx;
+  float: right;
+  margin-top: 7rpx;
+}
+
+.RightsContent {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  top: 50px;
+  left: 10%;
+}
+
+.favorable {
+  margin-bottom: 35rpx;
+  font-size: 32rpx;
+  padding: 0rpx 10rpx;
+}
+
+.WarmPrompt {
+  width: 100%;
+  margin: 0 auto;
+  background: #e4e4e4;
+  height: 500rpx;
+  margin-top: 125rpx;
+}
+
+.bottom {
+  width: 100%;
+  background: #000;
+  height: 90rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 90rpx;
+}
