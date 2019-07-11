@@ -20,6 +20,9 @@ Component({
   methods: {
     storeDetail:function(){
       this.triggerEvent('storeDetail',this.data.item)
+    },
+    serviceDetail:function(){
+      this.triggerEvent('serviceDetail',this.data.item)
     }
   }
 })

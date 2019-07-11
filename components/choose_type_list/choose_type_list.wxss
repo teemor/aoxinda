@@ -13,7 +13,7 @@
     margin-top:40rpx;
     float:left;
     text-align: center;
-    color:#fdbb51;
+    color:#4e93f3;
     width:30%
 } 
 .choose_type_list-box{

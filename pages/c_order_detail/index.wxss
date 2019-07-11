@@ -11,7 +11,7 @@ page{
   background: #fff;
 }
 .order_detail .status .font{
-  color: #fdbb51;
+  color: #4e93f3;
 }
 .order_detail .status view{
   margin: 10rpx 0;

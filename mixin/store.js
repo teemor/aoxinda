@@ -7,10 +7,11 @@ let QQMapWX = require('../utils/qqmap-wx-jssdk')
 let constant = require('../utils/constant')
 let qqmapsdk;
 module.exports = {
-  findShopList: function(longitude, latitude) {
+  findShopList: function(actCardType) {
     request.findShopList({
-      log: longitude,
-      lat: latitude,
+      actCardType:actCardType,
+      log: app.globalData.longitude,
+      lat: app.globalData.latitude,
       type: 1,
       pageSize: 5,
       pageIndex: 1,

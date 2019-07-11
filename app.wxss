@@ -49,16 +49,16 @@
   height:71rpx;line-height:71rpx
 }
 .orange{
-  color:#fdbb51
+  color:#4e93f3
 }
 .bg_orange{
-  background:#fdbb51;color: #fff;text-align: center
+  background:#4e93f3;color: #fff;text-align: center
 }
 .br_orange{
-  border:2rpx solid #fdbb51;
+  border:2rpx solid #4e93f3;
 }
 .bg_white{
-  background: #fff;color: #fdbb51;text-align: center
+  background: #fff;color: #4e93f3;text-align: center
 }
 .bottom_btn_add{
   border-radius: 10rpx;
@@ -228,9 +228,9 @@ font-size: 60rpx;
   border: 2rpx solid #eeeeee
 }
 .myorder_orange{
-  color: #f6b245;
+  color: #4e93f3;
   margin-left:20rpx;
-  border:2rpx solid #f6b245
+  border:2rpx solid #4e93f3
 }
 .bgwhite{
   background:#fff;

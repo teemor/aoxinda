@@ -20,11 +20,11 @@ App({
     wx.getStorage({
       key: 'user',
       success: function (res) {
-        that.userInfo=res.data
+        that.globalData.userInfo=res.data
         wx.getStorage({
           key: 'userPhone',
           success: function (res) {
-         
+            that.globalData.phoneNum=res.data
           },
           fail:()=>{
             console.log('hehe1')

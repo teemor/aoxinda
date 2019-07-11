@@ -9,7 +9,7 @@
     <view class="my_order_price fz28">
       <view class="fl red">¥ 199.00</view>
       <view class="fr grey">
-        <van-checkbox value="checked" checked-color="#fdbb51" bind:change="onChange">
+        <van-checkbox value="checked" checked-color="#4e93f3" bind:change="onChange">
               </van-checkbox>
       </view>
     </view>

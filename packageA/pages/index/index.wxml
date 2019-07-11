@@ -1,16 +1,50 @@
 <view>
-  <view class="banner">
-    <image src="../../common/img/banner.png" />
+  <swiper class="banner" style='height:350rpx;position:relative' indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <block wx:for="{{dataList}}" wx:key="*this">
+      <swiper-item class="swiper-item" wx:if="{{item.code=='5'}}">
+        <image src='{{item.path}}' />
+      </swiper-item>
+    </block>
+  </swiper> 
+  <view class='btn_contain bgwhite'>
+    <view class='btn_flex'>
+      <view class='car_btn' wx:for="{{dataList}}" wx:key="{{item}}" wx:if="{{item.code=='4'}}">
+        <image src='{{item.path}}'/>
+        <view>{{item.name}}</view>
+      </view>
+    </view>
   </view>
-  <view class="cl fz32 keepup">
-    <view class="fl  tc bold" style="width:180rpx;border-bottom:4rpx solid #fdbb51;">
+  <!-- 精选服务-->
+  <view class="bgwhite" style="margin-top:30rpx;height:250rpx;padding:30rpx 0">
+    <view class="cl fz32  bold" style="margin-bottom:10rpx;margin-left:30rpx;border-bottom:2rpx solid #d9d9d9">
+      <view style="padding-left:20rpx;border-left:6rpx solid #3a8df9;margin-bottom:30rpx"> 精选服务</view>
+    </view>
+    <view wx:for="{{dataList}}" wx:key="{{item}}" wx:if="{{item.code=='6'}}"  style="margin-left:36rpx">
+      <view class="card_contain fl" bindtap="storeList" data-item="{{item}}">
+        <view class="card_img">
+          <image src="{{item.path}}" />
+        </view>
+        <view class="card_text fz30">
+          <view class="bold">
+            {{item.name}}
+          </view>
+          <view class="fz28" style="margin-top:10rpx">
+            {{item.type}}
+          </view>
+        </view>
+        <view></view>
+      </view>
+    </view>
+  </view>
+  <view class="cl fz32 keepup bgwhite" style="margin-top:30rpx;">
+    <view class="fl  tc bold" style="margin-left:30rpx;padding-left:20rpx;border-left:6rpx solid #3a8df9">
       附近门店
     </view>
     <view class="fl fz30 grey">
       <view class="fl loc_img">
         <image src="../../common/img/location.png" />
       </view>
-      <view class="fl" bindtap="locationChoose">{{location==''?'请选择您的当前位置':location}}</view>
+      <view class="fl" bindtap="locationChoose" style="width:350rpx;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{location==''?'请选择您的当前位置':location}}</view>
     </view>
     <view class="fr grey fz26" bindtap="storeList">
       <view class="fl">全部</view>
@@ -20,7 +54,7 @@
     </view>
   </view>
   <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-    <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
     <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
     <view class="shop_edit">
       <image src="../../../common/image/edit.png" />
@@ -29,42 +63,10 @@
       <image src="../../../common/image/close.png" />
     </view>
   </view>
-  <!--<view class="cl space_contain">
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">全部</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">标准洗车</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">精致洗车</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">打蜡</view>
-    </view>
-    <view class="space_box tc fl">
-      <view class="space_img">
-        <image src="../../common/img/space.png" />
-      </view>
-      <view class="fz30">打蜡</view>
-    </view>
-  </view>
-  -->
+
   <view class="space_list fz28 cl">
     <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
-    <storeList item="{{item}}"  bind:storeDetail="storeDetail"/>
+      <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
     </view>
   </view>
 </view>

@@ -8,6 +8,7 @@ Page({
   
   /**
    * 页面的初始数据
+   * 
    */
   data: {
     serviceData,
@@ -16,7 +17,7 @@ Page({
   },
   allCity:function(){
     wx.navigateTo({
-      url:'../../pages/city_select/ind25ex'
+      url:'../../pages/city_select/index'
     })
   },
   sortType:function(){
@@ -47,9 +48,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.findShopList(app.globalData.latitude,app.globalData.longitude)
+    if(options.id){
+      this.findShopList(options.id)
+    }else{
+      this.findShopList()
+    }
   },
-
+  serviceDetail:function({detail}){
+    let  model= encodeURIComponent(JSON.stringify(detail))
+    wx.navigateTo({
+      url:`../../pages/service_detail/index?model=${model}`
+    })
+  },
+  storeDetail:function({detail}){
+    let  model= encodeURIComponent(JSON.stringify(detail))
+    wx.navigateTo({
+      url:`../../pages/store_detail/index?model=${model}`
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -136,6 +136,34 @@ export const myOrderMenu = [{
   "id": "7",
   "name": "已完成"
 }]
+// 我的服务订单
+export const myServiceOrderMenu = [{
+  "id": "0",
+  "name": "全部订单"
+}, {
+  "id": "17",
+  "name": "待付款"
+}, {
+  "id": "4",
+  "name": "待消费"
+},{
+  "id": "7",
+  "name": "已完成"
+}]
+// 我的服务卡
+export const myServiceCard = [{
+  "id":"0",
+  "name":"可消费"
+},{
+  "id":"1",
+  "name":"已完成"
+},{
+  "id":"2",
+  "name":"已过期"
+},{
+  "id":"3",
+  "name":"已退卡"
+}]
 export const typeminiServiceList = [{
     "label": "1次洗车 ¥20",
     "code": "001"

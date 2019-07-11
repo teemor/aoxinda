@@ -52,7 +52,7 @@
     margin-left: 65rpx;
 }
 .car_beauty_shop_buy {
-  background: #fdbb51;
+  background: #4e93f3;
   color: #fff;
   font-size: 28rpx;
   height:50rpx;

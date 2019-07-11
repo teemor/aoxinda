@@ -2,38 +2,82 @@ import {
   store
 } from '../../common/api/api'
 const request = new store
-
+const app = getApp();
 Page({
   data: {
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    add:false
+    add: false,
+    cartShow: false,
+    totalPrice: 0
   },
-  addNum:function(){
-    this.setData({
-      add:true
+  cardDetail:function(item){
+    console.log(item.currentTarget.dataset.item,'detail')
+    let id = item.currentTarget.dataset.item
+    wx.navigateTo({
+      url:`../../pages/my_card/index?actId=${id}`
     })
   },
-  makePhone:function({currentTarget}){
+  onClickButton: function () {
+    this.carList()
+    let model = encodeURIComponent(JSON.stringify(this.data.cartModel))
+    wx.navigateTo({
+      url: `../../pages/add_order/index?model=${model}`,
+      success: (result) => {
+      },
+      fail: () => { },
+      complete: () => { }
+    });
+
+  },
+  numChange: function ({ detail }) {
+    let totalPrice = 0
+    console.log(detail, 'detail')
+    totalPrice = detail.num * detail.item.actPrice
+    console.log(totalPrice)
+    request.addCart({
+      shopId: this.data.model.id, userId: app.globalData.openId, activityId: detail.item.actId, cartNum: detail.num, price: detail.item.actPrice
+    }).then(res => {
+    })
+  },
+  makePhone: function ({ currentTarget }) {
     console.log(currentTarget.dataset.item)
-    if(currentTarget.dataset.item){
+    if (currentTarget.dataset.item) {
       wx.makePhoneCall({
-        phoneNumber:currentTarget.dataset.item
+        phoneNumber: currentTarget.dataset.item
       })
     }
-   
+
+  },
+  showCartList: function () {
+    this.setData({
+      cartShow: !this.data.cartShow
+    })
+    this.carList()
+  },
+  carList: function () {
+    request.findcarList({ userId: app.globalData.openId, shopId: this.data.model.id, pageIndex: 1, pageSize: 10 }).then(res => {
+      this.setData({
+        cartModel: res.data.records
+      })
+    })
+  },
+  allService: function () {
+    this.setData({
+      cartShow: false
+    })
   },
   onLoad: function (options) {
-    if(options.model){
+    if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
-      console.log(model,'options')
       this.setData({
-        model:model
+        model: model
       })
-      request.findShopDet({shopId:model.id}).then(res=>{
-        console.log(res)
+      request.findShopDet({ shopId: model.id }).then(res => {
+        this.setData({
+          detailModel: res.data
+        })
       })
     }
-    
   },
 
   /**

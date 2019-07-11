@@ -17,7 +17,7 @@
     width:10rpx;
     height:10rpx;
     border-radius:50%;
-    background-color: #fdbb51;
+    background-color: #4e93f3;
     position: absolute;
 }
 .order_step_line {

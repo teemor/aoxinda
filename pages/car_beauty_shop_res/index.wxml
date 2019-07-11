@@ -10,7 +10,7 @@
     <view class="cl" style="margin-left:140rpx">
           <van-checkbox-group value="{{reslut}}" bind:change="typeChange">
         <view class="fz28 car_beauty_shop-checkout">
-          <van-checkbox style="margin-right:40rpx;margin-bottom:10rpx;" checked-color="#fdbb51" class="fl" wx:for="{{attentionList}}" wx:key="index" name="{{item.label}}">
+          <van-checkbox style="margin-right:40rpx;margin-bottom:10rpx;" checked-color="#4e93f3" class="fl" wx:for="{{attentionList}}" wx:key="index" name="{{item.label}}">
             {{item.label}}
           </van-checkbox>
         </view>

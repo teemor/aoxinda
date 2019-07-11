@@ -126,5 +126,5 @@ page {
   line-height:75rpx;
 }
 .bg_orange{
-  background:#fdbb51;color: #fff;text-align: center
+  background:#4e93f3;color: #fff;text-align: center
 }
