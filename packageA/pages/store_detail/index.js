@@ -1,19 +1,83 @@
-// packageA/pages/store_detail/index.js
+import {
+  store
+} from '../../common/api/api'
+const request = new store
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    add: false,
+    cartShow: false,
+    totalPrice: 0
+  },
+  cardDetail:function(item){
+    console.log(item.currentTarget.dataset.item,'detail')
+    let id = item.currentTarget.dataset.item
+    wx.navigateTo({
+      url:`../../pages/my_card/index?actId=${id}`
+    })
+  },
+  onClickButton: function () {
+    this.carList()
+    let model = encodeURIComponent(JSON.stringify(this.data.cartModel))
+    wx.navigateTo({
+      url: `../../pages/add_order/index?model=${model}`,
+      success: (result) => {
+      },
+      fail: () => { },
+      complete: () => { }
+    });
 
   },
+  numChange: function ({ detail }) {
+    let totalPrice = 0
+    console.log(detail, 'detail')
+    totalPrice = detail.num * detail.item.actPrice
+    console.log(totalPrice)
+    request.addCart({
+      shopId: this.data.model.id, userId: app.globalData.openId, activityId: detail.item.actId, cartNum: detail.num, price: detail.item.actPrice
+    }).then(res => {
+    })
+  },
+  makePhone: function ({ currentTarget }) {
+    console.log(currentTarget.dataset.item)
+    if (currentTarget.dataset.item) {
+      wx.makePhoneCall({
+        phoneNumber: currentTarget.dataset.item
+      })
+    }
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  },
+  showCartList: function () {
+    this.setData({
+      cartShow: !this.data.cartShow
+    })
+    this.carList()
+  },
+  carList: function () {
+    request.findcarList({ userId: app.globalData.openId, shopId: this.data.model.id, pageIndex: 1, pageSize: 10 }).then(res => {
+      this.setData({
+        cartModel: res.data.records
+      })
+    })
+  },
+  allService: function () {
+    this.setData({
+      cartShow: false
+    })
+  },
   onLoad: function (options) {
-
+    if (options.model) {
+      let model = JSON.parse(decodeURIComponent(options.model))
+      this.setData({
+        model: model
+      })
+      request.findShopDet({ shopId: model.id }).then(res => {
+        this.setData({
+          detailModel: res.data
+        })
+      })
+    }
   },
 
   /**

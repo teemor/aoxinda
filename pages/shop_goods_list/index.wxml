@@ -10,7 +10,7 @@
     <image src="../../common/image/edit.png" class='shopList_car_img' bindtap="editCar"/>
   </view>
   <view wx:else>
-   <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
     <view class="shop_goods_invite_text">暂未添加爱车</view>
     <view class="shop_goods_invite_btn" bindtap="addCar">
     立即添加

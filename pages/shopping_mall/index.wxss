@@ -1,10 +1,13 @@
 @import "../../app.wxss";
 
 .shop_type {
+  margin-top:108rpx;
+  position: fixed;
   width: 180rpx;
 }
 
 .shop_contain {
+  margin-left:190rpx;
   padding: 4rpx;
   width:550rpx;
 }

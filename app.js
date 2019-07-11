@@ -9,19 +9,22 @@ App({
     userInfo: null,
     id:'',
     options:'',
-    carType:''//车型
+    carType:'',
+    longitude:'',
+    latitude:''
   },
+  address:'',
   appid: "wx97a3505497150b66",
   onLaunch: function () {
     let that = this
     wx.getStorage({
       key: 'user',
       success: function (res) {
-        that.userInfo=res.data
+        that.globalData.userInfo=res.data
         wx.getStorage({
           key: 'userPhone',
           success: function (res) {
-         
+            that.globalData.phoneNum=res.data
           },
           fail:()=>{
             console.log('hehe1')

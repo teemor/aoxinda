@@ -20,10 +20,10 @@
     </view>
   </view>
   <view class="add_item_area">
-    <van-checkbox checked-color="#fdbb51" value="{{ defaultAddress==1?true:false }}" bind:change="switchChange">设置为默认地址</van-checkbox>
+    <van-checkbox checked-color="#4e93f3" value="{{ defaultAddress==1?true:false }}" bind:change="switchChange">设置为默认地址</van-checkbox>
     <!-- <view class="fl">设置为默认地址</view>
     <view class="fr" style="margin-right:30rpx;">
-      <switch checked bindchange="switchChange" color="#fdbb51" />
+      <switch checked bindchange="switchChange" color="#4e93f3" />
     </view> -->
   </view>
   <view wx:if="{{deleteShow===true}}" class="add_item_area red" bindtap="deleteAdd">

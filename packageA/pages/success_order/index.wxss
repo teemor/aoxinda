@@ -1,0 +1,19 @@
+@import "../../../app.wxss";
+.green{
+    color:#50b674
+}
+.result_contain{
+    padding:100rpx;
+}
+.back_btn{
+    width:200rpx;border-radius:10rpx
+}
+.pay_image{
+    width:100rpx;
+    height: 150rpx;
+    margin: auto;
+}
+.pay_image image{
+    margin-top:-150rpx;
+    width:50rpx;
+}

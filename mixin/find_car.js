@@ -33,7 +33,7 @@ module.exports = {
               carList:res.result
             })
             app.globalData.carType = this.data.model
-            console.log(app,'appfwer')
+            console.log(this.data.model,'appfwer')
           }
         })
       },

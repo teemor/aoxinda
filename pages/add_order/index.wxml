@@ -34,7 +34,7 @@
   </view>
   <view class="refund_type fz28">
     <view class="fl">
-      <van-checkbox checked-color="#fdbb51" value="{{inCheck}}" bind:change="onChange">
+      <van-checkbox checked-color="#4e93f3" value="{{inCheck}}" bind:change="onChange">
         {{invoice?invoice:'我要开发票'}}</van-checkbox>
     </view>
     <view class="fr cell_img" bindtap="addInvoice">></view>

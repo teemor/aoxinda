@@ -126,11 +126,17 @@ Page({
    */
   selectGoodsList: function (model) {
     request.selectGoodsList(model).then(res=>{
-      this.setData({
-        storeList:res.data.tableData,
-        brandType:res.brandData
-      })
-      console.log(res,'res')
+      if (res.data) {
+        this.setData({
+          storeList: res.data.tableData,
+          brandType: res.brandData
+        })
+      } else {
+        this.setData({
+          storeList: [],
+          brandType: []
+        })
+      }
     })
   },
   /**

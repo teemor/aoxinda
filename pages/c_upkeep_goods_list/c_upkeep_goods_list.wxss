@@ -110,8 +110,8 @@
   line-height: 46rpx;
   margin-right: 30rpx;
   width: 200rpx;
-  border: 2rpx solid #fdbb51;
-  color: #fdbb51;
+  border: 2rpx solid #4e93f3;
+  color: #4e93f3;
 }
 
 .priceinput {

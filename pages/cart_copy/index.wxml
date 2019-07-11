@@ -7,7 +7,7 @@
   <view class="cl" style="padding-top:80rpx;padding-bottom:80rpx">
     <van-checkbox-group value="{{result}}" bind:change="onChange"   >
     <view  wx:for="{{cartList}}" wx:key="index" data:for-index="index" style="background:#fff;margin-bottom:20rpx;padding-left:30rpx;">
-      <van-checkbox checked-color="#fdbb51"  data-index="{{index}}" name="{{index}}">
+      <van-checkbox checked-color="#4e93f3"  data-index="{{index}}" name="{{index}}">
         <view class="my_cart_content">
           <my_cart_list model="{{item}}" bind:numChange="numChange" bind:detail="detail" />
         </view>
@@ -17,12 +17,12 @@
   </view>
   <br-bottom style="z-index:333;" checked="{{ischecked}}" wx:if="{{!finish}}" btnRight="去结算" price="{{total_price}}" bind:carClickBtn="goOrder">
     <view class="fl br-bottom" style="margin-left:30rpx;margin-top:-6rpx">
-          <van-checkbox value="{{checked}}" checked-color="#fdbb51" bind:change="allChange">全选</van-checkbox>
+          <van-checkbox value="{{checked}}" checked-color="#4e93f3" bind:change="allChange">全选</van-checkbox>
     </view>
   </br-bottom>
   <br-bottom checked="{{ischecked}}" style="z-index:333;" wx:else btnRight="删除" price="{{total_price}}" bind:carClickBtn="deleteAll">
     <view class="fl br-bottom" style="margin-left:30rpx;margin-top:-6rpx">
-          <van-checkbox value="{{checked}}" checked-color="#fdbb51" bind:change="allChange">全选</van-checkbox>
+          <van-checkbox value="{{checked}}" checked-color="#4e93f3" bind:change="allChange">全选</van-checkbox>
     </view>
   </br-bottom>
 </view>

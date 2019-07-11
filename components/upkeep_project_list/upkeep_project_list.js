@@ -38,7 +38,7 @@ Component({
     checked: false,
     num: '1',
     minusStatus: 'normal',
-    checkedColor: '#fdbb51',
+    checkedColor: '#4e93f3',
   },
   /**
    * 组件的方法列表

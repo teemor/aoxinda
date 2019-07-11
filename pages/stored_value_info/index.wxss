@@ -137,7 +137,7 @@ page {
   font-size: 26rpx;
   line-height: 30rpx;
   color: #fff;
-  background: #fdbb51;
+  background: #4e93f3;
   border-radius: 35rpx;
 }
 

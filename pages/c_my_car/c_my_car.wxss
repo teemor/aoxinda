@@ -73,7 +73,7 @@
 }
 
 .car_list_box .panel-index--van-panel__header-value {
-  color: #fdbb51;
+  color: #4e93f3;
 }
 
 .panel-box {
