@@ -70,9 +70,9 @@ Page({
     * 详情
     * dzl
     */
-  orderDetail: function ({ detail }) {
+  cardDetail: function ({ detail }) {
     wx.navigateTo({
-      url: `../my_order_detail/index?id=${detail.id}`
+      url: `../my_service_card_detail/index?id=${detail.id}`
     })
   },
   /**
