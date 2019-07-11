@@ -1,93 +1,42 @@
 <view>
-  <view class="banner">
-    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner2.png" />
-  </view>
-  <view class='btn_contain'>
+  <swiper class="banner" style='height:350rpx;position:relative' indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <block wx:for="{{dataList}}" wx:key="*this">
+      <swiper-item class="swiper-item" wx:if="{{item.code=='5'}}">
+        <image src='{{item.path}}' />
+      </swiper-item>
+    </block>
+  </swiper> 
+  <view class='btn_contain bgwhite'>
     <view class='btn_flex'>
-      <view class='car_btn' bindtap='carbeautyBtn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/01.png' />
-        <view>洗车美容A</view>
-      </view>
-      <view class='car_btn' bindtap='upkeepBtn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/02.png' />
-        <view>洗车美容B</view>
-      </view>
-      <view class='car_btn' bindtap='shopBtn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/03.png' />
-        <view>洗车美容B</view>
-      </view>
-      <view class='car_btn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/04.png' />
-        <view>洗车美容B</view>
-      </view>
-    </view>
-    <view class='btn_flex'>
-      <view class='car_btn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/05.png' />
-        <view>洗车美容B</view>
-      </view>
-      <view class='car_btn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/06.png' />
-        <view>洗车美容B</view>
-      </view>
-      <view class='car_btn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/07.png' />
-        <view>洗车美容B</view>
-      </view>
-      <view class='car_btn'>
-        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/08.png' />
-        <view>洗车美容B</view>
+      <view class='car_btn' wx:for="{{dataList}}" wx:key="{{item}}" wx:if="{{item.code=='4'}}">
+        <image src='{{item.path}}'/>
+        <view>{{item.name}}</view>
       </view>
     </view>
   </view>
   <!-- 精选服务-->
-  <view>
-    <view class="cl fz32  bold" style="margin-left:30rpx;padding-left:20rpx;border-left:6rpx solid #3a8df9"> 精选服务</view>
-    <view class="cl">
-      <view class="card_contain fl" bindtap="storeList">
+  <view class="bgwhite" style="margin-top:30rpx;height:250rpx;padding:30rpx 0">
+    <view class="cl fz32  bold" style="margin-bottom:10rpx;margin-left:30rpx;border-bottom:2rpx solid #d9d9d9">
+      <view style="padding-left:20rpx;border-left:6rpx solid #3a8df9;margin-bottom:30rpx"> 精选服务</view>
+    </view>
+    <view wx:for="{{dataList}}" wx:key="{{item}}" wx:if="{{item.code=='6'}}"  style="margin-left:36rpx">
+      <view class="card_contain fl" bindtap="storeList" data-item="{{item}}">
         <view class="card_img">
-          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/counts_card.png" />
+          <image src="{{item.path}}" />
         </view>
         <view class="card_text fz30">
           <view class="bold">
-            月月
+            {{item.name}}
           </view>
           <view class="fz28" style="margin-top:10rpx">
-            美容洗车卡
+            {{item.type}}
           </view>
         </view>
         <view></view>
       </view>
-      <view class="card_contain fl" bindtap="storeList">
-        <view class="card_img">
-          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/month_card.png" />
-        </view>
-        <view class="card_text fz30" bindtap="personDetail">
-          <view class="bold">
-            麦车服
-          </view>
-          <view class="fz28" style="margin-top:10rpx">
-            金麦卡
-          </view>
-        </view>
-      </view>
-      <view class="card_contain fl">
-        <view class="card_img">
-          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gold_card.png" />
-        </view>
-        <view class="card_text fz30">
-          <view class="bold">
-            不限次
-          </view>
-          <view class="fz28" style="margin-top:10rpx">
-            美容洗车卡
-          </view>
-        </view>
-      </view>
     </view>
   </view>
-
-  <view class="cl fz32 keepup">
+  <view class="cl fz32 keepup bgwhite" style="margin-top:30rpx;">
     <view class="fl  tc bold" style="margin-left:30rpx;padding-left:20rpx;border-left:6rpx solid #3a8df9">
       附近门店
     </view>

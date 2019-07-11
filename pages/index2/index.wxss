@@ -1,6 +1,6 @@
 @import "../../app.wxss";
 .van-search{
-  background: #fdbb51 !important
+  background: #4e93f3 !important
 }
 .van-search__content{
   border-radius: 50rpx !important;

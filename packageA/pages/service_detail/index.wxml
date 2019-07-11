@@ -36,7 +36,7 @@
   </view>
 </view>
 <view>
-  <van-tabs active="{{active}}" bind:change="onChange" color="#fdbb51">
+  <van-tabs active="{{active}}" bind:change="onChange" color="#4e93f3">
     <van-tab title="服务详情">
       <view>{{model.actCon}}</view>
       <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">

@@ -41,7 +41,7 @@ margin-left:20rpx;
   /* height:400rpx; */
 }
 .van-cell__title{
-  color:#fdbb51 !important
+  color:#4e93f3 !important
 }
 .shop_goods_choosed {
   padding: 20rpx;
@@ -119,7 +119,7 @@ margin-left:20rpx;
   width: auto;padding: 0 10rpx;
 }
 .active{
-  height:46rpx;line-height:46rpx; margin-right:30rpx;width:150rpx;border:2rpx solid #fdbb51;color:#fdbb51;
+  height:46rpx;line-height:46rpx; margin-right:30rpx;width:150rpx;border:2rpx solid #4e93f3;color:#4e93f3;
   width: auto;padding: 0 10rpx;
 }
 .cart_contain {

@@ -1,0 +1,66 @@
+<view wx:if="{{ispay===true}}" class="{{ispay===true?'my_order_list-contain':'my_order_list-box'}} cl">
+  <view class="cl my_order_title" wx:if="{{ispay===true}}">
+    <view class="fl fz24">订单编号：{{goodsList.orderNum}}</view>
+    <view class="fr orange fz24">{{goodsList.statusName}}</view>
+  </view>
+  <view class="cl my_order_list_box" bindtap="orderDetail">
+    <view class="fl my_order_list_image">
+      <image src="{{goodsList.pictue}}" />
+    </view>
+    <view class="fl my_order_list_text">
+      <view class="fz28 two_overflow">{{goodsList.actName}}</view>
+        <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+    数量{{goodsList.num}}
+    </view> 
+      <view class="fz28">
+        <view class="fl red" style="display:none">¥ {{item.price}}</view>
+        <view class="fr grey">x{{goodsList.num}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="cl my_order_list_bottom">
+  <view class="fl grey fz26" style="margin-right:30rpx;">
+  共{{goodsList.serNum}}项服务    
+  </view>
+    <view class="fl">
+      应付
+      <span class="red">¥:{{goodsList.goodsTotalPrice}}</span>
+    </view>
+
+    <view wx:if="{{goodsList.statusName==='待付款'}}" class="fr fz24 my_order_list_btn">
+      <view class="fl myorder_grey">删除订单</view>
+      <view class="fl myorder_orange" bindtap="goOrder">去付款</view>
+    </view>
+    <view wx:else class="fr fz24 my_order_list_btn">
+      <view class="fl myorder_grey">删除订单</view>
+    </view>
+
+  </view>
+</view>
+<view wx:else class="my_order_list-box">
+  <view class="cl my_order_list_box" bindtap="orderDetail">
+    <view class="fl my_order_list_image">
+      <image src="{{goodsList.file_url}}" />
+    </view>
+    <view class="fl my_order_list_text">
+      <view class="myorder_goods_name">{{goodsList.goods_name}}</view>
+      <view class="fz24 mtop20">
+        {{goodsList.sku_name}}
+      </view>
+      <view class="my_order_price fz28">
+        <view class="fl red">¥ {{goodsList.goods_price}}</view>
+        <view class="fr grey">x{{goodsList.buy_num}}</view>
+        <view class="cl"></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{goodsList.off}}" class='server_box'>
+    <view class='server_item' data-id="{{ goodsList.server_order_id }}" bindtap='toServerInfo'>
+      <view class='fl'>服务：到店服务</view>
+      <view class='fr'><text class='red'>￥{{goodsList.server_order.server_time*goodsList.server_order.server_user_money}}</text>x{{goodsList.server_order.server_num}}<van-icon name="arrow" /></view>
+    </view>
+    <view class="cl"></view>
+    <view class='server_item'>门店：{{goodsList.server_order.store_name}}</view>
+    <view class='server_item'>预约时间：{{goodsList.server_order.server_at}}</view>
+  </view>
+</view>

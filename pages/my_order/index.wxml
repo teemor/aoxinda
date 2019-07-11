@@ -1,5 +1,5 @@
 <view>
-  <van-tabs active="{{active}}" bind:change="tabchange" color="#fdbb51">
+  <van-tabs active="{{active}}" bind:change="tabchange" color="#4e93f3">
     <view wx:for="{{myOrderMenu}}" wx:key="{{item.id}}">
       <van-tab title="{{item.name}}" titlea="{{item.id}}">
         <view wx:if="{{goodsList.length>0}}">

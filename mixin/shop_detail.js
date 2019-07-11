@@ -32,7 +32,6 @@ module.exports = {
     },
     timer: function () {
         let a = this.data.sys_at += 1000 
-        console.log(a,'???')
         let c = moment.duration(this.data.create - a)
         this.setData({
             creates: c.hours() + ':' + c.minutes() + ':' + c.seconds()

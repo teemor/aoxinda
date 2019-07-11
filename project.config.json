@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 46,
+			"current": 51,
 			"list": [
 				{
 					"id": -1,
@@ -379,6 +379,40 @@
 					"name": "洗车美容",
 					"pathName": "packageA/pages/index/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单列表",
+					"pathName": "pages/my_service_order/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "packageA/pages/my_order_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "packageA/pages/my_order_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/we/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "卡的列表",
+					"pathName": "pages/my_service_card/index",
 					"scene": null
 				}
 			]

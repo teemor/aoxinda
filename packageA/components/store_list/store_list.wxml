@@ -15,7 +15,7 @@
           <view class="cl"></view>
         </view>
         <view wx:for="{{item.serType}}" wx:key="{{item}}">
-          <van-tag color="#999" plain class="fl" style="margin-right:20rpx">
+          <van-tag color="#4e93f3" plain class="fl" style="margin-right:20rpx">
             {{item.actName}}
           </van-tag>
         </view>

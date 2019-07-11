@@ -1,0 +1,12 @@
+@import "../../../app.wxss";
+page{
+    min-height: 100%;
+    background-color: #f3f3f3;
+}
+.invoice_cell{
+    padding: 0 20rpx;
+    background: #fff;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-top:30rpx;
+}

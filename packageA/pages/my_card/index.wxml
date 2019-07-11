@@ -1,0 +1,55 @@
+<view class='card_top'>
+  <view class='card_bag' style='background-image:url(../../../common/image/card_bg.png)'>
+    <view class='card_bag_top'>
+      <view class='card_title'>{{cardModel[0].actName}} {{cardModel[0].name}}</view>
+    </view>
+    <view class='card_bag_bottom'>
+      <view class='card_bm_info'>
+        <view class='card_price'>￥{{cardModel[0].actPrice}}/{{cartModel[0].name=='单词卡'?'次':'月'}}</view>
+        <view class='card_time'>有效期至720天，仅限本店及相关分店使用</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='card_service card_item'>
+  <van-cell title="服务详情">
+    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
+  </van-cell>
+  <van-cell title="{{item.server_name}}" wx:for="{{serverInfo}}" wx:key="{{index}}">
+    <view slot="right-icon" class='card_service_n'>剩余
+      <text class='red'>{{item.server_times}}</text> 次</view>
+  </van-cell>
+  <!-- <van-cell title="洗车1次" value="剩余 {{}} 次" /> -->
+</view>
+<view class='card_store card_item'>
+  <van-cell title="适用门店">
+    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
+  </van-cell>
+  <view class='address' wx:for="{{store}}" wx:key="{{index}}">
+    <view class='address_title'>{{item.name}}</view>
+    <view class='address_box'>
+      <image mode='aspectFit' src='../../common/image/location_.png' class='location' data-index="{{index}}" bindtap='onAddress'></image>
+      <view class='address_cont'>
+        <view class='cont_title'>{{item.address}}</view>
+        <view class='cont_text'>距您约{{item.distance}}km，驾车需约{{item.time}}分钟</view>
+      </view>
+      <image mode='aspectFit' src='../../common/image/phone.png' class='phone' data-phone="{{item.phone}}" bindtap='onContact'></image>
+    </view>
+  </view>
+</view>
+<view class='card_record card_item'>
+  <van-cell title="消费记录">
+    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
+  </van-cell>
+  <view class='address' wx:for="{{payInfo}}" wx:key="{{index}}">
+    <view class='address_box'>
+      <view class='address_cont'>
+        <view class='cont_title'>{{item.name}}</view>
+      </view>
+      <view class='time'>{{item.create_at}}</view>
+    </view>
+  </view>
+</view>
+  <view class="fz30 bg_orange bottom_btn {{isIpx ? 'ipx-bottom1' : ''}}" bindtap="buyCard">
+    立即购买
+  </view>

@@ -51,13 +51,13 @@
   </view>
   <view class="cl" style="margin-left:25rpx;position:relative">
     <view class="fl"  wx:for="{{detailModel}}" wx:key="{{item}}">
-      <view class="card_img" wx:if="{{item.name=='月卡'}}">
+      <view class="card_img" wx:if="{{item.name=='月卡'}}" data-item="{{item.actId}}" bindtap="cardDetail">
         <image src="../../common/img/month.png" />
       </view>
-      <view class="card_img" wx:elif="{{item.name=='季卡'}}">
+      <view class="card_img" wx:elif="{{item.name=='季卡'}}" data-item="{{item.actId}}" bindtap="cardDetail">
         <image src="../../common/img/quarter.png" />
       </view>
-      <view class="card_img" wx:else>
+      <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
         <image src="../../common/img/quarter.png" />
       </view>
       <view class="card_text">
@@ -72,15 +72,14 @@
 </view>
 <view style="margin-top:20rpx;background:#fff">
   <view >
-    <van-tabs active="{{active}}" bind:change="onChange">
+    <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
       <van-tab title="服务">
-        <view></view>
-        <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
+        <view style="margin-bottom:90rpx;">
+        <view wx:for="{{detailModel}}" wx:key="{{item.actId}}" >
         <service_list item="{{item}}" bind:numChange="numChange"/>
         </view>
+        </view>
       </van-tab>
-      <van-tab title="技师"></van-tab>
-
       <van-tab title="评价"></van-tab>
     </van-tabs>
   </view>
@@ -94,14 +93,17 @@
 <image src="../../common/img/cart.png"/>
 </view>
 <view>
-合计：780
+合计：{{totalPrice?0:totalPrice}}
 </view>
 </van-submit-bar>
 <manager show="{{cartShow}}" type="bottom" bind:clickMask="allService">
- <view class="bgwhite" style="width:100%;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
-  <view wx:for="{{cartModel}}" wx:key="{{item}}">
-    <view class="fl">{{item.actName}}</view>
-    <van-stepper value="{{item.cartNum}}" class="fl" min="1"  bind:change="onChange" />
+ <view class="bgwhite" style="padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
+ <view class="cl bold fz30">
+ 已购服务
+ </view>
+  <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl" style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
+    <view class="fl fz28">{{item.actName}}</view>
+    <van-stepper value="{{item.cartNum}}" class="fr" min="1"  bind:change="onChange" />
   </view>
  </view>
 </manager>

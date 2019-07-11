@@ -7,22 +7,33 @@ Page({
   data: {
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     add: false,
-    cartShow: false
+    cartShow: false,
+    totalPrice: 0
   },
-  onClickButton:function(){
+  cardDetail:function(item){
+    console.log(item.currentTarget.dataset.item,'detail')
+    let id = item.currentTarget.dataset.item
+    wx.navigateTo({
+      url:`../../pages/my_card/index?actId=${id}`
+    })
+  },
+  onClickButton: function () {
+    this.carList()
     let model = encodeURIComponent(JSON.stringify(this.data.cartModel))
     wx.navigateTo({
       url: `../../pages/add_order/index?model=${model}`,
       success: (result) => {
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
   },
   numChange: function ({ detail }) {
-    console.log(1)
+    let totalPrice = 0
     console.log(detail, 'detail')
+    totalPrice = detail.num * detail.item.actPrice
+    console.log(totalPrice)
     request.addCart({
       shopId: this.data.model.id, userId: app.globalData.openId, activityId: detail.item.actId, cartNum: detail.num, price: detail.item.actPrice
     }).then(res => {
@@ -41,9 +52,12 @@ Page({
     this.setData({
       cartShow: !this.data.cartShow
     })
+    this.carList()
+  },
+  carList: function () {
     request.findcarList({ userId: app.globalData.openId, shopId: this.data.model.id, pageIndex: 1, pageSize: 10 }).then(res => {
       this.setData({
-        cartModel:res.data.records
+        cartModel: res.data.records
       })
     })
   },

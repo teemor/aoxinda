@@ -1,10 +1,13 @@
 
-import store from '../../../mixin/store'
+import stores from '../../../mixin/store'
 import find_car from '../../../mixin/find_car'
-
+import {
+  store
+} from '../../common/api/api'
+const request = new store
 const app = getApp()
 Page({
-  mixins: [store,find_car],
+  mixins: [stores, find_car],
   /**
    * 页面的初始数据
    */
@@ -12,9 +15,17 @@ Page({
     location: '',
     CleanStore: []
   },
-  personDetail:function(){
+  // banner
+  findHome: function () {
+    request.findHome().then(res => {
+      this.setData({
+        dataList: res.data
+      })
+    })
+  },
+  personDetail: function () {
     wx.navigateTo({
-      url:`../../pages/person_card_detail/index`
+      url: `../../pages/person_card_detail/index`
     })
   },
   /**
@@ -91,9 +102,16 @@ Page({
       }
     })
   },
-  storeList: function () {
+  storeList: function (item) {
+    let id
+    let name = item.currentTarget.dataset.item.name
+    if(name='不限次'){
+      id = 3
+    }else if(name='月月'){
+      id = 4
+    }else if(name='金麦卡')
     wx.navigateTo({
-      url: '../../pages/store_list/index',
+      url: `../../pages/store_list/index?id=${id}`,
       success: (result) => {
 
       },
@@ -107,6 +125,7 @@ Page({
    */
   onLoad: function (options) {
     this.findCarList()
+    this.findHome()
     let that = this
     wx.getLocation({
       type: 'gcj02',

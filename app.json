@@ -63,7 +63,11 @@
     "pages/my_card_detail/index",
     "pages/my_invite_record/index",
     "pages/stored_value_card/index",
-    "pages/stored_value_info/index"
+    "pages/stored_value_info/index",
+    "pages/my_service_order/index",
+    "pages/my_service_card/index",
+    "pages/my_service_card_detail/index",
+    "pages/my_evaluate/index"
   ],
   "subPackages": [
     {
@@ -75,7 +79,12 @@
         "pages/city_select/index",
         "pages/service_detail/index",
         "pages/person_card_detail/index",
-        "pages/add_order/index"
+        "pages/add_order/index",
+        "pages/success_order/index",
+        "pages/my_order_invoice/index",
+        "pages/order_detail/index",
+        "pages/my_card/index",
+        "pages/my_order_detail/index"
       ]
     }
   ],

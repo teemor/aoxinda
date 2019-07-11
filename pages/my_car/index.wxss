@@ -74,8 +74,8 @@
 }
 
 .shop_set_btn_ {
-  color: #fdbb51;
-  border-color: #fdbb51;
+  color: #4e93f3;
+  border-color: #4e93f3;
 }
 .no_data_car{
   position: absolute;

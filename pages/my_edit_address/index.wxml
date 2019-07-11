@@ -17,10 +17,10 @@
     </view>
   </view>
   <view class="add_item_area">
-    <van-checkbox checked-color="#fdbb51" value="{{ content.is_check==1?true:false }}" bind:change="switchChange">设置为默认地址</van-checkbox>
+    <van-checkbox checked-color="#4e93f3" value="{{ content.is_check==1?true:false }}" bind:change="switchChange">设置为默认地址</van-checkbox>
     <!-- <view class="fl">设置为默认地址</view>
     <view class="fr" style="margin-right:30rpx;">
-      <switch checked="{{content.is_check===0?false:true}}" bindchange="switchChange" color="#fdbb51" />
+      <switch checked="{{content.is_check===0?false:true}}" bindchange="switchChange" color="#4e93f3" />
     </view> -->
   </view>
   <view class="fz30 bg_orange bottom_btn {{isIpx ? 'ipx-bottom1' : ''}}" style='width:40%;' bindtap="saveAddress">

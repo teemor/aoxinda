@@ -1,0 +1,29 @@
+<view>
+  <van-tabs active="{{active}}" bind:change="tabchange" color="#4e93f3">
+    <view wx:for="{{myServiceCard}}" wx:key="{{item.id}}">
+      <van-tab title="{{item.name}}" titlea="{{item.id}}">
+        <view wx:if="{{cardList.length>0}}">
+          <view class="cl" wx:for="{{cardList}}" wx:key="{{item}}">
+            <view class="card_box">
+              <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/second.png" />
+            </view>
+            <view class="text_box">
+              <view class="fz26">{{item.shopName[0].shopName}}</view>
+              <view class="fz30" style="margin-top:10rpx">{{item.actName}}</view>
+              <view class="fz26" style="margin-top:40rpx;color:#b0140f">
+                <view class="fl">有限期至{{item.actEndTime}}</view>
+                <view class="fr">{{item.cardNum}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:else>
+          <view class="my_address_null">
+            <image src="../../common/image/refund_null.png" />
+          </view>
+          <view class="tc fz26">还没有相关订单呢</view>
+        </view>
+      </van-tab>
+    </view>
+  </van-tabs>
+</view>

@@ -1,23 +1,35 @@
 const app = getApp();
 import login from '../../mixin/login'
 Page({
-  mixins:[login],
+  mixins: [login],
   data: {
 
   },
-
-  myKeep:function(){
+  myEvaluate:function(){
+    wx.navigateTo({
+      url: '../my_evaluate/index',
+    })
+  },
+  serviceCard: function() {
+    wx.navigateTo({
+      url: '../my_service_card/index',
+    })
+  },
+  myKeep: function() {
+    wx.navigateTo({
+      url: '../my_service_order/index',
+    })
     // wx.navigateToMiniProgram({
     //   appId:'wx317e65151f04fa7c',
     //   envVersion:'trial'
     // })
-    wx.navigateTo({
-      url: `../c_order_all/c_order_all`
-    })
+    // wx.navigateTo({
+    //   url: `../c_order_all/c_order_all`
+    // })
   },
-  myCar:function(){
+  myCar: function() {
     wx.navigateTo({
-      url:`../my_car/index`
+      url: `../my_car/index`
     })
   },
   /**
@@ -32,9 +44,9 @@ Page({
   /**
    * 退款售后
    */
-  myRefund:function(){
+  myRefund: function() {
     wx.navigateTo({
-      url:`../my_order_refund_list/index`
+      url: `../my_order_refund_list/index`
     })
   },
   /**
@@ -116,13 +128,13 @@ Page({
       success: function(res) {
         that.setData({
           avatar: res.data.avatarUrl,
-          nickName:res.data.nickName,
+          nickName: res.data.nickName,
           login: true
         })
       },
-      fail:function(res){
+      fail: function(res) {
         that.setData({
-          fail:false
+          fail: false
         })
       }
     })

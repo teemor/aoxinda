@@ -1,7 +1,11 @@
-
+<view>
+  <view wx:for="{{serviceModel}}" wx:key="{{item}}">
+    <service_list item="{{item}}" bind:numChange="numChange" add="{{add}}"/>
+  </view>
+</view>
 <view>
   <van-cell title="配送方式" value="无需配送"></van-cell>
-    <view class="refund_type fz28">
+  <view class="refund_type fz28">
     <view class="fl">
       支付方式</view>
     <view class="fr cell_img">
@@ -9,18 +13,17 @@
     <view class="cl"></view>
   </view>
 </view>
-  <view class="refund_type fz28">
-    <view class="fl">
-      <van-checkbox checked-color="#fdbb51" value="{{inCheck}}" bind:change="onChange">
-        {{invoice?invoice:'我要开发票'}}</van-checkbox>
-    </view>
-    <view class="fr cell_img" bindtap="addInvoice">></view>
-    <view class="cl"></view>
+<view class="refund_type fz28">
+  <view class="fl">
+    <van-checkbox checked-color="#4e93f3" value="{{inCheck}}" bind:change="onChange">
+      {{invoice?invoice:'我要开发票'}}</van-checkbox>
   </view>
+  <view class="fr cell_img" bindtap="addInvoice">></view>
+  <view class="cl"></view>
+</view>
 <view>
-<van-submit-bar
-  price="{{ 3050 }}"
-  button-text="提交订单"
-  bind:submit="onSubmit"
-/>
+  <van-cell title="商品总价" value="{{totalPrice}}"></van-cell>
+</view>
+<view>
+  <van-submit-bar price="{{ totalPrice*100 }}" button-text="提交订单" bind:submit="onSubmit" />
 </view>

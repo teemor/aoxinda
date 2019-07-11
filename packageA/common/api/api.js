@@ -5,6 +5,13 @@ const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0`
 export class store {
+  // banner图查询
+  findHome = () => {
+    return http.httpRequest({
+      url:`${IP_YXHTTP}/findHome`,
+      method:`get`
+    })
+  }
   // 获取门店详情
   findShopDet = (id) => {
     return http.httpRequest({
@@ -46,11 +53,27 @@ export class store {
     })
   }
   // 添加发票接口
-  insertInvoice = (model)=>{
+  insertInvoice = (model) => {
     return http.httpRequest({
-      url:`${IP_MYHTTP}/mcfwcbinvoice/insertInvoice`,
-      method:`post`,
-      data:model
+      url: `${IP_MYHTTP}/mcfwcbinvoice/insertInvoice`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 服务卡列表
+  cardList = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/cardList`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 订单详情
+  findOrderDetailsByOrderId = (model) => {
+    return http.httpRequest({
+      url: `${IP_MYHTTP}/mcfwcborder/findOrderDetailsByOrderId`,
+      method: `post`,
+      data: model
     })
   }
 }

@@ -3,7 +3,7 @@
     开具发票
   </view>
   <view class="fr mtop15">
-    <van-switch active-color="#fdbb51" checked="{{ checked }}" bind:change="onChange" />
+    <van-switch active-color="#4e93f3" checked="{{ checked }}" bind:change="onChange" />
   </view>
 </view>
 <view wx:if="{{checked}}">
@@ -12,8 +12,8 @@
       <view class="high70">发票类型</view>
       <view class="fz26 mleft20">
         <van-radio-group value="{{ model.invoice_type===0?'0':'1' }}" bind:change="invoiceChange">
-          <van-radio class="fl" name="0" checked-color="#fdbb51">纸质普通发票</van-radio>
-          <van-radio class="fl" name="1" checked-color="#fdbb51">纸质增值税专用发票</van-radio>
+          <van-radio class="fl" name="0" checked-color="#4e93f3">纸质普通发票</van-radio>
+          <van-radio class="fl" name="1" checked-color="#4e93f3">纸质增值税专用发票</van-radio>
         </van-radio-group>
       </view>
     </view>
@@ -23,8 +23,8 @@
       <view class="fl">发票抬头</view>
       <view class="fl mleft20" style="height:80rpx;padding-top:20rpx;">
         <van-radio-group value="{{ model.invoice_title===0?'0':'1' }}" bind:change="headChange">
-          <van-radio class="fl" name="0" checked-color="#fdbb51">个人</van-radio>
-          <van-radio class="fl" name="1" checked-color="#fdbb51">企业</van-radio>
+          <van-radio class="fl" name="0" checked-color="#4e93f3">个人</van-radio>
+          <van-radio class="fl" name="1" checked-color="#4e93f3">企业</van-radio>
         </van-radio-group>
       </view>
     </view>

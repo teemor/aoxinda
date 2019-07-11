@@ -28,7 +28,7 @@ Page({
       }
       request.findPayType({
         actId: model.serType[0].actId,
-        isNot: isNot,
+        actCardType: isNot,
         log:app.globalData.longitude,
         lat:app.globalData.latitude,
         type:1
