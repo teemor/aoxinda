@@ -27,6 +27,12 @@ Page({
     //   url: `../c_order_all/c_order_all`
     // })
   },
+  //跳转今麦卡
+  goldCard: function () {
+    wx.navigateTo({
+      url: `../stored_value_card/index`
+    })
+  },
   myCar: function() {
     wx.navigateTo({
       url: `../my_car/index`
