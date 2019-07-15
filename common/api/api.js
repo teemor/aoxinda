@@ -20,6 +20,7 @@ export const IP_YXHTTP = `https://www.maichefu.cn:9015/scm/v1.0` //前三
 export const WB_WX =`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
 // export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
+export const IP_YBHTTP = `http://192.168.31.156:9015`
 export class Technician {
   // 登录查询
   loginQuery=(user)=>{
@@ -439,7 +440,22 @@ export class Technician {
       method: `post`
     })
   }
-
+  //统计洗车未评价/已评价数量
+  countConsumeComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/wash/v1.0/countConsumeComment`,
+      method: `post`,
+      data: model
+    })
+  }
+  //查询洗车评价列表
+  selectConsumeComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/wash/v1.0/selectConsumeComment`,
+      method: `post`,
+      data: model
+    })
+  }
 }
 
 

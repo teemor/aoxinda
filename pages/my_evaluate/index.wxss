@@ -1,1 +1,67 @@
-/* pages/my_evaluate/index.wxss */
+@import "../../app.wxss";
+page {
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+.dark_grey{
+  color: #333333;
+}
+.s_grey{
+  color:#666666;
+}
+.wrapper{
+  width: 100%;
+  margin-top: 20rpx;
+  background: #fff;
+}
+.outside{
+  width: 100%;
+}
+.inner{
+  padding: 30rpx;
+}
+.top{
+  height: 120rpx;
+}
+.top .fl{
+  width: 75%;
+}
+.top .fl .name{
+  display: block;
+  height: 59rpx;
+}
+.top .fr{
+  height: 120rpx;
+  width: 25%;
+  line-height: 100rpx;
+}
+.top .fr .button{
+  display: inline-block;
+  padding: 0rpx 25rpx;
+  border: 1rpx solid #4e93f3;
+  border-radius: 37rpx;
+  height: 58rpx;
+  line-height: 20rpx;
+  color: #4e93f3;
+}
+.bottom{
+  background-color: #FAFAFA;
+  padding: 0 20rpx;
+  border-radius:10rpx;
+}
+.bottom .title{
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.bottom .service{
+  border-top: 1px solid #EEEEEE;
+  padding:20rpx 0rpx;
+}
+.bottom .service .name{
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.bottom .service .name .num{
+  color: #4e93f3;
+  margin: 0 10rpx;
+}
