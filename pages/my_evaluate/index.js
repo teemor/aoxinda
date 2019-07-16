@@ -78,6 +78,21 @@ Page({
   },
 
   /**
+   * 进入评价页面
+   */
+  goEvaluate: function(e){
+    // console.log(e.currentTarget.dataset['status'] + "status")
+    let relation_lists = [];
+    let sers = e.currentTarget.dataset['sers'];
+    for(let i in sers){
+      relation_lists.push(sers[i].id);
+    }
+    wx.navigateTo({
+      url: '../my_evaluate_record/index?relation_lists=' + relation_lists + '&cardId=' + e.currentTarget.dataset['cardid']
+    });
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

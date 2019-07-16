@@ -1,0 +1,71 @@
+@import "../../app.wxss";
+page {
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+.wrapper{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.score_type{
+  height: 260rpx;
+}
+.score_type .title{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 34rpx;
+  font-size: 28rpx;
+  color: #9C795D;
+  background: #FDF4DC;
+}
+.score_type .score_area{
+  height: 180rpx;
+  background: #fff;
+  width: 748rpx;
+}
+.score_type .score_area .score{
+  height: 180rpx;
+  width: 148rpx;
+  float: left;
+  border-right: 1px solid #EEEEEE;
+}
+.score_type .score_area .score:last-child{
+  border-right:0px;
+}
+.score_type .score_area .score .row{
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.score_type .score_area .score .star_level{
+  width: 60rpx;
+  height: 60rpx;
+}
+.score_type .score_area .score .star{
+  height: 18rpx;
+  width: 18rpx;
+  margin-right:4rpx;
+}
+.describe,.photos{
+  width: 100%;
+  height: 200rpx;
+  margin-top: 30rpx;
+  background: #fff;
+  padding: 30rpx;
+}
+.describe .comments{
+  width:94%;
+  font-size: 30rpx;
+  color: #B5B5B5;
+}
+.release{
+  width: 100%;
+  height: 100rpx;
+  background: #328AFB;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 30rpx;
+}

@@ -456,6 +456,14 @@ export class Technician {
       data: model
     })
   }
+  //添加评论
+  addComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/comment/v1.0/addComment`,
+      method: `post`,
+      data: model
+    })
+  }
 }
 
 
