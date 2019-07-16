@@ -81,14 +81,17 @@ Page({
    * 进入评价页面
    */
   goEvaluate: function(e){
-    // console.log(e.currentTarget.dataset['status'] + "status")
     let relation_lists = [];
     let sers = e.currentTarget.dataset['sers'];
     for(let i in sers){
       relation_lists.push(sers[i].id);
     }
+    let urlPath = "../my_evaluate_record/index";
+    if (e.currentTarget.dataset['status'] == 1){
+      urlPath = "../my_evaluate_show/index";
+    }
     wx.navigateTo({
-      url: '../my_evaluate_record/index?relation_lists=' + relation_lists + '&cardId=' + e.currentTarget.dataset['cardid']
+      url: urlPath + '?relation_lists=' + relation_lists + '&cardId=' + e.currentTarget.dataset['cardid']
     });
   },
 
