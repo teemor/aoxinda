@@ -50,7 +50,7 @@ page {
 }
 .describe,.photos{
   width: 100%;
-  height: 200rpx;
+  /* height: 200rpx; */
   margin-top: 30rpx;
   background: #fff;
   padding: 30rpx;
@@ -68,4 +68,10 @@ page {
   line-height: 100rpx;
   color: #fff;
   font-size: 30rpx;
+}
+.photos .upload{
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 30rpx;
+  margin-bottom:20rpx;
 }

@@ -28,7 +28,8 @@ Page({
       ],
       "relation_lists": [], //消费表id
       "detail_id": "",
-      "content": ""
+      "content": "",
+      "file_lists": []
     }
   },
 
@@ -110,22 +111,26 @@ Page({
       })
       return false;
     }
-    console.log(JSON.stringify(this.data.form))
-    // request.addComment(this.data.form).then(res => {
-    //   if (res.status == '200') {
-    //     wx.showToast({
-    //       title: '评论发布成功',
-    //       icon: 'none',
-    //       duration: 2000,
-    //     })
-    //   }else{
-    //     wx.showToast({
-    //       title: '评论发布失败',
-    //       icon: 'none',
-    //       duration: 2000,
-    //     })
-    //   }
-    // })
+    request.addComment(this.data.form).then(res => {
+      if (res.status == '200') {
+        wx.showToast({
+          title: '评论发布成功',
+          icon: 'none',
+          duration: 2000,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            url: '1'
+          });
+        }, 2000);
+      }else{
+        wx.showToast({
+          title: '评论发布失败',
+          icon: 'none',
+          duration: 2000,
+        })
+      }
+    })
   },
 
   /**
@@ -134,6 +139,62 @@ Page({
   bindContent: function(e){
     this.setData({
       ["form.content"]: e.detail.value
+    })
+  },
+
+  /**
+   * 上传照片
+   */
+  uploadImage: function(){
+    let that = this
+    wx.chooseImage({
+      count: 6,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        let tempFilePath = res.tempFilePaths, uploadImgCount = 0;
+        wx.showLoading({
+          icon: 'loading'
+        });
+
+        let list = tempFilePath.map(item => {
+          wx.uploadFile({
+            url: 'http://192.168.31.156:9015/common/v1.0/upload',
+            filePath: item,
+            name: 'file',
+            formData: { "file_path": "mcf-comment"},
+            success: function (res) {
+              uploadImgCount++;
+
+              that.data.form.file_lists.push(JSON.parse(res.data));
+              let arr = that.data.form.file_lists;
+              that.setData({
+                ["form.file_lists"]: arr
+              });
+
+              //如果是最后一张,则隐藏等待中
+              if (uploadImgCount == tempFilePath.length) {
+                wx.hideLoading();
+              }
+            },
+            fail: function (res) {
+              wx.hideLoading();
+              wx.showModal({
+                title: '错误提示',
+                content: '上传图片失败',
+                showCancel: false
+              })
+            }
+          })
+        })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '请求错误',
+          icon: 'none'
+        })
+      }
     })
   },
 

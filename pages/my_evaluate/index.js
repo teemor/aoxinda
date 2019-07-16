@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getStorageInfo();
+    // this.getStorageInfo();
   },
   // 获取用户信息
   getStorageInfo: function () {
@@ -103,7 +103,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getStorageInfo();
   },
 
   /**

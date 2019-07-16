@@ -35,7 +35,8 @@
   </view>
   <!-- 照片 -->
   <view class='photos'>
-    
+    <image class='upload' src="{{imgUrl}}/upload.png" bindtap="uploadImage" />
+    <image class='upload' wx:for="{{form.file_lists}}" wx:key="true" src="{{item.path}}" />
   </view>
   <view class='release' bindtap='release'>
     <text>发布</text>
