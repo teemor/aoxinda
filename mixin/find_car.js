@@ -30,10 +30,10 @@ module.exports = {
             that.setData({
               car: true,
               model: arr[0],
-              carList:res.result
+              carList:res.result,
+              carName:arr[0]
             })
             app.globalData.carType = this.data.model
-            console.log(this.data.model,'appfwer')
           }
         })
       },

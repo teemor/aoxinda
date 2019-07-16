@@ -84,7 +84,8 @@
         "pages/my_order_invoice/index",
         "pages/order_detail/index",
         "pages/my_card/index",
-        "pages/my_order_detail/index"
+        "pages/my_order_detail/index",
+        "pages/add_refund/index"
       ]
     }
   ],
@@ -118,7 +119,7 @@
       {
         "active": false,
         "pagePath": "pages/shopping_mall/index",
-        "text": "商城",
+        "text": "分类",
         "iconPath": "/common/image/tab/shop.png",
         "selectedIconPath": "/common/image/tab/shop_after.png"
       },

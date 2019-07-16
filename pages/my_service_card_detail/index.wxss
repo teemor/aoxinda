@@ -1,1 +1,248 @@
-/* pages/my_service_card_detail/index.wxss */
+/* .car_beauty_shop {
+  border-radius: 20rx;
+  margin: 30rpx;
+  height: 300rpx;
+}
+
+.car_beauty_shop image{
+    width: 100%;
+    height:300rpx
+} */
+
+page {
+  background-color: #f3f3f3;
+}
+
+.card_top {
+  margin-bottom: 30rpx;
+  padding-top: 30rpx;
+  background-color: #fff;
+}
+
+/* 卡 */
+
+.card_bag {
+  margin: 0 auto;
+  padding: 40rpx 56rpx;
+  width: 690rpx;
+  height: 320rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
+  background: no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.card_bag_top .card_title {
+  margin-bottom: 20rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+  line-height: 40rpx;
+  color: #fff;
+}
+
+.card_bag_top .card_info {
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.card_bag_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 50rpx;
+  color: #826229;
+}
+
+.card_bag .card_price {
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 60rpx;
+}
+
+.card_bag .card_time {
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+
+.card_bag .card_surplus {
+  padding-top: 46rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.card_bag .card_surplus text {
+  margin: 0 10rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  vertical-align: text-bottom;
+}
+
+/* 二维码 */
+
+.card_bag_ {
+  padding: 36rpx 0;
+  text-align: center;
+}
+
+.card_bag_ .code_box {
+  position: relative;
+  margin: 0 auto;
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.card_bag_ .wx_code {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card_bag_ .wx_code_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card_bag_ .canvas-box {
+  position: fixed;
+  top: 999999rpx;
+  left: 0;
+}
+
+.card_bag_ .wx_code_text {
+  font-size: 26rpx;
+  font-weight: bold;
+  line-height: 64rpx;
+}
+
+/* 分享 */
+
+.card_share {
+  padding: 0 0 60rpx;
+  text-align: center;
+}
+
+.card_share .share_btn {
+  display: inline-block;
+  padding: 20rpx 80rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  color: #fff;
+  background: #4e93f3;
+  border-radius: 35rpx;
+}
+
+.card_item {
+  margin-bottom: 30rpx;
+  background-color: #fff;
+}
+
+.card_item .title_bg {
+  width: 4rpx;
+  height: 28rpx;
+  margin: 9rpx 15rpx 0 0;
+}
+
+/* 服务 */
+
+.card_service_n {
+  color: #999;
+}
+
+.card_service_n .red {
+  color: red;
+}
+
+/* 适用门店 */
+
+.card_store {
+  padding-bottom: 1rpx;
+}
+
+.card_store .address {
+  position: relative;
+  padding: 30rpx 20rpx;
+  margin: 20rpx 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
+}
+
+.address .address_title {
+  padding-left: 10rpx;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  font-weight: bold;
+}
+
+.address .address_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96rpx;
+  font-size: 24rpx;
+  line-height: 48rpx;
+}
+
+.address .address_box .cont_text {
+  color: #999;
+}
+
+.address .address_box .location {
+  margin: 0 15rpx;
+  width: 40rpx;
+  height: 60rpx;
+}
+
+.address .address_box .phone {
+  margin-left: 15rpx;
+  padding-left: 20rpx;
+  width: 70rpx;
+  height: 60rpx;
+  border-left: 1rpx solid #999;
+}
+
+/* 消费记录 */
+
+.card_record .address {
+  position: relative;
+  padding: 20rpx 30rpx;
+  overflow: hidden;
+  /* border-bottom: 1rpx solid #eee; */
+}
+
+.card_record .address_box::after {
+  content: ' ';
+  position: absolute;
+  left: 30rpx;
+  bottom: 0;
+  width: 100%;
+  height: 1rpx;
+  background-color: #eee;
+}
+
+.card_record .address:last-child .address_box::after {
+  display: none;
+}
+
+.card_record .address .cont_title {
+  font-size: 28rpx;
+}
+
+.card_record .address .cont_text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.card_record .address .time {
+  font-size: 24rpx;
+  color: #999;
+}

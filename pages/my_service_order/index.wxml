@@ -4,7 +4,7 @@
       <van-tab title="{{item.name}}" titlea="{{item.id}}">
         <view wx:if="{{goodsList.length>0}}">
           <view class="cl" wx:for="{{goodsList}}" wx:key="{{item}}">
-            <order-list bind:goOrder="goOrder" goodsList="{{item}}" ispay="true" bind:orderDetail="orderDetail" />
+            <order-list bind:cancelOrder="cancelOrder" bind:goOrder="goOrder" goodsList="{{item}}" ispay="true" bind:orderDetail="orderDetail" />
           </view>
         </view>
         <view wx:else>

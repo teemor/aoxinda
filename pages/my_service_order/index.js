@@ -1,4 +1,6 @@
-import { store } from '../../common/api/clean_api'
+import {
+  store
+} from '../../common/api/clean_api'
 import {
   myServiceOrderMenu
 } from '../../common/static/api_data'
@@ -7,27 +9,58 @@ const app = getApp();
 Page({
   data: {
     myServiceOrderMenu,
-    active: 0
+    active: 0,
+    page: 1,
+    goodsList:[]
   },
-  tabchange: function ({ detail }) {
+  cancelOrder: function(model) {
+    request.cancelOrder({
+      id: model.detail.id
+    }).then(res => {
+      if (res.msg == 'success') {
+        wx.showToast({
+          title: '删除成功',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {
+            this.selectOrder(1, 100)
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+      }
+    })
+  },
+  tabchange: function({
+    detail
+  }) {
     if (detail.titlea === 0) {
-      this.selectOrder({})
+      this.setData({
+        goodsList: []
+      })
+      this.selectOrder(1,5)
     } else {
-      this.selectOrder({ trade_status: detail.titlea })
+      this.setData({
+        status: detail.titlea,
+        goodsList:[]
+      })
+      this.selectOrder(1, 5, detail.titlea)
     }
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.setData({
       active: this.data.active
     })
-    this.selectOrder(1,3)
+    this.selectOrder(1, 3)
     wx.stopPullDownRefresh()
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (options.id === "17") {
       this.setData({
         active: 1
@@ -45,19 +78,35 @@ Page({
         active: 4
       })
     }
-    this.selectOrder(1,100)
+    this.selectOrder(1, 5)
   },
-  goOrder: function (e) {
+  goOrder: function(e) {
     this.setData({
       total: e.detail.pay_money
     })
     this.pay(e.detail.id)
   },
-  selectOrder: function (index,size,status) {
-    request.findOrderPage({pageIndex:index,pageSize:size,orderStatus:status,userId:app.globalData.openId}).then(res => {
+  selectOrder: function(index, size, status) {
+    if(this.data.goodsList.length===this.data.count){
+      return
+    }
+    request.findOrderPage({
+      pageIndex: index,
+      pageSize: size,
+      orderStatus: status,
+      userId: app.globalData.openId
+    }).then(res => {
       this.setData({
-        goodsList: res.data.records
+        count: res.data.current,
       })
+      res.data.records.forEach(item=>{
+        this.data.goodsList.push(item)
+        this.setData({
+          goodsList: this.data.goodsList
+        })
+      })
+     
+      
     })
   },
   /**
@@ -65,10 +114,12 @@ Page({
    * dzl
    */
   /**
-    * 详情
-    * dzl
-    */
-  orderDetail: function ({ detail }) {
+   * 详情
+   * dzl
+   */
+  orderDetail: function({
+    detail
+  }) {
     wx.navigateTo({
       url: `../../packageA/pages/my_order_detail/index?ids=${detail.id}`
     })
@@ -76,49 +127,43 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function() {
+    this.data.page += parseInt(this.data.count)
+    this.selectOrder(this.data.page, 5, this.data.status)
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

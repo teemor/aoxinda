@@ -13,7 +13,7 @@
     <view class="cl"></view>
   </view>
 </view>
-<view class="refund_type fz28">
+<view class="refund_type fz28"  style="display:none">
   <view class="fl">
     <van-checkbox checked-color="#4e93f3" value="{{inCheck}}" bind:change="onChange">
       {{invoice?invoice:'我要开发票'}}</van-checkbox>
@@ -23,6 +23,13 @@
 </view>
 <view>
   <van-cell title="商品总价" value="{{totalPrice}}"></van-cell>
+  <view class="refund_type fz28" >
+  <view class="fr">
+ <span class="grey fz24"> 共{{serivceNum}}项服务</span>
+  <span style="margin-left:30rpx">小计：<span class="red">¥{{totalPrice}}</span></span>
+  </view>
+  <view class="cl"></view>
+</view>
 </view>
 <view>
   <van-submit-bar price="{{ totalPrice*100 }}" button-text="提交订单" bind:submit="onSubmit" />

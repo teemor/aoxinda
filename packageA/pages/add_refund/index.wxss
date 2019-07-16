@@ -1,0 +1,35 @@
+@import "../../../app.wxss";
+page{
+    min-height: 100%;
+    background-color: #f3f3f3;
+}
+.add_refund_box image{
+    margin-top:20rpx;
+    margin-left:20rpx;
+    width:140rpx;
+ height: 140rpx
+}
+.my_order_list_text{
+    width:500rpx;
+}
+.my_order_list_box{
+    border-bottom: 2rpx solid #eeeeee;
+    margin-top:10rpx;
+    background: #fff;
+    padding: 30rpx;
+    height:180rpx;
+    width: 100%;
+}
+.my_order_list_box{
+    background: #fff;
+}
+.my_order_describe{
+    height:60rpx;
+    line-height: 60rpx;
+}
+.m_left{
+    margin-left: 20rpx;
+}
+.bg_refund_contain{
+    padding: 25rpx;
+}

@@ -4,6 +4,7 @@ import {
   store
 } from '../../common/api/api'
 const request = new store
+const app = getApp();
 let that
 Page({
 
@@ -38,10 +39,13 @@ Page({
     that = this
     console.log(options,'options')
     if (options.actId) {
+      let model = JSON.parse(options.actId)
       //获取卡包详情
       request.findPayType({
-        actId: options.actId,
-        actCardType:"2"
+        log:app.globalData.longitude,
+        lat:app.globalData.latitude,
+        actId: model.id,
+        actCardType:model.actCardType
       }).then(res => {
         if (res.data && res.data.length > 0) {
           this.setData({

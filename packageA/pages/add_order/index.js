@@ -21,7 +21,6 @@ Page({
   onLoad: function(options) {
     this.findCarList()
     if (options.model) {
-      console.log(1)
       let model = JSON.parse(decodeURIComponent(options.model))
       this.setData({
         serviceModel:model,
@@ -43,7 +42,8 @@ Page({
 
       this.setData({
         totalPrice: totalPrice,
-        orderDetails: orderDetails
+        orderDetails: orderDetails,
+        serivceNum:orderDetails.length
       })
       request.findShopDet({
         shopId: model[0].shopId
@@ -123,6 +123,7 @@ Page({
           title: res.description
         })
       } else {
+        let that = this
         let description = JSON.parse(res.result);
         wx.requestPayment({
           timeStamp: description.timeStamp,
@@ -134,7 +135,7 @@ Page({
             let data = {}
             data.id = description.outTradeNo,
             data.data = 'success'
-            data.price = that.data.total
+            data.price = that.data.totalPrice
             let model = encodeURIComponent(JSON.stringify(data))
             wx.redirectTo({
               url: `../success_order/index?data=${model}`

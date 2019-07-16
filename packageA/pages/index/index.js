@@ -124,7 +124,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.findCarList()
+    this.onShow();
     this.findHome()
     let that = this
     wx.getLocation({
@@ -134,7 +134,6 @@ Page({
           latitude: res.latitude,
           longitude: res.longitude,
         })
-        console.log(res, 'rererere')
         app.globalData.latitude = res.latitude
         app.globalData.longitude = res.longitude
         that.findShopList(that.data.longitude, that.data.latitude)
@@ -179,6 +178,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.findCarList()
   },
 
   /**

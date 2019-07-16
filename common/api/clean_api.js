@@ -47,11 +47,21 @@ export class store {
     })
   }
   // 金麦卡详情
-   goldDetail = (model) => {
+  goldDetail = (model) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/cardUserD`,
       method: `post`,
       data: model
     })
   }
+  // 取消订单
+  cancelOrder = (model) => {
+    return http.httpRequest({
+      url: `${IP_MYHTTP}/cancelOrder`,
+      method: `post`,
+      data: model
+    })
+  }
+  
+
 }

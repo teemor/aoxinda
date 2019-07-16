@@ -23,6 +23,7 @@ Component({
       this.setData({
         add: true
       })
+      console.log(this.data.add,'addd')
     },
     numChange: function ({detail}) {
       console.log(detail)

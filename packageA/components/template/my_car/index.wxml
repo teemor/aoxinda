@@ -1,0 +1,12 @@
+<template name="mycar">
+  <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
+  <view class="shop_car_contain">
+    <view class="shop_goods_invite_text fl">为您推荐适合 {{model.model}}{{model.vehicleType}}...的服务</view>
+    <view class="shop_edit fl">
+      <image src="../../../common/image/edit.png" />
+    </view>
+    <view class="shop_close fr">
+      <image src="../../../common/image/close.png" />
+    </view>
+  </view>
+</template>

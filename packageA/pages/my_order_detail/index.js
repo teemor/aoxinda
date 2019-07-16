@@ -102,7 +102,11 @@ Page({
    * 申请退款
    */
   goRefund: function (e) {
+    console.log(e)
+    let detail = e.currentTarget.dataset.refund
+    this.data.model.detail = detail
     let model = encodeURIComponent(JSON.stringify(this.data.model))
+    
     wx.navigateTo({
       url: `../add_refund/index?model=${model}`
     })
