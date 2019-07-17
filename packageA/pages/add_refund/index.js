@@ -133,6 +133,16 @@ Page({
         icon: 'none'
       })
     } else {
+      
+      request.backMoneyCard(this.data.orderInfo).then(res=>{
+        wx.showToast({
+          title: res.data.description
+        })
+        let order_id = res.data
+        wx.redirectTo({
+          url: `../my_refund_detail/index?id=${order_id}`
+        });
+      })
       request.backMoney(this.data.orderInfo).then(res => {
         wx.showToast({
           title: res.data.description

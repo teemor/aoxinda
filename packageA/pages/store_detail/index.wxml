@@ -15,7 +15,7 @@
         {{item.actName}} </van-tag>
     </view>
   </view>
-  <view class="cl" style="margin-top:10rpx;height:70rpx;line-height:50rpx;width:450rpx">
+  <view class="cl " style="margin-top:10rpx;height:70rpx;line-height:50rpx;width:450rpx">
     <view class="fl">
       <van-rate value="3" size="18" class="fl" />
       <span class="orange fl fz26">3.8分</span>
@@ -36,31 +36,33 @@
     <view class="cl"></view>
   </view>
 </view>
-<view  class="shop_goods_invite" bindtap="editCar">
-   <template is="mycar" data="{{model}}"></template>
+<view class="shop_goods_invite" bindtap="editCar">
+  <template is="mycar" data="{{model}}"></template>
 </view>
-<view class="bgwhite" style="">
+<view class="bgwhite">
   <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
     门店会员卡
   </view>
   <view class="cl" style="margin-left:25rpx;position:relative">
-    <view class="fl" wx:for="{{cardModel}}" wx:key="{{item}}">
-      <view class="card_img" wx:if="{{item.name=='月月卡'}}" data-item="{{item.actId}}" bindtap="cardMDetail">
-        <image src="../../common/img/month.png" />
-      </view>
-      <view class="card_img" wx:elif="{{item.name=='不计次数卡'}}" data-item="{{item.actId}}" bindtap="cardQDetail">
-        <image src="../../common/img/quarter.png" />
-      </view>
-      <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
-        <image src="../../common/img/quarter.png" />
-      </view>
-      <view class="card_text">
-        <view class="fz28">{{item.name}}</view>
-        <view class="fz28 bold">¥{{item.actPrice}}/{{item.name[0]}}</view>
+    <view class="{{cardShow==true?'height_contain':''}}">
+      <view class="fl" wx:for="{{cardModel}}" wx:key="{{item}}" style="">
+        <view class="card_img" wx:if="{{item.name=='月月卡'}}" data-item="{{item.actId}}" bindtap="cardMDetail">
+          <image src="../../common/img/month.png" />
+        </view>
+        <view class="card_img" wx:elif="{{item.name=='不计次数卡'}}" data-item="{{item.actId}}" bindtap="cardQDetail">
+          <image src="../../common/img/quarter.png" />
+        </view>
+        <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
+          <image src="../../common/img/quarter.png" />
+        </view>
+        <view class="card_text">
+          <view class="fz28">{{item.name}}</view>
+          <view class="fz28 bold">¥{{item.actPrice}}/{{item.name[0]}}</view>
+        </view>
       </view>
     </view>
-    <view class="cl down_img">
-      <image src="../../common/img/card_down.png" />
+    <view class="cl down_img" bindtap="showCard">
+      <image src="{{cardShow==true?'../../common/img/down.png':'../../common/img/up.png'}}" />
     </view>
   </view>
 </view>
@@ -84,7 +86,8 @@
     <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
   </view>
   <view>
-    合计：<span class="red">{{totalPrice?0:totalPrice}}</span>
+    合计：
+    <span class="red">{{totalPrice?0:totalPrice}}</span>
   </view>
 </van-submit-bar>
 <manager show="{{cartShow}}" type="bottom" bind:clickMask="allService">
