@@ -86,12 +86,12 @@ Page({
     for(let i in sers){
       relation_lists.push(sers[i].id);
     }
-    let urlPath = "../my_evaluate_record/index";
+    let urlPath = "../my_evaluate_record/index?cardtype=" + e.currentTarget.dataset['cardtype'] + "&cardnum=" + e.currentTarget.dataset['cardnum'] + "&ordercode=" + e.currentTarget.dataset['ordercode'] + "&";
     if (e.currentTarget.dataset['status'] == 1){
-      urlPath = "../my_evaluate_show/index";
+      urlPath = "../my_evaluate_show/index?";
     }
     wx.navigateTo({
-      url: urlPath + '?relation_lists=' + relation_lists + '&cardId=' + e.currentTarget.dataset['cardid']
+      url: urlPath + 'relation_lists=' + relation_lists + '&cardId=' + e.currentTarget.dataset['cardid']
     });
   },
 

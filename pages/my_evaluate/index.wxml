@@ -13,7 +13,7 @@
                 <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}">
                   查看评价
                 </text>
-                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}">
+                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}" data-cardtype="{{item.cardType}}" data-cardnum="{{item.cardNum}}" data-ordercode="{{item.orderCode}}">
                   评价晒单
                 </text>
               </view>

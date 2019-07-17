@@ -29,7 +29,11 @@ Page({
       "relation_lists": [], //消费表id
       "detail_id": "",
       "content": "",
-      "file_lists": []
+      "file_lists": [],
+      "card_type": 0, //订单类型：2单次服务3不计次数4月月卡
+      "order_code": "", //订单编号/卡号
+      "user_name": "", //用户昵称
+      "user_phone": "" //用户手机号
     }
   },
 
@@ -38,11 +42,14 @@ Page({
    */
   onLoad: function (options) {
     this.getStorageInfo();
+    this.getStoragePhone();
     this.setData({
       qualityData: this.data.sourceData,
       speedData: this.data.sourceData,
       ["form.relation_lists"]: options.relation_lists ? options.relation_lists.split(",") : [],
-      ["form.detail_id"]: options.cardId
+      ["form.detail_id"]: options.cardId,
+      ["form.card_type"]: options.cardtype,
+      ["form.order_code"]: options.cardtype == "2" ? options.cardnum : options.ordercode
     })
   },
 
@@ -53,7 +60,21 @@ Page({
       key: 'user',
       success: function (res) {
         that.setData({
-          ["form.user_id"]: res.data.openId
+          ["form.user_id"]: res.data.openId,
+          ["form.user_name"]: res.data.nickName
+        })
+      }
+    })
+  },
+
+  //获取用户手机号
+  getStoragePhone: function(){
+    let that = this;
+    wx.getStorage({
+      key: 'userPhone',
+      success: function (res) {
+        that.setData({
+          ["form.user_phone"]: res.data
         })
       }
     })
