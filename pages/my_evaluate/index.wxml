@@ -10,10 +10,10 @@
                 <text class='name s_grey'>{{item.conTime}}</text>
               </view>
               <view class='fr'>
-                <text class='button' wx:if="{{item.isComment == 1}}">
+                <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}">
                   查看评价
                 </text>
-                <text class='button' wx:else>
+                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}">
                   评价晒单
                 </text>
               </view>

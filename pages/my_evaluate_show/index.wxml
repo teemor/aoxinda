@@ -1,0 +1,37 @@
+<view class='wrapper'>
+  <view class='score_type'>
+    <view class='title'>服务质量评分</view>
+    <!-- 评分 -->
+    <view class='score_area'>
+      <view class='score fz30' wx:for="{{qualityData}}" wx:key="{{item.id}}">
+        <view class='row'>{{item.name}}</view>
+        <view class='row'>
+          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
+        </view>
+        <view class='row'>
+          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='score_type'>
+    <view class='title'>服务速度评分</view>
+    <!-- 评分 -->
+    <view class='score_area'>
+      <view class='score fz30' wx:for="{{speedData}}" wx:key="{{item.id}}">
+        <view class='row'>{{item.name}}</view>
+        <view class='row'>
+          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
+        </view>
+        <view class='row'>
+          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 照片 -->
+  <view class='photos'>
+    <view class='describe'>{{describe}}</view>
+    <image class='upload' wx:for="{{file_lists}}" wx:key="true" src="{{item.path}}" />
+  </view>
+</view>

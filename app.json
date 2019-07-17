@@ -68,7 +68,9 @@
     "pages/my_service_order/index",
     "pages/my_service_card/index",
     "pages/my_service_card_detail/index",
-    "pages/my_evaluate/index"
+    "pages/my_evaluate/index",
+    "pages/my_evaluate_record/index",
+    "pages/my_evaluate_show/index"
   ],
   "subPackages": [
     {

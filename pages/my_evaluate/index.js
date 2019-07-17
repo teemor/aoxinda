@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getStorageInfo();
+    // this.getStorageInfo();
   },
   // 获取用户信息
   getStorageInfo: function () {
@@ -78,6 +78,24 @@ Page({
   },
 
   /**
+   * 进入评价页面
+   */
+  goEvaluate: function(e){
+    let relation_lists = [];
+    let sers = e.currentTarget.dataset['sers'];
+    for(let i in sers){
+      relation_lists.push(sers[i].id);
+    }
+    let urlPath = "../my_evaluate_record/index";
+    if (e.currentTarget.dataset['status'] == 1){
+      urlPath = "../my_evaluate_show/index";
+    }
+    wx.navigateTo({
+      url: urlPath + '?relation_lists=' + relation_lists + '&cardId=' + e.currentTarget.dataset['cardid']
+    });
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -88,7 +106,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getStorageInfo();
   },
 
   /**
