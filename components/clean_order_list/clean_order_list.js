@@ -19,6 +19,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    cancelOrder: function () {
+      this.triggerEvent('cancelOrder', this.data.goodsList)
+    },
     /**
      * 进入详情
      */

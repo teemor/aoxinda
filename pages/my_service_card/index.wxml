@@ -4,8 +4,8 @@
       <van-tab title="{{item.name}}" titlea="{{item.id}}">
         <view wx:if="{{cardList.length>0}}">
           <view class="cl" wx:for="{{cardList}}" wx:key="{{item}}">
-            <view class="card_box">
-              <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/second.png" />
+            <view class="card_box" bindtap="cardDetail" data-item="{{item}}">
+              <image src="{{url}}" />
             </view>
             <view class="text_box">
               <view class="fz26">{{item.shopName[0].shopName}}</view>

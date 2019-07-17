@@ -53,15 +53,8 @@
       </view>
     </view>
   </view>
-  <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-    <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
-    <view class="shop_edit">
-      <image src="../../../common/image/edit.png" />
-    </view>
-    <view class="shop_close">
-      <image src="../../../common/image/close.png" />
-    </view>
+  <view  class="shop_goods_invite" bindtap="editCar">
+    <template is="mycar" data="{{model}}"></template>
   </view>
 
   <view class="space_list fz28 cl">
@@ -70,3 +63,4 @@
     </view>
   </view>
 </view>
+<import src="../../components/template/my_car/index" />

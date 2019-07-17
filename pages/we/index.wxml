@@ -32,25 +32,25 @@
         <view class="mine_btn">
           <image src="../../common/image/my_mall_order.png" />
         </view>
-        <view class="mine_btn_text tc fz30">商城订单</view>
+        <view class="mine_btn_text tc fz28">商品订单</view>
       </view>
       <view class="fl" bindtap="myKeep">
         <view class="mine_btn">
-          <image src="../../common/image/my_keep_order.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_keep_order.png" />
         </view>
-        <view class="mine_btn_text tc fz30">服务订单</view>
+        <view class="mine_btn_text tc fz28">服务订单</view>
       </view>
       <view class="fl" bindtap="myCard">
         <view class="mine_btn">
           <image src="../../common/image/my_refund_order.png" />
         </view>
-        <view class="mine_btn_text tc fz30">退款售后</view>
+        <view class="mine_btn_text tc fz28">退款售后</view>
       </view>
       <view class="fl" bindtap="myEvaluate">
         <view class="mine_btn">
           <image src="../../common/image/my_remark.png" />
         </view>
-        <view class="mine_btn_text tc fz30">待评价</view>
+        <view class="mine_btn_text tc fz28">待评价</view>
       </view>
     </view>
 

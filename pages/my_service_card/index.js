@@ -8,14 +8,31 @@ Page({
   data: {
     myServiceCard,
     active: 0,
-    id:''
+    id:'',
+    url: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/second.png'
   },
   tabchange: function ({ detail }) {
     console.log(detail)
     if (detail.titlea === 0) {
+      this.setData({
+        url:'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/second.png'
+      })
       this.selectCard(0)
-    } else {
+    } else if (detail.titlea === 1) {
       this.selectCard(detail.titlea)
+      this.setData({
+        url: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/completed.png'
+      })
+    }else if(detail.titlea===2){
+      this.selectCard(detail.titlea)
+      this.setData({
+        url: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/Expired.png'
+      })
+    } else if (detail.titlea === 3){
+      this.selectCard(detail.titlea)
+      this.setData({
+        url: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/refund.png'
+      })
     }
   },
   onPullDownRefresh: function () {
@@ -70,9 +87,16 @@ Page({
     * 详情
     * dzl
     */
-  orderDetail: function ({ detail }) {
+  cardDetail: function (item) {
+    console.log(item.currentTarget.dataset.item,'card')
+    let id = item.currentTarget.dataset.item.cardId
+    let actCardType = item.currentTarget.dataset.item.actCardType
+    let model = {}
+    model.id = id
+    model.actCardType = actCardType
+
     wx.navigateTo({
-      url: `../my_order_detail/index?id=${detail.id}`
+      url: `../my_service_card_detail/index?id=${JSON.stringify(model)}`
     })
   },
   /**

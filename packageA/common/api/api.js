@@ -76,4 +76,28 @@ export class store {
       data: model
     })
   }
+    // 手动退款
+  backMoney =(model)=>{
+    return http.httpRequest({
+      url:`${IP_MYHTTP}/mcfwcbpay/backMoneyService`,
+      method:`post`,
+      data:model
+    })
+  }
+  // 卡退款
+  backMoneyCard = (model)=>{
+    return http.httpRequest({
+      url:`${IP_MYHTTP}/mcfwcbpay/backMoneyCard`,
+      method:`post`,
+      data:model
+    })
+  }
+  // 退款详情
+  findRefundById=(model)=>{
+    return http.httpRequest({
+      url:`${IP_MYHTTP}/mcf-wcb-refund/findRefundById`,
+      method:`post`,
+      data:model
+    })
+  }
 }

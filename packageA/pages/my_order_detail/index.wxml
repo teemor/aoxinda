@@ -15,8 +15,16 @@
 </view>
 
 <view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
-  <view class="fl my_order_list_image">
+  <view class="fl my_order_list_image" wx:if="{{item.cardType==2}}">
     <image src="{{item.pictue}}" />
+  </view>
+  <view class="fl my_order_list_image" wx:else>
+    <view wx:if="{{item.cardType==3}}">
+    次卡
+    </view>
+    <view wx:if="{{item.cardType==4}}">
+    月月卡
+    </view>
   </view>
   <view class="fl my_order_list_text">
     <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.actName}}</view>
@@ -28,11 +36,11 @@
       <view class="fr grey">
        x {{item.num}}
       </view>
-      <!--
-      <view wx:if="{{item.status}}" class="my_order_list_btn fr">
-        <view class="myorder_orange" catchtap="{{item.status==='退款失败'?'disabled':'goRefund'}}" data-refund="{{item}}">{{item.status}}</view>
+     
+      <view wx:if="{{model.statusName=='待消费'}}" class="my_order_list_btn fr">
+        <view class="myorder_orange" catchtap="{{model.status==='退款失败'?'disabled':'goRefund'}}" data-refund="{{item}}">申请退款</view>
       </view>
-      -->
+    
     </view>
   </view>
   <view>
@@ -65,7 +73,7 @@
 </view>
 <view class="mtop20">
   <van-cell wx:if="{{invoice}}" title="{{invoice}}"></van-cell>
-  <van-cell wx:else title="补开发票" bind:click="addInvoice" is-link></van-cell>
+  <!--<van-cell wx:else title="补开发票" bind:click="addInvoice" is-link></van-cell>-->
 </view>
 <view class="mtop20">
   <van-cell title="商品总价" value="¥{{model.goodsTotalPrice}}"></van-cell>

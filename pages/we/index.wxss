@@ -45,9 +45,9 @@
 }
 
 .mine_btn image {
-  margin-left: 35rpx;
-  width: 70rpx;
-  height: 70rpx;
+  margin-left: 55rpx;
+  width: 45rpx;
+  height:45rpx;
 }
 
 .mine_btn_text {

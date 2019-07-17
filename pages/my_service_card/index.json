@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "我的订单",
+  "navigationBarTitleText": "我的服务卡",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",

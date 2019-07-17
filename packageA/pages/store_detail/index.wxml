@@ -5,16 +5,17 @@
         <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png' />
       </swiper-item>
     </block>
-  </swiper>  
+  </swiper>
 </view>
 <view class="keep_up_box">
-  <view class="fz30 bold">{{model.name}}</view>
+  <view class="fz30 bold">{{storemodel.name}}</view>
   <view class="cl">
-  <view wx:for="{{model.serType}}" wx:key="{{item}}" class="fl">
-    <van-tag text-color="#ffa315" size="medium" round color="#fff4e2" style="margin-right:20rpx">
-      {{item.actName}} </van-tag>
-  </view></view>
-  <view class="cl" style="margin-top:10rpx;height:70rpx;line-height:50rpx;width:450rpx">
+    <view wx:for="{{storemodel.serType}}" wx:key="{{item}}" class="fl">
+      <van-tag text-color="#ffa315" size="medium" round color="#fff4e2" style="margin-right:20rpx">
+        {{item.actName}} </van-tag>
+    </view>
+  </view>
+  <view class="cl " style="margin-top:10rpx;height:70rpx;line-height:50rpx;width:450rpx">
     <view class="fl">
       <van-rate value="3" size="18" class="fl" />
       <span class="orange fl fz26">3.8分</span>
@@ -26,58 +27,53 @@
       <image src="../../common/img/location_dis.png" />
     </view>
     <view class="fl">
-      <view class="fz24">{{model.address}}</view>
-      <view class="fz24 grey" style="margin-top:18rpx;">距您{{model.distance}}km,驾车需约25分钟</view>
+      <view class="fz24">{{storemodel.address}}</view>
+      <view class="fz24 grey" style="margin-top:18rpx;">距您{{storemodel.distance}}km,驾车需约25分钟</view>
     </view>
-    <view class="fr phone_img" data-item="{{model.tel}}"  bindtap="makePhone" >
+    <view class="fr phone_img" data-item="{{storemodel.tel}}" bindtap="makePhone">
       <image src="../../common/img/phone.png" />
     </view>
     <view class="cl"></view>
   </view>
 </view>
-<view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-  <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-  <view class="shop_goods_invite_text">为您推荐适合 {{carType.model}}{{carType.vehicleType}}...的服务</view>
-  <view class="shop_edit">
-    <image src="../../../common/image/edit.png" />
-  </view>
-  <view class="shop_close">
-    <image src="../../../common/image/close.png" />
-  </view>
+<view class="shop_goods_invite" bindtap="editCar">
+  <template is="mycar" data="{{model}}"></template>
 </view>
-<view class="bgwhite" style="">
-  <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #f8a615">
+<view class="bgwhite">
+  <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
     门店会员卡
   </view>
   <view class="cl" style="margin-left:25rpx;position:relative">
-    <view class="fl"  wx:for="{{detailModel}}" wx:key="{{item}}">
-      <view class="card_img" wx:if="{{item.name=='月卡'}}" data-item="{{item.actId}}" bindtap="cardDetail">
-        <image src="../../common/img/month.png" />
-      </view>
-      <view class="card_img" wx:elif="{{item.name=='季卡'}}" data-item="{{item.actId}}" bindtap="cardDetail">
-        <image src="../../common/img/quarter.png" />
-      </view>
-      <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
-        <image src="../../common/img/quarter.png" />
-      </view>
-      <view class="card_text">
-        <view class="fz28">{{item.name}}</view>
-        <view class="fz28 bold">¥{{item.actPrice}}/{{item.name[0]}}</view>
+    <view class="{{cardShow==true?'height_contain':''}}">
+      <view class="fl" wx:for="{{cardModel}}" wx:key="{{item}}" style="">
+        <view class="card_img" wx:if="{{item.name=='月月卡'}}" data-item="{{item.actId}}" bindtap="cardMDetail">
+          <image src="../../common/img/month.png" />
+        </view>
+        <view class="card_img" wx:elif="{{item.name=='不计次数卡'}}" data-item="{{item.actId}}" bindtap="cardQDetail">
+          <image src="../../common/img/quarter.png" />
+        </view>
+        <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
+          <image src="../../common/img/quarter.png" />
+        </view>
+        <view class="card_text">
+          <view class="fz28">{{item.name}}</view>
+          <view class="fz28 bold">¥{{item.actPrice}}/{{item.name[0]}}</view>
+        </view>
       </view>
     </view>
-    <view class="cl down_img">
-      <image src="../../common/img/card_down.png" />
+    <view class="cl down_img" bindtap="showCard">
+      <image src="{{cardShow==true?'../../common/img/down.png':'../../common/img/up.png'}}" />
     </view>
   </view>
 </view>
 <view style="margin-top:20rpx;background:#fff">
-  <view >
+  <view>
     <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
       <van-tab title="服务">
         <view style="margin-bottom:90rpx;">
-        <view wx:for="{{detailModel}}" wx:key="{{item.actId}}" >
-        <service_list item="{{item}}" bind:numChange="numChange"/>
-        </view>
+          <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
+            <service_list item="{{item}}" bind:numChange="numChange" />
+          </view>
         </view>
       </van-tab>
       <van-tab title="评价"></van-tab>
@@ -85,25 +81,24 @@
   </view>
 
 </view>
-<van-submit-bar
-  button-text="确认"
-  bind:submit="onClickButton"
->
-<view class="cart_img" bindtap='showCartList'>
-<image src="../../common/img/cart.png"/>
-</view>
-<view>
-合计：{{totalPrice?0:totalPrice}}
-</view>
+<van-submit-bar button-text="确认" disabled="{{!cartIcon}}" bind:submit="onClickButton">
+  <view class="cart_img" bindtap='showCartList'>
+    <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
+  </view>
+  <view>
+    合计：
+    <span class="red">{{totalPrice?0:totalPrice}}</span>
+  </view>
 </van-submit-bar>
 <manager show="{{cartShow}}" type="bottom" bind:clickMask="allService">
- <view class="bgwhite" style="padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
- <view class="cl bold fz30">
- 已购服务
- </view>
-  <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl" style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
-    <view class="fl fz28">{{item.actName}}</view>
-    <van-stepper value="{{item.cartNum}}" class="fr" min="1"  bind:change="onChange" />
+  <view class="bgwhite" style="padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
+    <view class="cl bold fz30">
+      已购服务
+    </view>
+    <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl" style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
+      <view class="fl fz28">{{item.actName}}</view>
+      <van-stepper value="{{item.cartNum}}" class="fr" min="1" bind:change="onChange" />
+    </view>
   </view>
- </view>
 </manager>
+<import src="../../components/template/my_car/index" />

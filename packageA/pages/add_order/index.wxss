@@ -1,1 +1,4 @@
-/* packageA/pages/add_order/index.wxss */
+page{
+    min-height: 100%;
+    background-color: #f3f3f3;
+}

@@ -117,6 +117,7 @@ Page({
           title:'退款描述不能为空'
         })
       }else{
+
         let order_id = res.data
         wx.redirectTo({
           url: `../my_order_refund_detail/index?id=${order_id}`

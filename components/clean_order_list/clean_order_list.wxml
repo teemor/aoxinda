@@ -28,11 +28,11 @@
     </view>
 
     <view wx:if="{{goodsList.statusName==='待付款'}}" class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey">删除订单</view>
+      <view class="fl myorder_grey" bindtap="cancelOrder">删除订单</view>
       <view class="fl myorder_orange" bindtap="goOrder">去付款</view>
     </view>
     <view wx:else class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey">删除订单</view>
+      <view class="fl myorder_grey" bindtap="cancelOrder">删除订单</view>
     </view>
 
   </view>
