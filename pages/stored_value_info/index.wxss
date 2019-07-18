@@ -30,25 +30,29 @@ page {
   border-radius: 20rpx;
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
   background: no-repeat center center;
-  background-size: cover;
+  background-size: 310px 160px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: #fff;
 }
-
+.card_bag_top{
+  overflow: hidden
+}
 .card_bag_top .card_title {
   margin-bottom: 20rpx;
   font-size: 38rpx;
   font-weight: bold;
   letter-spacing: 4rpx;
   line-height: 40rpx;
-  color: #fff;
+  color: #ffcf4a;
+  float: left;
 }
 
 .card_bag_top .card_info {
   font-size: 28rpx;
   line-height: 40rpx;
+  float: right
 }
 
 .card_bag_bottom {
@@ -63,11 +67,20 @@ page {
   font-size: 34rpx;
   font-weight: bold;
   line-height: 60rpx;
+  color: #ffcf4a
 }
-
+.card_price .card_price_title{
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: 100;
+  margin-right: 20rpx;
+}
 .card_bag .card_time {
   font-size: 26rpx;
   line-height: 26rpx;
+  color: #fff;
+  font-weight: 100;
+  margin-top: 10rpx;
 }
 
 .card_bag .card_surplus {
@@ -88,6 +101,10 @@ page {
 .card_bag_ {
   padding: 36rpx 0;
   text-align: center;
+  border-radius: 10rpx;
+  box-shadow: 0rpx 0rpx 50rpx 1rpx #e7e3e3;
+  margin: 40rpx auto;
+  width: 90%
 }
 
 .card_bag_ .code_box {
@@ -105,10 +122,11 @@ page {
 
 .card_bag_ .wx_code_bg {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 80%;
+  border:1px solid #5a97ef;
 }
 
 .card_bag_ .canvas-box {
@@ -118,9 +136,15 @@ page {
 }
 
 .card_bag_ .wx_code_text {
-  font-size: 26rpx;
-  font-weight: bold;
+  font-size: 30rpx;
   line-height: 64rpx;
+margin: 0 auto;
+margin-top:15rpx;
+box-sizing:border-box;
+border-top:1px solid #f9f6f6;
+padding-top:15rpx;
+width:80%;
+
 }
 
 /* 分享 */
@@ -133,23 +157,37 @@ page {
 .card_share .share_btn {
   display: inline-block;
   margin: 0 20rpx;
-  padding: 20rpx 80rpx;
-  font-size: 26rpx;
+  padding: 20rpx 70rpx;
+  font-size: 30rpx;
   line-height: 30rpx;
-  color: #fff;
-  background: #4e93f3;
+  color: #5a97ef;
+  background: #fff;
+  border: 1px solid #5a97ef;
   border-radius: 35rpx;
 }
-
+.card_share .share_btn_share{
+  display: inline-block;
+  margin: 0 20rpx;
+  padding: 20rpx 70rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: #fff;
+  background: #5a97ef;
+  border: 1px solid #5a97ef;
+  border-radius: 35rpx;
+}
 .card_item {
   margin-bottom: 30rpx;
   background-color: #fff;
 }
 
 .card_item .title_bg {
-  width: 4rpx;
-  height: 28rpx;
-  margin: 9rpx 15rpx 0 0;
+  width: 135rpx;
+  height: 8rpx;
+  position: absolute;
+  background: #5a97ef;
+  left: 67rpx;
+  bottom: 4rpx;
 }
 
 /* 服务 */
@@ -164,13 +202,13 @@ page {
 
 .card_service_cont {
   padding: 40rpx 30rpx;
-  font-size: 25rpx;
+  font-size: 30rpx;
   line-height: 40rpx;
 }
 
 .card_service_info {
   padding: 0 30rpx 30rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
 }
 
 /* 适用门店 */
@@ -196,10 +234,6 @@ page {
 }
 
 .address .address_box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 96rpx;
   font-size: 24rpx;
   line-height: 48rpx;
 }
@@ -226,9 +260,7 @@ page {
 
 .card_record .address {
   position: relative;
-  padding: 20rpx 30rpx;
   overflow: hidden;
-  /* border-bottom: 1rpx solid #eee; */
 }
 
 .card_record .address_box::after {
@@ -241,22 +273,64 @@ page {
   background-color: #eee;
 }
 
-.card_record .address:last-child .address_box::after {
+ .card_record .address:last-child .address_box::after {
   display: none;
-}
+} 
 
 .card_record .address .cont_title {
   font-size: 28rpx;
+  padding: 20rpx 0rpx 0rpx 40rpx;
 }
-
+.record_box_title{
+  font-size: 32rpx;
+  padding: 30rpx 0rpx 0rpx 40rpx;
+  color: #333;
+  float: left;
+}
+.consume_details_title{
+  font-size: 32rpx;
+  padding: 0rpx 0rpx 20rpx 40rpx;
+  color: #999;
+  float: left;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  width: 40%
+}
+.record_box_time{
+  font-size: 32rpx;
+  color: #666;
+  padding:20rpx 40rpx 20rpx 0rpx;
+  float: right
+}
+.deduct_money{
+  font-size: 32rpx;
+  padding:30rpx 5rpx 20rpx 0rpx;
+  color: #333;
+  float: right
+}
+.go_consume_details{
+  font-size: 55rpx;
+  padding:10rpx 35rpx 20rpx 0rpx;
+  float: right;
+  color:#ccc;
+}
+.consume_details_time{
+  font-size: 32rpx;
+  color: #999;
+  padding:0rpx 40rpx 20rpx 0rpx;
+  float: right
+}
 .card_record .address .cont_text {
   font-size: 24rpx;
   color: #666;
+  padding: 5rpx 0rpx 0rpx 40rpx
 }
-
 .card_record .address .time {
   font-size: 24rpx;
-  color: #999;
+  color: #666;
+  padding: 5rpx 0rpx 20rpx 40rpx;
+  /* border-bottom: 1rpx solid #666; */
 }
 
 .card_recharge {
@@ -276,6 +350,49 @@ page {
   height: 38rpx;
   font-size: 38rpx;
   line-height: 38rpx;
+}
+.consume_title{
+  overflow: hidden;
+  padding: 30rpx 30rpx;
+}
+.address_box{
+  width: 100%;
+  background: #fafafa;
+  margin: 0 auto;
+  position: relative
+}
+.address_box::before{
+  content: ' ';
+  position: absolute;
+  left: 40rpx;
+  bottom: 0;
+  width: 85%;
+  height: 3rpx;
+  background-color:#eeeeee;
+}
+.record_box::before{
+  content: ' ';
+  position: absolute;
+  left: 40rpx;
+  bottom: 0;
+  width: 90%;
+  height: 3rpx;
+  background-color:#eee;
+}
+.box{
+
+  margin: 0 auto;
+  border-radius: 14rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx
+}
+.top_up_box{
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 20rpx
+}
+.consume_details_item{
+  overflow: hidden
 }
 /* 
 .van-notify{

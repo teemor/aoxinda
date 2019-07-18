@@ -1,3 +1,29 @@
-<!--pages/stored_value_card/index.wxml-->
-<text>{{min_pay}}</text>
-<button bindtap='toStorageValue'>我要储值</button>
+<view class='HeadBox'>
+  <view class='HeadContent'>
+    <view class='content'>
+      <view class='logo'>logo</view>
+      <view class='GoldWheatCard'>金麦卡</view>
+      <view>{{min_pay}}元得</view>
+      <view>麦车服金麦卡</view>
+      <view>为你的爱车精打细算</view>
+      <view>我要开通</view>
+    </view>
+  </view>
+</view>
+<view class='CardsRights'>
+  <view class='title'>
+    <view>拥有金麦卡</view>
+    <view>你就拥有了这些权益</view>
+  </view>
+  <view class='RightsContent'>
+    <view class='favorable'>优惠1把阿拉蕾优惠1把阿拉蕾优惠1</view>
+    <view class='favorable'>优惠2折扣折扣优惠1把阿拉蕾优惠1把阿</view>
+    <view class='favorable'>内容待沟通</view>
+    <view class='WarmPrompt'>
+
+    </view>
+  </view>
+</view>
+<view class='bottom' bindtap='toStorageValue'>
+  我要开通
+</view>

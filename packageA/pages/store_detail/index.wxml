@@ -67,7 +67,7 @@
   </view>
 </view>
 <view style="margin-top:20rpx;background:#fff">
-  <view>
+  <view class='end_tabs'>
     <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
       <van-tab title="服务">
         <view style="margin-bottom:90rpx;">
@@ -76,7 +76,34 @@
           </view>
         </view>
       </van-tab>
-      <van-tab title="评价"></van-tab>
+      <van-tab title="评价">
+        <!-- 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、 -->
+        <view  wx:for="{{evaluate}}" wx:key="{{item.actId}}" >
+        <view class='evaluate_list'>
+          <view class='head_portrait'>
+            <image src='{{item.head_path}}' />
+          </view>
+          <view class='user_info'>
+            <view class='user_name'>{{item.user_name}}</view>
+            <view class='grade_box'><van-rate value="{{item.grade}}" readonly size="12" allow-half class="grade" color="#f6b245" void-color="#ccc" />{{item.grade}}分</view>
+          </view>
+          <view class='after_consumption'>
+            <view>{{item.data}}</view>
+            <view class='after_consumption_title'>消费后评价</view>
+          </view>
+          <view class='content'>{{item.content}}</view>
+          <view class='pictures'>
+            <image  wx:for="{{item.comment_path}}" wx:for-item="i" wx:key="{{item.actId}}" src='{{i.path}}' />
+          </view>
+          <view class='scoll'>
+          <view class='reply' wx:for="{{item.comment_content}}" wx:for-item="i" wx:key="{{item.actId}}" >
+            {{i.name}}回复：{{i.content}}
+          </view>
+          </view>
+        </view>  
+        </view>
+        <!-- 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、 -->
+      </van-tab>
     </van-tabs>
   </view>
 

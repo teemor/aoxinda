@@ -1,2 +1,45 @@
-<!--pages/my_evaluate/index.wxml-->
-<text>pages/my_evaluate/index.wxml</text>
+<view>
+  <van-tabs bind:click="tabClick" color="#4e93f3">
+      <van-tab wx:for="{{tabList}}" title="{{item.name}}"  wx:key="{{item.id}}">
+      <view class='wrapper' wx:if="{{evaluateList.length>0}}">
+        <view class='outside' wx:for="{{evaluateList}}" wx:key="{{item.consumeId}}">
+          <view class='inner'>
+            <view class='top fz30'>
+              <view class='fl'>
+                <text class='name dark_grey'>{{item.shopName}}</text>
+                <text class='name s_grey'>{{item.conTime}}</text>
+              </view>
+              <view class='fr'>
+                <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}">
+                  查看评价
+                </text>
+                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}" data-cardtype="{{item.cardType}}" data-cardnum="{{item.cardNum}}" data-ordercode="{{item.orderCode}}">
+                  评价晒单
+                </text>
+              </view>
+            </view>
+            <view class='bottom fz28'>
+              <view class='title'>
+                <text class='fl dark_grey'>服务明细</text>
+                <text class='fr s_grey' wx:if="{{item.cardType == '2'}}">卡号：{{item.cardNum}}</text>
+                <text class='fr s_grey' wx:else>订单：{{item.orderCode}}</text>
+              </view>
+              <view class='service s_grey'>
+                <view class='name' wx:for="{{item.serName}}" wx:for-item="serName" wx:key="{{serName}}">
+                  {{serName.serName}}
+                  <text class='num'>{{serName.conNum}}</text>次
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class="my_address_null">
+          <image src="../../common/image/refund_null.png" />
+        </view>
+        <view class="tc fz26">还没有相关评论呢</view>
+      </view>
+      </van-tab>
+  </van-tabs>
+</view>

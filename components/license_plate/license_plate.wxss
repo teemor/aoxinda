@@ -1,0 +1,66 @@
+/* ._popup {} */
+
+._popup_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  color: #5a97ef;
+  border-bottom: 1px solid #ebedf0;
+}
+
+._popup_top ._popup_title {
+  color: #333;
+}
+
+._popup_cont {
+  padding: 0 10rpx 40rpx;
+  background-color: #f0f3f6;
+}
+
+._popup_cont>view::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+._popup_cont .item_box {
+  float: left;
+  margin: 20rpx 1.25% 0;
+  width: 10%;
+  height: 80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.2);
+}
+
+._popup_cont .item_box.disabled {
+  color: #bcbec2;
+  background-color: #efefef;
+}
+
+._popup_provinces .item_box:first-child {
+  width: 22.5%;
+}
+
+._popup_other .item_box_number {
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 8%;
+}
+
+._popup_other .item_box_delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+._popup_other .item_box_back {
+  width: 97.5%;
+}

@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 51,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -413,6 +413,35 @@
 					"id": -1,
 					"name": "卡的列表",
 					"pathName": "pages/my_service_card/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "评价中心",
+					"pathName": "pages/my_evaluate/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "评价晒单",
+					"pathName": "pages/my_evaluate_record/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "显示评论",
+					"pathName": "pages/my_evaluate_show/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "卡详情",
+					"pathName": "packageA/pages/store_detail/index",
+					"query": "",
 					"scene": null
 				}
 			]
