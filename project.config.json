@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 54,
+			"current": 55,
 			"list": [
 				{
 					"id": -1,
@@ -434,6 +434,13 @@
 					"id": -1,
 					"name": "显示评论",
 					"pathName": "pages/my_evaluate_show/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "卡详情",
+					"pathName": "packageA/pages/store_detail/index",
 					"scene": null
 				}
 			]
