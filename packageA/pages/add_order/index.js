@@ -11,39 +11,118 @@ Page({
    * 页面的初始数据
    */
   data: {
-    add:true,
-    isInvoice: "0"
+    add: true,
+    isInvoice: "0",
+    payType: 0,
+    payData: [{
+      name: '微信支付',
+      type: 0
+    }, {
+      name: '金麦卡',
+      type: 1
+    }]
   },
+  /**
+   * 支付方式
+   */
+  wxPayShow: function() {
+    this.setData({
+      wxPay: !this.data.wxPay
+    })
+  },
+  setPwd: function() {
 
+  },
+  payChoose: function(e) {
+    this.setData({
+      payType: e.currentTarget.dataset.item.type
+    })
+    if (this.data.payType == 1 && this.data.cardGold == true) {
+      if (this.data.pwdGold == true) {
+        this.setData({
+          trueGold: true,
+          wxPay: false
+        })
+      } else {
+        this.setData({
+          falseGold: true,
+          wxPay: false
+        })
+      }
+    } else {
+      alert('跳转金麦卡活动页')
+      wx.navigateTo({
+        url: '',
+      })
+    }
+    console.log(e, 'e')
+  },
   /**
    * 生命周期函数--监听页面加载
    */
+  formSubmit: function (e) {
+    request.checkSms({phone:this.data.phoneNum,code:e.detail.value[7]}).then(res=>{
+      if (res.state=='验证成功') {
+        let arr = ''
+        for (let i = 1; i < 7; i++) {
+          arr += e.detail.value[i]
+        }
+        request.updatePass({phone:this.data.phoneNum,code:e.detail.value[7],param1:arr,id:app.globalData.openId}).then(res=>{
+          console.log(res)
+        })
+        console.log('form发生了submit事件，携带数据为：', arr)
+      } else {
+
+      }
+    })
+  
+  
+   
+  },
+  btnCode:function(){
+    request.sendSms({phone:this.data.phoneNum}).then(res=>{
+      console.log(res,'res')
+    })
+  },
   onLoad: function(options) {
+    
+    let phone = app.globalData.phoneNum
+    console.log(phone,'电话')
+    var mphone = phone.substring(0, 3) + '****' + phone.substring(7);
+    this.setData({
+      phoneNum:phone,
+      phone: mphone
+    })
+    console.log(this.data.phone,'heh')
     this.findCarList()
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       this.setData({
-        serviceModel:model,
-        shopId:model[0].shopId,
-        card:1
+        serviceModel: model,
+        shopId: model[0].shopId,
+        card: 1
       })
       console.log(model, 'model13')
       let orderDetails = model.map(item => {
         return {
           activityId: item.activityId,
-          buyPrice: item.actPrice,
+          servicePrice: item.actPrice,
+          cardPrice: item.actCardPrice,
           num: item.cartNum
         }
       });
       let totalPrice = 0
+      let totalCard = 0
       orderDetails.forEach(item => {
-        totalPrice += item.num * item.buyPrice
+        totalPrice += item.num * item.servicePrice,
+          totalCard += item.num * item.cardPrice
       });
 
       this.setData({
         totalPrice: totalPrice,
+        totalCard: totalCard,
         orderDetails: orderDetails,
-        serivceNum:orderDetails.length
+        serivceNum: orderDetails.length
       })
       request.findShopDet({
         shopId: model[0].shopId
@@ -54,37 +133,59 @@ Page({
       })
       console.log(this.data.orderDetails, 'orderDetails')
 
-    }else if(options.card){
+    } else if (options.card) {
       let model = JSON.parse(decodeURIComponent(options.card))
+      console.log(model, 'ka支付')
       this.setData({
-        shopId:model[0].shopId,
+        shopId: model[0].shopId,
       })
       let orderDetails = model.map(item => {
         return {
           activityId: item.actId,
-          buyPrice: item.actPrice,
+          servicePrice: item.actPrice,
           num: 1
         }
       });
       let totalPrice = 0
       orderDetails.forEach(item => {
-        totalPrice += item.num * item.buyPrice
+        totalPrice += item.num * item.servicePrice
       });
       this.setData({
-        card:0,
-        orderDetails:orderDetails,
-        totalPrice:totalPrice
+        card: 0,
+        orderDetails: orderDetails,
+        totalPrice: totalPrice,
       })
-      console.log(this.data.orderDetails,'orderDetails')
+      console.log(this.data.orderDetails, 'orderDetails')
     }
+    request.findCard({
+      user_id: app.globalData.openId
+    }).then(res => {
+      this.setData({
+        cardGold: res.state == 1 ? true : false
+      })
+      if (res.state == 1) {
+        request.findPass({
+          user_id: app.globalData.openId
+        }).then(res => {
+          this.setData({
+            pwdGold: res.state == 1 ? true : false
+          })
+        })
+      }
+      console.log(res, 'res')
+
+    })
   },
-  numChange:function({detail}){
+  numChange: function({
+    detail
+  }) {
     let num = detail.num
-    console.log(num,'数量')
-    let totalPrice=0
-    console.log(this.data.orderDetails,'orderDetails')
+    console.log(num, '数量')
+    let totalPrice = 0
+    console.log(this.data.orderDetails, 'orderDetails')
     this.data.orderDetails.forEach(item => {
-      totalPrice += item.num * item.buyPrice
+      totalPrice += item.num * item.buywxPrice,
+        totalPriceCard += item.num * item.buycardPrice
     });
   },
   /**
@@ -105,11 +206,12 @@ Page({
   },
   onSubmit: function() {
     request.pay({
-      carName:this.data.model.model,
-      shopId:this.data.shopId,
-      invoiceId:this.data.isInvoice===0?'':this.data.invoiceId,
+      payType: this.data.payType, //0微信1金麦卡
+      carName: this.data.model.model,
+      shopId: this.data.shopId,
+      invoiceId: this.data.isInvoice === 0 ? '' : this.data.invoiceId,
       buyType: this.data.card,
-      goodsTotalPrice: this.data.totalPrice,
+      goodsTotalPrice: this.data.payType == 0 ? this.data.totalPrice : this.data.totalCard,
       isInvoice: this.data.isInvoice,
       orderDetails: this.data.orderDetails,
       carNum: this.data.model.plateNum,
@@ -134,7 +236,7 @@ Page({
           success: (result) => {
             let data = {}
             data.id = description.outTradeNo,
-            data.data = 'success'
+              data.data = 'success'
             data.price = that.data.totalPrice
             let model = encodeURIComponent(JSON.stringify(data))
             wx.redirectTo({
@@ -144,7 +246,7 @@ Page({
           fail: () => {
             let data = {}
             data.id = description.outTradeNo,
-            data.data = 'fail'
+              data.data = 'fail'
             let model = encodeURIComponent(JSON.stringify(data))
             wx.redirectTo({
               url: `../success_order/index?data=${model}`
@@ -163,7 +265,7 @@ Page({
     if (this.data.item) {
       this.setData({
         invoiceId: this.data.item,
-       isInvoice:1
+        isInvoice: 1
       })
     }
   },

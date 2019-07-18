@@ -1,6 +1,6 @@
 <view>
   <view wx:for="{{serviceModel}}" wx:key="{{item}}">
-    <service_list item="{{item}}" bind:numChange="numChange" add="{{add}}"/>
+    <service_list item="{{item}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" />
   </view>
 </view>
 <view>
@@ -8,12 +8,18 @@
   <view class="refund_type fz28">
     <view class="fl">
       支付方式</view>
-    <view class="fr cell_img">
-      <image src="../../../common/image/wx.png" />微信支付</view>
+    <view class="fr cell_img" bindtap="{{card===0?'':'wxPayShow'}}">
+      <view wx:if="{{payType==0}}">
+        <image src="../../../common/image/wx.png" />微信支付
+      </view>
+      <view wx:else>
+        金麦卡支付
+      </view>
+    </view>
     <view class="cl"></view>
   </view>
 </view>
-<view class="refund_type fz28"  style="display:none">
+<view class="refund_type fz28" style="display:none">
   <view class="fl">
     <van-checkbox checked-color="#4e93f3" value="{{inCheck}}" bind:change="onChange">
       {{invoice?invoice:'我要开发票'}}</van-checkbox>
@@ -22,15 +28,74 @@
   <view class="cl"></view>
 </view>
 <view>
-  <van-cell title="商品总价" value="{{totalPrice}}"></van-cell>
-  <view class="refund_type fz28" >
-  <view class="fr">
- <span class="grey fz24"> 共{{serivceNum}}项服务</span>
-  <span style="margin-left:30rpx">小计：<span class="red">¥{{totalPrice}}</span></span>
+  <van-cell title="商品总价" value="{{payType==0?totalPrice:totalCard}}"></van-cell>
+  <view class="refund_type fz28">
+    <view class="fr">
+      <span class="grey fz24"> 共{{serivceNum}}项服务</span>
+      <span style="margin-left:30rpx">小计：
+        <span class="red">¥{{payType==0?totalPrice:totalCard}}</span>
+      </span>
+    </view>
+    <view class="cl"></view>
   </view>
-  <view class="cl"></view>
-</view>
 </view>
 <view>
-  <van-submit-bar price="{{ totalPrice*100 }}" button-text="提交订单" bind:submit="onSubmit" />
+  <van-submit-bar price="{{payType==0?totalPrice*100:totalCard*100 }}" button-text="提交订单" bind:submit="onSubmit" />
 </view>
+<manager show="{{wxPay}}" type="bottom" bind:clickMask="wxPayShow">
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+    <view class="tc high70 fz30">选择支付方式</view>
+    <view class="high70 fz28 br_btm_light" wx:for="{{payData}}" wx:key="{{item}}" bindtap="payChoose" data-item="{{item}}">
+      {{item.name}}
+    </view>
+    <view style="height:40rpx"></view>
+    <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>
+  </view>
+</manager>
+<manager show="{{trueGold}}" type="center" bind:clickMask="wxPayShow">
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
+    <view>
+      <view class="fl high70 fz30">请输入金麦卡支付密码</view>
+      <view class="fr"></view>
+    </view>
+    <view class="red fz32">{{totalCard}}</view>
+    <view style="height:40rpx">
+      <input class='input-radius' />
+    </view>
+    <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">支付</view>
+  </view>
+</manager>
+<manager show="{{falseGold}}" type="center" bind:clickMask="wxPayShow">
+  <view class="bgwhite" style="width:600rpx;position:relative;z-index:333;padding-bottom:100rpx">
+    <view class="br high70" style="padding:30rpx;">
+      <view class="fl  fz30">设置支付密码</view>
+      <view class="fr">x</view>
+    </view>
+    <form bindsubmit="formSubmit">
+      <view>
+        <view class="cl grey fz24" style="height:80rpx;line-height:80rpx">
+          为了保障安全，使用金麦卡请先设置支付密码
+        </view>
+        <view class="cl br" style="height:60rpx">请输入 {{phone}}的验证码
+        </view>
+        <view class="cl" style="height:80rpx">
+        <view class="fl"> <input name="7" class="input-code tc fl" type="number"  maxlength="4" /></view>
+        <view class="fr" bindtap="btnCode">获取验证码</view>
+        </view>
+        <view class="cl">请输入6位数字密码</view>
+        <view class="cl" style="height:90rpx;">
+          <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="2" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="3" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="4" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="5" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="6" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        </view>
+      </view>
+      <view bindtap="setPwd" >
+        <button form-type="submit" class="cl fz30 bg_orange bottom_btn">确认</button>
+      </view>
+    </form>
+  </view>
+</manager>
+<view> </view>

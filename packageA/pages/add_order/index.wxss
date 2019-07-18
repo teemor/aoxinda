@@ -1,4 +1,37 @@
-page{
-    min-height: 100%;
-    background-color: #f3f3f3;
+page {
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+
+.input-radius {
+  width: 50rpx;
+  height: 50rpx;
+  border: 2rpx solid #f1f1f1;
+  text-align: center;
+  margin-right: 10rpx;
+}
+
+button {
+  border: 0;
+  background: #fff;
+}
+
+.button-hover {
+  background: #fff;
+}
+
+button::after {
+  border: none;
+}
+
+.br {
+  border-bottom: 2rpx solid #f1f1f1;
+}
+
+.input-code {
+  width: 200rpx;
+  height: 50rpx;
+  border: 2rpx solid #f1f1f1;
+  text-align: center;
+  margin-right: 10rpx;
 }

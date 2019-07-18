@@ -13,21 +13,6 @@ page {
   padding: 10rpx 20rpx;
 }
 
-.loc_img image {
-  margin-top: 20rpx;
-  margin-right: 20rpx;
-  margin-left: 20rpx;
-  width: 26rpx;
-  height: 35rpx;
-}
-
-.phone_img image {
-  margin-top: 20rpx;
-  margin-right: 20rpx;
-  margin-left: 20rpx;
-  width: 35rpx;
-  height: 35rpx;
-}
 
 .card_text {
   margin-left: 50rpx;
@@ -47,14 +32,16 @@ page {
 }
 
 .down_img {
+  padding:0 300rpx;
   width: 30rpx;
   margin: auto;
 }
 
 .down_img image {
+  margin: auto;
   width: 30rpx;
   height: 18rpx;
-  margin: auto;
+
 }
 .cart_img image {
   margin-right:30rpx;

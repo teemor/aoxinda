@@ -11,40 +11,100 @@
     <view wx:elif="{{model.statusName===''}}">
     </view>
     <view wx:elif="{{model.statusName==='待付款'}}" class="fz24 cl" style="width:440rpx;margin-top:50rpx;">订单为你保留{{creates}},超时后将自动关闭</view>
+    <view wx:elif="{{model.statusName==='可消费'}}" class="fz24 cl" style="width:440rpx;margin-top:50rpx;">请您及时到店享受服务</view>
   </view>
 </view>
-
-<view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
-  <view class="fl my_order_list_image" wx:if="{{item.cardType==2}}">
-    <image src="{{item.pictue}}" />
-  </view>
-  <view class="fl my_order_list_image" wx:else>
-    <view wx:if="{{item.cardType==3}}">
-    次卡
-    </view>
-    <view wx:if="{{item.cardType==4}}">
-    月月卡
-    </view>
-  </view>
-  <view class="fl my_order_list_text">
-    <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.actName}}</view>
- <!--   <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+<view wx:if="model.statusName==='可消费'&&cartType='2'">
+  <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
+    <van-tab title="服务详情">
+     <view wx:if="{{shop}}" class="cl">
+        <van-cell title="适用门店" value="全部"></van-cell>
+        <view class="cl bgwhite" style="padding-top:30rpx;border-top:2rpx solid #f0f0f0;display:block">
+          <view class="fl loc_img">
+            <image src="../../common/img/location_dis.png" />
+          </view>
+          <view class="fl">
+          <view class="fz24">{{model.shop.name}}</view>
+            <view class="fz24">{{model.shop.address}}</view>
+            <view class="fz24 grey" style="margin-top:18rpx;">距您{{model.shop.distance}}km,驾车需约25分钟</view>
+          </view>
+          <view class="fr phone_img" data-item="{{model.shop.tel}}" bindtap="makePhone">
+            <image src="../../common/img/phone.png" />
+          </view>
+          <view class="cl"></view>
+        </view>
+      </view>
+      <view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
+        <view class="fl my_order_list_image" wx:if="{{item.cardType==2}}">
+          <image src="{{item.pictue}}" />
+        </view>
+        <view class="fl my_order_list_image" wx:else>
+          <view wx:if="{{item.cardType==3}}">
+            次卡
+          </view>
+          <view wx:if="{{item.cardType==4}}">
+            月月卡
+          </view>
+        </view>
+        <view class="fl my_order_list_text">
+          <view class="fz30 fl" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">{{item.actName}}</view>
+          <view class="fr fz30 ">
+            <view class="fl red">¥ {{item.buyPrice}}</view>
+            <view class="fr grey">
+              x {{item.num}}
+            </view>
+          </view>
+          <!--   <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
       数量{{item.num}}
     </view>-->
-    <view class="fz28" style="margin-top:100rpx">
-      <view class="fl red">¥ {{item.buyPrice}}</view>
-      <view class="fr grey">
-       x {{item.num}}
+       <view class="cl"> </view>
+          <view class="fz28" style="margin-top:100rpx">
+            <view wx:if="{{model.statusName=='可消费'}}" class="my_order_list_btn fr">
+              <view class="myorder_orange" catchtap="{{model.status==='退款失败'?'disabled':'goRefund'}}" data-refund="{{item}}">申请退款</view>
+            </view>
+          </view>
+        </view>
+       <view class="cl"></view>
       </view>
      
-      <view wx:if="{{model.statusName=='待消费'}}" class="my_order_list_btn fr">
-        <view class="myorder_orange" catchtap="{{model.status==='退款失败'?'disabled':'goRefund'}}" data-refund="{{item}}">申请退款</view>
-      </view>
-    
+    </van-tab>
+    <van-tab title="消费记录"></van-tab>
+  </van-tabs>
+</view>
+<view wx:else>
+  <view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
+    <view class="fl my_order_list_image" wx:if="{{item.cardType==2}}">
+      <image src="{{item.pictue}}" />
     </view>
-  </view>
-  <view>
- <!-- <view wx:if="{{model.shop}}"></view>
+    <view class="fl my_order_list_image" wx:else>
+      <view wx:if="{{item.cardType==3}}">
+        次卡
+      </view>
+      <view wx:if="{{item.cardType==4}}">
+        月月卡
+      </view>
+    </view>
+    <view class="fl my_order_list_text">
+      <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">
+        {{item.actName}}
+      </view>
+      <!--   <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
+      数量{{item.num}}
+    </view>-->
+      <view class="fz28 fr" style="margin-top:100rpx">
+        <view class="fl red">¥ {{item.buyPrice}}</view>
+        <view class="fr grey">
+          x {{item.num}}
+        </view>
+
+        <view wx:if="{{model.statusName=='待消费'}}" class="my_order_list_btn fr">
+          <view class="myorder_orange" catchtap="{{model.status==='退款失败'?'disabled':'goRefund'}}" data-refund="{{item}}">申请退款</view>
+        </view>
+
+      </view>
+    </view>
+    <view>
+      <!-- <view wx:if="{{model.shop}}"></view>
     <view>
       <view>{{model.shop.name}}</view>
       <view>{{model.shop.address}}</view>
@@ -52,6 +112,8 @@
     </view>
     <view></view>
       -->
+    </view>
+
   </view>
 
 </view>
@@ -62,11 +124,14 @@
 </view>
 <view class="mtop20">
   <van-cell title="消费方式" value="凭二维码到店消费"></van-cell>
-
   <view class="refund_type fz28">
     <view class="fl">支付方式</view>
     <view class="fr cell_img">
-      <image src="../../../common/image/wx.png" />微信支付</view>
+      <view wx:if="model.payType==0">
+        <image src="../../../common/image/wx.png" />微信支付
+      </view>
+      <view wx:else>金麦卡支付</view>
+    </view>
   </view>
   <van-cell wx:if="{{model.pay_at}}" title="支付时间" value="{{pay_at}}"></van-cell>
   <van-cell wx:if="{{model.send_at}}" title="发货时间" value="{{send_at}}"></van-cell>

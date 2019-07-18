@@ -117,6 +117,7 @@ module.exports = {
   getPhoneNumber: function (e) {
     let that = this
     if (e.detail.errMsg == 'getPhoneNumber:ok') {
+      console.log(e.detail,'手机号')
       wx.getStorage({
         key: 'sessionKey',
         success: function (res) {

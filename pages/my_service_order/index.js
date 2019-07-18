@@ -96,6 +96,7 @@ Page({
       orderStatus: status,
       userId: app.globalData.openId
     }).then(res => {
+      console.log(res.data.current,'current')
       this.setData({
         count: res.data.current,
       })
@@ -163,7 +164,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    this.data.page += parseInt(this.data.count)
-    this.selectOrder(this.data.page, 5, this.data.status)
+    this.data.current = parseInt(this.data.count)+this.data.page
+    this.selectOrder(this.data.current, 5, this.data.status)
   },
 })

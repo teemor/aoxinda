@@ -145,11 +145,14 @@ export const myServiceOrderMenu = [{
   "name": "待付款"
 }, {
   "id": "7",
-  "name": "待消费"
+  "name": "可消费"
 },{
   "id": "8",
   "name": "已完成"
-}]
+  }, {
+    "id": "10",
+    "name": "已取消"
+  }]
 // 我的服务卡
 export const myServiceCard = [{
   "id":"0",
