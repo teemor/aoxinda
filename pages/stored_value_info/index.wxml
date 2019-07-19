@@ -32,7 +32,7 @@
     <view class='wx_code_text'>消费码 {{cardInfo.card_no}}</view>
   </view>
   <view class='card_share'>
-    <text class='share_btn' bindtap="toPay">充值</text>
+    <navigator url='../stored_value_recharge/index?id={{cardInfo.account_id}}&min_pay={{min_pay}}' style='display:inline'><text class='share_btn' bindtap="toPay">充值</text></navigator>
     <text class='share_btn_share' bindtap="toShare">邀请好友</text>
   </view>
 </view>
@@ -86,7 +86,7 @@
       <view class='address' wx:for="{{rechargeInfo}}" wx:key="{{index}}">
         <view class='record_box'>
           <view class='record_box_title'>{{item.pay_at}}</view>
-          <view class='record_box_time'>￥{{item.pay_num}}</view>
+          <view class='record_box_time'>￥{{item.money}}</view>
         </view>
       </view>
     </view>
@@ -113,10 +113,10 @@
   </van-tabs>
 </view>
 
-<van-dialog z-index="100" use-slot async-close show-cancel-button show="{{pay.show}}" bind:close="onPayClose">
+<!-- <van-dialog z-index="100" use-slot async-close show-cancel-button show="{{pay.show}}" bind:close="onPayClose">
   <view class='card_recharge'>
     <text>充值金额：￥</text>
     <input type='number' value='{{pay.money}}' bindinput='payValue' maxlength="6"></input>
   </view>
-</van-dialog>
+</van-dialog> -->
 <van-notify id="van-notify" />
