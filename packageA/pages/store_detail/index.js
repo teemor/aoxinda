@@ -13,31 +13,6 @@ Page({
     totalPrice: 0,
     cartIcon: false,
     cardShow: true,
-    evaluate: [
-      {
-        head_path: "https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png",
-        user_name: "小明",
-        grade: 3,
-        data: "2019-3-39",
-        content: "我是一条评论，I'm a comment",
-        comment_path: [{
-          path: "https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png",
-        }, {
-          path: "https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png",
-        }, {
-          path: "https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png",
-        }, {
-          path: "../../common/img/month.png",
-        }],
-        comment_content: [{
-          name: "张三",
-          content: "好好好"
-        }, {
-          name: "李四",
-          content: "棒棒棒"
-        },]
-      }
-    ],
   },
   showCard: function() {
     this.setData({

@@ -24,7 +24,7 @@ Page({
     card_id: null,
     pay: {
       show: false,
-      money: 500
+      money: 0.01
     },
     cardInfo: {
 
