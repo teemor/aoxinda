@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   store
 } from '../../common/api/api'
@@ -205,3 +206,5 @@ Page({
 
   }
 })
+=======
+>>>>>>> clean
