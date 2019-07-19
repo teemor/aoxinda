@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 56,
 			"list": [
 				{
 					"id": -1,
@@ -442,6 +442,12 @@
 					"name": "卡详情",
 					"pathName": "packageA/pages/store_detail/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "金麦卡",
+					"pathName": "pages/stored_value_info/index",
 					"scene": null
 				}
 			]

@@ -77,7 +77,6 @@
         </view>
       </van-tab>
       <van-tab title="评价">
-        <!-- 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、 -->
         <view  wx:for="{{evaluate}}" wx:key="{{item.actId}}" >
         <view class='evaluate_list'>
           <view class='head_portrait'>
@@ -102,7 +101,6 @@
           </view>
         </view>  
         </view>
-        <!-- 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、 -->
       </van-tab>
     </van-tabs>
   </view>

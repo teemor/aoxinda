@@ -241,5 +241,33 @@ Page({
         'pay.money': 0.00,
       })
     }
+  },
+  //上拉加载更多
+  onReachBottom(){
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    page = page + 1;
+    wx.request({
+      url: 'https://xxx/?page=' + page,
+      method: "GET",
+      // 请求头部
+      header: {
+        'content-type': 'application/text'
+      },
+      success: function (res) {
+        // 回调函数
+        var moment_list = that.data.moment;
+        const oldData = that.data.moment;
+        that.setData({
+          moment: oldData.concat(res.data.data)
+        })
+        // 隐藏加载框
+        wx.hideLoading();
+      }
+    })
   }
 })
