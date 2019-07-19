@@ -177,7 +177,6 @@ width:80%;
   border-radius: 35rpx;
 }
 .card_item {
-  margin-bottom: 30rpx;
   background-color: #fff;
 }
 

@@ -62,7 +62,7 @@
 <view class='card_record card_item'>
   <van-tabs active="{{ active }}" bind:change="onTabChange"  color="#5a97ef">
     <van-tab title="消费记录"  style="width:150px">
-    <view class='box'>
+    <view class='box' >
       <view class='address' wx:for="{{payInfo}}" wx:key="{{index}}">
         <navigator url='../my_order_detail/index?id={{item.order_num}}'  class='record_box'>
         <view class='consume_details_item'>
@@ -81,14 +81,16 @@
       
     </van-tab>
     <van-tab title="充值记录" >
+    <!-- <scroll-view bindscrolltolower="loadMore" scroll-y="true" lower-threshold="100" enable-back-to-top="true"> -->
     <view class='top_up_box'>
       <view class='address' wx:for="{{rechargeInfo}}" wx:key="{{index}}">
         <view class='record_box'>
-          <view class='record_box_title'>{{item.create_at}}</view>
-          <view class='record_box_time'>￥{{item.trade_price}}</view>
+          <view class='record_box_title'>{{item.pay_at}}</view>
+          <view class='record_box_time'>￥{{item.pay_num}}</view>
         </view>
       </view>
     </view>
+    <!-- </scroll-view> -->
     </van-tab>
     <van-tab  title="退款记录">
     <view class='box'>

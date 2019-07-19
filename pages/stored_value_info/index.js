@@ -8,13 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //消费记录参数
+    expense: { "pageSize": 10, "pageIndex": 1},
+    expense_total:0,
+    //退款记录参数
+    refund: { "pageSize": 10, "pageIndex": 1},
+    refund_total: 0,
+    //充值记录参数
+    recharge: { "pageSize": 10, "pageIndex": 1 },
+    recharge_total: 0,
     canvasHidden: false,
+    tab:0,
     imagePath: '',
     active: 0,
     card_id: null,
     pay: {
       show: false,
-      money: 0.01
+      money: 500
     },
     cardInfo: {
 
@@ -41,7 +51,6 @@ Page({
           that.setData({
             card_id: options.card_id,
             cardInfo: res.data[0],
-            rechargeInfo: res.rechargeData
           })
           // wx.getLocation({
           //   type: 'gcj02',
@@ -79,20 +88,71 @@ Page({
       })
       request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then( res =>{
         that.setData({
-          payInfo : res.data
+          payInfo : res.data,
+          expense_total:res.total
         })
         console.log("消费记录",res)
       })
       
       request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
         that.setData({
-          refundInfo : res.data
+          refundInfo : res.data,
+          refund_total : res.total
         })
         console.log("退款记录", res)
       })
+
+      request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
+        that.setData({
+          rechargeInfo: res.data,
+          recharge_total: res.total
+        })
+        console.log("充值记录", res)
+      })  
     }
   },
-
+  //上拉加载更多
+  onReachBottom() {
+    if (this.data.tab == 0 && this.data.expense_total > this.data.expense.pageSize){
+      wx.showLoading({
+        title: '加载中',
+      })
+      this.data.expense.card_id = this.data.card_id
+      this.data.expense.pageSize += 10
+      request.obtainConsumptionList(this.data.expense).then(res => {
+        console.log(this.data.expense)
+        that.setData({
+          payInfo: res.data
+        })
+        wx.hideLoading()
+      })
+    } else if (this.data.tab == 2 && this.data.refund_total > this.data.refund.pageSize){
+      wx.showLoading({
+        title: '加载中',
+      })
+      this.data.refund.card_id = this.data.card_id
+      this.data.refund.pageSize += 10
+      request.obtainRefundList(this.data.refund).then(res => {
+        that.setData({
+          refundInfo: res.data
+        })
+        console.log("退款记录", res)
+      })
+    } else if (this.data.tab == 1 && this.data.recharge_total > this.data.recharge.pageSize) {
+      wx.showLoading({
+        title: '加载中',
+      })
+      this.data.recharge.card_id = this.data.card_id
+      this.data.recharge.pageSize += 10
+      request.rechargeList(this.data.recharge).then(res => {
+        that.setData({
+          rechargeInfo: res.data
+        })
+        console.log("充值记录", res)
+      })
+    }
+    
+  },
 
   //消费详情
   particulars: function (event) {
@@ -178,7 +238,9 @@ Page({
   },
   //消费记录与充值记录切换
   onTabChange(e) {
-    // console.log(e)
+    this.setData({
+      tab: e.detail.index
+    })
   },
   //充值按钮
   toPay(e) {
@@ -241,33 +303,5 @@ Page({
         'pay.money': 0.00,
       })
     }
-  },
-  //上拉加载更多
-  onReachBottom(){
-    var that = this;
-    // 显示加载图标
-    wx.showLoading({
-      title: '玩命加载中',
-    })
-    // 页数+1
-    page = page + 1;
-    wx.request({
-      url: 'https://xxx/?page=' + page,
-      method: "GET",
-      // 请求头部
-      header: {
-        'content-type': 'application/text'
-      },
-      success: function (res) {
-        // 回调函数
-        var moment_list = that.data.moment;
-        const oldData = that.data.moment;
-        that.setData({
-          moment: oldData.concat(res.data.data)
-        })
-        // 隐藏加载框
-        wx.hideLoading();
-      }
-    })
   }
 })
