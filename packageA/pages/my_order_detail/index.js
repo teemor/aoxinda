@@ -159,7 +159,7 @@ Page({
       })
     } else if (options.ids) {
       this.selectIdDetail(options.ids)
-      request.cardDetCon({pageSize:5,pageIndex:1,cardId:options.ids}).then(res=>{
+      request.cardDetConOrder({pageSize:5,pageIndex:1,orderId:options.ids}).then(res=>{
         console.log(res)
       })
       this.setData({

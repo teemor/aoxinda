@@ -8,6 +8,7 @@ let constant = require('../utils/constant')
 let qqmapsdk;
 module.exports = {
   findShopList: function(actCardType) {
+    console.log(actCardType,'actCardType')
     request.findShopList({
       actCardType:actCardType,
       log: app.globalData.longitude,

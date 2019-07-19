@@ -144,7 +144,7 @@
   <!--<van-cell wx:else title="补开发票" bind:click="addInvoice" is-link></van-cell>-->
 </view>
 <view class="mtop20">
-  <van-cell title="商品总价" value="¥{{model.goodsTotalPrice}}"></van-cell>
+  <van-cell title="服务总价" value="¥{{model.goodsTotalPrice}}"></van-cell>
 
 </view>
 <view class="bgwhite" style="height:200rpx;">

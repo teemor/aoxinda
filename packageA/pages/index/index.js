@@ -1,4 +1,3 @@
-
 import stores from '../../../mixin/store'
 import find_car from '../../../mixin/find_car'
 import {
@@ -16,14 +15,14 @@ Page({
     CleanStore: []
   },
   // banner
-  findHome: function () {
+  findHome: function() {
     request.findHome().then(res => {
       this.setData({
         dataList: res.data
       })
     })
   },
-  personDetail: function () {
+  personDetail: function() {
     wx.navigateTo({
       url: `../../pages/person_card_detail/index`
     })
@@ -31,7 +30,7 @@ Page({
   /**
    * 选择地理位置
    */
-  locationChoose: function () {
+  locationChoose: function() {
     let that = this
     wx.chooseLocation({
       success: (result) => {
@@ -43,29 +42,34 @@ Page({
         app.globalData.latitude = result.latitude
         app.globalData.longitude = result.longitude
       },
-      fail: () => { },
-      complete: () => { }
+      fail: () => {},
+      complete: () => {}
     });
 
   },
-  serviceDetail: function ({ detail }) {
+  serviceDetail: function({
+    detail
+  }) {
     let model = encodeURIComponent(JSON.stringify(detail))
     wx.navigateTo({
       url: `../../pages/service_detail/index?model=${model}`
     })
   },
-  storeDetail: function ({ detail }) {
+  storeDetail: function({
+    detail
+  }) {
     let model = encodeURIComponent(JSON.stringify(detail))
+
     wx.navigateTo({
       url: `../../pages/store_detail/index?model=${model}`
     })
   },
-  monthList: function () {
+  monthList: function() {
     wx.navigateTo({
       url: `../../pages/store_detail/index?model=${model}`
     })
   },
-  scopeSetting: function () {
+  scopeSetting: function() {
     var that = this;
     wx.getSetting({
       success(res) {
@@ -80,10 +84,10 @@ Page({
               wx.showModal({
                 title: '提示',
                 content: '定位失败，你未开启定位权限，点击开启定位权限',
-                success: function (res) {
+                success: function(res) {
                   if (res.confirm) {
                     wx.openSetting({
-                      success: function (res) {
+                      success: function(res) {
                         if (res.authSetting['scope.userLocation']) {
                           that.initMap();
                         } else {
@@ -102,34 +106,46 @@ Page({
       }
     })
   },
-  storeList: function (item) {
+  storeList: function(item) {
+    console.log(item, 'model')
     let id
-    let name = item.currentTarget.dataset.item.name
-    if(name='不限次'){
-      id = 3
-    }else if(name='月月'){
-      id = 4
-    }else if(name='金麦卡')
+    if (item.currentTarget.dataset.item.name) {
+      let name = item.currentTarget.dataset.item.name
+      if (name = '不限次') {
+        id = 3
+      } else if (name = '月月') {
+        id = 4
+      } else if (name = '金麦卡') {
+        wx.navigateTo({
+          url: `../../pages/store_list/index?id=${id}`,
+          success: (result) => {
+
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+      }
+    } 
     wx.navigateTo({
       url: `../../pages/store_list/index?id=${id}`,
       success: (result) => {
 
       },
-      fail: () => { },
-      complete: () => { }
+      fail: () => {},
+      complete: () => {}
     });
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.onShow();
     this.findHome()
     let that = this
     wx.getLocation({
       type: 'gcj02',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
@@ -140,7 +156,7 @@ Page({
         that.address(that.data.longitude, that.data.latitude)
         // that.moveTolocation();
       },
-      fail: function () {
+      fail: function() {
         wx.showToast({
           title: '获取地理位置失败',
           icon: 'none',
@@ -150,8 +166,8 @@ Page({
           success: (result) => {
 
           },
-          fail: () => { },
-          complete: () => { }
+          fail: () => {},
+          complete: () => {}
         });
 
       }
@@ -160,8 +176,8 @@ Page({
       success: (result) => {
 
       },
-      fail: () => { },
-      complete: () => { }
+      fail: () => {},
+      complete: () => {}
     });
 
   },
@@ -170,49 +186,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     this.findCarList()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

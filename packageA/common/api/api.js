@@ -141,12 +141,20 @@ export class store {
       data: model
     })
   }
-  // 订单详情消费记录
+  // 订单详情
   cardDetCon = (model) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/cardDetCon`,
       method: `post`,
       data: model
+    })
+  }
+  // 消费记录
+  cardDetConOrder = (model)=>{
+    return http.httpRequest({
+      url:`${IP_YXHTTP}/mcfwcborder/cardDetConOrder`,
+      method:`post`,
+      data:model
     })
   }
 }

@@ -50,6 +50,7 @@ Page({
   onLoad: function (options) {
     if(options.id){
       this.findShopList(options.id)
+      console.log(options,'options')
     }else{
       this.findShopList()
     }
