@@ -19,7 +19,7 @@ Page({
     commentForm: {
       "pageIndex": 1,
       "pageSize": 3,
-      "shop_id": "a37d5e7387534410a5f72f92051ccea1"
+      "shop_id": ""
     },
     tabIndex: 0   //当前tabs页签下标
   },
@@ -125,7 +125,8 @@ Page({
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       this.setData({
-        storemodel: model
+        storemodel: model,
+        ["commentForm.shop_id"]: model.id
       })
       request.findShopDet({
         shopId: model.id

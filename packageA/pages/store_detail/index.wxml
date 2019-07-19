@@ -77,9 +77,9 @@
         </view>
       </van-tab>
       <van-tab title="评价">
-      <view wx:for="{{commentList}}" wx:key="{{item}}">
-        <evaluate commentList="{{item}}" />
-      </view>
+        <view wx:for="{{commentList}}" wx:key="{{item}}">
+          <evaluate commentList="{{item}}" />
+        </view>
       </van-tab>
     </van-tabs>
   </view>

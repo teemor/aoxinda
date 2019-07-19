@@ -23,7 +23,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.1",
+	"libVersion": "2.7.5",
 	"appid": "wx97a3505497150b66",
 	"projectname": "aoxinda",
 	"debugOptions": {
@@ -448,6 +448,7 @@
 					"id": -1,
 					"name": "门店详情评论",
 					"pathName": "packageA/pages/store_detail/index",
+          "query": "",
 					"scene": null
 				}
 			]

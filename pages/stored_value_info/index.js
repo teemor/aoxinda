@@ -4,23 +4,38 @@ import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 const request = new CardHttp
 let that
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    //消费记录参数
+    expense: { "pageSize": 10, "pageIndex": 1},
+    expense_total:0,
+    //退款记录参数
+    refund: { "pageSize": 10, "pageIndex": 1},
+    refund_total: 0,
+    //充值记录参数
+    recharge: { "pageSize": 10, "pageIndex": 1 },
+    recharge_total: 0,
     canvasHidden: false,
+    tab:0,
     imagePath: '',
     active: 0,
+    card_id: null,
     pay: {
       show: false,
-      money: 0.00
+      money: 0.01
     },
-    cardInfo: {},
-    shareInfo: null,
+    cardInfo: {
+
+    },
+    // shareInfo: null,
+    shareInfo: "",
     storeInfo: [],
     serverInfo: [],
-    payInfo: []
+    payInfo: [],
+    refundInfo: [],
+    rechargeInfo: []
   },
 
   /**
@@ -30,32 +45,37 @@ Page({
     that = this
     if (options.card_id) {
       //获取卡包详情
-      request.selectPayCard({ id: options.card_id }).then(res => {
+      request.selectPayCard({ card_id: options.card_id }).then(res => {
         if (res.data && res.data.length > 0) {
-          wx.getLocation({
-            type: 'gcj02',
-            success(res) {
-              that.setData({
-                storeInfo: json.storeData.map(n => {
-                  let km = that.getDistance(n.LAT, n.LOG, res.latitude, res.longitude)
-                  n.DISTANCE = km;
-                  n.TIME = Math.round(km / 50 * 60 * 100) / 100;
-                  return n
-                })
-              })
-            },
-            fail(res) {
-              that.setData({
-                storeInfo: json.storeData
-              })
-            }
-          })
+          console.log(res)
           that.setData({
-            cardInfo: json.data[0],
-            shareInfo: json.data[0].card_no,
-            rechargeInfo: json.rechargeData,
-            payInfo: json.payData
+            card_id: options.card_id,
+            cardInfo: res.data[0],
           })
+          // wx.getLocation({
+          //   type: 'gcj02',
+          //   success(res) {
+          //     that.setData({
+          //       storeInfo: json.storeData.map(n => {
+          //         let km = that.getDistance(n.LAT, n.LOG, res.latitude, res.longitude)
+          //         n.DISTANCE = km;
+          //         n.TIME = Math.round(km / 50 * 60 * 100) / 100;
+          //         return n
+          //       })
+          //     })
+          //   },
+          //   fail(res) {
+          //     that.setData({
+          //       storeInfo: json.storeData
+          //     })
+          //   }
+          // })
+          // that.setData({
+          //   cardInfo: json.data[0],
+          //   shareInfo: json.data[0].card_no,
+          //   rechargeInfo: json.rechargeData,
+          //   payInfo: json.payData
+          // })
           var size = this.setCanvasSize(); //动态设置画布大小
           this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
         } else {
@@ -66,7 +86,77 @@ Page({
           })
         }
       })
+      request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then( res =>{
+        that.setData({
+          payInfo : res.data,
+          expense_total:res.total
+        })
+        console.log("消费记录",res)
+      })
+      
+      request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
+        that.setData({
+          refundInfo : res.data,
+          refund_total : res.total
+        })
+        console.log("退款记录", res)
+      })
+
+      request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
+        that.setData({
+          rechargeInfo: res.data,
+          recharge_total: res.total
+        })
+        console.log("充值记录", res)
+      })  
     }
+  },
+  //上拉加载更多
+  onReachBottom() {
+    if (this.data.tab == 0 && this.data.expense_total > this.data.expense.pageSize){
+      wx.showLoading({
+        title: '加载中',
+      })
+      this.data.expense.card_id = this.data.card_id
+      this.data.expense.pageSize += 10
+      request.obtainConsumptionList(this.data.expense).then(res => {
+        console.log(this.data.expense)
+        that.setData({
+          payInfo: res.data
+        })
+        wx.hideLoading()
+      })
+    } else if (this.data.tab == 2 && this.data.refund_total > this.data.refund.pageSize){
+      wx.showLoading({
+        title: '加载中',
+      })
+      this.data.refund.card_id = this.data.card_id
+      this.data.refund.pageSize += 10
+      request.obtainRefundList(this.data.refund).then(res => {
+        that.setData({
+          refundInfo: res.data
+        })
+        console.log("退款记录", res)
+      })
+    } else if (this.data.tab == 1 && this.data.recharge_total > this.data.recharge.pageSize) {
+      wx.showLoading({
+        title: '加载中',
+      })
+      this.data.recharge.card_id = this.data.card_id
+      this.data.recharge.pageSize += 10
+      request.rechargeList(this.data.recharge).then(res => {
+        that.setData({
+          rechargeInfo: res.data
+        })
+        console.log("充值记录", res)
+      })
+    }
+    
+  },
+
+  //消费详情
+  particulars: function (event) {
+    console.log(event)
   },
 
   //适配不同屏幕大小的canvas
@@ -148,7 +238,9 @@ Page({
   },
   //消费记录与充值记录切换
   onTabChange(e) {
-    console.log(e)
+    this.setData({
+      tab: e.detail.index
+    })
   },
   //充值按钮
   toPay(e) {
@@ -164,13 +256,14 @@ Page({
   },
   //充值
   onPayClose(e) {
+    var that = this
     console.log(e)
     if (e.detail == 'confirm') {
       this.setData({
         'pay.show': false
       })
       console.log(this.data.pay.money)
-      if (this.data.pay.money >= 500) {
+      if (this.data.pay.money >= 0.01) {
         request.payCard({ price: this.data.pay.money, type: 1, account_id: this.data.cardInfo.account_id }).then((res) => {
           this.setData({
             'pay.show': false,

@@ -1,9 +1,11 @@
 const app = getApp();
 import login from '../../mixin/login'
+import { CardHttp } from '../../common/api/card_api'
+const request = new CardHttp
 Page({
   mixins: [login],
   data: {
-
+    card_id: null
   },
   myEvaluate:function(){
     wx.navigateTo({
@@ -29,9 +31,36 @@ Page({
   },
   //跳转今麦卡
   goldCard: function () {
-    wx.navigateTo({
-      url: `../stored_value_card/index`
+    var that = this
+    var app = getApp()
+    var getOpenId = app.globalData.openId
+    request.hasCard().then((res) => {
+      that.setData({
+        card_id: res.card_id ? res.card_id : null,
+      })
+      wx.request({
+        url: 'http://192.168.31.158:9015/appapi/v1.0/hasCard',
+        data: {},
+        header: {
+          'content-type': 'application/json',
+          'token': getOpenId
+        },
+        method: "POST",
+        success: function (res) {
+          console.log(res.data.card_id)
+          if (res.data.card_id) {
+            wx.navigateTo({
+              url: `../stored_value_info/index?card_id=${that.data.card_id}`
+            })
+          } else {
+            wx.navigateTo({
+              url: `../stored_value_card/index`
+            })
+          }
+        }
+      })
     })
+    
   },
   myCar: function() {
     wx.navigateTo({
