@@ -68,7 +68,7 @@
 </view>
 <view style="margin-top:20rpx;background:#fff">
   <view>
-    <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
+    <van-tabs color="#4e93f3" sticky active="{{active}}" bind:click="tabClick" bind:change="onChange">
       <van-tab title="服务">
         <view style="margin-bottom:90rpx;">
           <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
@@ -76,7 +76,11 @@
           </view>
         </view>
       </van-tab>
-      <van-tab title="评价"></van-tab>
+      <van-tab title="评价">
+      <view wx:for="{{commentList}}" wx:key="{{item}}">
+        <evaluate commentList="{{item}}" />
+      </view>
+      </van-tab>
     </van-tabs>
   </view>
 

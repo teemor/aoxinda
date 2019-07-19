@@ -12,7 +12,16 @@ Page({
     cartShow: false,
     totalPrice: 0,
     cartIcon: false,
-    cardShow: true
+    cardShow: true,
+    commentList: [], //评论
+    load: true,
+    loading: false,//加载动画的显示
+    commentForm: {
+      "pageIndex": 1,
+      "pageSize": 3,
+      "shop_id": "a37d5e7387534410a5f72f92051ccea1"
+    },
+    tabIndex: 0   //当前tabs页签下标
   },
   showCard: function() {
     this.setData({
@@ -127,7 +136,27 @@ Page({
         })
         this.onShow()
       })
+      
     }
+  },
+
+  //洗车评价
+  washCarComment: function (model){
+    request.selectWashCarComment(model).then(res => {
+      if (res.status == '200') {
+        this.setData({
+          commentList: res.data.consumeCommentList
+        })
+      }
+    })
+  },
+
+  tabClick(event) {
+    this.setData({
+      tabIndex: event.detail.index,
+      ["commentForm.pageIndex"]: 1
+    });
+    this.washCarComment(this.data.commentForm);
   },
 
   /**
@@ -170,7 +199,34 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    var that = this;
+    if (that.data.load && that.data.tabIndex == 1) {//全局标志位，方式请求未响应时多次触发
+      that.setData({
+        ["commentForm.pageIndex"]: that.data.commentForm.pageIndex * 1 + 1,
+        load: false,
+        loading: true//加载动画的显示
+      })
+      request.selectWashCarComment(that.data.commentForm).then(res => {
+        if (res.status == '200' && res.data.consumeCommentList.length > 0) {
+          var content = that.data.commentList.concat(res.data.consumeCommentList)//将返回结果放入content
+          that.setData({
+            commentList: content,
+            load: true,
+            loading: false
+          })
+        } else {
+          that.setData({
+            loading: false,
+            load: true
+          })
+          wx.showToast({
+            title: '没有更多数据',
+            icon: 'none',
+            duration: 2000,
+          })
+        }
+      })
+    }
   },
 
   /**

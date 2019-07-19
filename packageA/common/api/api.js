@@ -4,6 +4,7 @@ import {
 const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0`
+export const IP_YBHTTP = `http://192.168.31.157:9015/wash/v1.0`
 export class store {
   // banner图查询
   findHome = () => {
@@ -98,6 +99,14 @@ export class store {
       url:`${IP_MYHTTP}/mcf-wcb-refund/findRefundById`,
       method:`post`,
       data:model
+    })
+  }
+  //评价列表
+  selectWashCarComment=(model)=>{
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/selectWashCarComment`,
+      method: `post`,
+      data: model
     })
   }
 }

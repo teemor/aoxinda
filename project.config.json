@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 55,
+			"current": 56,
 			"list": [
 				{
 					"id": -1,
@@ -440,6 +440,13 @@
 				{
 					"id": -1,
 					"name": "卡详情",
+					"pathName": "packageA/pages/store_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店详情评论",
 					"pathName": "packageA/pages/store_detail/index",
 					"scene": null
 				}

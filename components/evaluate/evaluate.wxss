@@ -1,0 +1,76 @@
+@import "../../app.wxss";
+page {
+  min-height: 100%;
+  background-color: #fff;
+  margin-bottom: 100rpx;
+}
+.dark_grey{
+  color:#919191;
+}
+.grey{
+  color: #B4B4B4;
+}
+.inner{
+  padding: 30rpx 40rpx;
+  border-top: 1px solid #F8F8F8;
+}
+.user_info{
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.user_info .avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 35rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+}
+.user_info .pj_time{
+  float: right;
+  margin-right:14rpx;
+}
+.score{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.score .star{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 6rpx;
+}
+.score .title{
+  margin-right: 13rpx;
+  margin-left: 20rpx;
+}
+.content{
+  margin-bottom: 20rpx;
+  line-height:60rpx;
+  color: #515151;
+}
+.photos{
+  width: 100%;
+  background: #fff;
+}
+.photos .upload{
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 17rpx;
+  margin-bottom:20rpx;
+}
+.consume{
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.reply{
+  background: #f8f8f8;
+  /* padding-bottom:20rpx; */
+}
+.reply .news{
+  padding-top:20rpx;
+  color: #515151;
+  display: block;
+  padding-left:20rpx;
+}
+.reply .news:last-child{
+  padding-bottom:20rpx;
+}
