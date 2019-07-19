@@ -5,12 +5,13 @@ const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0`
 export const IP_YBHTTP = `http://192.168.31.157:9015/wash/v1.0`
+export const IP_LYHTTP = `http://192.168.31.220:9015/myPay/v1.0`
 export class store {
   // banner图查询
   findHome = () => {
     return http.httpRequest({
-      url:`${IP_YXHTTP}/findHome`,
-      method:`get`
+      url: `${IP_YXHTTP}/findHome`,
+      method: `get`
     })
   }
   // 获取门店详情
@@ -77,26 +78,66 @@ export class store {
       data: model
     })
   }
-    // 手动退款
-  backMoney =(model)=>{
+  // 手动退款
+  backMoney = (model) => {
     return http.httpRequest({
-      url:`${IP_MYHTTP}/mcfwcbpay/backMoneyService`,
-      method:`post`,
-      data:model
+      url: `${IP_MYHTTP}/mcfwcbpay/backMoneyService`,
+      method: `post`,
+      data: model
     })
   }
   // 卡退款
-  backMoneyCard = (model)=>{
+  backMoneyCard = (model) => {
     return http.httpRequest({
-      url:`${IP_MYHTTP}/mcfwcbpay/backMoneyCard`,
-      method:`post`,
-      data:model
+      url: `${IP_MYHTTP}/mcfwcbpay/backMoneyCard`,
+      method: `post`,
+      data: model
     })
   }
   // 退款详情
-  findRefundById=(model)=>{
+  findRefundById = (model) => {
     return http.httpRequest({
-      url:`${IP_MYHTTP}/mcf-wcb-refund/findRefundById`,
+      url: `${IP_MYHTTP}/mcf-wcb-refund/findRefundById`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 查看是否有密码
+  findPass = (model) => {
+    return http.httpRequest({
+      url: `${IP_LYHTTP}/findPass`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 查看是否有卡
+  findCard = (model) => {
+    return http.httpRequest({
+      url: `${IP_LYHTTP}/findCard`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 发送短信
+  sendSms = (model) => {
+    return http.httpRequest({
+      url: `${IP_LYHTTP}/sendSms`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 校验短信
+  checkSms = (model) => {
+    return http.httpRequest({
+      url: `${IP_LYHTTP}/checkSms`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 修改密码
+  updatePass = (model)=>{
+    return http.httpRequest({
+      url: `${IP_LYHTTP}/checkSmsAndUpdatePass`,
       method:`post`,
       data:model
     })

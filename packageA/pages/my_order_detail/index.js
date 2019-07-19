@@ -10,15 +10,32 @@ Page({
   data: {
     invoice: ''
   },
-  selectIdDetail:function(id){
-    request.findOrderDetailsByOrderId({ id: id,  log: app.globalData.longitude, lat: app.globalData.latitude}).then(res => {
+  selectIdDetail: function(id) {
+    request.findOrderDetailsByOrderId({
+      id: id,
+      log: app.globalData.longitude,
+      lat: app.globalData.latitude
+    }).then(res => {
+      if (Object.keys(res.data.shop).length==0) {
+        this.setData({shop:false})
+      }else{
+        this.setData({
+          shop:true
+        })
+      }
       this.setData({
-        model: res.data
+        model: res.data,
+        cartType: res.data.detail[0].cardType
       })
+      console.log(this.data.model.shop.length, 'length')
     })
   },
-  selectOrderDetail: function (id) {
-    request.findOrderDetailsByOrderId({ outTradeNo: id, log: app.globalData.longitude, lat: app.globalData.latitude }).then(res => {
+  selectOrderDetail: function(id) {
+    request.findOrderDetailsByOrderId({
+      outTradeNo: id,
+      log: app.globalData.longitude,
+      lat: app.globalData.latitude
+    }).then(res => {
       this.setData({
         model: res.data
       })
@@ -27,8 +44,11 @@ Page({
   /**
    * 取消订单
    */
-  canOrder: function () {
-    request.canOrder({ trade_status: 1, order_id: this.data.model.order_id }).then(res => {
+  canOrder: function() {
+    request.canOrder({
+      trade_status: 1,
+      order_id: this.data.model.order_id
+    }).then(res => {
       console.log(res, 'res')
       wx.showToast({
         title: '取消订单成功',
@@ -39,8 +59,11 @@ Page({
       })
     })
   },
-  btnShip: function () {
-    request.updateOrder({ order_id: this.data.model.order_id, trade_status: 7 }).then(res => {
+  btnShip: function() {
+    request.updateOrder({
+      order_id: this.data.model.order_id,
+      trade_status: 7
+    }).then(res => {
       console.log(res, 'res')
       if (res.status === 0) {
         wx.showToast({
@@ -54,14 +77,14 @@ Page({
               url: '1'
             })
           },
-          fail: () => { },
-          complete: () => { }
+          fail: () => {},
+          complete: () => {}
         });
 
       }
     })
   },
-  btnBuy: function () {
+  btnBuy: function() {
     let data = this.data.model.goodsData.map(item => {
       return {
         goods_detail_id: item.goods_detail_id,
@@ -74,7 +97,7 @@ Page({
     })
     this.pay(this.data.model.order_id)
   },
-  addInvoice: function () {
+  addInvoice: function() {
     wx.navigateTo({
       url: `../my_order_invoice/index?options=${this.data.options}`
     })
@@ -82,18 +105,18 @@ Page({
   /**
    * 退款进度
    */
-  refundList: function () {
+  refundList: function() {
     wx.navigateTo({
       url: `../my_order_refund/index`,
       success: (result) => {
 
       },
-      fail: () => { },
-      complete: () => { }
+      fail: () => {},
+      complete: () => {}
     });
 
   },
-  goDetail: function (e) {
+  goDetail: function(e) {
     wx.navigateTo({
       url: `../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`
     })
@@ -101,25 +124,25 @@ Page({
   /**
    * 申请退款
    */
-  goRefund: function (e) {
+  goRefund: function(e) {
     console.log(e)
     let detail = e.currentTarget.dataset.refund
     this.data.model.detail = detail
     let model = encodeURIComponent(JSON.stringify(this.data.model))
-    
+
     wx.navigateTo({
       url: `../add_refund/index?model=${model}`
     })
   },
-  editInvoice: function () {
+  editInvoice: function() {
     wx.navigateTo({
       url: `../edit_invoice/index?id=${this.data.model.invoice_id}`
     })
   },
   /**
-  * 查看服务单详情
-  */
-  toServerInfo: function (e) {
+   * 查看服务单详情
+   */
+  toServerInfo: function(e) {
     wx.navigateTo({
       url: `../shop_store_service/index?id=${e.currentTarget.dataset.id}&server_order_id=${e.currentTarget.dataset.server}`
     });
@@ -127,25 +150,25 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // this.selectOrderDetail("f69f5dc187814358b7ba53ad72139999",39.62429,118.20127)
     if (options.id) {
       this.selectOrderDetail(options.id)
       this.setData({
         id: options.id
       })
-    }else if(options.ids){
+    } else if (options.ids) {
       this.selectIdDetail(options.ids)
       this.setData({
         id: options.ids
       })
     }
   },
-  onShow: function () {
+  onShow: function() {
     /**
-   * 补开发票
-   * @param {*} data 
-   */
+     * 补开发票
+     * @param {*} data 
+     */
     if (this.data.item) {
       request.selectInvoice({
         id: this.data.item
