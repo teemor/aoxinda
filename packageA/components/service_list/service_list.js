@@ -5,7 +5,8 @@ Component({
    */
   properties: {
     item: Object,
-    add:Boolean
+    add:Boolean,
+    payType:Number
   },
 
   /**

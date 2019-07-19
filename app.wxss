@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   height: 100%;
   /* display: flex;
@@ -7,10 +8,27 @@
   justify-content: space-between;
   box-sizing: border-box; */
 }
+
 .shop_goods_invite image {
   width: 100%;
   height: 80rpx;
   /* background: url('http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png') */
+}
+
+.loc_img image {
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 26rpx;
+  height: 35rpx;
+}
+
+.phone_img image {
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 35rpx;
+  height: 35rpx;
 }
 
 .shop_goods_invite_text, .shop_goods_invite_btn {
@@ -30,7 +48,7 @@
 }
 
 .shop_edit {
-  margin-top:-10rpx;
+  margin-top: -10rpx;
   width: 30rpx;
 }
 
@@ -47,6 +65,7 @@
   width: 30rpx;
   height: 30rpx;
 }
+
 .cell_img {
   color: #999;
 }
@@ -55,187 +74,270 @@
   width: 30rpx;
   height: 30rpx;
 }
+
 .ipx-bottom {
   padding-bottom: 68rpx !important;
 }
-.ipx-bottom1{
+
+.ipx-bottom1 {
   margin-bottom: 68rpx !important;
 }
-.height40{
+
+.height40 {
   height: 40rpx;
   line-height: 40rpx;
 }
-.height50{
+
+.height50 {
   height: 50rpx;
   line-height: 50rpx;
 }
-.height60{
-  height:60rpx;
-  line-height:60rpx;
+
+.height60 {
+  height: 60rpx;
+  line-height: 60rpx;
 }
-.height80{
+
+.height80 {
   height: 80rpx;
-  line-height: 80rpx
+  line-height: 80rpx;
 }
-.height90{
+
+.height90 {
   height: 90rpx;
   line-height: 90rpx;
 }
-.height75{
-  height:75rpx;line-height:75rpx 
+
+.height75 {
+  height: 75rpx;
+  line-height: 75rpx;
 }
-.height71{
-  height:71rpx;line-height:71rpx
+
+.height71 {
+  height: 71rpx;
+  line-height: 71rpx;
 }
-.orange{
-  color:#4e93f3
+
+.orange {
+  color: #4e93f3;
 }
-.bg_orange{
-  background:#4e93f3;color: #fff;text-align: center
+
+.bg_orange {
+  background: #4e93f3;
+  color: #fff;
+  text-align: center;
 }
-.br_orange{
-  border:2rpx solid #4e93f3;
+
+.br_orange {
+  border: 2rpx solid #4e93f3;
 }
-.bg_white{
-  background: #fff;color: #4e93f3;text-align: center
+
+.bg_white {
+  background: #fff;
+  color: #4e93f3;
+  text-align: center;
 }
-.bottom_btn_add{
+
+.bottom_btn_add {
   border-radius: 10rpx;
-  width:320rpx;
-  margin-left:5%;
-  height:75rpx;
-  line-height:75rpx;
+  width: 320rpx;
+  margin-left: 5%;
+  height: 75rpx;
+  line-height: 75rpx;
 }
-.bottom_btn{
+
+.bottom_btn {
   border-radius: 10rpx;
-  width:90%;
-  margin-left:5%;
+  width: 90%;
+  margin-left: 5%;
   position: fixed;
-  bottom:30rpx;
-  height:75rpx;
-  line-height:75rpx;
+  bottom: 30rpx;
+  height: 75rpx;
+  line-height: 75rpx;
 }
-.br-bottom{
+
+.br-bottom {
   margin-top: 10rpx;
 }
-.br-bottom image{
-width:65rpx;
-height:65rpx;
+
+.br-bottom image {
+  width: 65rpx;
+  height: 65rpx;
 }
-.grey{
-  color:#9c9897
+
+.grey {
+  color: #9c9897;
 }
-.fr{
-  float:right;
+
+.fr {
+  float: right;
 }
-.fl{
-  float:left;
+
+.fl {
+  float: left;
 }
-.cl{
+
+.cl {
   clear: both;
   zoom: 1;
 }
-.tc{
+
+.tc {
   text-align: center;
 }
-.red{
-  color:#ff3c3c
+
+.red {
+  color: #ff3c3c;
 }
-.fzblack{
+
+.fzblack {
   color: #474747;
 }
-.bold{
+
+.bold {
   font-weight: bolder;
 }
-.decoration{
-  text-decoration:underline;
+
+.decoration {
+  text-decoration: underline;
 }
-.br_bottom{
-  border-bottom: 2rpx solid #e1e1e1
+
+.br_bottom {
+  border-bottom: 2rpx solid #e1e1e1;
 }
-.br_btm_light{
-  border-bottom: 2rpx solid #f6f6f6
+
+.br_btm_light {
+  border-bottom: 2rpx solid #f6f6f6;
 }
-.br_btm_deep{
-  border-bottom: 2rpx solid #e5e5e5
+
+.br_btm_deep {
+  border-bottom: 2rpx solid #e5e5e5;
 }
-.fz18{
-  font-size:18rpx;
+
+.fz18 {
+  font-size: 18rpx;
 }
-.fz20{
-  font-size:20rpx;
+
+.fz20 {
+  font-size: 20rpx;
 }
-.fz22{
-  font-size:22rpx;
+
+.fz22 {
+  font-size: 22rpx;
 }
-.fz24{
+
+.fz24 {
   font-size: 24rpx;
 }
-.fz26{
+
+.fz26 {
   font-size: 26rpx;
 }
-.fz28{
-  font-size:28rpx;
+
+.fz28 {
+  font-size: 28rpx;
 }
-.fz30{
-  font-size:30rpx;
+
+.fz30 {
+  font-size: 30rpx;
 }
-.fz32{
-  font-size:32rpx;
+
+.fz32 {
+  font-size: 32rpx;
 }
-.fz34{
-  font-size: 32rpx
+
+.fz34 {
+  font-size: 32rpx;
 }
-.fz35{
+
+.fz35 {
   font-size: 35rpx;
 }
-.fz40{
+
+.fz40 {
   font-size: 40rpx;
 }
-.fz50{
+
+.fz50 {
   font-size: 50rpx;
 }
-.fz60{
-font-size: 60rpx;
+
+.fz60 {
+  font-size: 60rpx;
 }
-.fz70{
-  font-size:70rpx;
-}
-.fz80{
+
+.fz70 {
   font-size: 70rpx;
 }
-.mleft20{margin-left:20rpx;}
-.mleft30{margin-left:30rpx;}
-.mleft100{margin-left:100rpx;}
-.mright20{margin-right:20rpx;}
-.mtop50{margin-top:50rpx;}
-.mtop20{margin-top:20rpx}
-.mtop15{margin-top:12rpx;}
-.mbottom30{margin-bottom: 30rpx;}
-.pleft20{padding-left:20rpx;}
-.pleft30{padding-left:30rpx;}
+
+.fz80 {
+  font-size: 70rpx;
+}
+
+.mleft20 {
+  margin-left: 20rpx;
+}
+
+.mleft30 {
+  margin-left: 30rpx;
+}
+
+.mleft100 {
+  margin-left: 100rpx;
+}
+
+.mright20 {
+  margin-right: 20rpx;
+}
+
+.mtop50 {
+  margin-top: 50rpx;
+}
+
+.mtop20 {
+  margin-top: 20rpx;
+}
+
+.mtop15 {
+  margin-top: 12rpx;
+}
+
+.mbottom30 {
+  margin-bottom: 30rpx;
+}
+
+.pleft20 {
+  padding-left: 20rpx;
+}
+
+.pleft30 {
+  padding-left: 30rpx;
+}
+
 .linked {
   color: #4e4e4e !important;
   text-align: center;
 }
-.clinked{
-  color: #ff4747
+
+.clinked {
+  color: #ff4747;
 }
-.bx-shadow{
+
+.bx-shadow {
   box-shadow: 0 0 25rpx #a7a8af;
 }
 
-.my_order_list-contain{
-  margin-top:20rpx;
-    margin-bottom: 10rpx;
-    padding:10rpx 30rpx;
-    font-size:30rpx;
-    background:#fff;
-}
-.my_order_list_text{
-    padding-left:10rpx
+.my_order_list-contain {
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  padding: 10rpx 30rpx;
+  font-size: 30rpx;
+  background: #fff;
 }
 
+.my_order_list_text {
+  padding-left: 10rpx;
+}
 
 .refund_type {
   border-bottom: 2rpx solid #f3f3f3;
@@ -244,109 +346,132 @@ font-size: 60rpx;
   background: #fff;
   padding: 0 26rpx;
 }
-.my_order_list_image image{
-  margin-right:10rpx;
-    width:180rpx;
-    height:180rpx
+
+.my_order_list_image image {
+  margin-right: 10rpx;
+  width: 180rpx;
+  height: 180rpx;
 }
-.my_order_price{
-    margin-top:30rpx;
+
+.my_order_price {
+  margin-top: 30rpx;
 }
-.my_order_list_btn{
-  height:80rpx;
+
+.my_order_list_btn {
+  height: 80rpx;
   line-height: 80rpx;
 }
-.my_order_list_btn view{
-  width:120rpx;
-  height:50rpx;
+
+.my_order_list_btn view {
+  width: 120rpx;
+  height: 50rpx;
   line-height: 50rpx;
   text-align: center;
   border-radius: 50rpx;
 }
-.myorder_grey{
-  border: 2rpx solid #eeeeee
+
+.myorder_grey {
+  border: 2rpx solid #eee;
 }
-.myorder_orange{
+
+.myorder_orange {
   color: #4e93f3;
-  margin-left:20rpx;
-  border:2rpx solid #4e93f3
+  margin-left: 20rpx;
+  border: 2rpx solid #4e93f3;
 }
-.bgwhite{
-  background:#fff;
+
+.bgwhite {
+  background: #fff;
 }
-.high70{
+
+.high70 {
   padding: 0 30rpx;
   height: 70rpx;
   line-height: 70rpx;
 }
-.high80{
+
+.high80 {
   height: 80rpx;
   line-height: 80rpx;
 }
-.high40{
-  height:40rpx;
+
+.high40 {
+  height: 40rpx;
   line-height: 40rpx;
 }
-.high60{
+
+.high60 {
   height: 70rpx;
   line-height: 70rpx;
 }
-.high50{
-  height:50rpx;
+
+.high50 {
+  height: 50rpx;
   line-height: 50rpx;
 }
-.greyfont{
+
+.greyfont {
   color: #333;
 }
-.blue{
-  color:#3f98eb
+
+.blue {
+  color: #3f98eb;
 }
-.padding20{
-padding:10rpx
+
+.padding20 {
+  padding: 10rpx;
 }
-.location_img{
+
+.location_img {
   width: 120rpx;
   height: 90rpx;
 }
-.location_img image{
-  margin-top:40rpx;
-  margin-left:40rpx;
-  width:60rpx;
+
+.location_img image {
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  width: 60rpx;
   height: 60rpx;
 }
-.shop_add_btn_img image{
-  margin-right:13rpx;
-width:32rpx;height: 28rpx;
-}
-.shop_add_btn_text{
-  
-  font-size: 25rpx;
-}
-.overflow{
-  overflow: hidden;
-text-overflow:ellipsis;
-white-space: nowrap;
-}
-.third_overflow{
-  display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 3;
-overflow: hidden;
-}
-.two_overflow{
-  display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 2;
-overflow: hidden;
+
+.shop_add_btn_img image {
+  margin-right: 13rpx;
+  width: 32rpx;
+  height: 28rpx;
 }
 
-.my_address_null{
-  width:250rpx;
+.shop_add_btn_text {
+  font-size: 25rpx;
+}
+
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.third_overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.two_overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.my_address_null {
+  width: 250rpx;
   margin: auto;
 }
-.my_address_null image{
-width:250rpx;
-height:170rpx;
-margin-top:200rpx;
-margin-bottom: 30rpx
+
+.my_address_null image {
+  width: 250rpx;
+  height: 170rpx;
+  margin-top: 200rpx;
+  margin-bottom: 30rpx;
 }

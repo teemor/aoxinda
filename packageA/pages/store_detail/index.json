@@ -6,6 +6,7 @@
     "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
     "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
     "service_list": "../../components/service_list/service_list",
+    "evaluate": "../../../components/evaluate/evaluate",
     "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
     "manager":"../../../components/manager/manager",
     "van-stepper":"../../miniprogram_npm/vant-weapp/stepper/index"

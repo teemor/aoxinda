@@ -446,6 +446,7 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "金麦卡",
 					"pathName": "pages/stored_value_info/index",
 					"query": "",
@@ -455,6 +456,11 @@
 					"id": -1,
 					"name": "金麦卡充值",
 					"pathName": "pages/stored_value_recharge/index",
+=======
+					"name": "门店详情评论",
+					"pathName": "packageA/pages/store_detail/index",
+          "query": "",
+>>>>>>> c0e766c41991f27d27880994e817aa2be03a5068
 					"scene": null
 				}
 			]
