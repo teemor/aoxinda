@@ -11,16 +11,7 @@
     </view>
   </view>
 </view>
-<view class='card_service card_item'>
-  <van-cell title="服务详情">
-    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
-  </van-cell>
-  <van-cell title="{{item.server_name}}" wx:for="{{serverInfo}}" wx:key="{{index}}">
-    <view slot="right-icon" class='card_service_n'>剩余
-      <text class='red'>{{item.server_times}}</text> 次</view>
-  </van-cell>
-  <!-- <van-cell title="洗车1次" value="剩余 {{}} 次" /> -->
-</view>
+
 <view class='card_store card_item'>
   <van-cell title="适用门店">
     <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
@@ -38,18 +29,28 @@
   </view>
 </view>
 <view class='card_record card_item'>
-  <van-cell title="消费记录">
-    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
-  </van-cell>
-  <view class='address' wx:for="{{payInfo}}" wx:key="{{index}}">
-    <view class='address_box'>
-      <view class='address_cont'>
-        <view class='cont_title'>{{item.name}}</view>
+  <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
+    <van-tab title="服务详情">
+      <van-cell title="{{item.server_name}}" wx:for="{{serverInfo}}" wx:key="{{index}}">
+        <view slot="right-icon" class='card_service_n'>剩余
+          <text class='red'>{{item.server_times}}</text> 次</view>
+      </van-cell>
+    </van-tab>
+    <van-tab title="购买须知">
+      <view class='address' wx:for="{{payInfo}}" wx:key="{{index}}">
+        <view class='address_box'>
+          <view class='address_cont'>
+            <view class='cont_title'>{{item.name}}</view>
+          </view>
+          <view class='time'>{{item.create_at}}</view>
+        </view>
       </view>
-      <view class='time'>{{item.create_at}}</view>
-    </view>
-  </view>
+    </van-tab>
+    <van-tab title="评价">
+    </van-tab>
+  </van-tabs>
+
 </view>
-  <view class="fz30 bg_orange bottom_btn {{isIpx ? 'ipx-bottom1' : ''}}" bindtap="buyCard">
-    立即购买
-  </view>
+<view class="fz30 bg_orange bottom_btn {{isIpx ? 'ipx-bottom1' : ''}}" bindtap="buyCard">
+  立即购买
+</view>

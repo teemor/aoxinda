@@ -72,7 +72,7 @@ export class store {
   // 订单详情
   findOrderDetailsByOrderId = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcborder/findOrderDetailsByOrderId`,
+      url: `${IP_YXHTTP}/mcfwcborder/findOrderDetailsByOrderId`,
       method: `post`,
       data: model
     })
@@ -134,11 +134,19 @@ export class store {
     })
   }
   // 修改密码
-  updatePass = (model)=>{
+  updatePass = (model) => {
     return http.httpRequest({
       url: `${IP_LYHTTP}/checkSmsAndUpdatePass`,
-      method:`post`,
-      data:model
+      method: `post`,
+      data: model
+    })
+  }
+  // 订单详情消费记录
+  cardDetCon = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/cardDetCon`,
+      method: `post`,
+      data: model
     })
   }
 }
