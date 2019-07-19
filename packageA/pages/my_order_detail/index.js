@@ -159,6 +159,9 @@ Page({
       })
     } else if (options.ids) {
       this.selectIdDetail(options.ids)
+      request.cardDetCon({pageSize:5,pageIndex:1,cardId:options.ids}).then(res=>{
+        console.log(res)
+      })
       this.setData({
         id: options.ids
       })

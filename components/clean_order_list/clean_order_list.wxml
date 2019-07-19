@@ -3,9 +3,9 @@
     <view class="fl fz24">订单编号：{{goodsList.orderNum}}</view>
     <view class="fr orange fz24">{{goodsList.statusName}}</view>
   </view>
-  <view class="cl my_order_list_box" bindtap="orderDetail">
+  <view class="cl my_order_list_box" bindtap="orderDetail" wx:if="{{goodsList.picture.length===1}}">
     <view class="fl my_order_list_image">
-      <image src="{{goodsList.pictue}}" />
+      <image src="{{goodsList.picture[0].actPicture}}" />
     </view>
     <view class="fl my_order_list_text">
       <view class="fz28 two_overflow">{{goodsList.actName}}</view>
@@ -16,6 +16,11 @@
         <view class="fl red" style="display:none">¥ {{item.price}}</view>
         <view class="fr grey">x{{goodsList.num}}</view>
       </view>
+    </view>
+  </view>
+  <view wx:else  bindtap="orderDetail">
+  <view class="fl my_order_list_image" wx:for="{{goodsList.picture}}">
+      <image src="{{item.actPicture}}" />
     </view>
   </view>
   <view class="cl my_order_list_bottom">
