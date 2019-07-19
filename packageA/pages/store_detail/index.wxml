@@ -81,7 +81,7 @@
   </view>
 
 </view>
-<van-submit-bar button-text="确认" disabled="{{!cartIcon}}" bind:submit="onClickButton">
+<van-submit-bar button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
   <view class="cart_img" bindtap='showCartList'>
     <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
   </view>
