@@ -77,9 +77,17 @@
         </view>
       </van-tab>
       <van-tab title="评价">
+      <view wx:if="{{commentList.length>0}}">
         <view wx:for="{{commentList}}" wx:key="{{item}}">
           <evaluate commentList="{{item}}" />
         </view>
+      </view>
+      <view wx:else>
+        <view class="my_address_null">
+          <image src="../../common/image/refund_null.png" />
+        </view>
+        <view class="tc fz26">还没有相关评价呢</view>
+      </view>
       </van-tab>
     </van-tabs>
   </view>
