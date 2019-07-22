@@ -70,7 +70,8 @@
     "pages/my_service_card_detail/index",
     "pages/my_evaluate/index",
     "pages/my_evaluate_record/index",
-    "pages/my_evaluate_show/index"
+    "pages/my_evaluate_show/index",
+    "pages/stored_value_recharge/index"
   ],
   "subPackages": [
     {

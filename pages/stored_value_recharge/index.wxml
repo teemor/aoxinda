@@ -1,0 +1,10 @@
+<!--pages/stored_value_recharge/index.wxml-->
+<view class='recharge_box'>
+  <view class='box_title'>充值金额（最低充值{{min_pay}}元）</view>
+  <view class='box_content'>
+    <view class='money'>￥</view>
+    <input type='number' value='{{pay.money}}' bindinput='payValue' maxlength="6" class='price'></input>
+  </view>
+  <view class='payment'>支付方式：<image src='../../common/image/wx.png'></image>微信支付</view>
+</view>
+<button class='next_step' bindtap='onPayClose'>下一步</button>

@@ -35,7 +35,8 @@ Page({
     serverInfo: [],
     payInfo: [],
     refundInfo: [],
-    rechargeInfo: []
+    rechargeInfo: [],
+    min_pay:0
   },
 
   /**
@@ -51,7 +52,10 @@ Page({
           that.setData({
             card_id: options.card_id,
             cardInfo: res.data[0],
+            min_pay: options.min_pay,
+            shareInfo: res.data[0].card_no
           })
+          console.log(options)
           // wx.getLocation({
           //   type: 'gcj02',
           //   success(res) {
@@ -78,6 +82,7 @@ Page({
           // })
           var size = this.setCanvasSize(); //动态设置画布大小
           this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
+          console.log(res.data[0].card_no)
         } else {
           wx.showToast({
             title: '服务器错误',
@@ -110,6 +115,16 @@ Page({
         console.log("充值记录", res)
       })  
     }
+  },
+  onShow(){
+    this.data.recharge.card_id = this.data.card_id
+    this.data.recharge.pageSize = 10
+    request.rechargeList(this.data.recharge).then(res => {
+      that.setData({
+        rechargeInfo: res.data
+      })
+      console.log("充值记录", res)
+    })
   },
   //上拉加载更多
   onReachBottom() {
@@ -153,7 +168,56 @@ Page({
     }
     
   },
+  //下拉刷新
+  onPullDownRefresh: function (){
+    var that = this
+    request.selectPayCard({ card_id: this.data.card_id }).then(res => {
+      if (res.data && res.data.length > 0) {
+        console.log(res)
+        that.setData({
+          cardInfo: res.data[0],
+          shareInfo: res.data[0].card_no
+        })
+        
+        var size = this.setCanvasSize(); //动态设置画布大小
+        this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
+      } else {
+        wx.showToast({
+          title: '服务器错误',
+          icon: 'loading',
+          duration: 1500
+        })
+      }
+    })
+    request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+      that.setData({
+        payInfo: res.data,
+        expense_total: res.total
+      })
+      this.data.expense.pageSize = 10
+      console.log("消费记录", res)
 
+    })
+
+    request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+      that.setData({
+        refundInfo: res.data,
+        refund_total: res.total
+      })
+      this.data.refund.pageSize = 10
+      console.log("退款记录", res)
+    })
+
+    request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+      that.setData({
+        rechargeInfo: res.data,
+        recharge_total: res.total
+      })
+      this.data.recharge.pageSize = 10
+      console.log("充值记录", res)
+    })  
+    
+  },
   //消费详情
   particulars: function (event) {
     console.log(event)
@@ -244,9 +308,9 @@ Page({
   },
   //充值按钮
   toPay(e) {
-    this.setData({
-      'pay.show': true
-    })
+    // this.setData({
+    //   'pay.show': true
+    // })
   },
   //充值输入
   payValue(e) {
@@ -283,6 +347,13 @@ Page({
               paySign: description.paySign,
               success: (res) => {
                 console.log('付款成功')
+                that.data.recharge.card_id = that.data.card_id
+                request.rechargeList(this.data.recharge).then(res => {
+                  that.setData({
+                    rechargeInfo: res.data
+                  })
+                  console.log("充值记录", res)
+                })
               },
               fail: (res) => {
                 console.log('付款失败')

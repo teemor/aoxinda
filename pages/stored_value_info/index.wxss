@@ -132,7 +132,7 @@ page {
 .card_bag_ .canvas-box {
   position: fixed;
   top: 999999rpx;
-  left: 0;
+  left: 10rpx;
 }
 
 .card_bag_ .wx_code_text {

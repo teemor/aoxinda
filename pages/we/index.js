@@ -5,7 +5,8 @@ const request = new CardHttp
 Page({
   mixins: [login],
   data: {
-    card_id: null
+    card_id: null,
+    min_pay:0
   },
   myEvaluate:function(){
     wx.navigateTo({
@@ -42,6 +43,7 @@ Page({
     request.hasCard().then((res) => {
       that.setData({
         card_id: res.card_id ? res.card_id : null,
+        min_pay: res.min_pay
       })
       wx.request({
         url: 'http://192.168.31.158:9015/appapi/v1.0/hasCard',
@@ -52,10 +54,10 @@ Page({
         },
         method: "POST",
         success: function (res) {
-          console.log(res.data.card_id)
+          console.log(res.data)
           if (res.data.card_id) {
             wx.navigateTo({
-              url: `../stored_value_info/index?card_id=${that.data.card_id}`
+              url: `../stored_value_info/index?card_id=${that.data.card_id}&min_pay=${that.data.min_pay}`
             })
           } else {
             wx.navigateTo({

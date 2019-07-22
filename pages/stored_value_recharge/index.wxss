@@ -1,0 +1,52 @@
+/* pages/stored_value_recharge/index.wxss */
+page{
+  background: rgb(245, 242, 242)
+}
+.recharge_box{
+  width: 80%;
+  height: 140px;
+  margin: 50rpx auto;
+  background: #fff;
+  border-radius: 10rpx;
+    box-shadow: 0 0 2rpx rgba(0, 0, 0, 0.3);
+    position: relative
+}
+.box_title{
+  font-size: 28rpx;
+  padding: 40rpx 0 30rpx 8%
+}
+.box_content{
+  width: 85%;
+  border-bottom: 1px solid #000;
+  height: 70rpx;
+  margin: 30rpx auto
+}
+.payment{
+  width: 85%;
+  margin: 35rpx auto;
+  font-size: 28rpx;
+}
+.money{
+  display: inline-block;
+  font-size: 60rpx;
+  margin-right: 20rpx;
+  font-weight: 600
+}
+.price{
+  display: inline-block;
+  
+}
+.next_step{
+  width: 80%;
+  background: rgb(70, 70, 238);
+  margin: 0 auto;
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 100rpx;
+  height: 100rpx;
+}
+.payment image{
+  width: 30rpx;
+  height: 30rpx;
+  padding-right: 10rpx
+}
