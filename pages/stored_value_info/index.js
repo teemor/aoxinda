@@ -52,7 +52,8 @@ Page({
           that.setData({
             card_id: options.card_id,
             cardInfo: res.data[0],
-            min_pay: options.min_pay
+            min_pay: options.min_pay,
+            shareInfo: res.data[0].card_no
           })
           console.log(options)
           // wx.getLocation({
@@ -81,6 +82,7 @@ Page({
           // })
           var size = this.setCanvasSize(); //动态设置画布大小
           this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
+          console.log(res.data[0].card_no)
         } else {
           wx.showToast({
             title: '服务器错误',
@@ -113,6 +115,16 @@ Page({
         console.log("充值记录", res)
       })  
     }
+  },
+  onShow(){
+    this.data.recharge.card_id = this.data.card_id
+    this.data.recharge.pageSize = 10
+    request.rechargeList(this.data.recharge).then(res => {
+      that.setData({
+        rechargeInfo: res.data
+      })
+      console.log("充值记录", res)
+    })
   },
   //上拉加载更多
   onReachBottom() {

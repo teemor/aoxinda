@@ -448,7 +448,7 @@
 					"id": -1,
 					"name": "门店详情评论",
 					"pathName": "packageA/pages/store_detail/index",
-          "query": "",
+					"query": "",
 					"scene": null
 				}
 			]
