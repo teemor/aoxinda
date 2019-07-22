@@ -84,7 +84,7 @@
       </view>
       <view wx:else>
         <view class="my_address_null">
-          <image src="../../common/image/refund_null.png" />
+          <image src="../../../common/image/refund_null.png" />
         </view>
         <view class="tc fz26">还没有相关评价呢</view>
       </view>

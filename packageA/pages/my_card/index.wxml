@@ -29,7 +29,7 @@
   </view>
 </view>
 <view class='card_record card_item'>
-  <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
+  <van-tabs color="#4e93f3" active="{{active}}" sticky bind:click="tabClick" bind:change="onChange">
     <van-tab title="服务详情">
       <van-cell title="{{item.server_name}}" wx:for="{{serverInfo}}" wx:key="{{index}}">
         <view slot="right-icon" class='card_service_n'>剩余
@@ -47,6 +47,17 @@
       </view>
     </van-tab>
     <van-tab title="评价">
+      <view wx:if="{{commentList.length>0}}">
+        <view wx:for="{{commentList}}" wx:key="{{item}}">
+          <evaluate commentList="{{item}}" />
+        </view>
+      </view>
+      <view wx:else>
+        <view class="my_address_null">
+          <image src="../../../common/image/refund_null.png" />
+        </view>
+        <view class="tc fz26">还没有相关评价呢</view>
+      </view>
     </van-tab>
   </van-tabs>
 
