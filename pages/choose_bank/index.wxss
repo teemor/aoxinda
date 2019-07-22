@@ -1,0 +1,33 @@
+/* pages/choose_bank/index.wxss */
+.choose_bank_title{
+  font-size: 30rpx;
+  padding-left: 20rpx;
+  width: 100%;
+  height: 50rpx;
+  border-bottom: 1px solid gainsboro
+}
+.bank_list{
+  height: 180rpx;
+  border-bottom: 1px solid gainsboro;
+  width: 100%;
+  background-size: 100% 100%;
+}
+.bank_logo{
+  width: 50rpx;
+  height: 50rpx;
+  float: left;
+}
+.bank_logo image{
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+.bank_name{
+  float: left;
+}
+.chose_bank{
+  float: right;
+  font-size: 55rpx;
+  padding:10rpx 35rpx 20rpx 0rpx;
+  color:#ccc;
+}

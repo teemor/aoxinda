@@ -1,0 +1,62 @@
+/* pages/my_bank_card/index.wxss */
+.add_bank{
+  display: none
+}
+.add_bank_show{
+  display: block
+}
+.no_card{
+  width: 100%;
+  height: inherit;
+  margin-top: 260rpx;
+}
+.no_card_image{
+  width: 200rpx;
+  height: 50rpx;
+  margin: 0 auto;
+}
+.no_card_image image{
+  width: 100%;
+  height: 100%;
+}
+.no_card_title{
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  line-height: 200rpx;
+}
+.have_card{
+  width: 100%;
+  height: initial
+}
+.have_card_list{
+  width: 85%;
+  margin: 0 auto;
+  height: 170rpx;
+  margin-top: 40rpx;
+  border: 1px solid red
+}
+.add_card{
+  width: 85%;
+  margin: 0 auto;
+  height: 170rpx;
+  margin-top: 40rpx;
+  border: 1px solid gray
+}
+.add_card_image{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 auto;
+ margin-top: 20rpx;
+}
+.add_card_image image{
+  width: 100%;
+  height: 100%;
+  
+}
+.add_card_title{
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  line-height: 65rpx
+}

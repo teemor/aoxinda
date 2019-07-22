@@ -450,6 +450,13 @@
 					"pathName": "packageA/pages/store_detail/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 57,
+					"name": "填写银行卡信息",
+					"pathName": "pages/choose_bank/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

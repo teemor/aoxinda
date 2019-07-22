@@ -1,0 +1,9 @@
+<!--pages/choose_bank/index.wxml-->
+<view class='choose_bank_title'>为了您的资金安全，只能绑定持卡人本人的银行卡</view>
+<view wx:for="{{card_list}}" wx:key="item" class='bank_list' style='background-image:url({{item.background}})'>
+  <navigator url='../fill_card_information/index?logo={{item.src}}&name={{item.text}}'>
+    <view class='bank_logo'><image src='{{item.src}}'></image></view>
+    <view class='bank_name'>{{item.text}}</view>
+    <view class='chose_bank'>></view>
+  </navigator>
+</view>

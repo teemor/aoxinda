@@ -71,7 +71,10 @@
     "pages/my_evaluate/index",
     "pages/my_evaluate_record/index",
     "pages/my_evaluate_show/index",
-    "pages/stored_value_recharge/index"
+    "pages/stored_value_recharge/index",
+    "pages/my_bank_card/index",
+    "pages/choose_bank/index",
+    "pages/fill_card_information/index"
   ],
   "subPackages": [
     {

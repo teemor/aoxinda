@@ -69,6 +69,12 @@ Page({
     })
     
   },
+  myBankCard(){
+    var that = this
+    wx.navigateTo({
+      url: `../my_bank_card/index?card_id=${that.data.card_id}&min_pay=${that.data.min_pay}`
+    })
+  },
   myCar: function() {
     wx.navigateTo({
       url: `../my_car/index`
