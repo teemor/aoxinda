@@ -36,7 +36,7 @@
   </view>
 </view>
 <view>
-  <van-tabs active="{{active}}" bind:change="onChange" color="#4e93f3">
+  <van-tabs active="{{active}}" sticky bind:click="tabClick" bind:change="onChange" color="#4e93f3">
     <van-tab title="服务详情">
       <view>{{model.actCon}}</view>
       <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
@@ -45,6 +45,18 @@
     </van-tab>
     <van-tab title="购买须知"></van-tab>
 
-    <van-tab title="评价"></van-tab>
+    <van-tab title="评价">
+      <view wx:if="{{commentList.length>0}}">
+        <view wx:for="{{commentList}}" wx:key="{{item}}">
+          <evaluate commentList="{{item}}" />
+        </view>
+      </view>
+      <view wx:else>
+        <view class="my_address_null">
+          <image src="../../../common/image/refund_null.png" />
+        </view>
+        <view class="tc fz26">还没有相关评价呢</view>
+      </view>
+    </van-tab>
   </van-tabs>
 </view>

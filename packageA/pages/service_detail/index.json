@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-tabs":"../../miniprogram_npm/vant-weapp/tabs/index",
     "van-tab":"../../miniprogram_npm/vant-weapp/tab/index",
+    "evaluate": "../../../components/evaluate/evaluate",
     "manager":"../../../components/manager/manager",
     "van-stepper": "../miniprogram_npm/vant-weapp/stepper/index"
   }
