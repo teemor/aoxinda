@@ -77,15 +77,23 @@
         </view>
       </van-tab>
       <van-tab title="评价">
+      <view wx:if="{{commentList.length>0}}">
         <view wx:for="{{commentList}}" wx:key="{{item}}">
           <evaluate commentList="{{item}}" />
         </view>
+      </view>
+      <view wx:else>
+        <view class="my_address_null">
+          <image src="../../common/image/refund_null.png" />
+        </view>
+        <view class="tc fz26">还没有相关评价呢</view>
+      </view>
       </van-tab>
     </van-tabs>
   </view>
 
 </view>
-<van-submit-bar button-text="确认" disabled="{{!cartIcon}}" bind:submit="onClickButton">
+<van-submit-bar button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
   <view class="cart_img" bindtap='showCartList'>
     <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
   </view>

@@ -18,9 +18,14 @@ Page({
       url: '../my_service_card/index',
     })
   },
+  myClean:function(){
+     wx.navigateTo({
+       url: `../my_service_order/index`
+    })
+  },
   myKeep: function() {
     wx.navigateTo({
-      url: '../my_service_order/index',
+      url: '../c_order_all/c_order_all',
     })
     // wx.navigateToMiniProgram({
     //   appId:'wx317e65151f04fa7c',

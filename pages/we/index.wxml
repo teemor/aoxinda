@@ -38,19 +38,19 @@
         <view class="mine_btn">
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_keep_order.png" />
         </view>
-        <view class="mine_btn_text tc fz28">服务订单</view>
+        <view class="mine_btn_text tc fz28">保养订单</view>
       </view>
-      <view class="fl" bindtap="myCard">
+      <view class="fl" bindtap="myClean">
         <view class="mine_btn">
           <image src="../../common/image/my_refund_order.png" />
         </view>
-        <view class="mine_btn_text tc fz28">退款售后</view>
+        <view class="mine_btn_text tc fz28">洗车订单</view>
       </view>
       <view class="fl" bindtap="myEvaluate">
         <view class="mine_btn">
           <image src="../../common/image/my_remark.png" />
         </view>
-        <view class="mine_btn_text tc fz28">待评价</view>
+        <view class="mine_btn_text tc fz28">救援订单</view>
       </view>
     </view>
 
@@ -59,6 +59,13 @@
     <image src="../../common/image/my_partner.png" bindtap='myInvite' />
   </view>
   <view class="mine_cell-box">
+    <view class="mine_cell-list">
+      <van-cell title="扫码付款" is-link bind:click="serviceCard">
+        <view slot="icon" class="user_img">
+          <image src="../../common/image/my_refund.png" />
+        </view>
+      </van-cell>
+    </view>
     <view class="mine_cell-list">
       <van-cell title="门店服务卡" is-link bind:click="serviceCard">
         <view slot="icon" class="user_img">
@@ -73,8 +80,22 @@
         </view>
       </van-cell>
     </view>
+       <view class="mine_cell-list">
+      <van-cell title="退款售后" is-link bind:click="myRefund">
+        <view slot="icon" class="user_img">
+          <image src="../../common/image/my_refund.png" />
+        </view>
+      </van-cell>
+    </view>
     <view class="mine_cell-list">
       <van-cell title="我的爱车" is-link bind:click="myCar">
+        <view slot="icon" class="user_img">
+          <image src="../../common/image/my_car.png" />
+        </view>
+      </van-cell>
+    </view>
+     <view class="mine_cell-list">
+      <van-cell title="评价中心" is-link bind:click="myEvaluate">
         <view slot="icon" class="user_img">
           <image src="../../common/image/my_car.png" />
         </view>

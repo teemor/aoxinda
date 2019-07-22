@@ -18,7 +18,7 @@ Page({
     loading: false,//加载动画的显示
     commentForm: {
       "pageIndex": 1,
-      "pageSize": 3,
+      "pageSize": 10,
       "shop_id": ""
     },
     tabIndex: 0   //当前tabs页签下标
