@@ -27,4 +27,4 @@
   </view>
 </view>
 <view class='title'>为了保证账户资金安全，请填写本人真实信息，认证后不可更改</view>
-<view class="{{highlight?'show':''}} on_subumit" bindtap='onSubmit'>确认</view>
+<view class="{{highlight?'show':'on_subumit'}}" bindtap='onSubmit'>确认</view>

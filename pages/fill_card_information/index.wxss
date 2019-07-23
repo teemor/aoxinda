@@ -1,6 +1,7 @@
 /* pages/fill_card_information/index.wxss */
 page{
   background: #f5f5f5;
+  color: #333;
 }
 .information_title{
   /* padding: 80rpx 0 30rpx 40rpx; */
@@ -97,7 +98,16 @@ page{
 }
 .show{
   background: #5695f0;
-  color: #fff
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 50rpx 50rpx 50rpx 50rpx;
+  border: none;
+  height: 74rpx;
+  font-size: 28rpx;
+  line-height: 74rpx;
+  text-align: center;
+  color: #fff;
+  margin-top: 63rpx;
 }
 .title{
   width: 90%;
@@ -105,9 +115,9 @@ page{
   font-size: 22rpx;
   height: 82rpx;
   line-height: 82rpx;
+  color: #666;
 }
 .on_subumit{
-  margin-top: 63rpx;
   width: 80%;
   margin: 0 auto;
   border-radius: 50rpx 50rpx 50rpx 50rpx;
@@ -117,5 +127,6 @@ page{
   line-height: 74rpx;
   background: rgb(167, 164, 164);
   text-align: center;
-  color: #fff
+  color: #fff;
+  margin-top: 63rpx;
 }

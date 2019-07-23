@@ -69,6 +69,7 @@ Page({
     })
     
   },
+  //跳转我的银行卡
   myBankCard(){
     var that = this
     wx.navigateTo({

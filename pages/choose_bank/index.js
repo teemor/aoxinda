@@ -9,7 +9,24 @@ Page({
       src: "../../common/image/gold_card_bg.png",
       text:"建设银行",
       background:"../../common/image/gold_card_bg.png"
-    }]
+    }, {
+        src: "../../common/image/gold_card_bg.png",
+        text: "建设银行",
+        background: "../../common/image/gold_card_bg.png"
+      }, {
+        src: "../../common/image/gold_card_bg.png",
+        text: "建设银行",
+        background: "../../common/image/gold_card_bg.png"
+      }, {
+        src: "../../common/image/gold_card_bg.png",
+        text: "建设银行",
+        background: "../../common/image/gold_card_bg.png"
+      },{
+        src: "../../common/image/gold_card_bg.png",
+        text: "建设银行",
+        background: "../../common/image/gold_card_bg.png"
+      }],
+    title_close:false
   },
 
   /**
@@ -18,7 +35,11 @@ Page({
   onLoad: function (options) {
 
   },
-
+  close : function (){
+    this.setData({
+      title_close : true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
