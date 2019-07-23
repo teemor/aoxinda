@@ -97,6 +97,36 @@ App({
       }
     })
   },
+   /**
+   * 保存formId
+   * author dzl
+   */
+  dealFormIds: function (formId) {
+    let formIds = this.globalData.globalFormIds;//获取全局数据中的推送码globalFormIds数组
+    if (!formIds) {
+      formIds = [];
+    }
+    let data = {
+      formId: formId,
+      expire: parseInt(new Date().getTime() / 1000) + 604800 //计算７天后的过期时间时间戳
+    }
+    formIds.push(data); //将data添加到数组的末尾
+    this.globalData.globalFormIds = formIds; //保存推送码并赋值给全局变量
+  },
+  /**
+  * 将formIds传到后端,并清空
+  * author dzl
+  */
+  saveFormIds: function () {
+    let formIds = this.globalData.globalFormIds;
+    if (formIds.length) { 
+      //globalFormIds存在的情况下，将数组转换为JSON字符串
+      formIds = JSON.stringify(formIds);
+      this.globalData.globalFormIds = '';
+    }
+    //掉接口传formids
+   console.log(formIds,'formIDs')
+  },
   loadWeatherData: function() {
     var citySelected = wx.getStorageSync('citySelected') || [];
     if (citySelected.length == 0) {

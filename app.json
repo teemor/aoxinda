@@ -70,13 +70,13 @@
     "pages/my_service_card_detail/index",
     "pages/my_evaluate/index",
     "pages/my_evaluate_record/index",
-    "pages/my_evaluate_show/index"
+    "pages/my_evaluate_show/index",
+    "pages/store_index/index"
   ],
   "subPackages": [
     {
       "root": "packageA",
       "pages": [
-        "pages/index/index",
         "pages/store_list/index",
         "pages/store_detail/index",
         "pages/city_select/index",
@@ -88,7 +88,8 @@
         "pages/order_detail/index",
         "pages/my_card/index",
         "pages/my_order_detail/index",
-        "pages/add_refund/index"
+        "pages/add_refund/index",
+        "pages/apply_store_list/index"
       ]
     }
   ],
@@ -128,8 +129,8 @@
       },
       {
         "active": false,
-        "pagePath": "pages/my_cart/index",
-        "text": "购物车",
+        "pagePath": "pages/store_index/index",
+        "text": "门店",
         "iconPath": "/common/image/tab/mes.png",
         "selectedIconPath": "/common/image/tab/mes_after.png"
       },

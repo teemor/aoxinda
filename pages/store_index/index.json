@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "洗车美容",
+  "usingComponents": {
+    "storeList": "../../components/store_list/store_list"
+  }
+}

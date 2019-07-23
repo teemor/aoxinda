@@ -1,12 +1,18 @@
 <view class="login_logo">
-<image src="../../common/image/logo1.png" mode="aspectFit"/>
+  <image src="../../common/image/logo1.png" mode="aspectFit" />
 </view>
 <view>
-<view class="btn bg_orange fz30">
- <button class='login_btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn">
-    微信授权登录
-  </button>
+<form report-submit="true" bindsubmit="formSubmit">
+  <view class="btn bg_orange fz30">
+    <button class='login_btn' open-type='getUserInfo' form-type='submit' bindgetuserinfo="getUserInfoBtn">
+      微信授权登录
+    </button>
+  </view>
+  <view class="btn bg_white fz30 br_orange" style="margin-top:40rpx">
+    <button open-type='getUserInfo' bindgetuserinfo="getUserInfoBtn" form-type='submit'>
+      <span style="color:#4e93f3">手机号登录</span>
+    </button>
+  </view>
+  </form>
 </view>
-<view class="btn bg_white fz30 br_orange" style="margin-top:40rpx"  bindgetuserinfo="getUserInfoBtn">手机号登录</view>
-</view>
-<login_phone phoneMask="{{phoneMask}}" loginMask="{{loginMask}}" bind:getPhoneNumber="getPhoneNumber" bind:getUserInfoBtn="getUserInfoBtn"/>
+<login_phone phoneMask="{{phoneMask}}" loginMask="{{loginMask}}" bind:getPhoneNumber="getPhoneNumber" bind:getUserInfoBtn="getUserInfoBtn" />

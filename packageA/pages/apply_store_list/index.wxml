@@ -1,0 +1,6 @@
+
+<view class="space_list fz28 cl">
+  <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
+    <storeList item="{{item.shop}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" service="{{service}}"/>
+  </view>
+</view>

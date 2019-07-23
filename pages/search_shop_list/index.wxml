@@ -1,7 +1,12 @@
 <view>
-  <van-search value="{{ value }}" placeholder="请输入要搜索的商品" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
+    <van-search value="{{ value }}" label="商品" placeholder="请输入要搜索的商品" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
     <view slot="action" data-value="{{ value }}" bind:tap="onSearch" style="{{value==''?'background-color:#f7f8fa;color:#999;':'background-color:#4e93f3;color:#fff;'}}" class='search_box_btn'>搜索</view>
   </van-search>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="fz28" style="color:#333333;width:60rpx;height:60rpx;position:absolute;margin-top:-76rpx;margin-left:58rpx;background:#f7f8fa">
+      {{array[index]}}
+    </view>
+  </picker>
   <view>
     <view style="padding:0 34rpx">
       <view class="fl fz28 high80" style='width:100%'>历史搜索

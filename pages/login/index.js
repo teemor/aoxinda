@@ -1,7 +1,8 @@
 const app = getApp();
 import login from '../../mixin/login'
+import formSubmit from '../../mixin/form_sumbit.js'
 Page({
-  mixins: [login],
+  mixins: [login, formSubmit],
   data: {
     loginMask: 1,
     phoneMask: 1

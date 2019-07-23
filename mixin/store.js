@@ -10,13 +10,14 @@ module.exports = {
   findShopList: function(actCardType) {
     console.log(actCardType,'actCardType')
     request.findShopList({
-      actCardType:actCardType,
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
-      type: 1,
+      actCardType:actCardType,
+      // type: 1,
       pageSize: 5,
       pageIndex: 1,
-      actDetId: ''
+      // actDetId: ''
+      serDictId:''
     }).then(res => {
       this.setData({
         CleanStore: res.data

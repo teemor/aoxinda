@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "门店列表",
+  "usingComponents": {
+    "storeList": "../../components/store_list/store_list",
+    "manager": "../../../components/manager/manager",
+    "van-badge": "../../../miniprogram_npm/vant-weapp/badge/index",
+    "van-badge-group": "../../../miniprogram_npm/vant-weapp/badge-group/index"
+  }
+}

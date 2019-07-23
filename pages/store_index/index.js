@@ -1,8 +1,8 @@
-import stores from '../../../mixin/store'
-import find_car from '../../../mixin/find_car'
+import stores from '../../mixin/store'
+import find_car from '../../mixin/find_car'
 import {
   store
-} from '../../common/api/api'
+} from '../../common/api/clean_api'
 const request = new store
 const app = getApp()
 Page({
@@ -24,7 +24,7 @@ Page({
   },
   personDetail: function() {
     wx.navigateTo({
-      url: `../../pages/person_card_detail/index`
+      url: `../../packageA/pages/person_card_detail/index`
     })
   },
   /**
@@ -52,7 +52,7 @@ Page({
   }) {
     let model = encodeURIComponent(JSON.stringify(detail))
     wx.navigateTo({
-      url: `../../pages/service_detail/index?model=${model}`
+      url: `../../packageA/pages/service_detail/index?model=${model}`
     })
   },
   storeDetail: function({
@@ -61,12 +61,12 @@ Page({
     let model = encodeURIComponent(JSON.stringify(detail))
 
     wx.navigateTo({
-      url: `../../pages/store_detail/index?model=${model}`
+      url: `../../packageA/pages/store_detail/index?model=${model}`
     })
   },
   monthList: function() {
     wx.navigateTo({
-      url: `../../pages/store_detail/index?model=${model}`
+      url: `../../packageA/pages/store_detail/index?model=${model}`
     })
   },
   scopeSetting: function() {
@@ -117,7 +117,7 @@ Page({
         id = 4
       } else if (name = '金麦卡') {
         wx.navigateTo({
-          url: `../../pages/store_list/index?id=${id}`,
+          url: `../../packageA/pages/store_list/index?id=${id}`,
           success: (result) => {
 
           },
@@ -127,7 +127,7 @@ Page({
       }
     } 
     wx.navigateTo({
-      url: `../../pages/store_list/index?id=${id}`,
+      url: `../../packageA/pages/store_list/index?id=${id}`,
       success: (result) => {
 
       },
@@ -152,7 +152,7 @@ Page({
         })
         app.globalData.latitude = res.latitude
         app.globalData.longitude = res.longitude
-        that.findShopList(that.data.longitude, that.data.latitude)
+        that.findShopList('')
         that.address(that.data.longitude, that.data.latitude)
         // that.moveTolocation();
       },

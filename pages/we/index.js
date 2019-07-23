@@ -1,13 +1,15 @@
 const app = getApp();
 import login from '../../mixin/login'
-import { CardHttp } from '../../common/api/card_api'
+import {
+  CardHttp
+} from '../../common/api/card_api'
 const request = new CardHttp
 Page({
   mixins: [login],
   data: {
     card_id: null
   },
-  myEvaluate:function(){
+  myEvaluate: function() {
     wx.navigateTo({
       url: '../my_evaluate/index',
     })
@@ -17,9 +19,14 @@ Page({
       url: '../my_service_card/index',
     })
   },
-  myClean:function(){
-     wx.navigateTo({
-       url: `../my_service_order/index`
+  myClean: function() {
+    wx.navigateTo({
+      url: `../my_service_order/index`
+    })
+  },
+  myCart: function() {
+    wx.navigateTo({
+      url: '../my_cart/index',
     })
   },
   myKeep: function() {
@@ -35,7 +42,7 @@ Page({
     // })
   },
   //跳转今麦卡
-  goldCard: function () {
+  goldCard: function() {
     var that = this
     var app = getApp()
     var getOpenId = app.globalData.openId
@@ -51,7 +58,7 @@ Page({
           'token': getOpenId
         },
         method: "POST",
-        success: function (res) {
+        success: function(res) {
           console.log(res.data.card_id)
           if (res.data.card_id) {
             wx.navigateTo({
@@ -65,7 +72,7 @@ Page({
         }
       })
     })
-    
+
   },
   myCar: function() {
     wx.navigateTo({
