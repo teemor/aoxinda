@@ -74,13 +74,13 @@
     "pages/stored_value_recharge/index",
     "pages/my_bank_card/index",
     "pages/choose_bank/index",
-    "pages/fill_card_information/index"
+    "pages/fill_card_information/index",
+    "pages/store_index/index"
   ],
   "subPackages": [
     {
       "root": "packageA",
       "pages": [
-        "pages/index/index",
         "pages/store_list/index",
         "pages/store_detail/index",
         "pages/city_select/index",
@@ -92,7 +92,8 @@
         "pages/order_detail/index",
         "pages/my_card/index",
         "pages/my_order_detail/index",
-        "pages/add_refund/index"
+        "pages/add_refund/index",
+        "pages/apply_store_list/index"
       ]
     }
   ],
@@ -132,8 +133,8 @@
       },
       {
         "active": false,
-        "pagePath": "pages/my_cart/index",
-        "text": "购物车",
+        "pagePath": "pages/store_index/index",
+        "text": "门店",
         "iconPath": "/common/image/tab/mes.png",
         "selectedIconPath": "/common/image/tab/mes_after.png"
       },

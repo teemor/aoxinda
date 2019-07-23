@@ -172,7 +172,6 @@ page {
   padding: 30rpx 20rpx;
   margin: 20rpx 30rpx;
   border-radius: 20rpx;
-  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
 }
 
 .address .address_title {

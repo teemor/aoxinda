@@ -8,7 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    invoice: ''
+    invoice: '',
+    moreService:false
+  },
+  moreService:function(){
+    this.setData({
+      moreService:!this.data.moreService
+    })
+  },
+  myStore:function(item){
+    console.log(item,'cardid')
+    wx.navigateTo({
+      url: `../apply_store_list/index?id=${item.currentTarget.dataset.item}`,
+    })
+    // request.findOrderShop({orderDetailId:item.currentTarget.dataset.item,log:app.globalData.longitude,lat:app.globalData.latitude}).then(res=>{
+    //   console.log(res,'res')
+    // })
+   
   },
   selectIdDetail: function(id) {
     request.findOrderDetailsByOrderId({
@@ -16,13 +32,13 @@ Page({
       log: app.globalData.longitude,
       lat: app.globalData.latitude
     }).then(res => {
-      if (Object.keys(res.data.shop).length==0) {
-        this.setData({shop:false})
-      }else{
-        this.setData({
-          shop:true
-        })
-      }
+      // if (Object.keys(res.data.shop).length==0) {
+      //   this.setData({shop:false})
+      // }else{
+      //   this.setData({
+      //     shop:true
+      //   })
+      // }
       this.setData({
         model: res.data,
         cartType: res.data.detail[0].cardType
@@ -39,6 +55,12 @@ Page({
       this.setData({
         model: res.data
       })
+      if(this.data.model.detail.length>2){
+        this.setData({
+          moreText:true,
+          leftNum:this.data.model.detail-2
+        })
+      }
     })
   },
   /**
@@ -159,7 +181,10 @@ Page({
       })
     } else if (options.ids) {
       this.selectIdDetail(options.ids)
-      request.cardDetCon({pageSize:5,pageIndex:1,cardId:options.ids}).then(res=>{
+      request.cardDetConOrder({pageSize:5,pageIndex:1,orderId:options.ids}).then(res=>{
+        this.setData({
+          consumption:res.data
+        })
         console.log(res)
       })
       this.setData({

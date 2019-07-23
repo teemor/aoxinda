@@ -20,7 +20,8 @@ Page({
     }, {
       name: '金麦卡',
       type: 1
-    }]
+    }],
+    codeBtn: '获取验证码'
   },
   /**
    * 支付方式
@@ -28,6 +29,11 @@ Page({
   wxPayShow: function() {
     this.setData({
       wxPay: !this.data.wxPay
+    })
+  },
+  wxPwdShow:function(){
+    this.setData({
+      falseGold:false
     })
   },
   setPwd: function() {
@@ -50,50 +56,105 @@ Page({
         })
       }
     } else {
-      alert('跳转金麦卡活动页')
       wx.navigateTo({
-        url: '',
+        url: '../../../pages/stored_value_card/index',
       })
     }
-    console.log(e, 'e')
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  formSubmit: function (e) {
-    request.checkSms({phone:this.data.phoneNum,code:e.detail.value[7]}).then(res=>{
-      if (res.state=='验证成功') {
+  pwdSubmit: function(e) {
+    let arr = ''
+    for (let i = 1; i < 7; i++) {
+      arr += e.detail.value[i]
+    }
+    request.passCheck({
+      param1: app.globalData.openId,
+      param2: arr
+    }).then(res => {
+      wx.showToast({
+        title: res.msg,
+        duration: 1500
+      })
+      if (res.state == 0) {
+        this.setData({
+          flag:false
+        })
+      }else{
+        this.setData({
+          trueGold:false,
+          flag:true
+        })
+      }
+      console.log(res, '校验密码')
+    })
+  },
+  wxGlodShow:function(){
+    this.setData({
+      trueGold:false
+    })
+  },
+  formSubmit: function(e) {
+    request.checkSms({
+      phone: this.data.phoneNum,
+      code: e.detail.value[7]
+    }).then(res => {
+      if (res.state == '验证成功') {
         let arr = ''
         for (let i = 1; i < 7; i++) {
           arr += e.detail.value[i]
         }
-        request.updatePass({phone:this.data.phoneNum,code:e.detail.value[7],param1:arr,id:app.globalData.openId}).then(res=>{
-          console.log(res)
+        request.updatePass({
+          phone: this.data.phoneNum,
+          code: e.detail.value[7],
+          param1: arr,
+          id: app.globalData.openId
+        }).then(res => {
+          wx.showToast({
+            title:res.state,
+            duration:3000
+          })
+          this.setData({
+            falseGold:false
+          })
         })
-        console.log('form发生了submit事件，携带数据为：', arr)
-      } else {
-
-      }
+      } 
     })
-  
-  
-   
+
+
   },
-  btnCode:function(){
-    request.sendSms({phone:this.data.phoneNum}).then(res=>{
-      console.log(res,'res')
+  btnCode: function() {
+    let that = this
+    let codeCount = 90
+    that.setData({
+      codeBtn:`已发送${codeCount}秒`,
+    })
+    let initCode = setInterval(()=>{
+      if(codeCount===0){
+        that.setData({codeBtn:`重新获取`})
+        clearInterval(initCode)
+        return
+      }else{
+        that.setData({ codeBtn:`已发送${--codeCount}秒`})
+      }
+    },1000)
+    request.sendSms({
+      phone: that.data.phoneNum
+    }).then(res => {
+      console.log(res, 'res')
     })
   },
   onLoad: function(options) {
-    
+
     let phone = app.globalData.phoneNum
-    console.log(phone,'电话')
+    console.log(phone, '电话')
     var mphone = phone.substring(0, 3) + '****' + phone.substring(7);
     this.setData({
-      phoneNum:phone,
+      phoneNum: phone,
       phone: mphone
     })
-    console.log(this.data.phone,'heh')
+    console.log(this.data.phone, 'heh')
     this.findCarList()
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
@@ -205,58 +266,65 @@ Page({
     })
   },
   onSubmit: function() {
-    request.pay({
-      payType: this.data.payType, //0微信1金麦卡
-      carName: this.data.model.model,
-      shopId: this.data.shopId,
-      invoiceId: this.data.isInvoice === 0 ? '' : this.data.invoiceId,
-      buyType: this.data.card,
-      goodsTotalPrice: this.data.payType == 0 ? this.data.totalPrice : this.data.totalCard,
-      isInvoice: this.data.isInvoice,
-      orderDetails: this.data.orderDetails,
-      carNum: this.data.model.plateNum,
-      carId: this.data.model.carId,
-      userId: app.globalData.openId,
-      userName: app.globalData.userInfo.nickName,
-      userPhone: app.globalData.phoneNum
-    }).then(res => {
-      if (res.status === false) {
-        wx.showToast({
-          title: res.description
-        })
-      } else {
-        let that = this
-        let description = JSON.parse(res.result);
-        wx.requestPayment({
-          timeStamp: description.timeStamp,
-          nonceStr: description.nonceStr,
-          package: description.package,
-          signType: description.signType,
-          paySign: description.paySign,
-          success: (result) => {
-            let data = {}
-            data.id = description.outTradeNo,
-              data.data = 'success'
-            data.price = that.data.totalPrice
-            let model = encodeURIComponent(JSON.stringify(data))
-            wx.redirectTo({
-              url: `../success_order/index?data=${model}`
-            })
-          },
-          fail: () => {
-            let data = {}
-            data.id = description.outTradeNo,
-              data.data = 'fail'
-            let model = encodeURIComponent(JSON.stringify(data))
-            wx.redirectTo({
-              url: `../success_order/index?data=${model}`
-            })
-          },
-          complete: () => {}
-        });
-
-      }
-    })
+    if (this.data.flag!=false){
+      request.pay({
+        payType: this.data.payType, //0微信1金麦卡
+        carName: this.data.model.model,
+        shopId: this.data.shopId,
+        invoiceId: this.data.isInvoice === 0 ? '' : this.data.invoiceId,
+        buyType: this.data.card,
+        goodsTotalPrice: this.data.payType == 0 ? this.data.totalPrice : this.data.totalCard,
+        isInvoice: this.data.isInvoice,
+        orderDetails: this.data.orderDetails,
+        carNum: this.data.model.plateNum,
+        carId: this.data.model.carId,
+        userId: app.globalData.openId,
+        userName: app.globalData.userInfo.nickName,
+        userPhone: app.globalData.phoneNum
+      }).then(res => {
+        if (res.status === false) {
+          wx.showToast({
+            title: res.description
+          })
+        } else {
+          let that = this
+          let description = JSON.parse(res.result);
+          wx.requestPayment({
+            timeStamp: description.timeStamp,
+            nonceStr: description.nonceStr,
+            package: description.package,
+            signType: description.signType,
+            paySign: description.paySign,
+            success: (result) => {
+              let data = {}
+              data.id = description.outTradeNo,
+                data.data = 'success'
+              data.price = that.data.totalPrice
+              let model = encodeURIComponent(JSON.stringify(data))
+              wx.redirectTo({
+                url: `../success_order/index?data=${model}`
+              })
+            },
+            fail: () => {
+              let data = {}
+              data.id = description.outTradeNo,
+                data.data = 'fail'
+              let model = encodeURIComponent(JSON.stringify(data))
+              wx.redirectTo({
+                url: `../success_order/index?data=${model}`
+              })
+            },
+            complete: () => { }
+          });
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '密码输入错误',
+        duration:3000
+      })
+    }
+   
   },
   /**
    * 生命周期函数--监听页面显示

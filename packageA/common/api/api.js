@@ -6,14 +6,9 @@ export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0`
 export const IP_YBHTTP = `http://192.168.31.156:9015/wash/v1.0`
 export const IP_LYHTTP = `http://192.168.31.220:9015/myPay/v1.0`
+export const IP_XSHTTP = `https://39.97.167.237:9020/wash/1.0`
 export class store {
-  // banner图查询
-  findHome = () => {
-    return http.httpRequest({
-      url: `${IP_YXHTTP}/findHome`,
-      method: `get`
-    })
-  }
+
   // 获取门店详情
   findShopDet = (id) => {
     return http.httpRequest({
@@ -33,15 +28,15 @@ export class store {
   // 加入购物车
   addCart = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbcart/insertCart`,
+      url: `${IP_XSHTTP}/mcfwcbcart/insertCart`,
       method: `post`,
       data: model
     })
   }
-  // 查询购物车列表
+  // 购物车列表
   findcarList = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbcart/findCartListPageByUserId`,
+      url: `${IP_XSHTTP}/mcfwcbcart/findCartListPageByUserId`,
       method: `post`,
       data: model
     })
@@ -49,7 +44,7 @@ export class store {
   // 支付订单接口
   pay = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbpay/pay`,
+      url: `${IP_XSHTTP}/mcfwcbpay/pay`,
       method: `post`,
       data: model
     })
@@ -73,7 +68,7 @@ export class store {
   // 订单详情
   findOrderDetailsByOrderId = (model) => {
     return http.httpRequest({
-      url: `${IP_YXHTTP}/mcfwcborder/findOrderDetailsByOrderId`,
+      url: `${IP_MYHTTP}/mcfwcborder/findOrderDetailsByOrderId`,
       method: `post`,
       data: model
     })
@@ -110,6 +105,14 @@ export class store {
       data: model
     })
   }
+  // 校验密码
+  passCheck = (model) => {
+    return http.httpRequest({
+      url: `${IP_LYHTTP}/passCheck`,
+      method: `post`,
+      data: model
+    })
+  }
   // 查看是否有卡
   findCard = (model) => {
     return http.httpRequest({
@@ -142,7 +145,7 @@ export class store {
       data: model
     })
   }
-  // 订单详情消费记录
+  // 订单详情
   cardDetCon = (model) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/cardDetCon`,
@@ -151,9 +154,33 @@ export class store {
     })
   }
   //评价列表
-  selectWashCarComment=(model)=>{
+  selectWashCarComment = (model) => {
     return http.httpRequest({
       url: `${IP_YBHTTP}/selectWashCarComment`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 消费记录
+  cardDetConOrder = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/cardDetConOrder`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 全部门店
+  findOrderShop = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findOrderShop`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 全部门店
+  cardDetShop = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/cardDetShopQ`,
       method: `post`,
       data: model
     })

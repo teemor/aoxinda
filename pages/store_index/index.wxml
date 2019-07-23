@@ -42,14 +42,14 @@
     </view>
     <view class="fl fz30 grey">
       <view class="fl loc_img">
-        <image src="../../common/img/location.png" />
+        <image src="../../common/image/location.png" />
       </view>
       <view class="fl" bindtap="locationChoose" style="width:350rpx;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{location==''?'请选择您的当前位置':location}}</view>
     </view>
     <view class="fr grey fz26" bindtap="storeList">
       <view class="fl">全部</view>
       <view class="fl all_img">
-        <image src="../../common/img/all.png" />
+        <image src="../../common/image/all.png" />
       </view>
     </view>
   </view>

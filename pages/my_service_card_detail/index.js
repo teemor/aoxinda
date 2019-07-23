@@ -1,4 +1,4 @@
-// pages/my_card_detail/index.js
+0// pages/my_card_detail/index.js
 import { store } from '../../common/api/clean_api'
 import QR from '../../utils/qrcode.js'
 const app = getApp();
@@ -18,7 +18,12 @@ Page({
     serverInfo: [],
     payInfo: []
   },
-
+  // 全部门店
+  myStore:function(){
+    wx.navigateTo({
+      url: `../../packageA/pages/apply_store_list/index?cardid=${this.data.cardId}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -27,6 +32,15 @@ Page({
 
     if (options.id) {
       let model = JSON.parse(options.id)
+      this.setData({
+        cardId:model.id
+      })
+      request.cardDetCon({ pageSize: 5, pageIndex: 1, cardId: model.id }).then(res => {
+        this.setData({
+          consumption: res.data
+        })
+        console.log(res)
+      })
       //获取卡包详情
       request.cardDet({
         actCardType: model.actCardType,
@@ -41,10 +55,8 @@ Page({
             _date = date.getDate().toString().length > 1 ? date.getDate() : '0' + date.getDate()
           res.data[0].end_use_at = `${date.getFullYear()}.${month}.${_date}`
           that.setData({
-            cardInfo: res.data[0],
-            shareInfo: res.data[0].activity_id,
-            serverInfo: res.serverData,
-            payInfo: res.payData
+            shop: res.shopList,
+           cardDet:res.data[0]
           })
           var size = this.setCanvasSize(); //动态设置画布大小
           this.createQrCode(that.data.shareInfo.toString(), "canvas", size.w, size.h);
@@ -56,47 +68,7 @@ Page({
           })
         }
       })
-      //获取门店
-      request.selectShopList().then(res => {
-        if (res.data && res.data.length > 0) {
-          let arr, oldData = res.data.map(n => {
-            return {
-              name: n.NAME,
-              address: n.ADDRESS,
-              phone: n.TEL,
-              coordinate: {
-                latitude: n.LAT,
-                longitude: n.LOG,
-              },
-            }
-          });
-          wx.getLocation({
-            type: 'gcj02',
-            success(res) {
-              arr = oldData.map(n => {
-                let km = that.getDistance(n.coordinate.latitude, n.coordinate.longitude, res.latitude, res.longitude)
-                n.distance = km;
-                n.time = Math.round(km / 50 * 60 * 100) / 100;
-                return n
-              })
-              that.setData({
-                store: arr
-              })
-            },
-            fail(res) {
-              arr = oldData.map(n => {
-                n.distance = '--';
-                n.time = '--';
-                return n
-              })
-              that.setData({
-                store: arr
-              })
-            }
-          })
-        }
-      })
-    }
+    }  
   },
 
   //适配不同屏幕大小的canvas

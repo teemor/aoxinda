@@ -49,41 +49,56 @@
       {{item.name}}
     </view>
     <view style="height:40rpx"></view>
-    <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>
+    <view bindtap="wxPayShow" class="fz30 bg_orange bottom_btn">关闭</view>
   </view>
 </manager>
-<manager show="{{trueGold}}" type="center" bind:clickMask="wxPayShow">
-  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
-    <view>
-      <view class="fl high70 fz30">请输入金麦卡支付密码</view>
-      <view class="fr"></view>
+<manager show="{{trueGold}}" type="center" bind:clickMask="wxGlodShow">
+  <view class="bgwhite" style="width:600rpx;position:relative;z-index:333;padding-bottom:100rpx">
+    <view class="cl br" style="height:90rpx;">
+      <view class="fl high80 fz30" style="margin-left:30rpx">请输入金麦卡支付密码</view>
+      <view class="fr shop_close" bindtap="wxGlodShow" style=" margin-top:30rpx;">
+        <image src="../../../common/image/close.png" />
+      </view>
     </view>
-    <view class="red fz32">{{totalCard}}</view>
-    <view style="height:40rpx">
-      <input class='input-radius' />
-    </view>
-    <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">支付</view>
+    <view class="cl red fz40 high80 tc"><span class="fz26">¥</span>{{totalCard}}</view>
+    <form bindsubmit="pwdSubmit">
+      <view style="height:120rpx;margin-left:50rpx;">
+        <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="2" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="3" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="4" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="5" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="6" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+      </view>
+      <view bindtap="setPwd">
+        <button form-type="submit" class="cl fz30 bg_orange bottom_btn">支付</button>
+      </view>
+    </form>
   </view>
 </manager>
-<manager show="{{falseGold}}" type="center" bind:clickMask="wxPayShow">
+<manager show="{{falseGold}}" type="center" bind:clickMask="wxPwdShow">
   <view class="bgwhite" style="width:600rpx;position:relative;z-index:333;padding-bottom:100rpx">
     <view class="br high70" style="padding:30rpx;">
       <view class="fl  fz30">设置支付密码</view>
-      <view class="fr">x</view>
+       <view class="fr shop_close" bindtap="wxPwdShow">
+        <image src="../../../common/image/close.png" />
+      </view>
     </view>
     <form bindsubmit="formSubmit">
-      <view>
+      <view style="padding:0 30rpx">
         <view class="cl grey fz24" style="height:80rpx;line-height:80rpx">
           为了保障安全，使用金麦卡请先设置支付密码
         </view>
-        <view class="cl br" style="height:60rpx">请输入 {{phone}}的验证码
+        <view class="cl br fz28" style="height:60rpx">请输入 {{phone}}的验证码
         </view>
-        <view class="cl" style="height:80rpx">
-        <view class="fl"> <input name="7" class="input-code tc fl" type="number"  maxlength="4" /></view>
-        <view class="fr" bindtap="btnCode">获取验证码</view>
+        <view class="cl br" style="height:80rpx;margin-top:20rpx;margin-left:20rpx">
+          <view class="fl">
+            <input name="7" class="input-code tc fl fz28" type="number" maxlength="4" placeholder="请输入验证码" placeholder-class="fz28"/>
+          </view>
+          <view class="fr orange fz28" bindtap="btnCode">{{codeBtn}}</view>
         </view>
-        <view class="cl">请输入6位数字密码</view>
-        <view class="cl" style="height:90rpx;">
+        <view class="cl high80 fz28" >请输入6位数字密码</view>
+        <view class="cl" style="height:90rpx;margin-left:20rpx">
           <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
           <input name="2" class="input-radius tc fl" type="number" password="true" maxlength="1" />
           <input name="3" class="input-radius tc fl" type="number" password="true" maxlength="1" />
@@ -92,7 +107,7 @@
           <input name="6" class="input-radius tc fl" type="number" password="true" maxlength="1" />
         </view>
       </view>
-      <view bindtap="setPwd" >
+      <view bindtap="setPwd">
         <button form-type="submit" class="cl fz30 bg_orange bottom_btn">确认</button>
       </view>
     </form>

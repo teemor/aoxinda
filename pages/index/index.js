@@ -156,8 +156,8 @@ Page({
     // wx.navigateTo({
     //   url: '../../pages/car_beauty/index',
     // })
-    wx.navigateTo({
-      url: '../../packageA/pages/index/index',
+    wx.switchTab({
+      url: '../store_index/index',
     })
   },
   // 车保养

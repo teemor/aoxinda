@@ -62,6 +62,26 @@ export class store {
       data: model
     })
   }
+  cardDetCon = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/cardDetCon`,
+      method: `post`,
+      data: model
+    })
+  }
+  // banner图查询
+  findHome = () => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findHome`,
+      method: `get`
+    })
+  }
+  findOrderShop = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findOrderShop`,
+      method: `post`,
+      data: model
+    })
+  }
   
-
 }

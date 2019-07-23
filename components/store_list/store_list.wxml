@@ -20,7 +20,7 @@
           </van-tag>
         </view>
         </view>
-        <view class="cl"  bindtap="serviceDetail" wx:if="{{service!=false}}">
+        <view class="cl"  bindtap="serviceDetail">
           <view class="fl bg_orange" style="margin-top:25rpx;width:10rpx;height:10rpx;border-radius:50rpx">
          
           </view>

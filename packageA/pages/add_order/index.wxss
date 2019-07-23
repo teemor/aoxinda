@@ -2,15 +2,24 @@ page {
   min-height: 100%;
   background-color: #f3f3f3;
 }
-
+.fz40{
+  font-size: 40rpx
+}
 .input-radius {
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
   border: 2rpx solid #f1f1f1;
   text-align: center;
-  margin-right: 10rpx;
+  margin-right: 22rpx;
 }
-
+.shop_close {
+ 
+}
+.bottom_btn {
+  width:80%;
+  margin-left:10%;
+  border-radius: 50rpx
+}
 button {
   border: 0;
   background: #fff;
@@ -31,7 +40,7 @@ button::after {
 .input-code {
   width: 200rpx;
   height: 50rpx;
-  border: 2rpx solid #f1f1f1;
+  /* border: 2rpx solid #f1f1f1; */
   text-align: center;
   margin-right: 10rpx;
 }

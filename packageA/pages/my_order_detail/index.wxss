@@ -34,7 +34,7 @@ page{
     margin-top:10rpx;
     background: #fff;
     padding: 30rpx;
-    height:200rpx;
+    height:380rpx;
 }
 .order_detail_bg{
     position: relative;
@@ -74,4 +74,12 @@ page{
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 46rpx;
+}
+.grey{
+  color:#727272
+}
+.my_order_list_image image {
+  margin-right: 10rpx;
+  width: 140rpx;
+  height: 140rpx;
 }

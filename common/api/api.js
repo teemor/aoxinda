@@ -6,6 +6,7 @@
 import {
   HttpServer
 } from "../../utils/method"
+// import { IP_LYHTTP } from "../../packageA/common/api/api";
 const http = new HttpServer()
 export const IP_HTTP = `https://192.168.31.156:8081`
 // export const IP_yt = `http://192.168.31.76:9015`
@@ -17,17 +18,17 @@ export const IP_IMG = `http://192.168.31.75:9014`
 // export const IP_YXHTTP = `http://192.168.31.158:9015/scm/v1.0` //前三
 export const IP_WBHTTP = `https://www.maichefu.cn:444/mcf/api/v1/c` // 后两
 export const IP_YXHTTP = `https://www.maichefu.cn:9015/scm/v1.0` //前三
-export const WB_WX =`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
+export const WB_WX = `https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
 // export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
 export const IP_YBHTTP = `http://192.168.31.156:9015`
 export class Technician {
   // 登录查询
-  loginQuery=(user)=>{
+  loginQuery = (user) => {
     return http.httpRequest({
-      url:`https://www.maichefu.cn:444/mcf/api/v1/c/login/query`,
-      method:`post`,
-      data:user
+      url: `https://www.maichefu.cn:444/mcf/api/v1/c/login/query`,
+      method: `post`,
+      data: user
     })
   }
   // 登录
@@ -38,7 +39,7 @@ export class Technician {
     })
   }
   // 登录
-  query = () =>{
+  query = () => {
     return http.httpRequest({
       url: `${HTTP}/http://192.168.31.75:4444/mcf/api/v1/c/login/query`
     })
@@ -320,7 +321,7 @@ export class Technician {
     })
   }
   // 取消订单
-  canOrder = (model)=>{
+  canOrder = (model) => {
     return http.httpRequest({
       url: `${IP_YTHTTP}/appapi/v1.0/order/updateOrderStatus`,
       method: `post`,
@@ -361,11 +362,11 @@ export class Technician {
     })
   }
   // 保存车型
-  saveCar = (model) =>{
+  saveCar = (model) => {
     return http.httpRequest({
-      url:`${IP_WBHTTP}/add/car/save`,
-      method:`post`,
-      data:model
+      url: `${IP_WBHTTP}/add/car/save`,
+      method: `post`,
+      data: model
     })
   }
   // 人气推荐
@@ -383,43 +384,43 @@ export class Technician {
     })
   }
   // 上传图片
-  chooseImage = (img)=>{
+  chooseImage = (img) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/upload`,
-      method:`post`,
-      data:img
+      url: `${IP_YTHTTP}/appapi/v1.0/upload`,
+      method: `post`,
+      data: img
     })
   }
   // 获取openid
-  getOpenid = (code)=>{
+  getOpenid = (code) => {
     return http.httpRequest({
-      url:`${IP_YTHTTP}/appapi/v1.0/getOpenId?code=${code}`,
-      method:`post`
+      url: `${IP_YTHTTP}/appapi/v1.0/getOpenId?code=${code}`,
+      method: `post`
     })
   }
 
-// 设置默认车型
-  updateDef = (model) =>{
+  // 设置默认车型
+  updateDef = (model) => {
     return http.httpRequest({
       url: `${IP_WBHTTP}/updateDef`,
-      method:`post`,
-      data:model
+      method: `post`,
+      data: model
     })
   }
   // 修改车型
-  updateCar = (model) =>{
+  updateCar = (model) => {
     return http.httpRequest({
       url: `${IP_WBHTTP}/updateCar`,
-      method:`post`,
-      data:model
+      method: `post`,
+      data: model
     })
   }
   // 删除车型
-  deleteCar = (model) =>{
+  deleteCar = (model) => {
     return http.httpRequest({
       url: `${IP_WBHTTP}/deleteCar`,
-      method:`post`,
-      data:model
+      method: `post`,
+      data: model
     })
   }
   //邀请人数量
@@ -468,6 +469,14 @@ export class Technician {
   selectComment = (model) => {
     return http.httpRequest({
       url: `${IP_YBHTTP}/comment/v1.0/selectConsumeComment`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 搜索
+  findSearch = (model) => {
+    return http.httpRequest({
+      url: `http://192.168.31.158:9015/appapi/v1.0/product/app/selectGoodsList`,
       method: `post`,
       data: model
     })
