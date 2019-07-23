@@ -18,7 +18,16 @@ Page({
     shareInfo: null,
     store: [],
     serverInfo: [],
-    payInfo: []
+    payInfo: [],
+    commentList: [], //评论
+    load: true,
+    loading: false,//加载动画的显示
+    commentForm: {
+      "pageIndex": 1,
+      "pageSize": 10,
+      "activity_id": ""
+    },
+    tabIndex: 0   //当前tabs页签下标
   },
   buyCard:function(){
     let model = encodeURIComponent(JSON.stringify(this.data.cardModel))
@@ -40,6 +49,9 @@ Page({
     console.log(options,'options')
     if (options.actId) {
       let model = JSON.parse(options.actId)
+      that.setData({
+        ["commentForm.activity_id"]: model.id
+      })
       //获取卡包详情
       request.findPayType({
         log:app.globalData.longitude,
@@ -138,5 +150,57 @@ Page({
     s = Math.round(s * 10000) / 10000;
     s = s.toFixed(2) //保留两位小数(公里/km)
     return s
+  },
+  //洗车评价
+  washCarComment: function (model) {
+    request.selectWashCarComment(model).then(res => {
+      if (res.status == '200') {
+        this.setData({
+          commentList: res.data.consumeCommentList
+        })
+      }
+    })
+  },
+  //tab点击事件
+  tabClick(event) {
+    this.setData({
+      tabIndex: event.detail.index,
+      ["commentForm.pageIndex"]: 1
+    });
+    this.washCarComment(this.data.commentForm);
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this;
+    if (that.data.load && that.data.tabIndex == 2) {//全局标志位，方式请求未响应时多次触发
+      that.setData({
+        ["commentForm.pageIndex"]: that.data.commentForm.pageIndex * 1 + 1,
+        load: false,
+        loading: true//加载动画的显示
+      })
+      request.selectWashCarComment(that.data.commentForm).then(res => {
+        if (res.status == '200' && res.data.consumeCommentList.length > 0) {
+          var content = that.data.commentList.concat(res.data.consumeCommentList)//将返回结果放入content
+          that.setData({
+            commentList: content,
+            load: true,
+            loading: false
+          })
+        } else {
+          that.setData({
+            loading: false,
+            load: true
+          })
+          wx.showToast({
+            title: '没有更多数据',
+            icon: 'none',
+            duration: 2000,
+          })
+        }
+      })
+    }
   }
 })

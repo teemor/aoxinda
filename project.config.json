@@ -452,10 +452,16 @@
 					"scene": null
 				},
 				{
+<<<<<<< HEAD
 					"id": 57,
 					"name": "填写银行卡信息",
 					"pathName": "pages/choose_bank/index",
 					"query": "",
+=======
+					"id": -1,
+					"name": "服务详情",
+					"pathName": "packageA/pages/service_detail/index",
+>>>>>>> 8c233b38096ac87e8820f34ce6399baac8f7be0d
 					"scene": null
 				}
 			]
