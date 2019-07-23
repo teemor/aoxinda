@@ -5,6 +5,7 @@ import {
 const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
+export const RECORD_HTTP = `http://192.168.31.158:9015/wash/v1.0` //YJQ 金麦卡消费、退款、充值列表
 export class store {
   // 获取保养类型
   findShopList = (model) => {
@@ -83,5 +84,28 @@ export class store {
       data: model
     })
   }
-  
+  //获取消费列表
+  obtainConsumptionList = (params) => {
+    return http.httpRequest({
+      url: `${RECORD_HTTP}/cardUserRecQ`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //获取退款列表
+  obtainRefundList = (params) => {
+    return http.httpRequest({
+      url: `${RECORD_HTTP}/retCardList`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //获取充值列表
+  rechargeList = (params) => {
+    return http.httpRequest({
+      url: `${RECORD_HTTP}/cardUserTraQ`,
+      method: `POST`,
+      data: params
+    })
+  }
 }

@@ -1,7 +1,9 @@
 import { CardHttp } from '../../common/api/card_api'
+import { store } from '../../common/api/clean_api'
 import QR from '../../utils/qrcode.js'
 import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 const request = new CardHttp
+const detail_request = new store
 let that
 Page({
   /**
@@ -91,7 +93,7 @@ Page({
           })
         }
       })
-      request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then( res =>{
+      detail_request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then( res =>{
         that.setData({
           payInfo : res.data,
           expense_total:res.total
@@ -99,7 +101,7 @@ Page({
         console.log("消费记录",res)
       })
       
-      request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
+      detail_request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
         that.setData({
           refundInfo : res.data,
           refund_total : res.total
@@ -107,7 +109,7 @@ Page({
         console.log("退款记录", res)
       })
 
-      request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
+      detail_request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": options.card_id }).then(res => {
         that.setData({
           rechargeInfo: res.data,
           recharge_total: res.total
@@ -119,7 +121,7 @@ Page({
   onShow(){
     this.data.recharge.card_id = this.data.card_id
     this.data.recharge.pageSize = 10
-    request.rechargeList(this.data.recharge).then(res => {
+    detail_request.rechargeList(this.data.recharge).then(res => {
       that.setData({
         rechargeInfo: res.data
       })
@@ -134,7 +136,7 @@ Page({
       })
       this.data.expense.card_id = this.data.card_id
       this.data.expense.pageSize += 10
-      request.obtainConsumptionList(this.data.expense).then(res => {
+      detail_request.obtainConsumptionList(this.data.expense).then(res => {
         console.log(this.data.expense)
         that.setData({
           payInfo: res.data
@@ -147,7 +149,7 @@ Page({
       })
       this.data.refund.card_id = this.data.card_id
       this.data.refund.pageSize += 10
-      request.obtainRefundList(this.data.refund).then(res => {
+      detail_request.obtainRefundList(this.data.refund).then(res => {
         that.setData({
           refundInfo: res.data
         })
@@ -159,7 +161,7 @@ Page({
       })
       this.data.recharge.card_id = this.data.card_id
       this.data.recharge.pageSize += 10
-      request.rechargeList(this.data.recharge).then(res => {
+      detail_request.rechargeList(this.data.recharge).then(res => {
         that.setData({
           rechargeInfo: res.data
         })
@@ -189,7 +191,7 @@ Page({
         })
       }
     })
-    request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+    detail_request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
       that.setData({
         payInfo: res.data,
         expense_total: res.total
@@ -199,7 +201,7 @@ Page({
 
     })
 
-    request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+    detail_request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
       that.setData({
         refundInfo: res.data,
         refund_total: res.total
@@ -208,7 +210,7 @@ Page({
       console.log("退款记录", res)
     })
 
-    request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+    detail_request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
       that.setData({
         rechargeInfo: res.data,
         recharge_total: res.total
