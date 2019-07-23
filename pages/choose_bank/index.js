@@ -11,19 +11,19 @@ Page({
       background:"../../common/image/gold_card_bg.png"
     }, {
         src: "../../common/image/gold_card_bg.png",
-        text: "建设银行",
+        text: "工商银行",
         background: "../../common/image/gold_card_bg.png"
       }, {
         src: "../../common/image/gold_card_bg.png",
-        text: "建设银行",
+        text: "北京银行",
         background: "../../common/image/gold_card_bg.png"
       }, {
         src: "../../common/image/gold_card_bg.png",
-        text: "建设银行",
+        text: "农业银行",
         background: "../../common/image/gold_card_bg.png"
       },{
         src: "../../common/image/gold_card_bg.png",
-        text: "建设银行",
+        text: "浦发银行",
         background: "../../common/image/gold_card_bg.png"
       }],
     title_close:false

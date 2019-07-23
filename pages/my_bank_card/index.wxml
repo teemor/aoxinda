@@ -1,12 +1,16 @@
 <!--pages/my_bank_card/index.wxml-->
-<view class="add_bank no_card {{add_bank == '0' ?'add_bank_show':''}}">
-  <view class='no_card_image'><image src="../../common/image/my_refund.png" /></view>
+<view class="add_bank no_card {{add_bank == '0' ?'add_bank_show':''}}" style='background-image:url(../../common/image/no_add_card.png)'>
   <view class='no_card_title'>您还没有添加银行卡</view>
-  <view class='no_card_title'>目前仅支持支付过程中绑卡</view>
+  <view class='no_card_title_gray'>目前仅支持支付过程中绑卡</view>
 </view>
 <view class="add_bank have_card {{add_bank == '1' ?'add_bank_show':''}}">
-  <view class='have_card_list' wx:for="{{cardList}}" wx:key="{{item}}"></view>
+  <view class='have_card_list' wx:for="{{cardList}}" wx:key="{{item}}" style='background-image:url({{item.path}})'>
+    <view class='card_logo'><image src='{{item.logo}}'></image></view>
+    <view class='card_name'>{{item.name}}</view>
+    <view class='card_type'>{{item.type}}</view>
+    <view class='card_number'>{{item.card_number}}</view>
+  </view>
   <view class='add_card' bindtap='addBankCard'>
-    <view class='add_card_title'><text class='add'>+</text>添加银行卡</view>
+    <view class='add_card_title' style='background-image:url(../../common/image/add_card.png)'><image src='../../common/image/add_bank_card_log.png'></image>添加银行卡</view>
   </view>
 </view>
