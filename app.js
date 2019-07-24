@@ -11,7 +11,8 @@ App({
     options:'',
     carType:'',
     longitude:'',
-    latitude:''
+    latitude:'',
+    globalFormIds:''
   },
   address:'',
   appid: "wx97a3505497150b66",
@@ -126,6 +127,7 @@ App({
     }
     //掉接口传formids
    console.log(formIds,'formIDs')
+    this.globalData.globalFormIds = formIds
   },
   loadWeatherData: function() {
     var citySelected = wx.getStorageSync('citySelected') || [];

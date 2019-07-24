@@ -6,6 +6,7 @@ const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
 export const RECORD_HTTP = `http://192.168.31.158:9015/wash/v1.0` //YJQ 金麦卡消费、退款、充值列表
+export const IP_HTTP_TOPUP = `http://192.168.31.220:9014/balance/v1.0` //YJQ储值卡充值消息推送
 export class store {
   // 获取保养类型
   findShopList = (model) => {
@@ -104,6 +105,14 @@ export class store {
   rechargeList = (params) => {
     return http.httpRequest({
       url: `${RECORD_HTTP}/cardUserTraQ`,
+      method: `POST`,
+      data: params
+    })
+  }
+  // 储值卡充值推送
+  payCardTopUp = (params) => {
+    return http.httpRequest({
+      url: `${IP_HTTP_TOPUP}/afterRechargeRemind`,
       method: `POST`,
       data: params
     })

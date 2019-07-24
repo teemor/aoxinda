@@ -179,7 +179,9 @@ width:80%;
 .card_item {
   background-color: #fff;
 }
-
+.title_bg_box{
+  position: relative;
+}
 .card_item .title_bg {
   width: 135rpx;
   height: 8rpx;

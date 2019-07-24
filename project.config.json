@@ -9,29 +9,20 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
 		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.5",
 	"appid": "wx97a3505497150b66",
-	"projectname": "aoxinda",
+	"projectname": "%E9%BA%A6%E8%BD%A6%E6%9C%8D",
+	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -46,7 +37,6 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -452,16 +442,10 @@
 					"scene": null
 				},
 				{
-<<<<<<< HEAD
 					"id": 57,
 					"name": "填写银行卡信息",
-					"pathName": "pages/choose_bank/index",
+					"pathName": "pages/stored_value_info/index",
 					"query": "",
-=======
-					"id": -1,
-					"name": "服务详情",
-					"pathName": "packageA/pages/service_detail/index",
->>>>>>> 8c233b38096ac87e8820f34ce6399baac8f7be0d
 					"scene": null
 				}
 			]
