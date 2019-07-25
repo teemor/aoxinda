@@ -10,10 +10,10 @@
                 <text class='name s_grey'>{{item.conTime}}</text>
               </view>
               <view class='fr'>
-                <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}">
+                <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}">
                   查看评价
                 </text>
-                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-cardid="{{item.cardId}}" data-cardtype="{{item.cardType}}" data-cardnum="{{item.cardNum}}" data-ordercode="{{item.orderCode}}">
+                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-ordercode="{{item.cardType == '2' ? item.orderCode : item.cardNum}}" data-shopid="{{item.shopId}}">
                   评价晒单
                 </text>
               </view>
@@ -21,8 +21,8 @@
             <view class='bottom fz28'>
               <view class='title'>
                 <text class='fl dark_grey'>服务明细</text>
-                <text class='fr s_grey' wx:if="{{item.cardType == '2'}}">卡号：{{item.cardNum}}</text>
-                <text class='fr s_grey' wx:else>订单：{{item.orderCode}}</text>
+                <text class='fr s_grey' wx:if="{{item.cardType == '2'}}">订单：{{item.orderCode}}</text>
+                <text class='fr s_grey' wx:else>卡号：{{item.cardNum}}</text>
               </view>
               <view class='service s_grey'>
                 <view class='name' wx:for="{{item.serName}}" wx:for-item="serName" wx:key="{{serName}}">

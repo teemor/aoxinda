@@ -37,8 +37,18 @@
   <van-tab title="消费记录">
     <view wx:for="{{consumption}}" wx:key="{{item}}" class="bgwhite" style="padding:30rpx">
       <view>
-        <view class="fz26 high50">{{item.shopName}}</view>
-        <view class="fz24 grey high50">{{item.conTime}}</view>
+        <view class="fz26 high50 flwidth">{{item.shopName}}</view>
+        <view class="fz24 grey high50 flwidth">{{item.conTime}}</view>
+
+        <view class='fr fz26 comment'>
+          <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.con}}">
+            查看评价
+          </text>
+          <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.con}}" data-ordercode="{{item.cardNum}}" data-shopid="{{item.shopId}}">
+            评价晒单
+          </text>
+        </view>
+
         <view class="fz28" wx:for="{{item.con}}" wx:key="{{item}}" style="background:#fcfcfc;padding:30rpx;width:640rpx;height:140rpx;border-radius:20rpx">
           <view class="fz28 high50">{{item.actName}}
             <span class="orange">{{item.conNum}}</span>次</view>
