@@ -245,3 +245,20 @@ page {
   font-size: 24rpx;
   color: #999;
 }
+.bgwhite .flwidth{
+  width: 75%;
+}
+.bgwhite .comment{
+  height: 120rpx;
+  width: 25%;
+  line-height: 100rpx;
+}
+.bgwhite .comment .button{
+  display: inline-block;
+  padding: 0rpx 25rpx;
+  border: 1rpx solid #4e93f3;
+  border-radius: 37rpx;
+  height: 58rpx;
+  line-height: 20rpx;
+  color: #4e93f3;
+}

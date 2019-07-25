@@ -35,12 +35,12 @@ Page({
       this.setData({
         cardId:model.id
       })
-      request.cardDetCon({ pageSize: 5, pageIndex: 1, cardId: model.id }).then(res => {
-        this.setData({
-          consumption: res.data
-        })
-        console.log(res)
-      })
+      // request.cardDetCon({ pageSize: 5, pageIndex: 1, cardId: model.id }).then(res => {
+      //   this.setData({
+      //     consumption: res.data
+      //   })
+      //   console.log(res)
+      // })
       //获取卡包详情
       request.cardDet({
         actCardType: model.actCardType,
@@ -69,6 +69,17 @@ Page({
         }
       })
     }  
+  },
+
+  onShow: function(){
+    if (this.data.cardId){
+      request.cardDetCon({ pageSize: 5, pageIndex: 1, cardId: this.data.cardId }).then(res => {
+        this.setData({
+          consumption: res.data
+        })
+        console.log(res)
+      })
+    }
   },
 
   //适配不同屏幕大小的canvas
@@ -147,5 +158,22 @@ Page({
     s = Math.round(s * 10000) / 10000;
     s = s.toFixed(2) //保留两位小数(公里/km)
     return s
+  },
+  /**
+   * 进入评价页面
+   */
+  goEvaluate: function (e) {
+    let relation_lists = [];
+    let sers = e.currentTarget.dataset['sers'];
+    for (let i in sers) {
+      relation_lists.push(sers[i].conId);
+    }
+    let urlPath = "../my_evaluate_record/index?ordercode=" + e.currentTarget.dataset['ordercode'] + "&shopid=" + e.currentTarget.dataset['shopid'] + "&";
+    if (e.currentTarget.dataset['status'] == 1) {
+      urlPath = "../my_evaluate_show/index?";
+    }
+    wx.navigateTo({
+      url: urlPath + 'relation_lists=' + relation_lists
+    });
   }
 })

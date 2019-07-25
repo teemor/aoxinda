@@ -181,12 +181,7 @@ Page({
       })
     } else if (options.ids) {
       this.selectIdDetail(options.ids)
-      request.cardDetConOrder({pageSize:5,pageIndex:1,orderId:options.ids}).then(res=>{
-        this.setData({
-          consumption:res.data
-        })
-        console.log(res)
-      })
+      
       this.setData({
         id: options.ids
       })
@@ -220,6 +215,12 @@ Page({
       })
       this.selectOrderDetail(this.data.id)
     }
+    request.cardDetConOrder({ pageSize: 5, pageIndex: 1, orderId: this.data.id }).then(res => {
+      this.setData({
+        consumption: res.data
+      })
+      console.log(res)
+    })
   },
   /**
    * 进入评价页面
