@@ -220,5 +220,22 @@ Page({
       })
       this.selectOrderDetail(this.data.id)
     }
+  },
+  /**
+   * 进入评价页面
+   */
+  goEvaluate: function (e) {
+    let relation_lists = [];
+    let sers = e.currentTarget.dataset['sers'];
+    for (let i in sers) {
+      relation_lists.push(sers[i].conId);
+    }
+    let urlPath = "../../../pages/my_evaluate_record/index?ordercode=" + e.currentTarget.dataset['ordercode'] + "&shopid=" + e.currentTarget.dataset['shopid'] + "&";
+    if (e.currentTarget.dataset['status'] == 1) {
+      urlPath = "../../../pages/my_evaluate_show/index?";
+    }
+    wx.navigateTo({
+      url: urlPath + 'relation_lists=' + relation_lists
+    });
   }
 })

@@ -30,8 +30,9 @@ Page({
       "detail_id": "",
       "content": "",
       "file_lists": [],
-      "card_type": 0, //订单类型：2单次服务3不计次数4月月卡
-      "order_code": "", //订单编号/卡号
+      // "card_type": 0, //订单类型：2单次服务3不计次数4月月卡
+      // "order_code": "", //订单编号/卡号
+      "shop_id": "",  //门店id
       "user_name": "", //用户昵称
       "user_phone": "" //用户手机号
     }
@@ -47,9 +48,10 @@ Page({
       qualityData: this.data.sourceData,
       speedData: this.data.sourceData,
       ["form.relation_lists"]: options.relation_lists ? options.relation_lists.split(",") : [],
-      ["form.detail_id"]: options.cardId,
-      ["form.card_type"]: options.cardtype,
-      ["form.order_code"]: options.cardtype == "2" ? options.cardnum : options.ordercode
+      ["form.detail_id"]: options.ordercode,
+      ["form.shop_id"]: options.shopid
+      // ["form.detail_id"]: options.cardId,
+      // ["form.card_type"]: options.cardtype,
     })
   },
 
