@@ -172,52 +172,52 @@ Page({
   },
   //下拉刷新
   onPullDownRefresh: function (){
-    var that = this
-    request.selectPayCard({ card_id: this.data.card_id }).then(res => {
-      if (res.data && res.data.length > 0) {
-        console.log(res)
-        that.setData({
-          cardInfo: res.data[0],
-          shareInfo: res.data[0].card_no
-        })
+    // var that = this
+    // request.selectPayCard({ card_id: this.data.card_id }).then(res => {
+    //   if (res.data && res.data.length > 0) {
+    //     console.log(res)
+    //     that.setData({
+    //       cardInfo: res.data[0],
+    //       shareInfo: res.data[0].card_no
+    //     })
         
-        var size = this.setCanvasSize(); //动态设置画布大小
-        this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
-      } else {
-        wx.showToast({
-          title: '服务器错误',
-          icon: 'loading',
-          duration: 1500
-        })
-      }
-    })
-    detail_request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
-      that.setData({
-        payInfo: res.data,
-        expense_total: res.total
-      })
-      this.data.expense.pageSize = 10
-      console.log("消费记录", res)
+    //     var size = this.setCanvasSize(); //动态设置画布大小
+    //     this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
+    //   } else {
+    //     wx.showToast({
+    //       title: '服务器错误',
+    //       icon: 'loading',
+    //       duration: 1500
+    //     })
+    //   }
+    // })
+    // detail_request.obtainConsumptionList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+    //   that.setData({
+    //     payInfo: res.data,
+    //     expense_total: res.total
+    //   })
+    //   this.data.expense.pageSize = 10
+    //   console.log("消费记录", res)
 
-    })
+    // })
 
-    detail_request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
-      that.setData({
-        refundInfo: res.data,
-        refund_total: res.total
-      })
-      this.data.refund.pageSize = 10
-      console.log("退款记录", res)
-    })
+    // detail_request.obtainRefundList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+    //   that.setData({
+    //     refundInfo: res.data,
+    //     refund_total: res.total
+    //   })
+    //   this.data.refund.pageSize = 10
+    //   console.log("退款记录", res)
+    // })
 
-    detail_request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
-      that.setData({
-        rechargeInfo: res.data,
-        recharge_total: res.total
-      })
-      this.data.recharge.pageSize = 10
-      console.log("充值记录", res)
-    })  
+    // detail_request.rechargeList({ "pageSize": 10, "pageIndex": 1, "card_id": this.data.card_id }).then(res => {
+    //   that.setData({
+    //     rechargeInfo: res.data,
+    //     recharge_total: res.total
+    //   })
+    //   this.data.recharge.pageSize = 10
+    //   console.log("充值记录", res)
+    // })  
     
   },
   //消费详情

@@ -43,12 +43,12 @@ Page({
       this.setData({
         'pay.show': false
       })
-    if (this.data.pay.money >= this.min_pay) {
+    if (this.data.pay.money >= this.data.min_pay) {
         request.payCard({ price: this.data.pay.money, type: 1, account_id: this.data.account_id }).then((res) => {
-          this.setData({
-            'pay.show': false,
-            'pay.money': 0.00,
-          })
+          // this.setData({
+          //   'pay.show': false,
+          //   'pay.money': 0.00,
+          // })
           if (res.status === false) {
             wx.showToast({
               title: res.description
