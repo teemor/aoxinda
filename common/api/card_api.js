@@ -54,7 +54,7 @@ export class CardHttp {
   // 查询储值卡购买与充值
   payCard = (params) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/payCard`,
+      url: `http://192.168.31.77:9015/appapi/v1.0/payCard`,
       method: `POST`,
       data: params
     })

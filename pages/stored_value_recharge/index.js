@@ -14,7 +14,7 @@ Page({
   data: {
     pay: {
       show: false,
-      money: 0.01
+      money: 0
     },
     account_id:"",
     min_pay:0
@@ -43,7 +43,7 @@ Page({
       this.setData({
         'pay.show': false
       })
-    if (this.data.pay.money >= 0.01) {
+    if (this.data.pay.money >= this.min_pay) {
         request.payCard({ price: this.data.pay.money, type: 1, account_id: this.data.account_id }).then((res) => {
           this.setData({
             'pay.show': false,
@@ -63,7 +63,7 @@ Page({
               paySign: description.paySign,
               success: (res) => {
                 console.log('付款成功')
-                // ////////////////////////////////////////////////////////////////////////////
+                //充值成功消息推送
                 var app = getApp()
                 var getOpenId = app.globalData.openId
                 var obj = {
@@ -76,7 +76,6 @@ Page({
                 clean.payCardTopUp(obj).then((res) => {
                   console.log(res)
                 })
-                ////////////////////////////////////////////////////////////////////////////////
                 wx.navigateBack({
                   delta: 1
                 })

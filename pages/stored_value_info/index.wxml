@@ -44,10 +44,10 @@
     <van-tab title="服务详情" class="title_bg_box">
     <!-- <view slot="icon" mode="scaleToFill"  class='title_bg'></view>  -->
     </van-tab>
-    <van-tab title="　" class="title_bg_box" >
+    <van-tab title="" disabled class="title_bg_box" >
     <!-- <view slot="icon" mode="scaleToFill"  class='title_bg'></view>  -->
     </van-tab>
-    <van-tab title="　" class="title_bg_box">
+    <van-tab title="" disabled class="title_bg_box">
     <!-- <view slot="icon" mode="scaleToFill"  class='title_bg'></view>  -->
     </van-tab>
   </van-tabs>
