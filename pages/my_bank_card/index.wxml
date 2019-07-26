@@ -4,13 +4,19 @@
   <view class='no_card_title_gray'>目前仅支持支付过程中绑卡</view>
 </view>
 <view class="add_bank have_card {{add_bank == '1' ?'add_bank_show':''}}">
-  <view class='have_card_list' wx:for="{{cardList}}" wx:key="{{item}}" style='background-image:url({{item.path}})'>
+  <view class='have_card_list' wx:for="{{cardList}}" wx:key="{{item}}" style='background-image:url({{item.path}})' bindlongpress='longPress'>
     <view class='card_logo'><image src='{{item.logo}}'></image></view>
-    <view class='card_name'>{{item.name}}</view>
+    <view class='card_name'>{{item.bank}}</view>
     <view class='card_type'>{{item.type}}</view>
-    <view class='card_number'>{{item.card_number}}</view>
+    <view class='card_number'>{{item.cardNumber}}</view>
   </view>
+  
   <view class='add_card' bindtap='addBankCard'>
     <view class='add_card_title' style='background-image:url(../../common/image/add_card.png)'><image src='../../common/image/add_bank_card_log.png'></image>添加银行卡</view>
   </view>
 </view>
+<!-- <view class="delete {{deleat == true?'deleat':''}}">
+  <view class='popup'>
+    你确认要解绑这张银行卡吗？
+  </view>
+</view> -->

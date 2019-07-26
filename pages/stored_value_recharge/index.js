@@ -28,7 +28,6 @@ Page({
       account_id : options.id,
       min_pay: options.min_pay
     })
-    
   },
   //充值输入
   payValue(e) {

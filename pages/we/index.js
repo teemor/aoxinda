@@ -3,7 +3,11 @@ import login from '../../mixin/login'
 import {
   CardHttp
 } from '../../common/api/card_api'
+import {
+  store
+} from '../../common/api/clean_api'
 const request = new CardHttp
+const bankCard = new store
 Page({
   mixins: [login],
   data: {
@@ -79,9 +83,21 @@ Page({
   //跳转我的银行卡
   myBankCard(){
     var that = this
-    wx.navigateTo({
-      url: `../my_bank_card/index?card_id=${that.data.card_id}&min_pay=${that.data.min_pay}`
+    var app = getApp()
+    var getOpenId = app.globalData.openId
+    bankCard.bankCardSelect({ "emp_id": getOpenId}).then((res)=>{
+      if(res.data.length > 0){
+        wx.navigateTo({
+          // card_id=${ that.data.card_id } & min_pay=${ that.data.min_pay }
+          url: `../my_bank_card/index?add_bank=1`
+        })
+      }else{
+        wx.navigateTo({
+          url: `../my_bank_card/index?add_bank=0`
+        })      
+      }
     })
+    
   },
   myCar: function() {
     wx.navigateTo({

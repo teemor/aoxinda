@@ -2,7 +2,7 @@
 <view class="choose_bank_title {{title_close?'title_close':''}}">为了您的资金安全，只能绑定持卡人本人的储蓄卡 <view class='close' bindtap='close'>×</view></view>
 <view wx:for="{{card_list}}" wx:key="item" class='bank_list' >
 <!-- style='background-image:url({{item.background}})' -->
-  <navigator url='../fill_card_information/index?logo={{item.src}}&name={{item.text}}'>
+  <navigator url='../fill_card_information/index?logo={{item.src}}&name={{item.text}}&username={{username}}&userid={{userid}}'>
     <view class='bank_logo'><image src='{{item.src}}'></image></view>
     <view class='bank_name'>{{item.text}}</view>
     <view class='chose_bank'><image src='../../common/image/more.png'></image></view>

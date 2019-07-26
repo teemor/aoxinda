@@ -1,4 +1,8 @@
 // pages/fill_card_information/index.js
+import {
+  store
+} from '../../common/api/clean_api'
+const bankCardHttp = new store
 Page({
 
   /**
@@ -21,7 +25,9 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      card_information : options
+      card_information : options,
+      userName:options.username,
+      mobile:options.userid
     })
   },
   //银行卡
@@ -70,6 +76,7 @@ Page({
     }
   },
   onSubmit:function(){
+    var that = this
     var userName = this.data.userName
     var bankCard = this.data.bankCard
     var mobile = this.data.mobile
@@ -103,8 +110,13 @@ Page({
         icon: 'none',
         duration: 1500
       })
-      return false;
+      return false;userid
     }else{
+      var app = getApp()
+      var getOpenId = app.globalData.openId
+      bankCardHttp.bankCardSave({ "bank": that.data.card_information.name, "cardNumber": that.data.bankCard, "ownerName": that.data.userName, "empId": getOpenId, "identity_card": that.data.mobile, "cardType": "1", "type": 1}).then((res) => {
+        console.log(res)
+      })
       console.log("ok")
       wx.navigateBack({
         delta: 2
