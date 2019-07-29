@@ -5,6 +5,8 @@ import {
 const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
+export const IP_XSHTTP = `https://39.97.167.237:9020/wash/v1.0`
+
 export class store {
   // 获取保养类型
   findShopList = (model) => {
@@ -26,6 +28,22 @@ export class store {
   findOrderPage = (model) => {
     return http.httpRequest({
       url: `${IP_MYHTTP}/findOrderPage`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 订单列表（已取消+已退款）
+  findOrderPageCancel = (model) => {
+    return http.httpRequest({
+      url: `${IP_MYHTTP}/findOrderPageCancel`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 
+  findRefundByUserId = (model) => {
+    return http.httpRequest({
+      url: `http://192.168.31.186:9015/wash/v1.0/mcf-wcb-refund/findRefundByUserId`,
       method: `post`,
       data: model
     })
@@ -76,6 +94,7 @@ export class store {
       method: `get`
     })
   }
+  // 订单门店列表
   findOrderShop = (model) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/findOrderShop`,
@@ -83,5 +102,5 @@ export class store {
       data: model
     })
   }
-  
+
 }

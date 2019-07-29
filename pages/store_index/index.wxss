@@ -60,7 +60,6 @@ page {
 
 .loc_img {
   margin-left: 10rpx;
-  width: 30rpx;
   margin-top: 5rpx;
 }
 

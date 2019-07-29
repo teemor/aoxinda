@@ -35,7 +35,7 @@ module.exports = {
         longitude: longitude
       },
       success: function(res) {
-        console.log(res, 'rere');
+        console.log(that, 'rere');
         that.setData({
           centerAddressBean: res.result,
           location: res.result.formatted_addresses.recommend,

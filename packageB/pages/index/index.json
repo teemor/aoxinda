@@ -1,7 +1,6 @@
 {
-  "navigationBarTitleText": "退款/售后",
+  "navigationBarTitleText": "紧急救援",
   "usingComponents": {
-    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
     "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index"
   }

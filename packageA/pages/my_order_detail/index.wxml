@@ -17,7 +17,7 @@
 <view wx:if="model.statusName==='可消费'&&cartType='2'">
   <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
     <van-tab title="服务详情">
-      <view style="{{moreService==true?'':'height:890rpx'}}">
+      <view style="{{moreService==true?'':'max-height:895rpx'}}">
         <view class="cl " bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
           <view class="cl my_order_list_box">
             <view class="fl my_order_list_image" wx:if="{{item.cardType==2}}">

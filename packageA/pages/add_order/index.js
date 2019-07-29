@@ -23,23 +23,24 @@ Page({
     }],
     codeBtn: '获取验证码'
   },
+
   /**
    * 支付方式
    */
-  wxPayShow: function() {
+  wxPayShow: function () {
     this.setData({
       wxPay: !this.data.wxPay
     })
   },
-  wxPwdShow:function(){
+  wxPwdShow: function () {
     this.setData({
-      falseGold:false
+      falseGold: false
     })
   },
-  setPwd: function() {
+  setPwd: function () {
 
   },
-  payChoose: function(e) {
+  payChoose: function (e) {
     this.setData({
       payType: e.currentTarget.dataset.item.type
     })
@@ -64,7 +65,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  pwdSubmit: function(e) {
+  pwdSubmit: function (e) {
     let arr = ''
     for (let i = 1; i < 7; i++) {
       arr += e.detail.value[i]
@@ -79,23 +80,23 @@ Page({
       })
       if (res.state == 0) {
         this.setData({
-          flag:false
+          flag: false
         })
-      }else{
+      } else {
         this.setData({
-          trueGold:false,
-          flag:true
+          trueGold: false,
+          flag: true
         })
       }
       console.log(res, '校验密码')
     })
   },
-  wxGlodShow:function(){
+  wxGlodShow: function () {
     this.setData({
-      trueGold:false
+      trueGold: false
     })
   },
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     request.checkSms({
       phone: this.data.phoneNum,
       code: e.detail.value[7]
@@ -112,40 +113,40 @@ Page({
           id: app.globalData.openId
         }).then(res => {
           wx.showToast({
-            title:res.state,
-            duration:3000
+            title: res.state,
+            duration: 3000
           })
           this.setData({
-            falseGold:false
+            falseGold: false
           })
         })
-      } 
+      }
     })
 
 
   },
-  btnCode: function() {
+  btnCode: function () {
     let that = this
     let codeCount = 90
     that.setData({
-      codeBtn:`已发送${codeCount}秒`,
+      codeBtn: `已发送${codeCount}秒`,
     })
-    let initCode = setInterval(()=>{
-      if(codeCount===0){
-        that.setData({codeBtn:`重新获取`})
+    let initCode = setInterval(() => {
+      if (codeCount === 0) {
+        that.setData({ codeBtn: `重新获取` })
         clearInterval(initCode)
         return
-      }else{
-        that.setData({ codeBtn:`已发送${--codeCount}秒`})
+      } else {
+        that.setData({ codeBtn: `已发送${--codeCount}秒` })
       }
-    },1000)
+    }, 1000)
     request.sendSms({
       phone: that.data.phoneNum
     }).then(res => {
       console.log(res, 'res')
     })
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
 
     let phone = app.globalData.phoneNum
     console.log(phone, '电话')
@@ -237,7 +238,7 @@ Page({
 
     })
   },
-  numChange: function({
+  numChange: function ({
     detail
   }) {
     let num = detail.num
@@ -252,21 +253,23 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
-  addInvoice: function() {
+  addInvoice: function () {
     wx.navigateTo({
       url: '../my_order_invoice/index'
     })
   },
-  onChange: function(e) {
+  onChange: function (e) {
     this.setData({
       inCheck: e.detail
     })
   },
-  onSubmit: function() {
-    if (this.data.flag!=false){
+  paysubmit: function (e) {
+    console.log(e)
+    console.log('???')
+    if (this.data.flag != false) {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡
         carName: this.data.model.model,
@@ -282,6 +285,7 @@ Page({
         userName: app.globalData.userInfo.nickName,
         userPhone: app.globalData.phoneNum
       }).then(res => {
+        console.log(res,'res,,,')
         if (res.status === false) {
           wx.showToast({
             title: res.description
@@ -301,6 +305,9 @@ Page({
                 data.data = 'success'
               data.price = that.data.totalPrice
               let model = encodeURIComponent(JSON.stringify(data))
+              request.noticeSuccessfulPayment({payMoney:that.data.totalPrice,orderNum:res.orderNum,openid:app.globalData.openId,formid:e.detail.formId}).then(res=>{
+                console.log(res,'支付成功通知')
+              })
               wx.redirectTo({
                 url: `../success_order/index?data=${model}`
               })
@@ -318,18 +325,18 @@ Page({
           });
         }
       })
-    }else{
+    } else {
       wx.showToast({
         title: '密码输入错误',
-        duration:3000
+        duration: 3000
       })
     }
-   
+
   },
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     if (this.data.item) {
       this.setData({
         invoiceId: this.data.item,
@@ -341,35 +348,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

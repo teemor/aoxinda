@@ -12,6 +12,7 @@ export const IP_HTTP = `https://192.168.31.156:8081`
 // export const IP_yt = `http://192.168.31.76:9015`
 export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
+export const IP_SYHTTP = `http://192.168.31.77:9015/manage/v1.0/getRecommend`
 // export const IP_YTHTTP = `http://192.168.31.76:9015`
 // export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
 // export const IP_WBHTTP = `http://192.168.31.158:444/mcf/api/v1/c` // 后两
@@ -379,7 +380,7 @@ export class Technician {
   // 商城精选
   chooseIndex = () => {
     return http.httpRequest({
-      url: `${IP_YTHTTP}/appapi/v1.0/fount/choose`,
+      url: `${IP_SYHTTP}`,
       method: `post`
     })
   }
@@ -473,14 +474,7 @@ export class Technician {
       data: model
     })
   }
-  // 搜索
-  findSearch = (model) => {
-    return http.httpRequest({
-      url: `http://192.168.31.158:9015/appapi/v1.0/product/app/selectGoodsList`,
-      method: `post`,
-      data: model
-    })
-  }
+
 }
 
 

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "汽机油",
+  "navigationBarTitleText": "商品分类",
   "usingComponents": {
     "manager":"../../components/manager/manager",
     "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox/index",

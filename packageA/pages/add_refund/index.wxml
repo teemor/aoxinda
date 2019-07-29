@@ -64,6 +64,10 @@
     <view bindtap="clickMask" class="fz30 bg_orange bottom_btn">关闭</view>
   </view>
 </manager>
-<view class="fz30 bg_orange bottom_btn" bindtap="refundDetail">
+<form  bindsubmit="refundDetail" report-submit="true">
+<button form-type="submit">
+<view class="fz30 bg_orange bottom_btn" >
   提交
 </view>
+</button>
+</form>

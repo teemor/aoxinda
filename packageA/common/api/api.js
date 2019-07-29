@@ -6,9 +6,16 @@ export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0`
 export const IP_YBHTTP = `http://192.168.31.156:9015/wash/v1.0`
 export const IP_LYHTTP = `http://192.168.31.220:9015/myPay/v1.0`
-export const IP_XSHTTP = `https://39.97.167.237:9020/wash/1.0`
+export const IP_XSHTTP = `https://39.97.167.237:9020/wash/v1.0`
 export class store {
-
+  // 搜索
+  findSearch = (model) => {
+    return http.httpRequest({
+      url: `http://192.168.31.158:9015/wash/v1.0/findSearch`,
+      method: `post`,
+      data: model
+    })
+  }
   // 获取门店详情
   findShopDet = (id) => {
     return http.httpRequest({
@@ -28,7 +35,7 @@ export class store {
   // 加入购物车
   addCart = (model) => {
     return http.httpRequest({
-      url: `${IP_XSHTTP}/mcfwcbcart/insertCart`,
+      url: `${IP_MYHTTP}/mcfwcbcart/insertCart`,
       method: `post`,
       data: model
     })
@@ -36,7 +43,7 @@ export class store {
   // 购物车列表
   findcarList = (model) => {
     return http.httpRequest({
-      url: `${IP_XSHTTP}/mcfwcbcart/findCartListPageByUserId`,
+      url: `${IP_MYHTTP}/mcfwcbcart/findCartListPageByUserId`,
       method: `post`,
       data: model
     })
@@ -44,7 +51,23 @@ export class store {
   // 支付订单接口
   pay = (model) => {
     return http.httpRequest({
-      url: `${IP_XSHTTP}/mcfwcbpay/pay`,
+      url: `${IP_MYHTTP}/mcfwcbpay/pay`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 支付成功
+  noticeSuccessfulPayment = (model) => {
+    return http.httpRequest({
+      url: `${IP_MYHTTP}/mcfwcbnotice/noticeSuccessfulPayment`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 退款通知提醒
+  noticeSuccessfulRefund = (model) => {
+    return http.httpRequest({
+      url: `${IP_MYHTTP}/mcfwcbnotice/noticeSuccessfulRefund`,
       method: `post`,
       data: model
     })

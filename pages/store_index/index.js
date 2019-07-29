@@ -3,10 +3,12 @@ import find_car from '../../mixin/find_car'
 import {
   store
 } from '../../common/api/clean_api'
+import location from '../../mixin/location.js'
+
 const request = new store
 const app = getApp()
 Page({
-  mixins: [stores, find_car],
+  mixins: [stores, find_car, location],
   /**
    * 页面的初始数据
    */
@@ -45,7 +47,6 @@ Page({
       fail: () => {},
       complete: () => {}
     });
-
   },
   serviceDetail: function({
     detail
@@ -106,6 +107,11 @@ Page({
       }
     })
   },
+  storeListAll: function() {
+    wx.navigateTo({
+      url: '../../packageA/pages/store_list/index',
+    })
+  },
   storeList: function(item) {
     console.log(item, 'model')
     let id
@@ -125,7 +131,7 @@ Page({
           complete: () => {}
         });
       }
-    } 
+    }
     wx.navigateTo({
       url: `../../packageA/pages/store_list/index?id=${id}`,
       success: (result) => {
@@ -141,45 +147,7 @@ Page({
    */
   onLoad: function(options) {
     this.onShow();
-    this.findHome()
-    let that = this
-    wx.getLocation({
-      type: 'gcj02',
-      success: function(res) {
-        that.setData({
-          latitude: res.latitude,
-          longitude: res.longitude,
-        })
-        app.globalData.latitude = res.latitude
-        app.globalData.longitude = res.longitude
-        that.findShopList('')
-        that.address(that.data.longitude, that.data.latitude)
-        // that.moveTolocation();
-      },
-      fail: function() {
-        wx.showToast({
-          title: '获取地理位置失败',
-          icon: 'none',
-          image: '',
-          duration: 1500,
-          mask: false,
-          success: (result) => {
-
-          },
-          fail: () => {},
-          complete: () => {}
-        });
-
-      }
-    })
-    wx.getSetting({
-      success: (result) => {
-
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-
+    this.getlocation()
   },
 
 
@@ -194,6 +162,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.findHome()
     this.findCarList()
   },
 
