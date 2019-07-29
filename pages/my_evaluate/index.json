@@ -3,6 +3,9 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
-    "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index"
+    "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
+    "van-picker": "../../miniprogram_npm/vant-weapp/picker/index",
+    "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
+    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
   }
 }

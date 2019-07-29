@@ -1,7 +1,12 @@
 <view>
-  <van-tabs bind:click="tabClick" color="#4e93f3">
+<view class="select_type" bindtap="selectType">
+  {{commentName}}
+  <van-icon name="arrow-down"/>
+</view>
+  <van-tabs bind:click="tabClick" color="#4e93f3" sticky>
       <van-tab wx:for="{{tabList}}" title="{{item.name}}"  wx:key="{{item.id}}">
-      <view class='wrapper' wx:if="{{evaluateList.length>0}}">
+      <!-- 洗车评论 -->
+      <view class='wrapper' wx:if="{{evaluateList.length>0 && commentType == '0'}}">
         <view class='outside' wx:for="{{evaluateList}}" wx:key="{{item.consumeId}}">
           <view class='inner'>
             <view class='top fz30'>
@@ -34,6 +39,38 @@
           </view>
         </view>
       </view>
+      <!-- 道路救援评论 -->
+      <view class='wrapper' wx:elif="{{evaluateList.length>0 && commentType == '1'}}">
+        <view class='outside' wx:for="{{evaluateList}}" wx:key="{{item.consumeId}}">
+          <view class='inner'>
+            <view class='top fz30'>
+              <view class='fl'>
+                <text class='name dark_grey'>{{item.shop_name}}</text>
+                <text class='name s_grey'>{{item.finish_at}}</text>
+              </view>
+              <view class='fr'>
+                <text class='button' wx:if="{{item.is_comment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}">
+                  查看评价
+                </text>
+                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-ordercode="{{item.cardType == '2' ? item.orderCode : item.cardNum}}" data-shopid="{{item.shopId}}">
+                  评价晒单
+                </text>
+              </view>
+            </view>
+            <view class='bottom fz28'>
+              <view class='title'>
+                <text class='fl dark_grey'>服务明细</text>
+                <text class='fr s_grey'>订单：{{item.order_code}}</text>
+              </view>
+              <view class='service s_grey'>
+                <view class='name'>
+                  {{item.order_type_detail}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
       <view wx:else>
         <view class="my_address_null">
           <image src="../../common/image/refund_null.png" />
@@ -42,4 +79,8 @@
       </view>
       </van-tab>
   </van-tabs>
+
+  <van-popup show="{{ typeShow }}" position="bottom" bind:close="onTypeClose">
+    <van-picker columns="{{ columns }}" bind:change="onTypeChange"/>
+  </van-popup>
 </view>
