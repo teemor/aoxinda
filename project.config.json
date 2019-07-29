@@ -435,26 +435,6 @@
 					"pathName": "packageA/pages/store_detail/index",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "门店详情评论",
-					"pathName": "packageA/pages/store_detail/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "服务详情",
-					"pathName": "packageA/pages/service_detail/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "评论中心",
-					"pathName": "pages/my_evaluate/index",
-					"scene": null
 				}
 			]
 		}

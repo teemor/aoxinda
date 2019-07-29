@@ -7,23 +7,11 @@ Page({
   data: {
     add_bank : 1,
     cardList:[{
-      path:'../../common/image/my_card_red.png',
-      logo:"../../common/image/beijing_bank.png",
+      path:'',
+      logo:"",
       name:"北京银行",
       type:"储蓄卡",
       card_number:"1231231213213212313"
-    }, {
-      path: '../../common/image/my_card_red.png',
-      logo: "../../common/image/beijing_bank.png",
-      name: "北京银行",
-      type: "储蓄卡",
-      card_number: "2135769824486158715"
-      }, {
-      path: '../../common/image/my_card_red.png',
-      logo: "../../common/image/beijing_bank.png",
-      name: "北京银行",
-      type: "储蓄卡",
-      card_number: "9748468797897898"
     }]
   },
 

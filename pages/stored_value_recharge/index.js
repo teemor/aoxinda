@@ -1,7 +1,10 @@
 import { CardHttp } from '../../common/api/card_api'
+import { store } from '../../common/api/clean_api'
+
 import QR from '../../utils/qrcode.js'
 import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 const request = new CardHttp
+const clean = new store
 // pages/stored_value_recharge/index.js
 Page({
 
@@ -25,7 +28,7 @@ Page({
       account_id : options.id,
       min_pay: options.min_pay
     })
-    console.log(options)
+    
   },
   //充值输入
   payValue(e) {
@@ -35,16 +38,17 @@ Page({
   },
   //充值
   onPayClose(e) {
+    
     var that = this
       this.setData({
         'pay.show': false
       })
     if (this.data.pay.money >= this.data.min_pay) {
         request.payCard({ price: this.data.pay.money, type: 1, account_id: this.data.account_id }).then((res) => {
-          this.setData({
-            'pay.show': false,
-            'pay.money': 0.00,
-          })
+          // this.setData({
+          //   'pay.show': false,
+          //   'pay.money': 0.00,
+          // })
           if (res.status === false) {
             wx.showToast({
               title: res.description
@@ -59,7 +63,19 @@ Page({
               paySign: description.paySign,
               success: (res) => {
                 console.log('付款成功')
-
+                //充值成功消息推送
+                var app = getApp()
+                var getOpenId = app.globalData.openId
+                var obj = {
+                  "account_id": that.data.account_id,
+                  "openid": getOpenId,
+                  "formid": e.detail.formId,
+                  "Amount": that.data.pay.money
+                }
+                console.log(obj)
+                clean.payCardTopUp(obj).then((res) => {
+                  console.log(res)
+                })
                 wx.navigateBack({
                   delta: 1
                 })

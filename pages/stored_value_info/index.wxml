@@ -37,9 +37,20 @@
   </view>
 </view>
 <view class='card_service card_item'>
-  <van-cell title="　服务详情">
-     <view slot="icon" mode="scaleToFill"  class='title_bg'></view> 
-  </van-cell>
+  <!-- <van-cell  >
+     
+  </van-cell> -->
+  <van-tabs color="#5a97ef">
+    <van-tab title="服务详情" class="title_bg_box">
+    <!-- <view slot="icon" mode="scaleToFill"  class='title_bg'></view>  -->
+    </van-tab>
+    <van-tab title="" disabled class="title_bg_box" >
+    <!-- <view slot="icon" mode="scaleToFill"  class='title_bg'></view>  -->
+    </van-tab>
+    <van-tab title="" disabled class="title_bg_box">
+    <!-- <view slot="icon" mode="scaleToFill"  class='title_bg'></view>  -->
+    </van-tab>
+  </van-tabs>
   <view class='card_service_cont'>金麦卡储值金额可用于适用门店的所有洗车美容及保养业务，具体价格，已店面为准，金麦卡享受店面折扣优惠</view>
   <view class='card_service_info'>此处需要商定服务详情</view>
 </view>
