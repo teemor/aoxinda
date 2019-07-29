@@ -65,3 +65,17 @@ page {
   color: #4e93f3;
   margin: 0 10rpx;
 }
+.van-tabs--line .van-tabs__wrap{
+  width: 70%;
+}
+.select_type{
+  width:30%;
+  position:fixed;
+  right:0px;
+  top:2rpx;
+  background:#fff;
+  line-height:87rpx;
+  text-align:center;
+  color:#7d7e80;
+  z-index:2;
+}

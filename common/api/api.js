@@ -449,10 +449,26 @@ export class Technician {
       data: model
     })
   }
+  //统计道路救援未评价/已评价数量
+  countHelpComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/help/v1.0/countHelpComment`,
+      method: `post`,
+      data: model
+    })
+  }
   //查询洗车评价列表
   selectConsumeComment = (model) => {
     return http.httpRequest({
       url: `${IP_YBHTTP}/wash/v1.0/selectConsumeComment`,
+      method: `post`,
+      data: model
+    })
+  }
+  //查询道路救援评价列表
+  selectHelpComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/help/v1.0/selectHelpComment`,
       method: `post`,
       data: model
     })

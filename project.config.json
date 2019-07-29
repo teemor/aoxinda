@@ -15,7 +15,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.5",
+	"libVersion": "2.7.7",
 	"appid": "wx97a3505497150b66",
 	"projectname": "%E9%BA%A6%E8%BD%A6%E6%9C%8D",
 	"cloudfunctionTemplateRoot": "",
@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 57,
+			"current": 58,
 			"list": [
 				{
 					"id": -1,

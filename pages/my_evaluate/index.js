@@ -10,6 +10,8 @@ Page({
   data: {
     tabList: [],
     evaluateList: [],
+    commentType: 0, //当前评论的类型索引
+    commentName: "洗车美容", //当前评论的类型名称
     load: true,
     loading: false,//加载动画的显示
     form: {
@@ -17,7 +19,9 @@ Page({
       "user_id": "",
       "pageIndex": 1,
       "pageSize": 10
-    }
+    },
+    columns: ['洗车美容', '紧急救援'],
+    typeShow: false
   },
 
   /**
@@ -41,15 +45,21 @@ Page({
     })
   },
   /**
-   * 统计洗车未评价/已评价数量
+   * 统计未评价/已评价数量
    */
   countConsumeComment: function (model){
-    request.countConsumeComment(model).then(res => {
+    let ra = "";
+    if (this.data.commentType == 0) {
+      ra = request.countConsumeComment;  //洗车美容
+    } else if (this.data.commentType == 1) {
+      ra = request.countHelpComment;     //道路救援
+    }
+    ra(model).then(res => {
       if (res.status == '200') {
         this.setData({
           tabList: [
-            { "name": "待评价（" + res.data.notCount + "）", "id": "1" },
-            { "name": "已评价（" + res.data.alreadyCount + "）", "id": "2" }
+            { "name": "待评价 (" + res.data.notCount + ")", "id": "1" },
+            { "name": "已评价 (" + res.data.alreadyCount + ")", "id": "2" }
           ]
         });
       }
@@ -59,7 +69,13 @@ Page({
    * 查询评价记录
    */
   selectConsumeComment: function (model) {
-    request.selectConsumeComment(model).then(res => {
+    let ra = "";
+    if(this.data.commentType == 0){
+      ra = request.selectConsumeComment;  //洗车美容
+    } else if (this.data.commentType == 1){
+      ra = request.selectHelpComment;     //道路救援
+    }
+    ra(model).then(res => {
       if (res.status == '200') {
         this.setData({
           evaluateList: res.data.consumeList
@@ -93,6 +109,32 @@ Page({
     wx.navigateTo({
       url: urlPath + 'relation_lists=' + relation_lists
     });
+  },
+
+  //选择评论类型
+  selectType: function(e){
+    this.setData({
+      typeShow: true
+    });
+  },
+
+  //关闭弹框
+  onTypeClose() {
+    this.setData({ typeShow: false });
+  },
+
+  //选择下拉框内容
+  onTypeChange(event) {
+    const { picker, value, index } = event.detail;
+    this.setData({
+      commentType: index,
+      commentName: value,
+      evaluateList: [],
+      ["form.pageIndex"]: 1
+    });
+    this.onTypeClose();
+    this.selectConsumeComment(this.data.form);
+    this.countConsumeComment(this.data.form);
   },
 
   /**
@@ -146,7 +188,13 @@ Page({
           load: false,
           loading: true//加载动画的显示
         })
-      request.selectConsumeComment(this.data.form).then(res => {
+        let ra = "";
+        if (that.data.commentType == 0) {
+          ra = request.selectConsumeComment;  //洗车美容
+        } else if (that.data.commentType == 1) {
+          ra = request.selectHelpComment;     //道路救援
+        }
+      ra(this.data.form).then(res => {
         if (res.status == '200' && res.data.consumeList.length > 0) {
           var content = that.data.evaluateList.concat(res.data.consumeList)//将返回结果放入content
           that.setData({
