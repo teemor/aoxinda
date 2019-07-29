@@ -75,7 +75,8 @@
     "pages/my_bank_card/index",
     "pages/choose_bank/index",
     "pages/fill_card_information/index",
-    "pages/store_index/index"
+    "pages/store_index/index",
+    "pages/modify_card/index"
   ],
   "subPackages": [
     {

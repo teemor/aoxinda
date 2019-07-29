@@ -4,19 +4,31 @@
   <view class='no_card_title_gray'>目前仅支持支付过程中绑卡</view>
 </view>
 <view class="add_bank have_card {{add_bank == '1' ?'add_bank_show':''}}">
-  <view class='have_card_list' wx:for="{{cardList}}" wx:key="{{item}}" style='background-image:url({{item.path}})' bindlongpress='longPress'>
+  <view class='have_card_list' wx:for="{{cardList}}" wx:key="{{item}}" style='background-image:url({{item.path}})' bindtap='longPress' data-name="{{item.bank}}" data-type="{{item.type}}" data-num="{{item.newCardNumber}}" data-newNum="{{item.cardNumber}}" data-res="{{item}}">
     <view class='card_logo'><image src='{{item.logo}}'></image></view>
     <view class='card_name'>{{item.bank}}</view>
     <view class='card_type'>{{item.type}}</view>
-    <view class='card_number'>{{item.cardNumber}}</view>
+    <view class='card_number'>{{item.newCardNumber}}</view>
+    <view class='default' style="display:{{item.defaultCard == 0?'block':'none'}}">{{item.defaultCard == 0?'默认':''}}</view>
   </view>
   
   <view class='add_card' bindtap='addBankCard'>
     <view class='add_card_title' style='background-image:url(../../common/image/add_card.png)'><image src='../../common/image/add_bank_card_log.png'></image>添加银行卡</view>
   </view>
 </view>
-<!-- <view class="delete {{deleat == true?'deleat':''}}">
-  <view class='popup'>
-    你确认要解绑这张银行卡吗？
+<view class="delete {{deleat == true?'deleat':''}}">
+  <view class='excuse'>
+    <view class='operation'>
+    <view class='delete_title'>您可以对 {{bank_name}} 尾号 {{last_num}} 的{{type}}进行操作</view>
+     <view class='unbundle' bindtap='unbundle'>解绑</view>
+     <view class='modification' bindtap='modify'>修改</view>
+    </view>
+    <view bindtap='cancel' class='cancel'>取消</view>
   </view>
-</view> -->
+</view>
+<view class="ok {{ok == true?'deleat':''}}">
+  <view class='ok_box'>
+  <view class='ok_image'><image src="../../common/image/ok.png"></image></view> 
+    <view class='ok_text'>解绑成功</view>
+  </view>
+</view>

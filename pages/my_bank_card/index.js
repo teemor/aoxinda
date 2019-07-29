@@ -13,7 +13,13 @@ Page({
     add_bank : 1,
     cardList:[],
     username :"",
-    userid:""
+    userid:"",
+    bank_name:"",
+    last_num:"",
+    type:"",
+    card_num :"",
+    item :{},
+    ok:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -65,7 +71,7 @@ Page({
           newres[i].logo = '../../common/image/jt_bank.png'
           newres[i].type = '储蓄卡'
         } else if (newres[i].bank == "浦发银行") {
-          newres[i].path = '../../common/image/my_card_bluepng'
+          newres[i].path = '../../common/image/my_card_blue.png'
           newres[i].logo = '../../common/image/pf_bank.png'
           newres[i].type = '储蓄卡'
         } else if (newres[i].bank == "民生银行") {
@@ -108,13 +114,12 @@ Page({
       }
       //银行卡号循环显示后四位
       for (let l = 0; l < newres.length; l++) {
-        newres[l].cardNumber = newres[l].cardNumber.replace(/\s/g, '').replace(/(\d{4})\d+(\d{4})$/, "**** **** **** $2")
+        newres[l].newCardNumber = newres[l].cardNumber.replace(/\s/g, '').replace(/(\d{4})\d+(\d{4})$/, "**** **** **** $2")
       }
-      console.log(newres)
       that.setData({
         cardList: newres,
         username: newres[newres.length-1].ownerName,
-        userid: newres[newres.length - 1].shopId
+        userid: newres[newres.length - 1].identityCard
       })
     })
   },
@@ -125,13 +130,53 @@ Page({
       url: `../choose_bank/index?username=${username}&userid=${userid}`
     })
   },
-  //长按删除
+  cancel(){
+    this.setData({
+      deleat: false
+    })
+  },
+  //点击银行卡显示解绑修改
   longPress(e){
     console.log(e)
+    var last = e.currentTarget.dataset.num.substring(e.currentTarget.dataset.num.length - 4)
     this.setData({
-      deleat: true
+      deleat: true,
+      bank_name: e.currentTarget.dataset.name,
+      last_num: last,
+      type: e.currentTarget.dataset.type,
+      card_num: e.currentTarget.dataset.newnum,
+      item: e.currentTarget.dataset.res
     })
-    console.log(this.data.deleat)
+  },
+  //解绑
+  unbundle(){
+    var that = this
+    console.log(this.data.card_num)
+    bankCard.bankCardUnbind({ "cardNumber": that.data.card_num}).then((res) =>{
+      console.log(res)
+      that.setData({
+        deleat: false
+      })
+      this.setData({
+        ok: true
+      })
+      setTimeout(function () {
+        that.setData({
+          ok: false
+        })
+      }, 1000)
+      that.getBankCard()
+    })
+  },
+  //修改卡
+  modify(){
+    var that = this
+    wx.navigateTo({
+      url: `../modify_card/index?logo=${that.data.item.logo}&name=${that.data.item.bank}&cardNumber=${that.data.item.cardNumber}&ownerName=${that.data.item.ownerName}&shopId=${that.data.item.identityCard}&id=${that.data.item.id}`
+    })
+    this.setData({
+      deleat: false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -144,7 +189,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getBankCard()
+    var that = this
+    setTimeout(function () {
+      that.getBankCard()
+    }, 200)
   },
 
   /**

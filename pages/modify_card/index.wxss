@@ -1,0 +1,132 @@
+/* pages/fill_card_information/index.wxss */
+page{
+  background: #f5f5f5;
+  color: #333;
+}
+.information_title{
+  /* padding: 80rpx 0 30rpx 40rpx; */
+  width: 90%;
+  margin: 0 auto;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-bottom: 1rpx solid #eee;
+  padding-left: 20rpx;
+  position: relative;
+  box-sizing: border-box
+}
+.information_title::after{
+  content:"";
+  width:4rpx;
+  height:40rpx;
+  position:absolute;
+  top:25rpx;
+  left:0rpx;
+  background:#4991f4;
+}
+.bank_information{
+  border-bottom: 1px solid #eee;
+  width: 90%;
+  margin: 0 auto;
+  height: 100rpx;
+}
+.bank_information_logo{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+  display: inline-block
+}
+.bank_information_logo image{
+  width: 100%;
+  height: 100%;
+}
+.bank_information_name{
+  line-height: 90rpx;
+  padding-left: 17rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  vertical-align: middle
+}
+.bank{
+  background: #fff;
+  margin-top: 20rpx;
+  border-radius: 7rpx;
+}
+.bank_card_number input{
+  display: inline-block;
+  padding-left: 50rpx;
+  vertical-align: middle;
+  width: 65%;
+  font-size: 28rpx;
+}
+.bank_card_number view{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 28rpx;
+}
+.bank_card_number{
+  width: 90%;
+  margin: 0 auto;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.bank_card_name{
+  width: 100%;
+  margin: 0 auto;
+  line-height: 100rpx;
+  height: 100rpx;
+}
+.bank_card_name view,.bank_card_name input{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 28rpx;
+}
+.bank_card_name input{
+  padding-left: 50rpx;
+}
+.cardholder_information{
+  background: #fff;
+  margin-top: 20rpx;
+}
+.cardholder_information_name{
+  border-bottom: 1px solid #eee;
+  width: 90%;
+  margin: 0 auto
+}
+.show{
+  background: #5695f0;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 50rpx 50rpx 50rpx 50rpx;
+  border: none;
+  height: 74rpx;
+  font-size: 28rpx;
+  line-height: 74rpx;
+  text-align: center;
+  color: #fff;
+  margin-top: 63rpx;
+}
+.title{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 22rpx;
+  height: 82rpx;
+  line-height: 82rpx;
+  color: #666;
+}
+.on_subumit{
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 50rpx 50rpx 50rpx 50rpx;
+  border: none;
+  height: 74rpx;
+  font-size: 28rpx;
+  line-height: 74rpx;
+  background: rgb(167, 164, 164);
+  text-align: center;
+  color: #fff;
+  margin-top: 63rpx;
+}

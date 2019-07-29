@@ -75,6 +75,7 @@
   font-size: 30rpx;
   color: #fff;
   background-size: 100%;
+  margin-bottom: 20rpx;
 }
 .add_card_title image{
   width: 28rpx;
@@ -118,28 +119,105 @@
   left: 25%;
 }
 .delete{
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  margin: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
   display: none;
 }
-.popup{
-  z-index: 11;
-  width: 50%;
-  height: 200rpx;
-  margin: 340rpx auto;
+.cancel{
   background: #fff;
-  text-align: center;
-  font-size: 30rpx;
+  height: 100rpx;
   line-height: 100rpx;
+  border-radius: 30rpx;
+  font-size: 38rpx;
+  color: #3478f6;
+  font-weight: 600
+}
+.operation{
+  margin-bottom: 20rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  color: #3478f6;
+}
+.excuse{
+  width: 90%;
+  position: absolute;
+  bottom: 2%;
+  text-align: center;
+  left: 5%
+}
+.delete_title{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+}
+.unbundle{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 38rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  color: #ea4e3d;
+}
+.modification{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 38rpx;
+  color: #3478f6;
+}
+.default{
+  position: absolute;
+  top:23rpx;
+  right: 52rpx;
+  width: 56rpx;
+  height: 32rpx;
+  font-size: 19rpx;
+  background: rgba(255, 255, 255, 0.2);
+  line-height: 32rpx;
+  color: #fff;
+  text-align: center;
+}
+.ok{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  display: none;
+}
+.ok_box{
+  background: #fff;
+  height: 157rpx;
+  width: 220rpx;
+  border-radius: 10rpx;
+  font-size: 23rpx;
+  padding-top: 60rpx;
+  padding-left: 50rpx;
+  box-sizing: border-box;
+  position: absolute;
+  left: 35%;
+  top: 35%;
 }
 .deleat{
   display: block;
+}
+.ok_image{
+  width: 27rpx;
+  height: 27rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.ok_image image{
+  width: 100%;
+  height: 100%
+}
+.ok_text{
+  display: inline-block;
+  vertical-align: middle
 }

@@ -1,0 +1,30 @@
+<!--pages/fill_card_information/index.wxml-->
+
+<view class='bank'>
+<view class='information_title'>
+  银行卡信息
+</view>
+  <view class='bank_information'>
+    <view>
+      <view class='bank_information_logo'><image src="{{card_information.logo}}"></image></view>
+      <view class='bank_information_name'>{{card_information.name}}</view>
+    </view>
+  </view>
+  <view>
+    <view class='bank_card_number'><view>银行卡</view> <input type='number' placeholder='填写银行卡号' minlength="16" maxlength='19' value="{{bankCard}}" bindinput ="bankCardInput"></input></view>
+  </view>
+</view>
+
+<view class='cardholder_information'>
+<view class='information_title'>
+  持卡人信息
+</view>
+  <view class='cardholder_information_name'>
+    <view class='bank_card_name'><view>真实姓名</view> <input placeholder='填写持卡人姓名' value='{{userName}}' bindinput ="userNameInput"></input></view>
+  </view>
+  <view>
+    <view class='bank_card_number'><view>身份证号</view> <input type='number' placeholder='18位身份证号码' minlength="18" maxlength='18' bindinput ="mobileInput" value='{{mobile}}'></input></view>
+  </view>
+</view>
+<view class='title'>为了保证账户资金安全，请填写本人真实信息，认证后不可更改</view>
+<view class="{{highlight?'show':'on_subumit'}}" bindtap='onSubmit'>确认修改</view>

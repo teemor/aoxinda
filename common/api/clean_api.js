@@ -134,4 +134,20 @@ export class store {
       data: params
     })
   }
+  //我的银行卡解绑
+  bankCardUnbind = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/delCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡修改
+  bankCardUpdata = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/updateCard`,
+      method: `POST`,
+      data: params
+    })
+  }
 }
