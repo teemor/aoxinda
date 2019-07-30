@@ -1,45 +1,15 @@
 <view class='wrapper'>
-  <view class='score_type'>
-    <view class='title'>服务质量评分</view>
+  <view class='score_type' wx:for="{{qualityData}}" wx:key="{{item}}">
+    <view class='title'>{{item.title}}</view>
     <!-- 评分 -->
     <view class='score_area'>
-      <view class='score fz30' wx:for="{{qualityData}}" wx:key="{{item.id}}">
-        <view class='row'>{{item.name}}</view>
+      <view class='score fz30' wx:for="{{item.recordList}}" wx:for-item="rl" wx:key="{{rl}}">
+        <view class='row'>{{rl.name}}</view>
         <view class='row'>
-          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
+          <image class='star_level' src="{{imgUrl}}/{{rl.img}}.png" />
         </view>
         <view class='row'>
-          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class='score_type'>
-    <view class='title'>服务速度评分</view>
-    <!-- 评分 -->
-    <view class='score_area'>
-      <view class='score fz30' wx:for="{{speedData}}" wx:key="{{item.id}}">
-        <view class='row'>{{item.name}}</view>
-        <view class='row'>
-          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
-        </view>
-        <view class='row'>
-          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class='score_type'>
-    <view class='title'>服务顾问态度评分</view>
-    <!-- 评分 -->
-    <view class='score_area'>
-      <view class='score fz30' wx:for="{{attitudeData}}" wx:key="{{item.id}}">
-        <view class='row'>{{item.name}}</view>
-        <view class='row'>
-          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
-        </view>
-        <view class='row'>
-          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
+          <image class='star' wx:for="{{rl.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
         </view>
       </view>
     </view>

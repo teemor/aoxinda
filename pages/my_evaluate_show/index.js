@@ -9,19 +9,7 @@ Page({
    */
   data: {
     imgUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/comment',
-    //施工专业性
     qualityData: [],
-    //施工速度
-    speedData: [],
-    //服务顾问态度
-    attitudeData: [],
-    sourceData: [
-      { "name": "差", "img": "first", "star": 0, "id": "1" },
-      { "name": "一般", "img": "second", "star": 0, "id": "2" },
-      { "name": "还不错", "img": "third", "star": 0, "id": "3" },
-      { "name": "很满意", "img": "fourth", "star": 0, "id": "4" },
-      { "name": "强烈推荐", "img": "fifth", "star": 0, "id": "5" }
-    ],
     relation_ids: [], //洗车消费表id/救援订单表id
     describe: "", //备注
     file_lists: [], //图片
@@ -33,15 +21,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      qualityData: this.data.sourceData,
-      speedData: this.data.sourceData,
-      attitudeData: this.data.sourceData,
       relation_ids: options.relation_lists ? options.relation_lists.split(",") : [],
       detailtype: options.detailtype
     })
     this.selectComment({
       "relation_ids": this.data.relation_ids,
-      "detailtype": this.data.detailtype
+      "detail_type": this.data.detailtype
     });
   },
 
@@ -49,21 +34,27 @@ Page({
    * 查看评论
    */
   selectComment: function (model) {
+    let that = this;
     request.selectComment(model).then(res => {
       if (res.status == '200') {
-        let qualityLevel = res.data.recordList[0].level; //施工专业性评分
-        let qualityIndex = qualityLevel - 1;
-        let speedLevel = res.data.recordList[1].level; //施工速度评分
-        let speedIndex = speedLevel - 1;
-        let attitudeLevel = res.data.recordList[2].level; //服务顾问态度评分
-        let attitudeIndex = attitudeLevel - 1;
+        let recordList = res.data.recordList;
+        let rcList = [];
+        for (let i = 0;i < recordList.length;i ++){
+          let sourceData = [
+            { "name": "差", "img": "first", "star": 0, "id": "1" },
+            { "name": "一般", "img": "second", "star": 0, "id": "2" },
+            { "name": "还不错", "img": "third", "star": 0, "id": "3" },
+            { "name": "很满意", "img": "fourth", "star": 0, "id": "4" },
+            { "name": "强烈推荐", "img": "fifth", "star": 0, "id": "5" }
+          ];
+          let rl = recordList[i]; //副本
+          recordList[i] = sourceData;
+          recordList[i][parseInt(rl.level) - 1].star = parseInt(rl.level); //评分
+          recordList[i][parseInt(rl.level) - 1].img = recordList[i][parseInt(rl.level) - 1].img + "_click"; //评分表情图片
+          rcList.push({ "recordList": recordList[i], "title": rl.name});
+        }
         this.setData({
-          [`qualityData[${qualityIndex}].star`]: parseInt(qualityLevel),
-          [`speedData[${speedIndex}].star`]: parseInt(speedLevel),
-          [`attitudeData[${attitudeIndex}].star`]: parseInt(attitudeLevel),
-          [`qualityData[${qualityIndex}].img`]: this.data.qualityData[qualityIndex].img + "_click",
-          [`speedData[${speedIndex}].img`]: this.data.speedData[speedIndex].img + "_click",
-          [`attitudeData[${attitudeIndex}].img`]: this.data.attitudeData[attitudeIndex].img + "_click",
+          qualityData: rcList,
           describe: res.data.content,
           file_lists: res.data.fileList
         })
