@@ -6,8 +6,8 @@ const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
 export const RECORD_HTTP = `http://192.168.31.158:9015/wash/v1.0` //YJQ 金麦卡消费、退款、充值列表
-export const IP_HTTP_TOPUP = `http://192.168.31.220:9014/balance/v1.0` //YJQ储值卡充值消息推送
-export const BANK_CARD_HTTP = `http://192.168.31.220:9014/mcf/v1.0` //YJQ我的银行卡
+export const IP_HTTP_TOPUP = `http://192.168.31.220:9015/balance/v1.0` //YJQ储值卡充值消息推送
+export const BANK_CARD_HTTP = `http://192.168.31.220:9015/mcf/v1.0` //YJQ我的银行卡
 export const IP_XSHTTP = `https://39.97.167.237:9020/wash/v1.0`
 
 export class store {
@@ -103,6 +103,70 @@ export class store {
       url: `${IP_YXHTTP}/findOrderShop`,
       method: `post`,
       data: model
+    })
+  }
+  //获取消费列表
+  obtainConsumptionList = (params) => {
+    return http.httpRequest({
+      url: `${RECORD_HTTP}/cardUserRecQ`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //获取退款列表
+  obtainRefundList = (params) => {
+    return http.httpRequest({
+      url: `${RECORD_HTTP}/retCardList`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //获取充值列表
+  rechargeList = (params) => {
+    return http.httpRequest({
+      url: `${RECORD_HTTP}/cardUserTraQ`,
+      method: `POST`,
+      data: params
+    })
+  }
+  // 储值卡充值推送
+  payCardTopUp = (params) => {
+    return http.httpRequest({
+      url: `${IP_HTTP_TOPUP}/afterRechargeRemind`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡查询
+  bankCardSelect = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/queryCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡添加
+  bankCardSave = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/saveCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡解绑
+  bankCardUnbind = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/delCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡修改
+  bankCardUpdata = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/updateCard`,
+      method: `POST`,
+      data: params
     })
   }
 }
