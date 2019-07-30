@@ -1,6 +1,6 @@
 <view class='wrapper'>
   <view class='score_type'>
-    <view class='title'>服务质量评分</view>
+    <view class='title'>施工专业性</view>
     <!-- 评分 -->
     <view class='score_area'>
       <view class='score fz30' wx:for="{{qualityData}}" wx:key="{{item.id}}" bindtap='bindQuality' data-index="{{item.id}}">
@@ -15,10 +15,25 @@
     </view>
   </view>
   <view class='score_type'>
-    <view class='title'>服务速度评分</view>
+    <view class='title'>施工速度</view>
     <!-- 评分 -->
     <view class='score_area'>
       <view class='score fz30' wx:for="{{speedData}}" wx:key="{{item.id}}" bindtap='bindSpeed' data-index="{{item.id}}">
+        <view class='row'>{{item.name}}</view>
+        <view class='row'>
+          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
+        </view>
+        <view class='row'>
+          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='score_type'>
+    <view class='title'>服务顾问态度</view>
+    <!-- 评分 -->
+    <view class='score_area'>
+      <view class='score fz30' wx:for="{{attitudeData}}" wx:key="{{item.id}}" bindtap='bindAttitude' data-index="{{item.id}}">
         <view class='row'>{{item.name}}</view>
         <view class='row'>
           <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />

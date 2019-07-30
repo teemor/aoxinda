@@ -29,6 +29,21 @@
       </view>
     </view>
   </view>
+  <view class='score_type'>
+    <view class='title'>服务顾问态度评分</view>
+    <!-- 评分 -->
+    <view class='score_area'>
+      <view class='score fz30' wx:for="{{attitudeData}}" wx:key="{{item.id}}">
+        <view class='row'>{{item.name}}</view>
+        <view class='row'>
+          <image class='star_level' src="{{imgUrl}}/{{item.img}}.png" />
+        </view>
+        <view class='row'>
+          <image class='star' wx:for="{{item.star}}" wx:key="true" src="{{imgUrl}}/star.png" />
+        </view>
+      </view>
+    </view>
+  </view>
   <!-- 照片 -->
   <view class='photos'>
     <view class='describe'>{{describe}}</view>

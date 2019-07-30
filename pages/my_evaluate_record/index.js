@@ -9,10 +9,12 @@ Page({
    */
   data: {
     imgUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/comment',
-    //质量
+    //施工专业性
     qualityData: [],
     //速度
     speedData: [],
+    //服务态度顾问
+    attitudeData: [],
     sourceData: [
       { "name": "差", "img": "first", "star": 0, "id": "1" },
       { "name": "一般", "img": "second", "star": 0, "id": "2" },
@@ -22,16 +24,16 @@ Page({
     ],
     form: {
       "user_id": "",
-      "detail_type": "1", //1代表洗车
+      "detail_type": "", //1代表洗车 2代表救援
       "record_lists": [
-        { "level": 0, "name": "质量" }, { "level": 0, "name": "速度" }
+        { "level": 0, "name": 2 },  //2、施工专业性 3、施工速度 4、服务顾问态度
+        { "level": 0, "name": 3 }, 
+        { "level": 0, "name": 4 }
       ],
-      "relation_lists": [], //消费表id
+      "relation_lists": [], //消费表id/救援订单表id
       "detail_id": "",
       "content": "",
       "file_lists": [],
-      // "card_type": 0, //订单类型：2单次服务3不计次数4月月卡
-      // "order_code": "", //订单编号/卡号
       "shop_id": "",  //门店id
       "user_name": "", //用户昵称
       "user_phone": "" //用户手机号
@@ -47,11 +49,11 @@ Page({
     this.setData({
       qualityData: this.data.sourceData,
       speedData: this.data.sourceData,
+      attitudeData: this.data.sourceData,
       ["form.relation_lists"]: options.relation_lists ? options.relation_lists.split(",") : [],
       ["form.detail_id"]: options.ordercode,
-      ["form.shop_id"]: options.shopid
-      // ["form.detail_id"]: options.cardId,
-      // ["form.card_type"]: options.cardtype,
+      ["form.shop_id"]: options.shopid,
+      ["form.detail_type"]: options.detailtype
     })
   },
 
@@ -82,7 +84,7 @@ Page({
     })
   },
 
-  //质量选择分数
+  //服务专业性选择分数
   bindQuality: function(e){
     let that = this;
     that.setData({
@@ -116,11 +118,28 @@ Page({
     })
   },
 
+  //服务专业性选择分数
+  bindAttitude: function (e) {
+    let that = this;
+    that.setData({
+      attitudeData: this.data.sourceData
+    })
+    let query = e.currentTarget.dataset['index'];
+    let index = query - 1;
+    let completeStatus = `attitudeData[${index}].img`; //图片
+    let completeStar = `attitudeData[${index}].star`;  //分数
+    that.setData({
+      [completeStatus]: this.data.attitudeData[index].img + "_click",
+      [completeStar]: parseInt(query),
+      [`form.record_lists[2].level`]: parseInt(query)
+    })
+  },
+
   //评论发布
   release: function(){
     if (this.data.form.record_lists[0].level == 0){
       wx.showToast({
-        title: '请添写服务质量评分',
+        title: '请添写服务施工专业性评分',
         icon: 'none',
         duration: 2000
       })
@@ -128,7 +147,15 @@ Page({
     }
     if (this.data.form.record_lists[1].level == 0) {
       wx.showToast({
-        title: '请添写服务速度评分',
+        title: '请添写施工速度评分',
+        icon: 'none',
+        duration: 2000
+      })
+      return false;
+    }
+    if (this.data.form.record_lists[2].level == 0) {
+      wx.showToast({
+        title: '请添写服务顾问态度评分',
         icon: 'none',
         duration: 2000
       })
