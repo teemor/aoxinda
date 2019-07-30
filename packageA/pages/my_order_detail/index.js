@@ -236,7 +236,7 @@ Page({
       urlPath = "../../../pages/my_evaluate_show/index?";
     }
     wx.navigateTo({
-      url: urlPath + 'relation_lists=' + relation_lists
+      url: urlPath + 'relation_lists=' + relation_lists + "&detailtype=" + e.currentTarget.dataset['detailtype']
     });
   }
 })

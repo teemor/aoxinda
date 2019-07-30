@@ -41,10 +41,10 @@
         <view class="fz24 grey high50 flwidth">{{item.conTime}}</view>
 
         <view class='fr fz26 comment'>
-          <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.con}}">
+          <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-detailtype="1" data-status="1" data-sers="{{item.con}}">
             查看评价
           </text>
-          <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.con}}" data-ordercode="{{item.cardNum}}" data-shopid="{{item.shopId}}">
+          <text class='button' wx:else bindtap="goEvaluate" data-detailtype="1" data-status="0" data-sers="{{item.con}}" data-ordercode="{{item.cardNum}}" data-shopid="{{item.shopId}}">
             评价晒单
           </text>
         </view>

@@ -30,7 +30,7 @@
     </view>
   </view>
   <view class='score_type'>
-    <view class='title' wx:if="form.detail_type == 2">救援客服态度</view>
+    <view class='title' wx:if="{{form.detail_type == 2}}">救援客服态度</view>
     <view class='title' wx:else>服务顾问态度</view>
     
     <!-- 评分 -->
