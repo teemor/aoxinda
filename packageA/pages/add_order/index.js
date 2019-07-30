@@ -267,8 +267,6 @@ Page({
     })
   },
   paysubmit: function (e) {
-    console.log(e)
-    console.log('???')
     if (this.data.flag != false) {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡

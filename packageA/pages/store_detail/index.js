@@ -15,13 +15,14 @@ Page({
     cardShow: true,
     commentList: [], //评论
     load: true,
-    loading: false,//加载动画的显示
+    loading: false, //加载动画的显示
     commentForm: {
       "pageIndex": 1,
       "pageSize": 10,
       "shop_id": ""
     },
-    tabIndex: 0   //当前tabs页签下标
+    plusData: true,
+    tabIndex: 0 //当前tabs页签下标
   },
   showCard: function() {
     this.setData({
@@ -52,6 +53,7 @@ Page({
   },
   onClickButton: function() {
     this.carList()
+
     let model = encodeURIComponent(JSON.stringify(this.data.cartModel))
     wx.navigateTo({
       url: `../../pages/add_order/index?model=${model}`,
@@ -61,21 +63,25 @@ Page({
     });
 
   },
-  numChange: function({
-    detail
-  }) {
-    let totalPrice = 0
-    console.log(detail, 'detail')
-    totalPrice = detail.num * detail.item.actPrice
-    console.log(totalPrice)
+  numChange: function(e) {
+    console.log(e,'e')
+    let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
+    // if (e.detail.num = 0) {
+    //   this.setData({
+    //     plusData: false
+    //   })
+    // }
+    console.log(detail)
     request.addCart({
       shopId: this.data.storemodel.id,
       userId: app.globalData.openId,
-      activityId: detail.item.actId,
+      activityId: detail.item.actId ? detail.item.actId : detail.actId,
       cartNum: detail.num,
-      price: detail.item.actPrice
-    }).then(res => {})
-    this.carList();
+      price: detail.item.actPrice ? detail.item.actPrice : detail.actPrice
+    }).then(res => {
+      this.carList();
+    })
+
   },
   makePhone: function({
     currentTarget
@@ -95,6 +101,9 @@ Page({
     this.carList()
   },
   carList: function() {
+    wx.showLoading({
+      title: '加载中',
+    })
     request.findcarList({
       userId: app.globalData.openId,
       shopId: this.data.storemodel.id,
@@ -103,6 +112,13 @@ Page({
     }).then(res => {
       this.setData({
         cartModel: res.data.records
+      })
+      let price = 0
+      this.data.cartModel.forEach(item => {
+        price += item.cartNum * item.actPrice
+      })
+      this.setData({
+        totalPrice: price
       })
       if (this.data.cardModel.length == 0) {
         this.setData({
@@ -135,14 +151,15 @@ Page({
           detailModel: res.ser,
           cardModel: res.serCard
         })
+        this.carList()
         this.onShow()
       })
-      
+
     }
   },
 
   //洗车评价
-  washCarComment: function (model){
+  washCarComment: function(model) {
     request.selectWashCarComment(model).then(res => {
       if (res.status == '200') {
         this.setData({
@@ -201,15 +218,15 @@ Page({
    */
   onReachBottom: function() {
     var that = this;
-    if (that.data.load && that.data.tabIndex == 1) {//全局标志位，方式请求未响应时多次触发
+    if (that.data.load && that.data.tabIndex == 1) { //全局标志位，方式请求未响应时多次触发
       that.setData({
         ["commentForm.pageIndex"]: that.data.commentForm.pageIndex * 1 + 1,
         load: false,
-        loading: true//加载动画的显示
+        loading: true //加载动画的显示
       })
       request.selectWashCarComment(that.data.commentForm).then(res => {
         if (res.status == '200' && res.data.consumeCommentList.length > 0) {
-          var content = that.data.commentList.concat(res.data.consumeCommentList)//将返回结果放入content
+          var content = that.data.commentList.concat(res.data.consumeCommentList) //将返回结果放入content
           that.setData({
             commentList: content,
             load: true,

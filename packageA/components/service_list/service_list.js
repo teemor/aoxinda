@@ -24,6 +24,10 @@ Component({
       this.setData({
         add: true
       })
+      let model = {}
+      model.num = 1
+      model.item = this.data.item
+      this.triggerEvent('numChange',model)
       console.log(this.data.add,'addd')
     },
     numChange: function ({detail}) {
