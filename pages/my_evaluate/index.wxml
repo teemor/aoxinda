@@ -15,10 +15,10 @@
                 <text class='name s_grey'>{{item.conTime}}</text>
               </view>
               <view class='fr'>
-                <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}">
+                <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-detailtype="1" data-status="1" data-sers="{{item.serName}}">
                   查看评价
                 </text>
-                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-ordercode="{{item.cardType == '2' ? item.orderCode : item.cardNum}}" data-shopid="{{item.shopId}}">
+                <text class='button' wx:else bindtap="goEvaluate" data-detailtype="1" data-status="0" data-sers="{{item.serName}}" data-ordercode="{{item.cardType == '2' ? item.orderCode : item.cardNum}}" data-shopid="{{item.shopId}}">
                   评价晒单
                 </text>
               </view>
@@ -49,10 +49,10 @@
                 <text class='name s_grey'>{{item.finish_at}}</text>
               </view>
               <view class='fr'>
-                <text class='button' wx:if="{{item.is_comment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.serName}}">
+                <text class='button' wx:if="{{item.is_comment == 1}}" bindtap="goEvaluate" data-detailtype="2" data-status="1" data-sers="{{[item.id]}}">
                   查看评价
                 </text>
-                <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.serName}}" data-ordercode="{{item.cardType == '2' ? item.orderCode : item.cardNum}}" data-shopid="{{item.shopId}}">
+                <text class='button' wx:else bindtap="goEvaluate" data-detailtype="2" data-status="0" data-sers="{{[item.id]}}" data-ordercode="{{item.order_code}}" data-shopid="{{item.shop_id}}">
                   评价晒单
                 </text>
               </view>

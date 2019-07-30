@@ -9,10 +9,12 @@ Page({
    */
   data: {
     imgUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/comment',
-    //质量
+    //施工专业性
     qualityData: [],
-    //速度
+    //施工速度
     speedData: [],
+    //服务顾问态度
+    attitudeData: [],
     sourceData: [
       { "name": "差", "img": "first", "star": 0, "id": "1" },
       { "name": "一般", "img": "second", "star": 0, "id": "2" },
@@ -20,9 +22,10 @@ Page({
       { "name": "很满意", "img": "fourth", "star": 0, "id": "4" },
       { "name": "强烈推荐", "img": "fifth", "star": 0, "id": "5" }
     ],
-    relation_ids: [], //消费表id
+    relation_ids: [], //洗车消费表id/救援订单表id
     describe: "", //备注
-    file_lists: [] //图片
+    file_lists: [], //图片
+    detailtype: ""  //评论类型
   },
 
   /**
@@ -32,10 +35,13 @@ Page({
     this.setData({
       qualityData: this.data.sourceData,
       speedData: this.data.sourceData,
-      relation_ids: options.relation_lists ? options.relation_lists.split(",") : []
+      attitudeData: this.data.sourceData,
+      relation_ids: options.relation_lists ? options.relation_lists.split(",") : [],
+      detailtype: options.detailtype
     })
     this.selectComment({
-      "relation_ids": this.data.relation_ids
+      "relation_ids": this.data.relation_ids,
+      "detailtype": this.data.detailtype
     });
   },
 
@@ -45,15 +51,19 @@ Page({
   selectComment: function (model) {
     request.selectComment(model).then(res => {
       if (res.status == '200') {
-        let qualityLevel = res.data.recordList[0].level; //质量评分
+        let qualityLevel = res.data.recordList[0].level; //施工专业性评分
         let qualityIndex = qualityLevel - 1;
-        let speedLevel = res.data.recordList[1].level; //速度评分
+        let speedLevel = res.data.recordList[1].level; //施工速度评分
         let speedIndex = speedLevel - 1;
+        let attitudeLevel = res.data.recordList[2].level; //服务顾问态度评分
+        let attitudeIndex = attitudeLevel - 1;
         this.setData({
           [`qualityData[${qualityIndex}].star`]: parseInt(qualityLevel),
           [`speedData[${speedIndex}].star`]: parseInt(speedLevel),
+          [`attitudeData[${attitudeIndex}].star`]: parseInt(attitudeLevel),
           [`qualityData[${qualityIndex}].img`]: this.data.qualityData[qualityIndex].img + "_click",
           [`speedData[${speedIndex}].img`]: this.data.speedData[speedIndex].img + "_click",
+          [`attitudeData[${attitudeIndex}].img`]: this.data.attitudeData[attitudeIndex].img + "_click",
           describe: res.data.content,
           file_lists: res.data.fileList
         })

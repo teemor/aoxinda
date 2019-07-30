@@ -100,14 +100,14 @@ Page({
     let relation_lists = [];
     let sers = e.currentTarget.dataset['sers'];
     for(let i in sers){
-      relation_lists.push(sers[i].id);
+      relation_lists.push(sers[i].id || sers[i]); //洗车 || 救援
     }
     let urlPath = "../my_evaluate_record/index?ordercode=" + e.currentTarget.dataset['ordercode'] + "&shopid=" + e.currentTarget.dataset['shopid'] + "&";
     if (e.currentTarget.dataset['status'] == 1){
       urlPath = "../my_evaluate_show/index?";
     }
     wx.navigateTo({
-      url: urlPath + 'relation_lists=' + relation_lists
+      url: urlPath + 'relation_lists=' + relation_lists + "&detailtype=" + e.currentTarget.dataset['detailtype']
     });
   },
 
