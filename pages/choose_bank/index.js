@@ -6,58 +6,58 @@ Page({
    */
   data: {
     card_list:[{
-      src: "../../common/image/gs_bank.png",
+      src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gs_bank.png",
       text:"工商银行"
     }, {
-        src: "../../common/image/ny_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/ny_bank.png",
         text: "农业银行"
       }, {
-        src: "../../common/image/zg_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zg_bank.png",
         text: "中国银行"
       }, {
-        src: "../../common/image/js_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/js_bank.png",
         text: "建设银行"
       }, {
-        src: "../../common/image/zs_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zs_bank.png",
         text: "招商银行"
       }, {
-        src: "../../common/image/yc_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/yc_bank.png",
         text: "邮储银行"
       }, {
-        src: "../../common/image/jt_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/jt_bank.png",
         text: "交通银行"
       }, {
-        src: "../../common/image/pf_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/pf_bank.png",
         text: "浦发银行"
       }, {
-        src: "../../common/image/ms_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/ms_bank.png",
         text: "民生银行"
       }, {
-        src: "../../common/image/xy_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/xy_bank.png",
         text: "兴业银行"
       }, {
-        src: "../../common/image/pa_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/pa_bank.png",
         text: "平安银行"
       }, {
-        src: "../../common/image/zx_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zx_bank.png",
         text: "中信银行"
       }, {
-        src: "../../common/image/hx_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/hx_bank.png",
         text: "华夏银行"
       }, {
-        src: "../../common/image/gf_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gf_bank.png",
         text: "广发银行"
       }, {
-        src: "../../common/image/gd_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gd_bank.png",
         text: "光大银行"
       }, {
-        src: "../../common/image/bj_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/bj_bank.png",
         text: "北京银行"
       }, {
-        src: "../../common/image/nb_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/nb_bank.png",
         text: "宁波银行"
       }, {
-        src: "../../common/image/sh_bank.png",
+        src: "https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/sh_bank.png",
         text: "上海银行"
       },],
     title_close:false,

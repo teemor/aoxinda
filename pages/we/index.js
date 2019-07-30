@@ -69,6 +69,7 @@ Page({
           if (res.data.card_id) {
             wx.navigateTo({
               url: `../stored_value_info/index?card_id=${that.data.card_id}&min_pay=${that.data.min_pay}`
+              // url: `../stored_value_card/index`
             })
           } else {
             wx.navigateTo({

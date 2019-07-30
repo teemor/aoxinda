@@ -10,7 +10,7 @@ Page({
    */
   data: {
     card_information:{
-      logo:"../../common/image/gold_card_bg.png",
+      logo:"",
       name:""
     },
     userName:"",
