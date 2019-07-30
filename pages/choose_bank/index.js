@@ -6,34 +6,74 @@ Page({
    */
   data: {
     card_list:[{
-      src: "../../common/image/gold_card_bg.png",
-      text:"建设银行",
-      background:"../../common/image/gold_card_bg.png"
+      src: "../../common/image/gs_bank.png",
+      text:"工商银行"
     }, {
-        src: "../../common/image/gold_card_bg.png",
-        text: "工商银行",
-        background: "../../common/image/gold_card_bg.png"
+        src: "../../common/image/ny_bank.png",
+        text: "农业银行"
       }, {
-        src: "../../common/image/gold_card_bg.png",
-        text: "北京银行",
-        background: "../../common/image/gold_card_bg.png"
+        src: "../../common/image/zg_bank.png",
+        text: "中国银行"
       }, {
-        src: "../../common/image/gold_card_bg.png",
-        text: "农业银行",
-        background: "../../common/image/gold_card_bg.png"
-      },{
-        src: "../../common/image/gold_card_bg.png",
-        text: "浦发银行",
-        background: "../../common/image/gold_card_bg.png"
-      }],
-    title_close:false
+        src: "../../common/image/js_bank.png",
+        text: "建设银行"
+      }, {
+        src: "../../common/image/zs_bank.png",
+        text: "招商银行"
+      }, {
+        src: "../../common/image/yc_bank.png",
+        text: "邮储银行"
+      }, {
+        src: "../../common/image/jt_bank.png",
+        text: "交通银行"
+      }, {
+        src: "../../common/image/pf_bank.png",
+        text: "浦发银行"
+      }, {
+        src: "../../common/image/ms_bank.png",
+        text: "民生银行"
+      }, {
+        src: "../../common/image/xy_bank.png",
+        text: "兴业银行"
+      }, {
+        src: "../../common/image/pa_bank.png",
+        text: "平安银行"
+      }, {
+        src: "../../common/image/zx_bank.png",
+        text: "中信银行"
+      }, {
+        src: "../../common/image/hx_bank.png",
+        text: "华夏银行"
+      }, {
+        src: "../../common/image/gf_bank.png",
+        text: "广发银行"
+      }, {
+        src: "../../common/image/gd_bank.png",
+        text: "光大银行"
+      }, {
+        src: "../../common/image/bj_bank.png",
+        text: "北京银行"
+      }, {
+        src: "../../common/image/nb_bank.png",
+        text: "宁波银行"
+      }, {
+        src: "../../common/image/sh_bank.png",
+        text: "上海银行"
+      },],
+    title_close:false,
+    username:"",
+    userid:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      username:options.username,
+      userid:options.userid
+    })
   },
   close : function (){
     this.setData({

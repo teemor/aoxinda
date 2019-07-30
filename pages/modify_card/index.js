@@ -16,7 +16,8 @@ Page({
     userName:"",
     bankCard:"",   
     mobile: "",
-    highlight: false,
+    highlight: true,
+    id:""
   },
 
   /**
@@ -25,9 +26,12 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      card_information : options,
-      userName:options.username,
-      mobile:options.userid
+      'card_information.logo': options.logo,
+      'card_information.name': options.name,
+      userName: options.ownerName,
+      mobile: options.shopId,
+      bankCard: options.cardNumber,
+      id : options.id
     })
   },
   //银行卡
@@ -75,6 +79,7 @@ Page({
       })
     }
   },
+  //确认修改银行卡
   onSubmit:function(){
     var that = this
     var userName = this.data.userName
@@ -114,20 +119,22 @@ Page({
     }else{
       var app = getApp()
       var getOpenId = app.globalData.openId
-      bankCardHttp.bankCardSave({ "bank": that.data.card_information.name, "cardNumber": that.data.bankCard, "ownerName": that.data.userName, "empId": getOpenId, "identityCard": that.data.mobile, "cardType": "1", "type": 1, "defaultCard": "0"}).then((res) => {
+      var obj = {
+        "id": that.data.id,
+        "bank": that.data.card_information.name,
+        "identityCard": that.data.mobile,
+        "cardNumber": that.data.bankCard,
+        "ownerName": that.data.userName,
+        "cardType": "1"
+      }
+      bankCardHttp.bankCardUpdata(obj).then((res) => {
         console.log(res)
-        wx.showToast({
-          title: res.msg,
-          icon: 'success',
-          duration: 2500
-        })
       })
-      console.log("ok")
       wx.navigateBack({
-        delta: 2
+        delta: 1
       })
       wx.showToast({
-        title: '银行卡添加成功',
+        title: '银行卡修改成功',
         icon: 'success',
         duration: 2500
       })

@@ -435,6 +435,20 @@
 					"pathName": "packageA/pages/store_detail/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店详情评论",
+					"pathName": "packageA/pages/store_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 57,
+					"name": "填写银行卡信息",
+					"pathName": "pages/my_bank_card/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

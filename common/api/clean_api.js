@@ -7,6 +7,7 @@ export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
 export const RECORD_HTTP = `http://192.168.31.158:9015/wash/v1.0` //YJQ 金麦卡消费、退款、充值列表
 export const IP_HTTP_TOPUP = `http://192.168.31.220:9014/balance/v1.0` //YJQ储值卡充值消息推送
+export const BANK_CARD_HTTP = `http://192.168.31.220:9014/mcf/v1.0` //YJQ我的银行卡
 export class store {
   // 获取保养类型
   findShopList = (model) => {
@@ -113,6 +114,38 @@ export class store {
   payCardTopUp = (params) => {
     return http.httpRequest({
       url: `${IP_HTTP_TOPUP}/afterRechargeRemind`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡查询
+  bankCardSelect = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/queryCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡添加
+  bankCardSave = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/saveCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡解绑
+  bankCardUnbind = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/delCard`,
+      method: `POST`,
+      data: params
+    })
+  }
+  //我的银行卡修改
+  bankCardUpdata = (params) => {
+    return http.httpRequest({
+      url: `${BANK_CARD_HTTP}/bankCard/updateCard`,
       method: `POST`,
       data: params
     })
