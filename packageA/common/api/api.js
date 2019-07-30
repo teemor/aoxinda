@@ -4,7 +4,7 @@ import {
 const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.158:9015/wash/v1.0`
-export const IP_YBHTTP = `http://192.168.31.156:9015/wash/v1.0`
+export const IP_YBHTTP = `http://192.168.31.156:9015`
 export const IP_LYHTTP = `http://192.168.31.220:9015/myPay/v1.0`
 export const IP_XSHTTP = `https://39.97.167.237:9020/wash/v1.0`
 export class store {
@@ -179,7 +179,15 @@ export class store {
   //评价列表
   selectWashCarComment = (model) => {
     return http.httpRequest({
-      url: `${IP_YBHTTP}/selectWashCarComment`,
+      url: `${IP_YBHTTP}/wash/v1.0/selectWashCarComment`,
+      method: `post`,
+      data: model
+    })
+  }
+  //根据门店查看评论信息
+  selectCommentByShopId = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/comment/v1.0/selectCommentByShopId`,
       method: `post`,
       data: model
     })

@@ -5,11 +5,11 @@
       <text class='dark_grey fz28'>{{commentList.user_name}}</text>
       <text class='pj_time grey fz30'>{{commentList.create_at}}</text>
     </view>
-    <view class='score fz28'>
-      <text class='grey title fl'>服务质量</text>
-      <van-rate readonly value="{{commentList.recordList[0].level}}" size="15" class="fl"/>
-      <text class='grey title fl'>服务速度</text>
-      <van-rate readonly value="{{commentList.recordList[1].level}}" size="15" class="fl"/>
+    <view class='score_wa fz28'>
+      <block wx:for="{{commentList.recordList}}" wx:for-item="rl" wx:key="{{rl}}">
+        <text class='score grey title fl'>{{rl.name}}</text>
+        <van-rate readonly value="{{rl.level}}" size="15" class="fl score"/>
+      </block>
     </view>
     <view class='content fz32'>
       <text>{{commentList.content}}</text>
@@ -19,7 +19,7 @@
       <image class='upload' wx:for="{{commentList.fileList}}" wx:key="{{item}}" src="{{item.path}}" />
     </view>
     <view class='consume fz28 grey'>
-      <text>消费日期：{{commentList.con_time}}</text>
+      <text wx:if="{{commentList.con_time}}">消费日期：{{commentList.con_time}}</text>
     </view>
     <!-- 回复 -->
     <view class='reply fz28'>

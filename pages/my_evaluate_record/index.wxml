@@ -30,7 +30,9 @@
     </view>
   </view>
   <view class='score_type'>
-    <view class='title'>服务顾问态度</view>
+    <view class='title' wx:if="{{form.detail_type == 2}}">救援客服态度</view>
+    <view class='title' wx:else>服务顾问态度</view>
+    
     <!-- 评分 -->
     <view class='score_area'>
       <view class='score fz30' wx:for="{{attitudeData}}" wx:key="{{item.id}}" bindtap='bindAttitude' data-index="{{item.id}}">

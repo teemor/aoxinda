@@ -160,10 +160,10 @@ Page({
 
   //洗车评价
   washCarComment: function(model) {
-    request.selectWashCarComment(model).then(res => {
+    request.selectCommentByShopId(model).then(res => {
       if (res.status == '200') {
         this.setData({
-          commentList: res.data.consumeCommentList
+          commentList: res.data.commentList
         })
       }
     })
@@ -224,9 +224,9 @@ Page({
         load: false,
         loading: true //加载动画的显示
       })
-      request.selectWashCarComment(that.data.commentForm).then(res => {
-        if (res.status == '200' && res.data.consumeCommentList.length > 0) {
-          var content = that.data.commentList.concat(res.data.consumeCommentList) //将返回结果放入content
+      request.selectCommentByShopId(that.data.commentForm).then(res => {
+        if (res.status == '200' && res.data.commentList.length > 0) {
+          var content = that.data.commentList.concat(res.data.commentList) //将返回结果放入content
           that.setData({
             commentList: content,
             load: true,

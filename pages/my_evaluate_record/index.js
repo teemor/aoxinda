@@ -26,7 +26,7 @@ Page({
       "user_id": "",
       "detail_type": "", //1代表洗车 2代表救援
       "record_lists": [
-        { "level": 0, "name": 2 },  //2、施工专业性 3、施工速度 4、服务顾问态度
+        { "level": 0, "name": 2 },  //2、施工专业性 3、施工速度 4、服务顾问态度 5、救援客服态度
         { "level": 0, "name": 3 }, 
         { "level": 0, "name": 4 }
       ],
@@ -160,6 +160,11 @@ Page({
         duration: 2000
       })
       return false;
+    }
+    if (this.data.form.detail_type == 2){  //救援
+      this.setData({
+        [`form.record_lists[2].name`]: 5
+      })
     }
     request.addComment(this.data.form).then(res => {
       if (res.status == '200') {
