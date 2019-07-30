@@ -14,19 +14,19 @@
     <view style="position:absolute;margin-top:-480rpx;">
       <view wx:if="{{car}}" class="add_contain" bindtap="editCar" data-item="{{model.name}}">
         <view class="fl shop_add_btn_img" style='margin-left:30rpx;margin-top:50rpx;'>
-          <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png" />
         </view>
         <view class="fl shop_add_btn_text">
           <view class='shop_add_info'>
             <view class='shop_add_info_car'>我的爱车：{{model.model+' '+model.vehicleType+' '+model.carType}}</view>
             <view class='shop_add_info_km'>行驶里程：{{model.mileage || 0}}KM</view>
           </view>
-          <image src='../../common/image/edit_index.png' class='shop_add_edit'></image>
+          <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/edit_index.png' class='shop_add_edit'></image>
         </view>
       </view>
       <view wx:else class="add_contain" bindtap="addCar">
         <view class="fl add_contain_img">
-          <image src="../../common/image/add.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/addcar.png" />
         </view>
         <view class="fl add_car_text">
           <view class="fz30">添加我的爱车</view>
@@ -49,25 +49,25 @@
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/03.png' />
             <view>车品商城</view>
           </view>
-          <view class='car_btn'>
+          <view class='car_btn' bindtap="waiting">
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/04.png' />
             <view>轮胎轮毂</view>
           </view>
         </view>
         <view class='btn_flex'>
-          <view class='car_btn'>
+          <view class='car_btn' bindtap="waiting">
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/05.png' />
             <view>精准养护</view>
           </view>
-          <view class='car_btn'>
+          <view class='car_btn' bindtap="waiting">
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/06.png' />
             <view>故障诊断</view>
           </view>
-          <view class='car_btn'>
+          <view class='car_btn' bindtap="sosBtn">
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/07.png' />
             <view>紧急救援</view>
           </view>
-          <view class='car_btn'>
+          <view class='car_btn' bindtap="waiting">
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/08.png' />
             <view>钣金喷漆</view>
           </view>
@@ -96,7 +96,7 @@
     </view>
   </view>
   <!-- 限时抢购 -->
-  <view class='limited_contain'>
+  <view class='limited_contain' bindtap="waiting">
     <view class='limited_title'>
       <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/team_title.png"></image>
     </view>
@@ -162,7 +162,7 @@
     </view>
   </view>
   <!-- 小麦众筹 -->
-  <view class='crowd_contain'>
+  <view class='crowd_contain' bindtap="waiting">
     <view class='crowd_title'>
       <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/crowd_title.png' />
     </view>
@@ -233,49 +233,49 @@
     </view>
   </view>
   <!-- 麦车服集市-->
-  <view class='contain' style="margin-top:20rpx" bindtap='toMall'>
+  <view class='contain' style="margin-top:20rpx">
     <view class='limited_title'>
       <view class='limited_title-text fz32 bold'>
         麦车服集市
       </view>
     </view>
-    <view class="fl limited_contain_mall" bindtap="shopList">
-      <view class="fl" style="background:#f1f4ff;padding:20rpx;">
-        <view class="fz28">{{chooseData[0].name}}</view>       
-        <view class="fz26 grey">大品牌</view>
+    <view class="fl limited_contain_mall">
+      <view class="fl" style="background:#f1f4ff;padding:20rpx;" bindtap="shopList" data-item="{{chooseData[0]}}">
+        <view class="fz28">{{chooseData[0].parameter}}</view>       
+        <view class="fz26 grey">{{chooseData[0].name}}</view>
         <view class="limited_img_mall" style="margin-top:15rpx">
           <image src="{{chooseData[0].path}}" />
         </view>
       </view>
-      <view class="fl" style="width:220rpx;">
+      <view class="fl" style="width:220rpx;"  bindtap="shopList" data-item="{{chooseData[1]}}">
         <view   class="cl limited_boxs" style="background:#f1edea">
-          <view class="fz28">{{chooseData[1].name}}</view>
-          <view class="fz26 grey">大品牌</view>
+          <view class="fz28">{{chooseData[1].parameter}}</view>
+          <view class="fz26 grey">{{chooseData[1].name}}</view>
           <view class=" limited_imgs">
             <image src="{{chooseData[1].path}}" />
           </view>
         </view>
-        <view  class="cl limited_boxs" style="background:#ebe9f4">
-          <view class="fz28">{{chooseData[2].name}}</view>
-          <view class="fz26 grey">大品牌</view>
+        <view  class="cl limited_boxs" style="background:#ebe9f4"  bindtap="shopList" data-item="{{chooseData[2]}}">
+          <view class="fz28">{{chooseData[2].parameter}}</view>
+          <view class="fz26 grey">{{chooseData[2].name}}</view>
           <view class=" limited_imgs">
             <image src="{{chooseData[2].path}}" />
           </view>
         </view>
       </view>
-      <view class="fl"  style="width:220rpx;">
+      <view class="fl"  style="width:220rpx;"  bindtap="shopList" data-item="{{chooseData[3]}}">
         <view class="cl limited_boxs" style="background:#f0f3ed">
-          <view class="fz28">{{chooseData[3].name}}</view>
-          <view class="fz26 grey">大品牌</view>
+          <view class="fz28">{{chooseData[3].parameter}}</view>
+          <view class="fz26 grey">{{chooseData[3].name}}</view>
           <view class=" limited_imgs">
-            <image src="{{chooseData[1].path}}" />
+            <image src="{{chooseData[3].path}}" />
           </view>
         </view>
-        <view class="cl limited_boxs" style="background:#efe9eb">
-          <view class="fz28">{{chooseData[4].name}}</view>
-          <view class="fz26 grey">大品牌</view>
+        <view class="cl limited_boxs" style="background:#efe9eb"  bindtap="shopList" data-item="{{chooseData[4]}}">
+          <view class="fz28">{{chooseData[4].parameter}}</view>
+          <view class="fz26 grey">{{chooseData[4].name}}</view>
           <view class=" limited_imgs" >
-            <image src="{{chooseData[2].path}}" />
+            <image src="{{chooseData[4].path}}" />
           </view>
         </view>
       </view>

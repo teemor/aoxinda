@@ -1,22 +1,23 @@
 @import "../../app.wxss";
-.space_store_img{
-    width: 160rpx;
-    margin-right:30rpx;
-  }
-  .space_store_img image{
-    margin: auto;
-    width:160rpx;
-    height:160rpx
-  }
- 
-  .space_store_text{
-    width:500rpx;
-  }
 
-  .space_store_address{
-    width:300rpx;
-    overflow: hidden;
-text-overflow:ellipsis;
-white-space: nowrap;
-  }
-  
+.space_store_img {
+  width: 160rpx;
+  margin-right: 30rpx;
+}
+
+.space_store_img image {
+  margin: auto;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.space_store_text {
+  width: 500rpx;
+}
+
+.space_store_address {
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

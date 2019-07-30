@@ -11,9 +11,10 @@ Page({
     myServiceOrderMenu,
     active: 0,
     page: 1,
-    goodsList:[]
+    flag: 0,
+    goodsList: []
   },
-  cancelOrder: function(model) {
+  cancelOrder: function (model) {
     request.cancelOrder({
       id: model.detail.id
     }).then(res => {
@@ -27,29 +28,38 @@ Page({
           success: (result) => {
             this.selectOrder(1, 100)
           },
-          fail: () => {},
-          complete: () => {}
+          fail: () => { },
+          complete: () => { }
         });
       }
     })
   },
-  tabchange: function({
+  tabchange: function ({
     detail
   }) {
     if (detail.titlea === 0) {
       this.setData({
-        goodsList: []
+        goodsList: [],
+        flag: 0
       })
-      this.selectOrder(1,5)
+
+      this.selectOrder(1, 5)
+    } else if (detail.titlea === 10) {
+      this.setData({
+        flag: 1,
+        goodsList:[]
+      })
+      this.selectOrder(1, 5)
     } else {
       this.setData({
         status: detail.titlea,
-        goodsList:[]
+        goodsList: [],
+        flag: 0
       })
       this.selectOrder(1, 5, detail.titlea)
     }
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     this.setData({
       active: this.data.active
     })
@@ -60,7 +70,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     if (options.id === "17") {
       this.setData({
         active: 1
@@ -80,35 +90,52 @@ Page({
     }
     this.selectOrder(1, 5)
   },
-  goOrder: function(e) {
+  goOrder: function (e) {
     this.setData({
       total: e.detail.pay_money
     })
     this.pay(e.detail.id)
   },
-  selectOrder: function(index, size, status) {
-    if(this.data.goodsList.length===this.data.count){
+  findOrderPageCancel: function (index, size) {
+    request.findRefundById({ pageIndex: index, pageSize: size, userId: app.globalData.openId }).then(res => {
+      console.log(res, '已取消')
+    })
+  },
+  selectOrder: function (index, size, status) {
+    if (this.data.goodsList.length === this.data.count) {
       return
     }
-    request.findOrderPage({
-      pageIndex: index,
-      pageSize: size,
-      orderStatus: status,
-      userId: app.globalData.openId
-    }).then(res => {
-      console.log(res.data.current,'current')
-      this.setData({
-        count: res.data.current,
-      })
-      res.data.records.forEach(item=>{
-        this.data.goodsList.push(item)
+    if (this.data.flag == 1) {
+        request.findOrderPageCancel({ pageIndex: index, pageSize: size, userId: app.globalData.openId }).then(res => {
+          this.setData({
+            count: res.data.current,
+          })
+          res.data.records.forEach(item => {
+            this.data.goodsList.push(item)
+            this.setData({
+              goodsList: this.data.goodsList
+            })
+          })
+        })
+    } else {
+      request.findOrderPage({
+        pageIndex: index,
+        pageSize: size,
+        orderStatus: status,
+        userId: app.globalData.openId
+      }).then(res => {
+        console.log(res.data.current, 'current')
         this.setData({
-          goodsList: this.data.goodsList
+          count: res.data.current,
+        })
+        res.data.records.forEach(item => {
+          this.data.goodsList.push(item)
+          this.setData({
+            goodsList: this.data.goodsList
+          })
         })
       })
-     
-      
-    })
+    }
   },
   /**
    * 订单详情
@@ -118,7 +145,7 @@ Page({
    * 详情
    * dzl
    */
-  orderDetail: function({
+  orderDetail: function ({
     detail
   }) {
     wx.navigateTo({
@@ -128,43 +155,43 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
-    this.data.current = parseInt(this.data.count)+this.data.page
+  onReachBottom: function () {
+    this.data.current = parseInt(this.data.count) + this.data.page
     this.selectOrder(this.data.current, 5, this.data.status)
   },
 })

@@ -39,17 +39,38 @@ Page({
       json = {
         name: this.data.value,
         id: null,
-        goodsName: this.data.value
+        goodsName: this.data.value,
       }
       //添加历史纪录
       // 跳转商品服务门店
-      
+
       if (this.data.array[this.data.index] == '商品') {
-        
         //跳转-列表
         let model = encodeURIComponent(JSON.stringify(json))
         wx.navigateTo({
           url: `../shop_goods_list/index?id=${model}`
+        });
+      } else if (this.data.array[this.data.index] == '门店') {
+        json = {
+          name: this.data.value,
+          id: null,
+          index: this.data.index,
+          shopName: this.data.value
+        }
+        let model = encodeURIComponent(JSON.stringify(json))
+        wx.navigateTo({
+          url: `../../packageA/pages/store_list/index?model=${model}`
+        });
+      } else if (this.data.array[this.data.index] == '服务') {
+        json = {
+          name: this.data.value,
+          id: null,
+          index: this.data.index,
+          actName: this.data.value
+        }
+        let model = encodeURIComponent(JSON.stringify(json))
+        wx.navigateTo({
+          url: `../../packageA/pages/store_list/index?model=${model}`
         });
       }
 

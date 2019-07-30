@@ -96,6 +96,12 @@
         "pages/add_refund/index",
         "pages/apply_store_list/index"
       ]
+    },
+    {
+      "root": "packageB",
+      "pages": [
+        "pages/index/index"
+      ]
     }
   ],
   "window": {

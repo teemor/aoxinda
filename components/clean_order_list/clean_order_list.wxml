@@ -1,14 +1,14 @@
 <view wx:if="{{ispay===true}}" class="{{ispay===true?'my_order_list-contain':'my_order_list-box'}} cl">
   <view class="cl my_order_title" wx:if="{{ispay===true}}">
     <view class="fl fz24">订单编号：{{goodsList.orderNum}}</view>
-    <view class="fr orange fz24">{{goodsList.statusName}}</view>
+    <view class="fr orange fz24">{{goodsList.statusName==='用户取消'?'已取消':goodsList.statusName}}</view>
   </view>
   <view class="cl my_order_list_box" bindtap="orderDetail" wx:if="{{goodsList.picture.length===1}}">
     <view class="fl my_order_list_image">
       <image src="{{goodsList.picture[0].actPicture}}" />
     </view>
     <view class="fl my_order_list_text">
-      <view class="fz28 two_overflow">{{goodsList.actName}}</view>
+      <view class="fz28 two_overflow">{{goodsList.picture[0].actName}}</view>
         <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
     数量{{goodsList.num}}
     </view> 

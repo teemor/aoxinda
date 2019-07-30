@@ -113,7 +113,8 @@ Page({
   /**
    * 跳转退款详情
    */
-  refundDetail: function() {
+  refundDetail: function(e) {
+    console.log(e)
     if (this.data.orderInfo.refundReason == '') {
       wx.showToast({
         title: '退款原因不能为空',
@@ -133,15 +134,23 @@ Page({
         icon: 'none'
       })
     } else {
-
+      this.data.orderInfo.userId=app.globalData.openId
       request.backMoney(this.data.orderInfo).then(res => {
-        wx.showToast({
-          title: res.data.description
+        console.log(res,'restuikuan')
+       if(res.status==true){
+        request.noticeSuccessfulRefund({openid:app.globalData.openId,formid:e.detail.formId,refundMoney:this.data.orderInfo.refundPrice,refundNum:res.refundNum,refundReason:this.data.orderInfo.refundReason}).then(res=>{
+          console.log(res,'消息')
         })
-        let order_id = res.data
+        let order_id = this.data.orderInfo.orderId
         wx.redirectTo({
-          url: `../my_refund_detail/index?id=${order_id}`
+          url: `../my_order_detail/index?ids=${order_id}`
         });
+       }else{
+         wx.showToast({
+           title:'退款失败'
+         })
+       }
+        
 
       })
 

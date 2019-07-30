@@ -40,7 +40,9 @@
   </view>
 </view>
 <view>
-  <van-submit-bar price="{{payType==0?totalPrice*100:totalCard*100 }}" button-text="提交订单" bind:submit="onSubmit" />
+<form bindsubmit="paysubmit" report-submit="true">
+ <button form-type="submit"> <van-submit-bar price="{{payType==0?totalPrice*100:totalCard*100 }}" button-text="提交订单" /></button>
+</form>
 </view>
 <manager show="{{wxPay}}" type="bottom" bind:clickMask="wxPayShow">
   <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">

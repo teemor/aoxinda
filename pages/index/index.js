@@ -1,16 +1,20 @@
 const app = getApp()
-import { Technician } from '../../common/api/api'
+import {
+  Technician
+} from '../../common/api/api'
 const request = new Technician
 import shop_detail from '../../mixin/shop_detail'
 import shop_list from '../../mixin/shop_list'
 import login from '../../mixin/login'
 import find_car from '../../mixin/find_car'
+import location from '../../mixin/location.js'
+import stores from '../../mixin/store'
 const api = require('../../utils/api')
 // import {
 //   hotData
 // } from '../../common/static/api_data'
 Page({
-  mixins: [shop_detail, shop_list, login, find_car],
+  mixins: [shop_detail, shop_list, login, find_car, location, stores],
   data: {
     userInfo: {},
     citySelected: {},
@@ -27,18 +31,33 @@ Page({
     loginMask: 1,
     phoneMask: 1
   },
-  shopBtn: function () {
+  waiting:function(){
+    wx.showToast({
+      icon:'none',
+      title: '功能正在开发中',
+    })
+  },
+  shopBtn: function() {
     wx.switchTab({
       url: `../shopping_mall/index`
     })
   },
-  onReady: function () {
+  onReady: function() {
     this.mapCtx = wx.createMapContext('myMap')
   },
-  onShow: function () {
+  onShow: function() {
     this.findCarList();
   },
-  onLoad: function () {
+  /**
+   * 紧急救援
+   */
+  sosBtn: function() {
+    wx.navigateTo({
+      url: '../../packageB/pages/index/index',
+    })
+  },
+  onLoad: function() {
+    this.getlocation()
     let that = this
     // wx.getStorage({
     //   key: 'user',
@@ -72,7 +91,7 @@ Page({
     var citySelected = wx.getStorageSync('citySelected');
     var weatherData = wx.getStorageSync('weatherData');
     if (citySelected.length == 0 || weatherData.length == 0) {
-      api.loadWeatherData(defaultCityCode, function (cityCode, data) {
+      api.loadWeatherData(defaultCityCode, function(cityCode, data) {
         var weatherData = {}
         weatherData[cityCode] = data;
         that.setHomeData([cityCode], weatherData);
@@ -127,15 +146,15 @@ Page({
   //   console.log(e.detail)
   // },
   // 点击查看
-  detailBtn: function () {
+  detailBtn: function() {
 
   },
   // 倒计时
-  showTime: function () {
+  showTime: function() {
 
   },
   // 添加我的爱车
-  addCar: function () {
+  addCar: function() {
     console.log(app.globalData)
     if (app.globalData.userInfo !== null && app.globalData.phoneNum !== "") {
       wx.navigateTo({
@@ -146,13 +165,13 @@ Page({
     }
 
   },
-  editCar: function () {
+  editCar: function() {
     wx.navigateTo({
       url: '../../pages/my_car/index'
     })
   },
   // 汽车美容
-  carbeautyBtn: function () {
+  carbeautyBtn: function() {
     // wx.navigateTo({
     //   url: '../../pages/car_beauty/index',
     // })
@@ -161,18 +180,18 @@ Page({
     })
   },
   // 车保养
-  upkeepBtn: function () {
+  upkeepBtn: function() {
     wx.navigateTo({
       url: '../../pages/c_upkeep_car/c_upkeep_car'
     })
   },
   // 邀请
-  myInvite: function () {
+  myInvite: function() {
     wx.navigateTo({
       url: '../../pages/my_invite/index'
     })
   },
-  onSearch: function (e) {
+  onSearch: function(e) {
     console.log('rwer', e)
     wx.navigateTo({
       url: '../search_shop_list/index'
@@ -180,14 +199,18 @@ Page({
   },
   // 天气
 
-  setHomeData: function (citySelected, weatherData) {
+  setHomeData: function(citySelected, weatherData) {
     var topCity = {
       left: "",
       center: "",
       right: "",
     }
-    try { topCity.center = weatherData[citySelected[0]].realtime.city_name; } catch (e) { }
-    try { topCity.right = weatherData[citySelected[1]].realtime.city_name; } catch (e) { }
+    try {
+      topCity.center = weatherData[citySelected[0]].realtime.city_name;
+    } catch (e) {}
+    try {
+      topCity.right = weatherData[citySelected[1]].realtime.city_name;
+    } catch (e) {}
 
     this.setData({
       weatherData: weatherData,
@@ -197,9 +220,9 @@ Page({
   },
 
   //人气推荐和商城精选
-  toMall: function () {
-    wx.switchTab({
-      url: '../../pages/shopping_mall/index'
-    })
-  },
+  // toMall: function () {
+  //   wx.switchTab({
+  //     url: '../../pages/shopping_mall/index'
+  //   })
+  // },
 })

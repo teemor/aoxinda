@@ -1,4 +1,9 @@
-<view class="fz28 bgwhite" style="top:0;height:80rpx;line-height:80rpx;z-index:334;position:fixed">
+<view style="position:fixed;height:120rpx;z-index:334;top:0rpx">
+  <van-search value="{{ value }}" label="商品" placeholder="请输入要搜索的商品" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
+    <view slot="action" data-value="{{ value }}" bind:tap="onSearch" style="{{value==''?'background-color:#f7f8fa;color:#999;':'background-color:#4e93f3;color:#fff;'}}" class='search_box_btn'>搜索</view>
+  </van-search>
+</view>
+<view class="fz28 bgwhite" style="top:120rpx;height:80rpx;line-height:80rpx;position:fixed;z-index:334;">
   <view class="fl sort tc">
     <view class="sort_type" bindtap="allCity">
       <view class="fl">{{city==''?'全城':city}}</view>
@@ -35,8 +40,14 @@
   </view>
 </view>
 <view class="space_list fz28 cl">
-  <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
-    <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
+<view wx:if="{{flag==1}}">
+  <view  class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
+    <storeList item="{{item.shop.shopList}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
+  </view></view>
+  <view wx:elif="{{flag==0}}">
+    <view wx:for="{{CleanStore}}" wx:key="{{item.actId}}">
+      <service_list add="{{add}}" item="{{item}}" bind:numChange="numChange" />
+    </view>
   </view>
 </view>
 <manager show="{{service}}" type="top" bind:clickMask="allService">

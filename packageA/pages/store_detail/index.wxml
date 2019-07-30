@@ -99,7 +99,7 @@
   </view>
   <view>
     合计：
-    <span class="red">{{totalPrice?0:totalPrice}}</span>
+    <span class="red">{{totalPrice?totalPrice:0}}</span>
   </view>
 </van-submit-bar>
 <manager show="{{cartShow}}" type="bottom" bind:clickMask="allService">
@@ -107,9 +107,9 @@
     <view class="cl bold fz30">
       已购服务
     </view>
-    <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl" style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
+    <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl"  wx:if="{{plusData!=false}}"  style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
       <view class="fl fz28">{{item.actName}}</view>
-      <van-stepper value="{{item.cartNum}}" class="fr" min="1" bind:change="onChange" />
+      <van-stepper value="{{item.cartNum}}" class="fr" min="0" bind:change="numChange" data-item="{{item}}"/>
     </view>
   </view>
 </manager>
