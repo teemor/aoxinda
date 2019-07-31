@@ -64,7 +64,6 @@
     "pages/my_invite_record/index",
     "pages/stored_value_card/index",
     "pages/stored_value_info/index",
-    "pages/recharge/index",
     "pages/my_service_order/index",
     "pages/my_service_card/index",
     "pages/my_service_card_detail/index",
