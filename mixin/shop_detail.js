@@ -126,6 +126,7 @@ module.exports = {
                     dataset: that.data.dataset
                 })
                 this.setData({
+                    'mineGoods.file_url': res.tableDetail[0].file_url,
                     'mineGoods.product_code': res.tableDetail[0].product_code,
                     'mineGoods.sku_id': res.tableDetail[0].sku_id,
                     'mineGoods.sku_name': res.tableDetail[0].sku_name,

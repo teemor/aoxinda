@@ -16,6 +16,7 @@ Page({
     buyNumMin: 1,
     buyNumMax: 0,
     mineGoods: {//yaoda
+      file_url: '',//商品图片
       buy_num: 1,//商品数量
       product_code: '',//货品编号
       goods_detail_id: null,//商品详情id
@@ -47,6 +48,7 @@ Page({
     })
     //yaoda
     this.setData({
+      'mineGoods.file_url': e.currentTarget.dataset.item.file_url,
       'mineGoods.product_code': e.currentTarget.dataset.item.product_code,
       'mineGoods.sku_id': e.currentTarget.dataset.item.sku_id,
       'mineGoods.sku_name': e.currentTarget.dataset.item.sku_name,
