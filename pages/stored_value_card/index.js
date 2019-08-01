@@ -1,6 +1,10 @@
 import { CardHttp } from '../../common/api/card_api'
 const request = new CardHttp
 let that
+/**
+ * 岳家棋
+ * 判断有无金麦卡  有->跳转金面卡  无->购买
+ */
 Page({
 
   /**
@@ -8,7 +12,8 @@ Page({
    */
   data: {
     card_id: null,
-    min_pay: 0
+    min_pay: 0,
+    show:false
   },
 
   /**
@@ -26,8 +31,8 @@ Page({
   //我要储值
   toStorageValue() {
     if (this.data.card_id) {
-      wx.navigateTo({
-        url: `../../pages/stored_value_info/index?card_id=${this.data.card_id}`
+      this.setData({
+        show : true
       })
     } else {
       request.payCard({ price: this.data.min_pay, type: 0 }).then((res) => {
@@ -54,5 +59,20 @@ Page({
         }
       })
     }
+  },
+  //取消
+  cancel:function(){
+    this.setData({
+      show :false
+    })
+  },
+  //跳转金麦卡
+  examine:function(){
+    this.setData({
+      show: false
+    })
+    wx.navigateTo({
+      url: `../../pages/stored_value_info/index?card_id=${this.data.card_id}`
+    })
   }
 })

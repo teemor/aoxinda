@@ -3,6 +3,10 @@ import {
   store
 } from '../../common/api/clean_api'
 const bankCardHttp = new store
+/**
+ * 岳家棋
+ * 修改银行卡
+ */
 Page({
 
   /**

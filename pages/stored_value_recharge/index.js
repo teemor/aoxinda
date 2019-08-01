@@ -6,6 +6,10 @@ import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 const request = new CardHttp
 const clean = new store
 // pages/stored_value_recharge/index.js
+/**
+ * 岳家棋
+ * 金麦卡充值 充值成功后微信消息推送
+ */
 Page({
 
   /**

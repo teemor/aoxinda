@@ -1,4 +1,8 @@
 // pages/choose_bank/index.js
+/**
+ * 岳家棋 
+ * 选择添加银行卡类型
+ */
 Page({
 
   /**

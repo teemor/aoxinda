@@ -3,6 +3,10 @@ import {
   store
 } from '../../common/api/clean_api'
 const bankCardHttp = new store
+/**
+ * 岳家棋
+ * 添加银行卡 正则判断姓名 身份证号 银行卡号
+ */
 Page({
 
   /**

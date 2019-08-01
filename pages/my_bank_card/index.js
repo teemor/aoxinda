@@ -3,6 +3,10 @@ import {
   store
 } from '../../common/api/clean_api'
 const bankCard = new store
+/**
+ * 岳家棋
+ * 银行卡list查询  银行卡解绑  跳转银行卡修改 银行卡添加
+ */
 Page({
 
   /**
@@ -123,6 +127,7 @@ Page({
       })
     })
   },
+  //添加银行卡
   addBankCard(){
     var username = this.data.username
     var userid = this.data.userid
