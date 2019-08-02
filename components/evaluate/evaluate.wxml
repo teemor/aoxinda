@@ -1,4 +1,4 @@
-<view class='wrapper'>
+<view class='evaluate_wrapper'>
   <view class='inner'>
     <view class='user_info'>
       <image src="{{commentList.avatar_url}}" class='avatar'/>

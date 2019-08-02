@@ -52,8 +52,8 @@
           <evaluate commentList="{{item}}" />
         </view>
       </view>
-      <view wx:else>
-        <view class="my_address_null">
+      <view wx:else class="evaluate">
+        <view class="my_evaluate_null">
           <image src="../../../common/image/refund_null.png" />
         </view>
         <view class="tc fz26">还没有相关评价呢</view>

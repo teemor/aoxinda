@@ -246,4 +246,16 @@ page {
     font-size: 24rpx;
     color: #999;
   }
-  
+  .card_record .evaluate{
+    background: #f3f3f3;
+  }
+  .card_record .evaluate .my_evaluate_null{
+    width:250rpx;
+    margin:auto;
+  }
+  .card_record .evaluate .my_evaluate_null image{
+    width:250rpx;
+    height:170rpx;
+    margin-top:100rpx;
+    margin-bottom:30rpx;
+  }
