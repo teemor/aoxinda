@@ -50,6 +50,7 @@ Page({
    */
   onLoad: function (options) {
     that = this
+    
     if (options.card_id) {
       //获取卡包详情
       request.selectPayCard({ card_id: options.card_id }).then(res => {
@@ -123,14 +124,21 @@ Page({
     }
   },
   onShow(){
-    this.data.recharge.card_id = this.data.card_id
-    this.data.recharge.pageSize = 10
-    detail_request.rechargeList(this.data.recharge).then(res => {
+    request.hasCard().then((res) => {
       that.setData({
-        rechargeInfo: res.data
+        min_pay: res.min_pay,
+        'recharge.card_id': res.card_id
       })
-      console.log("充值记录", res)
+      this.data.recharge.pageSize = 10
+
+      detail_request.rechargeList(this.data.recharge).then(res => {
+        that.setData({
+          rechargeInfo: res.data
+        })
+        console.log("充值记录", res)
+      })
     })
+    // this.data.recharge.card_id = this.data.card_id
   },
   //上拉加载更多
   onReachBottom() {

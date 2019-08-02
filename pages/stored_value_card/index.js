@@ -33,12 +33,14 @@ Page({
   },
   //我要储值
   toStorageValue() {
-    if (this.data.card_id) {
-      this.setData({
-        show : true
-      })
-    } else {
-      request.payCard({ price: this.data.min_pay, type: 0 }).then((res) => {
+    // if (this.data.card_id) {
+    //   this.setData({
+    //     show : true
+    //   })
+    // } else {
+      // var app = getApp()
+      // var getOpenId = app.globalData.openId
+      request.payCard({ price: this.data.min_pay, type: 0}).then((res) => {
         if (res.status === false) {
           wx.showToast({
             title: res.description
@@ -61,7 +63,7 @@ Page({
 
         }
       })
-    }
+    // }
   },
   //取消
   cancel:function(){
