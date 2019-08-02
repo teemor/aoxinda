@@ -4,15 +4,26 @@ page {
   min-height: 100%;
   background-color: #f3f3f3;
 }
-.height_contain{
-  height:200rpx;overflow:hidden
+
+.height_contain {
+  height: 200rpx;
+  overflow: hidden;
+}
+.shop_edit image {
+  margin-top:25rpx
 }
 
+.shop_close image {
+ margin-top:10rpx
+}
 .keep_up_box {
   background: #fff;
   padding: 10rpx 20rpx;
 }
 
+.swiper-item image {
+  width:100%;
+}
 
 .card_text {
   margin-left: 50rpx;
@@ -32,7 +43,7 @@ page {
 }
 
 .down_img {
-  padding:0 300rpx;
+  padding: 0 300rpx;
   width: 30rpx;
   margin: auto;
 }
@@ -41,11 +52,11 @@ page {
   margin: auto;
   width: 30rpx;
   height: 18rpx;
-
 }
+
 .cart_img image {
-  margin-right:30rpx;
-  margin-left:30rpx;
-  width:50rpx;
+  margin-right: 30rpx;
+  margin-left: 30rpx;
+  width: 50rpx;
   height: 50rpx;
 }

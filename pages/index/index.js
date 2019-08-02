@@ -57,6 +57,11 @@ Page({
     })
   },
   onLoad: function() {
+    request.findMcfHome().then(res=>{
+      this.setData({
+        dataList:res.data
+      })
+    })
     this.getlocation()
     let that = this
     // wx.getStorage({
@@ -175,7 +180,7 @@ Page({
     // wx.navigateTo({
     //   url: '../../pages/car_beauty/index',
     // })
-    wx.switchTab({
+    wx.navigateTo({
       url: '../store_index/index',
     })
   },

@@ -112,13 +112,13 @@ page {
 }
 
 .card_img image {
-  width: 200rpx;
-  height: 150rpx;
+  width: 240rpx;
+  height: 160rpx;
 }
 
 .card_text {
   margin-left: 50rpx;
-  margin-top: -150rpx;
+  margin-top: -140rpx;
   color: #fff;
   position: absolute;
 }

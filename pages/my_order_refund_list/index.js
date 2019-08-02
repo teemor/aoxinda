@@ -21,7 +21,7 @@ Page({
      * 跳转退款详情0
      */
     wx.navigateTo({
-      url: `../my_order_refund_detail/index?id=${data.currentTarget.dataset.item}`,
+      url: `../my_refund_detail/index?id=${data.currentTarget.dataset.item}`,
       success: (result) => {
 
       },
@@ -52,7 +52,7 @@ Page({
       userId: app.globalData.openId
     }).then(res => {
       this.setData({
-        refundClean: res.data
+        refundClean: res.data.records
       })
 
       console.log(res, 'res')

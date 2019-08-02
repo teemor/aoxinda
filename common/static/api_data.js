@@ -358,6 +358,19 @@ export const myOrder = [{
   "title": "退款/售后",
   "url": "../my_order_refund_list/index"
 }]
+export const serviceType = [{
+  "name":"不限次",
+  "cname":"美容洗车卡",
+  "path":"https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/counts_card.png"
+},{
+  "name":"月月",
+  "cname":"美容洗车卡",
+  "path":"https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/month_card.png"
+},{
+  "name":"金麦卡",
+  "cname":"全平台通用",
+  "path":"https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gold_card.png"
+}]
 export const tabbarConfig = [{
     "active": true,
     "pagePath": "pages/index/index",

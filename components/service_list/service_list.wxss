@@ -1,0 +1,25 @@
+@import "../../app.wxss";
+.add_img{
+    margin-top:50rpx;
+}
+.add_img image{
+    width:40rpx;
+    height:40rpx;
+  }
+  .service_img image{
+    width:150rpx;
+    height:150rpx;
+  }
+  .store_list{
+    height: 150rpx;
+    padding:30rpx 30rpx;
+    background:#fff;
+    border-bottom: 2rpx solid #f3f3f3;
+  }
+  .service_box{
+    padding:20rpx
+  }
+
+  .service_contain{
+    width: 500rpx;
+  }

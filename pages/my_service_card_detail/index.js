@@ -32,6 +32,7 @@ Page({
 
     if (options.id) {
       let model = JSON.parse(options.id)
+      console.log(model,'ka')
       this.setData({
         cardId:model.id
       })

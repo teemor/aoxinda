@@ -2,7 +2,10 @@ import { CardHttp } from '../../common/api/card_api'
 const request = new CardHttp
 let that
 Page({
-
+/**
+ * 嘉琪
+ * 
+ */
   /**
    * 页面的初始数据
    */

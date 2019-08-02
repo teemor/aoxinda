@@ -76,13 +76,13 @@
     "pages/choose_bank/index",
     "pages/fill_card_information/index",
     "pages/store_index/index",
-    "pages/modify_card/index"
+    "pages/modify_card/index",
+    "pages/store_list/index"
   ],
   "subPackages": [
     {
       "root": "packageA",
       "pages": [
-        "pages/store_list/index",
         "pages/store_detail/index",
         "pages/city_select/index",
         "pages/service_detail/index",
@@ -94,7 +94,8 @@
         "pages/my_card/index",
         "pages/my_order_detail/index",
         "pages/add_refund/index",
-        "pages/apply_store_list/index"
+        "pages/apply_store_list/index",
+        "components/card_list/card_list"
       ]
     },
     {
@@ -140,7 +141,7 @@
       },
       {
         "active": false,
-        "pagePath": "pages/store_index/index",
+        "pagePath": "pages/store_list/index",
         "text": "门店",
         "iconPath": "/common/image/tab/mes.png",
         "selectedIconPath": "/common/image/tab/mes_after.png"

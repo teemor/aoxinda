@@ -5,16 +5,25 @@ import {
 const http = new HttpServer()
 export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
-export const RECORD_HTTP = `http://192.168.31.158:9015/wash/v1.0` //YJQ 金麦卡消费、退款、充值列表
-export const IP_HTTP_TOPUP = `http://192.168.31.220:9014/balance/v1.0` //YJQ储值卡充值消息推送
-export const BANK_CARD_HTTP = `http://192.168.31.220:9014/mcf/v1.0` //YJQ我的银行卡
-export const IP_XSHTTP = `https://39.97.167.237:9020/wash/v1.0`
+export const RECORD_HTTP = `http://192.168.31.184:9015/wash/v1.0` //158YJQ 金麦卡消费、退款、充值列表
+export const IP_HTTP_TOPUP = `http://192.168.31.184:9014/balance/v1.0` //220YJQ储值卡充值消息推送
+export const BANK_CARD_HTTP = `http://192.168.31.184:9014/mcf/v1.0` //220YJQ我的银行卡
+export const IP_XSHTTP = `https://39.97.167.184:9020/wash/v1.0` //237
 
 export class store {
+  // 搜索
+  findSearch = (model) => {
+    return http.httpRequest({
+      url: `http://192.168.31.158:9015/wash/v1.0/findSearch`,
+      method: `post`,
+      data: model
+    })
+  }
   // 获取保养类型
   findShopList = (model) => {
     return http.httpRequest({
-      url: `${IP_YXHTTP}/findShopList`,
+      // url: `${IP_YXHTTP}/findShopList`,
+      url: `${IP_YXHTTP}/selectShopList`,
       method: `post`,
       data: model
     })
@@ -103,6 +112,20 @@ export class store {
       url: `${IP_YXHTTP}/findOrderShop`,
       method: `post`,
       data: model
+    })
+  }
+  // 获取服务类型
+  findSerType = () => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findSerType`,
+      method: `get`
+    })
+  }
+  // 洗车美容退款详情
+  findRefundByWechatRefundNo = () => {
+    return http.httpRequest({
+      url: `${IP_MYHTTP}/wash/v1.0/mcf-wcb-refund/findRefundByWechatRefundNo`,
+      method: `get`
     })
   }
 }

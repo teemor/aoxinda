@@ -1,44 +1,56 @@
-<view>
-  <view>
+<view class="cl" style="margin-bottom:10rpx;">
+  <view class="service_img">
     <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png" />
   </view>
   <view class="bgwhite" style="padding:30rpx">
-    <view class="high60 bold">
+    <view class="high60 bold tc">
       {{model.actName}}
     </view>
-    <view class="red fz32">
-      <span class="fz24">¥</span>{{model.actPrice}}
+    <view class="red fz40 tc">
+      <span class="fz24 ">¥</span>{{model.actPrice}}
       <!--<span class="fz24 grey" style="margin-left:30rpx">已售  123</span>-->
     </view>
   </view>
 </view>
-<view class="bgwhite fz30" style="margin:20rpx 0">
-  <view class="cl high80" style="padding:0 30rpx;border-bottom:2rpx solid #f0f0f0">
-    <view class="fl">
+<view class="bgwhite cl fz30" style="margin:20rpx 0">
+ <van-cell title="适用门店" value="3家门店适用" is-link></van-cell>
+   <!--  <view class="cl high80" style="padding:0 30rpx;border-bottom:2rpx solid #f0f0f0">
+ 
+ <view class="fl">
       适用门店
     </view>
     <view class="fr grey">
       全部
     </view>
+    
     <view class="cl"></view>
+  </view>-->
+  <view class="cl" style="height:200rpx">
+    <view class=" fl" style="padding:20rpx 30rpx;">
+      <view class="fz28 high50">
+        {{model.shop.shopList.name}}
+      </view>
+      <view class="fz28 high50 grey">
+        {{model.shop.shopList.address}}
+      </view>
+      <view class="high50" style="color:#d3d3d3">
+        距您{{model.shop.shopList.distance}}km,驾车约15分钟
+      </view>
+    </view>
+    <view class="fr phone_img" data-item="{{model.shop.shopList.tel}}" bindtap="makePhone">
+      <image src="../../common/img/phone.png" />
+    </view>
+
   </view>
 
-  <view class="cl" style="padding:20rpx 30rpx;">
-  <view class="fz28 high50">
-  {{model.shop.shop.name}}
-  </view>
-  <view class="fz28 high50 grey">
-  {{model.shop.shop.address}}
-  </view>
-  <view class="high50" style="color:#d3d3d3">
-  距您{{model.shop.distance}}km,驾车约15分钟
-  </view>
-  </view>
 </view>
 <view>
   <van-tabs active="{{active}}" sticky bind:click="tabClick" bind:change="onChange" color="#4e93f3">
     <van-tab title="服务详情">
-      <view>{{model.actCon}}</view>
+      <view>
+        <rich-text class="" nodes="{{model.actCon}}">
+        </rich-text>
+      </view>
       <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
         <service_list item="{{item}}" bind:numChange="numChange" />
       </view>

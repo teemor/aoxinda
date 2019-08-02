@@ -4,7 +4,9 @@ import {
   store
 } from '../../common/api/clean_api'
 import location from '../../mixin/location.js'
-
+import {
+  serviceType
+} from '../../common/static/api_data'
 const request = new store
 const app = getApp()
 Page({
@@ -13,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    serviceType,
     location: '',
     CleanStore: []
   },
@@ -108,8 +111,8 @@ Page({
     })
   },
   storeListAll: function() {
-    wx.navigateTo({
-      url: '../../packageA/pages/store_list/index',
+    wx.switchTab({
+      url: '../../pages/store_list/index',
     })
   },
   storeList: function(item) {
@@ -122,8 +125,8 @@ Page({
       } else if (name = '月月') {
         id = 4
       } else if (name = '金麦卡') {
-        wx.navigateTo({
-          url: `../../packageA/pages/store_list/index?id=${id}`,
+        wx.switchTab({
+          url: `../../pages/store_list/index?id=${id}`,
           success: (result) => {
 
           },
@@ -132,8 +135,8 @@ Page({
         });
       }
     }
-    wx.navigateTo({
-      url: `../../packageA/pages/store_list/index?id=${id}`,
+    wx.switchTab({
+      url: `../../pages/store_list/index?id=${id}`,
       success: (result) => {
 
       },

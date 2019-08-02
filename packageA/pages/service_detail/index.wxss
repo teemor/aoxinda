@@ -1,5 +1,12 @@
 @import "../../../app.wxss";
+
 page{
     min-height: 100%;
     background-color: #f3f3f3;
+}
+.service_img image {
+  width: 100%;
+}
+.fz40{
+  font-size:40rpx;
 }
