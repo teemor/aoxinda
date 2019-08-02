@@ -78,11 +78,13 @@ Page({
   },
   //tab点击事件
   tabClick(event) {
-    this.setData({
-      tabIndex: event.detail.index,
-      ["commentForm.pageIndex"]: 1
-    });
-    this.washCarComment(this.data.commentForm);
+    if (event.detail.index == 2) {
+      this.setData({
+        tabIndex: event.detail.index,
+        ["commentForm.pageIndex"]: 1
+      });
+      this.washCarComment(this.data.commentForm);
+    }
   },
 
   /**

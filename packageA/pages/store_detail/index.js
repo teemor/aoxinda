@@ -175,11 +175,13 @@ Page({
   },
 
   tabClick(event) {
-    this.setData({
-      tabIndex: event.detail.index,
-      ["commentForm.pageIndex"]: 1
-    });
-    this.washCarComment(this.data.commentForm);
+    if (event.detail.index == 1) {
+      this.setData({
+        tabIndex: event.detail.index,
+        ["commentForm.pageIndex"]: 1
+      });
+      this.washCarComment(this.data.commentForm);
+    }
   },
 
   /**
