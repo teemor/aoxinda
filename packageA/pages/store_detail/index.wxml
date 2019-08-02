@@ -1,5 +1,5 @@
 <view>
-  <swiper style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+  <swiper interval="3000" autoplay="true" style='height:350rpx;position:relative' indicator-dots="false" autoplay="true" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
     <block wx:for="{{background}}" wx:key="*this">
       <swiper-item class="swiper-item">
         <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner.png' />
@@ -10,12 +10,12 @@
 <view class="keep_up_box">
   <view class="fz30 bold">{{storemodel.name}}</view>
   <view class="cl">
-    <view wx:for="{{storemodel.serType}}" wx:key="{{item}}" class="fl">
+    <view wx:for="{{storemodel.shopSer}}" wx:key="{{item}}" class="fl">
       <van-tag text-color="#ffa315" size="medium" round color="#fff4e2" style="margin-right:20rpx">
-        {{item.actName}} </van-tag>
+        {{item.NAME}} </van-tag>
     </view>
   </view>
-  <view class="cl " style="margin-top:10rpx;height:70rpx;line-height:50rpx;width:450rpx">
+  <view class="cl " style="display:none;margin-top:10rpx;height:70rpx;line-height:50rpx;width:450rpx">
     <view class="fl">
       <van-rate value="3" size="18" class="fl" />
       <span class="orange fl fz26">3.8分</span>
@@ -43,7 +43,7 @@
   <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
     门店会员卡
   </view>
-  <view class="cl" style="margin-left:25rpx;position:relative">
+  <view wx:if="{{cardModel.length!=0}}" class="cl" style="margin-left:25rpx;position:relative">
     <view class="{{cardShow==true?'height_contain':''}}">
       <view class="fl" wx:for="{{cardModel}}" wx:key="{{item}}" style="">
         <view class="card_img" wx:if="{{item.name=='月月卡'}}" data-item="{{item.actId}}" bindtap="cardMDetail">
@@ -72,7 +72,7 @@
       <van-tab title="服务">
         <view style="margin-bottom:90rpx;">
           <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
-            <service_list item="{{item}}" bind:numChange="numChange" />
+            <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn"/>
           </view>
         </view>
       </van-tab>
@@ -93,17 +93,20 @@
   </view>
 
 </view>
-<van-submit-bar button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
+<view style="z-index:334;position:absolute">
+<van-submit-bar style="" button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
   <view class="cart_img" bindtap='showCartList'>
     <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
+    <view wx:if="{{cartIcon==true}}" style="position:absolute;margin-top:-64rpx;margin-left:64rpx;width:30rpx;height:30rpx;line-height:30rpx;border-radius:100rpx;background:#f44;color:#fff;text-align:center;">{{count}}</view>
   </view>
   <view>
     合计：
     <span class="red">{{totalPrice?totalPrice:0}}</span>
   </view>
 </van-submit-bar>
-<manager show="{{cartShow}}" type="bottom" bind:clickMask="allService">
-  <view class="bgwhite" style="padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
+</view>
+<manager show="{{cartShow}}" type="center" bind:clickMask="allService">
+  <view class="bgwhite" style="bottom:-296rpx;padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
     <view class="cl bold fz30">
       已购服务
     </view>

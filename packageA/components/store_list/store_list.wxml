@@ -1,36 +1,40 @@
-   <view>
-   <view class="space_store_img fl"  bindtap="storeDetail">
-        <image src="{{item.logo}}" />
-      </view>
-      <view class="fl space_store_text">
-      <view  bindtap="storeDetail">
-        <view>{{item.name}}</view>
-        <!--<view>
+<view>
+  <view class="space_store_img fl" bindtap="storeDetail">
+    <image src="{{item.logo}}" />
+  </view>
+  <view class="fl space_store_text">
+    <view bindtap="storeDetail">
+      <view>{{item.name}}</view>
+      <!--<view>
           <van-rate value="3" size="10" />
         </view>
         -->
-        <view class="cl fz24 grey">
-          <view class="fl">{{item.distance}}km</view>
-          <view class="fr space_store_address">{{item.address}}</view>
-          <view class="cl"></view>
-        </view>
+      <view class="cl fz24 grey">
+        <view class="fl">{{item.distance}}km</view>
+        <view class="fr space_store_address">{{item.address}}</view>
+        <view class="cl"></view>
+      </view>
+
+      <view style="height:84rpx;overflow:hidden">
         <view wx:for="{{item.serType}}" wx:key="{{item}}">
           <van-tag color="#4e93f3" plain class="fl" style="margin-right:20rpx">
             {{item.actName}}
           </van-tag>
         </view>
-        </view>
-        <view class="cl"  bindtap="serviceDetail" wx:if="{{service!=false}}">
-          <view class="fl bg_orange" style="margin-top:25rpx;width:10rpx;height:10rpx;border-radius:50rpx">
-         
-          </view>
-          <view class="fl grey fz24" style="margin-top:12rpx;margin-left:10rpx">
-            {{item.serType[0].carType}}
-          </view>
-          <view class="fr red fz24" style="margin-top:10rpx">
-            ¥{{item.serType[0].serPrice}}
-          </view>
-        </view>
       </view>
-      <view class="cl"></view>
-   </view>
+
+    </view>
+    <view class="cl" bindtap="serviceDetail">
+      <view class="fl bg_orange" style="margin-top:25rpx;width:10rpx;height:10rpx;border-radius:50rpx">
+
+      </view>
+      <view class="fl grey fz24" style="margin-top:12rpx;margin-left:10rpx">
+        {{item.serType[0].carType}}
+      </view>
+      <view class="fr red fz24" style="margin-top:10rpx">
+        ¥{{item.serType[0].serPrice}}
+      </view>
+    </view>
+  </view>
+  <view class="cl"></view>
+</view>

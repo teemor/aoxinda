@@ -3,6 +3,7 @@
   "usingComponents": {
     "manager": "../../components/manager/manager",
     "service_list": "../../components/service_list/service_list",
+    "card_list": "../../components/card_list/card_list",
     "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
     "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox/index"

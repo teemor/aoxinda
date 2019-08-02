@@ -11,41 +11,55 @@ Page({
   data: {
     commentList: [], //评论
     load: true,
-    loading: false,//加载动画的显示
+    loading: false, //加载动画的显示
     commentForm: {
       "pageIndex": 1,
       "pageSize": 10,
       "activity_id": ""
     },
-    tabIndex: 0   //当前tabs页签下标
+    tabIndex: 0 //当前tabs页签下标
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  makePhone: function({
+    currentTarget
+  }) {
+    console.log(currentTarget.dataset.item)
+    if (currentTarget.dataset.item) {
+      wx.makePhoneCall({
+        phoneNumber: currentTarget.dataset.item
+      })
+    }
+
+  },
   onLoad: function(options) {
     let isNot = 0
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
-      if (model.serType[0].name == '不计次数卡') {
-        isNot = 3
-      } else if (model.serType[0].name == '单次卡') {
-        isNot = 2
-      } else if (model.serType[0].name == '月月卡') {
-        isNot = 4
+      if (typeof(model.serType)== 'undefined') {
+        console.log("234")
+        isNot = 5
+      } else {
+        if (model.serType[0].name == '不计次数卡') {
+          isNot = 3
+        } else if (model.serType[0].name == '单次卡') {
+          isNot = 2
+        } else if (model.serType[0].name == '月月卡') {
+          isNot = 4
+        }
       }
-      this.setData({
-        ["commentForm.activity_id"]: model.serType[0].actId
-      })
+      console.log(typeof (model.serType) !== 'undefined' ? model.serType[0].actId : model.actId,'dd')
       request.findPayType({
-        actId: model.serType[0].actId,
-        actCardType: isNot,
-        log:app.globalData.longitude,
-        lat:app.globalData.latitude,
-        type:1
+        actId: typeof(model.serType) !== 'undefined' ? model.serType[0].actId : model.actId,
+        actCardType: isNot = 5 ? model.actCardType : isNot ,
+        log: app.globalData.longitude,
+        lat: app.globalData.latitude,
+        type: 1
       }).then(res => {
         this.setData({
-          model:res.data[0]
+          model: res.data[0]
         })
         console.log(res)
       })
@@ -53,7 +67,7 @@ Page({
   },
 
   //洗车评价
-  washCarComment: function (model) {
+  washCarComment: function(model) {
     request.selectWashCarComment(model).then(res => {
       if (res.status == '200') {
         this.setData({
@@ -110,17 +124,17 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this;
-    if (that.data.load && that.data.tabIndex == 2) {//全局标志位，方式请求未响应时多次触发
+    if (that.data.load && that.data.tabIndex == 2) { //全局标志位，方式请求未响应时多次触发
       that.setData({
         ["commentForm.pageIndex"]: that.data.commentForm.pageIndex * 1 + 1,
         load: false,
-        loading: true//加载动画的显示
+        loading: true //加载动画的显示
       })
       request.selectWashCarComment(that.data.commentForm).then(res => {
         if (res.status == '200' && res.data.consumeCommentList.length > 0) {
-          var content = that.data.commentList.concat(res.data.consumeCommentList)//将返回结果放入content
+          var content = that.data.commentList.concat(res.data.consumeCommentList) //将返回结果放入content
           that.setData({
             commentList: content,
             load: true,

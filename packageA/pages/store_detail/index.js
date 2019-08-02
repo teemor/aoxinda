@@ -24,6 +24,12 @@ Page({
     plusData: true,
     tabIndex: 0 //当前tabs页签下标
   },
+  serviceBtn: function({detail}) {
+    let model = encodeURIComponent(JSON.stringify(detail))
+    wx.navigateTo({
+      url: `../service_detail/index?model=${model}`,
+    })
+  },
   showCard: function() {
     this.setData({
       cardShow: !this.data.cardShow
@@ -64,14 +70,12 @@ Page({
 
   },
   numChange: function(e) {
-    console.log(e,'e')
     let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
     // if (e.detail.num = 0) {
     //   this.setData({
     //     plusData: false
     //   })
     // }
-    console.log(detail)
     request.addCart({
       shopId: this.data.storemodel.id,
       userId: app.globalData.openId,
@@ -120,13 +124,14 @@ Page({
       this.setData({
         totalPrice: price
       })
-      if (this.data.cardModel.length == 0) {
+      if (res.data.total == 0) {
         this.setData({
           cartIcon: false
         })
       } else {
         this.setData({
-          cartIcon: true
+          cartIcon: true,
+          count: res.data.total
         })
       }
       console.log(this.data.cartIcon, 'cartIcon')

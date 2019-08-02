@@ -1,19 +1,26 @@
 
 <view class="container">
   <view style="height:110rpx">
-    <van-search value="{{ value }}" placeholder="请输入要搜索的商品" bind:focus="onSearch" />
+    <van-search value="{{ value }}"placeholder="请输入要搜索的商品" bind:focus="onSearch" />
   </view>
   <view style="height:300rpx;position:relative" class="banner_img">
-    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner1.png" />
+    <swiper class="banner" style='height:350rpx;position:relative' interval="3000" autoplay="true"  indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <block wx:for="{{dataList}}" wx:key="*this">
+      <swiper-item class="swiper-item" >
+        <image src='{{item.path}}' />
+      </swiper-item>
+    </block>
+  </swiper> 
+    <!--<image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner1.png" /> -->
   </view>
   <!-- 天气 限行 油价-->
   <view class="addbgcontain" style="position:relative">
     <view class="car_bg_img">
       <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_bg.png" />
     </view>
-    <view style="position:absolute;margin-top:-480rpx;">
+    <view class="car_add_car" style="">
       <view wx:if="{{car}}" class="add_contain" bindtap="editCar" data-item="{{model.name}}">
-        <view class="fl shop_add_btn_img" style='margin-left:30rpx;margin-top:50rpx;'>
+        <view class="fl shop_add_btn_img" style='margin-left:30rpx;'>
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png" />
         </view>
         <view class="fl shop_add_btn_text">
@@ -33,13 +40,14 @@
           <view class="fz24 mtop15 grey">麦车服按车型为您推荐更精准商品和服务</view>
         </view>
       </view>
+      
 
       <!-- 选择 -->
       <view class='btn_contain'>
         <view class='btn_flex'>
           <view class='car_btn' bindtap='carbeautyBtn'>
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/01.png' />
-            <view>汽车美容</view>
+            <view>洗车美容</view>
           </view>
           <view class='car_btn' bindtap='upkeepBtn'>
             <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/02.png' />
@@ -89,7 +97,7 @@
           <view class='cl detail_current-one'>
             <span class="red bold "> 今日限行 </span>
             <span class="">今日尾号
-              <span class="red"> 7和8 </span>限行</span>
+              <span class="red"></span>不限行</span>
           </view>
         </view>
       </view>

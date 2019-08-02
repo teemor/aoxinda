@@ -5,8 +5,8 @@ Component({
    */
   properties: {
     item: Object,
-    add:Boolean,
-    payType:Number
+    add: Boolean,
+    payType: Number
   },
 
   /**
@@ -20,22 +20,27 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    addNum: function () {
+    serviceBtn: function() {
+      this.triggerEvent('serviceBtn',this.data.item)
+    },
+    addNum: function() {
       this.setData({
         add: true
       })
       let model = {}
       model.num = 1
       model.item = this.data.item
-      this.triggerEvent('numChange',model)
-      console.log(this.data.add,'addd')
+      this.triggerEvent('numChange', model)
+      console.log(this.data.add, 'addd')
     },
-    numChange: function ({detail}) {
+    numChange: function({
+      detail
+    }) {
       console.log(detail)
       let model = {}
       model.num = detail
       model.item = this.data.item
-      this.triggerEvent('numChange',model)
+      this.triggerEvent('numChange', model)
     }
   }
 })

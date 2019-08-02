@@ -3,7 +3,7 @@
     <view slot="action" data-value="{{ value }}" bind:tap="onSearch" style="{{value==''?'background-color:#f7f8fa;color:#999;':'background-color:#4e93f3;color:#fff;'}}" class='search_box_btn'>搜索</view>
   </van-search>
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-    <view class="fz28" style="color:#333333;width:60rpx;height:60rpx;position:absolute;margin-top:-76rpx;margin-left:58rpx;background:#f7f8fa">
+    <view class="fz28" style="color:#333333;width:120rpx;height:60rpx;position:absolute;margin-top:-76rpx;margin-left:58rpx;background:#f7f8fa">
       {{array[index]}}
     </view>
   </picker>

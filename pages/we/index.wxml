@@ -1,7 +1,7 @@
 <view>
   <view class="my_prot_box-contain">
     <view class="my_bg_contain">
-      <image src="../../common/image/my_bg.png" />
+      <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg.png" />
     </view>
     <view wx:if="{{login===true}}" class="my_prot_box order_image">
       <view class="fl order_image">
