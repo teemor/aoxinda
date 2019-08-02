@@ -40,16 +40,19 @@
   </view>
 </view>
 <view class="space_list fz28 cl">
+<!-- 门店-->
   <view wx:if="{{flag==1}}">
     <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
       <storeList item="{{item.shop.shopList}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
     </view>
   </view>
+  <!-- 服务-->
   <view wx:elif="{{flag==0}}">
     <view wx:for="{{CleanStore}}" wx:key="{{item.actId}}">
       <service_list add="{{add}}" item="{{item}}" bind:numChange="numChange" />
     </view>
   </view>
+  <!-- 门店-->
   <view wx:else>
     <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item.actId}}">
       <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
