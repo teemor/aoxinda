@@ -1,9 +1,4 @@
 @import "../../app.wxss";
-page {
-  min-height: 100%;
-  background-color: #fff;
-  margin-bottom: 100rpx;
-}
 .dark_grey{
   color:#919191;
 }

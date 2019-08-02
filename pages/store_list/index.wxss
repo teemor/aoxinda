@@ -1,4 +1,4 @@
-@import "../../../app.wxss";
+@import "../../app.wxss";
 
 .search_box .van-search__content {
   border-radius: 36rpx;
@@ -49,7 +49,7 @@
 }
 
 .sort_type {
-  width: 140rpx;
+  width: 150rpx;
   margin: auto;
 }
 
@@ -99,7 +99,7 @@
   position: absolute;
   width: 30rpx;
   height: 20rpx;
-  margin-top: -60rpx;
+  margin-top: -46rpx;
   margin-left: 380rpx;
 }
 
@@ -109,4 +109,10 @@
   height: 30rpx;
   margin-top: -60rpx;
   margin-left: 680rpx;
+}
+.sort_image image{
+  margin-top:-10rpx;
+  width:20rpx;
+  height:10rpx;
+  margin-left:10rpx;
 }

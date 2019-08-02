@@ -133,11 +133,15 @@ Page({
     })
     let initCode = setInterval(() => {
       if (codeCount === 0) {
-        that.setData({ codeBtn: `重新获取` })
+        that.setData({
+          codeBtn: `重新获取`
+        })
         clearInterval(initCode)
         return
       } else {
-        that.setData({ codeBtn: `已发送${--codeCount}秒` })
+        that.setData({
+          codeBtn: `已发送${--codeCount}秒`
+        })
       }
     }, 1000)
     request.sendSms({
@@ -199,6 +203,7 @@ Page({
       let model = JSON.parse(decodeURIComponent(options.card))
       console.log(model, 'ka支付')
       this.setData({
+        cardModel: model[0],
         shopId: model[0].shopId,
       })
       let orderDetails = model.map(item => {
@@ -214,7 +219,7 @@ Page({
       });
       this.setData({
         card: 0,
-        orderDetails: orderDetails,
+        orderDetails: orderDetails, 
         totalPrice: totalPrice,
       })
       console.log(this.data.orderDetails, 'orderDetails')
@@ -223,7 +228,8 @@ Page({
       user_id: app.globalData.openId
     }).then(res => {
       this.setData({
-        cardGold: res.state == 1 ? true : false
+        cardGold: res.state == 1 ? true : false,
+        goldprice: res.money
       })
       if (res.state == 1) {
         request.findPass({
@@ -283,7 +289,7 @@ Page({
         userName: app.globalData.userInfo.nickName,
         userPhone: app.globalData.phoneNum
       }).then(res => {
-        console.log(res,'res,,,')
+        console.log(res, 'res,,,')
         if (res.status === false) {
           wx.showToast({
             title: res.description
@@ -303,8 +309,13 @@ Page({
                 data.data = 'success'
               data.price = that.data.totalPrice
               let model = encodeURIComponent(JSON.stringify(data))
-              request.noticeSuccessfulPayment({payMoney:that.data.totalPrice,orderNum:res.orderNum,openid:app.globalData.openId,formid:e.detail.formId}).then(res=>{
-                console.log(res,'支付成功通知')
+              request.noticeSuccessfulPayment({
+                payMoney: that.data.totalPrice,
+                orderNum: res.orderNum,
+                openid: app.globalData.openId,
+                formid: e.detail.formId
+              }).then(res => {
+                console.log(res, '支付成功通知')
               })
               wx.redirectTo({
                 url: `../success_order/index?data=${model}`

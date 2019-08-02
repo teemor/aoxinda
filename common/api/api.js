@@ -8,11 +8,11 @@ import {
 } from "../../utils/method"
 // import { IP_LYHTTP } from "../../packageA/common/api/api";
 const http = new HttpServer()
-export const IP_HTTP = `https://192.168.31.156:8081`
+export const IP_HTTP = `https://192.168.31.184:8081`
 // export const IP_yt = `http://192.168.31.76:9015`
 export const IP_YTHTTP = `https://www.maichefu.cn:9015`
 export const IP_IMG = `http://192.168.31.75:9014`
-export const IP_SYHTTP = `http://192.168.31.77:9015/manage/v1.0/getRecommend`
+export const IP_SYHTTP = `http://192.168.31.184:9015/manage/v1.0/getRecommend`
 // export const IP_YTHTTP = `http://192.168.31.76:9015`
 // export const IP_YXHTTP = `http://192.168.31.158:9014/scm/v1.0` //前三
 // export const IP_WBHTTP = `http://192.168.31.158:444/mcf/api/v1/c` // 后两
@@ -22,8 +22,14 @@ export const IP_YXHTTP = `https://www.maichefu.cn:9015/scm/v1.0` //前三
 export const WB_WX = `https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_YXHTTP = `https://www.maichefu.cn:4444/scm/v1.0` //前三
 // export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
-export const IP_YBHTTP = `http://192.168.31.156:9015`
+export const IP_YBHTTP = `http://192.168.31.184:9015`
 export class Technician {
+  findMcfHome = () => {
+    return http.httpRequest({
+      url: `http://192.168.31.184:9015/wash/v1.0/findMcfHome`,
+      method: `get`
+    })
+  }
   // 登录查询
   loginQuery = (user) => {
     return http.httpRequest({

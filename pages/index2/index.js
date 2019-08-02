@@ -156,7 +156,7 @@ Page({
     // wx.navigateTo({
     //   url: '../../pages/car_beauty/index',
     // })
-    wx.switchTab({
+    wx.navigateTo({
       url: '../../store_index/index',
     })
   },

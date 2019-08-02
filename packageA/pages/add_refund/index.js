@@ -36,9 +36,6 @@ Page({
       name: "到店后，门店不让使用",
       key: '1'
     }, {
-      name: "到门店后，刷卡/现金/第三方支付",
-      key: '1'
-    }, {
       name: "门店已停业",
       key: '1'
     }, {
@@ -128,34 +125,38 @@ Page({
         fail: () => {},
         complete: () => {}
       });
-    } else if (this.data.orderInfo.refundDesc == '') {
-      wx.showToast({
-        title: '退款描述不能为空',
-        icon: 'none'
-      })
-    } else {
-      this.data.orderInfo.userId=app.globalData.openId
+    } 
+    // else if (this.data.orderInfo.refundDesc == '') {
+    //   wx.showToast({
+    //     title: '退款描述不能为空',
+    //     icon: 'none'
+    //   })
+    // } 
+    else {
+      this.data.orderInfo.userId = app.globalData.openId
       request.backMoney(this.data.orderInfo).then(res => {
-        console.log(res,'restuikuan')
-       if(res.status==true){
-        request.noticeSuccessfulRefund({openid:app.globalData.openId,formid:e.detail.formId,refundMoney:this.data.orderInfo.refundPrice,refundNum:res.refundNum,refundReason:this.data.orderInfo.refundReason}).then(res=>{
-          console.log(res,'消息')
-        })
-        let order_id = this.data.orderInfo.orderId
-        wx.redirectTo({
-          url: `../my_order_detail/index?ids=${order_id}`
-        });
-       }else{
-         wx.showToast({
-           title:'退款失败'
-         })
-       }
-        
-
+        console.log(res, 'restuikuan')
+        if (res.status == true) {
+          request.noticeSuccessfulRefund({
+            openid: app.globalData.openId,
+            formid: e.detail.formId,
+            refundMoney: this.data.orderInfo.refundPrice,
+            refundNum: res.refundNum,
+            refundReason: this.data.orderInfo.refundReason
+          }).then(res => {
+            console.log(res, '消息')
+          })
+          let order_id = this.data.orderInfo.orderId
+          wx.redirectTo({
+            url: `../my_refund_detail/index?ids=${order_id}`
+          });
+        } else {
+          wx.showToast({
+            title: '退款失败'
+          })
+        }
       })
-
     }
-
   },
   /**
    * 退款说明

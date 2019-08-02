@@ -19,17 +19,17 @@
     <view class="cl fz32  bold" style="margin-bottom:10rpx;margin-left:30rpx;border-bottom:2rpx solid #d9d9d9">
       <view style="padding-left:20rpx;border-left:6rpx solid #3a8df9;margin-bottom:30rpx"> 精选服务</view>
     </view>
-    <view wx:for="{{dataList.listC}}" wx:key="{{item}}" style="margin-left:36rpx">
+    <view wx:for="{{serviceType}}" wx:key="{{item}}" style="margin-left:18rpx">
       <view class="card_contain fl" bindtap="storeList" data-item="{{item}}">
         <view class="card_img">
           <image src="{{item.path}}" />
         </view>
         <view class="card_text fz30">
           <view class="bold">
-            {{item.conName}}
+            {{item.name}}
           </view>
           <view class="fz28" style="margin-top:10rpx">
-            {{item.pName}}
+            {{item.cname}}
           </view>
         </view>
         <view></view>

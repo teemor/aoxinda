@@ -11,6 +11,17 @@ Page({
     invoice: '',
     moreService:false
   },
+  /**
+   * 查看我的卡
+   */
+  btnCard:function(){
+    let model ={}
+    model.id = this.data.id
+    model.actCardType = this.data.model.detail.cardType
+    wx.navigateTo({
+      url: `../../../pages/my_service_card_detail/index?id=${JSON.stringify(model)}`,
+    })
+  },
   moreService:function(){
     this.setData({
       moreService:!this.data.moreService

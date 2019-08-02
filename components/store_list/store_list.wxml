@@ -10,15 +10,15 @@
         </view>
         -->
       <view class="cl fz24 grey">
-        <view class="fl">{{item.distance}}km</view>
-        <view class="fr space_store_address">{{item.address}}</view>
+        <view class="fl">{{item.shop.distance}}km</view>
+        <view class="fr space_store_address">{{item.shop.address}}</view>
         <view class="cl"></view>
       </view>
 
       <view style="height:84rpx;overflow:hidden">
-        <view wx:for="{{item.serType}}" wx:key="{{item}}">
+        <view wx:for="{{item.shopSer}}" wx:key="{{item}}">
           <van-tag color="#4e93f3" plain class="fl" style="margin-right:20rpx">
-            {{item.actName}}
+            {{item.NAME}}
           </van-tag>
         </view>
       </view>
@@ -29,10 +29,10 @@
 
       </view>
       <view class="fl grey fz24" style="margin-top:12rpx;margin-left:10rpx">
-        {{item.serType[0].carType}}
+        {{item.carType}}
       </view>
       <view class="fr red fz24" style="margin-top:10rpx">
-        ¥{{item.serType[0].serPrice}}
+        ¥{{item.price}}
       </view>
     </view>
   </view>
