@@ -38,9 +38,9 @@ Page({
     //     show : true
     //   })
     // } else {
-      // var app = getApp()
-      // var getOpenId = app.globalData.openId
-      request.payCard({ price: this.data.min_pay, type: 0}).then((res) => {
+      var app = getApp()
+      var getOpenId = app.globalData.openId
+    request.payCard({ price: this.data.min_pay, type: 0, account_id: getOpenId}).then((res) => {
         if (res.status === false) {
           wx.showToast({
             title: res.description
@@ -55,12 +55,14 @@ Page({
             paySign: description.paySign,
             success: (res) => {
               console.log('付款成功')
+              wx.navigateTo({
+                url: '../stored_value_info/index',
+              })
             },
             fail: (res) => {
               console.log('付款失败')
             }
           });
-
         }
       })
     // }

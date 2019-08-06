@@ -51,37 +51,37 @@ Page({
    * 跳转今麦卡
    */
   goldCard: function() {
-    // var that = this
-    // var app = getApp()
-    // var getOpenId = app.globalData.openId
-    // request.hasCard().then((res) => {
-    //   that.setData({
-    //     card_id: res.card_id ? res.card_id : null,
-    //     min_pay: res.min_pay
-    //   })
-    //   wx.request({
-    //     url: 'http://192.168.31.158:9015/appapi/v1.0/hasCard',
-    //     data: {},
-    //     header: {
-    //       'content-type': 'application/json',
-    //       'token': getOpenId
-    //     },
-    //     method: "POST",
-    //     success: function(res) {
-    //       console.log(res.data.card_id)
-    //       if (res.data.card_id) {
-    //         wx.navigateTo({
-    //           url: `../stored_value_info/index?card_id=${that.data.card_id}&min_pay=${that.data.min_pay}`
-    //           // url: `../stored_value_card/index`
-    //         })
-    //       } else {
+    var that = this
+    var app = getApp()
+    var getOpenId = app.globalData.openId
+    request.hasCard().then((res) => {
+      that.setData({
+        card_id: res.card_id ? res.card_id : null,
+        min_pay: res.min_pay
+      })
+      wx.request({
+        url: 'http://192.168.31.158:9015/appapi/v1.0/hasCard',
+        data: {},
+        header: {
+          'content-type': 'application/json',
+          'token': getOpenId
+        },
+        method: "POST",
+        success: function(res) {
+          console.log(res.data.card_id)
+          if (res.data.card_id) {
+            wx.navigateTo({
+              url: `../stored_value_info/index?card_id=${that.data.card_id}&min_pay=${that.data.min_pay}`
+              // url: `../stored_value_card/index`
+            })
+          } else {
             wx.navigateTo({
               url: `../stored_value_card/index`
             })
-    //       }
-    //     }
-    //   })
-    // })
+          }
+        }
+      })
+    })
 
   },
   /**
@@ -93,16 +93,16 @@ Page({
     var app = getApp()
     var getOpenId = app.globalData.openId
     bankCard.bankCardSelect({ "emp_id": getOpenId}).then((res)=>{
-      if(res.data.length > 0){
+      // if(res.data.length > 0){
         wx.navigateTo({
           // card_id=${ that.data.card_id } & min_pay=${ that.data.min_pay }
           url: `../my_bank_card/index?add_bank=1`
         })
-      }else{
-        wx.navigateTo({
-          url: `../my_bank_card/index?add_bank=0`
-        })      
-      }
+      // }else{
+      //   wx.navigateTo({
+      //     url: `../my_bank_card/index?add_bank=0`
+      //   })      
+      // }
     })
     
   },
