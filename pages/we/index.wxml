@@ -55,6 +55,9 @@
     </view>
 
   </view>
+  <view class="open_card" style="background-image:url(../../common/image/open_card.png)" bindtap="openCard">
+    开通麦车服金麦卡，享全站服务优惠 <text>立即开通</text>
+  </view>
   <view class="mine_partner_img">
     <image src="../../common/image/my_partner.png" bindtap='myInvite' />
   </view>

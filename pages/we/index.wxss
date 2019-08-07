@@ -95,3 +95,26 @@ page {
 button{border: 0;background: none;color:#fff;font-size: 30rpx}
 .button-hover {background: none}
 button::after{ border: none; } 
+.open_card{
+  width: 90%;
+  height: 112rpx;
+  background-size: 100% 100%;
+  margin: 30rpx auto;
+  line-height: 112rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #fffde6;
+}
+.open_card text{
+  display: inline-block;
+  width: 117rpx;
+  height: 40rpx;
+  border-radius: 50rpx;
+  background: #ffe3b7;
+  color: #3c3d3c;
+  vertical-align: middle;
+  line-height: 40rpx;
+  font-size: 21rpx;
+  text-align: center;
+  margin-left: 10rpx
+}

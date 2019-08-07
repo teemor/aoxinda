@@ -9,7 +9,7 @@
     <view class='card_name'>{{item.bank}}</view>
     <view class='card_type'>{{item.type}}</view>
     <view class='card_number'>{{item.newCardNumber}}</view>
-    <view class='default' style="display:{{item.defaultCard == 0?'block':'none'}}">{{item.defaultCard == 0?'默认':''}}</view>
+    <view class='default' style="display:{{item.defaultCard == 1?'block':'none'}}">{{item.defaultCard == 1?'默认':''}}</view>
   </view>
   
   <view class='add_card' bindtap='addBankCard'>

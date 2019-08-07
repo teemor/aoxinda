@@ -48,6 +48,15 @@ Page({
   },
   /**
    * 岳家棋
+   * 跳转金麦卡详情页今麦卡
+   */
+  openCard:function(){
+    wx.navigateTo({
+      url: '../stored_value_card/index'
+    })
+  },
+  /**
+   * 岳家棋
    * 跳转今麦卡
    */
   goldCard: function() {
