@@ -1,45 +1,45 @@
 <view class='header'>
-  <image src='../../common/image/card_p.png' class='card_picture'></image>
+  <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_p.png' class='card_picture'></image>
 </view>
-<view class='activity' style='background-image:url(../../common/image/card_background1.png)'>
+<view class='activity' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_background1.png)'>
   <view class='activity_item'>
     <view class='activity_item_picture'>
-      <image src='../../common/image/activity1.png'></image>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/activity1.png'></image>
     </view>
     <view class='activity_item_text'>专享优惠</view>
     <view class='activity_item_text'>　　</view>
   </view>
   <view class='activity_item'>
     <view class='activity_item_picture'>
-      <image src='../../common/image/activity2.png'></image>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/activity2.png'></image>
     </view>
     <view class='activity_item_text'>专享活动</view>
     <view class='activity_item_text'>　　</view>
   </view>
   <view class='activity_item'>
     <view class='activity_item_picture'>
-      <image src='../../common/image/activity3.png'></image>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/activity3.png'></image>
     </view>
     <view class='activity_item_text'>线上线下</view>
     <view class='activity_item_text'>一卡畅付</view>
   </view>
-  <view class='buy_card' style='background-image:url(../../common/image/button1.png)' bindtap='toStorageValue'>
+  <view class='buy_card' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/button1.png)' bindtap='toStorageValue'>
     <text class='activity_button_text1'>金麦卡</text>
     <text class='activity_button_text2'>花的多 省的多</text>
     <text class='activity_button_text3'>立即开通</text>
   </view>
 </view>
-<view class='content' style='background-image:url(../../common/image/card_background2.png)'>
-  <image class='halving1' src='../../common/image/halving.png'></image>
-  <image class='halving2' src='../../common/image/halving.png'></image>
+<view class='content' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_background2.png)'>
+  <image class='halving1' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/halving.png'></image>
+  <image class='halving2' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/halving.png'></image>
   <view class='content_item'>
     <view class='content_item_title'>
-      <image src='../../common/image/title1.png'></image>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/title1.png'></image>
     </view>
     <view class='content_item_text'>金麦卡支付享受优选商品、服务的专享优惠</view>
     <view class='content_item_last'>
       <view class='content_item_last_image'>
-        <image src='../../common/image/content1.png'></image>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/content1.png'></image>
       </view>
       <view class='content_item_last_text'>
         使用金麦卡支付，可享麦车服平台及线下门店商品、服务的专享优惠，优惠力度以平台页面展示为准。
@@ -48,12 +48,12 @@
   </view>
   <view class='content_item'>
     <view class='content_item_title'>
-      <image src='../../common/image/title2.png'></image>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/title2.png'></image>
     </view>
     <view class='content_item_text'>持有金麦卡用户享受平台专属优惠活动</view>
     <view class='content_item_last'>
       <view class='content_item_last_image'>
-        <image src='../../common/image/content2.png'></image>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/content2.png'></image>
       </view>
       <view class='content_item_last_text'>
         平台不定期推出金麦卡用户专属活动，活动内容以当期内容为准。
@@ -62,12 +62,12 @@
   </view>
   <view class='content_item'>
     <view class='content_item_titled'>
-      <image src='../../common/image/title3.png'></image>
+      <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/title3.png'></image>
     </view>
     <view class='content_item_text'>麦车服平台、线下门店金麦卡通通轻松付</view>
     <view class='content_item_last'>
       <view class='content_item_last_image'>
-        <image src='../../common/image/content3.png'></image>
+        <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/content3.png'></image>
       </view>
       <view class='content_item_last_text'>
         麦车服平台结算时直接选择金麦卡支付即可，线下门店结算时直接出示金麦卡消费码，车管家(SA)扫码即完成支付。
@@ -75,10 +75,10 @@
     </view>
   </view>
 </view>
-<view class='content_item_title_last'><image src='../../common/image/title4.png'></image></view>
-<view class='last_text'><image src='../../common/image/text_title_i.png'></image>　金麦卡是麦车服精心打造的平台支付方式，区别于其他支付方式独立存在，并享受专属的金麦卡支付权益；</view>
-<view class='last_text'><image src='../../common/image/text_title_i.png'></image>　金麦卡账户金额可用于麦车服平台及旗下门店消费使用，账户余额暂不支持提现、退回。</view>
-<view class='card_last' style='background-image:url(../../common/image/button2.png)' bindtap='toStorageValue'>
+<view class='content_item_title_last'><image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/title4.png'></image></view>
+<view class='last_text'><image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/text_title_i.png'></image>　金麦卡是麦车服精心打造的平台支付方式，区别于其他支付方式独立存在，并享受专属的金麦卡支付权益；</view>
+<view class='last_text'><image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/text_title_i.png'></image>　金麦卡账户金额可用于麦车服平台及旗下门店消费使用，账户余额暂不支持提现、退回。</view>
+<view class='card_last' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/button2.png)' bindtap='toStorageValue'>
    <text class='activity_button_text1'>金麦卡</text>
     <text class='activity_button_text2'>花的多 省的多</text>
     <text class='activity_button_text3_last'>立即开通</text>

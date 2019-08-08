@@ -78,6 +78,7 @@ Page({
   },
   //tab点击事件
   tabClick(event) {
+    console.log(event,'event')
     this.setData({
       tabIndex: event.detail.index,
       ["commentForm.pageIndex"]: 1

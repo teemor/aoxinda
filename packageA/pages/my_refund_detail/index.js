@@ -54,7 +54,6 @@ Page({
         model: res.data,
         cartType: res.data.detail[0].cardType
       })
-      console.log(this.data.model.shop.length, 'length')
     })
   },
   selectOrderDetail: function(id) {

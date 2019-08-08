@@ -35,7 +35,7 @@
       <view class="tc fz26">您对购买的商品都很满意</view>
     </view>
     <view wx:else>
-      <view wx:for="{{refundClean}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.id}}">
+      <view wx:for="{{refundClean}}" wx:key="{{item}}" bindtap="refundDetail" data-item="{{item.wechatRefundNo}}">
         <view class="br_btm_light" style="padding:30rpx">
           <view class="fl my_order_list_image">
             <image src="{{item.pictue}}" />

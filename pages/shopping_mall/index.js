@@ -4,9 +4,11 @@ import {
 const request = new Technician
 import shop_list from '../../mixin/shop_list'
 import find_car from '../../mixin/find_car'
+import tab_index from '../../mixin/tab_index'
+
 const app = getApp();
 Page({
-    mixins: [shop_list,find_car],
+  mixins: [shop_list,tab_index,find_car],
   /**
    * 页面的初始数据
    */
@@ -86,6 +88,7 @@ Page({
 
   },
   onShow: function() {
+    this.getTabBar().init();
     this.findCarList();
   },
 

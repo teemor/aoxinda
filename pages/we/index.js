@@ -8,8 +8,10 @@ import {
 } from '../../common/api/clean_api'
 const request = new CardHttp
 const bankCard = new store
+import tab_index from '../../mixin/tab_index'
+
 Page({
-  mixins: [login],
+  mixins: [login, tab_index],
   data: {
     card_id: null,
     min_pay:0
@@ -226,7 +228,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getTabBar().init();
   },
 
   /**

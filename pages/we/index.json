@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "个人中心",
   "usingComponents": {
+    "tabbar": "../../components/tabbar/tabbar_bottom",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index"
   }
 }

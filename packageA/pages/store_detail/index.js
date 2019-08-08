@@ -77,7 +77,7 @@ Page({
     //   })
     // }
     request.addCart({
-      shopId: this.data.storemodel.id,
+      shopId: this.data.storemodel.shopId,
       userId: app.globalData.openId,
       activityId: detail.item.actId ? detail.item.actId : detail.actId,
       cartNum: detail.num,
@@ -145,16 +145,20 @@ Page({
   onLoad: function(options) {
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
+      console.log(model,'ai')
       this.setData({
         storemodel: model,
         ["commentForm.shop_id"]: model.id
       })
       request.findShopDet({
-        shopId: model.id
+        shopId: model.shopId,
+        log:app.globalData.longitude,
+        lat:app.globalData.latitude
       }).then(res => {
         this.setData({
           detailModel: res.ser,
-          cardModel: res.serCard
+          cardModel: res.serCard,
+          tel:res.shop.tel
         })
         this.carList()
         this.onShow()

@@ -8,7 +8,13 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+// 管理全局路由
+export const setRouterConfig = (config, path) => {
+  config.forEach((item) => {
+    item.active = item.pagePath === path ? true : false
+  })
+  return config
+}
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n

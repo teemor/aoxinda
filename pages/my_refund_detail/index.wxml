@@ -1,219 +1,45 @@
 <view class="order_detail_bg">
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30 fl">{{model.statusName}}</view>
-    <view class="fl order_detail_img">
-      <image src="../../common/img/detail.png" />
-    </view>
-    <view class="fz24 cl" style="width:400rpx;margin-top:30rpx;" wx:if="{{model.expect_sent_at&&model.trade_status_name!=='已完成'&&model.trade_status_name!=='已安装'}}">
-      预计{{expect_sent_at}}发货，请及时关注物流状态
-    </view>
-    <view wx:elif="{{model.statusName===''}}">
-    </view>
-    <view wx:elif="{{model.statusName==='待付款'}}" class="fz24 cl" style="width:440rpx;margin-top:50rpx;">订单为你保留{{creates}},超时后将自动关闭</view>
-    <view wx:elif="{{model.statusName==='可消费'}}" class="fz24 cl" style="width:440rpx;margin-top:50rpx;">请您及时到店享受服务</view>
+    <view class="fz30">{{detailData.stateName}}</view>
+     <view class="fz30">{{detailData.stateName}}</view>
   </view>
 </view>
-<view wx:if="{{model.detail[0].cardType!='2'}}">
-  <view class="cl my_order_list_box" bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
-    <view class="fl">
-      <view class=" fl">
-        <view class="service_img">
-          <image src="../../common/img/count.png" />
-        </view>
-        <view class="fz24" style="color:#d6ae46;position:absolute;margin-top:-100rpx;width:170rpx;margin-left:20rpx">
-          {{item.actName}}
-        </view>
-      </view>
-    </view>
-    <view class="fl my_order_list_text">
-      <view class="fz30" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">
-        {{item.actName}}
-      </view>
-      <!--   <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
-      数量{{item.num}}
-    </view>-->
-      <view class="fz28" style="margin-top:100rpx">
-        <view class="fl red">¥ {{item.buyPrice}}</view>
-        <view class="fr grey">
-          x {{item.num}}
-        </view>
-      </view>
-    </view>
-    <view class="cl">
-      <van-cell title="适用门店" value="全部" is-link catchtap="myStore" data-item="{{item.orderDetailId}}"></van-cell>
-      <view class="cl bgwhite" style="padding-top:30rpx;border-top:2rpx solid #f0f0f0;display:block">
-        <view class="fl">
-          <view class="cl">
-            <view class="fz24">{{item.shop.name}}</view>
-            <view class="fz24">{{item.shop.address}}</view>
-          </view>
-          <view class="cl">
-            <view class="fl loc_img">
-              <image src="../../common/img/location_dis.png" />
-            </view>
-            <view class="fz24 grey fl" style="margin-top:18rpx;">距您{{item.shop.distance}}km</view>
-          </view>
-        </view>
-        <view class="fr phone_img" data-item="{{item.shop.tel}}" bindtap="makePhone">
-          <image src="../../common/img/phone.png" />
-        </view>
-        <view class="cl"></view>
-      </view>
-    </view>
 
+<view class="cl my_order_list_box" bindtap="orderDetail">
+  <view class="fz26 high60">退款信息</view>
+  <view class='tk_box'>
+    <view class="my_order_list_image">
+        <image src="{{detailData.picture[0].actPicture}}" />
+      </view>
+      <view class="my_order_list_text fz26">
+        <view class="">{{detailData.picture[0].actName}}</view>
+        <!-- <view class="fz24 my_order_describe"> 产品：{{detailData.sku_name}}</view> -->
+      </view>
   </view>
 </view>
-<view wx:else>
-  <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
-    <van-tab title="服务详情">
-      <view style="{{moreService==true?'':'max-height:895rpx'}}">
-        <view class="cl " bindtap="goDetail" data-item="{{item.product_code}}" wx:for="{{model.detail}}" wx:key="{{item}}">
-          <view class="cl my_order_list_box">
-            <view class="fl my_order_list_image" wx:if="{{item.cardType==2}}">
-              <image src="{{item.pictue}}" />
-            </view>
-            <view class="fl my_order_list_image" wx:else>
-              <view wx:if="{{item.cardType==3}}">
-                次卡
-              </view>
-              <view wx:if="{{item.cardType==4}}">
-                月月卡
-              </view>
-            </view>
-            <view class="fl my_order_list_text">
-              <view class="cl">
-                <view class="fz30 fl" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;">
-                  {{item.actName}}
-                </view>
-                <view class="fr fz30 ">
-                  <view class="fl red">¥ {{item.buyPrice}}</view>
-                  <view class="fr grey">
-                    x {{item.num}}
-                  </view>
-                </view>
-              </view>
-              <view class="cl fz28" style="margin-top:100rpx">
-                <view class="fl">剩余次数{{item.syNum}}</view>
-                <view wx:if="{{item.syNum!=0}}" class="my_order_list_btn fr">
-                  <view class="myorder_orange" catchtap="goRefund" data-refund="{{item}}">申请退款</view>
-                </view>
-              </view>
-            </view>
-            <!--   <view class="fz26" style="line-height:50rpx;height:50rpx;color:#999;">
-      数量{{item.num}}
-    </view>-->
-            <view class="cl">
-              <van-cell title="适用门店" value="全部" is-link catchtap="myStore" data-item="{{item.orderDetailId}}"></van-cell>
-              <view class="cl bgwhite" style="padding-top:30rpx;border-top:2rpx solid #f0f0f0;display:block">
-                <view class="fl">
-                  <view class="cl">
-                    <view class="fz24">{{item.shop.name}}</view>
-                    <view class="fz24">{{item.shop.address}}</view>
-                  </view>
-                  <view class="cl">
-                    <view class="fl loc_img">
-                      <image src="../../common/img/location_dis.png" />
-                    </view>
-                    <view class="fz24 grey fl" style="margin-top:18rpx;">距您{{item.shop.distance}}km</view>
-                  </view>
-                </view>
-                <view class="fr phone_img" data-item="{{item.shop.tel}}" bindtap="makePhone">
-                  <image src="../../common/img/phone.png" />
-                </view>
-                <view class="cl"></view>
-              </view>
-            </view>
-            <view class="cl"> </view>
-          </view>
-          <view class="cl"></view>
-        </view>
-        <view wx:if="{{moreText==true}}" bindtap="moreService">
-          还有{{leftNum}}项
-        </view>
-      </view>
-    </van-tab>
-    <van-tab title="消费记录">
-      <view wx:for="{{consumption}}" wx:key="{{item}}" class="bgwhite" style="padding:30rpx">
-        <view>
-          <view class="fz26 high50 flwidth">{{item.shopName}}</view>
-          <view class="fz24 grey high50 flwidth">{{item.conTime}}</view>
-
-          <view class='fr fz26 comment'>
-            <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-status="1" data-sers="{{item.con}}">
-                查看评价
-              </text>
-            <text class='button' wx:else bindtap="goEvaluate" data-status="0" data-sers="{{item.con}}" data-ordercode="{{item.orderNum}}" data-shopid="{{item.shopId}}">
-                评价晒单
-              </text>
-          </view>
-
-          <view class="fz28" wx:for="{{item.con}}" wx:key="{{item}}" style="background:#fcfcfc;padding:30rpx;width:640rpx;height:140rpx;border-radius:20rpx">
-            <view class="fz28 high50">{{item.actName}}
-              <span class="orange">{{item.conNum}}</span>次</view>
-            <view class="grey high50">服务顾问:{{item.saName}}</view>
-            <view class="grey high50 ">服务技师:{{item.thName}}</view>
-          </view>
-        </view>
-      </view>
-    </van-tab>
-  </van-tabs>
-
-
+<view style="" class=" bgwhite">
+      <van-cell title="退款订单号" value="{{detailData.orderNum}}" />
+<view class="high70 fz26 br_btm_light">
+退款原因：{{detailData.refundReason}}
 </view>
-
-<view class="mtop20">
-  <van-cell title="订单编号" value="{{model.orderNum}}"></van-cell>
-  <van-cell title="下单时间" value="{{model.orderTime}}"></van-cell>
+<view class="high70 fz26 br_btm_light">
+退款金额：<span class="red">¥{{detailData.refundPrice}}</span><span class="grey"></span>
 </view>
-<view class="mtop20">
-  <van-cell title="消费方式" value="凭二维码到店消费"></van-cell>
-  <view class="refund_type fz28">
-    <view class="fl">支付方式</view>
-    <view class="fr cell_img">
-      <view wx:if="model.payType==0">
-        <image src="../../../common/image/wx.png" />微信支付
-      </view>
-      <view wx:else>金麦卡支付</view>
+<view class="high70 fz26 br_btm_light">
+退款数量：{{detailData.goodsNum}}
+</view>
+<view class="high70 fz26 br_btm_light">
+申请时间：{{detailData.refundTime}}
+</view>
+<view class="high70 fz26 br_btm_light">
+退款编号：{{detailData.refundNum}}
+</view>
+</view>
+  <view wx:if="{{detailData.back_type==='等待退款'}}" class="bottom_btn_address mtop50">
+    <view class="fz30 fl bg_orange bottom_btn_add" bindtap="cancelApply">
+      撤销申请
     </view>
+    <view class="tc fl br_orange orange bottom_btn_add fz30" bindtap="editApply">修改申请</view>
   </view>
-  <van-cell wx:if="{{model.pay_at}}" title="支付时间" value="{{pay_at}}"></van-cell>
-  <van-cell wx:if="{{model.send_at}}" title="发货时间" value="{{send_at}}"></van-cell>
-</view>
-<view class="mtop20">
-  <van-cell wx:if="{{invoice}}" title="{{invoice}}"></van-cell>
-  <!--<van-cell wx:else title="补开发票" bind:click="addInvoice" is-link></van-cell>-->
-</view>
-<view class="mtop20">
-  <van-cell title="服务总价" value="¥{{model.goodsTotalPrice}}"></van-cell>
 
-</view>
-<view class="bgwhite" style="height:200rpx;">
-  <view class="cl" style="height:30rpx;padding-right:20rpx;">
-    <view class="fr">
-      合计
-      <span class="red">¥:{{model.goodsTotalPrice}}</span>
-    </view>
-  </view>
-  <view wx:if="{{model.statusName==='已发货'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
-    <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_orange" bindtap="btnShip">确认收货</view>
-    </view>
-  </view>
-    <view wx:if="{{model.statusName==='可消费'&&model.detail[0].cardType!='2'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
-    <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_orange" bindtap="btnCard">查看我的卡</view>
-    </view>
-  </view> 
-     <view wx:if="{{model.statusName==='已取消'&&model.detail[0].cardType!='2'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
-    <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_orange"  bindtap="btnCard">查看我的卡</view>
-    </view>
-  </view> 
-  <view wx:if="{{model.statusName==='待付款'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
-    <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_grey" bindtap="canOrder">取消订单</view>
-      <view class="fl myorder_orange" bindtap="btnBuy">付款</view>
-    </view>
-  </view>
-</view>

@@ -42,13 +42,13 @@
       </view>
       <view class="fl" bindtap="myClean">
         <view class="mine_btn">
-          <image src="../../common/image/my_refund_order.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_clean_car.png" />
         </view>
         <view class="mine_btn_text tc fz28">洗车订单</view>
       </view>
       <view class="fl" bindtap="myEvaluate">
         <view class="mine_btn">
-          <image src="../../common/image/my_remark.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_Rescue.png" />
         </view>
         <view class="mine_btn_text tc fz28">救援订单</view>
       </view>
@@ -62,35 +62,35 @@
      <view class="mine_cell-list">
       <van-cell title="购物车" is-link bind:click="myCart">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_refund.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_cart.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="扫码付款" is-link bind:click="serviceCard">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_refund.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_code.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="门店服务卡" is-link bind:click="serviceCard">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_refund.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_service.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="金麦卡" is-link bind:click="goldCard">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_refund.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_gold.png" />
         </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">
       <van-cell title="我的银行卡" is-link bind:click="myBankCard">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_refund.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_bank.png" />
         </view>
       </van-cell>
     </view>
@@ -111,7 +111,7 @@
      <view class="mine_cell-list">
       <van-cell title="评价中心" is-link bind:click="myEvaluate">
         <view slot="icon" class="user_img">
-          <image src="../../common/image/my_car.png" />
+          <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_comment.png" />
         </view>
       </van-cell>
     </view>
@@ -138,3 +138,4 @@
     </view>
   </view>
 </view>
+<tabbar tabbarConfig="{{tabbarConfig}}" />
