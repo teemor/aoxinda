@@ -8,13 +8,14 @@ import shop_list from '../../mixin/shop_list'
 import login from '../../mixin/login'
 import find_car from '../../mixin/find_car'
 import location from '../../mixin/location.js'
+import tab_index from '../../mixin/tab_index'
 import stores from '../../mixin/store'
 const api = require('../../utils/api')
 // import {
 //   hotData
 // } from '../../common/static/api_data'
 Page({
-  mixins: [shop_detail, shop_list, login, find_car, location, stores],
+  mixins: [shop_detail, tab_index, shop_list, login, find_car, location, stores],
   data: {
     userInfo: {},
     citySelected: {},
@@ -46,6 +47,7 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onShow: function() {
+    this.getTabBar().init();
     this.findCarList();
   },
   /**

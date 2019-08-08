@@ -1,0 +1,19 @@
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item wx:for="{{tabbarConfig}}" wx:key="index">
+    <image slot="icon" src="{{item.iconPath}}" mode="aspectFit" />
+    <image slot="icon-active" src="{{item.selectedIconPath}}" mode="aspectFit" />{{item.text}}
+  </van-tabbar-item>
+ <!--   <van-tabbar-item>
+    <image slot="icon" src="../common/image/tab/shop.png" mode="aspectFit" />
+    <image slot="icon-active" src="../common/image/tab/shop_after.png" mode="aspectFit" />分类
+  </van-tabbar-item>
+    <van-tabbar-item>
+    <image slot="icon" src="../common/image/tab/mes.png" mode="aspectFit" />
+    <image slot="icon-active" src="../common/image/tab/mes_after.png" mode="aspectFit" /> 门店
+  </van-tabbar-item>
+    <van-tabbar-item>
+    <image slot="icon" src="../common/image/tab/mine.png" mode="aspectFit" />
+    <image slot="icon-active" src="../common/image/tab/mine_after.png" mode="aspectFit" /> 我的
+  </van-tabbar-item>
+  --> 
+</van-tabbar>

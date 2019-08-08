@@ -31,7 +31,7 @@ Page({
   },
   buyCard:function(){
     let model = encodeURIComponent(JSON.stringify(this.data.cardModel))
-   wx.navigateTo({
+    wx.navigateTo({
      url: `../add_order/index?card=${model}`,
      success: (result) => {
        

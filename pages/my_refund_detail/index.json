@@ -1,10 +1,7 @@
 {
-  "navigationBarTitleText": "订单详情",
+  "navigationBarTitleText": "退款详情",
   "usingComponents": {
     "order-list": "../../components/my_order_list/my_order_list",
-    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
-    "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
-    "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
-    "card_list": "../../components/card_list/card_list"
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index"
   }
 }

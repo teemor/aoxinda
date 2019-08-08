@@ -31,7 +31,8 @@ module.exports = {
               car: true,
               model: arr[0],
               carList:res.result,
-              carName:arr[0]
+              carName:arr[0],
+              actCarCode: arr[0].actCarCode
             })
             app.globalData.carType = this.data.model
           }

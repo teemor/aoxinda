@@ -3,8 +3,8 @@ import {
 } from "../../utils/method"
 // import { IP_MYHTTP } from "../../packageA/common/api/api";
 const http = new HttpServer()
-export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
-export const IP_MYHTTP = `http://192.168.31.186:9015/wash/v1.0/mcfwcborder`
+export const IP_YXHTTP = `http://192.168.31.184:9015/wash/v1.0` //前三
+export const IP_MYHTTP = `http://192.168.31.184:9015/wash/v1.0/mcfwcborder`
 export const RECORD_HTTP = `http://192.168.31.184:9015/wash/v1.0` //158YJQ 金麦卡消费、退款、充值列表
 export const IP_HTTP_TOPUP = `http://192.168.31.184:9014/balance/v1.0` //220YJQ储值卡充值消息推送
 export const BANK_CARD_HTTP = `http://192.168.31.220:9014/mcf/v1.0` //220YJQ我的银行卡
@@ -14,7 +14,7 @@ export class store {
   // 搜索
   findSearch = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.158:9015/wash/v1.0/findSearch`,
+      url: `http://192.168.31.184:9015/wash/v1.0/findSearch`,
       method: `post`,
       data: model
     })
@@ -55,7 +55,7 @@ export class store {
   // 
   findRefundByUserId = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcf-wcb-refund/findRefundByUserId`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcf-wcb-refund/findRefundByUserId`,
       method: `post`,
       data: model
     })
@@ -186,10 +186,11 @@ export class store {
     })
   }
   // 洗车美容退款详情
-  findRefundByWechatRefundNo = () => {
+  findRefundByWechatRefundNo = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/wash/v1.0/mcf-wcb-refund/findRefundByWechatRefundNo`,
-      method: `get`
+      url: `http://192.168.31.184:9015/wash/v1.0/mcf-wcb-refund/findRefundByWechatRefundNo`,
+      method: `post`,
+      data:model
     })
   }
 }

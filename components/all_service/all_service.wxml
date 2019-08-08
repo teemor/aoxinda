@@ -1,0 +1,5 @@
+<view>
+  <van-badge-group active="{{ active }}" bind:change="onChange">
+    <van-badge title="{{item.serName}}" wx:for="{{serType}}" />
+  </van-badge-group>
+</view>

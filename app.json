@@ -76,7 +76,8 @@
     "pages/fill_card_information/index",
     "pages/store_index/index",
     "pages/modify_card/index",
-    "pages/store_list/index"
+    "pages/store_list/index",
+    "pages/copy_store_list/index"
   ],
   "subPackages": [
     {
@@ -119,38 +120,22 @@
     "wx317e65151f04fa7c"
   ],
   "tabBar": {
-    "color": "#959595",
-    "selectedColor": "#413e3e",
-    "backgroundColor": "#fff",
-    "position": "bottom",
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
     "list": [
       {
-        "active": true,
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "/common/image/tab/index.png",
-        "selectedIconPath": "/common/image/tab/index_after.png"
+        "pagePath": "pages/index/index"
       },
       {
-        "active": false,
-        "pagePath": "pages/shopping_mall/index",
-        "text": "分类",
-        "iconPath": "/common/image/tab/shop.png",
-        "selectedIconPath": "/common/image/tab/shop_after.png"
+        "pagePath": "pages/shopping_mall/index"
       },
       {
-        "active": false,
-        "pagePath": "pages/store_list/index",
-        "text": "门店",
-        "iconPath": "/common/image/tab/mes.png",
-        "selectedIconPath": "/common/image/tab/mes_after.png"
+        "pagePath": "pages/store_list/index"
       },
       {
-        "active": false,
-        "pagePath": "pages/we/index",
-        "text": "我的",
-        "iconPath": "/common/image/tab/mine.png",
-        "selectedIconPath": "/common/image/tab/mine_after.png"
+        "pagePath": "pages/we/index"
       }
     ]
   },
