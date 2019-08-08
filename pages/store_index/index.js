@@ -22,9 +22,26 @@ Page({
   // banner
   findHome: function() {
     request.findHome().then(res => {
+      if (res.data.listT.length>4){
+        this.setData({
+          height:'height:320rpx'
+        })
+      }else{
+        height:'height:164rpx'
+      }
       this.setData({
         dataList: res.data
       })
+    })
+  },
+  /**
+   * 洗车美容
+   */
+  storeCardBtn: function(item) {
+    console.log(item)
+    app.storeList.actId = item.currentTarget.dataset.item.actId
+    wx.navigateTo({
+      url: '../../pages/store_list/index',
     })
   },
   personDetail: function() {
@@ -111,7 +128,7 @@ Page({
     })
   },
   storeListAll: function() {
-    wx.switchTab({
+    wx.navigateTo({
       url: '../../pages/store_list/index',
     })
   },
@@ -120,13 +137,31 @@ Page({
     let id
     if (item.currentTarget.dataset.item.name) {
       let name = item.currentTarget.dataset.item.name
-      if (name = '不限次') {
-        id = 3
-      } else if (name = '月月') {
-        id = 4
-      } else if (name = '金麦卡') {
-        wx.switchTab({
-          url: `../../pages/store_list/index?id=${id}`,
+      if (name === '不限次') {
+        console.log('不限次')
+        wx.navigateTo({
+          url: `../../pages/copy_store_list/index?actCardType=3`,
+          success: (result) => {
+
+          },
+          fail: () => { },
+          complete: () => { }
+        });
+      } else if (name === '月月') {
+        console.log('月月')
+        //actId=''
+        wx.navigateTo({
+          url: `../../pages/copy_store_list/index?actCardType=4`,
+          success: (result) => {
+
+          },
+          fail: () => { },
+          complete: () => { }
+        });
+      } else if (name === '金麦卡') {
+        console.log(name)
+        wx.navigateTo({
+          url: `../../pages/stored_value_card/index`,
           success: (result) => {
 
           },
@@ -135,14 +170,7 @@ Page({
         });
       }
     }
-    wx.switchTab({
-      url: `../../pages/store_list/index?id=${id}`,
-      success: (result) => {
-
-      },
-      fail: () => {},
-      complete: () => {}
-    });
+  
 
   },
   /**

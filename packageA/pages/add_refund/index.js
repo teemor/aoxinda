@@ -71,7 +71,7 @@ Page({
       let list = tempFilePath.map(item => {
         console.log(item, 'item')
         wx.uploadFile({
-          url: 'http://192.168.31.186:9015/common/v1.0/upload',
+          url: 'http://192.168.31.184:9015/common/v1.0/upload',
           filePath: item,
           name: 'file',
           formData: {

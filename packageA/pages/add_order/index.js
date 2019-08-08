@@ -162,7 +162,9 @@ Page({
     console.log(this.data.phone, 'heh')
     this.findCarList()
     if (options.model) {
+      
       let model = JSON.parse(decodeURIComponent(options.model))
+      console.log(model,'shopid')
       this.setData({
         serviceModel: model,
         shopId: model[0].shopId,
@@ -247,6 +249,7 @@ Page({
   numChange: function ({
     detail
   }) {
+    console.log(detail,'detail哈哈')
     let num = detail.num
     console.log(num, '数量')
     let totalPrice = 0
@@ -291,10 +294,19 @@ Page({
       }).then(res => {
         console.log(res, 'res,,,')
         if (res.status === false) {
+
           wx.showToast({
             title: res.description
           })
         } else {
+          request.noticeSuccessfulPayment({
+            payMoney: that.data.totalPrice,
+            orderNum: res.orderNum,
+            openid: app.globalData.openId,
+            formid: e.detail.formId
+          }).then(res => {
+            console.log(res, '支付成功通知')
+          })
           let that = this
           let description = JSON.parse(res.result);
           wx.requestPayment({

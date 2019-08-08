@@ -12,7 +12,9 @@
       data-index="{{ index }}"
       bind:tap="onClickNav"
     >
-      {{ item.text }}
+    {{index}}
+    {{mainActiveIndex}}
+      {{ item.serName }}
     </view>
   </scroll-view>
   <scroll-view
@@ -27,7 +29,7 @@
       data-item="{{ item }}"
       bind:tap="onSelectItem"
     >
-      {{ item.text }}
+      {{ item.serName }}
       <van-icon
         wx:if="{{ activeId === item.id }}"
         name="checked"

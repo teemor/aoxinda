@@ -6,9 +6,9 @@
       </swiper-item>
     </block>
   </swiper> 
-  <view class='btn_contain bgwhite'>
-    <view class='btn_flex'>
-      <view class='car_btn' wx:for="{{dataList.listT}}" wx:key="{{item}}" >
+  <view class='btn_contain bgwhite '>
+    <view class='btn_flex ' style="{{height}}">
+      <view class='car_btn' wx:for="{{dataList.listT}}" wx:key="{{item}}" data-item="{{item}}" bindtap="storeCardBtn">
         <image src='{{item.path}}'/>
         <view>{{item.pName}}</view>
       </view>

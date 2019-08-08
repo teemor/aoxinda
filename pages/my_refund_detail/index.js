@@ -5,28 +5,14 @@ const request = new store
 const app = getApp();
 Page({
   /**
+   * 洗车美容退款详情
    * 页面的初始数据
    */
   data: {
     invoice: '',
     moreService: false
   },
-  /**
-   * 查看我的卡
-   */
-  btnCard: function() {
-    let model = {}
-    model.id = this.data.id
-    model.actCardType = this.data.model.detail.cardType
-    wx.navigateTo({
-      url: `../../../pages/my_service_card_detail/index?id=${JSON.stringify(model)}`,
-    })
-  },
-  moreService: function() {
-    this.setData({
-      moreService: !this.data.moreService
-    })
-  },
+
   myStore: function(item) {
     console.log(item, 'cardid')
     wx.navigateTo({
@@ -37,43 +23,7 @@ Page({
     // })
 
   },
-  selectIdDetail: function(id) {
-    request.findOrderDetailsByOrderId({
-      id: id,
-      log: app.globalData.longitude,
-      lat: app.globalData.latitude
-    }).then(res => {
-      // if (Object.keys(res.data.shop).length==0) {
-      //   this.setData({shop:false})
-      // }else{
-      //   this.setData({
-      //     shop:true
-      //   })
-      // }
-      this.setData({
-        model: res.data,
-        cartType: res.data.detail[0].cardType
-      })
-      console.log(this.data.model.shop.length, 'length')
-    })
-  },
-  selectOrderDetail: function(id) {
-    request.findOrderDetailsByOrderId({
-      outTradeNo: id,
-      log: app.globalData.longitude,
-      lat: app.globalData.latitude
-    }).then(res => {
-      this.setData({
-        model: res.data
-      })
-      if (this.data.model.detail.length > 2) {
-        this.setData({
-          moreText: true,
-          leftNum: this.data.model.detail - 2
-        })
-      }
-    })
-  },
+
   /**
    * 取消订单
    */
@@ -185,49 +135,15 @@ Page({
    */
   onLoad: function(options) {
     console.log(options,'退款单号')
-    request.findRefundByWechatRefundNo({ wechatRefundNo:''}).then(res => {
-
+    request.findRefundByWechatRefundNo({ wechatRefundNo:options.ids}).then(res => {
+      this.setData({
+        detailData:res.data
+      })
     })
  
   },
   onShow: function() {
-    /**
-     * 补开发票
-     * @param {*} data 
-     */
-    if (this.data.item) {
-      request.selectInvoice({
-        id: this.data.item
-      }).then(res => {
-        if (res.data[0].invoice_type === 1) {
-          this.setData({
-            invoice: '增值税专用发票'
-          })
-        } else if (res.data[0].invoice_type === 0) {
-          if (res.data[0].invoice_title === 0) {
-            this.setData({
-              invoice: '纸质普通发票 个人'
-            })
-          } else {
-            this.setData({
-              invoice: '纸质普通发票 公司'
-            })
-          }
 
-        }
-      })
-      this.selectOrderDetail(this.data.id)
-    }
-    request.cardDetConOrder({
-      pageSize: 5,
-      pageIndex: 1,
-      orderId: this.data.id
-    }).then(res => {
-      this.setData({
-        consumption: res.data
-      })
-      console.log(res)
-    })
   },
   /**
    * 进入评价页面

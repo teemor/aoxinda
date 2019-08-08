@@ -60,7 +60,12 @@ Page({
            cardDet:res.data[0]
           })
           var size = this.setCanvasSize(); //动态设置画布大小
-          this.createQrCode(that.data.shareInfo.toString(), "canvas", size.w, size.h);
+          let content = {
+            type: '2',
+            card_id: this.data.card_id,
+            order_code: this.data.cardDet.cardNum
+          }
+          this.createQrCode(content.toString(), "canvas", size.w, size.h);
         } else {
           wx.showToast({
             title: '服务器错误',

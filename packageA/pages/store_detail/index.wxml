@@ -8,9 +8,9 @@
   </swiper>
 </view>
 <view class="keep_up_box">
-  <view class="fz30 bold">{{storemodel.name}}</view>
+  <view class="fz30 bold" >{{storemodel.shopName}}</view>
   <view class="cl">
-    <view wx:for="{{storemodel.shopSer}}" wx:key="{{item}}" class="fl">
+    <view wx:for="{{storemodel.shopSer}}" wx:key="{{item}}" class="fl" style="margin-bottom:20rpx;margin-top:20rpx; ">
       <van-tag text-color="#ffa315" size="medium" round color="#fff4e2" style="margin-right:20rpx">
         {{item.NAME}} </van-tag>
     </view>
@@ -27,10 +27,10 @@
       <image src="../../common/img/location_dis.png" />
     </view>
     <view class="fl">
-      <view class="fz24">{{storemodel.address}}</view>
-      <view class="fz24 grey" style="margin-top:18rpx;">距您{{storemodel.distance}}km,驾车需约25分钟</view>
+      <view class="fz24">{{storemodel.shop.address}}</view>
+      <view class="fz24 grey" style="margin-top:18rpx;">距您{{storemodel.shop.distance}}km,驾车需约25分钟</view>
     </view>
-    <view class="fr phone_img" data-item="{{storemodel.tel}}" bindtap="makePhone">
+    <view class="fr phone_img" data-item="{{tel}}" bindtap="makePhone">
       <image src="../../common/img/phone.png" />
     </view>
     <view class="cl"></view>
@@ -57,7 +57,7 @@
         </view>
         <view class="card_text">
           <view class="fz28">{{item.name}}</view>
-          <view class="fz28 bold">¥{{item.actPrice}}/{{item.name[0]}}</view>
+          <view class="fz28 bold">¥{{item.actCardPrice}}/{{item.name[0]}}</view>
         </view>
       </view>
     </view>
@@ -72,47 +72,47 @@
       <van-tab title="服务">
         <view style="margin-bottom:90rpx;">
           <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
-            <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn"/>
+            <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn" />
           </view>
         </view>
       </van-tab>
       <van-tab title="评价">
-      <view wx:if="{{commentList.length>0}}">
-        <view wx:for="{{commentList}}" wx:key="{{item}}">
-          <evaluate commentList="{{item}}" />
+        <view wx:if="{{commentList.length>0}}">
+          <view wx:for="{{commentList}}" wx:key="{{item}}">
+            <evaluate commentList="{{item}}" />
+          </view>
         </view>
-      </view>
-      <view wx:else>
-        <view class="my_address_null">
-          <image src="../../../common/image/refund_null.png" />
+        <view wx:else>
+          <view class="my_address_null">
+            <image src="../../../common/image/refund_null.png" />
+          </view>
+          <view class="tc fz26">还没有相关评价呢</view>
         </view>
-        <view class="tc fz26">还没有相关评价呢</view>
-      </view>
       </van-tab>
     </van-tabs>
   </view>
 
 </view>
 <view style="z-index:334;position:absolute">
-<van-submit-bar style="" button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
-  <view class="cart_img" bindtap='showCartList'>
-    <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
-    <view wx:if="{{cartIcon==true}}" style="position:absolute;margin-top:-64rpx;margin-left:64rpx;width:30rpx;height:30rpx;line-height:30rpx;border-radius:100rpx;background:#f44;color:#fff;text-align:center;">{{count}}</view>
-  </view>
-  <view>
-    合计：
-    <span class="red">{{totalPrice?totalPrice:0}}</span>
-  </view>
-</van-submit-bar>
+  <van-submit-bar style="" button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
+    <view class="cart_img" bindtap='showCartList'>
+      <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
+      <view wx:if="{{cartIcon==true}}" style="position:absolute;margin-top:-64rpx;margin-left:64rpx;width:30rpx;height:30rpx;line-height:30rpx;border-radius:100rpx;background:#f44;color:#fff;text-align:center;">{{count}}</view>
+    </view>
+    <view>
+      合计：
+      <span class="red">{{totalPrice?totalPrice:0}}</span>
+    </view>
+  </van-submit-bar>
 </view>
 <manager show="{{cartShow}}" type="center" bind:clickMask="allService">
   <view class="bgwhite" style="bottom:-296rpx;padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
     <view class="cl bold fz30">
       已购服务
     </view>
-    <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl"  wx:if="{{plusData!=false}}"  style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
+    <view wx:for="{{cartModel}}" wx:key="{{item}}" class="cl" wx:if="{{plusData!=false}}" style="margin-top:30rpx;padding:0 30rpx; height:80rpx;line-height:80rpx;background:#fafafa;coolr:#747474">
       <view class="fl fz28">{{item.actName}}</view>
-      <van-stepper value="{{item.cartNum}}" class="fr" min="0" bind:change="numChange" data-item="{{item}}"/>
+      <van-stepper value="{{item.cartNum}}" class="fr" min="0" bind:change="numChange" data-item="{{item}}" />
     </view>
   </view>
 </manager>

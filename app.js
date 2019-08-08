@@ -1,8 +1,13 @@
 require('./utils/mixin.js')
 import {Technician} from './common/api/api'
 const api = require('./utils/api')
+import { tabbarConfig} from "./common/static/api_data.js"
+const setRouterConfig = require("./utils/util.js")
 const request = new Technician
 App({
+  tabbarConfig: tabbarConfig,
+  isHideTabbar:false,
+  ...setRouterConfig,
   globalData:{
     phoneNum:'',
     openId:'',
@@ -12,6 +17,10 @@ App({
     carType:'',
     longitude:'',
     latitude:''
+  },
+  storeList:{
+    actId:'',
+    actCardType:''
   },
   address:'',
   appid: "wx97a3505497150b66",

@@ -1,6 +1,7 @@
 import {
   store
 } from '../../common/api/api'
+import QR from '../../../utils/qrcode.js'
 const request = new store
 const app = getApp();
 Page({
@@ -9,35 +10,76 @@ Page({
    */
   data: {
     invoice: '',
-    moreService:false
+    moreService: false
   },
+
+  //适配不同屏幕大小的canvas
+  setCanvasSize: function () {
+    var size = {};
+    try {
+      var res = wx.getSystemInfoSync();
+      var scale = 750 / 686;
+      var width = res.windowWidth / scale;
+      var height = width; //canvas画布为正方形
+      size.w = width;
+      size.h = height;
+    } catch (e) {
+      console.log("获取设备信息失败" + e);
+    }
+    return size;
+  },
+  //绘制二维码图片
+  createQrCode: function (content, canvasId, cavW, cavH) {
+    //调用插件中的draw方法，绘制二维码图片
+    QR.api.draw(() => {
+      this.canvasToTempImage(canvasId);
+    }, content, canvasId, cavW, cavH);
+  },
+  //获取临时缓存照片路径，存入data中
+  canvasToTempImage: function (canvasId) {
+    let that = this;
+    wx.canvasToTempFilePath({
+      canvasId: canvasId, // 这里canvasId即之前创建的canvas-id
+      success: function (res) {
+        let tempFilePath = res.tempFilePath;
+        console.log(tempFilePath);
+        that.setData({ // 如果采用mpvue,即 this.imagePath = tempFilePath
+          imagePath: tempFilePath,
+        });
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    });
+  },
+
   /**
    * 查看我的卡
    */
-  btnCard:function(){
-    let model ={}
+  btnCard: function () {
+    let model = {}
     model.id = this.data.id
     model.actCardType = this.data.model.detail.cardType
     wx.navigateTo({
       url: `../../../pages/my_service_card_detail/index?id=${JSON.stringify(model)}`,
     })
   },
-  moreService:function(){
+  moreService: function () {
     this.setData({
-      moreService:!this.data.moreService
+      moreService: !this.data.moreService
     })
   },
-  myStore:function(item){
-    console.log(item,'cardid')
+  myStore: function (item) {
+    console.log(item, 'cardid')
     wx.navigateTo({
       url: `../apply_store_list/index?id=${item.currentTarget.dataset.item}`,
     })
     // request.findOrderShop({orderDetailId:item.currentTarget.dataset.item,log:app.globalData.longitude,lat:app.globalData.latitude}).then(res=>{
     //   console.log(res,'res')
     // })
-   
+
   },
-  selectIdDetail: function(id) {
+  selectIdDetail: function (id) {
     request.findOrderDetailsByOrderId({
       id: id,
       log: app.globalData.longitude,
@@ -54,10 +96,16 @@ Page({
         model: res.data,
         cartType: res.data.detail[0].cardType
       })
-      console.log(this.data.model.shop.length, 'length')
+      var size = this.setCanvasSize(); //动态设置画布大小
+      let content = {
+        type: '2',
+        card_id: '',
+        order_code: this.data.model.orderNum
+      }
+      this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
     })
   },
-  selectOrderDetail: function(id) {
+  selectOrderDetail: function (id) {
     request.findOrderDetailsByOrderId({
       outTradeNo: id,
       log: app.globalData.longitude,
@@ -66,10 +114,17 @@ Page({
       this.setData({
         model: res.data
       })
-      if(this.data.model.detail.length>2){
+      var size = this.setCanvasSize(); //动态设置画布大小
+      let content = {
+        type: '2',
+        card_id: '',
+        order_code: this.data.model.orderNum
+      }
+      this.createQrCode(content.toString(), "canvas", size.w, size.h);
+      if (this.data.model.detail.length > 2) {
         this.setData({
-          moreText:true,
-          leftNum:this.data.model.detail-2
+          moreText: true,
+          leftNum: this.data.model.detail - 2
         })
       }
     })
@@ -77,7 +132,7 @@ Page({
   /**
    * 取消订单
    */
-  canOrder: function() {
+  canOrder: function () {
     request.canOrder({
       trade_status: 1,
       order_id: this.data.model.order_id
@@ -92,7 +147,7 @@ Page({
       })
     })
   },
-  btnShip: function() {
+  btnShip: function () {
     request.updateOrder({
       order_id: this.data.model.order_id,
       trade_status: 7
@@ -110,14 +165,14 @@ Page({
               url: '1'
             })
           },
-          fail: () => {},
-          complete: () => {}
+          fail: () => { },
+          complete: () => { }
         });
 
       }
     })
   },
-  btnBuy: function() {
+  btnBuy: function () {
     let data = this.data.model.goodsData.map(item => {
       return {
         goods_detail_id: item.goods_detail_id,
@@ -130,7 +185,7 @@ Page({
     })
     this.pay(this.data.model.order_id)
   },
-  addInvoice: function() {
+  addInvoice: function () {
     wx.navigateTo({
       url: `../my_order_invoice/index?options=${this.data.options}`
     })
@@ -138,18 +193,18 @@ Page({
   /**
    * 退款进度
    */
-  refundList: function() {
+  refundList: function () {
     wx.navigateTo({
       url: `../my_order_refund/index`,
       success: (result) => {
 
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
 
   },
-  goDetail: function(e) {
+  goDetail: function (e) {
     wx.navigateTo({
       url: `../shop_goods_detail/index?product_code=${e.currentTarget.dataset.item}`
     })
@@ -157,7 +212,7 @@ Page({
   /**
    * 申请退款
    */
-  goRefund: function(e) {
+  goRefund: function (e) {
     console.log(e)
     let detail = e.currentTarget.dataset.refund
     this.data.model.detail = detail
@@ -167,7 +222,7 @@ Page({
       url: `../add_refund/index?model=${model}`
     })
   },
-  editInvoice: function() {
+  editInvoice: function () {
     wx.navigateTo({
       url: `../edit_invoice/index?id=${this.data.model.invoice_id}`
     })
@@ -175,7 +230,7 @@ Page({
   /**
    * 查看服务单详情
    */
-  toServerInfo: function(e) {
+  toServerInfo: function (e) {
     wx.navigateTo({
       url: `../shop_store_service/index?id=${e.currentTarget.dataset.id}&server_order_id=${e.currentTarget.dataset.server}`
     });
@@ -183,7 +238,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // this.selectOrderDetail("f69f5dc187814358b7ba53ad72139999",39.62429,118.20127)
     if (options.id) {
       this.selectOrderDetail(options.id)
@@ -192,13 +247,13 @@ Page({
       })
     } else if (options.ids) {
       this.selectIdDetail(options.ids)
-      
       this.setData({
         id: options.ids
       })
     }
+
   },
-  onShow: function() {
+  onShow: function () {
     /**
      * 补开发票
      * @param {*} data 
@@ -226,7 +281,11 @@ Page({
       })
       this.selectOrderDetail(this.data.id)
     }
-    request.cardDetConOrder({ pageSize: 5, pageIndex: 1, orderId: this.data.id }).then(res => {
+    request.cardDetConOrder({
+      pageSize: 5,
+      pageIndex: 1,
+      orderId: this.data.id
+    }).then(res => {
       this.setData({
         consumption: res.data
       })

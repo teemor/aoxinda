@@ -27,8 +27,12 @@
   <view class="fl grey fz26" style="margin-right:30rpx;">
   共{{goodsList.serNum}}项服务    
   </view>
-    <view class="fl">
+    <view wx:if="{{goodsList.statusName==='待付款'}}" class="fl">
       应付
+      <span class="red">¥:{{goodsList.goodsTotalPrice}}</span>
+    </view>
+     <view class="fl" wx:else>
+      已付
       <span class="red">¥:{{goodsList.goodsTotalPrice}}</span>
     </view>
 <!--

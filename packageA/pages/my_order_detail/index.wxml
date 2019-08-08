@@ -65,6 +65,19 @@
   </view>
 </view>
 <view wx:else>
+  <view wx:if="{{model.statusName==='可消费'}}" class='card_bag_'>
+<view class="tc fz26" style="margin-bottom:30rpx">向门店出示二维码或消费码即可消费</view>
+    <view class='code_box'>
+      <!-- 存放二维码的图片-->
+      <image mode="scaleToFill" src="{{imagePath}}" class='wx_code'></image>
+      <image mode="aspectFit" src="../../../common/image/card_info_code.png" class='wx_code_bg'></image>
+      <!-- 画布，用来画二维码，只用来站位，不用来显示-->
+      <view class="canvas-box">
+        <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;" canvas-id="canvas" />
+      </view>
+    </view>
+    <view class='wx_code_text'>消费码 {{cardInfo.card_no}}</view>
+  </view>
   <van-tabs color="#4e93f3" active="{{active}}" bind:change="onChange">
     <van-tab title="服务详情">
       <view style="{{moreService==true?'':'max-height:895rpx'}}">
@@ -138,16 +151,14 @@
         <view>
           <view class="fz26 high50 flwidth">{{item.shopName}}</view>
           <view class="fz24 grey high50 flwidth">{{item.conTime}}</view>
-
-            <view class='fr fz26 comment'>
-              <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-detailtype="1" data-status="1" data-sers="{{item.con}}">
+          <view class='fr fz26 comment'>
+            <text class='button' wx:if="{{item.isComment == 1}}" bindtap="goEvaluate" data-detailtype="1" data-status="1" data-sers="{{item.con}}">
                 查看评价
               </text>
-              <text class='button' wx:else bindtap="goEvaluate" data-detailtype="1" data-status="0" data-sers="{{item.con}}" data-ordercode="{{item.orderNum}}" data-shopid="{{item.shopId}}">
+            <text class='button' wx:else bindtap="goEvaluate" data-detailtype="1" data-status="0" data-sers="{{item.con}}" data-ordercode="{{item.orderNum}}" data-shopid="{{item.shopId}}">
                 评价晒单
               </text>
           </view>
-
           <view class="fz28" wx:for="{{item.con}}" wx:key="{{item}}" style="background:#fcfcfc;padding:30rpx;width:640rpx;height:140rpx;border-radius:20rpx">
             <view class="fz28 high50">{{item.actName}}
               <span class="orange">{{item.conNum}}</span>次</view>
@@ -158,10 +169,7 @@
       </view>
     </van-tab>
   </van-tabs>
-
-
 </view>
-
 <view class="mtop20">
   <van-cell title="订单编号" value="{{model.orderNum}}"></van-cell>
   <van-cell title="下单时间" value="{{model.orderTime}}"></van-cell>
@@ -200,16 +208,16 @@
       <view class="fl myorder_orange" bindtap="btnShip">确认收货</view>
     </view>
   </view>
-    <view wx:if="{{model.statusName==='可消费'&&model.detail[0].cardType!='2'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
+  <view wx:if="{{model.statusName==='可消费'&&model.detail[0].cardType!='2'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
     <view class="fr fz24 my_order_list_btn">
       <view class="fl myorder_orange" bindtap="btnCard">查看我的卡</view>
     </view>
-  </view> 
-     <view wx:if="{{model.statusName==='已取消'&&model.detail[0].cardType!='2'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
+  </view>
+  <view wx:if="{{model.statusName==='已取消'&&model.detail[0].cardType!='2'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
     <view class="fr fz24 my_order_list_btn">
-      <view class="fl myorder_orange"  bindtap="btnCard">查看我的卡</view>
+      <view class="fl myorder_orange" bindtap="btnCard">查看我的卡</view>
     </view>
-  </view> 
+  </view>
   <view wx:if="{{model.statusName==='待付款'}}" class="cl" style="height:70rpx;margin-top:100rpx;padding-right:20rpx;">
     <view class="fr fz24 my_order_list_btn">
       <view class="fl myorder_grey" bindtap="canOrder">取消订单</view>

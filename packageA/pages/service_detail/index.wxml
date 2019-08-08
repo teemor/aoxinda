@@ -40,9 +40,7 @@
     <view class="fr phone_img" data-item="{{model.shop.shopList.tel}}" bindtap="makePhone">
       <image src="../../common/img/phone.png" />
     </view>
-
   </view>
-
 </view>
 <view>
   <van-tabs active="{{active}}" sticky bind:click="tabClick" bind:change="onChange" color="#4e93f3">

@@ -361,10 +361,12 @@ export const myOrder = [{
 export const serviceType = [{
   "name":"不限次",
   "cname":"美容洗车卡",
+  'actCardType':'3',
   "path":"https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/counts_card.png"
 },{
   "name":"月月",
   "cname":"美容洗车卡",
+  'actCardType':'4',
   "path":"https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/month_card.png"
 },{
   "name":"金麦卡",
@@ -372,29 +374,25 @@ export const serviceType = [{
   "path":"https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gold_card.png"
 }]
 export const tabbarConfig = [{
-    "active": true,
-    "pagePath": "pages/index/index",
-    "text": "首页",
-    "iconPath": "/common/image/tab/index.png",
-    "selectedIconPath": "/common/image/tab/index_after.png"
-  },
+  "pagePath": "pages/index/index",
+  "text": "首页",
+  "iconPath": "/common/image/tab/index.png",
+  "selectedIconPath": "/common/image/tab/index_after.png"
+},
   {
-    "active": false,
     "pagePath": "pages/shopping_mall/index",
-    "text": "商城",
+    "text": "分类",
     "iconPath": "/common/image/tab/shop.png",
     "selectedIconPath": "/common/image/tab/shop_after.png"
   },
   {
-    "active": false,
-    "pagePath": "pages/message/index",
-    "text": "消息",
+    "pagePath": "pages/store_list/index",
+    "text": "门店",
     "iconPath": "/common/image/tab/mes.png",
     "selectedIconPath": "/common/image/tab/mes_after.png"
   },
   {
-    "active": false,
-    "pagePath": "pages/mine/index",
+    "pagePath": "pages/we/index",
     "text": "我的",
     "iconPath": "/common/image/tab/mine.png",
     "selectedIconPath": "/common/image/tab/mine_after.png"
