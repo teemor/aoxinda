@@ -33,11 +33,11 @@ Page({
   },
   //我要储值
   toStorageValue() {
-    // if (this.data.card_id) {
-    //   this.setData({
-    //     show : true
-    //   })
-    // } else {
+    if (this.data.card_id) {
+      this.setData({
+        show : true
+      })
+    } else {
       var app = getApp()
       var getOpenId = app.globalData.openId
     request.payCard({ price: this.data.min_pay, type: 0, account_id: getOpenId}).then((res) => {
@@ -65,7 +65,7 @@ Page({
           });
         }
       })
-    // }
+    }
   },
   //取消
   cancel:function(){
