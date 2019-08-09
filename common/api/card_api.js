@@ -2,6 +2,7 @@ import { HttpServer } from "../../utils/method"
 const http = new HttpServer()
 // export const IP_HTTP = `https://www.maichefu.cn:9015/appapi/v1.0`
 export const IP_HTTP = `https://192.168.31.158:9015/appapi/v1.0`
+export const SELECT_CARD_HTTP = `http://192.168.31.75:9015/appapi/v1.0` //yt
 export class CardHttp {
   /**
    * 卡包=============================
@@ -46,7 +47,7 @@ export class CardHttp {
   // 查询储值卡是否已购买和金额
   hasCard = (params) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/hasCard`,
+      url: `${SELECT_CARD_HTTP}/hasCard`,
       method: `POST`,
       data: params
     })
@@ -54,7 +55,7 @@ export class CardHttp {
   // 查询储值卡购买与充值
   payCard = (params) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/payCard`,
+      url: `${SELECT_CARD_HTTP}/payCard`,
       method: `POST`,
       data: params
     })
@@ -62,7 +63,7 @@ export class CardHttp {
   // 查询储值卡详情
   selectPayCard = (params) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/selectPayCard`,
+      url: `${SELECT_CARD_HTTP}/selectPayCard`,
       method: `POST`,
       data: params
     })
