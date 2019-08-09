@@ -7,7 +7,7 @@ export const IP_YXHTTP = `http://192.168.31.184:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.184:9015/wash/v1.0/mcfwcborder`
 export const RECORD_HTTP = `http://192.168.31.184:9015/wash/v1.0` //158YJQ 金麦卡消费、退款、充值列表
 export const IP_HTTP_TOPUP = `http://192.168.31.184:9014/balance/v1.0` //220YJQ储值卡充值消息推送
-export const BANK_CARD_HTTP = `http://192.168.31.220:9014/mcf/v1.0` //220YJQ我的银行卡
+export const BANK_CARD_HTTP = `http://192.168.31.184:9014/mcf/v1.0` //220YJQ我的银行卡
 export const IP_XSHTTP = `https://39.97.167.184:9020/wash/v1.0` //237
 
 export class store {
