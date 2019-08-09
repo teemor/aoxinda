@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "订单确认",
+  "navigationBarTitleText": "服务确认",
   "usingComponents": {
     "br-bottom": "../../components/br_bottom/br_bottom",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
