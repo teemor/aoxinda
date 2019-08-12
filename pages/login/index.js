@@ -19,8 +19,12 @@ Page({
       //   parentOpenId: options.parentOpenId
       // })
       app.globalData.parentOpenId = options.parentOpenId
+    }
+    if (options.sharePeoId){
       //是否为新手活动推荐来的
       app.globalData.sharePeoId = options.sharePeoId
+    }else{
+      app.globalData.sharePeoId = null
     }
   },
 
