@@ -48,6 +48,12 @@ Page({
     //   url: `../c_order_all/c_order_all`
     // })
   },
+  //yd-跳转新手活动
+  openNews(){
+    wx.navigateTo({
+      url: '/pages/new_manners/new_manners'
+    })
+  },
   /**
    * 岳家棋
    * 跳转金麦卡详情页今麦卡
