@@ -274,18 +274,19 @@ Page({
         this.setData({
           serviceModel: res.data.records
         })
+        let totalPrice = 0
+        let totalCard = 0
+        this.data.serviceModel.forEach(item => {
+          totalPrice += item.cartNum * item.actPrice,
+            totalCard += item.cartNum * item.actCardPrice
+        })
+        this.setData({
+          totalPrice: totalPrice,
+          totalCard: totalCard
+        })
       })
     })
-    let totalPrice = 0
-    let totalCard = 0
-    this.data.serviceModel.forEach(item => {
-      totalPrice += item.cartNum * item.actPrice,
-      totalCard += item.cartNum * item.actCardPrice
-    })
-    this.setData({
-      totalPrice: totalPrice,
-      totalCard: totalCard
-    })
+
     // console.log(detail, 'detail哈哈')
     // let num = detail.num
     // console.log(num, '数量')
@@ -326,22 +327,20 @@ Page({
     if (this.data.flag != false) {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡
-        carName: this.data.model.model,
+        carName: this.data.cardModel.model,
         shopId: this.data.shopId,
         invoiceId: this.data.isInvoice === 0 ? '' : this.data.invoiceId,
         buyType: this.data.card,
         goodsTotalPrice: this.data.payType == 0 ? this.data.totalPrice : this.data.totalCard,
         isInvoice: this.data.isInvoice,
         orderDetails: this.data.orderDetails,
-        carNum: this.data.model.plateNum,
-        carId: this.data.model.carId,
+        carNum: this.data.cardModel.plateNum,
+        carId: this.data.cardModel.carId,
         userId: app.globalData.openId,
         userName: app.globalData.userInfo.nickName,
         userPhone: app.globalData.phoneNum
       }).then(res => {
-        console.log(res, 'res,,,')
         if (res.status === false) {
-
           wx.showToast({
             title: res.description
           })
