@@ -2,7 +2,7 @@ import { HttpServer } from "../../utils/method"
 const http = new HttpServer()
 // export const IP_HTTP = `https://www.maichefu.cn:9015/appapi/v1.0`
 export const IP_HTTP = `https://192.168.31.158:9015/appapi/v1.0`
-export const SELECT_CARD_HTTP = `http://192.168.31.75:9015/appapi/v1.0` //yt
+export const SELECT_CARD_HTTP = `http://192.168.31.184:9015/appapi/v1.0` //yt
 export class CardHttp {
   /**
    * 卡包=============================

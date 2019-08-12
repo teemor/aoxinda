@@ -185,6 +185,9 @@ Page({
   //下拉刷新
   onPullDownRefresh: function (){ 
     
+    setTimeout(function () {
+      wx.stopPullDownRefresh()
+    }, 400) 
   },
   //消费详情
   particulars: function (event) {

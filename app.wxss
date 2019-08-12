@@ -24,11 +24,11 @@
 }
 
 .phone_img image {
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   margin-right: 20rpx;
   margin-left: 20rpx;
-  width: 35rpx;
-  height: 35rpx;
+  width: 45rpx;
+  height: 45rpx;
 }
 
 .shop_goods_invite_text, .shop_goods_invite_btn {
