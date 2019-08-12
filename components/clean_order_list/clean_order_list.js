@@ -26,12 +26,7 @@ Component({
      * 进入详情
      */
     orderDetail: function () {
-      console.log(this.data.goodsList, 'hhhhh')
-      if (this.data.goodsList.wechatRefundNo === undefined) {
         this.triggerEvent('orderDetail', { id: this.data.goodsList.id })
-       } else {
-        this.triggerEvent('orderDetail', { wechatRefundNo: this.data.goodsList.wechatRefundNo })
-      }
     },
     /**
      * 查看服务单详情
