@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "新人有礼",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog/index"
+  }
+}
