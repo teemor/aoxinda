@@ -2,12 +2,13 @@
   <view class='card_bag' style='background-image:url(../../common/image/card_bg.png)'>
     <view class='card_bag_top'>
       <view class='card_title'>{{cardDet.actName}}</view>
-     <view class='card_info' wx:if="cardDet.card_content">{{cardDet.card_content}}</view>
+     <view class='card_info' wx:if="{{cardDet.card_content}}">{{cardDet.card_content}}</view>
     </view>
     <view class='card_bag_bottom'>
       <view class='card_bm_info'>
-        <view class='card_price' wx:if="cardDet.card_price">￥{{cardDet.card_price}}元</view>
-        <view class='card_time'>有效期至{{cardDet.useAt}}</view>
+        <view class='card_price' wx:if="{{cardDet.card_price}}">￥{{cardDet.card_price}}元</view>
+        <view class='card_price' wx:else>{{cardDet.status}}</view>
+        <view class='card_time'>{{cardDet.card_price?'有效期至':''}}{{cardDet.useAt}}</view>
       </view>
       <view class='card_surplus'>
         <text>{{cardDet.cardNum}}</text>
@@ -24,7 +25,7 @@
         <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;" canvas-id="canvas" />
       </view>
     </view>
-    <view class='wx_code_text'>{{card_num}}</view>
+    <view class='wx_code_text'>{{cardDet.cardNum}}</view>
   </view>
   <view class='card_share'>
     <button class='share_btn' open-type="share">分享好友一起用</button>

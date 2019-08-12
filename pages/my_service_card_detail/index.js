@@ -54,13 +54,14 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    if (options.cardNo){
+    if (options.cardNo) {
+      let model = JSON.parse(options.id)
       //获取卡包详情
       requestNews.selectMyCardDetail({
-        id: options.id
+        id: model.id
       }).then(res => {
         that.setData({
-          card_id: options.id,
+          card_id: model.id,
           card_num: options.cardNo,
           cardDet:{
             actName: res.data[0].card_name,
@@ -98,7 +99,7 @@ Page({
         })
         var size = this.setCanvasSize(); //动态设置画布大小
         let content = {
-          card_id: options.id
+          card_id: model.id
         }
         this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
       })
