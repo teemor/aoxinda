@@ -1,4 +1,17 @@
 @import "../../../app.wxss";
+.van-submit-bar{
+  z-index: 334
+}
+.detail_cart {
+  padding: 30rpx;
+  width: 690rpx;
+  position: absolute;
+  height: 400rpx;
+  overflow: scroll;
+  z-index: 332;
+  padding-bottom: 500rpx;
+  left:-375rpx;
+}
 
 page {
   min-height: 100%;
@@ -9,20 +22,22 @@ page {
   height: 200rpx;
   overflow: hidden;
 }
+
 .shop_edit image {
-  margin-top:25rpx
+  margin-top: 25rpx;
 }
 
 .shop_close image {
- margin-top:10rpx
+  margin-top: 10rpx;
 }
+
 .keep_up_box {
   background: #fff;
   padding: 10rpx 20rpx;
 }
 
 .swiper-item image {
-  width:100%;
+  width: 100%;
 }
 
 .card_text {

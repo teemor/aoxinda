@@ -34,6 +34,7 @@ Page({
       key: 'user',
       success: (result) => {
         request.saveCar({
+          ZWS:this.data.model.ZWS,
           plateNum: this.data.plateNum,
           CMS:this.data.model.CMS,
           PP:this.data.model.PP,
@@ -43,7 +44,7 @@ Page({
           mileage: this.data.kmTxt,
           model: this.data.model.XSMC,
           vehicleType: this.data.model.CX,
-          userId:result.data.unionId ,userName:result.data.nickName,userTel:that.data.userTel,
+          userId:app.globalData.openId,userName:result.data.nickName,userTel:that.data.userTel,
         }).then(res => {
           if(res.status===true){
             wx.showToast({

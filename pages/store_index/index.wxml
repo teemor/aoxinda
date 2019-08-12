@@ -53,8 +53,8 @@
       </view>
     </view>
   </view>
-  <view  class="shop_goods_invite" bindtap="editCar">
-    <template is="mycar" data="{{model}}"></template>
+  <view  class="shop_goods_invite">
+    <my_car model="{{carModel}}" car="{{car}}"/>
   </view>
 
   <view class="space_list fz28 cl">
@@ -63,4 +63,3 @@
     </view>
   </view>
 </view>
-<import src="../../components/template/my_car/index" />

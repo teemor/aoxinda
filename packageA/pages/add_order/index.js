@@ -27,20 +27,20 @@ Page({
   /**
    * 支付方式
    */
-  wxPayShow: function () {
+  wxPayShow: function() {
     this.setData({
       wxPay: !this.data.wxPay
     })
   },
-  wxPwdShow: function () {
+  wxPwdShow: function() {
     this.setData({
       falseGold: false
     })
   },
-  setPwd: function () {
+  setPwd: function() {
 
   },
-  payChoose: function (e) {
+  payChoose: function(e) {
     this.setData({
       payType: e.currentTarget.dataset.item.type
     })
@@ -65,7 +65,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  pwdSubmit: function (e) {
+  pwdSubmit: function(e) {
     let arr = ''
     for (let i = 1; i < 7; i++) {
       arr += e.detail.value[i]
@@ -91,12 +91,12 @@ Page({
       console.log(res, '校验密码')
     })
   },
-  wxGlodShow: function () {
+  wxGlodShow: function() {
     this.setData({
       trueGold: false
     })
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     request.checkSms({
       phone: this.data.phoneNum,
       code: e.detail.value[7]
@@ -125,7 +125,7 @@ Page({
 
 
   },
-  btnCode: function () {
+  btnCode: function() {
     let that = this
     let codeCount = 90
     that.setData({
@@ -150,7 +150,7 @@ Page({
       console.log(res, 'res')
     })
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     let phone = app.globalData.phoneNum
     console.log(phone, '电话')
@@ -162,9 +162,18 @@ Page({
     console.log(this.data.phone, 'heh')
     this.findCarList()
     if (options.model) {
-      
       let model = JSON.parse(decodeURIComponent(options.model))
-      console.log(model,'shopid')
+      console.log(model, 'shopid')
+      request.findcartList({
+        userId: app.globalData.openId,
+        shopId: model[0].shopId,
+        pageIndex: 1,
+        pageSize: 10
+      }).then(res => {
+        this.setData({
+          serviceModel: res.data.records
+        })
+      })
       this.setData({
         serviceModel: model,
         shopId: model[0].shopId,
@@ -221,7 +230,7 @@ Page({
       });
       this.setData({
         card: 0,
-        orderDetails: orderDetails, 
+        orderDetails: orderDetails,
         totalPrice: totalPrice,
       })
       console.log(this.data.orderDetails, 'orderDetails')
@@ -246,36 +255,74 @@ Page({
 
     })
   },
-  numChange: function ({
+  numChange: function({
     detail
   }) {
-    console.log(detail,'detail哈哈')
-    let num = detail.num
-    console.log(num, '数量')
+    request.addCart({
+      shopId: this.data.shopId,
+      userId: app.globalData.openId,
+      activityId: detail.item !== undefined ? detail.item.activityId : detail.activityId,
+      cartNum: detail.num,
+      price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
+    }).then(res => {
+      request.findcartList({
+        userId: app.globalData.openId,
+        shopId: this.data.shopId,
+        pageIndex: 1,
+        pageSize: 10
+      }).then(res => {
+        this.setData({
+          serviceModel: res.data.records
+        })
+      })
+    })
     let totalPrice = 0
-    console.log(this.data.orderDetails, 'orderDetails')
-    this.data.orderDetails.forEach(item => {
-      totalPrice += item.num * item.buywxPrice,
-        totalPriceCard += item.num * item.buycardPrice
-    });
+    let totalCard = 0
+    this.data.serviceModel.forEach(item => {
+      totalPrice += item.cartNum * item.actPrice,
+      totalCard += item.cartNum * item.actCardPrice
+    })
+    this.setData({
+      totalPrice: totalPrice,
+      totalCard: totalCard
+    })
+    // console.log(detail, 'detail哈哈')
+    // let num = detail.num
+    // console.log(num, '数量')
+    // let totalPrice = 0
+    // console.log(this.data.orderDetails, 'orderDetails')
+    // this.data.orderDetails.forEach(item => {
+    //   totalPrice += item.num * item.buywxPrice,
+    //     totalPriceCard += item.num * item.buycardPrice
+    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
-  addInvoice: function () {
+  addInvoice: function() {
     wx.navigateTo({
       url: '../my_order_invoice/index'
     })
   },
-  onChange: function (e) {
+  onChange: function(e) {
     this.setData({
       inCheck: e.detail
     })
   },
-  paysubmit: function (e) {
+  paysubmit: function(e) {
+    console.log(e.detail)
+    console.log(app.globalData.openId)
+    request.noticeSuccessfulPayment({
+      payMoney: '234',
+      orderNum: '4234',
+      openid: app.globalData.openId,
+      formid: e.detail.formId
+    }).then(res => {
+      console.log(res, '支付成功通知')
+    })
     if (this.data.flag != false) {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡
@@ -299,14 +346,7 @@ Page({
             title: res.description
           })
         } else {
-          request.noticeSuccessfulPayment({
-            payMoney: that.data.totalPrice,
-            orderNum: res.orderNum,
-            openid: app.globalData.openId,
-            formid: e.detail.formId
-          }).then(res => {
-            console.log(res, '支付成功通知')
-          })
+
           let that = this
           let description = JSON.parse(res.result);
           wx.requestPayment({
@@ -342,7 +382,7 @@ Page({
                 url: `../success_order/index?data=${model}`
               })
             },
-            complete: () => { }
+            complete: () => {}
           });
         }
       })
@@ -357,7 +397,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     if (this.data.item) {
       this.setData({
         invoiceId: this.data.item,
@@ -369,35 +409,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

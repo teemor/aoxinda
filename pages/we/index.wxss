@@ -63,6 +63,7 @@ page {
 
 .mine_cell-box {
   margin-top: 30rpx;
+  margin-bottom:100rpx
 }
 
 .mine_cell-list {

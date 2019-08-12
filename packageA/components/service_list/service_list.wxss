@@ -1,8 +1,9 @@
 @import "../../../app.wxss";
 .add_img{
-  display: absolute;
-    margin-top:-50rpx;
-  
+  position: absolute;
+   margin-top:75rpx;
+  width:200rpx;
+  left:530rpx
 }
 .add_img image{
     width:40rpx;

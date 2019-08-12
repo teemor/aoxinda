@@ -30,7 +30,7 @@
   </view>
 </view>
 <view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-  <template is="mycar" data="{{model}}"></template>
+   <my_car model="{{carModel}}" car="{{car}}"/>
 </view>
 <view class="space_list fz28 cl">
   <!-- 门店-->
@@ -66,5 +66,3 @@
   <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
   </view>
 </manager>
-<import src="../../components/template/my_car/index" />
-<tabbar tabbarConfig="{{tabbarConfig}}" />

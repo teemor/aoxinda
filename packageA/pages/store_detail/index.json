@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "门店详情",
   "usingComponents": {
+    "my_car": "../../components/my_car/my_car",
     "van-tag": "../../miniprogram_npm/vant-weapp/tag/index",
     "van-rate": "../../miniprogram_npm/vant-weapp/rate/index",
     "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
@@ -8,7 +9,7 @@
     "service_list": "../../components/service_list/service_list",
     "evaluate": "../../../components/evaluate/evaluate",
     "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
-    "manager":"../../../components/manager/manager",
-    "van-stepper":"../../miniprogram_npm/vant-weapp/stepper/index"
+    "manager": "../../../components/manager/manager",
+    "van-stepper": "../../miniprogram_npm/vant-weapp/stepper/index"
   }
 }

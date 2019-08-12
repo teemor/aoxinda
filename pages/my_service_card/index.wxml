@@ -21,7 +21,7 @@
           <view class="my_address_null">
             <image src="../../common/image/refund_null.png" />
           </view>
-          <view class="tc fz26">还没有相关订单呢</view>
+          <view class="tc fz26">还没有相关服务卡呢</view>
         </view>
       </van-tab>
     </view>

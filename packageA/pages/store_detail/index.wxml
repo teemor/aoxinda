@@ -8,7 +8,7 @@
   </swiper>
 </view>
 <view class="keep_up_box">
-  <view class="fz30 bold" >{{storemodel.shopName}}</view>
+  <view class="fz30 bold">{{storemodel.shopName}}</view>
   <view class="cl">
     <view wx:for="{{storemodel.shopSer}}" wx:key="{{item}}" class="fl" style="margin-bottom:20rpx;margin-top:20rpx; ">
       <van-tag text-color="#ffa315" size="medium" round color="#fff4e2" style="margin-right:20rpx">
@@ -37,7 +37,7 @@
   </view>
 </view>
 <view class="shop_goods_invite" bindtap="editCar">
-  <template is="mycar" data="{{model}}"></template>
+  <my_car model="{{carModel}}" car="{{car}}" />
 </view>
 <view class="bgwhite">
   <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
@@ -93,7 +93,7 @@
   </view>
 
 </view>
-<view style="z-index:334;position:absolute">
+<view style="z-index:999;position:fixed">
   <van-submit-bar style="" button-text="下一步" disabled="{{!cartIcon}}" bind:submit="onClickButton">
     <view class="cart_img" bindtap='showCartList'>
       <image src="{{cartIcon==true?'../../common/img/cart.png':'../../common/img/discart.png'}}" />
@@ -106,7 +106,7 @@
   </van-submit-bar>
 </view>
 <manager show="{{cartShow}}" type="center" bind:clickMask="allService">
-  <view class="bgwhite" style="bottom:-296rpx;padding:30rpx;width:690rpx;position:relative;height:400rpx;overflow:scroll;z-index:333;padding-bottom:100rpx">
+  <view class="bgwhite detail_cart">
     <view class="cl bold fz30">
       已购服务
     </view>
@@ -116,4 +116,3 @@
     </view>
   </view>
 </manager>
-<import src="../../components/template/my_car/index" />

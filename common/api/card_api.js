@@ -1,8 +1,9 @@
 import { HttpServer } from "../../utils/method"
 const http = new HttpServer()
 // export const IP_HTTP = `https://www.maichefu.cn:9015/appapi/v1.0`
-export const IP_HTTP = `https://192.168.31.158:9015/appapi/v1.0`
+// export const IP_HTTP = `https://192.168.31.158:9015/appapi/v1.0`
 export const SELECT_CARD_HTTP = `http://192.168.31.184:9015/appapi/v1.0` //yt
+export const IP_HTTP = `http://192.168.31.184:9015/appapi/v1.0`
 export class CardHttp {
   /**
    * 卡包=============================
@@ -41,13 +42,36 @@ export class CardHttp {
       method: `POST`,
     })
   }
+  //查询登录人
+  findShare = (params) => {
+    return http.httpRequest({
+      url: `${IP_HTTP}/findShare`,
+      method: `post`,
+      data: params
+    })
+  }
+  //充值
+  payAct = (params) => {
+    return http.httpRequest({
+      url: `${IP_HTTP}/payAct`,
+      method: `post`,
+      data: params
+    })
+  }
+  //获取门店
+  selectShopList = () => {
+    return http.httpRequest({
+      url: `${IP_HTTP}/card/selectShopList`,
+      method: `post`
+    })
+  }
   /**
    * 储值卡=============================
    */
   // 查询储值卡是否已购买和金额
   hasCard = (params) => {
     return http.httpRequest({
-      url: `${SELECT_CARD_HTTP}/hasCard`,
+      url: `${IP_HTTP}/hasCard`,
       method: `POST`,
       data: params
     })
@@ -55,7 +79,7 @@ export class CardHttp {
   // 查询储值卡购买与充值
   payCard = (params) => {
     return http.httpRequest({
-      url: `${SELECT_CARD_HTTP}/payCard`,
+      url: `${IP_HTTP}/payCard`,
       method: `POST`,
       data: params
     })
@@ -63,7 +87,7 @@ export class CardHttp {
   // 查询储值卡详情
   selectPayCard = (params) => {
     return http.httpRequest({
-      url: `${SELECT_CARD_HTTP}/selectPayCard`,
+      url: `${IP_HTTP}/selectPayCard`,
       method: `POST`,
       data: params
     })
