@@ -19,6 +19,8 @@ Page({
       //   parentOpenId: options.parentOpenId
       // })
       app.globalData.parentOpenId = options.parentOpenId
+      //是否为新手活动推荐来的
+      app.globalData.sharePeoId = options.sharePeoId
     }
   },
 
