@@ -5,8 +5,8 @@
   <view class="green fz32">付款成功</view>
   <view class="height80 mtop20">支付方式：微信支付 支付金额：¥{{price}}</view>
   <view class="mtop20 cl">
-    <view class="back_btn fl bg_orange height75" bindtap="orderList">查看订单</view>
-    <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="orderList">继续逛逛</view>
+    <view class="back_btn fl bg_orange height75" bindtap="{{type==1?'cardList':'orderList'}}">{{type==1?'完成':'查看订单'}}</view>
+    <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="goCart">继续逛逛</view>
   </view>
 </view>
 <view wx:else class="fz28 tc result_contain">
@@ -14,11 +14,11 @@
 <image src="../../common/image/pay_fail.png" mode="aspectFit"/>
 </view>
   <view class="green fz32">付款失败</view>
-  <view class="high40 mtop20">请在
+  <view class="high40 mtop20" hidden="{{type==1}}">请在
     <span class="red">24小时</span>内完成付款</view>
-  <view class="high40">否则订单会被系统自动取消</view>
+  <view class="high40" hidden="{{type==1}}">否则订单会被系统自动取消</view>
   <view class="mtop20 cl">
-  <view class="back_btn fl bg_orange height75" bindtap="orderList">查看订单</view>
+  <view class="back_btn fl bg_orange height75" bindtap="{{type==1?'goPay':'orderList'}}">{{type==1?'返回':'查看订单'}}</view>
   <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="goPay">重新付款</view>
   </view>
   </view>

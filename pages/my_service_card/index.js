@@ -13,12 +13,12 @@ Page({
   },
   tabchange: function ({ detail }) {
     console.log(detail)
-    if (detail.titlea === 0) {
+    if (detail.titlea === 1) {
       this.setData({
         url:'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/second.png'
       })
-      this.selectCard(0)
-    } else if (detail.titlea === 1) {
+      this.selectCard(1)
+    } else if (detail.titlea === 0) {
       this.selectCard(detail.titlea)
       this.setData({
         url: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/completed.png'
@@ -64,7 +64,7 @@ Page({
         active: 4
       })
     }
-    this.selectCard(0)
+    this.selectCard(1)
   },
   goOrder: function (e) {
     this.setData({
@@ -75,7 +75,8 @@ Page({
   selectCard: function (type) {
     request.cardList({userId:app.globalData.openId,effectiveType:type}).then(res => {
       this.setData({
-        cardList: res.data
+        cardList: res.cardList,
+
       })
     })
   },
