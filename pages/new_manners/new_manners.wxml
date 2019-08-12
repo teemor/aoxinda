@@ -1,0 +1,99 @@
+<!--新人有礼-->
+<view class='news_manners' id='news_manners'>
+  <view class='top_box'>
+    <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_logo.png' class='logo'></image>
+    <view class='titlebg_box'>
+      <view wx:if="{{ shareOff }}">
+        <image mode='aspectFill' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_title1.png' class='titlebg2'></image>
+        <image mode='aspectFill' src='{{ shareInfo.AVATAR_URL }}' class='user_img'></image>
+        <view class='user_info'>小伙伴 {{ shareInfo.name }} ,邀您{{ price }}元享大礼</view>
+      </view>
+      <image mode='aspectFill' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_title99.png' class='titlebg' wx:else></image>
+    </view>
+  </view>
+  <view class='box_pd'>
+    <view class="box_pd_card">
+      <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_card.png' class='card'></image>
+      <view class="card_old_price">原价: 1009元</view>
+      <view class="card_time">有效期：720天，适用于平台多门店使用</view>
+    </view>
+    <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_title.png' class='title'></image>
+
+    <view class='service_items'>
+      <view class="service_img_bg">
+        <view class="_bg"></view>
+        <view class="_bg"></view>
+        <view class="_bg"></view>
+      </view>
+      <view class="service_item_box">
+        <view class="service_item {{ item._class }}" wx:for="{{ service }}" wx:key="{{ index }}">
+          <image mode='scaleToFill' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_bg{{ item.server_id }}.png' class='_item_bg'></image>
+          <view class="_item_box">
+            <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_icon{{ item.server_id }}.png' class='_item_icon'></image>
+            <view class='_item_cont'>
+              <view class='_item_ser_name'>{{ item.server_name + item.server_use_times + item.server_unit }}</view>
+              <view class='_item_old_price'>原价:
+                <text class='_item_del_price'>{{ item.server_price }}元/{{ item.server_unit }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='manners_box explain' wx:if="{{ price==99 }}">
+      <view class='title'>
+        <!-- <text>增值权益</text> -->
+        <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_title_qy.png' class='title_qy'></image>
+      </view>
+      <view class='content'>
+        <view class='titleText'>邀请小伙伴,你的小伙伴即可1元购入此超值服务</view>
+        <view class='subText'>仅限一人哦</view>
+      </view>
+      <view class='bottomCont'>
+        <view class='item'>
+          <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_activation.png' class='activation'></image>
+          <view class='text'>激活成功</view>
+        </view>
+        <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_arrow.png' class='arrow'></image>
+        <view class='item' style="position:relative;">
+          <button style="position: absolute;width:100%;height:100%;opacity:0;" open-type="share"></button>
+          <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_share.png' class='share'></image>
+          <view class='text'>分享好友</view>
+        </view>
+        <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_arrow.png' class='arrow'></image>
+        <view class='item'>
+          <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_purchase.png' class='purchase'></image>
+          <view class='text'>小伙伴1元购</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='manners_box _manners_box store'>
+      <view class='title'>
+        <!-- <text>适用门店</text> -->
+        <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_title_md.png' class='title_md'></image>
+        <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_all_store.png' class='title_md_all' bindtap="myStore"></image>
+      </view>
+      <view class='address' wx:for="{{store}}" wx:key="{{index}}">
+        <view class='address_num'>{{index+1}}</view>
+        <view class='address_title'>{{item.name}}</view>
+        <view class='address_box'>
+          <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_location.png' class='location' data-index="{{index}}" bindtap='onAddress'></image>
+          <view class='address_cont'>
+            <view class='cont_title'>{{item.address}}</view>
+            <view class='cont_text'>距您约{{item.distance}}km，驾车需约{{item.time}}分钟</view>
+          </view>
+          <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_phone.png' class='phone' data-phone="{{item.phone}}" bindtap='onContact'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_btn{{ price }}.png' class='manners_btn' bindtap="toPay"></image>
+
+  <van-dialog show-confirm-button="false" use-slot show="{{ dialogShow }}">
+    <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_dialog.png' class='manners_dialog'></image>
+    <image mode='aspectFit' src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_dialog_btn.png' class='manners_dialog_btn' bindtap='toIndex'></image>
+  </van-dialog>
+</view>
