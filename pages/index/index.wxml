@@ -1,16 +1,15 @@
-
 <view class="container">
-  <view style="height:110rpx">
-    <van-search value="{{ value }}"placeholder="请输入要搜索的商品" bind:focus="onSearch" />
+  <view class="index-search">
+    <van-search value="{{ value }}" placeholder="请输入要搜索的商品" bind:focus="onSearch" />
   </view>
-  <view style="height:300rpx;position:relative" class="banner_img">
-    <swiper class="banner" style='height:350rpx;position:relative' interval="3000" autoplay="true"  indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
-    <block wx:for="{{dataList}}" wx:key="*this">
-      <swiper-item class="swiper-item" >
-        <image src='{{item.path}}' />
-      </swiper-item>
-    </block>
-  </swiper> 
+  <view class="banner_img">
+    <swiper class="banner" interval="3000" autoplay="true" indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <block wx:for="{{dataList}}" wx:key="*this">
+        <swiper-item class="swiper-item">
+          <image src='{{item.path}}' />
+        </swiper-item>
+      </block>
+    </swiper>
     <!--<image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/banner1.png" /> -->
   </view>
   <!-- 天气 限行 油价-->
@@ -19,14 +18,17 @@
       <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/car_bg.png" />
     </view>
     <view class="car_add_car" style="">
-      <view wx:if="{{car}}" class="add_contain" bindtap="editCar" data-item="{{model.name}}">
+      <view class="blue_img">
+        <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/red_index.png" />
+      </view>
+      <view wx:if="{{car}}" class="add_contain" bindtap="editCar" data-item="{{carModel.name}}">
         <view class="fl shop_add_btn_img" style='margin-left:30rpx;'>
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_addbtn.png" />
         </view>
         <view class="fl shop_add_btn_text">
           <view class='shop_add_info'>
-            <view class='shop_add_info_car'>我的爱车：{{model.model+' '+model.vehicleType+' '+model.carType}}</view>
-            <view class='shop_add_info_km'>行驶里程：{{model.mileage || 0}}KM</view>
+            <view class='shop_add_info_car'>我的爱车：{{carModel.plateNum+','+carModel.model+' '+carModel.vehicleType+' '+carModel.carType}}</view>
+            <view class='shop_add_info_km'>行驶里程：{{carModel.mileage || 0}}KM</view>
           </view>
           <image src='https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/edit_index.png' class='shop_add_edit'></image>
         </view>
@@ -40,7 +42,7 @@
           <view class="fz24 mtop15 grey">麦车服按车型为您推荐更精准商品和服务</view>
         </view>
       </view>
-      
+
 
       <!-- 选择 -->
       <view class='btn_contain'>
@@ -96,8 +98,12 @@
         <view class='fl detail_current-btn fz30'>
           <view class='cl detail_current-one'>
             <span class="red bold "> 今日限行 </span>
-            <span class="">今日尾号
-              <span class="red"></span>不限行</span>
+            <span class="">唐山市今天
+              <span wx:if="{{num==false}}">不限行</span>
+              <span wx:else>限行
+                <span class="red">{{num1}} {{num2}}</span>
+              </span>
+            </span>
           </view>
         </view>
       </view>
@@ -249,21 +255,21 @@
     </view>
     <view class="fl limited_contain_mall">
       <view class="fl" style="background:#f1f4ff;padding:20rpx;" bindtap="shopList" data-item="{{chooseData[0]}}">
-        <view class="fz28">{{chooseData[0].parameter}}</view>       
+        <view class="fz28">{{chooseData[0].parameter}}</view>
         <view class="fz26 grey">{{chooseData[0].name}}</view>
         <view class="limited_img_mall" style="margin-top:15rpx">
           <image src="{{chooseData[0].path}}" />
         </view>
       </view>
-      <view class="fl" style="width:220rpx;"  bindtap="shopList" data-item="{{chooseData[1]}}">
-        <view   class="cl limited_boxs" style="background:#f1edea">
+      <view class="fl" style="width:220rpx;" bindtap="shopList" data-item="{{chooseData[1]}}">
+        <view class="cl limited_boxs" style="background:#f1edea">
           <view class="fz28">{{chooseData[1].parameter}}</view>
           <view class="fz26 grey">{{chooseData[1].name}}</view>
           <view class=" limited_imgs">
             <image src="{{chooseData[1].path}}" />
           </view>
         </view>
-        <view  class="cl limited_boxs" style="background:#ebe9f4"  bindtap="shopList" data-item="{{chooseData[2]}}">
+        <view class="cl limited_boxs" style="background:#ebe9f4" bindtap="shopList" data-item="{{chooseData[2]}}">
           <view class="fz28">{{chooseData[2].parameter}}</view>
           <view class="fz26 grey">{{chooseData[2].name}}</view>
           <view class=" limited_imgs">
@@ -271,7 +277,7 @@
           </view>
         </view>
       </view>
-      <view class="fl"  style="width:220rpx;"  bindtap="shopList" data-item="{{chooseData[3]}}">
+      <view class="fl" style="width:220rpx;" bindtap="shopList" data-item="{{chooseData[3]}}">
         <view class="cl limited_boxs" style="background:#f0f3ed">
           <view class="fz28">{{chooseData[3].parameter}}</view>
           <view class="fz26 grey">{{chooseData[3].name}}</view>
@@ -279,10 +285,10 @@
             <image src="{{chooseData[3].path}}" />
           </view>
         </view>
-        <view class="cl limited_boxs" style="background:#efe9eb"  bindtap="shopList" data-item="{{chooseData[4]}}">
+        <view class="cl limited_boxs" style="background:#efe9eb" bindtap="shopList" data-item="{{chooseData[4]}}">
           <view class="fz28">{{chooseData[4].parameter}}</view>
           <view class="fz26 grey">{{chooseData[4].name}}</view>
-          <view class=" limited_imgs" >
+          <view class=" limited_imgs">
             <image src="{{chooseData[4].path}}" />
           </view>
         </view>

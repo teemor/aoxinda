@@ -10,6 +10,7 @@
   margin-left:190rpx;
   padding: 4rpx;
   width:550rpx;
+  margin-bottom:100rpx
 }
 .shop_add_btn_text{
   width:400rpx;

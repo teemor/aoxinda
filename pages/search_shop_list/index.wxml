@@ -4,7 +4,7 @@
   </van-search>
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
     <view class="fz28" style="color:#333333;width:120rpx;height:60rpx;position:absolute;margin-top:-76rpx;margin-left:58rpx;background:#f7f8fa">
-      {{array[index]}}
+      {{array[index]}}↓
     </view>
   </picker>
   <view>

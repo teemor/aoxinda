@@ -71,7 +71,7 @@ Page({
         min_pay: res.min_pay
       })
       wx.request({
-        url: 'http://192.168.31.158:9015/appapi/v1.0/hasCard',
+        url: 'http://192.168.31.184:9015/appapi/v1.0/hasCard',
         data: {},
         header: {
           'content-type': 'application/json',

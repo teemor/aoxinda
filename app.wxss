@@ -1,5 +1,7 @@
 /**app.wxss**/
-
+page{
+  margin-bottom: 100rpx;
+}
 .container {
   height: 100%;
   /* display: flex;

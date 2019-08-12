@@ -22,7 +22,7 @@ import {
       //历史选择，应该在缓存中记录，或者在在app中全局记录
       //当前城市通过之前的页面穿过来或者调用定位
       var c = app.address;
-      var cityArr = ['唐山', '北京'];
+      var cityArr = ['唐山', '北京','全城'];
       this.setData({
           cityArr: cityArr,
           city: c

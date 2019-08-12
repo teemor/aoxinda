@@ -24,6 +24,13 @@ export const WB_WX = `https://www.maichefu.cn:444/mcf/api/v1/c/login/query`
 // export const IP_WBHTTP = `https://www.maichefu.cn:4444/mcf/api/v1/c` // 后两
 export const IP_YBHTTP = `http://192.168.31.184:9015`
 export class Technician {
+  // 查询限号
+  getLimitRule = ()=>{
+    return http.httpRequest({
+      url:`http://192.168.31.184:444/mcf/api/v1/sys/limit/getLimitRule`,
+      method:`get`
+    })
+  }
   findMcfHome = () => {
     return http.httpRequest({
       url: `http://192.168.31.184:9015/wash/v1.0/findMcfHome`,
