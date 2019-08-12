@@ -396,6 +396,10 @@ width:80%;
 .consume_details_item{
   overflow: hidden
 }
+.no_record{
+   padding-left: 35%;
+  padding-top: 5%; 
+}
 /* 
 .van-notify{
   z-index: 3000
