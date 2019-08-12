@@ -24,7 +24,9 @@ Page({
     plusData: true,
     tabIndex: 0 //当前tabs页签下标
   },
-  serviceBtn: function({detail}) {
+  serviceBtn: function({
+    detail
+  }) {
     let model = encodeURIComponent(JSON.stringify(detail))
     wx.navigateTo({
       url: `../service_detail/index?model=${model}`,
@@ -70,18 +72,22 @@ Page({
 
   },
   numChange: function(e) {
+    console.log(e, '购物车')
     let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
+    let num = e.currentTarget.dataset.item? e.detail:e.detail.num
+    console.log(num)
     // if (e.detail.num = 0) {
     //   this.setData({
     //     plusData: false
     //   })
     // }
+    console.log(detail, 'detailwer')
     request.addCart({
-      shopId: this.data.storemodel.shopId,
+      shopId: this.data.shopId,
       userId: app.globalData.openId,
-      activityId: detail.item.actId ? detail.item.actId : detail.actId,
-      cartNum: detail.num,
-      price: detail.item.actPrice ? detail.item.actPrice : detail.actPrice
+      activityId: detail.item !== undefined ? detail.item.actId : detail.activityId,
+      cartNum: num,
+      price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
     }).then(res => {
       this.carList();
     })
@@ -108,9 +114,9 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    request.findcarList({
+    request.findcartList({
       userId: app.globalData.openId,
-      shopId: this.data.storemodel.id,
+      shopId: this.data.storemodel.shopId,
       pageIndex: 1,
       pageSize: 10
     }).then(res => {
@@ -145,20 +151,21 @@ Page({
   onLoad: function(options) {
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
-      console.log(model,'ai')
+      console.log(model, 'ai')
       this.setData({
         storemodel: model,
         ["commentForm.shop_id"]: model.id
       })
       request.findShopDet({
         shopId: model.shopId,
-        log:app.globalData.longitude,
-        lat:app.globalData.latitude
+        log: app.globalData.longitude,
+        lat: app.globalData.latitude
       }).then(res => {
         this.setData({
+          shopId:model.shopId,
           detailModel: res.ser,
           cardModel: res.serCard,
-          tel:res.shop.tel
+          tel: res.shop.tel
         })
         this.carList()
         this.onShow()

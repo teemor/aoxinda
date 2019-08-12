@@ -29,8 +29,8 @@
     </view>
   </view>
 </view>
-<view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
-  <template is="mycar" data="{{model}}"></template>
+<view wx:if="carType" class="shop_goods_invite">
+  <my_car model="{{carModel}}" car="{{car}}"/>
 </view>
 <view class="space_list fz28 cl">
   <!-- 门店-->

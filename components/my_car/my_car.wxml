@@ -1,12 +1,16 @@
-<template name="mycar">
+<view wx:if="{{carShow==true}}">
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
-  <view class="shop_car_contain">
+  <view class="shop_car_contain" wx:if="{{car}}">
     <view class="shop_goods_invite_text fl">为您推荐适合 {{model.model}}{{model.vehicleType}}...的服务</view>
-    <view class="shop_edit fl" bindtap="edit">
+    <view class="shop_edit fl" bindtap="editCar">
       <image src="../../common/image/edit.png" />
     </view>
-    <view class="shop_close fr">
+    <view class="shop_close fr" bindtap="closeCar">
       <image src="../../common/image/close.png" />
     </view>
   </view>
-</template>
+  <view wx:else>
+    <view class="fl">暂未添加爱车</view>
+    <view class="fr">立即添加</view>
+  </view>
+</view>

@@ -38,10 +38,8 @@ Page({
    * 洗车美容
    */
   storeCardBtn: function(item) {
-    console.log(item)
-    app.storeList.actId = item.currentTarget.dataset.item.actId
     wx.navigateTo({
-      url: '../../pages/store_list/index',
+      url: `../../pages/copy_store_list/index?actId=${item.currentTarget.dataset.item.actId}`,
     })
   },
   personDetail: function() {
