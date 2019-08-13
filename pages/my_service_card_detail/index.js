@@ -186,7 +186,7 @@ Page({
           var size = this.setCanvasSize(); //动态设置画布大小
           let content = {
             type: '2',
-            card_id: this.data.card_id,
+            card_id: this.data.cardId,
             order_code: this.data.cardDet.cardNum
           }
           this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
