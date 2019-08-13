@@ -1,6 +1,6 @@
 <view>
   <view wx:if="{{card===0}}">
-    <card_list item="{{cardModel}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}"/>
+    <card_list item="{{cardModel}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" />
   </view>
   <view wx:else>
     <view wx:for="{{serviceModel}}" wx:key="{{item}}">
@@ -59,7 +59,10 @@
       <span class="red"> {{item.name=='微信支付'?totalPrice:totalCard}}</span>
       <view wx:if="{{item.name=='金麦卡'}}">
         <view wx:if="{{cardGold==true}}">
-          余额 ¥{{goldprice}} 用卡付,价格更优惠
+          余额¥{{totalCard}用卡付,价格更优惠
+        </view>
+        <view wx:else>
+          用卡付，价格更优惠，立即开通
         </view>
       </view>
     </view>
@@ -76,7 +79,8 @@
       </view>
     </view>
     <view class="cl red fz40 high80 tc">
-      <span class="fz26">¥</span>{{totalCard}}</view>
+      <span class="fz26">¥</span>{{totalCard}}
+    </view>
     <form bindsubmit="pwdSubmit">
       <view style="height:120rpx;margin-left:50rpx;">
         <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
@@ -129,4 +133,3 @@
     </form>
   </view>
 </manager>
-<view> </view>

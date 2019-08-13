@@ -58,8 +58,8 @@ Page({
           shopName: this.data.value
         }
         let model = encodeURIComponent(JSON.stringify(json))
-        wx.switchTab({
-          url: `../../pages/store_list/index?model=${model}`
+        wx.navigateTo({
+          url: `../../pages/copy_store_list/index?model=${model}`
         });
       } else if (this.data.array[this.data.index] == '服务') {
         json = {
@@ -69,8 +69,8 @@ Page({
           actName: this.data.value
         }
         let model = encodeURIComponent(JSON.stringify(json))
-        wx.switchTab({
-          url: `../../pages/store_list/index?model=${model}`
+        wx.navigateTo({
+          url: `../../pages/copy_store_list/index?model=${model}`
         });
       }
 
