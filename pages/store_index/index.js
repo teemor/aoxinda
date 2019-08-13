@@ -126,7 +126,7 @@ Page({
     })
   },
   storeListAll: function() {
-    wx.navigateTo({
+    wx.switchTab({
       url: '../../pages/store_list/index',
     })
   },
