@@ -58,7 +58,6 @@ page {
 .describe .comments{
   width:94%;
   font-size: 30rpx;
-  color: #B5B5B5;
 }
 .release{
   width: 100%;
