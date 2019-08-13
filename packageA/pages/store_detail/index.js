@@ -159,7 +159,8 @@ Page({
       request.findShopDet({
         shopId: model.shopId,
         log: app.globalData.longitude,
-        lat: app.globalData.latitude
+        lat: app.globalData.latitude,
+        userId:app.globalData.openId
       }).then(res => {
         this.setData({
           shopId:model.shopId,

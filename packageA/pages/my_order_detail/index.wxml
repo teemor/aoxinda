@@ -1,7 +1,7 @@
 <view class="order_detail_bg">
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30 fl">{{model.statusName}}</view>
+    <view class="fz30 fl">{{model.statusName=='用户退款'?'已取消':model.statusName}}</view>
     <view class="fl order_detail_img">
       <image src="../../common/img/detail.png" />
     </view>

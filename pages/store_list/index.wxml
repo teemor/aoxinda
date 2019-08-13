@@ -67,4 +67,3 @@
   </view>
 </manager>
 <import src="../../components/template/my_car/index" />
-<tabbar tabbarConfig="{{tabbarConfig}}" />
