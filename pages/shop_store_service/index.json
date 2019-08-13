@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "服务确认",
+  "usingComponents": {
+    "br-bottom": "../../components/br_bottom/br_bottom",
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
+    "van-stepper": "../miniprogram_npm/vant-weapp/stepper/index"
+  }
+}
