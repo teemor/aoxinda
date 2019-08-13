@@ -47,7 +47,6 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')
   },
   onShow: function () {
-    this.getTabBar().init();
     this.findCarList();
   },
   /**
