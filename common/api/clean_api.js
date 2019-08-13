@@ -14,7 +14,7 @@ export class store {
   // 搜索
   findSearch = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.184:9015/wash/v1.0/findSearch`,
+      url: `http://192.168.31.158:9015/wash/v1.0/findSearch`,
       method: `post`,
       data: model
     })
