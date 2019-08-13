@@ -123,6 +123,25 @@ Page({
       })  
     }
   },
+  //分享按钮函数
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '麦车服金麦卡！为您的爱车精打细算！',
+      path: 'pages/stored_value_card/index',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+  },
   onShow(){
     request.hasCard().then((res) => {
       that.setData({

@@ -175,6 +175,7 @@ width:80%;
   color: #fff;
   background: #5a97ef;
   border: 1px solid #5a97ef;
+  vertical-align: middle;
   border-radius: 35rpx;
 }
 .card_item {

@@ -32,7 +32,7 @@
       <view class="fl shop_set_btn" data-id='{{item.carId}}' wx:else bindtap='toDefaultCar'>设为常用车</view>
     </view>
   </view>
-  <view class='no_data_car' wx:if="{{carList.length == 0}}">
+  <view class='no_data_car' wx:if="{{carList.length < 1}}">
     <image src="../../common/image/no_car.png" />
     <view class='fz28 no_car_font'>
       <view>为了给您提供更精准的服务</view>

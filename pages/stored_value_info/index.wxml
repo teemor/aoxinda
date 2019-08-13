@@ -33,7 +33,7 @@
   </view>
   <view class='card_share'>
     <navigator url='../stored_value_recharge/index?id={{cardInfo.account_id}}&min_pay={{min_pay}}' style='display:inline'><text class='share_btn' bindtap="toPay">充值</text></navigator>
-    <text class='share_btn_share' bindtap="toShare">邀请好友</text>
+    <button class='share_btn_share'  plain='true' open-type='share'>邀请好友</button>
   </view>
 </view>
 <view class='card_service card_item'>
