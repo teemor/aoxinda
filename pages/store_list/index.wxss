@@ -42,7 +42,6 @@
 
 .space_list {
   background: #f3f3f3;
-  margin-bottom:100rpx;
 }
 
 .sort {

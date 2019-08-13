@@ -264,7 +264,6 @@ button::after {
   padding: 30rpx;
   background: #fcfcfc;
   box-shadow: 0px 0px 5px #f5f5f5;
-  margin-bottom:100rpx;
 }
 
 .crowd_title {
