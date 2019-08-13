@@ -24,7 +24,7 @@ Page({
   // 全部门店
   myStore:function(){
     wx.navigateTo({
-      url: `../../packageA/pages/apply_store_list/index?cardid=${this.data.card_id}`,
+      url: `../../packageA/pages/apply_store_list/index?cardid=${this.data.cardId || this.data.card_id}`,
     })
   },
   //跳转救援
@@ -153,8 +153,7 @@ Page({
           })
         }
       })
-    }
-    else if (options.id) {
+    } else if (options.id) {
       let model = JSON.parse(options.id)
       console.log(model,'ka')
       this.setData({
@@ -175,18 +174,14 @@ Page({
       }).then(res => {
         console.log(res,'res')
         if (res.data && res.data.length > 0) {
-          let date = new Date(res.data[0].end_use_at),
-            month = (date.getMonth() + 1).toString().length > 1 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1),
-            _date = date.getDate().toString().length > 1 ? date.getDate() : '0' + date.getDate()
-          res.data[0].end_use_at = `${date.getFullYear()}.${month}.${_date}`
           that.setData({
             shop: res.shopList,
            cardDet:res.data[0]
           })
           var size = this.setCanvasSize(); //动态设置画布大小
           let content = {
-            type: '2',
-            card_id: this.data.cardId,
+            type: model.actCardType,
+            card_id: model.id,
             order_code: this.data.cardDet.cardNum
           }
           this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
@@ -198,6 +193,8 @@ Page({
           })
         }
       })
+    }else{
+      
     }
   },
 
