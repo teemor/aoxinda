@@ -177,7 +177,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function(options) {
-    this.getTabBar().init();
     this.findCarList()   
     if (this.data.item) {
       this.setData({

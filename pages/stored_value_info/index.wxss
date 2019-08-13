@@ -31,7 +31,7 @@ page {
   border-radius: 20rpx;
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
   background: no-repeat center center;
-  background-size: 100% 100%; 
+  background-size: 110% 120%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -175,6 +175,7 @@ width:80%;
   color: #fff;
   background: #5a97ef;
   border: 1px solid #5a97ef;
+  vertical-align: middle;
   border-radius: 35rpx;
 }
 .card_item {

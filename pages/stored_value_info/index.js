@@ -35,7 +35,6 @@ Page({
     cardInfo: {
 
     },
-    // shareInfo: null,
     shareInfo: "",
     storeInfo: [],
     serverInfo: [],
@@ -50,7 +49,6 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    
     if (options.card_id) {
       //获取卡包详情
       request.selectPayCard({ card_id: options.card_id }).then(res => {
@@ -63,30 +61,6 @@ Page({
             shareInfo: res.data[0].card_no
           })
           console.log(options)
-          // wx.getLocation({
-          //   type: 'gcj02',
-          //   success(res) {
-          //     that.setData({
-          //       storeInfo: json.storeData.map(n => {
-          //         let km = that.getDistance(n.LAT, n.LOG, res.latitude, res.longitude)
-          //         n.DISTANCE = km;
-          //         n.TIME = Math.round(km / 50 * 60 * 100) / 100;
-          //         return n
-          //       })
-          //     })
-          //   },
-          //   fail(res) {
-          //     that.setData({
-          //       storeInfo: json.storeData
-          //     })
-          //   }
-          // })
-          // that.setData({
-          //   cardInfo: json.data[0],
-          //   shareInfo: json.data[0].card_no,
-          //   rechargeInfo: json.rechargeData,
-          //   payInfo: json.payData
-          // })
           var size = this.setCanvasSize(); //动态设置画布大小
           this.createQrCode(that.data.shareInfo, "canvas", size.w, size.h);
           console.log(res.data[0].card_no)
@@ -121,6 +95,21 @@ Page({
         })
         console.log("充值记录", res)
       })  
+    }
+  },
+  //分享按钮函数
+  onShareAppMessage: function () {
+    return {
+      title: '麦车服金麦卡！为您的爱车精打细算！',
+      path: 'pages/stored_value_card/index',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
     }
   },
   onShow(){
@@ -328,12 +317,7 @@ Page({
       tab: e.detail.index
     })
   },
-  //充值按钮
-  toPay(e) {
-    // this.setData({
-    //   'pay.show': true
-    // })
-  },
+
   //充值输入
   payValue(e) {
     this.setData({

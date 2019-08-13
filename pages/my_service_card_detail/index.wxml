@@ -19,7 +19,7 @@
     <view class='code_box'>
       <!-- 存放二维码的图片-->
       <image mode="scaleToFill" src="{{imagePath}}" class='wx_code'></image>
-      <image mode="aspectFit" src="../../common/image/card_info_code.png" class='wx_code_bg'></image>
+      <view mode="aspectFit" class='wx_code_bg'></view>
       <!-- 画布，用来画二维码，只用来站位，不用来显示-->
       <view class="canvas-box">
         <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;" canvas-id="canvas" />

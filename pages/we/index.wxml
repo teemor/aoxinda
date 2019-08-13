@@ -150,4 +150,3 @@
     </view>
   </view>
 </view>
-<tabbar tabbarConfig="{{tabbarConfig}}" />
