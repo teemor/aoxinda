@@ -4,12 +4,12 @@ page{
 }
 .recharge_box{
   width: 80%;
-  height: 140px;
   margin: 50rpx auto;
   background: #fff;
   border-radius: 10rpx;
     box-shadow: 0 0 2rpx rgba(0, 0, 0, 0.3);
-    position: relative
+    position: relative;
+    padding-bottom: 10rpx;
 }
 .box_title{
   font-size: 28rpx;
