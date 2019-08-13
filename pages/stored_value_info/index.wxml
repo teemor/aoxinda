@@ -10,13 +10,8 @@
           <text class='card_price_title'>可用余额</text>
           <text>￥{{cardInfo.use_total}}</text>
         </view>
-        <!-- <view class='card_time'>有效期至{{cardInfo.end_use_at || '2021.05.28'}}</view> -->
         <view class='card_time'>适用于麦车服所有门店</view>
       </view>
-      <!-- <view class='card_surplus'>
-        剩余
-        <text>{{cardInfo.use_times || '38'}}</text>次
-      </view> -->
     </view>
   </view>
   <view class='card_bag_'>
@@ -32,7 +27,7 @@
     <view class='wx_code_text'>消费码 {{cardInfo.card_no}}</view>
   </view>
   <view class='card_share'>
-    <navigator url='../stored_value_recharge/index?id={{cardInfo.account_id}}&min_pay={{min_pay}}' style='display:inline'><text class='share_btn' bindtap="toPay">充值</text></navigator>
+    <navigator url='../stored_value_recharge/index?id={{cardInfo.account_id}}&min_pay={{min_pay}}' style='display:inline'><text class='share_btn'>充值</text></navigator>
     <button class='share_btn_share'  plain='true' open-type='share'>邀请好友</button>
   </view>
 </view>
