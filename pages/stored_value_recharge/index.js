@@ -18,7 +18,7 @@ Page({
   data: {
     pay: {
       show: false,
-      money: 0
+      money: 0.01
     },
     account_id:"",
     min_pay:0
@@ -30,7 +30,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       account_id : options.id,
-      min_pay: options.min_pay
+      // min_pay: options.min_pay
+      min_pay: 0.01
     })
   },
   //充值输入

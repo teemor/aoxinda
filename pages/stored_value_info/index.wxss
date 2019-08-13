@@ -31,7 +31,7 @@ page {
   border-radius: 20rpx;
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
   background: no-repeat center center;
-  background-size: 310px 160px; 
+  background-size: 100% 100%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -395,6 +395,10 @@ width:80%;
 }
 .consume_details_item{
   overflow: hidden
+}
+.no_record{
+   padding-left: 35%;
+  padding-top: 5%; 
 }
 /* 
 .van-notify{
