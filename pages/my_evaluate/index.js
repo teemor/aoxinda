@@ -111,6 +111,30 @@ Page({
     });
   },
 
+  /**
+   * 查看订单详情
+   */
+  goOrderDetail: function(e){
+    let navUrl = "";
+    if (this.data.commentType == 0) {
+      navUrl = `../../packageA/pages/my_order_detail/index?ids=${e.currentTarget.dataset['id']}`;  //洗车美容
+    } else if (this.data.commentType == 1) {
+      navUrl = "";     //道路救援
+    }
+    wx.navigateTo({
+      url: navUrl
+    })
+  },
+
+/**
+ * 查看卡详情
+ */
+  goCardDetail: function(e){
+    wx.navigateTo({
+      url: `../my_service_card_detail/index?id=${e.currentTarget.dataset['cardid']}`
+    })
+  },
+
   //选择评论类型
   selectType: function(e){
     this.setData({

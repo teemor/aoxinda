@@ -26,8 +26,9 @@
             <view class='bottom fz28'>
               <view class='title'>
                 <text class='fl dark_grey'>服务明细</text>
-                <text class='fr s_grey' wx:if="{{item.cardType == '2'}}">订单：{{item.orderCode}}</text>
-                <text class='fr s_grey' wx:else>卡号：{{item.cardNum}}</text>
+                <van-icon style='margin-left:15rpx;' class='fr s_grey' name="arrow"/>
+                <text class='fr s_grey' wx:if="{{item.cardType == '2'}}" bindtap="goOrderDetail" data-id="{{item.orderId}}">订单：{{item.orderCode}}</text>
+                <text class='fr s_grey' wx:else bindtap="goCardDetail" data-cardid="{{item.cardId}}">卡号：{{item.cardNum}}</text>
               </view>
               <view class='service s_grey'>
                 <view class='name' wx:for="{{item.serName}}" wx:for-item="serName" wx:key="{{serName}}">
