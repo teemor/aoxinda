@@ -10,7 +10,7 @@
 .choose_type-title {
   color: #fff;
   font-size: 28rpx;
-  background: #f6b245;
+  background: #5a97ef;
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
