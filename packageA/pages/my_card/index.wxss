@@ -22,6 +22,7 @@ page {
   /* 卡 */
   
   .card_bag {
+    position: relative;
     margin: 0 auto;
     padding: 40rpx 56rpx;
     width: 690rpx;
@@ -30,7 +31,7 @@ page {
     border-radius: 20rpx;
     box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
     background: no-repeat center center;
-    background-size: cover;
+    background-size: 110% 120%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,12 +40,20 @@ page {
   
   .card_bag_top .card_title {
     margin-bottom: 20rpx;
-    font-size: 38rpx;
+    font-size: 23rpx;
+    letter-spacing: 4rpx;
+    line-height: 40rpx;
+    color: #fff;
+  }
+  .card_bag_top .card_name {
+    margin-bottom: 20rpx;
+    font-size: 31rpx;
     font-weight: bold;
     letter-spacing: 4rpx;
     line-height: 40rpx;
     color: #fff;
   }
+  
   
   .card_bag_top .card_info {
     font-size: 28rpx;
@@ -60,13 +69,14 @@ page {
   }
   
   .card_bag .card_price {
-    font-size: 34rpx;
+    font-size: 28rpx;
     font-weight: bold;
     line-height: 60rpx;
+    color: #fff;
   }
   
   .card_bag .card_time {
-    font-size: 26rpx;
+    font-size: 23rpx;
     line-height: 26rpx;
   }
   
@@ -170,17 +180,15 @@ page {
   .card_store .address {
     position: relative;
     padding: 30rpx 20rpx;
-    margin: 20rpx 30rpx;
-    border-radius: 20rpx;
-    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
+    /* margin: 20rpx 30rpx; */
+    padding-left: 5%;
+    overflow: hidden;
   }
   
   .address .address_title {
-    padding-left: 10rpx;
-    margin-bottom: 30rpx;
-    font-size: 28rpx;
+    margin-bottom: 10rpx;
+    font-size: 27rpx;
     line-height: 28rpx;
-    font-weight: bold;
   }
   
   .address .address_box {
@@ -190,6 +198,7 @@ page {
     height: 96rpx;
     font-size: 24rpx;
     line-height: 48rpx;
+    float: left
   }
   
   .address .address_box .cont_text {
@@ -201,14 +210,7 @@ page {
     width: 40rpx;
     height: 60rpx;
   }
-  
-  .address .address_box .phone {
-    margin-left: 15rpx;
-    padding-left: 20rpx;
-    width: 70rpx;
-    height: 60rpx;
-    border-left: 1rpx solid #999;
-  }
+
   
   /* 消费记录 */
   
@@ -258,4 +260,66 @@ page {
     height:170rpx;
     margin-top:100rpx;
     margin-bottom:30rpx;
+  }
+  /**/
+  .card_annotation{
+    line-height: 70rpx;
+    height: 70rpx;
+  }
+  .card_annotation view{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 26rpx;
+    color: #999;
+  }
+  .card_annotation_title{
+    float: left;
+    margin-left: 5%;
+  }
+  .card_annotation_sell{
+    float: right;
+    margin-right: 5%;
+  }
+  .title_bgl{
+    height: 88rpx;
+    width: 100%;
+    border-bottom: 1rpx solid #eee;
+    font-size: 29rpx;
+    line-height: 88rpx;
+  }
+  .title_bgl_left{
+    float: left;
+    margin-left: 6%;
+    position: relative;
+  }
+  .title_bgl_right{
+    float: right;
+    margin-right: 5%;
+    color: #999;
+  }
+  .blue_left{
+    width: 5rpx;
+    height: 26rpx;
+    background: #4e93f3;
+    display: inline-block;
+  }
+  .address_cont{
+    font-size: 23rpx;
+    color: #999;
+  }
+  .address_cont .cont_text{
+    color: #b5b5b5
+  }
+  .phone{
+    float: right;
+    height: 100rpx;
+    vertical-align: middle;
+    border-left: 1rpx solid #eee;
+    padding-left: 30rpx;
+    margin-top: -15rpx;
+  }
+  .card_logo{
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx
   }

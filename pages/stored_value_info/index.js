@@ -53,7 +53,8 @@ Page({
       //获取卡包详情
       request.selectPayCard({ card_id: options.card_id }).then(res => {
         if (res.data && res.data.length > 0) {
-          console.log(res)
+          console.log(res.data[0])
+          console.log(options.card_id)
           that.setData({
             card_id: options.card_id,
             cardInfo: res.data[0],
@@ -169,7 +170,10 @@ Page({
         console.log("充值记录", res)
       })
     }
-    
+    // console.log(this.data.tab == 1 )
+     
+    //   console.log(this.data.recharge_total > this.data.recharge.pageSize)
+
   },
   //下拉刷新
   onPullDownRefresh: function (){ 

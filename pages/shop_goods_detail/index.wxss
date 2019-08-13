@@ -228,6 +228,6 @@ margin-left:20rpx;
   vertical-align: middle;
 }
 .shop_detail .detail_font{
-  color: #f6b245;
+  color: #5a97ef;
   margin: 0 20rpx;
 }

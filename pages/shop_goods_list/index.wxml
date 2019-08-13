@@ -1,7 +1,7 @@
 <view>
   <view class="shop_goods_sort cl">
     <view wx:for="{{sortType}}" wx:key="{{item}}" class="shop_goods_title tc fl" bindtap="addSort" data-item="{{item}}">
-      {{item.name}} <van-icon name="arrow-down"/>
+      {{item.name}}<text style="color:#999;font-size:20rpx;vertical-align:middle;display:inline-block;margin-bottom:9rpx;margin-left:5rpx">▼</text>
     </view>
   </view>
   <view style='height:80rpx;'></view>
@@ -33,14 +33,14 @@
 </view>
 <view>
   <manager show="{{sortShow}}" type="top" bind:clickMask="closeMask">
-    <view class="bgwhite" style="position:relative;padding:20rpx">
-      <view class="fz26 high80">价格范围</view>
-      <view class="fl">
+    <view class="bgwhite" style="position:relative">
+      <view class="fz26 high80" style="margin-left:40rpx;">价格范围</view>
+      <view class="fl" style="margin-left:40rpx;">
         <input type="text" value="{{startPrice}}" bindchange="startPrice" placeholder="最低价" class="fl priceinput" />
         <view class="fl tc" style="width:60rpx">-</view>
         <input type="text" value="{{endPrice}}" bindchange="endPrice" placeholder="最高价" class="fl priceinput" />
       </view>
-      <view class="fz26 cl high80">品牌</view>
+      <view class="fz26 cl high80" style="margin-left:40rpx;">品牌</view>
       <view class="cl fz25">
         <view wx:for="{{brandType}}" wx:key="{{item}}">
           <view bindtap="labelchoose"  data-item="{{item.goods_brand}}" data-index="{{index}}" wx:for-index="index" class="{{item.active?'active':'active_null'}} mbottom30  tc fl fz26">

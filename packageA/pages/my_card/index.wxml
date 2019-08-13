@@ -1,7 +1,8 @@
 <view class='card_top'>
-  <view class='card_bag' style='background-image:url(../../../common/image/card_bg.png)'>
+  <view class='card_bag' style='background-image:url(../../../common/image/mm_card_bigbg.png)'>
     <view class='card_bag_top'>
-      <view class='card_title'>{{cardModel[0].actName}} {{cardModel[0].name}}</view>
+      <view class='card_title'>{{cardModel[0].actName}}</view>
+      <view class='card_name'>{{cardModel[0].name}}</view>
     </view>
     <view class='card_bag_bottom'>
       <view class='card_bm_info'>
@@ -9,33 +10,45 @@
         <view class='card_time'>有效期至720天，仅限本店及相关分店使用</view>
       </view>
     </view>
+    <view wx:if="{{cardModel[0].actCardType == 3}}" class="card_logo">
+      <image src="../../../common/image/mounth.png" style="width:75rpx;height:75rpx" ></image>
+    </view>
+  </view>
+  <view class="card_annotation">
+    <view class="card_annotation_title"> <image src="../../../common/image/clock.png" style="width:25rpx;height:25rpx;display:inline-block;"></image> 整单随时退，过期退</view>
+    <view class="card_annotation_sell">已售{{cardModel[0].buyCount}}</view>
   </view>
 </view>
 
 <view class='card_store card_item'>
-  <van-cell title="适用门店">
-    <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image>
-  </van-cell>
+  <view class="title_bgl">
+    <!-- <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image> -->
+    <view class="title_bgl_left"> <view class="blue_left"></view> 适用门店</view>
+    <view class="title_bgl_right">全部 <image src="../../../common/image/more.png" style="width:15rpx;height:20rpx"></image> </view>
+  </view>
   <view class='address' wx:for="{{cardModel}}" wx:key="{{index}}" style="display:none">
     <view class='address_title'>{{item.name}}</view>
     <view class='address_box'>
-      <image mode='aspectFit' src='../../common/image/location_.png' class='location' data-index="{{index}}" bindtap='onAddress'></image>
+      <!-- <image mode='aspectFit' src='../../common/image/location_.png' class='location' data-index="{{index}}" bindtap='onAddress'></image> -->
       <view class='address_cont'>
         <view class='cont_title'>{{item.address}}</view>
         <view class='cont_text'>距您约{{item.distance}}km，驾车需约{{item.time}}分钟</view>
       </view>
-      <image mode='aspectFit' src='../../common/image/phone.png' class='phone' data-phone="{{item.phone}}" bindtap='onContact'></image>
+      <!-- <image mode='aspectFit' src='../../common/image/phone.png' bindtap='onContact'></image> -->
     </view>
   </view>
   <view class='address'>
     <view class='address_title'>{{cardModel[0].shop.shopList.name}}</view>
     <view class='address_box'>
-      <image mode='aspectFit' src='../../common/image/location_.png' class='location' data-index="{{index}}" bindtap='onAddress'></image>
+      <!-- <image mode='aspectFit' src='../../common/image/location_.png' class='location' data-index="{{index}}" bindtap='onAddress'></image> -->
       <view class='address_cont'>
         <view class='cont_title'>{{cardModel[0].shop.shopList.address}}</view>
-        <view class='cont_text'>距您约{{cardModel[0].shop.shopList.distance}}km</view>
+        <view class='cont_text'> <image src="../../../common/image/list_address.png" style="width:20rpx;height:30rpx"></image> 距您约{{cardModel[0].shop.shopList.distance}}km</view>
       </view>
-      <image mode='aspectFit' src='../../common/image/phone.png' class='phone' data-phone="{{cardModel[0].shop.shopList.tel}}" bindtap='onContact'></image>
+      <!-- <image mode='aspectFit' src='../../common/image/phone.png'  data-phone="{{}}" bindtap='onContact'></image> -->
+    </view>
+    <view class='phone' bindtap="onContact">
+      <image src='../../../common/image/phone.png' style="width:50rpx;height:50rpx;padding-top:27rpx" data-phone="{{cardModel[0].shop.shopList.tel}}"></image>
     </view>
   </view>
 </view>

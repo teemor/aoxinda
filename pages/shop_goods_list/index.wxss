@@ -81,13 +81,24 @@ margin-left:680rpx;
 .priceinput{
   text-align: center;
   font-size: 26rpx;
-  border:2rpx solid #838383;
+  /* border:2rpx solid #838383; */
   height:50rpx;
   line-height:50rpx;
+  border-radius: 50rpx;
+  background: #eee;
   width:150rpx;
 }
 .savebtn, .resetbtn{
-  width: 50%
+  width: 50%;
+  height: 85rpx;
+  line-height: 85rpx;
+}
+.savebtn{
+  background: #4e93f3;
+  height: 85rpx;
+  line-height: 85rpx;
+  color: #fff;
+  box-sizing: border-box
 }
 .shopList_car{
   padding: 10rpx 30rpx;
