@@ -31,21 +31,23 @@ Page({
   toRescue() { },
   //用户点击右上角分享
   onShareAppMessage: function () {
-    return {
-      title: '好友@您：1元洗车？！NO，还有更多...九大专享服务，等你来拿，手慢无哦！',
-      imageUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_wx_.png',
-      path: `/pages/login/index?sharePeoId=${app.globalData.openId}`,
-      success: function (res) {
-        wx.showToast({
-          title: '分享成功',
-          icon: 'success'
-        })
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: '转发失败',
-          icon: 'none'
-        })
+    if (this.data.card_id){
+      return {
+        title: '好友@您：1元洗车？！NO，还有更多...九大专享服务，等你来拿，手慢无哦！',
+        imageUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_wx_.png',
+        path: `/pages/login/index?sharePeoId=${app.globalData.openId}`,
+        success: function (res) {
+          wx.showToast({
+            title: '分享成功',
+            icon: 'success'
+          })
+        },
+        fail: function (res) {
+          wx.showToast({
+            title: '转发失败',
+            icon: 'none'
+          })
+        }
       }
     }
   },
@@ -194,7 +196,7 @@ Page({
         }
       })
     }else{
-      
+
     }
   },
 
