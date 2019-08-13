@@ -8,7 +8,7 @@ import tab_index from '../../mixin/tab_index'
 const request = new store
 const app = getApp()
 import {
-  serviceData
+  serviceDataons
 } from '../../common/static/api_data'
 Page({
   mixins: [stores, tab_index, find_car],

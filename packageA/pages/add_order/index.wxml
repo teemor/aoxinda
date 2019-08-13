@@ -56,10 +56,10 @@
     <view class="tc high70 fz30">选择支付方式</view>
     <view class="high70 fz28 br_btm_light" wx:for="{{payData}}" wx:key="{{item}}" bindtap="payChoose" data-item="{{item}}">
       {{item.name}}
-      <span class="red"> {{item.name=='微信支付'?totalPrice:totalCard}}</span>
+      <span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
       <view wx:if="{{item.name=='金麦卡'}}">
         <view wx:if="{{cardGold==true}}">
-          余额¥{{totalCard}用卡付,价格更优惠
+          余额¥{{totalCard}} <span style="color:">用卡付,价格更优惠</span>
         </view>
         <view wx:else>
           用卡付，价格更优惠，立即开通
