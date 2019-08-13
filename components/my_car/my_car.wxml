@@ -1,4 +1,4 @@
-<view wx:if="{{carShow==true}}">
+<view wx:if="{{carShow==true}}" class="shop_goods_box">
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
   <view class="shop_car_contain" wx:if="{{car}}">
     <view class="shop_goods_invite_text fl">为您推荐适合 {{model.model}}{{model.vehicleType}}...的服务</view>
@@ -10,7 +10,7 @@
     </view>
   </view>
   <view wx:else>
-    <view class="fl">暂未添加爱车</view>
-    <view class="fr">立即添加</view>
+    <view class="shop_goods_nocar_text fl">暂未添加爱车</view>
+    <view bindtap="addCar" class="shop_goods_nocar_add_car fr">立即添加</view>
   </view>
 </view>

@@ -6,10 +6,6 @@ let that
  * 判断有无金麦卡  有->跳转金面卡  无->购买
  */
 Page({
-/**
- * 嘉琪
- * 
- */
   /**
    * 页面的初始数据
    */
@@ -33,11 +29,11 @@ Page({
   },
   //我要储值
   toStorageValue() {
-    // if (this.data.card_id) {
-    //   this.setData({
-    //     show : true
-    //   })
-    // } else {
+    if (this.data.card_id) {
+      this.setData({
+        show : true
+      })
+    } else {
       var app = getApp()
       var getOpenId = app.globalData.openId
     request.payCard({ price: this.data.min_pay, type: 0, account_id: getOpenId}).then((res) => {
@@ -65,7 +61,7 @@ Page({
           });
         }
       })
-    // }
+    }
   },
   //取消
   cancel:function(){

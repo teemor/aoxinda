@@ -55,8 +55,17 @@
     </view>
 
   </view>
-  <view class="open_card" style="background-image:url(../../common/image/open_card.png)" bindtap="openCard">
-    开通麦车服金麦卡，享全站服务优惠 <text>立即开通</text>
+  <view class="activity_box">
+    <swiper indicator-dots autoplay circular>
+      <swiper-item>
+        <view class="open_card" style="background-image:url(../../common/image/open_card.png)" bindtap="openCard">
+          开通麦车服金麦卡，享全站服务优惠 <text>立即开通</text>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <image mode="aspectFit" src="../../common/image/news_open_card.png" class="open_news" bindtap="openNews"></image>
+      </swiper-item>
+    </swiper>
   </view>
   <view class="mine_partner_img">
     <image src="../../common/image/my_partner.png" bindtap='myInvite' />

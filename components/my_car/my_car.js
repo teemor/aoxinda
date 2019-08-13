@@ -16,7 +16,6 @@ Component({
   data: {
     carShow: true
   },
-
   /**
    * 组件的方法列表
    */
@@ -30,6 +29,15 @@ Component({
       wx.navigateTo({
         url: '../../pages/my_car/index'
       })
-    }
+    },
+    /**
+   * 跳转添加爱车界面
+   */
+    addCar: function () {
+      console.log(1)
+      wx.navigateTo({
+        url: '../add_car_mes/index'
+      })
+    },
   }
 })

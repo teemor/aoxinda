@@ -77,7 +77,8 @@
     "pages/store_index/index",
     "pages/modify_card/index",
     "pages/store_list/index",
-    "pages/copy_store_list/index"
+    "pages/copy_store_list/index",
+    "pages/new_manners/new_manners"
   ],
   "subPackages": [
     {

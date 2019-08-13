@@ -86,7 +86,7 @@
 <view class="have_card {{show?'show':''}}">
   <view class='have_card_box'>
     <view class='have_card_box_title'>
-      您已开通金面卡，可直接进入我的金麦卡进行操作。
+      您已开通金麦卡，可直接进入我的金麦卡进行操作。
     </view>
     <view class='cancel' bindtap='cancel'>取消</view>
     <view bindtap='examine' class='examine'>查看</view>

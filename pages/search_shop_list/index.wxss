@@ -1,4 +1,3 @@
-@import "../../app.wxss";
 
 .search_box .van-search__content {
   border-radius: 36rpx;
@@ -28,4 +27,23 @@
 
 .van-search .van-icon {
   padding-top: 8rpx;
+}
+.symbol{
+  font-size: 18rpx;
+  color: #666;
+  padding-left: 5rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom:9rpx
+}
+.pull_down{
+  color:#333333;
+  width:130rpx;
+  height:35rpx;
+  line-height: 35rpx;
+  position:absolute;
+  margin-top:-77rpx;
+  margin-left:8%;
+  background:#f7f8fa;
+  text-align: center
 }

@@ -118,7 +118,7 @@ Page({
     }else{
       var app = getApp()
       var getOpenId = app.globalData.openId
-      bankCardHttp.bankCardSave({ "bank": that.data.card_information.name, "cardNumber": that.data.bankCard, "ownerName": that.data.userName, "empId": getOpenId, "identityCard": that.data.mobile, "cardType": "1", "type": 1, "defaultCard": "0"}).then((res) => {
+      bankCardHttp.bankCardSave({ "bank": that.data.card_information.name, "cardNumber": that.data.bankCard, "ownerName": that.data.userName, "empId": getOpenId, "identityCard": that.data.mobile, "cardType": "1", "type": 1, "defaultCard": "1"}).then((res) => {
         console.log(res)
         wx.showToast({
           title: res.msg,

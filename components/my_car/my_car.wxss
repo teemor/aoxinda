@@ -23,3 +23,21 @@
   margin-left: 680rpx;
   margin-top:10rpx
 }
+
+.shop_goods_box{
+  position: relative;
+}
+.shop_goods_nocar_text{
+  position: absolute;
+  top: 19rpx;
+  font-size: 28rpx;
+  color: #fff;
+  left: 5%
+}
+.shop_goods_nocar_add_car{
+  position: absolute;
+  top: 19rpx;
+  font-size: 28rpx;
+  color: #fff;
+  right: 5%
+}

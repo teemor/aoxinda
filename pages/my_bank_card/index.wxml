@@ -13,7 +13,7 @@
   </view>
   
   <view class='add_card' bindtap='addBankCard'>
-    <view class='add_card_title' style='background-image:url(../../common/image/add_card.png)'><image src='../../common/image/add_bank_card_log.png'></image>添加银行卡</view>
+    <view class='add_card_title' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/add_card.png)'><image src='https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/add_bank_card_log.png'></image>添加银行卡</view>
   </view>
 </view>
 <view class="delete {{deleat == true?'deleat':''}}">

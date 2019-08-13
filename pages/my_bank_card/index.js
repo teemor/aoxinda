@@ -41,90 +41,92 @@ Page({
     bankCard.bankCardSelect({ "emp_id": getOpenId }).then((res) => {
       var newres = res.data
       //银行卡循环添加背景图logo
-      for (var i = 0; i < newres.length; i++) {
-        if (newres[i].bank == "北京银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/bj_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "中国工商银行" || newres[i].bank == "工商银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gs_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "中国农业银行" || newres[i].bank == "农业银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_green.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/ny_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "中国银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zg_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "中国建设银行" || newres[i].bank == "建设银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/js_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "招商银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zs_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "邮储银行" || newres[i].bank == "邮政储蓄银行" || newres[i].bank == "邮政银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_green.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/yc_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "交通银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/jt_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "浦发银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/pf_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "民生银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/ms_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "兴业银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/xy_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "平安银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_orange.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/pa_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "中信银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zx_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "华夏银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/hx_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "广发银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gf_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "光大银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_cardpurple.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gd_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "宁波银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_orange.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/nb_bank.png'
-          newres[i].type = '储蓄卡'
-        } else if (newres[i].bank == "上海银行") {
-          newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
-          newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/sh_bank.png'
-          newres[i].type = '储蓄卡'
+      if (newres && newres.length > 0){
+        for (var i = 0; i < newres.length; i++) {
+          if (newres[i].bank == "北京银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/bj_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "中国工商银行" || newres[i].bank == "工商银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gs_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "中国农业银行" || newres[i].bank == "农业银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_green.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/ny_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "中国银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zg_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "中国建设银行" || newres[i].bank == "建设银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/js_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "招商银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zs_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "邮储银行" || newres[i].bank == "邮政储蓄银行" || newres[i].bank == "邮政银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_green.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/yc_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "交通银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/jt_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "浦发银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/pf_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "民生银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/ms_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "兴业银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/xy_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "平安银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_orange.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/pa_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "中信银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/zx_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "华夏银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/hx_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "广发银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_red.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gf_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "光大银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_cardpurple.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/gd_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "宁波银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_orange.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/nb_bank.png'
+            newres[i].type = '储蓄卡'
+          } else if (newres[i].bank == "上海银行") {
+            newres[i].path = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/my_card_blue.png'
+            newres[i].logo = 'https://maichefu.oss-cn-beijing.aliyuncs.com/bankCard/sh_bank.png'
+            newres[i].type = '储蓄卡'
+          }
         }
-      }
-      //银行卡号循环显示后四位
-      for (let l = 0; l < newres.length; l++) {
-        newres[l].newCardNumber = newres[l].cardNumber.replace(/\s/g, '').replace(/(\d{4})\d+(\d{4})$/, "**** **** **** $2")
-      }
-      that.setData({
-        cardList: newres,
-        username: newres[newres.length-1].ownerName,
-        userid: newres[newres.length - 1].identityCard
-      })
+        //银行卡号循环显示后四位
+        for (let l = 0; l < newres.length; l++) {
+          newres[l].newCardNumber = newres[l].cardNumber.replace(/\s/g, '').replace(/(\d{4})\d+(\d{4})$/, "**** **** **** $2")
+        }
+        that.setData({
+          cardList: newres,
+          username: newres[newres.length - 1].ownerName,
+          userid: newres[newres.length - 1].identityCard
+        })
+      } 
     })
   },
   //添加银行卡
