@@ -7,6 +7,7 @@
       {{array[index]}}<text class="symbol">▼</text>
     </view>
   </picker>
+
   <view>
     <view style="padding:0 34rpx">
       <view class="fl fz28 high80" style='width:100%'>历史搜索

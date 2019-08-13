@@ -38,12 +38,11 @@
 }
 .pull_down{
   color:#333333;
-  width:130rpx;
-  height:35rpx;
-  line-height: 35rpx;
+  width:20%;
+  height:4%;
   position:absolute;
-  margin-top:-77rpx;
+  margin-top:-80rpx;
   margin-left:8%;
   background:#f7f8fa;
-  text-align: center
+  text-align: center;
 }
