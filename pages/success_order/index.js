@@ -6,7 +6,8 @@ Page({
     let model = JSON.parse(decodeURIComponent(options.data))
     console.log(model,'model')
     this.setData({
-      id:model.id
+      id:model.id,
+      type: options.type
     })
     if (model.data === 'success') {
       this.setData({
@@ -30,6 +31,15 @@ Page({
       },
       fail: () => {},
       complete: () => {}
+    });
+  },
+  /**
+   * yd
+   * 查看服务卡
+   */
+  cardList:function(){
+    wx.redirectTo({
+      url: `/pages/my_service_card/index`
     });
   },
   /**

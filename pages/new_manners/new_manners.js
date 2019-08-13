@@ -181,22 +181,23 @@ Page({
           signType: payInfo.signType,
           paySign: payInfo.paySign,
           success: (result) => {
-            wx.showToast({
-              title: '支付成功',
-              duration: 1000,
-              success() {
-                setTimeout(() => {
-                  wx.navigateTo({
-                    url: '/pages/my_service_card/index'
-                  })
-                }, 1000)
-              }
+            let data = {
+              data: 'success',
+              price: that.data.price
+            }
+            let model = encodeURIComponent(JSON.stringify(data))
+            wx.navigateTo({
+              url: `/pages/success_order/index?data=${model}&type=1`
             })
           },
           fail: () => {
-            wx.showToast({
-              title: '支付失败，请重试',
-              icon: 'none'
+            let data = {
+              data: 'error',
+              price: that.data.price
+            }
+            let model = encodeURIComponent(JSON.stringify(data))
+            wx.navigateTo({
+              url: `/pages/success_order/index?data=${model}&type=1`
             })
           },
           complete: () => {}

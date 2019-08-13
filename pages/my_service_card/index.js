@@ -76,7 +76,7 @@ Page({
     request.cardList({userId:app.globalData.openId,effectiveType:type}).then(res => {
       this.setData({
         cardList: res.cardList,
-
+        newCardList: res.newCardList
       })
     })
   },
@@ -98,6 +98,19 @@ Page({
 
     wx.navigateTo({
       url: `../my_service_card_detail/index?id=${JSON.stringify(model)}`
+    })
+  },
+
+  /**
+    * 详情
+    * yd
+    */
+  newCardDetail: function (item) {
+    let model = {
+      id: item.currentTarget.dataset.item.cardId
+    }
+    wx.navigateTo({
+      url: `../my_service_card_detail/index?id=${JSON.stringify(model)}&cardNo=${item.currentTarget.dataset.item.cardNo}`
     })
   },
   /**

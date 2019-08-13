@@ -36,7 +36,8 @@ Page({
     } else {
       var app = getApp()
       var getOpenId = app.globalData.openId
-    request.payCard({ price: this.data.min_pay, type: 0, account_id: getOpenId}).then((res) => {
+      // request.payCard({ price: this.data.min_pay, type: 0, account_id: getOpenId }).then((res) => {
+    request.payCard({ price: 0.01, type: 0, account_id: getOpenId}).then((res) => {
         if (res.status === false) {
           wx.showToast({
             title: res.description

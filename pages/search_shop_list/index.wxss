@@ -34,7 +34,7 @@
   padding-left: 5rpx;
   display: inline-block;
   vertical-align: middle;
-  margin-bottom:9rpx
+  margin-bottom:9rpx;
 }
 .pull_down{
   color:#333333;
