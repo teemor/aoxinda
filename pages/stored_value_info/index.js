@@ -178,6 +178,9 @@ Page({
   //下拉刷新
   onPullDownRefresh: function (){ 
     var that = this
+    wx.setBackgroundTextStyle({
+      textStyle: 'dark' // 下拉背景字体、loading 图的样式为dark
+    })
     request.hasCard().then((option) => {
       if(option.card_id){
         request.selectPayCard({ card_id: option.card_id }).then(res => {
