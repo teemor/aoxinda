@@ -3,7 +3,7 @@
   {{commentName}}
   <van-icon name="arrow-down"/>
 </view>
-  <van-tabs bind:click="tabClick" color="#4e93f3" sticky style="position:fixed;top:0px;width:100%;">
+  <van-tabs bind:click="tabClick" color="#4e93f3" class="my_comment_tab">
       <van-tab wx:for="{{tabList}}" title="{{item.name}}"  wx:key="{{item.id}}">
       <!-- 洗车评论 -->
       <view class='wrapper' wx:if="{{evaluateList.length>0 && commentType == '0'}}">

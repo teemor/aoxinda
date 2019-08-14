@@ -199,6 +199,7 @@ Page({
       ["form.pageIndex"]: 1
     });
     that.selectConsumeComment(that.data.form);
+    wx.stopPullDownRefresh();
   },
 
   /**
