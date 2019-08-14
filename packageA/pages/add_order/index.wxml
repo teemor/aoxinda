@@ -52,21 +52,26 @@
   </form>
 </view>
 <manager show="{{wxPay}}" type="bottom" bind:clickMask="wxPayShow">
-  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:100rpx">
-    <view class="tc high70 fz30">选择支付方式</view>
-    <view class="high70 fz28 br_btm_light" wx:for="{{payData}}" wx:key="{{item}}" bindtap="payChoose" data-item="{{item}}">
-      {{item.name}}
+  <view class="bgwhite" style="position:relative;z-index:333;padding-bottom:140rpx">
+    <view class="tc fz30 select_pay">选择支付方式</view>
+    <view class="fz28 " wx:for="{{payData}}" wx:key="{{item}}" bindtap="payChoose" data-item="{{item}}">
+      <view wx:if="{{item.name=='微信支付'}}" class="pay_way">
+        <image style="width:25rpx;height:25rpx" src="../../../common/image/wx.png"></image> {{ item.name}}
+        <view class="radiow {{payType==0?'blue':''}}">√</view>
+      </view>
       <span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
-      <view wx:if="{{item.name=='金麦卡'}}">
-        <view wx:if="{{cardGold==true}}">
-          余额¥{{totalCard}} <span style="color:">用卡付,价格更优惠</span>
-        </view>
-        <view wx:else>
+      <view wx:if="{{item.name=='金麦卡'}}" class="gold_card">
+        <!-- <view wx:if="{{cardGold==true}}"> -->
+          <view><image style="width:25rpx;height:25rpx" src="../../../common/image/car_wash_pay.png"></image> {{ item.name}}</view>
+          <!-- <view class="gold_card_text">余额¥{{totalCard}} <span style="color:">用卡付,价格更优惠</span></view> -->
+          <view class="gold_card_text">用卡付,价格更优惠</view>
+          <view class="radio {{payType==0?'':'blue'}}">√</view>
+        <!-- <view wx:else>
           用卡付，价格更优惠，立即开通
-        </view>
+        </view> -->
       </view>
     </view>
-    <view style="height:40rpx"></view>
+    <!-- <view style="height:40rpx"></view> -->
     <view bindtap="wxPayShow" class="fz30 bg_orange bottom_btn">关闭</view>
   </view>
 </manager>

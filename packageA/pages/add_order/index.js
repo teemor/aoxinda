@@ -44,23 +44,23 @@ Page({
     this.setData({
       payType: e.currentTarget.dataset.item.type
     })
-    if (this.data.payType == 1 && this.data.cardGold == true) {
-      if (this.data.pwdGold == true) {
-        this.setData({
-          trueGold: true,
-          wxPay: false
-        })
-      } else {
-        this.setData({
-          falseGold: true,
-          wxPay: false
-        })
-      }
-    } else {
-      wx.navigateTo({
-        url: '../../../pages/stored_value_card/index',
-      })
-    }
+    // if (this.data.payType == 1 && this.data.cardGold == true) {
+    //   if (this.data.pwdGold == true) {
+    //     this.setData({
+    //       trueGold: true,
+    //       wxPay: false
+    //     })
+    //   } else {
+    //     this.setData({
+    //       falseGold: true,
+    //       wxPay: false
+    //     })
+    //   }
+    // } else {
+    //   wx.navigateTo({
+    //     url: '../../../pages/stored_value_card/index',
+    //   })
+    // }
   },
   /**
    * 生命周期函数--监听页面加载

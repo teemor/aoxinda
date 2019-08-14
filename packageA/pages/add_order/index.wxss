@@ -44,3 +44,62 @@ button::after {
   text-align: center;
   margin-right: 10rpx;
 }
+.select_pay{
+  line-height: 100rpx;
+  height: 100rpx;
+  padding-left: 0rpx;
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+}
+.pay_way{
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+  padding-left: 5%;
+}
+.gold_card{
+  position: relative;
+  height: 100rpx;
+  width: 100%;
+  line-height: 70rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+  padding-left: 5%;
+}
+.gold_card_text{
+  position: absolute;
+  font-size: 20rpx;
+  color: #ffa423;
+  height: 26rpx;
+  border: 1rpx solid #ffa423;
+  line-height: 26rpx;
+  left: 5%;
+  bottom: 15rpx;
+}
+.radiow{
+  float: right;
+  width: 40rpx;
+  margin-right: 6%;
+  border-radius: 50%;
+  height: 40rpx;
+  margin-top: 4%;
+  border: 1rpx solid #eee;
+  line-height: 40rpx;
+  text-align: center;
+  color: #fff;
+}
+.radio{
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  border: 1rpx solid #eee;
+  line-height: 40rpx;
+  text-align: center;
+  color: #fff;
+}
+.blue{
+  background: #5a97ef
+}

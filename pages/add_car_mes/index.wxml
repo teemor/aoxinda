@@ -39,3 +39,4 @@
 <van-popup custom-class="_popup" show="{{ show }}" position="bottom" bind:close="onClose">
   <license_plate bind:getPlate="getPlate" bind:onClose="onClose" licensePlate="{{ plateNum }}"></license_plate>
 </van-popup>
+<van-notify id="van-notify" />

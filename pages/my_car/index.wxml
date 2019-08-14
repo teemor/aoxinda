@@ -16,7 +16,7 @@
       </view>
     </view>
     <view style="margin-top:30rpx">
-      <view class="fl shop_edit_box" data-model='{{item}}'  bindtap="editCar">
+      <view class="fl shop_edit_box" data-model='{{item}}' bindtap="editCar">
         <view class="fl shop_edit_img">
           <image src="http://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_edit.png" />
         </view>

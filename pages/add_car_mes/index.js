@@ -3,7 +3,7 @@ import {
 } from '../../common/api/api'
 const request = new Technician
 const app =  getApp();
-
+import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
   
 Page({
 
@@ -33,29 +33,41 @@ Page({
     wx.getStorage({
       key: 'user',
       success: (result) => {
-        request.saveCar({
-          ZWS:this.data.model.ZWS,
-          plateNum: this.data.plateNum,
-          CMS:this.data.model.CMS,
-          PP:this.data.model.PP,
-          registerDate: this.data.date,
-          carTypeId: this.data.model.LevelID,
-          engineNum: this.data.model.FDJXH,
-          mileage: this.data.kmTxt,
-          model: this.data.model.XSMC,
-          vehicleType: this.data.model.CX,
-          userId:app.globalData.openId,userName:result.data.nickName,userTel:that.data.userTel,
-        }).then(res => {
-          if(res.status===true){
-            wx.showToast({
-              title:'添加成功'
-            })
-            wx.navigateBack({
-              url: '1'
-            });
-              
-          }
-        })
+        if (this.data.model == undefined){
+          console.log(this.data.model)
+          Notify('请选择车型');
+        } else if (this.data.date == undefined){
+          Notify('请选择购车时间');
+        } else if (this.data.plateNum == '') {
+          Notify('请录入车牌号');
+        } else if (this.data.kmTxt == undefined) {
+          Notify('请填写行驶公里数');
+        }else{
+          request.saveCar({
+            ZWS: this.data.model.ZWS,
+            plateNum: this.data.plateNum,
+            CMS: this.data.model.CMS,
+            PP: this.data.model.PP,
+            registerDate: this.data.date,
+            carTypeId: this.data.model.LevelID,
+            engineNum: this.data.model.FDJXH,
+            mileage: this.data.kmTxt,
+            model: this.data.model.XSMC,
+            vehicleType: this.data.model.CX,
+            userId: app.globalData.openId, userName: result.data.nickName, userTel: that.data.userTel,
+          }).then(res => {
+            if (res.status === true) {
+              wx.showToast({
+                title: '添加成功'
+              })
+              wx.navigateBack({
+                url: '1'
+              });
+
+            }
+          })
+        }
+        
       },
       fail: () => {},
       complete: () => {}

@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
     "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
-    "license_plate": "../../components/license_plate/license_plate"
+    "license_plate": "../../components/license_plate/license_plate",
+    "van-notify": "../../miniprogram_npm/vant-weapp/notify/index"
   }
 }

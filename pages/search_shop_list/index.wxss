@@ -42,7 +42,7 @@
   height:4%;
   position:absolute;
   margin-top:-80rpx;
-  margin-left:8%;
+  margin-left:6%;
   background:#f7f8fa;
   text-align: center;
 }

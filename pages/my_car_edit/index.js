@@ -3,7 +3,7 @@ import {
 } from '../../common/api/api'
 const request = new Technician
 const app = getApp();
-
+import Notify from '../../miniprogram_npm/vant-weapp/notify/notify';
 
 Page({
 
@@ -42,6 +42,7 @@ Page({
             carTypeId: this.data.model.LevelID,
             vehicleType: this.data.model.CX,
             engineNum: this.data.model.FDJXH,
+            ZWS: this.data.model.ZWS ? this.data.model.ZWS:this.data.zws,
             PP: this.data.model.PP,
             mileage: this.data.kmTxt,
             model: this.data.model.XSMC,
@@ -54,6 +55,7 @@ Page({
             carTypeId: this.data.carTypeId_,
             vehicleType: this.data.vehicleType_,
             engineNum: this.data.engineNum_,
+            ZWS: this.data.zws,
             PP: this.data.PP_,
             mileage: this.data.kmTxt,
             model: this.data.model_,
@@ -72,10 +74,14 @@ Page({
           // userName:result.data.nickName,
           // userTel:that.data.userTel,
         }
-        request.updateCar(json).then(res => {
+        console.log(json)
+        if (json.mileage == "") {
+          Notify('请填写行驶公里数');
+        } else {
+          request.updateCar(json).then(res => {
           if (res.status === true) {
             wx.showToast({
-              title: '添加成功'
+              title: '修改成功'
             })
             wx.navigateBack({
               url: '1'
@@ -83,6 +89,8 @@ Page({
 
           }
         })
+        }
+        
       },
       fail: () => {},
       complete: () => {}
@@ -117,7 +125,8 @@ Page({
   onLoad: function(options) {
     console.log(options, 'options')
     this.setData({
-      carId: options.id
+      carId: options.id,
+      zws:options.zws
     })
     if (options.info) {
       let car = JSON.parse(options.info)

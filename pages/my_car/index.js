@@ -26,7 +26,7 @@ Page({
   editCar: function (e) {
     console.log(e.currentTarget.dataset.model,'编辑我的爱车')
     wx.navigateTo({
-      url: `../my_car_edit/index?id=${e.currentTarget.dataset.model.carId}&info=${JSON.stringify(e.currentTarget.dataset.model)}`,
+      url: `../my_car_edit/index?id=${e.currentTarget.dataset.model.carId}&info=${JSON.stringify(e.currentTarget.dataset.model)}&zws=${e.currentTarget.dataset.model.zws}`,
       success: (result) => {
 
       },
@@ -99,7 +99,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    var that = this
+    setTimeout(function(){
+      console.log(that.data.carList)
+    },1000)
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

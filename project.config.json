@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 55,
 			"list": [
 				{
 					"id": -1,
@@ -430,9 +430,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "卡详情",
-					"pathName": "packageA/pages/store_detail/index",
+					"id": 55,
+					"name": "1",
+					"pathName": "packageA/pages/add_order/index",
 					"query": "",
 					"scene": null
 				}
