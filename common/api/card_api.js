@@ -40,6 +40,14 @@ export class CardHttp {
       method: `POST`,
     })
   }
+  //查询登录人分享的是否有1元购的用户
+  hasOnePay = (params) => {
+    return http.httpRequest({
+      url: `${IP_HTTP}/hasOnePay`,
+      method: `post`,
+      data: params
+    })
+  }
   //查询登录人
   findShare = (params) => {
     return http.httpRequest({
