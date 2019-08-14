@@ -36,7 +36,7 @@
   <!-- 门店-->
   <view wx:if="{{flag==1}}">
     <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
-      <storeList item="{{item.shop.shopList}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
+      <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
     </view>
   </view>
   <!-- 服务-->

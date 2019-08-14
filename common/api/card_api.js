@@ -22,7 +22,7 @@ export class CardHttp {
       data: params
     })
   }
-  //查询卡包所需门店 - 查询全部门店
+  //查询洗车美容卡包所需门店 - 查询全部门店
   selectShopList = (params) => {
     return http.httpRequest({
       url: `${IP_HTTP}/card/selectShopList`,
