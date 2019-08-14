@@ -74,8 +74,15 @@ page {
   right:0px;
   top:2rpx;
   background:#fff;
-  line-height:87rpx;
+  line-height:87.6rpx;
   text-align:center;
   color:#7d7e80;
   z-index:2;
+}
+.my_comment_tab .van-tabs__wrap{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70%;
+  z-index: 999;
 }
