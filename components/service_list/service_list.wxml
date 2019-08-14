@@ -9,7 +9,7 @@
         <span class="fz24">¥</span>{{payType==0?item.actPrice:item.actCardPrice}}</view>
     </view>
     <view class="add_img fr">
-      <van-stepper value="{{item.cartNum}}" bind:change="numChange" wx:if="{{add==true}}" />
+      <van-stepper value="{{item.cartNum}}" bind:change="numChange" wx:if="{{add==true&&item.cartNum!=0}}" />
       <image src="../../common/img/add.png" wx:elif="{{add==false}}" bindtap="addNum" />
     </view>
   </view>

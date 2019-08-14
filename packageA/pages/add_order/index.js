@@ -327,15 +327,15 @@ Page({
     if (this.data.flag != false) {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡
-        carName: this.data.cardModel.model,
+        carName: this.data.carModel.model,
         shopId: this.data.shopId,
         invoiceId: this.data.isInvoice === 0 ? '' : this.data.invoiceId,
         buyType: this.data.card,
         goodsTotalPrice: this.data.payType == 0 ? this.data.totalPrice : this.data.totalCard,
         isInvoice: this.data.isInvoice,
         orderDetails: this.data.orderDetails,
-        carNum: this.data.cardModel.plateNum,
-        carId: this.data.cardModel.carId,
+        carNum: this.data.carModel.plateNum,
+        carId: this.data.carModel.carId,
         userId: app.globalData.openId,
         userName: app.globalData.userInfo.nickName,
         userPhone: app.globalData.phoneNum
