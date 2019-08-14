@@ -33,7 +33,7 @@ Page({
   onShareAppMessage: function () {
     if (this.data.card_id){
       return {
-        title: '好友@您：1元洗车？！NO，还有更多...九大专享服务，等你来拿，手慢无哦！',
+        title: this.data.newStr,
         imageUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_wx_.png',
         path: `/pages/login/index?sharePeoId=${app.globalData.openId}`,
         success: function (res) {
@@ -154,6 +154,12 @@ Page({
             }
           })
         }
+      })
+      //获取分享的是否发生过一元购
+      requestNews.hasOnePay().then(res => {
+        that.setData({
+          newStr: res.status == -1 ? '好友@您：1元洗车？！NO，还有更多...九大专享服务，等你来拿，手慢无哦！' : '好友@您：99超值尊享大麦卡，九大优惠权益，新人专享'
+        })
       })
     } else if (options.id) {
       let model = JSON.parse(options.id)
