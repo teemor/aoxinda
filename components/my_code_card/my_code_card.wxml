@@ -1,6 +1,6 @@
 <view class="car_beauty_shop-code-contain" bindtap="detail">
   <view class="car_beauty_shop">
-    <image src="../../common/image/card_bg.png" />
+    <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_bg.png" />
   </view>
   <view class="fl car_beauty_shop-text">
     <view class="car_beauty_img">

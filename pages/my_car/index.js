@@ -84,6 +84,7 @@ Page({
                 title: '删除成功',
                 icon: 'success'
               })
+              console.log(that,'that123')
               that.findCarList()
             } else {
               wx.showToast({
