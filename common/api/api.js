@@ -354,7 +354,7 @@ export class Technician {
   // 获取车型
   findCarList = (userid) => {
     return http.httpRequest({
-      url: `http://192.168.31.158:444/mcf/api/v1/c/findCarList`,
+      url: `${IP_WBHTTP}/findCarList`,
       method: `post`,
       data: userid
     })
