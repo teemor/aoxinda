@@ -503,7 +503,14 @@ export class Technician {
       data: model
     })
   }
-
+  //评论中心统计未评价数量
+  notCommentCount = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/comment/v1.0/notCommentCount`,
+      method: `post`,
+      data: model
+    })
+  }
 }
 
 

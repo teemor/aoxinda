@@ -125,6 +125,9 @@
         <view slot="icon" class="user_img">
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mine_comment.png" />
         </view>
+        <view wx:if="{{commentNotCount > 0}}">
+          <text class="numRed">{{commentNotCount}}</text>
+        </view>
       </van-cell>
     </view>
     <view class="mine_cell-list">

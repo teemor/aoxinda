@@ -6,15 +6,18 @@ import {
 import {
   store
 } from '../../common/api/clean_api'
+import { Technician } from '../../common/api/api'
 const request = new CardHttp
 const bankCard = new store
+const teRequest = new Technician
 import tab_index from '../../mixin/tab_index'
 
 Page({
   mixins: [login, tab_index],
   data: {
     card_id: null,
-    min_pay:0
+    min_pay:0,
+    commentNotCount: 0
   },
   myEvaluate: function() {
     wx.navigateTo({
@@ -217,6 +220,16 @@ Page({
       url: '../my_shopped/index'
     })
   },
+  /**
+   * 评论中心统计未评价数量
+   */
+  notCommentCount: function (model){
+    teRequest.notCommentCount(model).then(res => {
+      this.setData({
+        commentNotCount: res.data
+      });
+    })
+  },
   onLoad: function(options) {
     let that = this
     wx.getStorage({
@@ -227,6 +240,7 @@ Page({
           nickName: res.data.nickName,
           login: true
         })
+        that.notCommentCount({"user_id": res.data.openId});
       },
       fail: function(res) {
         that.setData({

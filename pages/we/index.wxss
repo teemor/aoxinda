@@ -128,3 +128,13 @@ button::after{ border: none; }
   text-align: center;
   margin-left: 10rpx
 }
+.numRed{
+  width:40rpx;
+  height:40rpx;
+  border-radius:21rpx;
+  background:red;
+  color:#fff;
+  text-align:center;
+  line-height:40rpx;
+  display: inline-block;
+}
