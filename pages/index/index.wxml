@@ -3,7 +3,7 @@
     <van-search value="{{ value }}" placeholder="请输入要搜索的商品" bind:focus="onSearch" />
   </view>
   <view class="banner_img">
-    <swiper class="banner" interval="3000" autoplay="true" indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <swiper class="banner swiper" interval="3000" autoplay="true" indicator-dots="false" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <block wx:for="{{dataList}}" wx:key="*this">
         <swiper-item class="swiper-item">
           <image src='{{item.path}}' />

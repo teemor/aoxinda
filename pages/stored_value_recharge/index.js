@@ -53,6 +53,7 @@ Page({
           //   'pay.show': false,
           //   'pay.money': 0.00,
           // })
+          console.log(res)
           if (res.status === false) {
             wx.showToast({
               title: res.description
