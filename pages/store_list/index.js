@@ -118,8 +118,11 @@ Page({
     this.findByShopList()
   },
   findByShopList: function () {
-    request.findByShopList({lat:app.globalData.latitude,log:app.globalData.longitude,pageIndex:1,pageSize:10}).then(res => {
+    request.findByShopList({shopName:'',lat:app.globalData.latitude,log:app.globalData.longitude,pageIndex:1,pageSize:10}).then(res => {
       console.log(res,'mendianlieb')
+      this.setData({
+        storeData:res.result.list
+      })
     })
   },
   serviceDetail: function ({
@@ -151,6 +154,7 @@ Page({
    */
   onShow: function (options) {
     this.findCarList()
+    this.findByShopList()
     if (this.data.item) {
       this.setData({
         city: this.data.item
@@ -176,7 +180,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.findByShopList()
+    wx.stopPullDownRefresh()
   },
 
   /**
