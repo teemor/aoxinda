@@ -1,5 +1,5 @@
 <view class='card_top'>
-  <view class='card_bag' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_bg.png)'>
+  <view class='card_bag' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/gold_card_bg.png)'>
     <view class='card_bag_top'>
       <view class='card_title'>{{cardInfo.card_name}}</view>
       <view class='card_info'>{{cardInfo.card_no}}</view>
