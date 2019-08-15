@@ -142,7 +142,10 @@ button::after {
 }
 
 .car_bg_img image {
-  width: 800rpx;
+  width: 100%;
+  height: 370rpx;
+  top: -45rpx;
+  position: absolute;
 }
 
 .addbgcontain {
@@ -565,8 +568,6 @@ button::after {
 .swiper .wx-swiper-dots.wx-swiper-dots-horizontal {
   position: absolute;
   bottom: 20rpx;
-  /* left: 500rpx; */
-  /* z-index可设可不设*/
   z-index: 999;
 }
  
