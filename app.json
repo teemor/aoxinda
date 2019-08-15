@@ -78,7 +78,8 @@
     "pages/modify_card/index",
     "pages/store_list/index",
     "pages/copy_store_list/index",
-    "pages/new_manners/new_manners"
+    "pages/new_manners/new_manners",
+    "pages/my_service_car_list/index"
   ],
   "subPackages": [
     {

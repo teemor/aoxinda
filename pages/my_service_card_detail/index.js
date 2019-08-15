@@ -107,16 +107,16 @@ Page({
         this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
       })
       //获取门店
-      requestNews.selectShopList().then(res => {
-        if (res.data && res.data.length > 0) {
-          let arr, oldData = res.data.map(n => {
+      requestNews.getActivity().then(res => {
+        if (res.shopList && res.shopList.length > 0) {
+          let arr, oldData = res.shopList.map(n => {
             return {
-              name: n.NAME,
-              address: n.ADDRESS,
-              phone: n.TEL,
+              name: n.shop.NAME,
+              address: n.shop.ADDRESS,
+              phone: n.shop.TEL,
               coordinate: {
-                latitude: n.LAT,
-                longitude: n.LOG,
+                latitude: n.shop.LAT,
+                longitude: n.shop.LOG,
               },
             }
           });
@@ -133,7 +133,8 @@ Page({
                 shop: arr.map(n=>{
                   n.tel = n.phone
                   return {
-                    shop : n
+                    shop: n,
+                    time: n.time
                   }
                 })
               })
@@ -148,7 +149,8 @@ Page({
                 shop: arr.map(n => {
                   n.tel = n.phone
                   return {
-                    shop: n
+                    shop: n,
+                    time: n.time
                   }
                 })
               })

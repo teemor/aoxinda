@@ -1,21 +1,22 @@
 <view>
   <view class="space_store_img fl" bindtap="storeDetail">
-    <image src="{{item.shop.logo}}" />
+    <image src="{{item.LOGO?item.LOGO:item.shop.logo}}" />
   </view>
   <view class="fl space_store_text">
     <view bindtap="storeDetail">
-      <view>{{item.shopName}}</view>
+      <view>{{item.NAME?item.NAME:item.shopName}}</view>
       <!--<view>
-          <van-rate value="3" size="10" />
+          <van-rate value="3" size="10" />p
         </view>
         -->
       <view class="cl fz24 grey">
-        <view class="fl">{{item.shop.distance>0?item.shop.distance+'km':item.shop.distance*1000+'m'}}</view>
-        <view class="fr space_store_address">{{item.shop.address}}</view>
+        <view class="fl" wx:if="{{item.DISTANCE}}">{{item.DISTANCE>1?item.DISTANCE+'km':item.DISTANCE*1000+'m'}}</view>
+        <view class="fl" wx:else>{{item.shop.distance>1?item.shop.distance+'km':item.shop.distance*1000+'m'}}</view>
+        <view class="fr space_store_address">{{item.NAME?item.NAME:item.shopName}}</view>
         <view class="cl"></view>
       </view>
 
-      <view style="height:84rpx;overflow:hidden">
+      <view style="height:84rpx;overflow:hidden" wx:if="{{item.shopSer}}">
         <view wx:for="{{item.shopSer}}" wx:key="{{item}}">
           <van-tag color="#4e93f3" plain class="fl" style="margin-right:20rpx">
             {{item.NAME}}
@@ -24,7 +25,7 @@
       </view>
 
     </view>
-    <view class="cl" bindtap="serviceDetail">
+    <view class="cl" bindtap="serviceDetail" wx:if="{{item.carType}}">
       <view class="fl bg_orange" style="margin-top:25rpx;width:10rpx;height:10rpx;border-radius:50rpx">
 
       </view>

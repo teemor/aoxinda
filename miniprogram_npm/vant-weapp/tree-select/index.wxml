@@ -12,8 +12,7 @@
       data-index="{{ index }}"
       bind:tap="onClickNav"
     >
-    {{index}}
-    {{mainActiveIndex}}
+
       {{ item.serName }}
     </view>
   </scroll-view>
