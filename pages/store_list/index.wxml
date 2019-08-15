@@ -1,6 +1,6 @@
 <view style="position:fixed;height:120rpx;z-index:334;top:0rpx;width:750rpx">
-  <van-search value="{{ value }}" placeholder="请输入要搜索的门店" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
-    <view slot="action" data-value="{{ value }}" bind:search="onSearch" bind:tap="onSearch" style="{{value==''?'background-color:#f7f8fa;color:#999;':'background-color:#4e93f3;color:#fff;'}}" class='search_box_btn'>搜索</view>
+  <van-search value="{{ value }}" bind:search="onSearch" placeholder="请输入要搜索的门店" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
+    <view slot="action" data-value="{{ value }}" bind:tap="onSearch" style="{{value==''?'background-color:#f7f8fa;color:#999;':'background-color:#4e93f3;color:#fff;'}}" class='search_box_btn'>搜索</view>
   </van-search>
 </view>
 <view class="fz28 bgwhite" style="top:114rpx;height:80rpx;line-height:80rpx;position:fixed;z-index:334;">
@@ -58,7 +58,7 @@
       <!-- <van-badge-group active="{{ active }}" bind:change="onChange">
     <van-badge title="{{item.serName}}" wx:for="{{serType}}" />
   </van-badge-group> -->
-      <tree-select items="{{ serTypea }}" active-id="{{ activeId }}"  main-active-index="{{ mainActiveIndex }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+      <tree-select items="{{ serType }}" active-id="{{ activeId }}"  main-active-index="{{ mainActiveIndex }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
 
   </view>
 </manager>

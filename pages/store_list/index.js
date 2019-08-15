@@ -117,8 +117,8 @@ Page({
 
     this.findByShopList()
   },
-  findByShopList: function () {
-    request.findByShopList({shopName:'',lat:app.globalData.latitude,log:app.globalData.longitude,pageIndex:1,pageSize:10}).then(res => {
+  findByShopList: function (shopName) {
+    request.findByShopList({shopName:shopName?shopName:'',lat:app.globalData.latitude,log:app.globalData.longitude,pageIndex:1,pageSize:10}).then(res => {
       console.log(res,'mendianlieb')
       this.setData({
         storeData:res.result.list
@@ -175,7 +175,9 @@ Page({
   onUnload: function () {
 
   },
-
+  onSearch:function(e){
+    this.findByShopList(e.detail)
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
