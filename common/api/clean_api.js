@@ -22,8 +22,8 @@ export class store {
   // 获取保养类型
   findShopList = (model) => {
     return http.httpRequest({
-      url: `${IP_YXHTTP}/findShopList`,
-      // url: `${IP_YXHTTP}/selectShopList`,
+      // url: `${IP_YXHTTP}/findShopList`,
+      url: `${IP_YXHTTP}/selectShopList`,
       method: `post`,
       data: model
     })

@@ -524,7 +524,7 @@ button::after {
 
 .page-current_box {
   border-right: 1px solid #e1e1e1;
-  width: 250rpx;
+  width: 210rpx;
   height: 40rpx;
   line-height: 40rpx;
   margin-top: 25rpx;
@@ -539,7 +539,7 @@ button::after {
 
 .detail_current-btn {
   padding-left: 30rpx;
-  width: 410rpx;
+  width: 440rpx;
 }
 
 .page-current_box-text {
