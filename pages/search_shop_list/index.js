@@ -77,11 +77,23 @@ Page({
       if (that.data.history.length >= 10) {
         that.data.history.shift()
       }
-      that.data.history.push(json)
-      wx.setStorage({
-        key: 'searchHistory',
-        data: that.data.history
-      })
+      that.data.history.unshift(json)
+      //历史搜索去重
+      unique(that.data.history,'name')
+      function unique(arr,key) {
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i][key] === arr[j][key]) {
+              arr.splice(j, 1);
+              j = j - 1;
+            }
+          }
+        }
+        wx.setStorage({
+          key: 'searchHistory',
+          data: that.data.history
+        })
+      }    
     }
   },
   /**

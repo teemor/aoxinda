@@ -55,6 +55,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     that = this
     if (options.cardNo) {
       let model = JSON.parse(options.id)
@@ -163,44 +164,78 @@ Page({
       })
     } else if (options.id) {
       let model = JSON.parse(options.id)
-      console.log(model,'ka')
       this.setData({
         cardId:model.id
       })
+      if (options.orderNum){
+        request.findOrderCard({
+          userId: app.globalData.openId, orderNum: options.orderNum, lat: app.globalData.latitude,log: app.globalData.longitude}).then(res => {
+          console.log(res)
+          if (res.data.length == 1) {
+            this.setData({
+              cardDet: {
+                actName: res.data[0].shopName,
+                useAt: res.data[0].createAt,
+                // cardTime: res.data[0].,
+                cardNum: res.data[0].cardNum,
+                card_content: res.data[0].actName,
+                card_price: res.data[0].actCardPrice,
+                useDate: res.data[0].useDate
+              },
+              serverInfo: res.serList,
+              shop: res.shopList,
+              cardId:'',
+              card_id:''
+            })
+          }
+          var size = this.setCanvasSize(); //动态设置画布大小
+          let content = {
+            // type: model.actCardType,
+            // card_id: model.id,
+            // order_code: this.data.cardDet.cardNum
+          }
+          this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
+
+        })
+      }else{
+        // 获取卡包详情
+        request.cardDet({
+          actCardType: model.actCardType,
+          card_id: model.id,
+          lat: app.globalData.latitude,
+          log: app.globalData.longitude
+        }).then(res => {
+          console.log(res, 'res')
+          if (res.data && res.data.length > 0) {
+            that.setData({
+              shop: res.shopList,
+              cardDet: res.data[0]
+            })
+            var size = this.setCanvasSize(); //动态设置画布大小
+            let content = {
+              type: model.actCardType,
+              card_id: model.id,
+              order_code: this.data.cardDet.cardNum
+            }
+            this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
+          } else {
+            wx.showToast({
+              title: '服务器错误',
+              icon: 'loading',
+              duration: 1500
+            })
+          }
+        })
+      }
       // request.cardDetCon({ pageSize: 5, pageIndex: 1, cardId: model.id }).then(res => {
       //   this.setData({
       //     consumption: res.data
       //   })
       //   console.log(res)
       // })
-      //获取卡包详情
-      request.cardDet({
-        actCardType: model.actCardType,
-        card_id:model.id,
-        lat:app.globalData.latitude,
-        log:app.globalData.longitude
-      }).then(res => {
-        console.log(res,'res')
-        if (res.data && res.data.length > 0) {
-          that.setData({
-            shop: res.shopList,
-           cardDet:res.data[0]
-          })
-          var size = this.setCanvasSize(); //动态设置画布大小
-          let content = {
-            type: model.actCardType,
-            card_id: model.id,
-            order_code: this.data.cardDet.cardNum
-          }
-          this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
-        } else {
-          wx.showToast({
-            title: '服务器错误',
-            icon: 'loading',
-            duration: 1500
-          })
-        }
-      })
+
+      
+      
     }else{
 
     }

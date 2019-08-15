@@ -76,6 +76,14 @@ export class store {
       data: model
     })
   }
+  // 查询卡详情 wlx
+  findOrderCard = (params) => {
+    return http.httpRequest({
+      url: `http://192.168.31.158:9015/wash/v1.0/findOrderCard`,
+      method: `POST`,
+      data: params
+    })
+  }
   // 金麦卡详情
   goldDetail = (model) => {
     return http.httpRequest({

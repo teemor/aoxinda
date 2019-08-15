@@ -10,7 +10,8 @@ Page({
    */
   data: {
     invoice: '',
-    moreService: false
+    moreService: false,
+    orderNum:''
   },
 
   //适配不同屏幕大小的canvas
@@ -61,7 +62,7 @@ Page({
     model.id = this.data.id
     model.actCardType = this.data.model.detail.cardType
     wx.navigateTo({
-      url: `../../../pages/my_service_card_detail/index?id=${JSON.stringify(model)}`,
+      url: `../../../pages/my_service_card_detail/index?id=${JSON.stringify(model)}&orderNum=${this.data.orderNum}`,
     })
   },
   moreService: function () {
@@ -94,7 +95,8 @@ Page({
       // }
       this.setData({
         model: res.data,
-        cartType: res.data.detail[0].cardType
+        cartType: res.data.detail[0].cardType,
+        orderNum: res.data.orderNum
       })
       var size = this.setCanvasSize(); //动态设置画布大小
       let content = {

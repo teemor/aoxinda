@@ -60,7 +60,7 @@ Page({
         })
       })
     } else if (options.cardid){
-      request.cardDetShop({ actCardType:'3',card_id: options.cardid, log: app.globalData.longitude, lat: app.globalData.latitude }).then(res => {
+      request.cardDetShop({ actCardType:'4',card_id: options.cardid, log: app.globalData.longitude, lat: app.globalData.latitude }).then(res => {
         this.setData({
           CleanStore: res.data
         })

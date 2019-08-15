@@ -1,12 +1,13 @@
 <view class='card_top'>
   <view class='card_bag' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_bg.png)'>
     <view class='card_bag_top'>
-      <view class='card_title'>{{cardDet.actName}}</view>
-     <view class='card_info' wx:if="{{cardDet.card_content}}">{{cardDet.card_content}}</view>
+      <view class='card_info'>{{cardDet.actName}}</view>
+     <view class='card_title' wx:if="{{cardDet.card_content}}">{{cardDet.card_content}}</view>
     </view>
     <view class='card_bag_bottom'>
       <view class='card_bm_info'>
-        <view class='card_price' wx:if="{{cardDet.card_price}}">￥{{cardDet.card_price}}元</view>
+        <view class='card_price' wx:if="{{cardDet.card_price}}">￥{{cardDet.card_price}}元/月</view>
+        <!-- <view wx:else class='card_price'> ￥{{cardDet.card_price}}元</view> -->
         <view class='card_price' wx:else>{{cardDet.status}}</view>
         <view class='card_time'>{{cardDet.card_price?'有效期至':''}}{{cardDet.useAt}}</view>
       </view>
@@ -25,9 +26,10 @@
         <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;" canvas-id="canvas" />
       </view>
     </view>
-    <view class='wx_code_text'>{{cardDet.cardNum}}</view>
+    <!-- <view class='wx_code_text'>消费码：{{cardDet.cardNum}}</view> -->
   </view>
   <view class='card_share'>
+    <button  class='share_btn' >退卡</button> 
     <button class='share_btn' open-type="share">分享好友一起用</button>
   </view>
 </view>
@@ -35,9 +37,10 @@
 <view class="card_item ">
   <van-tabs active="{{active}}" bind:change="tabchange" color="#4e93f3">
     <van-tab title="服务详情">
+    <view class="cell_item" wx:if="{{cardDet.useDate != ''}}">当前可消费时间：{{cardDet.useDate}}</view>
       <view class="cell_item" wx:for="{{serverInfo}}" wx:key="{{index}}">
-        <view class="cell_item_title">{{item.server_name}}</view>
-        <view class="cell_item_cont">剩余 <text class='red'>{{item.server_times}}</text> 次</view>
+        <view class="cell_item_title">{{item.serName}}</view>
+        <view class="cell_item_cont">剩余 <text class='red'>{{item.canUse}}</text> 次</view>
         <view class="cell_item_btngroup" wx:if="{{item.btn}}">
           <van-button custom-class="cell_item_btn" size="small" bindtap="toRescue">立即救援</van-button>
         </view>
