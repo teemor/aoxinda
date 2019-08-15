@@ -240,9 +240,9 @@ Page({
   },
 
   //人气推荐和商城精选
-  // toMall: function () {
-  //   wx.switchTab({
-  //     url: '../../pages/shopping_mall/index'
-  //   })
-  // },
+  toMall: function () {
+    wx.switchTab({
+      url: '../../pages/shopping_mall/index'
+    })
+  },
 })

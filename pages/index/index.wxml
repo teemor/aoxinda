@@ -101,7 +101,7 @@
             <span class="">唐山市今天
               <span wx:if="{{num==false}}">不限行</span>
               <span wx:else>限行
-                <span class="red">{{num1}} {{num2}}</span>
+                <span class="red">{{num1}}</span><span>和</span><span class="red"> {{num2}}</span>
               </span>
             </span>
           </view>
@@ -227,7 +227,7 @@
   </view>
   <!-- 热卖爆品-->
   <view class="hot_goods_contain">
-    <view class="hot_goods_img">
+    <view class="hot_goods_img" bindtap="toMall">
       <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/hot_title.png" />
     </view>
     <view style=" height:680rpx;padding: 10rpx 0rpx 40rpx 30rpx;">

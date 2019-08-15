@@ -185,12 +185,19 @@ export class store {
       method: `get`
     })
   }
+  findByShopList = (model) => {
+    return http.httpRequest({
+      url: `http://192.168.31.158:444/mcf/api/v1/sp/findByShopList`,
+      method: `POST`,
+      data: model
+    })
+  }
   // 洗车美容退款详情
   findRefundByWechatRefundNo = (model) => {
     return http.httpRequest({
       url: `http://192.168.31.184:9015/wash/v1.0/mcf-wcb-refund/findRefundByWechatRefundNo`,
       method: `post`,
-      data:model
+      data: model
     })
   }
 }
