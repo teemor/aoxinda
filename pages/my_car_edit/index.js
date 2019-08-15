@@ -36,6 +36,8 @@ Page({
         let json = {}
         if (this.data.model) {
           json = {
+            CMS:this.data.model.CMS,
+            ZWS:this.data.model.ZWS,
             plateNum: this.data.plateNum,
             carId: this.data.carId,
             registerDate: this.data.date,
@@ -46,6 +48,8 @@ Page({
             PP: this.data.model.PP,
             mileage: this.data.kmTxt,
             model: this.data.model.XSMC,
+            userId:app.globalData.openId,
+            userName:result.data.nickName,userTel:that.data.userTel
           }
         } else {
           json = {

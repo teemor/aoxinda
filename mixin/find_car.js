@@ -34,8 +34,12 @@ module.exports = {
               carName:arr[0],
               actCarCode: arr[0].actCarCode
             })
+            console.log(this.data.carModel,'CARMODEL')
             app.globalData.carType = this.data.carModel
-            console.log(app.globalData.carType,'车型')
+          }else{
+            this.setData({
+              car:false
+            })
           }
         })
       },

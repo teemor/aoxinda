@@ -1,5 +1,5 @@
 <view class='card_top'>
-  <view class='card_bag' style='background-image:url(../../common/image/card_bg.png)'>
+  <view class='card_bag' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_bg.png)'>
     <view class='card_bag_top'>
       <view class='card_title'>{{cardInfo.card_name || '99超值尊享大麦卡'}}</view>
       <view class='card_info'>{{cardInfo.card_content || '十大尊享超值优惠'}}</view>

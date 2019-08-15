@@ -14,7 +14,7 @@ Page({
       goodsName: "汽车坐垫"
     }],
     index: 1,
-    array: ['服务', '商品', '门店']
+    array: [ '商品', '门店']
   },
   bindPickerChange: function(e) {
     this.setData({

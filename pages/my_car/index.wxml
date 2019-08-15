@@ -1,5 +1,7 @@
 <view style='padding-bottom:120rpx;'>
-  <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
+<view wx:if="{{car==true}}">
+
+ <view wx:for="{{carList}}" wx:key="{{item}}" class="mycar_contain">
     <view class="mycar_box">
    <view class="mycar_img fl">
         <image src="{{item.img}}" />
@@ -32,7 +34,10 @@
       <view class="fl shop_set_btn" data-id='{{item.carId}}' wx:else bindtap='toDefaultCar'>设为常用车</view>
     </view>
   </view>
-  <view class='no_data_car' wx:if="{{carList.length == undefined}}">
+
+</view>
+ 
+  <view class='no_data_car' wx:else>
     <image src="../../common/image/no_car.png" />
     <view class='fz28 no_car_font'>
       <view>为了给您提供更精准的服务</view>
