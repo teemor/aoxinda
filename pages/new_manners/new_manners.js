@@ -52,16 +52,16 @@ Page({
       }
     })
     //适用门店
-    request.selectShopList().then(res => {
-      if (res.data && res.data.length > 0) {
-        let arr, oldData = res.data.map(n => {
+    request.getActivity().then(res => {
+      if (res.shopList && res.shopList.length > 0) {
+        let arr, oldData = res.shopList.map(n => {
           return {
-            name: n.NAME,
-            address: n.ADDRESS,
-            phone: n.TEL,
+            name: n.shop.NAME,
+            address: n.shop.ADDRESS,
+            phone: n.shop.TEL,
             coordinate: {
-              latitude: n.LAT,
-              longitude: n.LOG,
+              latitude: n.shop.LAT,
+              longitude: n.shop.LOG,
             },
           }
         });
@@ -173,7 +173,7 @@ Page({
           icon: 'none'
         })
       } else {
-        let payInfo = JSON.parse(res.result);
+        let payInfo = JSON.parse(res);
         wx.requestPayment({
           timeStamp: payInfo.timeStamp,
           nonceStr: payInfo.nonceStr,
