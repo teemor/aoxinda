@@ -71,6 +71,7 @@ Page({
     detail
   }) {
     let model = encodeURIComponent(JSON.stringify(detail))
+    console.log(model,'model')
     wx.navigateTo({
       url: `../../packageA/pages/service_detail/index?model=${model}`
     })
@@ -78,8 +79,10 @@ Page({
   storeDetail: function({
     detail
   }) {
-    let model = encodeURIComponent(JSON.stringify(detail))
 
+    let model = encodeURIComponent(JSON.stringify(detail))
+    console.log(detail,'model2')
+    app.globalData.shopid = detail.shopId
     wx.navigateTo({
       url: `../../packageA/pages/store_detail/index?model=${model}`
     })

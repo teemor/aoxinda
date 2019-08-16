@@ -72,7 +72,7 @@ Page({
 
   },
   //定位
-  locationAddress:function(){
+  locationAddress: function () {
     var that = this
     console.log(that.data.storemodel.shop.lat, that.data.storemodel.shop.log)
     wx.getLocation({ //获取当前经纬度
@@ -166,13 +166,13 @@ Page({
   // 服务列表
   findServiceList: function (shopid) {
     request.findShopDet({
-      shopId: shopId,
+      shopId: shopid,
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
       userId: app.globalData.openId
     }).then(res => {
       this.setData({
-        shopId: model.shopId,
+        shopId: shopid,
         detailModel: res.ser,
         cardModel: res.serCard,
         tel: res.shop.tel
@@ -182,7 +182,7 @@ Page({
   },
   onLoad: function (options) {
     this.carList()
-    console.log(options,'options')
+    console.log(options, 'options')
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'ai')
@@ -190,8 +190,6 @@ Page({
         storemodel: model,
         ["commentForm.shop_id"]: model.id
       })
-      this.findServiceList(model.shopId)
-      app.globalData.shopid = model.shopId
       this.onShow()
     }
   },
@@ -228,8 +226,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (app.globalData.shopId) {
+      this.findServiceList(app.globalData.shopid)
+    }
     this.findCarList()
-    this.findServiceList(app.globalData.shopid)
   },
 
   /**
