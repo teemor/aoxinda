@@ -226,7 +226,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.shopId) {
+    if (app.globalData.shopid) {
       this.findServiceList(app.globalData.shopid)
     }
     this.findCarList()
