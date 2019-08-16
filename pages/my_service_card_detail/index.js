@@ -177,7 +177,7 @@ Page({
             this.setData({
               cardDet: {
                 actName: res.data[0].shopName,
-                useAt: res.data[0].createAt,
+                useAt: res.data[0].useAt,
                 // cardTime: res.data[0].,
                 cardNum: res.data[0].cardNum,
                 card_content: res.data[0].actName,
@@ -186,8 +186,7 @@ Page({
               },
               serverInfo: res.serList,
               shop: res.shopList,
-              cardId:'',
-              card_id:''
+              cardId: res.data[0].actId
             })
           }
           var size = this.setCanvasSize(); //动态设置画布大小
