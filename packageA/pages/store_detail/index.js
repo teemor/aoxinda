@@ -99,7 +99,7 @@ Page({
     // }
     console.log(detail, 'detailwer')
     request.addCart({
-      shopId: this.data.shopId,
+      shopId: app.globalData.shopid,
       userId: app.globalData.openId,
       activityId: detail.item !== undefined ? detail.item.actId : detail.activityId,
       cartNum: num,
@@ -132,7 +132,7 @@ Page({
     })
     request.findcartList({
       userId: app.globalData.openId,
-      shopId: this.data.storemodel.shopId,
+      shopId: app.globalData.shopid,
       pageIndex: 1,
       pageSize: 10
     }).then(res => {
