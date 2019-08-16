@@ -5,6 +5,7 @@ import { tabbarConfig} from "./common/static/api_data.js"
 const setRouterConfig = require("./utils/util.js")
 const request = new Technician
 App({
+  shopid:'',
   tabbarConfig: tabbarConfig,
   isHideTabbar:false,
   ...setRouterConfig,
@@ -58,10 +59,6 @@ App({
         });
       }
     })
-
-
-
-
 
     //  加载天气数据
     that.loadWeatherData();

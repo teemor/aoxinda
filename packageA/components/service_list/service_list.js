@@ -13,17 +13,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+   
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    serviceBtn: function() {
-      this.triggerEvent('serviceBtn',this.data.item)
+    serviceBtn: function () {
+      this.triggerEvent('serviceBtn', this.data.item)
     },
-    addNum: function() {
+    addNum: function () {
       this.setData({
         add: true
       })
@@ -33,10 +33,15 @@ Component({
       this.triggerEvent('numChange', model)
       console.log(this.data.add, 'addd')
     },
-    numChange: function({
+    numChange: function ({
       detail
     }) {
-      console.log(detail)
+      console.log(detail, '数字变化')
+      if (detail == 0) {
+        this.setData({
+          add:false
+        })
+      }
       let model = {}
       model.num = detail
       model.item = this.data.item

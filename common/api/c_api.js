@@ -20,7 +20,7 @@ export class c_login {
   // 获取用户信息
   authDecode = (params) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/mcf/api/v1/sys/auth/decode`,
+      url: `http://192.168.31.184:444/mcf/api/v1/sys/auth/decode`,
       method: `post`,
       data: params
     })
@@ -28,7 +28,7 @@ export class c_login {
   // 判断用户是否注册过
   loginQuery = (mcfCUser) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/mcf/api/v1/c/login/query`,
+      url: `http://192.168.31.184:444/mcf/api/v1/c/login/query`,
       method: `post`,
       data: mcfCUser
     })

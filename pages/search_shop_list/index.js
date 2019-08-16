@@ -1,5 +1,5 @@
 // pages/search_shop_list/index.js
-let that
+let tha
 Page({
 
   /**
@@ -96,6 +96,7 @@ Page({
       }    
     }
   },
+  
   /**
    * 搜索列表 历史 跳转
    */

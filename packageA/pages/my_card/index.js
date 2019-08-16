@@ -116,6 +116,7 @@ Page({
 
   //给门店打电话
   onContact(e) {
+    console.log(e.currentTarget.dataset,'phone')
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.phone.toString()
     })

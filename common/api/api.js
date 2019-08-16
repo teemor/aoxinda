@@ -40,7 +40,7 @@ export class Technician {
   // 登录查询
   loginQuery = (user) => {
     return http.httpRequest({
-      url: `https://www.maichefu.cn:444/mcf/api/v1/c/login/query`,
+      url: `http://192.168.31.184:9015/mcf/api/v1/c/login/query`,
       method: `post`,
       data: user
     })
@@ -408,7 +408,7 @@ export class Technician {
   // 获取openid
   getOpenid = (code) => {
     return http.httpRequest({
-      url: `${IP_YTHTTP}/appapi/v1.0/getOpenId?code=${code}`,
+      url: `http://192.168.31.184:9015/appapi/v1.0/getOpenId?code=${code}`,
       method: `post`
     })
   }
