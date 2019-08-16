@@ -22,7 +22,7 @@
     </view>
     <view class="fr grey fz26">8:00-20:00</view>
   </view>
-  <view class="cl" style="padding-top:30rpx;margin-top:10rpx;border-top:2rpx solid #f0f0f0">
+  <view class="cl" style="padding-top:30rpx;margin-top:10rpx;border-top:2rpx solid #f0f0f0" bindtap="locationAddress">
     <view class="fl loc_img">
       <image src="../../common/img/location_dis.png" />
     </view>
@@ -61,7 +61,7 @@
         </view>
       </view>
     </view>
-    <view class="cl down_img" bindtap="showCard">
+    <view class="cl down_img" bindtap="showCard" wx:if="{{cardModel.length > 2}}">
       <image src="{{cardShow==true?'../../common/img/down.png':'../../common/img/up.png'}}" />
     </view>
   </view>

@@ -29,7 +29,7 @@
     <!-- <view class='wx_code_text'>消费码：{{cardDet.cardNum}}</view> -->
   </view>
   <view class='card_share'>
-    <button  class='share_btn' >退卡</button> 
+    <button  class='share_btn' bindtap="returenCard">退卡</button> 
     <button class='share_btn' open-type="share">分享好友一起用</button>
   </view>
 </view>
@@ -47,6 +47,8 @@
       </view>
     </van-tab>
     <van-tab title="消费记录">
+      <view wx:if="{{consumption.length==0}}"  style="height:300rpx"> <image src="../../common/image/refund_null.png" style="width:220rpx;height:182rpx;" class="no_record"></image><text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> 
+    </view>
       <view wx:for="{{consumption}}" wx:key="{{item}}" class="bgwhite" style="padding:30rpx">
         <view>
           <view class="fz26 high50 flwidth">{{item.shopName}}</view>
@@ -88,3 +90,4 @@
     </view>
   </view>
 </view>
+<van-dialog id="van-dialog" />

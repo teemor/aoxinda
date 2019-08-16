@@ -71,6 +71,21 @@ Page({
     });
 
   },
+  //定位
+  locationAddress:function(){
+    var that = this
+    console.log(that.data.storemodel.shop.lat, that.data.storemodel.shop.log)
+    wx.getLocation({ //获取当前经纬度
+      type: 'wgs84',
+      success: function (res) {
+        wx.openLocation({ //​使用微信内置地图查看位置。
+          latitude: that.data.storemodel.shop.lat, //要去的纬度-地址
+          longitude: that.data.storemodel.shop.log, //要去的经度-地址
+          name: that.data.storemodel.shop.address
+        })
+      }
+    })
+  },
   numChange: function(e) {
     console.log(e, '购物车')
     let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail

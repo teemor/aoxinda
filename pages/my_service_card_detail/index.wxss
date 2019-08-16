@@ -297,3 +297,7 @@ page {
   background-color: #5b96ef;
   border: none;
 }
+.no_record{
+   padding-left: 35%;
+  padding-top: 5%; 
+}

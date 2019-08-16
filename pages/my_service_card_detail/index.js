@@ -1,6 +1,11 @@
-0// pages/my_card_detail/index.js
-import { store } from '../../common/api/clean_api'
-import { CardHttp } from '../../common/api/card_api'
+0 // pages/my_card_detail/index.js
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
+import {
+  store
+} from '../../common/api/clean_api'
+import {
+  CardHttp
+} from '../../common/api/card_api'
 import QR from '../../utils/qrcode.js'
 const app = getApp();
 const request = new store
@@ -15,34 +20,34 @@ Page({
     canvasHidden: false,
     imagePath: '',
     cardInfo: {},
-    card_id: null,//新手活动卡id
-    card_num: null,//新手活动卡号
+    card_id: null, //新手活动卡id
+    card_num: null, //新手活动卡号
     store: [],
     serverInfo: [],
     payInfo: []
   },
   // 全部门店
-  myStore:function(){
+  myStore: function() {
     wx.navigateTo({
       url: `../../packageA/pages/apply_store_list/index?cardid=${this.data.cardId || this.data.card_id}`,
     })
   },
   //跳转救援
-  toRescue() { },
+  toRescue() {},
   //用户点击右上角分享
-  onShareAppMessage: function () {
-    if (this.data.card_id){
+  onShareAppMessage: function() {
+    if (this.data.card_id) {
       return {
         title: this.data.newStr,
         imageUrl: 'https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/news_wx_.png',
         path: `/pages/login/index?sharePeoId=${app.globalData.openId}`,
-        success: function (res) {
+        success: function(res) {
           wx.showToast({
             title: '分享成功',
             icon: 'success'
           })
         },
-        fail: function (res) {
+        fail: function(res) {
           wx.showToast({
             title: '转发失败',
             icon: 'none'
@@ -54,7 +59,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options)
     that = this
     if (options.cardNo) {
@@ -66,7 +71,7 @@ Page({
         that.setData({
           card_id: model.id,
           card_num: options.cardNo,
-          cardDet:{
+          cardDet: {
             actName: res.data[0].card_name,
             useAt: res.data[0].end_use_at,
             cardTime: res.data[0].use_times,
@@ -75,20 +80,20 @@ Page({
             card_price: res.data[0].card_price
           },
           carInfo: res.data[0],
-          serverInfo: res.serverData.map(n=>{
-            if (n.server_name.indexOf('城区搭电救援') != -1 && n.server_times>0){
+          serverInfo: res.serverData.map(n => {
+            if (n.server_name.indexOf('城区搭电救援') != -1 && n.server_times > 0) {
               n.btn = true
             }
             return n
           }),
-          consumption: res.payData.map(n=>{
+          consumption: res.payData.map(n => {
             return {
-              shopName : n.store_name,
+              shopName: n.store_name,
               shopId: n.store_id,
               carNo: n.car_no,
               carMile: n.car_mile,
               conTime: n.pay_at,
-              con: n.thSalist.map(m=>{
+              con: n.thSalist.map(m => {
                 return {
                   actName: m.server_name,
                   conNum: m.pay_num,
@@ -130,7 +135,7 @@ Page({
                 return n
               })
               that.setData({
-                shop: arr.map(n=>{
+                shop: arr.map(n => {
                   n.tel = n.phone
                   return {
                     shop: n,
@@ -167,11 +172,15 @@ Page({
     } else if (options.id) {
       let model = JSON.parse(options.id)
       this.setData({
-        cardId:model.id
+        cardId: model.id
       })
-      if (options.orderNum){
+      if (options.orderNum) {
         request.findOrderCard({
-          userId: app.globalData.openId, orderNum: options.orderNum, lat: app.globalData.latitude,log: app.globalData.longitude}).then(res => {
+          userId: app.globalData.openId,
+          orderNum: options.orderNum,
+          lat: app.globalData.latitude,
+          log: app.globalData.longitude
+        }).then(res => {
           console.log(res)
           if (res.data.length == 1) {
             this.setData({
@@ -182,7 +191,9 @@ Page({
                 cardNum: res.data[0].cardNum,
                 card_content: res.data[0].actName,
                 card_price: res.data[0].actCardPrice,
-                useDate: res.data[0].useDate
+                useDate: res.data[0].useDate,
+                actId: res.data[0].actId,
+                truePaymoney: res.buy_price
               },
               serverInfo: res.serList,
               shop: res.shopList,
@@ -191,14 +202,14 @@ Page({
           }
           var size = this.setCanvasSize(); //动态设置画布大小
           let content = {
-            // type: model.actCardType,
-            // card_id: model.id,
-            // order_code: this.data.cardDet.cardNum
+            type: res.data[0].actCardType,
+            card_id: res.data[0].actId,
+            order_code: this.data.cardDet.cardNum
           }
           this.createQrCode(JSON.stringify(content), "canvas", size.w, size.h);
 
         })
-      }else{
+      } else {
         // 获取卡包详情
         request.cardDet({
           actCardType: model.actCardType,
@@ -235,16 +246,50 @@ Page({
       //   console.log(res)
       // })
 
-      
-      
-    }else{
+
+
+    } else {
 
     }
   },
+  //点击退卡
+  returenCard: function() {
+    let that = this
+    console.log(this.data.consumption.length)
+    if (that.data.consumption.length <= 0) {
+      Dialog.confirm({
+        title: '退卡',
+        message: '你确定要退卡吗？'
+      }).then(() => {
+        request.backMoneyCard({
+          'refundReason': '在卡处退卡',
+          "cardId": that.data.cardDet.actId,
+          "refundPrice": that.data.cardDet.truePaymoney,
+          "goodsNum": "1"
+        }).then(res => {
+        console.log(res)
+        })
+      }).catch(() => {
+        console.log('取消')
+      });
+    } else {
+      Dialog.alert({
+        title: '不能退',
+        message: '消费过的卡不能退了！'
+      }).then(() => {
+        // on close
+        console.log('消费过的卡不能退了！')
+      });
+    }
 
-  onShow: function(){
-    if (this.data.cardId){
-      request.cardDetCon({ pageSize: 5, pageIndex: 1, cardId: this.data.cardId }).then(res => {
+  },
+  onShow: function() {
+    if (this.data.cardId) {
+      request.cardDetCon({
+        pageSize: 5,
+        pageIndex: 1,
+        cardId: this.data.cardId
+      }).then(res => {
         this.setData({
           consumption: res.data
         })
@@ -254,7 +299,7 @@ Page({
   },
 
   //适配不同屏幕大小的canvas
-  setCanvasSize: function () {
+  setCanvasSize: function() {
     var size = {};
     try {
       var res = wx.getSystemInfoSync();
@@ -269,25 +314,25 @@ Page({
     return size;
   },
   //绘制二维码图片
-  createQrCode: function (content, canvasId, cavW, cavH) {
+  createQrCode: function(content, canvasId, cavW, cavH) {
     //调用插件中的draw方法，绘制二维码图片
     QR.api.draw(() => {
       this.canvasToTempImage(canvasId);
     }, content, canvasId, cavW, cavH);
   },
   //获取临时缓存照片路径，存入data中
-  canvasToTempImage: function (canvasId) {
+  canvasToTempImage: function(canvasId) {
     let that = this;
     wx.canvasToTempFilePath({
       canvasId: canvasId, // 这里canvasId即之前创建的canvas-id
-      success: function (res) {
+      success: function(res) {
         let tempFilePath = res.tempFilePath;
         console.log(tempFilePath);
         that.setData({ // 如果采用mpvue,即 this.imagePath = tempFilePath
           imagePath: tempFilePath,
         });
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(res);
       }
     });
@@ -315,7 +360,7 @@ Page({
   // lng1用户的经度
   // lat2商家的纬度
   // lng2商家的经度
-  getDistance: function (lat1, lng1, lat2, lng2) {
+  getDistance: function(lat1, lng1, lat2, lng2) {
     function Rad(d) {
       return d * Math.PI / 180.0;
     }
@@ -333,7 +378,7 @@ Page({
   /**
    * 进入评价页面
    */
-  goEvaluate: function (e) {
+  goEvaluate: function(e) {
     let relation_lists = [];
     let sers = e.currentTarget.dataset['sers'];
     for (let i in sers) {

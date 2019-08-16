@@ -13,7 +13,7 @@
   width: 30rpx;
   height: 20rpx;
   margin-top: 26rpx;
-  margin-left: 420rpx;
+  margin-left: 500rpx;
 }
 
 .shop_close image {
