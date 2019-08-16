@@ -47,8 +47,8 @@
       </view>
       <!-- <image mode='aspectFit' src='../../common/image/phone.png'  data-phone="{{}}" bindtap='onContact'></image> -->
     </view>
-    <view class='phone' bindtap="onContact">
-      <image src='../../../common/image/phone.png' style="width:50rpx;height:50rpx;padding-top:27rpx" data-phone="{{cardModel[0].shop.shopList.tel}}"></image>
+    <view class='phone' bindtap="onContact" data-phone="{{cardModel[0].shop.shopList.tel}}">
+      <image src='../../../common/image/phone.png' style="width:50rpx;height:50rpx;padding-top:27rpx" ></image>
     </view>
   </view>
 </view>

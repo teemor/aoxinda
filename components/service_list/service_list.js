@@ -28,10 +28,9 @@ Component({
       model.num = 1
       model.item = this.data.item
       this.triggerEvent('numChange',model)
-      console.log(this.data.add,'addd')
     },
     numChange: function ({detail}) {
-      console.log(detail)
+      console.log(detail,'变化')
       let model = {}
       model.num = detail
       model.item = this.data.item

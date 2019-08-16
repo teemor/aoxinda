@@ -1,5 +1,5 @@
 <view style="position:fixed;height:120rpx;z-index:334;top:0rpx;width:750rpx">
-  <van-search value="{{ value }}" placeholder="请输入要搜索的商品" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
+  <van-search value="{{ value }}" placeholder="请输入要搜索的门店" use-action-slot bind:change="inValue" bind:search="onSearch" custom-class="search_box">
     <view slot="action" data-value="{{ value }}" bind:tap="onSearch" style="{{value==''?'background-color:#f7f8fa;color:#999;':'background-color:#4e93f3;color:#fff;'}}" class='search_box_btn'>搜索</view>
   </van-search>
 </view>

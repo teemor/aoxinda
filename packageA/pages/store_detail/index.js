@@ -24,7 +24,7 @@ Page({
     plusData: true,
     tabIndex: 0 //当前tabs页签下标
   },
-  serviceBtn: function({
+  serviceBtn: function ({
     detail
   }) {
     let model = encodeURIComponent(JSON.stringify(detail))
@@ -32,12 +32,12 @@ Page({
       url: `../service_detail/index?model=${model}`,
     })
   },
-  showCard: function() {
+  showCard: function () {
     this.setData({
       cardShow: !this.data.cardShow
     })
   },
-  cardMDetail: function(item) {
+  cardMDetail: function (item) {
     console.log(item.currentTarget.dataset.item, 'detail')
     let id = item.currentTarget.dataset.item
     let actCardType = 4
@@ -48,7 +48,7 @@ Page({
       url: `../../pages/my_card/index?actId=${JSON.stringify(model)}`
     })
   },
-  cardQDetail: function(item) {
+  cardQDetail: function (item) {
     console.log(item.currentTarget.dataset.item, 'detail')
     let id = item.currentTarget.dataset.item
     let actCardType = 3
@@ -59,22 +59,22 @@ Page({
       url: `../../pages/my_card/index?actId=${JSON.stringify(model)}`
     })
   },
-  onClickButton: function() {
+  onClickButton: function () {
     this.carList()
 
     let model = encodeURIComponent(JSON.stringify(this.data.cartModel))
     wx.navigateTo({
       url: `../../pages/add_order/index?model=${model}`,
-      success: (result) => {},
-      fail: () => {},
-      complete: () => {}
+      success: (result) => { },
+      fail: () => { },
+      complete: () => { }
     });
 
   },
-  numChange: function(e) {
+  numChange: function (e) {
     console.log(e, '购物车')
     let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
-    let num = e.currentTarget.dataset.item? e.detail:e.detail.num
+    let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
     console.log(num)
     // if (e.detail.num = 0) {
     //   this.setData({
@@ -93,7 +93,7 @@ Page({
     })
 
   },
-  makePhone: function({
+  makePhone: function ({
     currentTarget
   }) {
     console.log(currentTarget.dataset.item)
@@ -104,13 +104,13 @@ Page({
     }
 
   },
-  showCartList: function() {
+  showCartList: function () {
     this.setData({
       cartShow: !this.data.cartShow
     })
     this.carList()
   },
-  carList: function() {
+  carList: function () {
     wx.showLoading({
       title: '加载中',
     })
@@ -140,15 +140,33 @@ Page({
           count: res.data.total
         })
       }
-      console.log(this.data.cartIcon, 'cartIcon')
     })
   },
-  allService: function() {
+  allService: function () {
     this.setData({
       cartShow: false
     })
   },
-  onLoad: function(options) {
+  // 服务列表
+  findServiceList: function (shopid) {
+    request.findShopDet({
+      shopId: shopId,
+      log: app.globalData.longitude,
+      lat: app.globalData.latitude,
+      userId: app.globalData.openId
+    }).then(res => {
+      this.setData({
+        shopId: model.shopId,
+        detailModel: res.ser,
+        cardModel: res.serCard,
+        tel: res.shop.tel
+      })
+
+    })
+  },
+  onLoad: function (options) {
+    this.carList()
+    console.log(options,'options')
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'ai')
@@ -156,27 +174,14 @@ Page({
         storemodel: model,
         ["commentForm.shop_id"]: model.id
       })
-      request.findShopDet({
-        shopId: model.shopId,
-        log: app.globalData.longitude,
-        lat: app.globalData.latitude,
-        userId:app.globalData.openId
-      }).then(res => {
-        this.setData({
-          shopId:model.shopId,
-          detailModel: res.ser,
-          cardModel: res.serCard,
-          tel: res.shop.tel
-        })
-        this.carList()
-        this.onShow()
-      })
-
+      this.findServiceList(model.shopId)
+      app.globalData.shopid = model.shopId
+      this.onShow()
     }
   },
 
   //洗车评价
-  washCarComment: function(model) {
+  washCarComment: function (model) {
     request.selectCommentByShopId(model).then(res => {
       if (res.status == '200') {
         this.setData({
@@ -199,43 +204,43 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.findCarList()
-
+    this.findServiceList(app.globalData.shopid)
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     var that = this;
     if (that.data.load && that.data.tabIndex == 1) { //全局标志位，方式请求未响应时多次触发
       that.setData({
@@ -269,7 +274,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

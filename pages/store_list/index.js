@@ -175,8 +175,17 @@ Page({
   onUnload: function () {
 
   },
+    /**
+   * 输入时赋值
+   */
+  inValue: function(e) {
+    this.setData({
+      value: e.detail
+    })
+  },
   onSearch:function(e){
-    this.findByShopList(e.detail)
+    console.log(e,'sousuo ')
+    this.findByShopList(this.data.value)
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
