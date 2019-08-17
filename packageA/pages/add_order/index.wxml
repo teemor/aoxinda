@@ -88,12 +88,12 @@
     </view>
     <form bindsubmit="pwdSubmit">
       <view style="height:120rpx;margin-left:50rpx;">
-        <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="2" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="3" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="4" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="5" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="6" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="1"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="2" focus="{{a}}"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="3" focus="{{b}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="4" focus="{{c}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="5" focus="{{d}}"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="6" focus='{{e}}'  class="input-radius tc fl" type="number" password="true" maxlength="1" />
       </view>
       <view bindtap="setPwd">
         <button form-type="submit" class="cl fz30 bg_orange bottom_btn">支付</button>
@@ -124,12 +124,12 @@
         </view>
         <view class="cl high80 fz28">请输入6位数字密码</view>
         <view class="cl" style="height:90rpx;margin-left:20rpx">
-          <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="2" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="3" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="4" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="5" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="6" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="1"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="2" focus="f" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="3" focus="g" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="4" focus="h" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="5" focus="i" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="6" focus="j" class="input-radius tc fl" type="number" password="true" maxlength="1" />
         </view>
       </view>
       <view bindtap="setPwd">

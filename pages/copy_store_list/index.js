@@ -122,14 +122,12 @@ Page({
       this.setData({
         flag: flag
       })
-      request.findSearch({
+      request.findByShopList({
         pageSize: 5,
         pageIndex: 1,
         log: app.globalData.longitude,
         lat: app.globalData.latitude,
-        actName: model.actName ? model.actName : '',
-        shouName: model.shopName,
-        flag: model.actName ? 0 : 1
+        shopName: model.shopName,
       }).then(res => {
         if (model.actName) {
           this.setData({

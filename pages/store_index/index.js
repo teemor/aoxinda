@@ -20,14 +20,14 @@ Page({
     CleanStore: []
   },
   // banner
-  findHome: function() {
+  findHome: function () {
     request.findHome().then(res => {
-      if (res.data.listT.length>4){
+      if (res.data.listT.length > 4) {
         this.setData({
-          height:'height:320rpx'
+          height: 'height:320rpx'
         })
-      }else{
-        height:'height:164rpx'
+      } else {
+        height: 'height:164rpx'
       }
       this.setData({
         dataList: res.data
@@ -37,13 +37,13 @@ Page({
   /**
    * 洗车美容
    */
-  storeCardBtn: function(item) {
-    console.log(item,'item')
+  storeCardBtn: function (item) {
+    console.log(item, 'item')
     wx.navigateTo({
       url: `../../pages/copy_store_list/index?actId=${item.currentTarget.dataset.item.actId}`,
     })
   },
-  personDetail: function() {
+  personDetail: function () {
     wx.navigateTo({
       url: `../../packageA/pages/person_card_detail/index`
     })
@@ -51,7 +51,7 @@ Page({
   /**
    * 选择地理位置
    */
-  locationChoose: function() {
+  locationChoose: function () {
     let that = this
     wx.chooseLocation({
       success: (result) => {
@@ -63,36 +63,47 @@ Page({
         app.globalData.latitude = result.latitude
         app.globalData.longitude = result.longitude
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
   },
-  serviceDetail: function({
+  serviceDetail: function ({
     detail
   }) {
     let model = encodeURIComponent(JSON.stringify(detail))
-    console.log(model,'model')
-    wx.navigateTo({
-      url: `../../packageA/pages/service_detail/index?model=${model}`
-    })
+    console.log(detail, 'model')
+    if (detail.actCardType=="2") {
+      wx.navigateTo({
+        url: `../../packageA/pages/service_detail/index?model=${model}`
+      })
+    }else{
+      let model ={}
+      model.id = detail.actId
+      model.actCardType = detail.actCardType
+      let data = encodeURIComponent(JSON.stringify(model))
+      wx.navigateTo({
+        url: `../../packageA/pages/my_card/index?actId=${data}`
+      })
+    }
+   
   },
-  storeDetail: function({
+  storeDetail: function ({
     detail
   }) {
 
     let model = encodeURIComponent(JSON.stringify(detail))
-    console.log(detail,'model2')
+    console.log(detail, 'model2')
     app.globalData.shopid = detail.shopId
     wx.navigateTo({
       url: `../../packageA/pages/store_detail/index?model=${model}`
     })
   },
-  monthList: function() {
+  monthList: function () {
     wx.navigateTo({
       url: `../../packageA/pages/store_detail/index?model=${model}`
     })
   },
-  scopeSetting: function() {
+  scopeSetting: function () {
     var that = this;
     wx.getSetting({
       success(res) {
@@ -107,10 +118,10 @@ Page({
               wx.showModal({
                 title: '提示',
                 content: '定位失败，你未开启定位权限，点击开启定位权限',
-                success: function(res) {
+                success: function (res) {
                   if (res.confirm) {
                     wx.openSetting({
-                      success: function(res) {
+                      success: function (res) {
                         if (res.authSetting['scope.userLocation']) {
                           that.initMap();
                         } else {
@@ -129,12 +140,12 @@ Page({
       }
     })
   },
-  storeListAll: function() {
+  storeListAll: function () {
     wx.navigateTo({
       url: '../../pages/copy_store_list/index',
     })
   },
-  storeList: function(item) {
+  storeList: function (item) {
     console.log(item, 'model')
     let id
     if (item.currentTarget.dataset.item.name) {
@@ -167,18 +178,18 @@ Page({
           success: (result) => {
 
           },
-          fail: () => {},
-          complete: () => {}
+          fail: () => { },
+          complete: () => { }
         });
       }
     }
-  
+
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.getlocation()
     this.onShow();
   },
@@ -187,14 +198,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.getlocation()
     this.findHome()
     this.findCarList()
@@ -203,35 +214,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
