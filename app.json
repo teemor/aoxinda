@@ -97,7 +97,8 @@
         "pages/my_order_detail/index",
         "pages/add_refund/index",
         "pages/apply_store_list/index",
-        "components/card_list/card_list"
+        "components/card_list/card_list",
+        "pages/add_card_refund/index"
       ]
     },
     {
