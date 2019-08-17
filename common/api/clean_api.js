@@ -79,7 +79,7 @@ export class store {
   // 查询卡详情 wlx
   findOrderCard = (params) => {
     return http.httpRequest({
-      url: `http://192.168.31.158:9015/wash/v1.0/findOrderCard`,
+      url: `http://192.168.31.184:9015/wash/v1.0/findOrderCard`,
       method: `POST`,
       data: params
     })
