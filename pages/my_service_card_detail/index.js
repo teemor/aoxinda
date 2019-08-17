@@ -257,21 +257,24 @@ Page({
     let that = this
     console.log(this.data.consumption.length)
     if (that.data.consumption.length <= 0) {
-      Dialog.confirm({
-        title: '退卡',
-        message: '你确定要退卡吗？'
-      }).then(() => {
-        request.backMoneyCard({
-          'refundReason': '在卡处退卡',
-          "cardId": that.data.cardDet.actId,
-          "refundPrice": that.data.cardDet.truePaymoney,
-          "goodsNum": "1"
-        }).then(res => {
-        console.log(res)
-        })
-      }).catch(() => {
-        console.log('取消')
-      });
+      // Dialog.confirm({
+      //   title: '退卡',
+      //   message: '你确定要退卡吗？'
+      // }).then(() => {
+      //   request.backMoneyCard({
+      //     'refundReason': '在卡处退卡',
+      //     "cardId": that.data.cardDet.actId,
+      //     "refundPrice": that.data.cardDet.truePaymoney,
+      //     "goodsNum": "1"
+      //   }).then(res => {
+      //   console.log(res)
+      //   })
+      // }).catch(() => {
+      //   console.log('取消')
+      // });
+      wx.navigateTo({
+        url: '../../'
+      })
     } else {
       Dialog.alert({
         title: '不能退',
