@@ -1,19 +1,23 @@
 @import "../../app.wxss";
-.shop_goods_invite_text, .shop_goods_invite_btn {
+/* .shop_goods_invite_text, .shop_goods_invite_btn {
   position: absolute;
-}
+} */
 .shop_edit, .shop_close {
   position: absolute;
 }
 .shop_close {
   width: 60rpx;
 }
+.shop_edit{
+  
+  margin-left: 50rpx;
+}
 .shop_edit image {
   position: absolute;
   width: 30rpx;
   height: 20rpx;
   margin-top: 26rpx;
-  margin-left: 500rpx;
+  margin-left: 540rpx;
 }
 
 .shop_close image {

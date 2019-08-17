@@ -1,3 +1,6 @@
+<view wx:if="{{cardDet.status == '已退款'}}" class="no_card">
+  <image src="../../common/image/nocard.png"></image>
+</view>
 <view class='card_top'>
   <view class='card_bag' style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/card_bg.png)'>
     <view class='card_bag_top'>

@@ -22,11 +22,11 @@
     </view>
     <view class="fr grey fz26">8:00-20:00</view>
   </view>
-  <view class="cl" style="padding-top:30rpx;margin-top:10rpx;border-top:2rpx solid #f0f0f0" bindtap="locationAddress">
+  <view class="cl" style="padding-top:30rpx;margin-top:10rpx;border-top:2rpx solid #f0f0f0">
     <view class="fl loc_img">
       <image src="../../common/img/location_dis.png" />
     </view>
-    <view class="fl">
+    <view class="fl" bindtap="locationAddress">
       <view class="fz24">{{storemodel.shop.address}}</view>
       <view class="fz24 grey" style="margin-top:18rpx;">距您{{storemodel.shop.distance}}km,驾车需约25分钟</view>
     </view>

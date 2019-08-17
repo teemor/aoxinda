@@ -33,6 +33,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let model = JSON.parse(decodeURIComponent(options.model))
+    console.log(model)
     request.selectMyBackOrderList().then(res => {
       this.setData({
         refundList: res

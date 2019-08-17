@@ -1,8 +1,15 @@
-import { Technician } from '../../../common/api/api'
+import {
+  Technician
+} from '../../../common/api/api'
 const request = new Technician
-import { img } from "../../../utils/method"
+import {
+  img
+} from "../../../utils/method"
 import shop_detail from '../../../mixin/shop_detail'
-
+import {
+  store
+} from '../../../common/api/clean_api'
+const requestCard = new store
 Page({
   mixins: [shop_detail],
   /**
@@ -12,27 +19,68 @@ Page({
     orderInfo: {
       order_id: null, // 订单id
       order_type: 0, // 0仅退款1退款退货
-      back_desription: '',// 退款理由
-      back_reason: '',// 退款原因
-      back_money: null,// 退款钱
-      goods_num: 1,// 退款数
-      goods_status: null,// 状态
-      goods_detail_id: null,// 商品id
-      order_detail_id: null,// 订单详情id
+      back_desription: '', // 退款理由
+      back_reason: '', // 退款原因
+      back_money: null, // 退款钱
+      goods_num: 1, // 退款数
+      goods_status: null, // 状态
+      goods_detail_id: null, // 商品id
+      order_detail_id: null, // 订单详情id
     },
-    imgList: [],// 图片说明
-    goodsData: {},// 商品信息
+    imgList: [], // 图片说明
+    goodsData: {}, // 商品信息
     statusLabel: '',
     reasonShow: false,
     statusShow: false,
-    status: [{ name: '未收到货/未安装', id: 0, text: '包含未收到或者未安装的商品' }, { id: 1, name: '已收到货', text: '已收到货，需要退换已收到的商品，已安装商品不予退换' }],
-    reasonA: [{ name: "商品无货", key: '1' }, { name: "发货时间问题", key: '1' }, { name: "不想要了", key: '1' }, { name: "商品信息填写错误", key: '1' }, { name: "商品降价", key: '1' }, { name: "其他", key: '1' }],
-    reasonB: [{ name: "有延期/适用范围/余额不符", key: '1' }, { name: "发错货", key: '1' }, { name: "假冒品牌", key: '1' }, { name: "收到商品少件/破损/污渍等", key: '1' }, { name: "其他", key: '1' }],
+    status: [{
+      name: '未收到货/未安装',
+      id: 0,
+      text: '包含未收到或者未安装的商品'
+    }, {
+      id: 1,
+      name: '已收到货',
+      text: '已收到货，需要退换已收到的商品，已安装商品不予退换'
+    }],
+    reasonA: [{
+      name: "商品无货",
+      key: '1'
+    }, {
+      name: "发货时间问题",
+      key: '1'
+    }, {
+      name: "不想要了",
+      key: '1'
+    }, {
+      name: "商品信息填写错误",
+      key: '1'
+    }, {
+      name: "商品降价",
+      key: '1'
+    }, {
+      name: "其他",
+      key: '1'
+    }],
+    reasonB: [{
+      name: "有延期/适用范围/余额不符",
+      key: '1'
+    }, {
+      name: "发错货",
+      key: '1'
+    }, {
+      name: "假冒品牌",
+      key: '1'
+    }, {
+      name: "收到商品少件/破损/污渍等",
+      key: '1'
+    }, {
+      name: "其他",
+      key: '1'
+    }],
   },
   /**
    * 更改商品状态
    */
-  statusChoose: function (e) {
+  statusChoose: function(e) {
     console.log(e)
     if (e.currentTarget.dataset.item.id === 0) {
       this.setData({
@@ -52,10 +100,11 @@ Page({
   /**
    * 上传图片
    */
-  uploadImage: function () {
+  uploadImage: function() {
     let that = this
     img().then(res => {
-      let tempFilePath = res.tempFilePaths, uploadImgCount = 0;
+      let tempFilePath = res.tempFilePaths,
+        uploadImgCount = 0;
       wx.showLoading({
         icon: 'loading'
       });
@@ -66,7 +115,7 @@ Page({
           url: 'https://www.maichefu.cn:9015/appapi/v1.0/upload',
           filePath: item,
           name: 'file',
-          success: function (res) {
+          success: function(res) {
             uploadImgCount++;
             that.data.imgList.push(JSON.parse(res.data).data)
             let arr = that.data.imgList
@@ -79,7 +128,7 @@ Page({
               wx.hideLoading();
             }
           },
-          fail: function (res) {
+          fail: function(res) {
             wx.hideLoading();
             wx.showModal({
               title: '错误提示',
@@ -97,9 +146,9 @@ Page({
   /**
    * 跳转退款详情
    */
-  refundDetail: function () {
+  refundDetail: function() {
     request.writeBackOrder(this.data.orderInfo).then(res => {
-      if (this.data.back_reason == '') {
+      if (this.data.orderInfo.back_reason == '') {
         wx.showToast({
           title: '退款原因不能为空',
           icon: 'none',
@@ -109,26 +158,58 @@ Page({
           success: (result) => {
 
           },
-          fail: () => { },
-          complete: () => { }
+          fail: () => {},
+          complete: () => {}
         });
-      } else if (this.data.back_desription == '') {
+      } else if (this.data.orderInfo.back_desription == '') {
         wx.showToast({
-          title: '退款描述不能为空'
+          title: '退款说明不能为空',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {},
+          fail: () => {},
+          complete: () => {}
         })
       } else {
-
-        let order_id = res.data
-        wx.redirectTo({
-          url: `../../../pages/my_order_refund_detail/index?id=${order_id}`
-        });
+        
+        let obj = {
+          "cardId": this.data.goodsData.actId,
+          "goodsNum": "1",
+          "refundPrice": this.data.orderInfo.buy_price,
+          "refundReason": this.data.orderInfo.back_reason,
+          "refundDesc": this.data.orderInfo.back_desription,
+          "files":[]
+        }
+        console.log(obj)
+        requestCard.backMoneyCard(obj).then(res => {
+          if (res.status == true) {
+            let order_id = encodeURIComponent(JSON.stringify(res))         
+            wx.redirectTo({
+              url: `../../../pages/my_order_refund_detail/index?id=${order_id}`
+            });
+            console.log('ok')
+          } else {
+            wx.showToast({
+              title: '退款失败',
+              icon: 'none',
+              image: '',
+              duration: 1500,
+              mask: false,
+              success: (result) => { },
+              fail: () => { },
+              complete: () => { }
+            })
+          }
+        })
       }
     })
   },
   /**
    * 退款说明
    */
-  description: function (e) {
+  description: function(e) {
     this.setData({
       'orderInfo.back_desription': e.detail
     })
@@ -137,7 +218,7 @@ Page({
   /**
    * 数量变化
    */
-  onChange: function (e) {
+  onChange: function(e) {
     this.setData({
       'orderInfo.back_money': e.detail * this.data.goodsData.goods_price + (this.data.serverData ? e.detail * this.data.serverData.money : 0),
       'orderInfo.goods_num': e.detail
@@ -146,7 +227,7 @@ Page({
   /**
    * 选择商品状态
    */
-  showShopstatus: function (e) {
+  showShopstatus: function(e) {
     this.setData({
       statusShow: true
     })
@@ -154,7 +235,7 @@ Page({
   /**
    * 选择退款原因
    */
-  refundReason: function () {
+  refundReason: function() {
     this.setData({
       reasonShow: true
     })
@@ -162,7 +243,7 @@ Page({
   /**
    * 选择退款原因
    */
-  reasonChoose: function (e) {
+  reasonChoose: function(e) {
     this.setData({
       reasonShow: false,
       'orderInfo.back_reason': e.currentTarget.dataset.item.name
@@ -172,7 +253,7 @@ Page({
    * 关闭选择状态
    * @param {} options 
    */
-  clickMask: function () {
+  clickMask: function() {
     this.setData({
       reasonShow: false,
       statusShow: false
@@ -181,7 +262,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let model = JSON.parse(decodeURIComponent(options.model))
     console.log(model, '退款model')
     // this.selectOrderDetail(model)
@@ -197,7 +278,8 @@ Page({
       // 'orderInfo.back_money': this.data.serverData ? model.goodsData[0].goods_price * model.goodsData[0].buy_num + this.data.serverData.money * this.data.serverData.server_num : model.goodsData[0].goods_price,
       // 'orderInfo.goods_detail_id': model.goodsData[0].goods_detail_id,
       // 'orderInfo.order_detail_id': model.goodsData[0].order_detail_id,
-      goodsData: model
+      goodsData: model.data[0],
+      'orderInfo.buy_price': model.buy_price
     })
   }
 

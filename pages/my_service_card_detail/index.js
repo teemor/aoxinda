@@ -193,7 +193,8 @@ Page({
                 card_price: res.data[0].actCardPrice,
                 useDate: res.data[0].useDate,
                 actId: res.data[0].actId,
-                truePaymoney: res.buy_price
+                truePaymoney: res.buy_price,
+                status: res.data[0].status
               },
               serverInfo: res.serList,
               shop: res.shopList,
@@ -258,26 +259,26 @@ Page({
     let that = this
     console.log(this.data.consumption.length)
     if (that.data.consumption.length <= 0) {
-      Dialog.confirm({
-        title: '退卡',
-        message: '你确定要退卡吗？'
-      }).then(() => {
-        request.backMoneyCard({
-          'refundReason': '在卡处退卡',
-          "cardId": that.data.cardDet.actId,
-          "refundPrice": that.data.cardDet.truePaymoney,
-          "goodsNum": "1"
-        }).then(res => {
-        console.log(res)
-        })
-      }).catch(() => {
-        console.log('取消')
-      });
+      // Dialog.confirm({
+      //   title: '退卡',
+      //   message: '你确定要退卡吗？'
+      // }).then(() => {
+      //   request.backMoneyCard({
+      //     'refundReason': '在卡处退卡',
+      //     "cardId": that.data.cardDet.actId,
+      //     "refundPrice": that.data.cardDet.truePaymoney,
+      //     "goodsNum": "1"
+      //   }).then(res => {
+      //   console.log(res)
+      //   })
+      // }).catch(() => {
+      //   console.log('取消')
+      // });
 
-      // let model = encodeURIComponent(JSON.stringify(that.data.item))
-      // wx.navigateTo({
-      //   url: `../../packageA/pages/add_card_refund/index?model=${model}`
-      // })
+      let model = encodeURIComponent(JSON.stringify(that.data.item))
+      wx.navigateTo({
+        url: `../../packageA/pages/add_card_refund/index?model=${model}`
+      })
     } else {
       Dialog.alert({
         title: '不能退',
