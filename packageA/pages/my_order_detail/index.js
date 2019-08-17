@@ -219,9 +219,10 @@ Page({
     let detail = e.currentTarget.dataset.refund
     this.data.model.detail = detail
     let model = encodeURIComponent(JSON.stringify(this.data.model))
-
+    console.log(model)
     wx.navigateTo({
       url: `../add_refund/index?model=${model}`
+
     })
   },
   editInvoice: function () {

@@ -197,7 +197,8 @@ Page({
               },
               serverInfo: res.serList,
               shop: res.shopList,
-              cardId: res.data[0].actId
+              cardId: res.data[0].actId,
+              item : res
             })
           }
           var size = this.setCanvasSize(); //动态设置画布大小
@@ -257,31 +258,32 @@ Page({
     let that = this
     console.log(this.data.consumption.length)
     if (that.data.consumption.length <= 0) {
-      // Dialog.confirm({
-      //   title: '退卡',
-      //   message: '你确定要退卡吗？'
-      // }).then(() => {
-      //   request.backMoneyCard({
-      //     'refundReason': '在卡处退卡',
-      //     "cardId": that.data.cardDet.actId,
-      //     "refundPrice": that.data.cardDet.truePaymoney,
-      //     "goodsNum": "1"
-      //   }).then(res => {
-      //   console.log(res)
-      //   })
-      // }).catch(() => {
-      //   console.log('取消')
-      // });
-      wx.navigateTo({
-        url: '../../'
-      })
+      Dialog.confirm({
+        title: '退卡',
+        message: '你确定要退卡吗？'
+      }).then(() => {
+        request.backMoneyCard({
+          'refundReason': '在卡处退卡',
+          "cardId": that.data.cardDet.actId,
+          "refundPrice": that.data.cardDet.truePaymoney,
+          "goodsNum": "1"
+        }).then(res => {
+        console.log(res)
+        })
+      }).catch(() => {
+        console.log('取消')
+      });
+
+      // let model = encodeURIComponent(JSON.stringify(that.data.item))
+      // wx.navigateTo({
+      //   url: `../../packageA/pages/add_card_refund/index?model=${model}`
+      // })
     } else {
       Dialog.alert({
         title: '不能退',
         message: '消费过的卡不能退了！'
       }).then(() => {
-        // on close
-        console.log('消费过的卡不能退了！')
+
       });
     }
 
