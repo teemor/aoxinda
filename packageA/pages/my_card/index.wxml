@@ -7,7 +7,7 @@
     <view class='card_bag_bottom'>
       <view class='card_bm_info'>
         <view class='card_price'>￥{{cardModel[0].actPrice}}/{{cartModel[0].name=='单词卡'?'次':'月'}}</view>
-        <view class='card_time'>有效期至720天，仅限本店及相关分店使用</view>
+        <view class='card_time'>有效期{{cardModel[0].actDayTime}}，仅限本店及相关分店使用</view>
       </view>
     </view>
     <view wx:if="{{cardModel[0].actCardType == 3}}" class="card_logo">
