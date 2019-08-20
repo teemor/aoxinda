@@ -147,9 +147,9 @@ Page({
           }).then(res => {
             console.log(res, '消息')
           })
-          let order_id = this.data.orderInfo.orderId
+          let item = encodeURIComponent(JSON.stringify(res))
           wx.redirectTo({
-            url: `../my_refund_detail/index?ids=${order_id}`
+            url: `../../../pages/my_order_refund_detail/index?item=${item}`
           });
         } else {
           wx.showToast({

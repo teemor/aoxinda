@@ -92,7 +92,7 @@ export class store {
   // 手动退款
   backMoney = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbpay/backMoneyService`,
+      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbpay/backMoneyService`,
       method: `post`,
       data: model
     })
