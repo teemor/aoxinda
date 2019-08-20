@@ -105,9 +105,13 @@ Page({
   //   });
 
   // },
+  closeCar:function(){
+    this.findShopList('','','','','')
+  },
   /**
    * 生命周期函数--监听页面加载
    */
+        
   onLoad: function(options) {
     console.log(options, 'optinss')
     // 从精选服务进

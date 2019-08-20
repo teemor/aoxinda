@@ -54,7 +54,7 @@
     </view>
   </view>
   <view  class="shop_goods_invite">
-    <my_car model="{{carModel}}" car="{{car}}"/>
+    <my_car model="{{carModel}}" car="{{car}}" bind:closeCar="closeCar"/>
   </view>
 
   <view class="space_list fz28 cl">

@@ -13,7 +13,7 @@
   </view>
 </view>
 <view class="bgwhite cl fz30" style="margin:20rpx 0">
- <van-cell title="适用门店" value="3家门店适用" is-link></van-cell>
+ <van-cell title="适用门店" ></van-cell>
    <!--  <view class="cl high80" style="padding:0 30rpx;border-bottom:2rpx solid #f0f0f0">
  
  <view class="fl">

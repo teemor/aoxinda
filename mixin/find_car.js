@@ -34,7 +34,7 @@ module.exports = {
               carName:arr[0],
               actCarCode: arr[0].actCarCode
             })
-            console.log(this.data.carModel,'CARMODEL')
+            that.findShopList(res.result[0].carType,'','',this.data.actCarCode,'')
             app.globalData.carType = this.data.carModel
           }else{
             this.setData({

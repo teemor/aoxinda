@@ -1,7 +1,7 @@
 import {
-  Technician
-} from '../common/api/api.js'
-const request = new Technician
+  store
+} from '../common/api/clean_api'
+const request = new store
 const app = getApp();
 module.exports = Behavior({
   behaviors: [],
@@ -16,7 +16,26 @@ module.exports = Behavior({
   },
   attached: function() {},
   methods: {
-
+    findShopList: function(actCardType,serDictId,shopName,actCarCode,actId) {
+      console.log(actCardType,'actCardType')
+      request.findShopList({
+        log: app.globalData.longitude,
+        lat: app.globalData.latitude,
+        actCardType:actCardType,
+        serDictId:serDictId?serDictId:'',
+        shopName:shopName?shopName:'',
+        actCarCode:actCarCode?actCarCode:'',
+        actId:actId,
+        // type: 1,
+        pageSize: 5,
+        pageIndex: 1,
+        // actId:''
+      }).then(res => {
+        this.setData({
+          CleanStore: res.data
+        })
+      })
+    },
     /**
    * 查询车型
    * @param {} options 
