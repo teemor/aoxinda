@@ -28,7 +28,7 @@ export class store {
   // 加入购物车
   addCart = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbcart/insertCart`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbcart/insertCart`,
       method: `post`,
       data: model
     })
@@ -44,7 +44,7 @@ export class store {
   // 支付订单接口
   pay = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbpay/pay`,
+      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbpay/pay`,
       method: `post`,
       data: model
     })
@@ -84,7 +84,7 @@ export class store {
   // 订单详情
   findOrderDetailsByOrderId = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcborder/findOrderDetailsByOrderId`,
+      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcborder/findOrderDetailsByOrderId`,
       method: `post`,
       data: model
     })

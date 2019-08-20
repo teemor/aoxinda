@@ -308,6 +308,14 @@ Page({
   numChange: function({
     detail
   }) {
+    // let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
+    // console.log(num)
+    // console.log(this.data.orderDetails)
+    let i = 'orderDetails['+0+'].num'
+    this.setData({
+      [i]: detail.num
+    })
+    console.log(this.data.orderDetails)
     request.addCart({
       shopId: this.data.shopId,
       userId: app.globalData.openId,
@@ -366,14 +374,16 @@ Page({
   paysubmit: function(e) {
     console.log(e.detail)
     console.log(app.globalData.openId)
-    request.noticeSuccessfulPayment({
-      payMoney: '234',
-      orderNum: '4234',
-      openid: app.globalData.openId,
-      formid: e.detail.formId
-    }).then(res => {
-      console.log(res, '支付成功通知')
-    })
+    let that = this
+    console.log(this.data.orderDetails)
+    // request.noticeSuccessfulPayment({
+    //   payMoney: that.data.totalPrice,
+    //   orderNum: '测试数据1433223',
+    //   openid: app.globalData.openId,
+    //   formid: e.detail.formId
+    // }).then(res => {
+    //   console.log(res, '支付成功通知')
+    // })
     if (this.data.flag != false) {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡

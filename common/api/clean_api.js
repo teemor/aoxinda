@@ -23,7 +23,7 @@ export class store {
   findShopList = (model) => {
     return http.httpRequest({
       // url: `${IP_YXHTTP}/findShopList`,
-      url: `http://192.168.31.158:9015/wash/v1.0/selectShopList`,
+      url: `http://192.168.31.184:9015/wash/v1.0/selectShopList`,
       method: `post`,
       data: model
     })
@@ -55,7 +55,7 @@ export class store {
   // 
   findRefundByUserId = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.184:9015/wash/v1.0/mcf-wcb-refund/findRefundByUserId`,
+      url: `http://192.168.31.186:9015/wash/v1.0/mcf-wcb-refund/findRefundByUserId`,
       method: `post`,
       data: model
     })
@@ -195,7 +195,7 @@ export class store {
   }
   findByShopList = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.158:444/mcf/api/v1/sp/findByShopList`,
+      url: `http://192.168.31.184:444/mcf/api/v1/sp/findByShopList`,
       method: `POST`,
       data: model
     })

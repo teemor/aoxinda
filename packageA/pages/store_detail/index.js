@@ -93,6 +93,7 @@ Page({
     let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
     let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
     console.log(num)
+    
     // if (e.detail.num = 0) {
     //   this.setData({
     //     plusData: false
@@ -127,7 +128,6 @@ Page({
    */
   goodsTotal: function (detail){
     let that = this
-    console.log(detail)
     wx.showLoading({
       title: '加载中',
     })
@@ -138,9 +138,7 @@ Page({
       "cartNum": detail.num, 
       "price": detail.item.actPrice
     }
-    console.log(request)
     request.addCart(obj).then(res =>{
-      console.log(res)
       that.setData({
         count: res.data
       })

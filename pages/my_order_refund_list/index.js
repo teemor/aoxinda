@@ -33,8 +33,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let model = JSON.parse(decodeURIComponent(options.model))
-    console.log(model)
+    // let model = JSON.parse(decodeURIComponent(options.model))
+    console.log(options)
     request.selectMyBackOrderList().then(res => {
       this.setData({
         refundList: res
@@ -51,7 +51,9 @@ Page({
       console.log(res, 'res')
     })
     requesetA.findRefundByUserId({
-      userId: app.globalData.openId
+      userId: app.globalData.openId,
+      "pageIndex": 1,
+      "pageSize": 100
     }).then(res => {
       this.setData({
         refundClean: res.data.records

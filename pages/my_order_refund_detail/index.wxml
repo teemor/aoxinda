@@ -30,7 +30,7 @@
 退款金额：<span class="red">¥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</span><span class="grey">（含运费）</span>
 </view>
 <view class="high70 fz26 br_btm_light">
-退款数量：{{detailData.goods_num?detailData.goods_num:1}}
+退款数量：{{detailData.goodsNum?detailData.goodsNum:1}}
 </view>
 <view class="high70 fz26 br_btm_light">
 退款时间：{{detailData.refundTime}}
