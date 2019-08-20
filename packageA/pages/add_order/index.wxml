@@ -59,7 +59,6 @@
         <image style="width:25rpx;height:25rpx" src="../../../common/image/wx.png"></image> {{ item.name}}<span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
         <view class="radiow {{payType==0?'blue':''}}">√</view>
       </view>
-      
       <view wx:if="{{item.name=='金麦卡'}}" class="gold_card">
         <view wx:if="{{cardGold==true}}">
           <view><image style="width:25rpx;height:25rpx" src="../../../common/image/car_wash_pay.png"></image> {{ item.name}}</view>

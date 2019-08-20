@@ -190,6 +190,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.findHome()
+    this.findCarList()
     this.onShow();
   },
   closeCar:function(){
@@ -207,9 +209,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.findCarList()
     this.getlocation()
-    this.findHome()
+
   },
 
   /**
