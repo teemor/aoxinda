@@ -195,7 +195,7 @@ export class store {
   }
   findByShopList = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.184:444/mcf/api/v1/sp/findByShopList`,
+      url: `http://192.168.31.158:444/mcf/api/v1/sp/findByShopList`,
       method: `POST`,
       data: model
     })

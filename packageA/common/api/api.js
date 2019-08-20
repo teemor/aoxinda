@@ -52,7 +52,7 @@ export class store {
   // 支付成功
   noticeSuccessfulPayment = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbnotice/noticeSuccessfulPayment`,
+      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulPayment`,
       method: `post`,
       data: model
     })
@@ -196,7 +196,7 @@ export class store {
   // 全部门店
   findOrderShop = (model) => {
     return http.httpRequest({
-      url: `${IP_YXHTTP}/findOrderShop`,
+      url: `http://192.168.31.158:9015/wash/v1.0/findOrderShop`,
       method: `post`,
       data: model
     })
