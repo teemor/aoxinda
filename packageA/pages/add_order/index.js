@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    a,b,c,d,e,f,g,h,i,j:false,
     add: true,
     isInvoice: "0",
     payType: 0,
@@ -69,7 +70,17 @@ Page({
     let arr = ''
     for (let i = 1; i < 7; i++) {
       arr += e.detail.value[i]
+      if(i=2){
+        this.setData({
+          a:true//,b,c,d,e,f,g,h,i,j
+        })
+      }else if(i=3){
+        this.setData({
+          b:true
+        })
+      }
     }
+   
     request.passCheck({
       param1: app.globalData.openId,
       param2: arr

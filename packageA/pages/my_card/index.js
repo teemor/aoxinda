@@ -46,9 +46,9 @@ Page({
    */
   onLoad: function (options) {
     that = this
-    console.log(options,'options')
+    console.log(decodeURIComponent(options.actId),'options')
     if (options.actId) {
-      let model = JSON.parse(options.actId)
+      let model = JSON.parse(decodeURIComponent(options.actId))
       that.setData({
         ["commentForm.activity_id"]: model.id
       })

@@ -41,7 +41,7 @@
       </view>
     </view>
     <view class="cl">
-      <van-cell title="适用门店" value="全部" is-link catchtap="myStore" data-item="{{item.orderDetailId}}"></van-cell>
+      <van-cell title="适用门店" wx:if="{{item.shop.name!==''}}" value="全部" is-link catchtap="myStore" data-item="{{item.orderDetailId}}"></van-cell>
       <view class="cl bgwhite" style="padding-top:30rpx;border-top:2rpx solid #f0f0f0;display:block">
         <view class="fl">
           <view class="cl">
