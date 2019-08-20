@@ -13,29 +13,29 @@
   <view class="fz26 high60">退款信息</view>
   <view class='tk_box'>
     <view class="my_order_list_image">
-        <image src="{{detailData.file_url}}" />
+        <image src="{{detailData.file_url?detailData.file_url:detailData.actUrl}}" />
       </view>
       <view class="my_order_list_text fz26">
         <view class="">{{detailData.goods_name}}</view>
-        <view class="fz24 my_order_describe"> 产品：{{detailData.sku_name}}</view>
+        <view class="fz24 my_order_describe"> 产品：{{detailData.sku_name?detailData.sku_name:detailData.actName}}</view>
       </view>
   </view>
 </view>
 <view style="" class=" bgwhite">
 <view class="high70 fz26 br_btm_light">
-退款原因：商品信息填写错误
+退款原因：{{detailData.refundReason}}
 </view>
 <view class="high70 fz26 br_btm_light">
-退款金额：<span class="red">¥{{detailData.back_money}}</span><span class="grey">（含运费）</span>
+退款金额：<span class="red">¥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</span><span class="grey">（含运费）</span>
 </view>
 <view class="high70 fz26 br_btm_light">
-退款数量：{{detailData.goods_num}}
+退款数量：{{detailData.goods_num?detailData.goods_num:1}}
 </view>
 <view class="high70 fz26 br_btm_light">
 申请时间：{{detailData.create_at}}
 </view>
 <view class="high70 fz26 br_btm_light">
-退款编号：{{detailData.back_code}}
+退款编号：{{detailData.back_code?detailData.back_code:detailData.refundNum}}
 </view>
 </view>
   <view wx:if="{{detailData.back_type==='等待退款'}}" class="bottom_btn_address mtop50">

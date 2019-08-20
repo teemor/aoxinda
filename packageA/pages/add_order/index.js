@@ -342,7 +342,7 @@ Page({
       }).then(res => {
         if (res.status === false) {
           wx.showToast({
-            title: res.description
+            title: '金麦卡余额不足！'
           })
         } else {
 

@@ -17,7 +17,11 @@ page {
   padding: 10rpx 30rpx;
 }
 
-
+.no_record{
+   padding-left: 33%;
+  padding-top: 10%;
+  
+}
 
 .space_contain {
   margin-top: 20rpx;

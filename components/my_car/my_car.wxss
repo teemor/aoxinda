@@ -9,14 +9,13 @@
   width: 60rpx;
 }
 .shop_edit{
-  
-  margin-left: 50rpx;
+  margin-left: 60rpx;
 }
 .shop_edit image {
   position: absolute;
   width: 30rpx;
   height: 20rpx;
-  margin-top: 26rpx;
+  margin-top: 23rpx;
   margin-left: 540rpx;
 }
 

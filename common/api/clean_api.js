@@ -211,7 +211,7 @@ export class store {
   //退卡
   backMoneyCard = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbpay/backMoneyCard`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbpay/backMoneyCard`,
       method: `post`,
       data: model
     })

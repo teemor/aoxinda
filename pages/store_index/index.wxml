@@ -58,7 +58,12 @@
   </view>
 
   <view class="space_list fz28 cl">
-    <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:key="{{item}}">
+  <view wx:if="{{CleanStore.length <= 0}}">
+    <view>
+            <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+            <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999;padding-bottom: 10%">~ 暂无推荐服务 ~</text> </view>
+  </view>
+    <view class="space_store_box cl" wx:for="{{CleanStore}}" wx:if="{{CleanStore.length >= 1}}" wx:key="{{item}}">
       <storeList item="{{item}}" bind:serviceDetail="serviceDetail" bind:storeDetail="storeDetail" />
     </view>
   </view>

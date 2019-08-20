@@ -185,9 +185,9 @@ Page({
         console.log(obj)
         requestCard.backMoneyCard(obj).then(res => {
           if (res.status == true) {
-            let order_id = encodeURIComponent(JSON.stringify(res))         
+            let item = encodeURIComponent(JSON.stringify(res))         
             wx.redirectTo({
-              url: `../../../pages/my_order_refund_detail/index?id=${order_id}`
+              url: `../../../pages/my_order_refund_detail/index?item=${item}`
             });
             console.log('ok')
           } else {

@@ -57,9 +57,10 @@
     <view class="fz28 " wx:for="{{payData}}" wx:key="{{item}}" bindtap="payChoose" data-item="{{item}}">
       <view wx:if="{{item.name=='微信支付'}}" class="pay_way">
         <image style="width:25rpx;height:25rpx" src="../../../common/image/wx.png"></image> {{ item.name}}
+        <span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
         <view class="radiow {{payType==0?'blue':''}}">√</view>
       </view>
-      <span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
+      
       <view wx:if="{{item.name=='金麦卡'}}" class="gold_card">
         <!-- <view wx:if="{{cardGold==true}}"> -->
           <view><image style="width:25rpx;height:25rpx" src="../../../common/image/car_wash_pay.png"></image> {{ item.name}}</view>
@@ -72,7 +73,7 @@
       </view>
     </view>
     <!-- <view style="height:40rpx"></view> -->
-    <view bindtap="wxPayShow" class="fz30 bg_orange bottom_btn">关闭</view>
+    <view bindtap="wxPayShow" class="fz30 bg_orange bottom_btn">确认</view>
   </view>
 </manager>
 <manager show="{{trueGold}}" type="center" bind:clickMask="wxGlodShow">

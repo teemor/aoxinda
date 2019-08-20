@@ -28,7 +28,7 @@ export class store {
   // 加入购物车
   addCart = (model) => {
     return http.httpRequest({
-      url: `${IP_MYHTTP}/mcfwcbcart/insertCart`,
+      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbcart/insertCart`,
       method: `post`,
       data: model
     })

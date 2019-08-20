@@ -6,11 +6,18 @@ Page({
   },
 
   onLoad: function (options) {
+    let model = JSON.parse(decodeURIComponent(options.item))
+    console.log(model)
+
     if (options.id) {
       this.setData({
         id: options.id
       })
       this.selectOrderDetail({ id: this.data.id })
+    } else if (options.item){
+      this.setData({
+        detailData: model
+      })
     }
   },
   selectOrderDetail: function (id) {

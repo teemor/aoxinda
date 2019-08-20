@@ -22,7 +22,8 @@ Page({
       "shop_id": ""
     },
     plusData: true,
-    tabIndex: 0 //当前tabs页签下标
+    tabIndex: 0, //当前tabs页签下标
+    count:0
   },
   serviceBtn: function ({
     detail
@@ -106,6 +107,7 @@ Page({
       price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
     }).then(res => {
       this.carList();
+      this.goodsTotal(detail)
     })
 
   },
@@ -119,6 +121,30 @@ Page({
       })
     }
 
+  },
+  /**
+   * 计算商品总数yjq
+   */
+  goodsTotal: function (detail){
+    let that = this
+    console.log(detail)
+    wx.showLoading({
+      title: '加载中',
+    })
+    let obj = {
+      "userId": app.globalData.openId,
+      'shopId': app.globalData.shopid,
+      "activityId": detail.item.actId !== undefined? detail.item.actId : detail.activityId, 
+      "cartNum": detail.num, 
+      "price": detail.item.actPrice
+    }
+    console.log(request)
+    request.addCart(obj).then(res =>{
+      console.log(res)
+      that.setData({
+        count: res.data
+      })
+    })
   },
   showCartList: function () {
     this.setData({
@@ -153,7 +179,7 @@ Page({
       } else {
         this.setData({
           cartIcon: true,
-          count: res.data.total
+          // count: res.data.total
         })
       }
     })
