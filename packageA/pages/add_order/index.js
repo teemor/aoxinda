@@ -11,7 +11,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    a,b,c,d,e,f,g,h,i,j:false,
+    a:false,
+    b:false,
+    c:false,
+    d:false,
+    e:false,
+    f:false,
+    g:false,
+    h:false,
+    i:false,
+    j:false,
     add: true,
     isInvoice: "0",
     payType: 0,
@@ -41,27 +50,66 @@ Page({
   setPwd: function() {
 
   },
+  get_focus:function(){
+    this.setData({
+      a:false
+    })
+  },
+  blur:function(){
+    this.setData({
+      a:true
+    })
+  },
+  blura:function(){
+    this.setData({
+      b:true
+    })
+  },
+   blurb:function(){
+    this.setData({
+      c:true
+    })
+  },
+  blurc:function(){
+    this.setData({
+      d:true
+    })
+  },
+  blurd:function(){
+    this.setData({
+      e:true
+    })
+  },
+  blure:function(){
+    this.setData({
+      a:false,
+      b:false,
+      c:false,
+      d:false,
+      e:false
+    })
+  },
   payChoose: function(e) {
     this.setData({
       payType: e.currentTarget.dataset.item.type
     })
-    // if (this.data.payType == 1 && this.data.cardGold == true) {
-    //   if (this.data.pwdGold == true) {
-    //     this.setData({
-    //       trueGold: true,
-    //       wxPay: false
-    //     })
-    //   } else {
-    //     this.setData({
-    //       falseGold: true,
-    //       wxPay: false
-    //     })
-    //   }
-    // } else {
-    //   wx.navigateTo({
-    //     url: '../../../pages/stored_value_card/index',
-    //   })
-    // }
+    if (this.data.payType == 1 && this.data.cardGold == true) {
+      if (this.data.pwdGold == true) {
+        this.setData({
+          trueGold: true,
+          wxPay: false
+        })
+      } else {
+        this.setData({
+          falseGold: true,
+          wxPay: false
+        })
+      }
+    } else {
+      wx.navigateTo({
+        url: '../../../pages/stored_value_card/index',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -70,15 +118,6 @@ Page({
     let arr = ''
     for (let i = 1; i < 7; i++) {
       arr += e.detail.value[i]
-      if(i=2){
-        this.setData({
-          a:true//,b,c,d,e,f,g,h,i,j
-        })
-      }else if(i=3){
-        this.setData({
-          b:true
-        })
-      }
     }
    
     request.passCheck({

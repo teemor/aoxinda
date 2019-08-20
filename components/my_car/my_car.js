@@ -24,6 +24,7 @@ Component({
       this.setData({
         carShow: false
       })
+      this.triggerEvent('closeCar','')
     },
     editCar: function() {
       wx.navigateTo({

@@ -38,7 +38,6 @@ module.exports = {
         longitude: longitude
       },
       success: function(res) {
-        console.log(that, 'rere');
         that.setData({
           centerAddressBean: res.result,
           location: res.result.formatted_addresses.recommend,
@@ -50,7 +49,6 @@ module.exports = {
         app.address = that.data.currentCity
       },
       fail: function(res) {
-        console.log('rwerr4234', res)
       }
     });
   }

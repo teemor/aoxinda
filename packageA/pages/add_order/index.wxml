@@ -56,19 +56,22 @@
     <view class="tc fz30 select_pay">选择支付方式</view>
     <view class="fz28 " wx:for="{{payData}}" wx:key="{{item}}" bindtap="payChoose" data-item="{{item}}">
       <view wx:if="{{item.name=='微信支付'}}" class="pay_way">
-        <image style="width:25rpx;height:25rpx" src="../../../common/image/wx.png"></image> {{ item.name}}
+        <image style="width:25rpx;height:25rpx" src="../../../common/image/wx.png"></image> {{ item.name}}<span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
         <view class="radiow {{payType==0?'blue':''}}">√</view>
       </view>
-      <span class="red"> {{item.name=='微信支付'?totalPrice:''}}</span>
+      
       <view wx:if="{{item.name=='金麦卡'}}" class="gold_card">
-        <!-- <view wx:if="{{cardGold==true}}"> -->
+        <view wx:if="{{cardGold==true}}">
           <view><image style="width:25rpx;height:25rpx" src="../../../common/image/car_wash_pay.png"></image> {{ item.name}}</view>
           <!-- <view class="gold_card_text">余额¥{{totalCard}} <span style="color:">用卡付,价格更优惠</span></view> -->
           <view class="gold_card_text">用卡付,价格更优惠</view>
           <view class="radio {{payType==0?'':'blue'}}">√</view>
-        <!-- <view wx:else>
-          用卡付，价格更优惠，立即开通
-        </view> -->
+          </view>
+        <view wx:else>
+        <view>{{ item.name}}</view>
+        <view class="gold_card_text" >用卡付，价格更优惠，立即开通</view>
+          
+        </view> 
       </view>
     </view>
     <!-- <view style="height:40rpx"></view> -->
@@ -88,12 +91,13 @@
     </view>
     <form bindsubmit="pwdSubmit">
       <view style="height:120rpx;margin-left:50rpx;">
-        <input name="1"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="2" focus="{{a}}"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="3" focus="{{b}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="4" focus="{{c}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="5" focus="{{d}}"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
-        <input name="6" focus='{{e}}'  class="input-radius tc fl" type="number" password="true" maxlength="1" />
+
+        <input name="1"   bindinput="blur"class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="2"  bindinput="blura" focus="{{a}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="3"  bindinput="blurb" focus="{{b}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="4" bindinput="blurc" focus="{{c}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="5" bindinput="blurd" focus="{{d}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+        <input name="6" bindinput="blure" focus="{{e}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
       </view>
       <view bindtap="setPwd">
         <button form-type="submit" class="cl fz30 bg_orange bottom_btn">支付</button>
@@ -125,11 +129,11 @@
         <view class="cl high80 fz28">请输入6位数字密码</view>
         <view class="cl" style="height:90rpx;margin-left:20rpx">
           <input name="1"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="2" focus="f" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="3" focus="g" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="4" focus="h" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="5" focus="i" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="6" focus="j" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="2"   bindinput="blura" focus="{{a}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="3"   bindinput="blurb" focus="{{b}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="4"   bindinput="blurc" focus="{{c}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="5"   bindinput="blurd" focus="{{d}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="6"  bindinput="blure" focus="{{e}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
         </view>
       </view>
       <view bindtap="setPwd">

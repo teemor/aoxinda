@@ -14,7 +14,6 @@ module.exports = {
         })
         app.globalData.latitude = res.latitude
         app.globalData.longitude = res.longitude
-        that.findShopList('')
         that.address(that.data.longitude, that.data.latitude)
         // that.moveTolocation();
       },

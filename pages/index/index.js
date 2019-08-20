@@ -59,7 +59,7 @@ Page({
   },
   onLoad: function () {
     request.getLimitRule().then(res => {
-      if (res.result.length == 0) {
+      if (res.result == undefined) {
         this.setData({
           num:false
         })

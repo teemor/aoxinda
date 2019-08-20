@@ -40,7 +40,7 @@ export class Technician {
   // 登录查询
   loginQuery = (user) => {
     return http.httpRequest({
-      url: `http://192.168.31.184:9015/mcf/api/v1/c/login/query`,
+      url: `http://192.168.31.184:444/mcf/api/v1/c/login/query`,
       method: `post`,
       data: user
     })
