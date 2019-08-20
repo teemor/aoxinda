@@ -19,7 +19,8 @@ Page({
       refundPrice: null, // 退款钱
       goodsNum: 1, // 退款数
       shopId: null, // 状态
-      refundDesc: ''
+      refundDesc: '',
+      files: [],
     },
     imgList: [], // 图片说明
     goodsData: {}, // 商品信息

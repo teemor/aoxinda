@@ -196,7 +196,7 @@ export class store {
   // 全部门店
   findOrderShop = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.158:9015/wash/v1.0/findOrderShop`,
+      url: `http://192.168.31.184:9015/wash/v1.0/findOrderShop`,
       method: `post`,
       data: model
     })

@@ -23,7 +23,7 @@ export class store {
   findShopList = (model) => {
     return http.httpRequest({
       // url: `${IP_YXHTTP}/findShopList`,
-      url: `${IP_YXHTTP}/selectShopList`,
+      url: `http://192.168.31.158:9015/wash/v1.0/selectShopList`,
       method: `post`,
       data: model
     })
