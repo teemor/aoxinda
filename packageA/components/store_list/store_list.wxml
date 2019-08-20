@@ -9,6 +9,7 @@
           <van-rate value="3" size="10" />
         </view>
         -->
+      <view style="display:inline-block;"> <image src="../../../common/image/clock.png" style="height:30rpx;width:30rpx;"></image>{{item.restStartTime}}-{{item.restEndTime}}</view><view>{{}}</view>
       <view class="cl fz24 grey">
         <view class="fl">{{item.distance}}km</view>
         <view class="fr space_store_address">{{item.address}}</view>
@@ -24,7 +25,7 @@
       </view>
 
     </view>
-    <view class="cl" bindtap="serviceDetail">
+    <!-- <view class="cl" bindtap="serviceDetail">
       <view class="fl bg_orange" style="margin-top:25rpx;width:10rpx;height:10rpx;border-radius:50rpx">
 
       </view>
@@ -34,7 +35,7 @@
       <view class="fr red fz24" style="margin-top:10rpx">
         ¥{{item.serType[0].serPrice}}
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="cl"></view>
 </view>

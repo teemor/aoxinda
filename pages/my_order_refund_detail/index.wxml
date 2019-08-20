@@ -1,13 +1,14 @@
 <view class="order_detail_bg">
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
-    <view class="fz30">{{detailData.back_type}}</view>
+    <view class="fz30">退款成功</view>
+    <view class="fz30">{{detailData.refundTime}}</view>
   </view>
 </view>
 
 <view wx:if="{{detailData.back_express!==''}}" class="bgwhite" style="padding:30rpx;">
-<view class="fz28 high80">{{detailData.back_express}}</view>
-<view class="fz24 grey" wx:if="{{detailData.back_type==='等待退款'}}">退款将原支付路径退回，请您于1-7个工作日关注您支付账户余额变化</view>
+<view class="fz28 high80">退款金额 ￥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</view>
+<view class="fz24 grey" >退回微信 ￥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</view>
 </view>
 <view class="cl my_order_list_box" bindtap="orderDetail">
   <view class="fz26 high60">退款信息</view>
@@ -32,7 +33,7 @@
 退款数量：{{detailData.goods_num?detailData.goods_num:1}}
 </view>
 <view class="high70 fz26 br_btm_light">
-申请时间：{{detailData.create_at}}
+退款时间：{{detailData.refundTime}}
 </view>
 <view class="high70 fz26 br_btm_light">
 退款编号：{{detailData.back_code?detailData.back_code:detailData.refundNum}}

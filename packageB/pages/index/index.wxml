@@ -1,0 +1,9 @@
+<map id="myMap" style="width: 100%; height: 100vh;" latitude="{{latitude}}" longitude="{{longitude}}" show-location></map>
+<view style="position:fixed;z-index:333;background:#fff;width:710rpx;height:400rpx;bottom:30rpx;left:20rpx;">
+  <van-tabs bind:click="onClick" color="#4e93f3">
+    <van-tab title="现在">
+      <choose-label label="选择推送的类型" ischeckbox="{{true}}" islabel="false" list="{{pullFriendType}}" part="2" bind:checkboxChange="pullTypeChange" />
+    </van-tab>
+    <van-tab title="预约">内容 2</van-tab>
+  </van-tabs>
+</view> 
