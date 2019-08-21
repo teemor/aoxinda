@@ -110,7 +110,7 @@ Page({
     this.setData({
       carShow: false
     })
- this.findShopList('', '', '','',this.data.actCarType, this.data.actId?this.data.actId:'')
+ this.findShopList('', '', '','',this.data.actCardType?this.data.actCardType:'', this.data.actId?this.data.actId:'')
   },
   /**
    * 生命周期函数--监听页面加载
@@ -121,7 +121,10 @@ Page({
     // 从精选服务进
     /// CarType,serDictId,shopName,actCarCode,actCardType,actId
     if (options.actCardType) {
-      this.findShopList(options.actCardType, '', '', this.data.actCarCode, '')
+      this.setData({
+        actCardType:options.actCardType
+      })
+      this.findShopList(app.carType,'', '',app.actCarCode, options.actCardType,'')
     } else if (options.actId) {
       this.setData({
         actCarType:2,
