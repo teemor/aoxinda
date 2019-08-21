@@ -1,0 +1,257 @@
+/* pages/rescue/index.wxss */
+/* pages/emergency_rescue/index.wxss */
+page{
+  color: #333;
+}
+.van-tabs--card{
+  margin: 0 !important;
+}
+.van-search__content {
+border-radius: 50rpx !important;
+}
+.van-search{
+  border-radius: 30rpx;
+}
+/* .box{
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 100rpx;
+  background: red
+} */
+.van-tabs__scroll--card{
+  width: 50%;
+  margin: 20rpx auto;
+  height: 54rpx;
+  border:none !important
+}
+.van-tab{
+  border-radius: 40rpx !important;
+  height: 54rpx;
+  border-right:none !important;
+}
+.title_box{
+  display: flex;
+  width: 100%;
+  height: 50rpx;
+  margin-top: 5%;
+  justify-content:space-around;
+}
+.title_item{
+  text-align: center;
+  font-size: 26rpx;
+  width: 110rpx;
+}
+.show{
+  border-bottom: 5rpx solid #5a97ef;
+  color: #5a97ef;
+}
+.content_item{
+  display: none;
+  width: 100%;
+  height: inherit;
+}
+.content_item_show{
+  display: block
+}
+.service_title{
+  width: 100%;
+  height: 100rpx;
+  line-height: 120rpx;
+  border-bottom: 1px solid gainsboro;
+  font-size: 30rpx;
+  overflow: hidden;
+}
+.battery_title{
+  width: 100%;
+  height: 100rpx;
+  line-height: 120rpx;
+  font-size: 30rpx;
+  overflow: hidden;
+}
+.service_number{
+  float: left;
+  margin-left: 5%;
+  font-size: 27rpx;
+}
+.service_course{
+  float: right;
+  margin-right: 5%;
+  font-size: 27rpx;
+  color: #5a97ef;
+}
+.service_money{
+  float: right;  
+  font-size: 32rpx;
+  margin-right: 5%;
+  color: #eb4d4d;
+  margin-top: 10rpx;
+}
+.service_main{
+  float: left;
+  font-size: 27rpx;
+  margin-left: 5%;
+}
+.service_box{
+  position: relative;
+  overflow: visible;
+}
+.redundant{
+  position: absolute;
+  height: 20rpx;
+  width: 100%;
+  left: 0;
+  top: 0rpx;
+  background: #f3f3f3;
+}
+.service_content{
+  overflow: hidden
+}
+.service_type{
+  font-size: 24rpx;
+  line-height: 46rpx;
+  margin-top: 10rpx;
+}
+.van-tabs--card{
+  margin: 0 0
+}
+.plate_number{
+  font-size: 24rpx;
+  line-height: 46rpx;
+}
+.time{
+  font-size: 22rpx;
+  color: #666;
+  line-height: 46rpx;
+}
+.address{
+  font-size: 22rpx;
+  color: #666;
+  line-height: 46rpx;
+}
+.battery_information{
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  border-bottom: 1rpx solid #eee 
+}
+.battery_information>view{
+  display: inline-block;
+  vertical-align: middle;
+}
+.battery_information_img{
+  width: 134rpx;
+  height: 137rpx;
+  margin-left: 5%;
+}
+.battery_information_img image{
+  width: 100%;
+  height: 100%;
+}
+.battery_name{
+  font-size: 27rpx;
+  line-height: 50rpx;
+  overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+  width: 70%;
+}
+.battery_price{
+  font-size: 27rpx;
+  color: #eb4d4d;
+  line-height: 50rpx;
+}
+.battery_information_box {
+  margin-left: 5%;
+width: 60%;
+
+}
+.battery_num{
+  float: right;
+  margin-right: 5%;
+  color: #666666;
+  line-height: 137rpx
+}
+.battery_information_box{
+  margin-left: 5%;
+}
+.time_img{
+  width: 30rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+.time_img image{
+  width: 100%;
+  height: 100%;
+}
+.time>view{
+  display: inline-block;
+  vertical-align: middle;
+}
+.address_img{
+  width: 30rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+.address_img image{
+  width: 100%;
+  height: 100%;
+}
+.address>view{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.foot{
+  width: 90%;
+  margin: 0 auto;
+  line-height: 50rpx;
+  text-align: left;
+}
+.goods_number{
+  font-size: 23rpx;
+  color: #999999;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+.foot_titile{
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+.goods_price_total{
+  font-size: 24rpx;
+  color: #eb4d4d;
+}
+.no_record{
+   padding-left: 33%;
+  padding-top: 20%;
+}
+.go_payment{
+  width: 100%;
+  height:100rpx;
+  line-height: 100rpx; 
+  border-top: 1px solid gainsboro;
+
+}
+.go_payment>view{
+  float: right;
+  margin-right: 5%;
+  border: 1rpx solid #666;
+  font-size: 28rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 10rpx;
+  margin-top: 27rpx;
+  text-align: center;
+}
+.payment{
+  float: right;
+  border: 1rpx solid #666;
+  font-size: 28rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 10rpx;
+  text-align: center;
+}

@@ -144,12 +144,13 @@
         </view>
       </van-cell>
     </view>
-    <view class="mine_cell-list">
+    <!-- <view class="mine_cell-list">
       <van-cell title="客服电话" bind:click="myInvite" value="400-888-1235">
         <view slot="icon" class="user_img">
           <image src="../../common/image/my_service.png" />
         </view>
       </van-cell>
-    </view>
+    </view> -->
+    <view class="service_phone"><image src="../../common/image/my_service.png" style="height:30rpx;width:30rpx;" /> <text style="padding-left:5rpx">400-888-1235</text></view>
   </view>
 </view>

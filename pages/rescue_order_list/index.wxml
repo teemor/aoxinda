@@ -1,0 +1,380 @@
+<!--pages/rescue/index.wxml-->
+<van-tabs type="card" color="#5a97ef" bind:change="tabsChange">
+  <van-tab title="救援服务" title-style="font-size:27rpx;line-height:54rpx;border-radios:20rpx;">
+    <view class='title_box'>
+      <view class="title_item {{show == 0?'show':''}}" bindtap='zero'>全部订单</view>
+      <view class="title_item {{show == 1?'show':''}}" bindtap='first'>待付款</view>
+      <view class="title_item {{show == 2?'show':''}}" bindtap='second'>待服务</view>
+      <view class="title_item {{show == 3?'show':''}}" bindtap='third'>服务中</view>
+      <view class="title_item {{show == 4?'show':''}}" bindtap='forth'>已完成</view>
+    </view>
+    <view>
+    <view class="content_item {{show == 0?'content_item_show':''}}">
+        <view wx:if="{{rescue_all.length<1}}">
+          <view>
+            <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+            <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> </view>
+        </view>
+        <view wx:for="{{rescue_all}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{rescue_all.length>=1}}">
+          <view class='redundant'></view>
+          <view class='service_title'>
+            <view class='service_number'>订单编号：{{item.order_code}}</view>
+            <view class='service_course'>{{item.order_status}}</view>
+          </view>
+          <view class='service_content'>
+            <view class='service_main'>
+              <view class='service_type'>{{item.type}}</view>
+              <view class="plate_number">{{item.car_no}}</view>
+              <view class="plate_number"> <image src="../../common/image/clock.png" style="height:30rpx;width:30rpx;display:inline-block;vertical-align: middle"></image> {{item.create_at}}</view>
+              <view wx:if="{{item.type=='拖车'}}">
+                <view class="time">
+                  <view class="img">○</view>
+                  <view>{{item.help_address}}</view>
+                </view>
+                <view class="address ">
+                  <view class="img ">○</view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+              <view wx:else>
+                <view class="time">
+                  <view class="time_img ">
+                    <image src="../../common/image/time.png "></image>
+                  </view>
+                  <view>{{item.help_at}}</view>
+                </view>
+                <view class="address ">
+                  <view class="address_img ">
+                    <image src="../../common/image/address.png "></image>
+                  </view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+            </view>
+            <view class='service_money'>￥{{item.pay_money}}</view>
+          </view>
+          <view class="go_payment" wx:if="{{item.order_status == '待付款'}}">
+            <view bindtap="goPayment">去付款</view>
+          </view>
+          <view class="go_payment" wx:if="{{item.order_status == '已完成'}}">
+            <view bindtap="evaluation">评价晒单</view>
+          </view>
+        </view>
+      </view>
+      <view class="content_item {{show == 1?'content_item_show':''}}">
+        <view wx:if="{{service.length<1}}">
+          <view>
+            <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+            <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> </view>
+        </view>
+        <view wx:for="{{service}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{service.length>=1}}">
+          <view class='redundant'></view>
+          <view class='service_title'>
+            <view class='service_number'>订单编号：{{item.order_code}}</view>
+            <view class='service_course'>{{item.order_status}}</view>
+          </view>
+          <view class='service_content'>
+            <view class='service_main'>
+              <view class='service_type'>{{item.type}}</view>
+              <view class="plate_number">{{item.car_no}}　 </view>
+              <view class="plate_number"> <image src="../../common/image/clock.png" style="height:30rpx;width:30rpx;display:inline-block;vertical-align: middle"></image> {{item.create_at}}</view>
+              <view wx:if="{{item.type=='拖车'}}">
+                <view class="time">
+                  <view class="img">○</view>
+                  <view>{{item.help_address}}</view>
+                </view>
+                <view class="address ">
+                  <view class="img ">○</view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+              <view wx:else>
+                <view class="time">
+                  <view class="time_img ">
+                    <image src="../../common/image/time.png "></image>
+                  </view>
+                  <view>{{item.help_at}}</view>
+                </view>
+                <view class="address ">
+                  <view class="address_img ">
+                    <image src="../../common/image/address.png "></image>
+                  </view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+            </view>
+            <view class='service_money'>￥{{item.pay_money}}</view>
+          </view>
+          <view class="go_payment">
+            <view bindtap="goPayment">去付款</view>
+          </view>
+        </view>
+      </view>
+      <view class="content_item {{show==2 ? 'content_item_show': ''}} ">
+        <view wx:if="{{inService.length<1}}">
+          <view>
+            <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+            <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
+          </view>
+        </view>
+        <view wx:for="{{inService}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{inService.length>=1}}">
+          <view class='redundant'></view>
+          <view class='service_title'>
+            <view class='service_number'>订单编号：{{item.order_code}}</view>
+            <view class='service_course'>{{item.order_status}}</view>
+          </view>
+          <view class='service_content'>
+            <view class='service_main'>
+              <view class='service_type'>{{item.type}}</view>
+              <view class="plate_number">{{item.car_no}}　 </view>
+              <view class="plate_number"> <image src="../../common/image/clock.png" style="height:30rpx;width:30rpx;display:inline-block;vertical-align: middle"></image> {{item.create_at}}</view>
+              <view wx:if="{{item.type=='拖车'}}">
+                <view class="time">
+                  <view class="img">○</view>
+                  <view>{{item.help_address}}</view>
+                </view>
+                <view class="address ">
+                  <view class="img ">○</view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+              <view wx:else>
+                <view class="time">
+                  <view class="time_img ">
+                    <image src="../../common/image/time.png "></image>
+                  </view>
+                  <view>{{item.help_at}}</view>
+                </view>
+                <view class="address ">
+                  <view class="address_img ">
+                    <image src="../../common/image/address.png "></image>
+                  </view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+            </view>
+            <view class='service_money'>￥{{item.pay_money}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="content_item {{show==3 ? 'content_item_show': ''}} ">
+        <view wx:if="{{completed.length<1}}">
+          <view>
+            <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+            <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
+          </view>
+        </view>
+        <view wx:for="{{completed}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{completed.length>=1}}">
+          <view class='redundant'></view>
+          <view class='service_title'>
+            <view class='service_number'>订单编号：{{item.order_code}}</view>
+            <view class='service_course'>{{item.order_status}}</view>
+          </view>
+          <view class='service_content'>
+            <view class='service_main'>
+              <view class='service_type'>{{item.type}}</view>
+              <view class="plate_number">{{item.car_no}}　 </view>
+              <view class="plate_number"> <image src="../../common/image/clock.png" style="height:30rpx;width:30rpx;display:inline-block;vertical-align: middle"></image> {{item.create_at}}</view>
+              <view wx:if="{{item.type=='拖车'}}">
+                <view class="time">
+                  <view class="img">○</view>
+                  <view>{{item.help_address}}</view>
+                </view>
+                <view class="address ">
+                  <view class="img ">○</view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+              <view wx:else>
+                <view class="time">
+                  <view class="time_img ">
+                    <image src="../../common/image/time.png "></image>
+                  </view>
+                  <view>{{item.help_at}}</view>
+                </view>
+                <view class="address ">
+                  <view class="address_img ">
+                    <image src="../../common/image/address.png "></image>
+                  </view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+            </view>
+            <view class='service_money'>￥{{item.pay_money}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="content_item {{show==4 ? 'content_item_show': ''}} ">
+        <view wx:if="{{refunded.length<1}}">
+          <view>
+            <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+            <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> </view>
+        </view>
+        <view wx:for="{{refunded}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{refunded.length>=1}}">
+          <view class='redundant'></view>
+          <view class='service_title'>
+            <view class='service_number'>订单编号：{{item.order_code}}</view>
+            <view class='service_course'>{{item.order_status}}</view>
+          </view>
+          <view class='service_content'>
+            <view class='service_main'>
+              <view class='service_type'>{{item.type}}</view>
+              <view class="plate_number">{{item.car_no}}　 </view>
+              <view class="plate_number"> <image src="../../common/image/clock.png" style="height:30rpx;width:30rpx;display:inline-block;vertical-align: middle"></image> {{item.create_at}}</view>
+              <view wx:if="{{item.type=='拖车'}}">
+                <view class="time">
+                  <view class="img">○</view>
+                  <view>{{item.help_address}}</view>
+                </view>
+                <view class="address ">
+                  <view class="img ">○</view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+              <view wx:else>
+                <view class="time">
+                  <view class="time_img ">
+                    <image src="../../common/image/time.png "></image>
+                  </view>
+                  <view>{{item.help_at}}</view>
+                </view>
+                <view class="address ">
+                  <view class="address_img ">
+                    <image src="../../common/image/address.png "></image>
+                  </view>
+                  <view>{{item.final_address}}</view>
+                </view>
+              </view>
+            </view>
+            <view class='service_money'>￥{{item.pay_money}}</view>
+          </view>
+          <view class="go_payment">
+            <view bindtap="evaluation">评价晒单</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="电瓶 " title-style="font-size:30rpx;line-height:54rpx; ">
+    <view class='title_box'>
+      <view class="title_item {{batteryShow==0 ? 'show': ''}} " bindtap='batteryZero'>全部订单</view>
+      <view class="title_item {{batteryShow==1 ? 'show': ''}} " bindtap='batteryFirst'>待付款</view>
+      <view class="title_item {{batteryShow==2 ? 'show': ''}} " bindtap='batterySecond'>待安装</view>
+      <view class="title_item {{batteryShow==3 ? 'show': ''}} " bindtap='batteryThird'>已安装</view>
+    </view>
+    <view class="content_item {{batteryShow==0 ? 'content_item_show': ''}} ">
+      <view wx:if="{{payment.length<1}}">
+        <view>
+          <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+          <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
+        </view>
+      </view>
+      <view wx:for="{{payment}}" wx:key="{{index}}" class='service_box' wx:if="{{payment.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}">
+        <view class='redundant'></view>
+        <view class='battery_title'>
+          <view class='service_number'>订单编号:{{item.order_code}}</view>
+          <view class='service_course'>{{item.order_status}}</view>
+        </view>
+        <view class="battery_information ">
+          <view class="battery_information_img ">
+            <image src="{{item.path}}"></image>
+          </view>
+          <view class="battery_information_box ">
+            <view class="battery_name ">{{item.goodsData[0].goods_name}}</view>
+            <view class="battery_price ">￥{{item.goodsData[0].goods_price}}</view>
+          </view>
+          <view class="battery_num ">×{{item.goodsData[0].goods_num}}</view>
+        </view>
+        <view class="foot">
+          <text class="goods_number">共{{item.count}}项商品</text>
+          <text class="foot_titile">小计：</text>
+          <text class="goods_price_total">￥{{item.pay_money}}</text>
+          <view bindtap="payment" class="payment" wx:if="{{item.order_status == '待付款'}}">去付款</view>
+          <view bindtap="payment" class="payment" wx:if="{{item.order_status == '已安装'}}">晒单评价</view>
+        </view>
+      </view>
+    </view>
+    <view class="content_item {{batteryShow==1 ? 'content_item_show': ''}} ">
+      <view wx:if="{{payment.length<1}}">
+        <view>
+          <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+          <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
+        </view>
+      </view>
+      <view wx:for="{{payment}}" wx:key="{{index}}" class='service_box' wx:if="{{payment.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}">
+        <view class='redundant'></view>
+        <view class='battery_title'>
+          <view class='service_number'>订单编号:{{item.order_code}}</view>
+          <view class='service_course'>{{item.order_status}}</view>
+        </view>
+        <view class="battery_information ">
+          <view class="battery_information_img ">
+            <image src="{{item.path}}"></image>
+          </view>
+          <view class="battery_information_box ">
+            <view class="battery_name ">{{item.goods_name}}</view>
+            <view class="battery_price ">￥{{item.goods_price}}</view>
+          </view>
+          <view class="battery_num ">×{{item.goods_num}}</view>
+        </view>
+        <view class="foot">
+          <text class="goods_number">共{{item.goods_num}}项商品</text>
+          <text class="foot_titile">小计：</text>
+          <text class="goods_price_total">￥{{item.goods_price}}</text>
+          <view bindtap="payment" class="payment">去付款</view>
+        </view>
+      </view>
+    </view>
+    <view class="content_item {{batteryShow==2 ? 'content_item_show': ''}} ">
+      <view wx:if="{{install.length<1}}">
+        <view>
+          <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+          <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
+        </view>
+      </view>
+      <view wx:for="{{install}}" wx:key="{{index}}" wx:if="{{install.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}" class='service_box'>
+        <view class='redundant'></view>
+        <view class='battery_title'>
+          <view class='service_number'>订单编号:{{item.order_code}}</view>
+          <view class='service_course'>{{item.order_status}}</view>
+        </view>
+        <view class="battery_information ">
+          <view class="battery_information_img ">
+            <image src="{{item.path}}"></image>
+          </view>
+          <view class="battery_information_box ">
+            <view class="battery_name ">{{item.goods_name}}</view>
+            <view class="battery_price ">￥{{item.goods_price}}</view>
+          </view>
+          <view class="battery_num ">×{{item.goods_num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="content_item {{batteryShow==3 ? 'content_item_show': ''}} ">
+      <view wx:if="{{already_install.length<1}}">
+        <view>
+          <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
+          <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
+        </view>
+      </view>
+      <view wx:for="{{already_install}}" wx:key="{{index}}" wx:if="{{already_install.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}" class='service_box'>
+        <view class='redundant'></view>
+        <view class='battery_title'>
+          <view class='service_number'>订单编号:{{item.order_code}}</view>
+          <view class='service_course'>{{item.order_status}}</view>
+        </view>
+        <view class="battery_information ">
+          <view class="battery_information_img ">
+            <image src="{{item.path}}"></image>
+          </view>
+          <view class="battery_information_box ">
+            <view class="battery_name ">{{item.goods_name}}</view>
+            <view class="battery_price ">￥{{item.goods_price}}</view>
+            <view bindtap="payment" class="payment">晒单评价</view>
+          </view>
+          <view class="battery_num ">×{{item.goods_num}}</view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>

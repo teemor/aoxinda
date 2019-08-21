@@ -2,7 +2,7 @@
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_bg01.png" />
   <view class="order_detail_text ">
     <view class="fz30">{{detailData.stateName}}</view>
-     <view class="fz30">{{detailData.stateName}}</view>
+     <view class="fz30">{{detailData.refundTime}}</view>
   </view>
 </view>
 

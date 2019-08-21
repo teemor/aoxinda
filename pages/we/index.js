@@ -21,7 +21,7 @@ Page({
   },
   myEvaluate: function() {
     wx.navigateTo({
-      url: '../my_evaluate/index',
+      url: '../rescue_order_list/index',
     })
   },
   serviceCard: function() {
