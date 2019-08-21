@@ -34,10 +34,6 @@ Page({
    */
   onLoad: function(options) {
     // let model = JSON.parse(decodeURIComponent(options.model))
-<<<<<<< HEAD
-    console.log(options)
-=======
->>>>>>> copy
     request.selectMyBackOrderList().then(res => {
       this.setData({
         refundList: res
