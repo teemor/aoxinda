@@ -138,7 +138,7 @@
       </van-cell>
     </view>
     <view class="mine_cell-list">
-      <van-cell title="用户反馈" is-link bind:click="myReservation">
+      <van-cell title="用户反馈" >
         <view slot="icon" class="user_img">
           <image src="../../common/image/my_message.png" />
         </view>

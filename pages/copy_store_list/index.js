@@ -18,6 +18,7 @@ Page({
    * 
    */
   data: {
+    carShow: true,
     serTypea: [
 
       {
@@ -27,17 +28,17 @@ Page({
         // 禁用选项
         // 该导航下所有的可选项
         ser: [{
-            // 名称
-            serName: '温州',
-            // id，作为匹配选中状态的标识
-            id: 1,
-            // 禁用选项
-            disabled: true
-          },
-          {
-            serName: '杭州',
-            id: 2
-          }
+          // 名称
+          serName: '温州',
+          // id，作为匹配选中状态的标识
+          id: 1,
+          // 禁用选项
+          disabled: true
+        },
+        {
+          serName: '杭州',
+          id: 2
+        }
         ]
       },
       {
@@ -52,18 +53,18 @@ Page({
     add: false,
     serviceType: ''
   },
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
     })
   },
-  onClickNav: function(detail = {}) {
+  onClickNav: function (detail = {}) {
     console.log(detail, 'detail,rwe')
     this.setData({
       mainActiveIndex: detail.index || 0,
     });
   },
-  onClickItem: function({
+  onClickItem: function ({
     detail = {}
   }) {
     this.setData({
@@ -76,18 +77,18 @@ Page({
     this.findShopList(app.storeList.actCardType, detail.id, '', this.data.actCarCode, app.storeList.actId)
 
   },
-  allCity: function() {
+  allCity: function () {
     wx.navigateTo({
       url: '../../packageA/pages/city_select/index'
     })
   },
-  sortType: function() {
+  sortType: function () {
     this.setData({
       service: false,
       sort: !this.data.sort
     })
   },
-  allService: function() {
+  allService: function () {
     this.setData({
       service: !this.data.service,
       sort: false
@@ -105,20 +106,28 @@ Page({
   //   });
 
   // },
-  closeCar:function(){
-    this.findShopList('','','','','')
+  closeCar: function () {
+    this.setData({
+      carShow: false
+    })
+ this.findShopList('', '', '','',this.data.actCarType, this.data.actId?this.data.actId:'')
   },
   /**
    * 生命周期函数--监听页面加载
    */
-        
-  onLoad: function(options) {
+
+  onLoad: function (options) {
     console.log(options, 'optinss')
     // 从精选服务进
+    /// CarType,serDictId,shopName,actCarCode,actCardType,actId
     if (options.actCardType) {
       this.findShopList(options.actCardType, '', '', this.data.actCarCode, '')
     } else if (options.actId) {
-      this.findShopList(2, '', '', this.data.actCarCode, options.actId)
+      this.setData({
+        actCarType:2,
+        actId:options.actId
+      })
+      this.findShopList(app.carType, '', '',app.actCarCode,2, options.actId)
     } else if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       let flag = model.actName ? 0 : 1
@@ -152,7 +161,7 @@ Page({
 
 
   },
-  serviceDetail: function({
+  serviceDetail: function ({
     detail
   }) {
     let model = encodeURIComponent(JSON.stringify(detail))
@@ -160,7 +169,7 @@ Page({
       url: `../../packageA/pages/service_detail/index?model=${model}`
     })
   },
-  storeDetail: function({
+  storeDetail: function ({
     detail
   }) {
     console.log(detail, 'detailmmmmmm')
@@ -172,14 +181,15 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function(options) {
+  onShow: function (options) {
+
     this.findCarList()
     if (this.data.item) {
       this.setData({
@@ -191,35 +201,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

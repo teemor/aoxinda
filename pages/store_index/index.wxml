@@ -53,8 +53,8 @@
       </view>
     </view>
   </view>
-  <view  class="shop_goods_invite">
-    <my_car model="{{carModel}}" car="{{car}}" bind:closeCar="closeCar"/>
+  <view  class="shop_goods_invite" >
+    <my_car wx:if="{{carShow==true}}" model="{{carModel}}" car="{{car}}" bind:closeCar="closeCar"/>
   </view>
 
   <view class="space_list fz28 cl">
