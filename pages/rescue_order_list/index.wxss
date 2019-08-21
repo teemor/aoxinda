@@ -238,20 +238,24 @@ width: 60%;
 .go_payment>view{
   float: right;
   margin-right: 5%;
-  border: 1rpx solid #666;
+  border: 1rpx solid #5a97ef;
   font-size: 28rpx;
-  height: 45rpx;
-  line-height: 45rpx;
-  padding: 0 10rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  width: 152rpx;
+  color: #5a97ef;
   margin-top: 27rpx;
   text-align: center;
+  border-radius: 20rpx;
 }
 .payment{
   float: right;
-  border: 1rpx solid #666;
+  border: 1rpx solid #5a97ef;
   font-size: 28rpx;
-  height: 45rpx;
-  line-height: 45rpx;
-  padding: 0 10rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  width: 152rpx;
+  color: #5a97ef;
   text-align: center;
+  border-radius: 20rpx;
 }

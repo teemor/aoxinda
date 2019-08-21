@@ -12,7 +12,6 @@ page {
 
 .space_store_box {
   margin-bottom: 20rpx;
-  height: 220rpx;
   background: #fff;
   padding: 10rpx 30rpx;
 }

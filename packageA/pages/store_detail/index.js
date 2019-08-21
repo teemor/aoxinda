@@ -160,8 +160,14 @@ Page({
       pageIndex: 1,
       pageSize: 10
     }).then(res => {
+      console.log(res.data.records)
+      let total_count = 0
+      for(let i = 0;i < res.data.records.length;i++){
+        total_count += res.data.records[i].cartNum
+      }
       this.setData({
-        cartModel: res.data.records
+        cartModel: res.data.records,
+        count: total_count
       })
       let price = 0
       this.data.cartModel.forEach(item => {
