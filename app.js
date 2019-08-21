@@ -5,6 +5,7 @@ import { tabbarConfig} from "./common/static/api_data.js"
 const setRouterConfig = require("./utils/util.js")
 const request = new Technician
 App({
+  location:'',
   shopid:'',
   tabbarConfig: tabbarConfig,
   isHideTabbar:false,
@@ -19,6 +20,9 @@ App({
     longitude:'',
     latitude:''
   },
+  actCarCode:'',
+  carType:'',
+
   storeList:{
     actId:'',
     actCardType:''

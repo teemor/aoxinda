@@ -29,7 +29,7 @@
     </view>
   </view>
 </view>
-<view wx:if="carType" class="shop_goods_invite" bindtap="editCar">
+<view wx:if="{{carShow==true}}" class="shop_goods_invite" bindtap="editCar">
    <my_car model="{{carModel}}" car="{{car}}" bind:closeCar="closeCar"/>
 </view>
 <view class="space_list fz28 cl">

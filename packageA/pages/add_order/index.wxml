@@ -128,11 +128,11 @@
         <view class="cl high80 fz28">请输入6位数字密码</view>
         <view class="cl" style="height:90rpx;margin-left:20rpx">
           <input name="1"  class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="2"   bindinput="blura" focus="{{a}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="3"   bindinput="blurb" focus="{{b}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="4"   bindinput="blurc" focus="{{c}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="5"   bindinput="blurd" focus="{{d}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="6"  bindinput="blure" focus="{{e}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="2"   bindinput="bluro" focus="{{o}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="3"   bindinput="blurg" focus="{{g}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="4"   bindinput="blurh" focus="{{h}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="5"   bindinput="bluri" focus="{{i}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="6"  bindinput="blurp" focus="{{p}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
         </view>
       </view>
       <view bindtap="setPwd">
