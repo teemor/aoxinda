@@ -191,7 +191,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.findShopList(app.carType,'','',app.actCarCode,'')
+    this.findShopList(app.carType,'','',app.actCarCode,'','')
     console.log(app.address,'dizhi ')
     this.setData({
       location:app.address
