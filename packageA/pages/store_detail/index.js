@@ -161,7 +161,8 @@ Page({
       pageIndex: 1,
       pageSize: 10
     }).then(res => {
-      console.log(res.data.records)
+      console.log(res.data.records)//购物车
+      console.log(this.data.detailModel)
       let total_count = 0
       for(let i = 0;i < res.data.records.length;i++){
         total_count += res.data.records[i].cartNum
