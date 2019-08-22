@@ -7,15 +7,16 @@ let QQMapWX = require('../utils/qqmap-wx-jssdk')
 let constant = require('../utils/constant')
 let qqmapsdk;
 module.exports = {
-  findShopList: function(actCardType,serDictId,shopName,actCarCode,actId) {
+  findShopList: function(CarType,serDictId,shopName,actCarCode,actCardType,actId) {
     console.log(actCardType,'actCardType')
     request.findShopList({
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
       actCardType:actCardType,
+      carType:CarType,
       serDictId:serDictId?serDictId:'',
       shopName:shopName?shopName:'',
-      actCarCode:actCarCode?actCarCode:'',
+      actCarCode:actCarCode,
       actId:actId,
       // type: 1,
       pageSize: 5,
@@ -46,7 +47,7 @@ module.exports = {
           currentDistrict: res.result.address_component.district,
           address: res.result.address
         })
-        app.address = that.data.currentCity
+        app.address = that.data.address
       },
       fail: function(res) {
       }

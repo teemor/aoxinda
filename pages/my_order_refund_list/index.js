@@ -34,7 +34,6 @@ Page({
    */
   onLoad: function(options) {
     // let model = JSON.parse(decodeURIComponent(options.model))
-    console.log(options)
     request.selectMyBackOrderList().then(res => {
       this.setData({
         refundList: res

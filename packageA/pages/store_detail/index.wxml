@@ -36,8 +36,8 @@
     <view class="cl"></view>
   </view>
 </view>
-<view class="shop_goods_invite" bindtap="editCar">
-  <my_car model="{{carModel}}" car="{{car}}" />
+<view class="shop_goods_invite" bindtap="editCar" wx:if="{{ showMyCar }}">
+  <my_car model="{{carModel}}" car="{{car}}" bind:closeCar="onCloseCar" />
 </view>
 <view class="bgwhite">
   <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
@@ -55,9 +55,9 @@
         <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
           <image src="../../common/img/quarter.png" />
         </view>
-        <view class="card_text">
+        <view class="card_text" >
           <view class="fz28">{{item.name}}</view>
-          <view class="fz28 bold">¥{{item.actCardPrice}}/{{item.name[0]}}</view>
+          <view class="fz28 bold">¥{{item.actCardPrice}}</view>
         </view>
       </view>
     </view>

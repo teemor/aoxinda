@@ -26,3 +26,11 @@
   .service_contain{
     width: 460rpx;
   }
+  .slh{
+    width: 260rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+  }

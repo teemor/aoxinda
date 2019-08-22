@@ -14,21 +14,19 @@ Component({
    * 组件的初始数据
    */
   data: {
-    carShow: true
+
   },
   /**
    * 组件的方法列表
    */
   methods: {
     closeCar: function() {
-      this.setData({
-        carShow: false
-      })
+
       this.triggerEvent('closeCar','')
     },
     editCar: function() {
       wx.navigateTo({
-        url: '../../pages/my_car/index'
+        url: '/pages/my_car/index'
       })
     },
     /**

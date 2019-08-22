@@ -7,6 +7,7 @@ const app = getApp();
 Page({
   mixins: [find_car],
   data: {
+    showMyCar: true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     add: false,
     cartShow: false,
@@ -160,8 +161,15 @@ Page({
       pageIndex: 1,
       pageSize: 10
     }).then(res => {
+      console.log(res.data.records)//购物车
+      console.log(this.data.detailModel)
+      let total_count = 0
+      for(let i = 0;i < res.data.records.length;i++){
+        total_count += res.data.records[i].cartNum
+      }
       this.setData({
-        cartModel: res.data.records
+        cartModel: res.data.records,
+        count: total_count
       })
       let price = 0
       this.data.cartModel.forEach(item => {
@@ -188,20 +196,21 @@ Page({
     })
   },
   // 服务列表
-  findServiceList: function (shopid) {
+  findServiceList: function (shopid,code) {
     request.findShopDet({
+      actCarCode: code===0?'':app.actCarCode,
       shopId: shopid,
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
       userId: app.globalData.openId
     }).then(res => {
+      console.log(res)
       this.setData({
         shopId: shopid,
         detailModel: res.ser,
         cardModel: res.serCard,
         tel: res.shop.tel
       })
-
     })
   },
   onLoad: function (options) {
@@ -210,6 +219,7 @@ Page({
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'ai')
+      this.findServiceList(model.ID)
       this.setData({
         storemodel: model,
         ["commentForm.shop_id"]: model.id
@@ -316,5 +326,12 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  //删除车型过滤
+  onCloseCar(){
+    this.setData({
+      showMyCar: false
+    })
+    this.findServiceList(app.globalData.shopid, 0)
+  },
 })

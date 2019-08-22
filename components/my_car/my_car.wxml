@@ -1,4 +1,4 @@
-<view wx:if="{{carShow==true}}" class="shop_goods_box">
+<view class="shop_goods_box">
   <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/shop_bg.png" mode="aspectFit" />
   <view class="shop_car_contain" wx:if="{{car}}">
     <view class="shop_goods_invite_text fl">为您推荐适合 {{model.model}}...的服务</view>
