@@ -197,7 +197,7 @@ Page({
   // 服务列表
   findServiceList: function (shopid,code) {
     request.findShopDet({
-      actCarCode: code || app.actCarCode,
+      actCarCode: code===0?'':app.actCarCode,
       shopId: shopid,
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
@@ -331,6 +331,6 @@ Page({
     this.setData({
       showMyCar: false
     })
-    this.findServiceList(app.globalData.shopid, this.data.actCarCode)
+    this.findServiceList(app.globalData.shopid, 0)
   },
 })
