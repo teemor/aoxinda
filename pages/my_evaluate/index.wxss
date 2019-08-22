@@ -3,6 +3,11 @@ page {
   min-height: 100%;
   background-color: #f3f3f3;
 }
+.clear::after{
+  display: block;
+  content: "";
+  clear: both;
+}
 .dark_grey{
   color: #333333;
 }
@@ -85,4 +90,71 @@ page {
   top: 0;
   width: 70%;
   z-index: 999;
+}
+
+/*保养*/
+.maintain_inner{
+  padding: 10rpx 30rpx 10rpx;
+}
+.maintain_top{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-bottom:10rpx;
+}
+.maintain_top .fl{
+  width: 75%;
+}
+.maintain_top .fl .name{
+  display: block;
+  height: 59rpx;
+}
+.maintain_top .fr{
+  height: 80rpx;
+  width: 25%;
+}
+.maintain_top .fr .button{
+  display: inline-block;
+  padding: 0rpx 25rpx;
+  border: 1rpx solid #4e93f3;
+  border-radius: 37rpx;
+  height: 58rpx;
+  line-height: 20rpx;
+  color: #4e93f3;
+}
+.maintain_bottom{
+  background-color: #FAFAFA;
+  padding: 20rpx 20rpx;
+  border-radius:10rpx;
+  display: flex;
+  align-items: center;
+}
+.maintain_bottom .product_img{
+  width: 18%;
+}
+.maintain_bottom .product_img .p_img{
+  width: 100%;
+  height: 150rpx;
+}
+.maintain_bottom .detail{
+  flex:1;
+  overflow: hidden;
+  margin-left: 20rpx;
+}
+.maintain_bottom .detail .mt_name{
+  line-height: 42rpx;
+  display: block;
+}
+.maintain_bottom .total{
+  width: 18%;
+  position: relative;
+}
+.maintain_bottom .total .price{
+  position: absolute;
+  top: -90rpx;
+  right: 0rpx;
+}
+.maintain_bottom .total .serve_total{
+  position: absolute;
+  top: 60rpx;
+  right: 0rpx;
 }

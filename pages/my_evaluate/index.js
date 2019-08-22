@@ -20,7 +20,7 @@ Page({
       "pageIndex": 1,
       "pageSize": 10
     },
-    columns: ['洗车美容', '紧急救援'],
+    columns: ['洗车美容', '紧急救援','保养评价'],
     typeShow: false
   },
 
@@ -53,6 +53,8 @@ Page({
       ra = request.countConsumeComment;  //洗车美容
     } else if (this.data.commentType == 1) {
       ra = request.countHelpComment;     //道路救援
+    } else if (this.data.commentType == 2) {
+      ra = request.countMaintainComment  //保养评论
     }
     ra(model).then(res => {
       if (res.status == '200') {
@@ -74,6 +76,8 @@ Page({
       ra = request.selectConsumeComment;  //洗车美容
     } else if (this.data.commentType == 1){
       ra = request.selectHelpComment;     //道路救援
+    } else if (this.data.commentType == 2){
+      ra = request.selectMaintainComment; //保养评论
     }
     ra(model).then(res => {
       if (res.status == '200') {
@@ -218,6 +222,8 @@ Page({
           ra = request.selectConsumeComment;  //洗车美容
         } else if (that.data.commentType == 1) {
           ra = request.selectHelpComment;     //道路救援
+        } else if (that.data.commentType == 2) {
+          ra = request.selectMaintainComment; //保养评论
         }
       ra(this.data.form).then(res => {
         if (res.status == '200' && res.data.consumeList.length > 0) {

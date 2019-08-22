@@ -72,6 +72,38 @@
           </view>
         </view>
       </view>
+      <!-- 保养评论 -->
+      <view class='wrapper' wx:elif="{{evaluateList.length>0 && commentType == '2'}}">
+        <view class='outside' wx:for="{{evaluateList}}" wx:key="{{item.order_id}}">
+          <view class='maintain_inner'>
+            <view class='maintain_top fz30'>
+              <view class='fl'>
+                <text class='dark_grey'>{{item.shop_name}}</text>
+              </view>
+              <view class='fr'>
+                <text class='button'>
+                  评价晒单
+                </text>
+              </view>
+            </view>
+            <view class='maintain_bottom'>
+              <view class="product_img">
+                <image class='p_img' src="{{item.mallImg.path}}" />
+              </view>
+              <view class="detail s_grey fz24">
+                <text class="mt_name">技师：{{item.th_name}}</text>
+                <text class="mt_name">预约时间：{{item.order_at}}</text>
+                <text class="mt_name">{{item.car_no}}（{{item.car_kilm}}）</text>
+                <text class="mt_name"><text wx:for="{{item.serNames}}" wx:for-item="sn" wx:key="{{sn}}">{{sn.project_name}}</text></text>
+              </view>
+              <view class="total">
+                <text class="price">￥{{item.pay_money}}</text>
+                <text class="serve_total fz26">共<text>{{item.serNames.length}}</text>项服务</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
       <view wx:else>
         <view class="my_address_null">
           <image src="../../common/image/refund_null.png" />

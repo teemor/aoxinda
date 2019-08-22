@@ -472,6 +472,14 @@ export class Technician {
       data: model
     })
   }
+  //统计保养评论未评价/已评价数量
+  countMaintainComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/maintain/v1.0/countMaintainComment`,
+      method: `post`,
+      data: model
+    })
+  }
   //查询洗车评价列表
   selectConsumeComment = (model) => {
     return http.httpRequest({
@@ -484,6 +492,14 @@ export class Technician {
   selectHelpComment = (model) => {
     return http.httpRequest({
       url: `${IP_YBHTTP}/help/v1.0/selectHelpComment`,
+      method: `post`,
+      data: model
+    })
+  }
+  //查询保养评论列表
+  selectMaintainComment = (model) => {
+    return http.httpRequest({
+      url: `${IP_YBHTTP}/maintain/v1.0/selectMaintainComment`,
       method: `post`,
       data: model
     })
