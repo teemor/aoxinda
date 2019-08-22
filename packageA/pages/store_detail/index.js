@@ -7,6 +7,7 @@ const app = getApp();
 Page({
   mixins: [find_car],
   data: {
+    showMyCar: true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     add: false,
     cartShow: false,
@@ -194,8 +195,9 @@ Page({
     })
   },
   // 服务列表
-  findServiceList: function (shopid) {
+  findServiceList: function (shopid,code) {
     request.findShopDet({
+      actCarCode: code || app.actCarCode,
       shopId: shopid,
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
@@ -322,5 +324,12 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  //删除车型过滤
+  onCloseCar(){
+    this.setData({
+      showMyCar: false
+    })
+    this.findServiceList(app.globalData.shopid, this.data.actCarCode)
+  },
 })

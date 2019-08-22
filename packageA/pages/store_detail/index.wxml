@@ -36,8 +36,8 @@
     <view class="cl"></view>
   </view>
 </view>
-<view class="shop_goods_invite" bindtap="editCar">
-  <my_car model="{{carModel}}" car="{{car}}" />
+<view class="shop_goods_invite" bindtap="editCar" wx:if="{{ showMyCar }}">
+  <my_car model="{{carModel}}" car="{{car}}" bind:closeCar="onCloseCar" />
 </view>
 <view class="bgwhite">
   <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
