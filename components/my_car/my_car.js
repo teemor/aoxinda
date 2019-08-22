@@ -26,7 +26,7 @@ Component({
     },
     editCar: function() {
       wx.navigateTo({
-        url: '../../pages/my_car/index'
+        url: '/pages/my_car/index'
       })
     },
     /**
