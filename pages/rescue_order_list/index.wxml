@@ -15,7 +15,7 @@
             <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
             <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> </view>
         </view>
-        <view wx:for="{{rescue_all}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{rescue_all.length>=1}}">
+        <view wx:for="{{rescue_all}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.id}}" wx:if="{{rescue_all.length>=1}}">
           <view class='redundant'></view>
           <view class='service_title'>
             <view class='service_number'>订单编号：{{item.order_code}}</view>
@@ -68,7 +68,7 @@
             <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
             <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> </view>
         </view>
-        <view wx:for="{{service}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{service.length>=1}}">
+        <view wx:for="{{service}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.id}}" wx:if="{{service.length>=1}}">
           <view class='redundant'></view>
           <view class='service_title'>
             <view class='service_number'>订单编号：{{item.order_code}}</view>
@@ -119,7 +119,7 @@
             <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
           </view>
         </view>
-        <view wx:for="{{inService}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{inService.length>=1}}">
+        <view wx:for="{{inService}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.id}}" wx:if="{{inService.length>=1}}">
           <view class='redundant'></view>
           <view class='service_title'>
             <view class='service_number'>订单编号：{{item.order_code}}</view>
@@ -167,7 +167,7 @@
             <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
           </view>
         </view>
-        <view wx:for="{{completed}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{completed.length>=1}}">
+        <view wx:for="{{completed}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.id}}" wx:if="{{completed.length>=1}}">
           <view class='redundant'></view>
           <view class='service_title'>
             <view class='service_number'>订单编号：{{item.order_code}}</view>
@@ -214,7 +214,7 @@
             <image src="../../common/image/refund_null.png" style="width:240rpx;height:200rpx;" class="no_record"></image>
             <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text> </view>
         </view>
-        <view wx:for="{{refunded}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.order_id}}" wx:if="{{refunded.length>=1}}">
+        <view wx:for="{{refunded}}" wx:key="{{index}}" class='service_box' bindtap='orderDetails' data-name="{{item.id}}" wx:if="{{refunded.length>=1}}">
           <view class='redundant'></view>
           <view class='service_title'>
             <view class='service_number'>订单编号：{{item.order_code}}</view>
@@ -274,7 +274,7 @@
           <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
         </view>
       </view>
-      <view wx:for="{{payment}}" wx:key="{{index}}" class='service_box' wx:if="{{payment.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}">
+      <view wx:for="{{payment}}" wx:key="{{index}}" class='service_box' wx:if="{{payment.length>=1}}" bindtap="batteryDetails" data-name="{{item.id}}">
         <view class='redundant'></view>
         <view class='battery_title'>
           <view class='service_number'>订单编号:{{item.order_code}}</view>
@@ -306,7 +306,7 @@
           <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
         </view>
       </view>
-      <view wx:for="{{payment}}" wx:key="{{index}}" class='service_box' wx:if="{{payment.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}">
+      <view wx:for="{{payment}}" wx:key="{{index}}" class='service_box' wx:if="{{payment.length>=1}}" bindtap="batteryDetails" data-name="{{item.id}}">
         <view class='redundant'></view>
         <view class='battery_title'>
           <view class='service_number'>订单编号:{{item.order_code}}</view>
@@ -337,7 +337,7 @@
           <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
         </view>
       </view>
-      <view wx:for="{{install}}" wx:key="{{index}}" wx:if="{{install.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}" class='service_box'>
+      <view wx:for="{{install}}" wx:key="{{index}}" wx:if="{{install.length>=1}}" bindtap="batteryDetails" data-name="{{item.id}}" class='service_box'>
         <view class='redundant'></view>
         <view class='battery_title'>
           <view class='service_number'>订单编号:{{item.order_code}}</view>
@@ -362,7 +362,7 @@
           <text style="display:inline-block;text-align:center;width:100%;line-height:30rpx;font-size:28rpx;color:#999">~ 暂无记录 ~</text>
         </view>
       </view>
-      <view wx:for="{{already_install}}" wx:key="{{index}}" wx:if="{{already_install.length>=1}}" bindtap="batteryDetails" data-name="{{item.order_id}}" class='service_box'>
+      <view wx:for="{{already_install}}" wx:key="{{index}}" wx:if="{{already_install.length>=1}}" bindtap="batteryDetails" data-name="{{item.id}}" class='service_box'>
         <view class='redundant'></view>
         <view class='battery_title'>
           <view class='service_number'>订单编号:{{item.order_code}}</view>

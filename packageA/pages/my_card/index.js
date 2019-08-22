@@ -30,6 +30,7 @@ Page({
     tabIndex: 0   //当前tabs页签下标
   },
   buyCard:function(){
+    console.log(this.data.cardModel)
     let model = encodeURIComponent(JSON.stringify(this.data.cardModel))
     wx.navigateTo({
      url: `../add_order/index?card=${model}`,

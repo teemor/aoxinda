@@ -20,7 +20,7 @@ export class store {
   // 卡牌或者单次洗车购买详情
   findPayType = (model) => {
     return http.httpRequest({
-      url: `${IP_YXHTTP}/findPayType`,
+      url: `http://192.168.31.158:9015/wash/v1.0/findPayType`,
       method: `post`,
       data: model
     })

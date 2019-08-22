@@ -1,0 +1,436 @@
+<!--pages/order_details/index.wxml-->
+<view class="order_header" style="background-image:url(../../common/image/order_background.png)">
+
+  <!-- <view class="order_header_title"> {{orderData.order_status}} </view> -->
+  <view class="order_header_image" wx:if="{{orderData.order_status=='待付款'}}">
+    <view class="order_status_title">待付款</view>
+    <view class="order_status_text">订单为你保留 24 : 59 : 60，超时后将自动关闭。</view>
+    <image src="../../common/image/obligation.png" class="order_status_img"></image>
+  </view>
+  <view class="order_header_image" wx:if="{{orderData.order_status=='待服务'}}">
+    <image src="../../common/image/rescue_await.png"></image>
+  </view>
+  <view class="order_header_image" wx:if="{{orderData.order_status=='已派单'}}">
+    <image src="../../common/image/tire_await.png"></image>
+  </view>
+  <view class="order_header_image" wx:if="{{orderData.order_status=='技师已出发'}}">
+    <image src="../../common/image/tire_await.png"></image>
+  </view>
+  <view class="order_header_image" wx:if="{{orderData.order_status=='已完成'}}">
+    <image src="../../common/image/tire_await.png"></image>
+  </view>
+  <view class="order_header_image" wx:if="{{orderData.order_status=='已取消'}}">
+    <image src="../../common/image/tire_await.png"></image>
+  </view>
+  <view class="order_header_image" wx:if="{{orderData.order_status=='已退款'}}">
+    <image src="../../common/image/tire_await.png"></image>
+  </view>
+</view>
+<!-- <view class='header'>
+  <view>
+    <view class='header_portrait'>
+      <image src='../../common/image/head_portrait.png'></image>
+    </view>
+    <view class="header_title">
+      <view>救援客户：{{orderData.user_name}}</view>
+      <view>客户手机：{{orderData.user_phone}}</view>
+    </view>
+    <view class='phone' bindtap="ringUp">
+      <image src='../../common/image/phone.png'></image>
+    </view>
+  </view>
+</view> -->
+<view class='content_box'>
+  <view class='arow content_box_title'>
+    <view class="content_box_title_left"></view> 服务项目</view>
+  <view class='arow'>
+    <view>{{orderData.type}}</view>
+    <view class='cost'>￥{{orderData.pay_money}}</view>
+  </view>
+</view>
+  <!-- <view class='service_type'>
+    <view class='alarm_clock'>
+      <image src='../../common/image/time.png'></image>
+    </view>
+    <view>{{orderData.help_at}}</view>
+  </view>
+  <view class='new_add_item'>
+    <view class='alarm_clock'>
+      <image src='../../common/image/address.png'></image>
+    </view>
+    <view>救援门店：{{orderData.help_address}}</view>
+  </view> -->
+
+<view class='content_box'>
+  <view class='arow'>
+    <view>订单编号</view>
+    <view class="content_little">{{orderData.order_code}}</view>
+  </view>
+  <view class='arow'>
+    <view>下单时间</view>
+    <view class="content_little">{{orderData.help_at}}</view>
+  </view>
+  <!-- <view class='arow_last'>
+    <view>派单时间</view>
+    <view class="content_little">{{orderData.create_at}}</view>
+  </view> -->
+</view>
+<!-- //待付款 -->
+<view wx:if="{{orderData.order_status =='待服务'}}">
+  <!-- //搭电 -->
+  <view wx:if="{{orderData.type=='搭电'}}">
+    <view class='content_box'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+
+    </view>
+    <view class='start_once'>取消订单</view>
+    <view class='start_once'>去付款</view>
+  </view>
+
+  <!-- 拖车 -->
+  <view wx:if="{{orderData.type=='拖车'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last_trie' bindtap='skipMap'>
+        <view>
+          <view class='content_box_title'>起点</view>
+          <view class="content_little">{{orderData.help_address}}</view>
+        </view>
+      </view>
+      <view class='arow_last' bindtap='skipMapLast' data-lng="{{orderData.lng_final}}" data-lat="{{orderData.lat_final}}">
+        <view>
+          <view class='content_box_title'>终点</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='start_once' bindtap='startOnce'>立即出发</view>
+  </view>
+
+  <!-- 换胎 -->
+  <view wx:if="{{orderData.type=='换胎'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+    <view class='start_once' bindtap='startOnce'>立即出发</view>
+  </view>
+</view>
+<!-- 待服务 -->
+<view wx:if="{{orderData.order_status =='服务中'}}">
+  <!-- //搭电 -->
+  <view wx:if="{{orderData.type=='搭电'}}">
+    <view class='content_box'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">
+            <image src='../../common/image/address.png' style="width:20rpx;height:25rpx;margin-right:10rpx"></image>距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+
+    </view>
+    <view class='start_once' bindtap="confirmCompleted">确认完工</view>
+  </view>
+
+  <!-- 拖车 -->
+  <view wx:if="{{orderData.type=='拖车'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last_trie' bindtap='skipMap'>
+        <view>
+          <view class='content_box_title'>起点</view>
+          <view class="content_little">{{orderData.help_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+      <view class='arow_last' bindtap='skipMapLast' data-lng="{{orderData.lng_final}}" data-lat="{{orderData.lat_final}}">
+        <view>
+          <view class='content_box_title'>终点</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.end_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+    <view class='start_once' bindtap='confirmCompleted'>确认完工</view>
+  </view>
+
+  <!-- 换胎 -->
+  <view wx:if="{{orderData.type=='换胎'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+    <view class='start_once' bindtap='confirmCompleted'>确认完工</view>
+  </view>
+</view>
+<!-- 服务中 -->
+<view wx:if="{{orderData.order_status =='已完成'}}">
+  <!-- //搭电 -->
+  <view wx:if="{{orderData.type=='搭电'}}">
+    <view class='content_box'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+
+    </view>
+    <view class='content_box' wx:if="{{orderData.goodsData.length > 0}}">
+      <view class='arow'>
+        <view class='content_box_title'>
+          <view class="content_box_title_left"></view>电瓶订单</view>
+
+      </view>
+      <view class='arow' bindtap="goGoodsList">
+        <view>订单编号</view>
+        <view>{{orderData.goodsData[0].order_goods_code}}
+          <view class="gogogo">
+            <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 拖车 -->
+  <view wx:if="{{orderData.type=='拖车'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last_trie' bindtap='skipMap'>
+        <view>
+          <view class='content_box_title'>起点</view>
+          <view class="content_little">{{orderData.help_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+      <view class='arow_last' bindtap='skipMapLast' data-lng="{{orderData.lng_final}}" data-lat="{{orderData.lat_final}}">
+        <view>
+          <view class='content_box_title'>终点</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.end_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 换胎 -->
+  <view wx:if="{{orderData.type=='换胎'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 已完成 -->
+<view wx:if="{{orderData.order_status =='已退款'}}">
+  <!-- //搭电 -->
+  <view wx:if="{{orderData.type=='搭电'}}">
+    <view class='content_box_refund'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 拖车 -->
+  <view wx:if="{{orderData.type=='拖车'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last_trie' bindtap='skipMap'>
+        <view>
+          <view class='content_box_title'>起点</view>
+          <view class="content_little">{{orderData.help_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+      <view class='arow_last' bindtap='skipMapLast' data-lng="{{orderData.lng_final}}" data-lat="{{orderData.lat_final}}">
+        <view>
+          <view class='content_box_title'>终点</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.end_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 换胎 -->
+  <view wx:if="{{orderData.type=='换胎'}}">
+    <view class='content_box_trie'>
+      <view class='arow'>
+        <view>车型</view>
+        <view class="content_little">{{orderData.car_type}}</view>
+      </view>
+      <view class='arow'>
+        <view>车牌号</view>
+        <view class="content_little">{{orderData.car_no}}</view>
+      </view>
+      <view class='arow_last' bindtap='skipMap'>
+        <view>
+          <view class=''>救援位置</view>
+          <view class="content_little">{{orderData.final_address}}</view>
+          <view class="content_little">距您{{orderData.start_add}}km</view>
+        </view>
+        <view class="gogogo">
+          <image src="../../common/image/more.png" style="width:6px;height:9px;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <view class="ok" style="display:{{ok?'block':'none'}}">
+  <view class='ok_box'>
+    <view class='ok_text'>{{hint}}</view>
+  </view>
+</view> -->

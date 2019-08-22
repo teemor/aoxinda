@@ -110,6 +110,7 @@ Page({
     this.setData({
       carShow: false
     })
+    console.log(this.data.carShow)
  this.findShopList('', '', '','',this.data.actCarType, this.data.actId?this.data.actId:'')
   },
   /**

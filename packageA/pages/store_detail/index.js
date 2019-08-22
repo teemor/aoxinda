@@ -201,13 +201,13 @@ Page({
       lat: app.globalData.latitude,
       userId: app.globalData.openId
     }).then(res => {
+      console.log(res)
       this.setData({
         shopId: shopid,
         detailModel: res.ser,
         cardModel: res.serCard,
         tel: res.shop.tel
       })
-
     })
   },
   onLoad: function (options) {
@@ -216,6 +216,7 @@ Page({
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'ai')
+      this.findServiceList(model.ID)
       this.setData({
         storemodel: model,
         ["commentForm.shop_id"]: model.id

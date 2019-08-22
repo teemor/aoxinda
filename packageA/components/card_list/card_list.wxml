@@ -9,9 +9,9 @@
   </view>
   <view class="fl service_contain">
     <view class="service_box fl">
-      <view class="fz28">{{item.actName}}</view>
+      <view class="fz28 slh">{{item.actName}}</view>
       <view class="red fz30" style="margin-top:20rpx">
-        <span class="fz24">¥</span>{{payType==0?item.actPrice:item.actCardPrice}}</view>
+        <span class="fz24">¥</span>{{item.actPrice?item.actPrice:item.actCardPrice}}</view>
     </view>
     <view class="add_img fr">
       <van-stepper value="{{item.cartNum}}" bind:change="numChange" wx:if="{{add==true}}" />

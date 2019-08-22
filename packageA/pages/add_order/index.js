@@ -31,7 +31,9 @@ Page({
       name: '金麦卡',
       type: 1
     }],
-    codeBtn: '获取验证码'
+    codeBtn: '获取验证码',
+    totalPrice:0,
+    totalCard:0
   },
 
   /**
@@ -201,7 +203,7 @@ Page({
     })
   },
   onLoad: function(options) {
-
+    console.log(options)
     let phone = app.globalData.phoneNum
     console.log(phone, '电话')
     var mphone = phone.substring(0, 3) + '****' + phone.substring(7);
@@ -266,7 +268,10 @@ Page({
       this.setData({
         cardModel: model[0],
         shopId: model[0].shopId,
+        totalCard: model[0].actCardPrice,
+        totalPrice:model[0].actCardPrice
       })
+      console.log(this.data.totalCard, this.data.totalPrice)
       let orderDetails = model.map(item => {
         return {
           activityId: item.actId,

@@ -1,5 +1,5 @@
 <view class='card_top'>
-  <view class='card_bag' style='background-image:url(../../../common/image/mm_card_bigbg.png)'>
+  <view class='card_bag'  style='background-image:url(https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/mm_card_bigbg.png)'>
     <view class='card_bag_top'>
       <view class='card_title'>{{cardModel[0].actName}}</view>
       <view class='card_name'>{{cardModel[0].name}}</view>
@@ -11,7 +11,9 @@
       </view>
     </view>
     <view wx:if="{{cardModel[0].actCardType == 3}}" class="card_logo">
-      <image src="../../../common/image/mounth.png" style="width:75rpx;height:75rpx" ></image>
+      <image wx:if="{{cardModel[0].actDayTime == '1月'}}" src="../../../common/image/mounth.png" style="width:75rpx;height:75rpx" ></image>
+      <image wx:if="{{cardModel[0].actDayTime == '3月'}}" src="../../../common/image/season.png" style="width:75rpx;height:75rpx" ></image>
+      <image wx:if="{{cardModel[0].actDayTime == '12月'}}" src="../../../common/image/year.png" style="width:75rpx;height:75rpx" ></image>
     </view>
   </view>
   <view class="card_annotation">
@@ -55,7 +57,7 @@
 <view class='card_record card_item'>
   <van-tabs color="#4e93f3" active="{{active}}" sticky bind:click="tabClick" bind:change="onChange">
     <van-tab title="服务详情">
-      <view>
+      <view style="padding:18rpx;margin-bottom:65rpx">
         <rich-text nodes="{{cardModel[0].actCon}}">
         </rich-text>
       </view>
@@ -65,7 +67,7 @@
       </van-cell>
     </van-tab>
     <van-tab title="购买须知">
-      <view>
+      <view style="padding:18rpx;margin-bottom:65rpx">
         <rich-text nodes="{{cardModel[0].actPayCon}}">
         </rich-text>
       </view>

@@ -180,13 +180,13 @@ Page({
       tabs_change: e.detail.index
     })
   },
-  // //跳转订单详情
-  // orderDetails: function (e) {
-  //   wx.navigateTo({
-  //     url: '../order_details/index?order_id=' + e.currentTarget.dataset.name,
-  //   })
-  // },
-  // //跳转电瓶详情
+  //跳转订单详情
+  orderDetails: function (e) {
+    wx.navigateTo({
+      url: '../order_details/index?order_id=' + e.currentTarget.dataset.name,
+    })
+  },
+  //跳转电瓶详情
   // batteryDetails: function (e) {
   //   wx.navigateTo({
   //     url: '../battery_details/index?order_id=' + e.currentTarget.dataset.name,
