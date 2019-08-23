@@ -13,7 +13,7 @@
     <view class="fl">
       购买门店</view>
     <view class="fr" style="color:#999">
-      {{shop_name}}
+      {{shop_name || shopName}}
     </view>
     <view class="cl"></view>
   </view>

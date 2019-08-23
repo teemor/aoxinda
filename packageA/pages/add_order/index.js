@@ -272,7 +272,8 @@ Page({
         cardModel: model[0],
         shopId: model[0].shopId,
         totalCard: model[0].actCardPrice,
-        totalPrice:model[0].actCardPrice
+        totalPrice:model[0].actCardPrice,
+        shopName: model[0].shopName
       })
       console.log(this.data.totalCard, this.data.totalPrice)
       let orderDetails = model.map(item => {
@@ -323,11 +324,14 @@ Page({
     this.setData({
       [i]: detail.num
     })
-    console.log(this.data.orderDetails)
+    console.log(detail)
+    // this.setData({
+    //   totalPrice: detail.item.actPrice * detail.num
+    // })
     request.addCart({
       shopId: this.data.shopId,
       userId: app.globalData.openId,
-      activityId: detail.item !== undefined ? detail.item.activityId : detail.activityId,
+      activityId: detail.item !== undefined ? detail.item.activityId || detail.item.actId: detail.activityId,
       cartNum: detail.num,
       price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
     }).then(res => {
@@ -340,10 +344,11 @@ Page({
         this.setData({
           serviceModel: res.data.records
         })
+        console.log(this.data.serviceModel)
         let totalPrice = 0
         let totalCard = 0
         this.data.serviceModel.forEach(item => {
-          totalPrice += item.cartNum * item.actPrice,
+          totalPrice += item.cartNum * item.actCardPrice,
             totalCard += item.cartNum * item.actCardPrice
         })
         this.setData({
