@@ -81,7 +81,10 @@
                 <text class='dark_grey'>{{item.shop_name}}</text>
               </view>
               <view class='fr'>
-                <text class='button'>
+                <text class='button' wx:if="{{item.is_comment == 1}}" bindtap="goEvaluate" data-detailtype="3" data-status="1" data-sers="{{[item.order_id]}}">
+                  查看评价
+                </text>
+                <text class='button' wx:else bindtap="goEvaluate" data-detailtype="3" data-status="0" data-sers="{{[item.order_id]}}" data-ordercode="{{item.order_code}}" data-shopid="{{item.shop_id}}">
                   评价晒单
                 </text>
               </view>

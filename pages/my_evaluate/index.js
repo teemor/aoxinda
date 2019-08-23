@@ -104,7 +104,7 @@ Page({
     let relation_lists = [];
     let sers = e.currentTarget.dataset['sers'];
     for(let i in sers){
-      relation_lists.push(sers[i].id || sers[i]); //洗车 || 救援
+      relation_lists.push(sers[i].id || sers[i]); //洗车 || 救援,保养
     }
     let urlPath = "../my_evaluate_record/index?ordercode=" + e.currentTarget.dataset['ordercode'] + "&shopid=" + e.currentTarget.dataset['shopid'] + "&";
     if (e.currentTarget.dataset['status'] == 1){
