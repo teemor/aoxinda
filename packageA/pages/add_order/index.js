@@ -216,6 +216,9 @@ Page({
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'shopid')
+      this.setData({
+        shop_name: model[0].shop_name
+      })
       request.findcartList({
         userId: app.globalData.openId,
         shopId: model[0].shopId,
