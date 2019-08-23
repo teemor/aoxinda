@@ -24,13 +24,13 @@ Page({
     ],
     form: {
       "user_id": "",
-      "detail_type": "", //1代表洗车 2代表救援
+      "detail_type": "", //1代表洗车 2代表救援 3代表保养
       "record_lists": [
         { "level": 0, "name": 2 },  //2、施工专业性 3、施工速度 4、服务顾问态度 5、救援客服态度
         { "level": 0, "name": 3 }, 
         { "level": 0, "name": 4 }
       ],
-      "relation_lists": [], //消费表id/救援订单表id
+      "relation_lists": [], //消费表id/救援订单表id/保养订单表id
       "detail_id": "",
       "content": "",
       "file_lists": [],
@@ -154,8 +154,12 @@ Page({
       return false;
     }
     if (this.data.form.record_lists[2].level == 0) {
+      var showTitle = '请添写服务顾问态度评分';
+      if (this.data.form.detail_type == 2) {  //救援
+        showTitle = '请添写救援客服态度评分';
+      }
       wx.showToast({
-        title: '请添写服务顾问态度评分',
+        title: showTitle,
         icon: 'none',
         duration: 2000
       })

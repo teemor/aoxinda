@@ -475,7 +475,7 @@ export class Technician {
   //统计保养评论未评价/已评价数量
   countMaintainComment = (model) => {
     return http.httpRequest({
-      url: `${IP_YBHTTP}/maintain/v1.0/countMaintainComment`,
+      url: `http://192.168.31.156:9015/maintain/v1.0/countMaintainComment`,
       method: `post`,
       data: model
     })
@@ -499,7 +499,7 @@ export class Technician {
   //查询保养评论列表
   selectMaintainComment = (model) => {
     return http.httpRequest({
-      url: `${IP_YBHTTP}/maintain/v1.0/selectMaintainComment`,
+      url: `http://192.168.31.156:9015/maintain/v1.0/selectMaintainComment`,
       method: `post`,
       data: model
     })
@@ -507,7 +507,7 @@ export class Technician {
   //添加评论
   addComment = (model) => {
     return http.httpRequest({
-      url: `${IP_YBHTTP}/comment/v1.0/addComment`,
+      url: `http://192.168.31.156:9015/comment/v1.0/addComment`,
       method: `post`,
       data: model
     })
@@ -515,7 +515,7 @@ export class Technician {
   //查看评论
   selectComment = (model) => {
     return http.httpRequest({
-      url: `${IP_YBHTTP}/comment/v1.0/selectConsumeComment`,
+      url: `http://192.168.31.156:9015/comment/v1.0/selectConsumeComment`,
       method: `post`,
       data: model
     })

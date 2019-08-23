@@ -56,7 +56,7 @@ Page({
         this.setData({
           qualityData: rcList,
           describe: res.data.content,
-          file_lists: res.data.fileList
+          file_lists: res.data.fileList || []
         })
       }else{
         wx.showToast({
