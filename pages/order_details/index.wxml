@@ -10,24 +10,32 @@
   <view class="order_header_image" wx:if="{{orderData.order_status=='待服务'}}">
     <view class="order_status_title">待服务</view>
     <view class="order_status_text">请耐心等待救援，感谢您的支持与关注！</view>
-    <image src="../../common/image/rescue_await.png"></image>
+    <image src="../../common/image/for_service.png"></image>
   </view>
   <view class="order_header_image" wx:if="{{orderData.order_status=='已派单'}}">
   <view class="order_status_title">已派单</view>
     <view class="order_status_text">请耐心等待救援，感谢您的支持与关注！</view>
-    <image src="../../common/image/tire_await.png"></image>
+    <image src="../../common/image/sent.png"></image>
   </view>
   <view class="order_header_image" wx:if="{{orderData.order_status=='技师已出发'}}">
-    <image src="../../common/image/tire_await.png"></image>
+  <view class="order_status_title">技师已出发</view>
+    <view class="order_status_text">请耐心等待救援，感谢您的支持与关注！</view>
+    <image src="../../common/image/sent.png"></image>
   </view>
   <view class="order_header_image" wx:if="{{orderData.order_status=='已完成'}}">
-    <image src="../../common/image/tire_await.png"></image>
+  <view class="order_status_title">已完成</view>
+    <view class="order_status_text">已完成救援，感谢您的支持与关注！</view>
+    <image src="../../common/image/off_stocks.png"></image>
   </view>
   <view class="order_header_image" wx:if="{{orderData.order_status=='已取消'}}">
-    <image src="../../common/image/tire_await.png"></image>
+  <view class="order_status_title">已取消</view>
+    <view class="order_status_text">超时未支付，欢迎下次购买。</view>
+    <image src="../../common/image/canceled.png"></image>
   </view>
   <view class="order_header_image" wx:if="{{orderData.order_status=='已退款'}}">
-    <image src="../../common/image/tire_await.png"></image>
+  <view class="order_status_title">已退款</view>
+    <view class="order_status_text">感谢您的支持与关注！</view>
+    <image src="../../common/image/yrefund.png"></image>
   </view>
 </view>
 <view class='content_box'>

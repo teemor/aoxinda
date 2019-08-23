@@ -44,7 +44,7 @@ export class store {
   // 支付订单接口
   pay = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbpay/pay`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbpay/pay`,
       method: `post`,
       data: model
     })
@@ -52,7 +52,7 @@ export class store {
   // 支付成功
   noticeSuccessfulPayment = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulPayment`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulPayment`,
       method: `post`,
       data: model
     })
@@ -84,7 +84,7 @@ export class store {
   // 订单详情
   findOrderDetailsByOrderId = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcborder/findOrderDetailsByOrderId`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcborder/findOrderDetailsByOrderId`,
       method: `post`,
       data: model
     })
@@ -92,7 +92,7 @@ export class store {
   // 手动退款
   backMoney = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbpay/backMoneyService`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbpay/backMoneyService`,
       method: `post`,
       data: model
     })
