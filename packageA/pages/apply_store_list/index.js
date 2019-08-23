@@ -65,6 +65,12 @@ Page({
           CleanStore: res.data
         })
       })
+    } else if (options.actId){
+      request.findAllShop({ actId: options.actId, log: app.globalData.longitude, lat: app.globalData.latitude }).then(res => {
+        this.setData({
+          CleanStore: res.data
+        })
+      })
     }
   },
   serviceDetail: function ({ detail }) {

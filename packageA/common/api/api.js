@@ -2,7 +2,7 @@ import {
   HttpServer
 } from "../../../utils/method"
 const http = new HttpServer()
-export const IP_YXHTTP = `http://192.168.31.184:9015/wash/v1.0` //前三
+export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.184:9015/wash/v1.0`  //186
 export const IP_YBHTTP = `http://192.168.31.184:9015`
 export const IP_LYHTTP = `http://192.168.31.184:9015/myPay/v1.0` // 220
@@ -205,6 +205,14 @@ export class store {
   cardDetShop = (model) => {
     return http.httpRequest({
       url: `${IP_YXHTTP}/cardDetShopQ`,
+      method: `post`,
+      data: model
+    })
+  }
+  // 卡卷全部门店
+  findAllShop = (model) => {
+    return http.httpRequest({
+      url: `${IP_YXHTTP}/findAllShop`,
       method: `post`,
       data: model
     })
