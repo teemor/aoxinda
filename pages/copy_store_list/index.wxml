@@ -4,7 +4,7 @@
   </van-search>
 </view>
 <view class="fz28 bgwhite" style="top:114rpx;height:80rpx;line-height:80rpx;position:fixed;z-index:334;">
-  <view class="fl sort tc">
+  <!-- <view class="fl sort tc">
     <view class="sort_type" bindtap="allCity">
       <view class="fl">{{city==''?'全城':city}}</view>
       <view class="fl sort_image">
@@ -12,6 +12,7 @@
       </view>
     </view>
   </view>
+-->
   <view class="fl sort tc">
     <view class="sort_type" bindtap="allService">
       <view class="fl" style="width:120rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{serviceType==''?'洗车美容':serviceType}}</view>

@@ -4,12 +4,15 @@
   </view>
   <view class="fl service_contain">
     <view class="service_box fl">
-      <view class="fz28">{{item.actName}}</view>
+      <view class="fz28">{{item.actName}}  </view>
       <view class="red fz30" style="margin-top:20rpx">
-        <span class="fz24">¥</span>{{payType==0?item.actPrice:item.actCardPrice}}</view>
+        <span class="fz24">¥ </span>{{payType==0?item.actPrice:item.actCardPrice}}</view>
     </view>
     <view class="add_img fr">
-      <van-stepper min="0" value="{{item.cartNum}}" bind:change="numChange" wx:if="{{add==true&&item.cartNum!=0}}" />
+    <view wx:if="{{add==true&&item.cartNum!=0}}">
+ 
+    <van-stepper wx:if="{{order==true}}" min="1" value="{{item.cartNum}}" bind:change="numChange" />
+    <van-stepper wx:else min="0" value="{{item.cartNum}}" bind:change="numChange"  /></view>
       <image src="../../common/img/add.png" wx:elif="{{add==false}}" bindtap="addNum" />
     </view>
   </view>

@@ -6,11 +6,11 @@ const request = new store
 const app = getApp();
 Page({
   mixins: [find_car],
-  data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+  data: { 
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'], 
     add: false,
     cartShow: false,
-    totalPrice: 0,
+    totalPrice: 0, 
     cartIcon: false,
     cardShow: true,
     commentList: [], //评论
@@ -206,6 +206,7 @@ Page({
   },
   onLoad: function (options) {
     this.carList()
+    this.onShow()
     console.log(options, 'options')
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
@@ -214,7 +215,6 @@ Page({
         storemodel: model,
         ["commentForm.shop_id"]: model.id
       })
-      this.onShow()
     }
   },
 
@@ -250,6 +250,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(app.globalData.shopid,'hhh')
     if (app.globalData.shopid) {
       this.findServiceList(app.globalData.shopid)
     }

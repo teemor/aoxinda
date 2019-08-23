@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    order:true,
     a:false,
     b:false,
     c:false,
@@ -104,11 +105,12 @@ Page({
           falseGold: true,
           wxPay: false
         })
+        wx.navigateTo({
+          url: '../../../pages/stored_value_card/index',
+        })
       }
-    } else {
-      wx.navigateTo({
-        url: '../../../pages/stored_value_card/index',
-      })
+    } else{
+     
     }
   },
   /**

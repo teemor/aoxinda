@@ -4,7 +4,7 @@
   </view>
   <view wx:else>
     <view wx:for="{{serviceModel}}" wx:key="{{item}}">
-      <service_list item="{{item}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" />
+      <service_list order="order" item="{{item}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" />
     </view>
   </view>
 </view>
