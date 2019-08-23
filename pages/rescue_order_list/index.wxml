@@ -42,7 +42,7 @@
                   <view class="time_img ">
                     <image src="../../common/image/time.png "></image>
                   </view>
-                  <view>{{item.help_at}}</view>
+                  <view>{{item.create_at}}</view>
                 </view>
                 <view class="address ">
                   <view class="address_img ">
@@ -91,12 +91,7 @@
                 </view>
               </view>
               <view wx:else>
-                <view class="time">
-                  <view class="time_img ">
-                    <image src="../../common/image/time.png "></image>
-                  </view>
-                  <view>{{item.help_at}}</view>
-                </view>
+                
                 <view class="address ">
                   <view class="address_img ">
                     <image src="../../common/image/address.png "></image>
@@ -142,12 +137,6 @@
                 </view>
               </view>
               <view wx:else>
-                <view class="time">
-                  <view class="time_img ">
-                    <image src="../../common/image/time.png "></image>
-                  </view>
-                  <view>{{item.help_at}}</view>
-                </view>
                 <view class="address ">
                   <view class="address_img ">
                     <image src="../../common/image/address.png "></image>
@@ -190,12 +179,6 @@
                 </view>
               </view>
               <view wx:else>
-                <view class="time">
-                  <view class="time_img ">
-                    <image src="../../common/image/time.png "></image>
-                  </view>
-                  <view>{{item.help_at}}</view>
-                </view>
                 <view class="address ">
                   <view class="address_img ">
                     <image src="../../common/image/address.png "></image>
@@ -241,7 +224,7 @@
                   <view class="time_img ">
                     <image src="../../common/image/time.png "></image>
                   </view>
-                  <view>{{item.help_at}}</view>
+                  <view>{{item.create_at}}</view>
                 </view>
                 <view class="address ">
                   <view class="address_img ">

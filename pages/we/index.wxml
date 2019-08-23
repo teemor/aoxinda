@@ -46,7 +46,7 @@
         </view>
         <view class="mine_btn_text tc fz28">洗车订单</view>
       </view>
-      <view class="fl" bindtap="myEvaluate">
+      <view class="fl" bindtap="myRescue">
         <view class="mine_btn">
           <image src="https://maichefu.oss-cn-beijing.aliyuncs.com/ToShop/my_Rescue.png" />
         </view>

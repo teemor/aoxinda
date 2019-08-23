@@ -10,7 +10,7 @@
     </view>
     <view class="add_img fr" >
     <!-- add==true -->
-      <van-stepper value="{{item.cartNum || 1}}" min="0" bind:change="numChange" wx:if="{{item.cartNum > 0 ||  add==true}}" />
+      <van-stepper value="{{item.cartNum == 0?1:item.cartNum}}" min="0" bind:change="numChange"  wx:if="{{item.cartNum > 0 ||  add==true}}" />
       <image src="../../common/img/add.png" wx:else bindtap="addNum" />
     </view>
   </view>

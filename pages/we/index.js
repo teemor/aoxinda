@@ -24,6 +24,11 @@ Page({
       url: '../my_evaluate/index',
     })
   },
+  myRescue: function () {
+    wx.navigateTo({
+      url: '../rescue_order_list/index',
+    })
+  },
   serviceCard: function() {
     wx.navigateTo({
       url: '../my_service_card/index',

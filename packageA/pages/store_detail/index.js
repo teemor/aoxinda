@@ -110,7 +110,7 @@ Page({
       price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
     }).then(res => {
       this.carList();
-      this.goodsTotal(detail)
+      // this.goodsTotal(detail)
     })
 
   },
@@ -133,10 +133,11 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    console.log(detail.item)
     let obj = {
       "userId": app.globalData.openId,
       'shopId': app.globalData.shopid,
-      "activityId": detail.item.actId !== undefined? detail.item.actId : detail.activityId, 
+      "activityId": detail.item.actId? detail.item.actId : detail.activityId, 
       "cartNum": detail.num, 
       "price": detail.item.actPrice
     }
