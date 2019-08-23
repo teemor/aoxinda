@@ -11,7 +11,10 @@
         -->
       <view style="display:inline-block;">
         <image src="../../common/image/clock.png" style="height:30rpx;width:30rpx;display:inline-block;vertical-align:middle;margin-right:5rpx"></image> {{item.REST_START_TIME?item.REST_START_TIME:item.shop.restStartTime}}-{{item.REST_END_TIME?item.REST_END_TIME:item.shop.restEndTime}}</view>
-      <view class="{{item.FLAG?item.FLAG:item.flag == true?'operation':'rest'}}" style="display:inline-block;margin-left:20rpx">{{item.FLAG?item.FLAG:item.flag == true?'营业中':'休息中'}}</view>
+      <!-- <view class="{{(item.flag?item.flag:(item.FLAG == true?'operation':'rest'))}}" style="display:inline-block;margin-left:20rpx">{{(item.flag?item.flag:(item.FLAG == true?'营业中':'休息中'))}}</view> -->
+
+      <view wx:if="{{item.ID}}" class="{{item.flag == true?'operation':'rest'}}" style="display:inline-block;margin-left:20rpx">{{item.flag == true?'营业中':'休息中'}}</view>
+      <view wx:else class="{{item.FLAG == true?'operation':'rest'}}" style="display:inline-block;margin-left:20rpx">{{item.FLAG == true?'营业中':'休息中'}}</view>
       <view class="cl fz24 grey">
         <view class="fl" wx:if="{{item.DISTANCE}}">{{item.DISTANCE>1?item.DISTANCE+'km':item.DISTANCE*1000+'m'}}</view>
         <view class="fl" wx:else>{{item.shop.distance>1?item.shop.distance+'km':item.shop.distance*1000+'m'}}</view>

@@ -26,7 +26,7 @@
   <view class="title_bgl">
     <!-- <image slot="icon" mode="scaleToFill" src="../../common/image/card_info_t.png" class='title_bg'></image> -->
     <view class="title_bgl_left"> <view class="blue_left"></view> 适用门店</view>
-    <view class="title_bgl_right">全部 <image src="../../../common/image/more.png" style="width:15rpx;height:20rpx"></image> </view>
+    <view class="title_bgl_right" bindtap="toApplyStore">全部 <image src="../../../common/image/more.png" style="width:15rpx;height:20rpx"></image> </view>
   </view>
   <view class='address' wx:for="{{cardModel}}" wx:key="{{index}}" style="display:none">
     <view class='address_title'>{{item.name}}</view>

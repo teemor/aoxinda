@@ -206,5 +206,11 @@ Page({
         }
       })
     }
+  },
+  //跳转全部门店
+  toApplyStore(){
+    wx.navigateTo({
+      url: `../apply_store_list/index?actId=${this.data.cardModel[0].actId}`,
+    })
   }
 })

@@ -63,7 +63,9 @@ Page({
   },
   onClickButton: function () {
     this.carList()
-
+    // this.findServiceList()
+    this.data.cartModel[0].shop_name = this.data.shop_name
+    console.log(this.data.cartModel[0])
     let model = encodeURIComponent(JSON.stringify(this.data.cartModel))
     wx.navigateTo({
       url: `../../pages/add_order/index?model=${model}`,
@@ -100,7 +102,6 @@ Page({
     //     plusData: false
     //   })
     // }
-    console.log(detail, 'detailwer')
     request.addCart({
       shopId: app.globalData.shopid,
       userId: app.globalData.openId,
@@ -209,7 +210,8 @@ Page({
         shopId: shopid,
         detailModel: res.ser,
         cardModel: res.serCard,
-        tel: res.shop.tel
+        tel: res.shop.tel,
+        shop_name:res.shop.name
       })
     })
   },
