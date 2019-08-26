@@ -167,6 +167,12 @@
           </view>
         </view>
       </view>
+      <view style="height:400rpx;background-color: #fff;" wx:if="{{ consumption.length===0 }}">
+        <view class="my_address_null">
+          <image src="/common/image/refund_null.png" style="margin-top:100rpx;width: 240rpx;" />
+        </view>
+        <view class="tc fz26">暂无消费记录</view>
+      </view>
     </van-tab>
   </van-tabs>
 </view>
