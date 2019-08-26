@@ -123,7 +123,7 @@ Page({
     /// CarType,serDictId,shopName,actCarCode,actCardType,actId
     if (options.actCardType) {
       console.log(1)
-      this.findShopList('', '','', options.actCardType, this.data.actCarCode, '')
+      this.findShopList('', '', '', app.actCarCode, options.actCardType, '')
       console.log(options.actCardType, this.data.actCarCode)
     } else if (options.actId) {
       console.log(2)
