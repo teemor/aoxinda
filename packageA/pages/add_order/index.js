@@ -4,7 +4,7 @@ import {
 const request = new store
 const app = getApp()
 import find_car from '../../../mixin/find_car'
-
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
   mixins: [find_car],
   /**
@@ -39,6 +39,11 @@ Page({
   /**
    * 支付方式
    */
+  car:function(){
+    wx.navigateTo({
+      url: '../mycar/index'
+    })
+  },
   wxPayShow: function() {
     this.setData({
       wxPay: !this.data.wxPay
@@ -213,7 +218,12 @@ Page({
     })
     console.log(this.data.phone, 'heh')
     this.findCarList()
-    console.log(this.findCarList)
+    // console.log(this.carList)
+    // 
+    let that = this
+    setTimeout(function(){  
+      console.log(that.data.carModel)
+    },500)
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'shopid')
@@ -277,7 +287,6 @@ Page({
         shopName: model[0].shopName,
         actCardType: model[0].actCardType
       })
-      console.log(this.data.totalCard, this.data.totalPrice)
       let orderDetails = model.map(item => {
         return {
           activityId: item.actId,
@@ -416,9 +425,7 @@ Page({
         userPhone: app.globalData.phoneNum
       }).then(res => {
         if (res.status === false) {
-          wx.showToast({
-            title: '金麦卡余额不足！'
-          })
+          Toast.fail('余额不足！');
         } else {
 
           let that = this
@@ -430,6 +437,7 @@ Page({
             signType: description.signType,
             paySign: description.paySign,
             success: (result) => {
+              console.log(request.noticeSuccessfulPayment)
               let data = {}
               data.id = description.outTradeNo,
                 data.data = 'success'

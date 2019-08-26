@@ -17,6 +17,7 @@ module.exports = {
       key: 'userPhone',
       success: (result) => {
         request.findCarList({ userTel: result.data }).then(res => {
+          
           if (res.result.length > 0) {
             let arr = []
             res.result.forEach(item => {
@@ -27,6 +28,7 @@ module.exports = {
             if (arr.length === 0) {
               arr.push(res.result[0])
             }
+            console.log(arr[0])
             that.setData({
               car: true,
               carModel: arr[0],
