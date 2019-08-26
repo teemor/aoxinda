@@ -92,25 +92,50 @@ Page({
   },
 
   numChange: function (e) {
-    console.log(e, '购物车')
-    let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
-    let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
-    console.log(num)
-    
+    // console.log(e, '购物车')
+    // let detail = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.detail
+    // let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
+    // console.log(num)
     // if (e.detail.num = 0) {
     //   this.setData({
     //     plusData: false
     //   })
     // }
+    // request.addCart({
+    //   shopId: app.globalData.shopid,
+    //   userId: app.globalData.openId,
+    //   activityId: detail.item !== undefined ? detail.item.actId : detail.activityId,
+    //   cartNum: num,
+    //   price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
+    // }).then(res => {
+    //   this.carList();
+    //   this.goodsTotal(detail)
+    // })
+    let that = this
+    let num = e.currentTarget.dataset.num ? parseInt(e.currentTarget.dataset.num) : e.detail
+    let myData = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.currentTarget.dataset.info
+    if (myData.activityId) {
+      myData.actId = myData.activityId
+    }
     request.addCart({
       shopId: app.globalData.shopid,
       userId: app.globalData.openId,
-      activityId: detail.item !== undefined ? detail.item.actId : detail.activityId,
+      activityId: myData.actId,
       cartNum: num,
-      price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
+      price: myData.actPrice
     }).then(res => {
-      this.carList();
-      // this.goodsTotal(detail)
+      let ind;
+      that.data.detailModel.forEach((n, i) => {
+        if (n.actId == myData.actId) {
+          ind = i
+        }
+      })
+      that.data.detailModel[ind].cartNum = num
+      that.data.detailModel.splice(ind, 1, that.data.detailModel[ind])
+      that.setData({
+        detailModel: that.data.detailModel
+      })
+      that.carList()
     })
 
   },

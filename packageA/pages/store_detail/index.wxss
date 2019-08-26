@@ -1,7 +1,9 @@
 @import "../../../app.wxss";
-.van-submit-bar{
-  z-index: 334
+
+.van-submit-bar {
+  z-index: 334;
 }
+
 .detail_cart {
   padding: 30rpx;
   width: 690rpx;
@@ -10,7 +12,7 @@
   overflow: scroll;
   z-index: 332;
   padding-bottom: 500rpx;
-  left:-375rpx;
+  left: -375rpx;
 }
 
 page {
@@ -74,4 +76,38 @@ page {
   margin-left: 30rpx;
   width: 50rpx;
   height: 50rpx;
+}
+
+/*  */
+
+.add_img {
+  position: absolute;
+  margin-top: 75rpx;
+  width: 200rpx;
+  left: 530rpx;
+}
+
+.add_img image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.service_img image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.store_list {
+  height: 150rpx;
+  padding: 30rpx 30rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #f3f3f3;
+}
+
+.service_box {
+  padding: 20rpx;
+}
+
+.service_contain {
+  width: 500rpx;
 }
