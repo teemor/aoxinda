@@ -5,6 +5,7 @@
     "service_list": "../../components/service_list/service_list",
     "card_list": "../../components/card_list/card_list",
     "van-submit-bar": "../../miniprogram_npm/vant-weapp/submit-bar/index",
+    "van-stepper": "../../miniprogram_npm/vant-weapp/stepper/index",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
     "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox/index",
     "van-toast": "../../miniprogram_npm/vant-weapp/toast/index"
