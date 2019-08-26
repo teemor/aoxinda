@@ -72,7 +72,24 @@
       <van-tab title="服务">
         <view style="margin-bottom:90rpx;">
           <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
-            <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn" />
+            <!-- <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn" /> -->
+            <view class="store_list">
+              <view class="service_img fl" bindtap="serviceBtn">
+                <image src="{{item.path==undefined?item.actPicture:item.path}}" />
+              </view>
+              <view class="fl service_contain">
+                <view class="service_box fl" bindtap="serviceBtn">
+                  <view class="fz28">{{item.actName}}</view>
+                  <view class="red fz30" style="margin-top:20rpx">
+                    <span class="fz24">¥</span>{{item.actPrice}}</view>
+                </view>
+                <view class="add_img fr">
+                  <van-stepper wx:if="{{item.cartNum > 0}}" value="{{item.cartNum}}" min="0" data-info='{{ item }}' bind:change="numChange" />
+                  <image wx:else src="../../common/img/add.png" data-info='{{ item }}' data-num='1' bindtap="numChange" />
+                </view>
+              </view>
+              <view class="fl"></view>
+            </view>
           </view>
         </view>
       </van-tab>
