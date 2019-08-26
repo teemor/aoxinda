@@ -18,11 +18,11 @@
     
     <view class="cl"></view>
   </view>
-  <view class="refund_type fz28" wx:if="{{actCardType == '3'}}">
+  <view class="refund_type fz28" wx:if="{{actCardType == '3'}}" bindtap="car">
     <view class="fl">
       服务车辆</view>
     <view class="fr" style="color:#999">
-      {{shop_name || shopName}}
+    {{carModel.plateNum}} {{carModel.model}} {{carModel.vehicleType}}
     </view>
     
     <view class="cl"></view>
@@ -160,4 +160,6 @@
       </view>
     </form>
   </view>
+  
 </manager>
+<van-toast id="van-toast" />

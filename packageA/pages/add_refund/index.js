@@ -137,6 +137,7 @@ Page({
       this.data.orderInfo.userId = app.globalData.openId
       request.backMoney(this.data.orderInfo).then(res => {
         console.log(res, 'restuikuan')
+        console.log(this.data.orderInfo.refundReason)
         if (res.status == true) {
           request.noticeSuccessfulRefund({
             openid: app.globalData.openId,
