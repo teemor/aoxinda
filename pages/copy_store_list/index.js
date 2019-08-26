@@ -122,14 +122,18 @@ Page({
     // 从精选服务进
     /// CarType,serDictId,shopName,actCarCode,actCardType,actId
     if (options.actCardType) {
-      this.findShopList(options.actCardType, '', '', this.data.actCarCode, '')
+      console.log(1)
+      this.findShopList('', '','', options.actCardType, this.data.actCarCode, '')
+      console.log(options.actCardType, this.data.actCarCode)
     } else if (options.actId) {
+      console.log(2)
       this.setData({
         actCarType:2,
         actId:options.actId
       })
       this.findShopList(app.carType, '', '',app.actCarCode,2, options.actId)
     } else if (options.model) {
+      console.log(3)
       let model = JSON.parse(decodeURIComponent(options.model))
       let flag = model.actName ? 0 : 1
       console.log(model.actName, 'model.actname')

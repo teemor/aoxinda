@@ -2,7 +2,7 @@ import {
   HttpServer
 } from "../../../utils/method"
 const http = new HttpServer()
-export const IP_YXHTTP = `http://192.168.31.158:9015/wash/v1.0` //前三
+export const IP_YXHTTP = `http://192.168.31.184:9015/wash/v1.0` //前三
 export const IP_MYHTTP = `http://192.168.31.184:9015/wash/v1.0`  //186
 export const IP_YBHTTP = `http://192.168.31.184:9015`
 export const IP_LYHTTP = `http://192.168.31.184:9015/myPay/v1.0` // 220
@@ -20,7 +20,7 @@ export class store {
   // 卡牌或者单次洗车购买详情
   findPayType = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.158:9015/wash/v1.0/findPayType`,
+      url: `http://192.168.31.184:9015/wash/v1.0/findPayType`,
       method: `post`,
       data: model
     })

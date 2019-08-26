@@ -9,12 +9,22 @@
   </view>
 </view>
 <view>
-<view class="refund_type fz28">
+  <view class="refund_type fz28">
     <view class="fl">
       购买门店</view>
     <view class="fr" style="color:#999">
       {{shop_name || shopName}}
     </view>
+    
+    <view class="cl"></view>
+  </view>
+  <view class="refund_type fz28" wx:if="{{actCardType == '3'}}">
+    <view class="fl">
+      服务车辆</view>
+    <view class="fr" style="color:#999">
+      {{shop_name || shopName}}
+    </view>
+    
     <view class="cl"></view>
   </view>
   <van-cell title="配送方式" value="无需配送"></van-cell>
