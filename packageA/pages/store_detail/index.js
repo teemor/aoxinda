@@ -103,7 +103,7 @@ Page({
     //   })
     // }
     // request.addCart({
-    //   shopId: app.globalData.shopid,
+    //   shopId: this.data.shopId,
     //   userId: app.globalData.openId,
     //   activityId: detail.item !== undefined ? detail.item.actId : detail.activityId,
     //   cartNum: num,
@@ -119,7 +119,7 @@ Page({
       myData.actId = myData.activityId
     }
     request.addCart({
-      shopId: app.globalData.shopid,
+      shopId: this.data.shopId,
       userId: app.globalData.openId,
       activityId: myData.actId,
       cartNum: num,
@@ -162,7 +162,7 @@ Page({
     console.log(detail.item)
     let obj = {
       "userId": app.globalData.openId,
-      'shopId': app.globalData.shopid,
+      'shopId': this.data.shopId,
       "activityId": detail.item.actId? detail.item.actId : detail.activityId, 
       "cartNum": detail.num, 
       "price": detail.item.actPrice
@@ -290,9 +290,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.shopid) {
-      this.findServiceList(app.globalData.shopid)
-    }
+    this.findServiceList(this.data.shopId)
     this.findCarList()
   },
 
@@ -362,6 +360,6 @@ Page({
     this.setData({
       showMyCar: false
     })
-    this.findServiceList(app.globalData.shopid, 0)
+    this.findServiceList(this.data.shopId, 0)
   },
 })
