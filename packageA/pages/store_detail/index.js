@@ -7,6 +7,7 @@ const app = getApp();
 Page({
   mixins: [find_car],
   data: {
+    shopId: '',
     showMyCar: true,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     add: false,
@@ -184,7 +185,7 @@ Page({
     })
     request.findcartList({
       userId: app.globalData.openId,
-      shopId: app.globalData.shopid,
+      shopId: this.data.shopId,
       pageIndex: 1,
       pageSize: 10
     }).then(res => {
@@ -242,16 +243,17 @@ Page({
     })
   },
   onLoad: function (options) {
-    this.carList()
     console.log(options, 'options')
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'ai')
       this.findServiceList(model.ID)
       this.setData({
+        shopId: model.ID,
         storemodel: model,
         ["commentForm.shop_id"]: model.ID
       })
+      this.carList()
       this.onShow()
     }
   },
