@@ -58,7 +58,7 @@
   <van-tabs color="#4e93f3" active="{{active}}" sticky bind:click="tabClick" bind:change="onChange">
     <van-tab title="服务详情">
       <view style="padding:18rpx;margin-bottom:65rpx">
-        <rich-text nodes="{{cardModel[0].actCon}}">
+        <rich-text nodes="{{cardModel[0].actCon}}" style="font-size:24rpx">
         </rich-text>
       </view>
       <van-cell style="display:none" title="{{item.server_name}}" wx:for="{{serverInfo}}" wx:key="{{index}}">
@@ -68,7 +68,7 @@
     </van-tab>
     <van-tab title="购买须知">
       <view style="padding:18rpx;margin-bottom:65rpx">
-        <rich-text nodes="{{cardModel[0].actPayCon}}">
+        <rich-text nodes="{{cardModel[0].actPayCon}}" style="font-size:24rpx">
         </rich-text>
       </view>
       <view class='address' wx:for="{{payInfo}}" wx:key="{{index}}" style="display:none">

@@ -213,6 +213,7 @@ Page({
     })
     console.log(this.data.phone, 'heh')
     this.findCarList()
+    console.log(this.findCarList)
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'shopid')
@@ -273,7 +274,8 @@ Page({
         shopId: model[0].shopId,
         totalCard: model[0].actCardPrice,
         totalPrice:model[0].actCardPrice,
-        shopName: model[0].shopName
+        shopName: model[0].shopName,
+        actCardType: model[0].actCardType
       })
       console.log(this.data.totalCard, this.data.totalPrice)
       let orderDetails = model.map(item => {
