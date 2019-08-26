@@ -226,7 +226,7 @@ Page({
   findServiceList: function (shopid,code) {
     request.findShopDet({
       actCarCode: code===0?'':app.actCarCode,
-      shopId: this.data.commentForm.shop_id,
+      shopId: shopid,
       log: app.globalData.longitude,
       lat: app.globalData.latitude,
       userId: app.globalData.openId
