@@ -78,7 +78,7 @@ export class CardHttp {
   // 查询储值卡是否已购买和金额
   hasCard = (params) => {
     return http.httpRequest({
-      url: `${IP_HTTP}/hasCard`,
+      url: `http://192.168.31.184:9015/appapi/v1.0/hasCard`,
       method: `POST`,
       data: params
     })

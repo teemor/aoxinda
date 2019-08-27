@@ -27,10 +27,8 @@ Page({
     tabIndex: 0, //当前tabs页签下标
     count:0
   },
-  serviceBtn: function ({
-    detail
-  }) {
-    let model = encodeURIComponent(JSON.stringify(detail))
+  serviceBtn: function (detail) {
+    let model = encodeURIComponent(JSON.stringify(detail.currentTarget.dataset.model))
     wx.navigateTo({
       url: `../service_detail/index?model=${model}`,
     })
@@ -76,6 +74,12 @@ Page({
     });
 
   },
+  // closeCar: function () {
+  //   this.setData({
+  //     carShow: false
+  //   })
+  //   this.findShopList('', '', '', '', '')
+  // },
   //定位
   locationAddress: function () {
     var that = this
@@ -292,6 +296,9 @@ Page({
   onShow: function () {
     this.findServiceList(this.data.shopId)
     this.findCarList()
+    this.setData({
+      showMyCar: true
+    })
   },
 
   /**
