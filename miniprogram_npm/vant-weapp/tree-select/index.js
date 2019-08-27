@@ -59,7 +59,6 @@ VantComponent({
         // 更新子项列表
         updateSubItems() {
             const { items, mainActiveIndex } = this.data;
-            console.log(this.data,'heheh')
           const { ser = [] } = items[mainActiveIndex] || {};
           this.updateItemHeight(ser);
           return this.set({ subItems: ser });
