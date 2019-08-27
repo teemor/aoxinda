@@ -111,3 +111,9 @@ page {
 .service_contain {
   width: 500rpx;
 }
+.bgwhite_box{
+  background: #fff;
+}
+.card_item{
+  display: inline-block
+}

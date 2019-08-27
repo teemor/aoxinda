@@ -119,8 +119,13 @@ Page({
 
   onLoad: function (options) {
     console.log(options, 'optinss')
+    let that = this
     // 从精选服务进
     /// CarType,serDictId,shopName,actCarCode,actCardType,actId
+    setTimeout(function(){
+      console.log(that.findShopList)
+      that.findShopList('', '', '', app.actCarCode, '', '')
+    },500)
     if (options.actCardType) {
       console.log(1)
       this.findShopList('', '', '', app.actCarCode, options.actCardType, '')

@@ -39,13 +39,13 @@
 <view class="shop_goods_invite" bindtap="editCar" wx:if="{{ showMyCar }}">
   <my_car model="{{carModel}}" car="{{car}}" bind:closeCar="onCloseCar" />
 </view>
-<view class="bgwhite">
-  <view class="fz28" style="height:100%;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
+<view class="bgwhite_box">
+  <view class="fz28" style="height:40rpx;margin-left:30rpx;padding-left:20rpx;border-left:4rpx solid #4e93f3">
     门店会员卡
   </view>
-  <view wx:if="{{cardModel.length!=0}}" class="cl" style="margin-left:25rpx;position:relative">
+  <view wx:if="{{cardModel.length!=0}}" class="cl" style="margin-left:25rpx;">
     <view class="{{cardShow==true?'height_contain':''}}">
-      <view class="fl" wx:for="{{cardModel}}" wx:key="{{item}}" style="">
+      <view class="card_item" wx:for="{{cardModel}}" wx:key="{{item}}" style="overflow: hidden">
         <view class="card_img" wx:if="{{item.name=='月月卡'}}" data-item="{{item.actId}}" bindtap="cardMDetail">
           <image src="../../common/img/month.png" />
         </view>
@@ -74,11 +74,11 @@
           <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
             <!-- <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn" /> -->
             <view class="store_list">
-              <view class="service_img fl" bindtap="serviceBtn">
+              <view class="service_img fl" bindtap="serviceBtn"  data-model="{{item}}">
                 <image src="{{item.path==undefined?item.actPicture:item.path}}" />
               </view>
               <view class="fl service_contain">
-                <view class="service_box fl" bindtap="serviceBtn">
+                <view class="service_box fl" bindtap="serviceBtn" data-model="{{item}}">
                   <view class="fz28">{{item.actName}}</view>
                   <view class="red fz30" style="margin-top:20rpx">
                     <span class="fz24">¥</span>{{item.actPrice}}</view>

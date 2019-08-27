@@ -52,7 +52,7 @@ export class store {
   // 支付成功
   noticeSuccessfulPayment = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulPayment`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulPayment`,
       method: `post`,
       data: model
     })
@@ -60,7 +60,7 @@ export class store {
   // 退款通知提醒
   noticeSuccessfulRefund = (model) => {
     return http.httpRequest({
-      url: `http://192.168.31.186:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulRefund`,
+      url: `http://192.168.31.184:9015/wash/v1.0/mcfwcbnotice/noticeSuccessfulRefund`,
       method: `post`,
       data: model
     })

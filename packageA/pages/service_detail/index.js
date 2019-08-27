@@ -38,6 +38,7 @@ Page({
     let isNot = 0
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
+      console.log(model)
       if (typeof(model.serType)== 'undefined') {
         console.log("234")
         isNot = 5
