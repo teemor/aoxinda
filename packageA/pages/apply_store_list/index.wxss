@@ -1,4 +1,7 @@
 @import "../../../app.wxss";
+page{
+  border-top: 1rpx solid #eee;
+}
 
 .space_store_box{
     margin-bottom: 20rpx;
