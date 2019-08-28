@@ -185,7 +185,7 @@
   <view class="refund_type fz28">
     <view class="fl">支付方式</view>
     <view class="fr cell_img">
-      <view wx:if="model.payType==0">
+      <view wx:if="{{model.payType==0}}">
         <image src="../../../common/image/wx.png" />微信支付
       </view>
       <view wx:else>金麦卡支付</view>

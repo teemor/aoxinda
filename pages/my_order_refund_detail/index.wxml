@@ -8,7 +8,7 @@
 
 <view wx:if="{{detailData.back_express!==''}}" class="bgwhite" style="padding:30rpx;">
 <view class="fz28 high80">退款金额 ￥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</view>
-<view class="fz24 grey" >退回微信 ￥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</view>
+<view class="fz24 grey" >退回{{detailData.payType=='0'?'微信':'金麦卡'}} ￥{{detailData.back_money?detailData.back_money:detailData.refundMoney}}</view>
 </view>
 <view class="cl my_order_list_box" bindtap="orderDetail">
   <view class="fz26 high60">退款信息</view>

@@ -3,8 +3,26 @@
     <card_list item="{{cardModel}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" />
   </view>
   <view wx:else>
-    <view wx:for="{{serviceModel}}" wx:key="{{item}}">
-      <service_list item="{{item}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" />
+    <view wx:for="{{serviceModel}}" wx:key="{{index}}">
+      <!-- <service_list item="{{item}}" payType="{{payType}}" bind:numChange="numChange" add="{{add}}" /> -->
+      <!-- <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn" /> -->
+      <view class="store_list">
+        <view class="service_img fl" bindtap="serviceBtn" data-model="{{item}}">
+          <image src="{{item.path==undefined?item.actPicture:item.path}}" />
+        </view>
+        <view class="fl service_contain">
+          <view class="service_box fl" bindtap="serviceBtn" data-model="{{item}}">
+            <view class="fz28">{{item.actName}}</view>
+            <view class="red fz30" style="margin-top:20rpx">
+              <span class="fz24">¥</span>{{item.actPrice}}</view>
+          </view>
+          <view class="add_img fr">
+            <van-stepper wx:if="{{item.cartNum > 0}}" value="{{item.cartNum}}" min="{{min_num?1:0}}" data-info='{{ item }}' data-index='{{ index }}' bind:change="numChange" />
+            <image wx:else src="../../common/img/add.png" data-info='{{ item }}' data-num='1' bindtap="numChange" data-index='{{ index }}' />
+          </view>
+        </view>
+        <view class="fl"></view>
+      </view>
     </view>
   </view>
 </view>
@@ -15,16 +33,16 @@
     <view class="fr" style="color:#999">
       {{shop_name || shopName}}
     </view>
-    
+
     <view class="cl"></view>
   </view>
   <view class="refund_type fz28" wx:if="{{actCardType == '3'}}" bindtap="car">
     <view class="fl">
       服务车辆</view>
     <view class="fr" style="color:#999">
-    {{carModel.plateNum}} {{carModel.model}} {{carModel.vehicleType}}
+      {{carModel.plateNum}} {{carModel.model}} {{carModel.vehicleType}}
     </view>
-    
+
     <view class="cl"></view>
   </view>
   <van-cell title="配送方式" value="无需配送"></van-cell>
@@ -35,7 +53,7 @@
       <view wx:if="{{payType==0}}">
         <image src="../../../common/image/wx.png" />微信支付
       </view>
-      <view wx:else>
+      <view wx:if="{{payType==1}}">
         金麦卡支付
       </view>
     </view>
@@ -148,11 +166,11 @@
         <view class="cl high80 fz28">请输入6位数字密码</view>
         <view class="cl" style="height:90rpx;margin-left:20rpx">
           <input name="1" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="2" bindinput="bluro" focus="{{o}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="2" bindinput="bluro" focus="{{f}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
           <input name="3" bindinput="blurg" focus="{{g}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
           <input name="4" bindinput="blurh" focus="{{h}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
           <input name="5" bindinput="bluri" focus="{{i}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
-          <input name="6" bindinput="blurp" focus="{{p}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
+          <input name="6" bindinput="blurp" focus="{{j}}" class="input-radius tc fl" type="number" password="true" maxlength="1" />
         </view>
       </view>
       <view bindtap="setPwd">
@@ -160,6 +178,6 @@
       </view>
     </form>
   </view>
-  
+
 </manager>
 <van-toast id="van-toast" />

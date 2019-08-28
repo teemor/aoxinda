@@ -208,7 +208,7 @@ Page({
         price += item.cartNum * item.actPrice
       })
       this.setData({
-        totalPrice: price
+        totalPrice: price.toFixed(2)
       })
       if (res.data.total == 0) {
         this.setData({
@@ -299,6 +299,7 @@ Page({
     this.setData({
       showMyCar: true
     })
+    this.carList()
   },
 
   /**

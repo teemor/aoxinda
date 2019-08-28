@@ -55,7 +55,7 @@
         <view class="card_img" wx:else data-item="{{item.actId}}" bindtap="cardDetail">
           <image src="../../common/img/quarter.png" />
         </view>
-        <view class="card_text" >
+        <view class="card_text">
           <view class="fz28">{{item.name}}</view>
           <view class="fz28 bold">¥{{item.actCardPrice}}</view>
         </view>
@@ -74,7 +74,7 @@
           <view wx:for="{{detailModel}}" wx:key="{{item.actId}}">
             <!-- <service_list item="{{item}}" bind:numChange="numChange" bind:serviceBtn="serviceBtn" /> -->
             <view class="store_list">
-              <view class="service_img fl" bindtap="serviceBtn"  data-model="{{item}}">
+              <view class="service_img fl" bindtap="serviceBtn" data-model="{{item}}">
                 <image src="{{item.path==undefined?item.actPicture:item.path}}" />
               </view>
               <view class="fl service_contain">

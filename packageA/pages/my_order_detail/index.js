@@ -243,6 +243,7 @@ Page({
    */
   onLoad: function (options) {
     // this.selectOrderDetail("f69f5dc187814358b7ba53ad72139999",39.62429,118.20127)
+    console.log(options)
     if (options.id) {
       this.selectOrderDetail(options.id)
       this.setData({
