@@ -3,14 +3,15 @@ import find_car from '../../mixin/find_car'
 import {
   store
 } from '../../common/api/clean_api'
-import location from '../../mixin/location.js'
+import { Map } from '../../common/api/map'
+const map = new Map;
 import {
   serviceType
 } from '../../common/static/api_data'
 const request = new store
 const app = getApp()
 Page({
-  mixins: [stores, find_car, location],
+  mixins: [stores, find_car],
   /**
    * 页面的初始数据
    */
@@ -106,38 +107,20 @@ Page({
   },
   scopeSetting: function () {
     var that = this;
-    wx.getSetting({
+    wx.getLocation({
+      type: 'gcj02',
       success(res) {
-        //地理位置
-        if (!res.authSetting['scope.userLocation']) {
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success(res) {
-              that.initMap();
-            },
-            fail() {
-              wx.showModal({
-                title: '提示',
-                content: '定位失败，你未开启定位权限，点击开启定位权限',
-                success: function (res) {
-                  if (res.confirm) {
-                    wx.openSetting({
-                      success: function (res) {
-                        if (res.authSetting['scope.userLocation']) {
-                          that.initMap();
-                        } else {
-                          consoleUtil.log('用户未同意地理位置权限')
-                        }
-                      }
-                    })
-                  }
-                }
-              })
-            }
+        const latitude = res.latitude
+        const longitude = res.longitude
+        map.reverseAddressResolution({
+          location: `${res.latitude},${res.longitude}`
+        }).then(msg => {
+          that.setData({
+            location: msg.result.address,
+            latitude: res.latitude,
+            longitude: res.longitude
           })
-        } else {
-          that.initMap();
-        }
+        }) 
       }
     })
   },
@@ -191,6 +174,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.scopeSetting()
     this.findShopList(app.carType,'','',app.actCarCode,'','')
     console.log(app.address,'dizhi ')
     this.setData({
@@ -218,7 +202,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getlocation()
     this.setData({
       carShow:true
     })
