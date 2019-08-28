@@ -3,7 +3,7 @@
 <image src="../../common/image/pay_success.png" mode="aspectFit"/>
 </view>
   <view class="green fz32">付款成功</view>
-  <view class="height80 mtop20">支付方式：微信支付 支付金额：¥{{price}}</view>
+  <view class="height80 mtop20">支付方式：{{type == 0?'微信支付':'金麦卡支付'}} 支付金额：¥{{price}}</view>
   <view class="mtop20 cl">
     <view class="back_btn fl bg_orange height75" bindtap="orderList">查看订单</view>
     <view class="back_btn fl br_orange bg_white height71 mleft100" bindtap="orderList">继续逛逛</view>

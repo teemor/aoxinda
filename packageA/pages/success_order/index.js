@@ -6,17 +6,20 @@ Page({
     let model = JSON.parse(decodeURIComponent(options.data))
     console.log(model,'model')
     this.setData({
-      id:model.id
+      id:model.id,
+      type:model.type
     })
     if (model.data === 'success') {
       this.setData({
         result: false,
-        price:model.price
+        price: model.price,
+        type: model.type
       })
     } else {
       console.log('2')
       this.setData({
-        result: true
+        result: true,
+        type: model.type
       })
     }
   },
@@ -24,13 +27,24 @@ Page({
    * 查看订单
    */
   orderList:function(){
-    wx.redirectTo({
-      url: `../my_order_detail/index?id=${this.data.id}`,
-      success: (result) => {
-      },
-      fail: () => {},
-      complete: () => {}
-    });
+    if(this.data.type == 0){
+      wx.redirectTo({
+        url: `../my_order_detail/index?id=${this.data.id}`,
+        success: (result) => {
+        },
+        fail: () => { },
+        complete: () => { }
+      });
+    }else{
+      wx.redirectTo({
+        url: `../my_order_detail/index?ids=${this.data.id}`,
+        success: (result) => {
+        },
+        fail: () => { },
+        complete: () => { }
+      });
+    }
+    
   },
   /**
    * 重新付款

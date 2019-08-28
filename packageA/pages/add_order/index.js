@@ -11,16 +11,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    a:false,
-    b:false,
-    c:false,
-    d:false,
-    e:false,
-    f:false,
-    g:false,
-    h:false,
-    i:false,
-    j:false,
+    a: false,
+    b: false,
+    c: false,
+    d: false,
+    e: false,
+    f: false,
+    g: false,
+    h: false,
+    i: false,
+    j: false,
     add: true,
     isInvoice: "0",
     payType: 0,
@@ -32,14 +32,15 @@ Page({
       type: 1
     }],
     codeBtn: '获取验证码',
-    totalPrice:0,
-    totalCard:0
+    totalPrice: 0,
+    totalCard: 0,
+    min_num: false
   },
 
   /**
    * 支付方式
    */
-  car:function(){
+  car: function() {
     wx.navigateTo({
       url: '../mycar/index'
     })
@@ -54,53 +55,54 @@ Page({
       falseGold: false
     })
   },
+  //设置支付密码
   setPwd: function() {
-
+    console.log(1)
   },
-  get_focus:function(){
+  get_focus: function() {
     this.setData({
-      a:false
+      a: false
     })
   },
-  blur:function(){
+  blur: function() {
     this.setData({
-      a:true
+      a: true
     })
   },
-  blura:function(){
+  blura: function() {
     this.setData({
-      b:true
+      b: true
     })
   },
-   blurb:function(){
+  blurb: function() {
     this.setData({
-      c:true
+      c: true
     })
   },
-  blurc:function(){
+  blurc: function() {
     this.setData({
-      d:true
+      d: true
     })
   },
-  blurd:function(){
+  blurd: function() {
     this.setData({
-      e:true
+      e: true
     })
   },
-  blure:function(){
+  blure: function() {
     this.setData({
-      a:false,
-      b:false,
-      c:false,
-      d:false,
-      e:false
+      a: false,
+      b: false,
+      c: false,
+      d: false,
+      e: false
     })
   },
   payChoose: function(e) {
     this.setData({
       payType: e.currentTarget.dataset.item.type
     })
-    // if (this.data.payType == 1 && this.data.cardGold == true) {
+    if (this.data.payType == 1 && this.data.cardGold == true) {
       if (this.data.pwdGold == true) {
         this.setData({
           // trueGold: true,
@@ -112,11 +114,14 @@ Page({
           wxPay: false
         })
       }
-    // } else {
-    //   wx.navigateTo({
-    //     url: '../../../pages/stored_value_card/index',
-    //   })
-    // }
+    } else {
+      // wx.navigateTo({
+      //   url: '../../../pages/stored_value_card/index',
+      // })
+      this.setData({
+        wxPay: false
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -126,23 +131,53 @@ Page({
     for (let i = 1; i < 7; i++) {
       arr += e.detail.value[i]
     }
-   
+
     request.passCheck({
       param1: app.globalData.openId,
       param2: arr
     }).then(res => {
-      wx.showToast({
-        title: res.msg,
-        duration: 1500
-      })
-      if (res.state == 0) {
+      if (res.state == 1) {
+        wx.showToast({
+          title: res.msg,
+          duration: 1500
+        })
         this.setData({
-          flag: false
+          trueGold: false
+        })
+        request.pay({
+          payType: this.data.payType, //0微信1金麦卡
+          carName: this.data.carModel.model,
+          shopId: this.data.shopId,
+          invoiceId: this.data.isInvoice === 0 ? '' : this.data.invoiceId,
+          buyType: this.data.card,
+          goodsTotalPrice: this.data.payType == 0 ? this.data.totalPrice : this.data.totalCard,
+          isInvoice: this.data.isInvoice,
+          orderDetails: this.data.orderDetails,
+          carNum: this.data.carModel.plateNum,
+          carId: this.data.carModel.carId,
+          userId: app.globalData.openId,
+          userName: app.globalData.userInfo.nickName,
+          userPhone: app.globalData.phoneNum
+        }).then(res => {
+          console.log(res)
+          if (res.status == true) {
+            let data = {}
+            data.id = res.orderNum
+            data.data = 'success'
+            data.price = res.payMoney
+            data.type = 1
+            let model = encodeURIComponent(JSON.stringify(data))
+            wx.redirectTo({
+              url: `../success_order/index?data=${model}`,
+            })
+          } else {
+
+          }
         })
       } else {
-        this.setData({
-          trueGold: false,
-          flag: true
+        wx.showToast({
+          title: '密码输入有误',
+          duration: 1500
         })
       }
       console.log(res, '校验密码')
@@ -158,6 +193,7 @@ Page({
       phone: this.data.phoneNum,
       code: e.detail.value[7]
     }).then(res => {
+      console.log(res)
       if (res.state == '验证成功') {
         let arr = ''
         for (let i = 1; i < 7; i++) {
@@ -174,8 +210,14 @@ Page({
             duration: 3000
           })
           this.setData({
-            falseGold: false
+            falseGold: false,
+            trueGold: true
           })
+        })
+      } else {
+        wx.showToast({
+          title: res.state,
+          duration: 3000
         })
       }
     })
@@ -208,6 +250,7 @@ Page({
     })
   },
   onLoad: function(options) {
+
     console.log(options)
     let phone = app.globalData.phoneNum
     console.log(phone, '电话')
@@ -221,12 +264,26 @@ Page({
     // console.log(this.carList)
     // 
     let that = this
-    setTimeout(function(){  
+    setTimeout(function() {
       console.log(that.data.carModel)
-    },500)
+    }, 500)
     if (options.model) {
       let model = JSON.parse(decodeURIComponent(options.model))
       console.log(model, 'shopid')
+      let znum = 0;
+      for (let i = 0; i < model.length; i++) {
+        znum += model[i].cartNum
+      }
+      if (znum == 1) {
+        this.setData({
+          min_num: true
+        })
+      } else {
+        this.setData({
+          min_num: false
+        })
+      }
+
       this.setData({
         shop_name: model[0].shop_name
       })
@@ -262,7 +319,7 @@ Page({
       });
 
       this.setData({
-        totalPrice: totalPrice,
+        totalPrice: totalPrice.toFixed(2),
         totalCard: totalCard,
         orderDetails: orderDetails,
         serivceNum: orderDetails.length
@@ -283,7 +340,7 @@ Page({
         cardModel: model[0],
         shopId: model[0].shopId,
         totalCard: model[0].actCardPrice,
-        totalPrice:model[0].actCardPrice,
+        totalPrice: model[0].actCardPrice,
         shopName: model[0].shopName,
         actCardType: model[0].actCardType
       })
@@ -301,7 +358,7 @@ Page({
       this.setData({
         card: 0,
         orderDetails: orderDetails,
-        totalPrice: totalPrice,
+        totalPrice: totalPrice.toFixed(2)
       })
       console.log(this.data.orderDetails, 'orderDetails')
     }
@@ -325,59 +382,119 @@ Page({
 
     })
   },
-  numChange: function({
-    detail
-  }) {
-    // let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
-    // console.log(num)
-    // console.log(this.data.orderDetails)
-    let i = 'orderDetails['+0+'].num'
-    this.setData({
-      [i]: detail.num
-    })
-    console.log(detail)
-    // this.setData({
-    //   totalPrice: detail.item.actPrice * detail.num
-    // })
+  // numChange: function({
+  //   detail
+  // }) {
+  //   // let num = e.currentTarget.dataset.item ? e.detail : e.detail.num
+  //   // console.log(num)
+  //   // console.log(this.data.orderDetails)
+  //   let i = 'orderDetails['+0+'].num'
+  //   this.setData({
+  //     [i]: detail.num
+  //   })
+  //   console.log(detail)
+  //   // this.setData({
+  //   //   totalPrice: detail.item.actPrice * detail.num
+  //   // })
+  //   request.addCart({
+  //     shopId: this.data.shopId,
+  //     userId: app.globalData.openId,
+  //     activityId: detail.item !== undefined ? detail.item.activityId || detail.item.actId: detail.activityId,
+  //     cartNum: detail.num,
+  //     price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
+  //   }).then(res => {
+  //     request.findcartList({
+  //       userId: app.globalData.openId,
+  //       shopId: this.data.shopId,
+  //       pageIndex: 1,
+  //       pageSize: 10
+  //     }).then(res => {
+  //       this.setData({
+  //         serviceModel: res.data.records
+  //       })
+  //       console.log(this.data.serviceModel)
+  //       let totalPrice = 0
+  //       let totalCard = 0
+  //       this.data.serviceModel.forEach(item => {
+  //         totalPrice += item.cartNum * item.actCardPrice,
+  //         totalCard += item.cartNum * item.actCardPrice
+  //       })
+  //       this.setData({
+  //         totalPrice: totalPrice,
+  //         totalCard: totalCard
+  //       })
+  //     })
+  //   })
+
+  //   // console.log(detail, 'detail哈哈')
+  //   // let num = detail.num
+  //   // console.log(num, '数量')
+  //   // let totalPrice = 0
+  //   // console.log(this.data.orderDetails, 'orderDetails')
+  //   // this.data.orderDetails.forEach(item => {
+  //   //   totalPrice += item.num * item.buywxPrice,
+  //   //     totalPriceCard += item.num * item.buycardPrice
+  //   // });
+  // },
+  numChange: function(e, info) {
+    let that = this
+    let znum = 0;
+    let num;
+
+    num = e.currentTarget.dataset.num ? parseInt(e.currentTarget.dataset.num) : e.detail
+
+    let myData = e.currentTarget.dataset.item ? e.currentTarget.dataset.item : e.currentTarget.dataset.info
+    if (myData.activityId) {
+      myData.actId = myData.activityId
+    }
     request.addCart({
       shopId: this.data.shopId,
       userId: app.globalData.openId,
-      activityId: detail.item !== undefined ? detail.item.activityId || detail.item.actId: detail.activityId,
-      cartNum: detail.num,
-      price: detail.item !== undefined ? detail.item.actPrice : detail.actPrice
+      activityId: myData.actId,
+      cartNum: num,
+      price: myData.actPrice
     }).then(res => {
-      request.findcartList({
-        userId: app.globalData.openId,
-        shopId: this.data.shopId,
-        pageIndex: 1,
-        pageSize: 10
-      }).then(res => {
-        this.setData({
-          serviceModel: res.data.records
-        })
-        console.log(this.data.serviceModel)
-        let totalPrice = 0
-        let totalCard = 0
-        this.data.serviceModel.forEach(item => {
-          totalPrice += item.cartNum * item.actCardPrice,
-            totalCard += item.cartNum * item.actCardPrice
-        })
-        this.setData({
-          totalPrice: totalPrice,
-          totalCard: totalCard
-        })
+      let ind;
+      that.data.serviceModel.forEach((n, i) => {
+        if (n.activityId == myData.actId) {
+          ind = i
+        }
       })
+      that.data.serviceModel[ind].cartNum = num
+      that.data.serviceModel.splice(ind, 1, that.data.serviceModel[ind])
+      
+      for (let i = 0; i < this.data.serviceModel.length; i++) {
+        znum += this.data.serviceModel[i].cartNum
+      }
+      console.log(znum)
+      if (znum == 1) {
+        this.setData({
+          min_num: true
+        })
+      } else {
+        this.setData({
+          min_num: false
+        })
+      }
+      console.log(this.data.serviceModel, e.currentTarget.dataset.index)
+      this.data.orderDetails[e.currentTarget.dataset.index].num = this.data.serviceModel[e.currentTarget.dataset.index].cartNum
+      //计算总价
+        let price = 0;
+        for (let i = 0; i < this.data.serviceModel.length; i++) {
+          price += this.data.serviceModel[i].cartNum * this.data.serviceModel[i].actPrice
+        }
+      //计算金麦卡支付总价
+        let cardprice = 0;
+        console.log(this.data.serviceModel)
+        for (let i = 0; i < this.data.serviceModel.length; i++) {
+          cardprice += this.data.serviceModel[i].cartNum * this.data.serviceModel[i].actCardPrice
+        }
+        that.setData({
+          serviceModel: that.data.serviceModel,
+          totalCard: cardprice.toFixed(2),
+          totalPrice: price.toFixed(2)
+        })
     })
-
-    // console.log(detail, 'detail哈哈')
-    // let num = detail.num
-    // console.log(num, '数量')
-    // let totalPrice = 0
-    // console.log(this.data.orderDetails, 'orderDetails')
-    // this.data.orderDetails.forEach(item => {
-    //   totalPrice += item.num * item.buywxPrice,
-    //     totalPriceCard += item.num * item.buycardPrice
-    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -395,20 +512,21 @@ Page({
       inCheck: e.detail
     })
   },
+  //点击提交订单
   paysubmit: function(e) {
-    console.log(e.detail)
-    console.log(app.globalData.openId)
     let that = this
     console.log(this.data.orderDetails)
-    // request.noticeSuccessfulPayment({
-    //   payMoney: that.data.totalPrice,
-    //   orderNum: '测试数据1433223',
-    //   openid: app.globalData.openId,
-    //   formid: e.detail.formId
-    // }).then(res => {
-    //   console.log(res, '支付成功通知')
-    // })
-    if (this.data.flag != false) {
+    console.log(e.detail)
+    console.log(app.globalData.openId)
+    if (this.data.payType == 1 && this.data.pwdGold == true) {
+      this.setData({
+        trueGold: true
+      })
+    } else if (this.data.payType == 1 && this.data.pwdGold == false) {
+      this.setData({
+        falseGold: true
+      })
+    } else {
       request.pay({
         payType: this.data.payType, //0微信1金麦卡
         carName: this.data.carModel.model,
@@ -441,8 +559,10 @@ Page({
               let data = {}
               data.id = description.outTradeNo,
                 data.data = 'success'
+              data.type = 0
               data.price = that.data.totalPrice
               let model = encodeURIComponent(JSON.stringify(data))
+              console.log(data, model)
               request.noticeSuccessfulPayment({
                 payMoney: that.data.totalPrice,
                 orderNum: res.orderNum,
@@ -460,6 +580,7 @@ Page({
               data.id = description.outTradeNo,
                 data.data = 'fail'
               let model = encodeURIComponent(JSON.stringify(data))
+
               wx.redirectTo({
                 url: `../success_order/index?data=${model}`
               })
@@ -468,12 +589,24 @@ Page({
           });
         }
       })
-    } else {
-      wx.showToast({
-        title: '密码输入错误',
-        duration: 3000
-      })
     }
+
+    // request.noticeSuccessfulPayment({
+    //   payMoney: that.data.totalPrice,
+    //   orderNum: '测试数据1433223',
+    //   openid: app.globalData.openId,
+    //   formid: e.detail.formId
+    // }).then(res => {
+    //   console.log(res, '支付成功通知')
+    // })
+    // if (this.data.flag != false || this.data.payType == 0) {
+
+    // } else {
+    //   wx.showToast({
+    //     title: '密码输入错误',
+    //     duration: 3000
+    //   })
+    // }
 
   },
   /**

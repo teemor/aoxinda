@@ -44,7 +44,7 @@ Page({
           Notify('请填写行驶公里数');
         }else{
           request.saveCar({
-            ZWS: this.data.model.ZWS,
+            // ZWS: this.data.model.ZWS,
             plateNum: this.data.plateNum,
             CMS: this.data.model.CMS,
             PP: this.data.model.PP,
